@@ -1,0 +1,453 @@
+<!doctype html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<head>
+<%= getPageFullHead() %>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+<link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin/smoothness/jquery-ui-1.10.3.custom.min.css" />
+<script type="text/javascript" src="js/easyXDM.js"></script>
+<link href="/site/social-login/css/login.css" rel="stylesheet" type="text/css" />
+<style>
+.breadcrumbs{
+visibility:hidden;
+}
+#loginregisterbody #div__body{
+position:relative;
+left:120px;
+}
+#login-register{
+position:relative;
+left:200px;
+width:300px;
+}
+iframe{
+height:120px;
+width:160px;
+overflow:hidden;
+}
+</style>
+<script language="javascript">
+function getQuerystring(key, default_)
+{
+  if (default_==null) default_=""; 
+  key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
+  var qs = regex.exec(window.location.href);
+  if(qs == null)
+    return default_;
+  else
+    return qs[1];
+}
+var checkout = false;
+if(window.location.href.indexOf('checkout=T')>-1)
+	{
+		checkout = true;
+	}
+var registerstart = false;
+if(window.location.href.indexOf('reg=T')>-1)
+	{
+		registerstart = true;
+	}
+$(function(){
+	if(getQuerystring('linksocial')=='T'){
+		//store link social data in form
+		document.forms['link-social'].elements['emaillink'].value = decodeURIComponent(getQuerystring('email'));
+		document.forms['link-social'].elements['timestamp'].value = decodeURIComponent(getQuerystring('timestamp'));
+		document.forms['link-social'].elements['signature'].value = decodeURIComponent(getQuerystring('signature'));
+		switchview('linksocial');
+	}
+	
+})
+
+	
+$(function() { 
+    $('#loginform').on('submit', function(e) { 
+        e.preventDefault();  
+        loginformSubmitUser();
+    });
+    $('#login-register').on('submit', function(e) { 
+        e.preventDefault();  
+        registerformSubmitUser();
+    });
+    $('#twitter-email').on('submit', function(e) { 
+        e.preventDefault();  
+        loginTwitter();
+    });  
+    $('#link-social').on('submit', function(e) { 
+        e.preventDefault();  
+       linkSocialAccount();
+    });
+    if(registerstart)
+    	switchview('register');
+});
+function switchview(viewtype)
+{
+	switch(viewtype){
+	case 'login':
+		$('.login-case-block').css('display', 'block');
+		$('#login-register').css('display', 'none');
+		$('#twitter-email').css('display', 'none');
+		$('#link-social').css('display', 'none');
+		break
+	case 'register':
+		$('.login-case-block').css('display', 'none');
+		$('#login-register').css('display', 'block');
+		$('#twitter-email').css('display', 'none');
+		$('#link-social').css('display', 'none');
+		break
+	case 'twitteremail':
+		$('.login-case-block').css('display', 'none');
+		$('#login-register').css('display', 'none');
+		$('#twitter-email').css('display', 'block');
+		$('#link-social').css('display', 'none');
+		break
+	case 'linksocial':
+		$('.login-case-block').css('display', 'none');
+		$('#login-register').css('display', 'none');
+		$('#twitter-email').css('display', 'none');
+		$('#link-social').css('display', 'block');
+		break
+		
+	default:jQuery("#dialogresponse").html('Unknown view type');
+	jQuery("#dialogresponse").dialog({ title: "Info" });
+	}
+}
+</script>
+<script language="javascript">
+
+var socket = new easyXDM.Socket({
+	remote: "http://sandbox.poppin.com/SSP%20Applications/Poppin/SocialMediaLogin/gigya.html",
+	container: "iframecontainer",
+    onMessage:function(message, origin) {
+    	var deserialized = JSON.parse(message);
+    	if(deserialized.provider==='twitter') {
+    			document.forms['twitter-email'].elements['customername'].value = deserialized['user'].firstName +' ' +deserialized['user'].lastName;
+    			document.forms['twitter-email'].elements['timestamp'].value = deserialized.signatureTimestamp;
+    			document.forms['twitter-email'].elements['UID'].value = deserialized.UID;
+    			document.forms['twitter-email'].elements['signature'].value = deserialized.UIDSignature;
+    			switchview('twitteremail');
+    		}
+    	else {
+    			socialLogin(deserialized);
+    		}
+    	
+    }
+});
+function socialLogin(deserialized)
+{
+	//console.log(deserialized);
+    var newUser = {
+    		"requesttype":"sociallogin",
+    		"remember":true,
+    		"email":deserialized['user'].email,
+    		"name":deserialized['user'].firstName +' ' +deserialized['user'].lastName,
+    		"password":'',
+    		"password2":'',
+    		"checkout":checkout,
+    		"timestamp":deserialized.signatureTimestamp,
+			"UID":deserialized.UID,
+			"signature":deserialized.UIDSignature
+    		};
+    sendLoginRequest(newUser);
+}
+function loginformSubmitUser()
+{
+	if(!checkemailvalue(document.forms['loginform'].elements['emaillog'].value)){return false;};
+	var loginUser = {
+			"requesttype":"login",
+			"remember":document.forms['loginform'].elements['remember'].checked,
+    		"email":document.forms['loginform'].elements['emaillog'].value,
+    		"password":document.forms['loginform'].elements['password'].value,
+    		"checkout":checkout
+    		};
+  
+	sendLoginRequest(loginUser);
+}
+function registerformSubmitUser()
+{
+	if(!checkemailvalue(document.forms['login-register'].elements['emailreg'].value)){return false;};
+	var newUser = {
+			"requesttype":"manualregister",
+			"remember":true,
+    		"email":document.forms['login-register'].elements['emailreg'].value,
+    		"name":document.forms['login-register'].elements['name'].value,
+    		"password":document.forms['login-register'].elements['password'].value,
+    		"password2":document.forms['login-register'].elements['password2'].value,
+    		"checkout":checkout
+    		};
+  	sendLoginRequest(newUser);
+}
+function loginTwitter()
+{
+	if(!checkemailvalue(document.forms['twitter-email'].elements['emailtwitter'].value)){return false;};
+	var newUser = {
+			"requesttype":"sociallogin",
+    		"remember":true,
+			"email":document.forms['twitter-email'].elements['emailtwitter'].value,
+    		"name":document.forms['twitter-email'].elements['customername'].value,
+    		"password":'',
+    		"password2":'',
+    		"checkout":checkout,
+    		"timestamp":document.forms['twitter-email'].elements['timestamp'].value,
+			"UID":document.forms['twitter-email'].elements['UID'].value,
+			"signature":document.forms['twitter-email'].elements['signature'].value
+	}
+	sendLoginRequest(newUser);
+}
+function linkSocialAccount()
+{
+	var newUser = {
+			"requesttype":"sociallink",
+    		"remember":true,
+			"email":document.forms['link-social'].elements['emaillink'].value,
+    		"password":document.forms['link-social'].elements['pwdlink'].value,
+    		"checkout":checkout,
+    		"timestamp":document.forms['link-social'].elements['timestamp'].value,
+			"UID":document.forms['link-social'].elements['UID'].value,
+			"signature":document.forms['link-social'].elements['signature'].value
+	}
+	sendLoginRequest(newUser);
+}
+function sendLoginRequest(user)
+{
+	//console.log(user);
+	if( !validateEmail(user.email)) {jQuery("#dialogresponse").html(user.email + ' Please enter a valid email address.');
+	jQuery("#dialogresponse").dialog({ title: "Info" }); return false;}
+	if(user.remember){storeLoginCookie(user);}
+	jQuery.ajax({
+		  url: 'https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin/LoginService.ss',
+		  data: user,
+		  dataType: 'jsonp',
+		  jsonp: 'json.wrf',
+		  success: response,
+		  error: response
+		});
+	    document.body.style.cursor = 'wait';
+}
+
+function response(data)
+{
+	document.body.style.cursor = 'default';
+	if(data.responseText==null){alert('null response object')};
+	var responseObject = JSON.parse(data.responseText);
+	//console.log(responseObject);
+	if(responseObject.responsetype==null){jQuery("#dialogresponse").html('Response type is null');
+	jQuery("#dialogresponse").dialog({ title: "Info" });return;};
+	switch(responseObject.responsetype)
+	{
+		case 'success':
+			//alert(responseObject.message);
+			jQuery("#dialogresponse").html(responseObject.message);
+			jQuery("#dialogresponse").dialog({ title: "Info" });
+		break
+		case 'linksocial':
+			//show linking window
+			//alert('received linksocial:'+JSON.stringify(responseObject));
+			document.forms['link-social'].elements['emaillink'].value = responseObject.message.email;
+			document.forms['link-social'].elements['timestamp'].value = responseObject.message.timestamp;
+			//document.forms['link-social'].elements['UID'].value = responseObject.message.UID;
+			document.forms['link-social'].elements['signature'].value = responseObject.message.signature;
+			switchview('linksocial');
+		break
+		case 'redirect':
+			if(responseObject.socializenotify!=undefined){
+				//alert(responseObject.socializenotify);
+				var notifyString = JSON.stringify(responseObject.socializenotify);
+				socket.postMessage(notifyString);
+				}
+			window.location = responseObject.message;	
+			break
+		case 'error':
+			var errormessage = responseObject.message;
+			errormessage = errormessage.substring(errormessage.lastIndexOf(":")+1,errormessage.length);
+			//alert(errormessage);
+			jQuery("#dialogresponse").html(errormessage);
+			jQuery("#dialogresponse").dialog({ title: "Info" });
+			return false;
+			break
+		default:
+			//alert("Unknown Response type");
+			jQuery("#dialogresponse").html("Unknown Response type");
+			jQuery("#dialogresponse").dialog({ title: "Info" });
+			return false;	
+		}
+}
+function forgotPassword()
+{
+	 var userforgotpassword = {
+			 "requesttype":"forgotpassword",
+			 "email":document.forms['loginform'].elements['emaillog'].value
+			 }
+	 sendLoginRequest(userforgotpassword);
+}
+function forgotPasswordSocialLink()
+{
+	 var userforgotpassword = {
+			 "requesttype":"forgotpassword",
+			 "email":document.forms['link-social'].elements['emaillink'].value
+			 }
+	 sendLoginRequest(userforgotpassword);
+}
+</script>
+</head>
+<body id='loginregisterbody'>
+<div id='outerwrapper' style='width:968'>
+<div id='innerwrapper'>
+<div id='div__header' class='noprint' leftmargin='0' topmargin='0' marginwidth='1' >
+<div id='div__title' style='margin: 0px;'>
+</div>
+<div id='div__label' class='scrollarea' style='margin: 0px; overflow:hidden;'>
+</div>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<%= getPageTop() %>
+</table>
+</div>
+<div id='div__body' style="margin: 0px; ">
+<div id="attrtest" style="display:none"><%=getRecordAttribute('189',1,'custrecord_bannerhtml')%></div>
+		<div class="login-login" style="height:450px" >
+		<form id="link-social" style="display:none; text-align:center;width:430px;margin:0 auto;">
+		<input type="hidden" name="emaillink" value=""/>
+		<input type="hidden" name="timestamp" value=""/>
+		<input type="hidden" name="UID" value=""/>
+		<input type="hidden" name="signature" value=""/>
+		<h2 style="margin-bottom:40px;font-size: 15px;font-weight: bold;text-align: left;line-height: 20px;">Welcome back! Just go ahead and verify your poppin.com password below and let's be Best Friends Forever!</h2>
+				<fieldset>
+					<label for="Poppin password" style="display:block;">*Password</label>
+					<input id="pwdlink" name="pwdlink" type="password" style="width:180px;"/>
+					<div class="forgot-link"><a style="text-decoration:underline;margin:0;" href="#" onclick="forgotPasswordSocialLink();">Forgot your password?</a></div>
+				</fieldset>
+				<fieldset>
+							<input type="submit" name="linkaccounts" id="linkaccounts" value="Continue" class="orangeBtn" style="margin:0;"/>	
+				</fieldset>	
+		</form>
+		<form id="twitter-email" style="display:none;">
+		<input type="hidden" name="customername" value=""/>
+		<input type="hidden" name="timestamp" value=""/>
+		<input type="hidden" name="UID" value=""/>
+		<input type="hidden" name="signature" value=""/>
+				<fieldset>
+					<label for="emailtwitter">Please provide your email address, unfortunately twitter service doesnt provide one.</label>
+					<input id="emailtwitter" name="emailtwitter" type="text" style="width:300px;margin-top:15px;" />
+				</fieldset>	
+				<fieldset>
+							<input type="submit" name="register" id="register" value="Continue" class="orangeBtn" style="margin:0;"/>	
+							<a href="#" onclick="switchview('login');">Go back</a>	
+				</fieldset>	
+		</form>
+		<form id="login-register"  action="LoginService.ss" style="display:none;">
+<input type="hidden" name="manualregister" value="manualregister"/>
+<input type="hidden" name="checkout" value=""/>
+
+						<div id="ErrorMsg"></div>
+						<h2>Customer Registration Information</h2>
+						<fieldset>
+							<label for="name">*Name</label>
+							<input id="name" name="name" type="text"/>
+						</fieldset>
+						<fieldset>
+							<label for="company">Company Name</label>
+							<input id="company" name="company" type="text"/>
+						</fieldset>
+						<fieldset>
+							<label for="email">*Email Address</label>
+							<input id="emailreg" name="email" type="text" />
+						</fieldset>
+						<fieldset>
+							<label for="password">*Password</label>
+							<input id="password" name="password" type="password"/>
+						</fieldset>
+						<fieldset>
+							<label for="password2">*Re-enter Password</label>
+							<input id="password2" name="password2" type="password"/>
+						</fieldset>
+						<fieldset>
+							<label for="partnercode">Partner Code</label>
+							<input id="partnercode" name="partnercode" type="text"/>
+						</fieldset>
+						<fieldset>
+							<input type="submit" name="register" id="register" value="Continue" class="orangeBtn"/>	
+							<a href="#" onclick="switchview('login');">Returning customer? Click here</a>	
+						</fieldset>
+							
+</form>
+			<div class="login-case-block">
+				<div class="social">
+					<h3>Login with social</h3>
+					<div id="iframecontainer"></div>
+				</div>
+				<div class="verticalHr">
+					<div class="hr"></div>
+					or
+					<div class="hr"></div>
+				</div>
+				<div class="returning">
+					<h3>Returning Customers</h3>
+					<form id="loginform" action="LoginService.ss">
+						<fieldset style="display:none;">
+						<input type="hidden" name="checkout" value=""/>
+						<input type='hidden' name='viewHint' value='F'/>
+						<input type='hidden' name='forgotPasswd' value='F'/>
+						</fieldset>
+						<fieldset>
+							<label for="email">Email Address<sup class="star">*</sup></label>
+							<input id="emaillog" name="email" type="text" onchange="resetLoginCookie();"/>
+						</fieldset>
+						<fieldset>
+							<label for="pass">Password<sup class="star">*</sup></label>
+							<input id="password" name="password" type="password"/>
+						</fieldset>
+						<fieldset>
+							<div class="forgot-link"><a style="text-decoration:underline;margin:0;" href="#" onclick="forgotPassword();">Forgot password?</a></div>
+							<input id="remember" name="remember" type="checkbox"checked /><label class="checkLbl" for="pass">Remember Me</label>
+							<input type="submit" value="continue" class="orangeBtn" name="login" id="login" style="float: left;"  />				
+						</fieldset>
+					</form>
+				</div>
+				<div class="verticalHr">
+					<div class="hr"></div>
+					or
+					<div class="hr"></div>
+				</div>
+				<div class="new-customer">
+					<h3>New Customers</h3>
+					<div style="padding-top:8px;">I'm new!</div>
+					<input class="orangeBtn" value="Continue" type="button" onclick="switchview('register');"/>
+				</div>
+			</div>
+		</div>
+
+</div>
+</div>
+</div>
+<div id='div__footer' class='noprint' leftmargin='0' topmargin='0' marginwidth='1' marginheight='1'>
+<PP_FOOTER>
+<!-- ERP Guru NetSuite Display Override-->
+<script type="text/javascript">
+	function egHtmlDecode(input){
+	  var e = document.createElement('div');
+	  e.innerHTML = input;
+	  return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+	}
+	$j(document).ready(function(){
+	//remove quick view
+        //many
+		$j("#handle_portlet_-521").closest("td").remove();
+
+		//modify url of see return requests
+		$j('a[href*="/app/accounting/transactions/rtnauth.nl?ck="]').attr("href","");
+
+		//replace link string in saved search by actual link
+		$j('td.listtexthl:contains("<a href=")').each(function(index,element){
+			var linkObject = $j(this).html().replace(/&lt;/gi,"<").replace(/&gt;/gi,">");
+
+			$j(this).html(egHtmlDecode(linkObject));
+		});
+	});
+</script>
+<!-- END ERP Guru NetSuite Display Override-->
+<GA_FUNNELS>
+<SMARTYSTREETS>
+<CARD_SELECTOR_EMPTY>
+</div>
+</body>
+</html>
