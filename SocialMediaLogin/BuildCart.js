@@ -337,7 +337,7 @@
 			ctnt.setAttribute("class", "promoApply");
 			ctnt.setAttribute("id", "removePromo");
 			ctnt.setAttribute("type", "submit");
-			ctnt.setAttribute("value", "Rem");
+			ctnt.setAttribute("value", "Remove");
 			ctnt.setAttribute("onclick", "removePromo()");
 			div.appendChild(ctnt);
 		}
