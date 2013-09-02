@@ -142,7 +142,7 @@
 		cell.setAttribute("valign", "top");
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
-		cell.innerHTML = '<span class="titlespan">' + rate_formatted + '</span>';
+		cell.innerHTML = '<span class="titlespan">' + formatPrice(rate_formatted) + '</span>';
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
@@ -195,7 +195,7 @@
 		cell.setAttribute("valign", "top");
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
-		cell.innerHTML = '<span class="titlespan">' + amount_formatted + '</span>';
+		cell.innerHTML = '<span class="titlespan">' + formatPrice(amount_formatted) + '</span>';
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
@@ -321,12 +321,15 @@
 		}
 		div.appendChild(ctnt);
 		
-		var ctnt = document.createElement("input");
-		ctnt.setAttribute("class", "promoApply");
-		ctnt.setAttribute("type", "submit");
-		ctnt.setAttribute("value", "Apply");
-		ctnt.setAttribute("onclick", "applyPromo()");
-		div.appendChild(ctnt);
+		if(code == '')
+		{
+			var ctnt = document.createElement("input");
+			ctnt.setAttribute("class", "promoApply");
+			ctnt.setAttribute("type", "submit");
+			ctnt.setAttribute("value", "Apply");
+			ctnt.setAttribute("onclick", "applyPromo()");
+			div.appendChild(ctnt);
+		}
 		
 		if(code != '')
 		{
@@ -346,4 +349,16 @@
 			$('#promoInput').powerTip({ placement: 'n', mouseOnToPopup: true });
 		}
 	}
-	
+	/*
+	 * Format price
+	 */
+	function formatPrice(price)
+	{
+		var tmp = price.split('$')[1].split('.');
+		
+		if (tmp[1] == '00') {
+			return '$' + tmp[0];
+		} else {
+			return price;
+		}
+	}
