@@ -90,11 +90,12 @@ function loginUser(request, sociallink)
 	nlapiLogExecution('DEBUG','Checkout param:',checkout);
 	
 	if(checkout==='true')
-		{
+	{
 		// saving items to variable
 		var orderObj = nlapiGetWebContainer().getShoppingSession().getOrder();
-		var items = orderObj.getItems(["name", "email"]);
-
+		var items = orderObj.getItems(["internalId", "quantity"]);
+		var promocodes = orderObj.promocodes;
+		
 		params = {
 				"email":email,
 				"password":pwd,
@@ -107,9 +108,13 @@ function loginUser(request, sociallink)
 		var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
 		orderObjNew.removeAllItems();
 		orderObjNew.addItems(items);
-		}
-	else
+		if(promocodes && promocodes.length > 0)
 		{
+			orderObj.applyPromotionCode(promocodes[0]);
+		}
+	}
+	else
+	{
 		params = {
 				"email":email,
 				"password":pwd
