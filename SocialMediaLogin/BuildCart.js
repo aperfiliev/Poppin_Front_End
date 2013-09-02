@@ -76,7 +76,7 @@
 			}
 			addEmptyRow(cartBody);
 			
-			buildOrderSummary(actionbar, order['summary'].subtotal, order['summary'].tax, order['summary'].total);
+			buildOrderSummary(actionbar, order['summary'].subtotal, order['summary'].tax, order['summary'].discount, order['summary'].total);
 			buildPromoCodeDiv(order.promocode);
 			
 			var checkoutUrl = document.getElementById('checkoutUrl');
@@ -93,7 +93,7 @@
 			$(".checkoutDiv").hide();
 			$(".promoCode").hide();
 			
-			buildOrderSummary(actionbar, order['summary'].subtotal, order['summary'].tax, order['summary'].total);
+			buildOrderSummary(actionbar, order['summary'].subtotal, order['summary'].tax, order['summary'].discount, order['summary'].total);
 		}
 	}
 	/*
@@ -244,7 +244,7 @@
 	/*
 	 * 
 	 */
-	function buildOrderSummary(table, subtotal, tax, total)
+	function buildOrderSummary(table, subtotal, tax, discount, total)
 	{
 		table.innerHTML = '';
 		
@@ -272,6 +272,12 @@
 		cell.innerHTML = 'Tax';
 		cell = row.insertCell(-1);
 		cell.innerHTML = tax;
+		
+		row = table.insertRow(-1);
+		cell = row.insertCell(-1);
+		cell.innerHTML = 'Discount';
+		cell = row.insertCell(-1);
+		cell.innerHTML = discount;
 		
 		row = table.insertRow(-1);
 		row.setAttribute("class", "totalRow");
