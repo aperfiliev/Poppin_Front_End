@@ -169,7 +169,8 @@ function service(request,response)
 			//url links 
 			var sitesettings = nlapiGetWebContainer().getShoppingSession().getSiteSettings();
 			retobj.result.continueshoppingurl = sitesettings.touchpoints.continueshopping;
-			if(!emailfields.email || 0 === emailfields.email.length) {
+			var shoppingSession = nlapiGetWebContainer().getShoppingSession(); 
+			if(!shoppingSession.isLoggedIn()) {
 				retobj.checkouturl = sitesettings.touchpoints.login + "&checkout=T";
 			} else {
 				retobj.checkouturl = sitesettings.touchpoints.checkout;
