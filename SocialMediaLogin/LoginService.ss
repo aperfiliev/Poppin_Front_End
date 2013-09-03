@@ -88,7 +88,7 @@ function loginUser(request, sociallink)
 	var session = nlapiGetWebContainer().getShoppingSession();
 	var params;
 	nlapiLogExecution('DEBUG','Checkout param:',checkout);
-	
+	var result;
 	if(checkout==='true')
 	{
 		// saving items to variable
@@ -102,7 +102,7 @@ function loginUser(request, sociallink)
 				"origin":'checkout'
 				}
 		nlapiLogExecution('DEBUG','origin checkout',JSON.stringify(params));
-		var result = session.login(params);
+		result = session.login(params);
 
 		// restoring session items
 		var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
@@ -120,7 +120,8 @@ function loginUser(request, sociallink)
 				"password":pwd
 				}
 		nlapiLogExecution('DEBUG','no origin',JSON.stringify(params));
-	var result = session.login(params);
+		result = session.login(params);
+		result.redirecturl = getCartUrl();
 	}
 	return result;
 }
