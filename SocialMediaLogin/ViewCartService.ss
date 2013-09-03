@@ -163,14 +163,14 @@ function service(request,response)
 			// check to see if the customer is recognized. email cart
 			var emailfields = nlapiGetWebContainer().getShoppingSession().getCustomer().getFieldValues(["name", "email"]);
 			var name = emailfields.name;
+			var email = emailfields.email;
 			retobj.result.email = emailfields;
 			retobj.result.email.disableemailcart = (!name || 0 === name.length);
 			
 			//url links 
 			var sitesettings = nlapiGetWebContainer().getShoppingSession().getSiteSettings();
 			retobj.result.continueshoppingurl = sitesettings.touchpoints.continueshopping;
-			var shoppingSession = nlapiGetWebContainer().getShoppingSession(); 
-			if(!shoppingSession.isLoggedIn()) {
+			if(!email || 0 === email.length) {
 				retobj.checkouturl = sitesettings.touchpoints.login + "&checkout=T";
 			} else {
 				retobj.checkouturl = sitesettings.touchpoints.checkout;
