@@ -121,7 +121,8 @@ function loginUser(request, sociallink)
 				}
 		nlapiLogExecution('DEBUG','no origin',JSON.stringify(params));
 		result = session.login(params);
-		result.redirecturl = getCartUrl();
+		
+		result.redirecturl = nlapiGetWebContainer().getStandardTagLibrary().getCartUrl();
 	}
 	return result;
 }
