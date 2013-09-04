@@ -368,3 +368,48 @@
 			return price;
 		}
 	}
+	/*
+	 * 
+	 */
+	function buildHelp(help)
+	{
+		var row, cell;
+		
+		if(help!=0 && help.length!=0)
+		{
+			for ( var i = 0; i < help.length; i++)
+			{
+				row = helpBody.insertRow(-1);
+				row.setAttribute("valign", "top");
+				
+				cell = row.insertCell(-1);
+				cell.setAttribute("class", "medtext solution");
+				cell.align = "left";
+				
+				var h3 = document.createElement("h3");
+				h3.setAttribute("class", "title");
+				h3.innerHTML = help[i].title;
+				cell.appendChild(h3);
+				
+				var div = document.createElement("div");
+				div.setAttribute("class", "description dontShow loaded");
+				div.setAttribute("style", "display: none;");
+				div.innerHTML = '<p>' + help[i].description + '</p>';
+				cell.appendChild(div);
+			}
+		}
+		
+		$('td.solution > .title').on('click', function(e) {
+			e.preventDefault();
+			var newclass = $(this).hasClass('active')?'title':'title active';
+			$(this).attr('class',newclass);
+			
+			var content = $(this).next('div');
+			if($(this).hasClass('active')) {
+				content.slideDown('fast');
+			} else {
+				content.slideUp('slow');
+			}
+		});
+	}
+	

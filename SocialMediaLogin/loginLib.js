@@ -84,4 +84,8 @@ var LoginLib = {
 		}
 		return JSON.stringify(retobj);
 	},
+	getHelpStr : function() {
+		var helpresponse = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=278&deploy=1&compid=3363929&h=e99bd31ff84dd428f826');
+		return helpresponse.getBody();
+	},
 };

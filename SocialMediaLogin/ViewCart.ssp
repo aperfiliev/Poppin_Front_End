@@ -265,14 +265,10 @@ padding: 2px 10px;
 				</div>
 			</div>
 
-			<div id='div__help'>
-				<h1>Help</h1>
-				<p>Example of q/a.</p>
-				<p>Example of q/a.</p>
-				<p>Example of q/a.</p>
-				<p>Example of q/a.</p>
-				<p>Example of q/a.</p>
-				<p>Example of q/a.</p>
+			<div id='div__help' class="kbs_cnt">
+				<table border="0" cellpadding="5" cellspacing="0" width="100%">
+					<tbody id="helpBody"></tbody>
+				</table>
 				<a class="close-button" onclick="closeHelp()">X</a>
 			</div>
 
@@ -353,8 +349,10 @@ padding: 2px 10px;
 
 <script language="JavaScript">
 	var order = <%=LoginLib.getOrderStr()%>;
+	var help = <%=LoginLib.getHelpStr()%>;
 	buildCartHeader();
 	buildCartItems(order);
+	buildHelp(help);
 </script>
 
 </body>
