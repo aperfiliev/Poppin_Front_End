@@ -12,11 +12,15 @@
 	function updateQtyField(itemid)
 	{
 		quantity = document.getElementById(itemid).value;
-		max_quantity = document.getElementById('max'+itemid).value;
-		itemid = itemid.split('_')[1];
-		
-		var params = {orderitemid: itemid, quantity: quantity};
-		sendAction('update', params);
+		if(quantity<1) {
+			jQuery("#dialogresponse").html("Your quantity must be positive numeric value");
+			jQuery("#dialogresponse").dialog({ title: "Info" });
+		} else {
+			max_quantity = document.getElementById('max'+itemid).value;
+			itemid = itemid.split('_')[1];
+			var params = {orderitemid: itemid, quantity: quantity};
+			sendAction('update', params);
+		};
 	}
 	/*
 	 * remove single item

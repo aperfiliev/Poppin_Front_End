@@ -3,7 +3,6 @@
 <html>
 <head>
 <%= getPageFullHead() %>
-<script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/jquery.powertip.js"></script>
 <script type="text/javascript" src="BuildCart.js"></script>
 <script type="text/javascript" src="ViewCart.js"></script>
