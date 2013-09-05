@@ -144,12 +144,13 @@ function registerUser(request)
 	nlapiLogExecution('DEBUG','reg2');
 	//create javascript object of values. 
 	
-	var custObj={};
-	custObj.name=FullName;
-	if(company!='' && company!=null){custObj.company=company;}
-	custObj.email=EmailAddr;
-	custObj.password=password;
-	custObj.password2=password2;
+	var custObj = {};
+	custObj.name = FullName;
+	if(company != '' && company != null){custObj.company=company;}
+	custObj.email = EmailAddr;
+	custObj.password = password;
+	custObj.password2 = password2;
+	if(request.getParameter("emailsubscribe") == "T"){custObj.emailsubscribe = EmailAddr;}
 	
 	nlapiLogExecution('DEBUG','custObj for reg: ',JSON.stringify(custObj));
 	var result = session.registerCustomer(custObj);
