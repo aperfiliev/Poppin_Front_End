@@ -10,23 +10,23 @@
 
 <script>
 var set='';
-jQuery(document).ready(function(){
-    jQuery(window).scroll(function () {
-		if(jQuery(window).scrollTop() + jQuery(window).height() > jQuery(document).height() - 300 ) {
-			//do nothing
-		}
-		else if(jQuery(window).scrollTop()<300){
-			jQuery('#floatingTotal').animate({top:0},{duration:1000,queue:false});
-		}
-		else if(jQuery(window).scrollTop()%200==0){
-			//do nothing
-		}
-		else{
-			set = jQuery(document).scrollTop()-200+"px";
-			jQuery('#floatingTotal').animate({top:set},{duration:1000,queue:false});
-		}
-	});
-});
+
+$(document).ready(
+		function(){
+			$(window).scroll(function () {
+				if($(window).scrollTop() + $(window).height() > $(document).height() - 300 ) {
+					//do nothing
+				} else if($(window).scrollTop()<300){
+					$('#floatingTotal').animate({top:0},{duration:1000,queue:false});
+				} else if($(window).scrollTop()%200==0){
+					//do nothing
+				} else{
+					set = $(document).scrollTop()-200+"px";
+					$('#floatingTotal').animate({top:set},{duration:1000,queue:false});
+				}
+			});
+		});
+	
 </script>
 
 <style>
