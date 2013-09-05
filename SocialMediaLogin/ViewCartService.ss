@@ -61,7 +61,6 @@ function service(request,response)
 			{
 				if(JSON.stringify(params.certificate) != "{}")
 				{
-					retobj.result.giftcertificate.name = params.certificate;
 					orderObj.applyGiftCertificate(params.certificate);
 				}
 				else
@@ -73,13 +72,6 @@ function service(request,response)
 			else if (method == 'removeAllGiftCertificates')
 			{
 				orderObj.removeAllGiftCertificates();
-			}
-			else if (method == 'estimateShipping')
-			{
-				var result = orderObj.estimateShippingCost(params);
-
-				retobj.result.summary.estimateshippingzip  = params.zip;
-				retobj.result.summary.estimateshippingcountry = params.country;
 			}
 			else if (method == 'get' || method == 'getAll')
 			{
@@ -99,85 +91,7 @@ function service(request,response)
 			retobj.header.status.message = error.getDetails();
 		}
 
-		// we always return the whole cart. Let's reget everything.
-		var order = nlapiGetWebContainer().getShoppingSession().getOrder().getFieldValues();
-		if (order != null)
-		{
-			var items = order.items;
-			var cartsummary = order.summary;
-			var promocodes = order.promocodes;
-			var giftcertificates = order.giftcertificates;
-			
-			if (items)
-			{
-				for(var i=0; i<items.length; i++)
-				{
-					retobj.result.totalfound += items[i].quantity;
-					var item = { 'id' : items[i].internalid, 
-							'storedisplaythumbnail' : items[i].storedisplaythumbnail, 
-							'storeurl' : items[i].canonicalurl, 
-							'name' : items[i].storedisplayname2, 
-							'quantity' : items[i].quantity, 
-							'quantityavailable': items[i].quantityavailable,
-							'orderitemid' : items[i].orderitemid, 
-							'storedescription' : items[i].storedescription, 
-							'price' : items[i].rate_formatted, 
-							'amount' : items[i].amount_formatted, 
-							'promotionamount' : items[i].promotionamount,	//?
-							'options' : items[i].options, 					//?
-							'isavailable' : items[i].isavailable }; 		//?
-					retobj.result.items[i] = item;
-				}
-			}
-			
-			if (promocodes && promocodes.length > 0)
-			{
-				retobj.result.promocode = promocodes[0];
-				/*if ( retobj.result.promocode.isvalid !== 'T' )
-				{
-					try {
-						orderObj.applyPromotionCode( retobj.result.promocode.promocode );
-					}
-					catch (e)
-					{
-						orderObj.removePromotionCode( retobj.result.promocode.promocode );
-						var error = nlapiCreateError(e);
-						retobj.result.promocode.error = error.getDetails();
-					}
-				}*/
-			}
-
-			if (giftcertificates && giftcertificates.length > 0) {
-				retobj.result.giftcertificates = giftcertificates;
-			}
-
-			// cart summary
-			retobj.result.summary.subtotal = cartsummary.subtotal_formatted;
-			retobj.result.summary.tax = cartsummary.taxtotal_formatted;
-			retobj.result.summary.discount = cartsummary.discounttotal_formatted;
-			retobj.result.summary.estimatedshipping  = cartsummary.estimatedshipping_formatted;
-			retobj.result.summary.shippingcost = cartsummary.shippingcost_formatted;
-			retobj.result.summary.total = cartsummary.total_formatted;
-			retobj.result.summary.handlingcost = cartsummary.handlingcost_formatted;
-			
-			// check to see if the customer is recognized. email cart
-			var emailfields = nlapiGetWebContainer().getShoppingSession().getCustomer().getFieldValues(["name", "email"]);
-			var name = emailfields.name;
-			var email = emailfields.email;
-			retobj.result.email = emailfields;
-			retobj.result.email.disableemailcart = (!name || 0 === name.length);
-			
-			//url links 
-			var sitesettings = nlapiGetWebContainer().getShoppingSession().getSiteSettings();
-			retobj.result.continueshoppingurl = sitesettings.touchpoints.continueshopping;
-			if(!email || 0 === email.length) {
-				retobj.checkouturl = sitesettings.touchpoints.login + "&checkout=T";
-			} else {
-				retobj.checkouturl = sitesettings.touchpoints.checkout;
-			}
-			retobj.result.carturl = sitesettings.touchpoints.viewcart;
-			retobj.result.touchpoints = sitesettings.touchpoints;
-		}
+		retobj.result = LoginLib.getOrder();
 		returnVal = JSON.stringify(retobj);
 	}
 	catch (e)

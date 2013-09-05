@@ -6,10 +6,10 @@
  *
  */
 var LoginLib = {
-	getOrderStr : function() {
+	getOrder : function() {
 		var retobj = {"totalfound": 0, 
 						 "items": [],
-						 "allitems": [],
+						 "allitems": [],	// TODO: REMOVE allitems ON PRODUCTION
 						 "promocode": {}, 
 						 "giftcertificate": {},
 						 "summary": {} };
@@ -41,7 +41,7 @@ var LoginLib = {
 								'options' : items[i].options,  // ?
 								'isavailable' : items[i].isavailable };  // ?
 					retobj.items[i] = item;
-					retobj.allitems[i] = items[i];
+					retobj.allitems[i] = items[i];	// TODO: REMOVE allitems ON PRODUCTION
 				}
 			}
 
@@ -82,9 +82,9 @@ var LoginLib = {
 			retobj.carturl = sitesettings.touchpoints.viewcart;
 			retobj.touchpoints = sitesettings.touchpoints;
 		}
-		return JSON.stringify(retobj);
+		return retobj;
 	},
-	getHelpStr : function() {
+	getHelp : function() {
 		var helpresponse = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=278&deploy=1&compid=3363929&h=e99bd31ff84dd428f826');
 		return helpresponse.getBody();
 	},

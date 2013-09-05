@@ -348,8 +348,8 @@ padding: 2px 10px;
 	</div>
 
 <script language="JavaScript">
-	var order = <%=LoginLib.getOrderStr()%>;
-	var help = <%=LoginLib.getHelpStr()%>;
+	var order = <%=JSON.stringify(LoginLib.getOrder())%>;
+	var help = <%=LoginLib.getHelp()%>;
 	buildCartHeader();
 	buildCartItems(order);
 	buildHelp(help);
