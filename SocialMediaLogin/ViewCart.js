@@ -12,14 +12,15 @@
 	function updateQtyField(itemid)
 	{
 		quantity = document.getElementById(itemid).value;
-		if(quantity<1) {
-			jQuery("#dialogresponse").html("Your quantity must be positive numeric value");
-			jQuery("#dialogresponse").dialog({ title: "Info" });
-		} else {
+
+		if(quantity>0 && quantity == parseInt(quantity)) {
 			max_quantity = document.getElementById('max'+itemid).value;
 			itemid = itemid.split('_')[1];
 			var params = {orderitemid: itemid, quantity: quantity};
 			sendAction('update', params);
+		} else {
+			jQuery("#dialogresponse").html("Your quantity must be positive numeric value");
+			jQuery("#dialogresponse").dialog({ title: "Info" });
 		};
 	}
 	/*
