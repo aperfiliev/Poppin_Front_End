@@ -37,9 +37,9 @@ var LoginLib = {
 								'storedescription' : items[i].storedescription,
 								'price' : items[i].rate_formatted, 
 								'amount' : items[i].amount_formatted, 
-								'promotionamount' : items[i].promotionamount,  // ?
-								'options' : items[i].options,  // ?
-								'isavailable' : items[i].isavailable };  // ?
+								'promotionamount' : items[i].promotionamount_formatted,
+								'options' : items[i].options,
+								'isavailable' : items[i].isavailable };
 					retobj.items[i] = item;
 					retobj.allitems[i] = items[i];	// TODO: REMOVE allitems ON PRODUCTION
 				}

@@ -71,7 +71,8 @@
 						order['items'][i].orderitemid, 
 						order['items'][i].storedescription, 
 						order['items'][i].price, 
-						order['items'][i].amount
+						order['items'][i].amount,
+						order['items'][i].promotionamount
 					);
 			}
 			addEmptyRow(cartBody);
@@ -107,7 +108,7 @@
 	/*
 	 * Dynamically build out the item row
 	 */
-	function buildItemRow(table, num, storedisplaythumbnail, itemurl, name, quantity, quantityavailable, orderitemid, storedescription, rate_formatted, amount_formatted)
+	function buildItemRow(table, num, storedisplaythumbnail, itemurl, name, quantity, quantityavailable, orderitemid, storedescription, rate_formatted, amount_formatted, promotionamount)
 	{
 		var row, cell;
 		var error_msg = '';
@@ -195,7 +196,16 @@
 		cell.setAttribute("valign", "top");
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
-		cell.innerHTML = '<span class="titlespan">' + formatPrice(amount_formatted) + '</span>';
+		
+		if(promotionamount)
+		{
+			cell.innerHTML = '<span class="titlespan"><span style="text-decoration: line-through;">' + formatPrice(amount_formatted) 
+							+ '</span><br>' + formatPrice(promotionamount) + '</span>';
+		}
+		else
+		{
+			cell.innerHTML = '<span class="titlespan">' + formatPrice(amount_formatted) + '</span>';
+		}
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
