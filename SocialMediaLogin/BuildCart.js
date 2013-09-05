@@ -151,7 +151,7 @@
 		cell.setAttribute("style", "padding-top: 38px;");
 		var ctnt = document.createElement("input");
 		ctnt.setAttribute("class", "input");
-		ctnt.setAttribute("type", "text");
+		ctnt.setAttribute("type", "number");
 		ctnt.setAttribute("size", "6");
 		ctnt.setAttribute("maxlength", "6");
 		ctnt.setAttribute("value", quantity);
