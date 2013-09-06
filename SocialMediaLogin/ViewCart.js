@@ -19,8 +19,8 @@
 			var params = {orderitemid: itemid, quantity: quantity};
 			sendAction('update', params);
 		} else {
-			jQuery("#dialogresponse").html("Your quantity must be positive numeric value");
-			jQuery("#dialogresponse").dialog({ title: "Info" });
+			$("#dialogresponse").html("Your quantity must be positive numeric value");
+			$("#dialogresponse").dialog({ title: "Info" });
 		};
 	}
 	/*
@@ -62,8 +62,16 @@
 	 */
 	function checkout()
 	{
-		var checkoutUrl = document.getElementById('checkoutUrl');
-		document.location.href = checkoutUrl.value;
+		if($("input.input-red, input.promoInput-red").size() > 0)
+		{
+			$("#dialogresponse").html("Some fields are filled incorrectly");
+			$("#dialogresponse").dialog({ title: "Info" });
+		}
+		else
+		{
+			var checkoutUrl = document.getElementById('checkoutUrl');
+			document.location.href = checkoutUrl.value;
+		}
 	}
 	/*
 	 * open Help pop-up
