@@ -283,11 +283,13 @@
 		cell = row.insertCell(-1);
 		cell.innerHTML = tax;
 		
-		row = table.insertRow(-1);
-		cell = row.insertCell(-1);
-		cell.innerHTML = 'Discount';
-		cell = row.insertCell(-1);
-		cell.innerHTML = discount;
+		if(discount != '') {
+			row = table.insertRow(-1);
+			cell = row.insertCell(-1);
+			cell.innerHTML = 'Discount';
+			cell = row.insertCell(-1);
+			cell.innerHTML = discount;
+		}
 		
 		row = table.insertRow(-1);
 		row.setAttribute("class", "totalRow");

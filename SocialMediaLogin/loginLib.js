@@ -55,14 +55,14 @@ var LoginLib = {
 			}
 
 			// cart summary
-			retobj.summary.subtotal = cartsummary.subtotal_formatted;
-			retobj.summary.tax = cartsummary.taxtotal_formatted;
-			retobj.summary.total = cartsummary.total_formatted;
+			retobj.summary.subtotal = (cartsummary.subtotal!=0) ? cartsummary.subtotal_formatted : '-';
+			retobj.summary.tax = (cartsummary.taxtotal!=0) ? cartsummary.taxtotal_formatted : '-';
+			retobj.summary.total = (cartsummary.total!=0) ? cartsummary.total_formatted : '-';
 			
-			retobj.summary.discount = cartsummary.discounttotal_formatted;
-			retobj.summary.estimatedshipping  = cartsummary.estimatedshipping_formatted;
-			retobj.summary.shippingcost = cartsummary.shippingcost_formatted;
-			retobj.summary.handlingcost = cartsummary.handlingcost_formatted;
+			retobj.summary.discount = (cartsummary.discounttotal!=0) ? cartsummary.discounttotal_formatted : '';
+			retobj.summary.estimatedshipping = (cartsummary.estimatedshipping!=0) ? cartsummary.estimatedshipping_formatted : '-';
+			retobj.summary.shippingcost = (cartsummary.shippingcost!=0) ? cartsummary.shippingcost_formatted : '-';
+			retobj.summary.handlingcost = (cartsummary.handlingcost!=0) ? cartsummary.handlingcost_formatted : '-';
 
 			// check to see if the customer is recognized. email cart
 			var emailfields = nlapiGetWebContainer().getShoppingSession().getCustomer().getFieldValues(["name", "email"]);
