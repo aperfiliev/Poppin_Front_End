@@ -104,7 +104,9 @@ color: #f37a31;
 .titleDiv h2{
 background: url(images/cart.png) no-repeat;
 padding-left: 48px;
-padding-top: 10px;
+font-size: 38px;
+font-family: 'OmnesLightRegular';
+font-weight: normal;
 }
 .continueDiv{
 float:right;padding-top: 20px;
