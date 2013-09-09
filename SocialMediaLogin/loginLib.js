@@ -48,6 +48,8 @@ var LoginLib = {
 			if (promocodes && promocodes.length > 0)
 			{
 				retobj.promocode = promocodes[0];
+				// TODO: replace hardcoded 119 with promocodes[0].internalid
+				//retobj.promocode.description = LoginLib.getPromoDescription(119);
 			}
 
 			if (giftcertificates && giftcertificates.length > 0) {
@@ -87,5 +89,19 @@ var LoginLib = {
 	getHelp : function() {
 		var helpresponse = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=278&deploy=1&compid=3363929&h=e99bd31ff84dd428f826');
 		return helpresponse.getBody();
+	},
+	getPromoDescription : function(internalid) {
+		var description = "";
+		try
+		{
+			var response = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=280&deploy=1&compid=3363929&h=17e42ce4a6e832b8a0f8&internalid='+internalid);
+			var respObj = JSON.parse(response.getBody());
+			description = respObj.description;
+		}
+		catch (e)
+		{
+			//
+		}
+		return description;
 	},
 };
