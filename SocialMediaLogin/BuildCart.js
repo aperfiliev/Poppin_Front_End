@@ -18,38 +18,39 @@
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("class", "smalltext");
-		cell.align = "left";
+		cell.align = "center";
 		cell.width = "20%";
-		cell.innerHTML = '<div class="listheadercustom">ITEMS IN YOUR CART</div>';
-		
-		cell = row.insertCell(-1);
-		cell.setAttribute("class", "smalltext");
-		cell.align = "left";
-		cell.width = "23%";
 		cell.innerHTML = '<div class="listheadernosort">Item</div>';
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("class", "smalltext");
 		cell.align = "left";
+		cell.width = "23%";
+		cell.innerHTML = '<div class="listheadernosort">Description</div>';
+		
+		cell = row.insertCell(-1);
+		cell.setAttribute("class", "smalltext");
+		cell.align = "center";
 		cell.width = "10%";
 		cell.innerHTML = '<div class="listheadernosort">Price</div>';
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("class", "smalltext");
-		cell.align = "left";
+		cell.align = "center";
 		cell.width = "6%";
-		cell.innerHTML = '<div class="listheadernosort">Quantity</div>';
+		cell.innerHTML = '<div class="listheadernosort">Qty</div>';
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("class", "smalltext");
-		cell.align = "left";
+		cell.align = "center";
 		cell.width = "10%";
 		cell.innerHTML = '<div class="listheadernosort">Total</div>';
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("class", "smalltext");
 		cell.align = "center";
-		cell.width = "5%";
+		cell.width = "1%";
+		cell.setAttribute("style", "display: none");
 		cell.innerHTML = '<div class="listheadernosort"></div>';
 		
 	}
@@ -141,12 +142,14 @@
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
+		cell.setAttribute("align", "center");
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
 		cell.innerHTML = '<span class="titlespan">' + formatPrice(rate_formatted) + '</span>';
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
+		cell.setAttribute("align", "center");
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 38px;");
 		var ctnt = document.createElement("input");
@@ -194,6 +197,7 @@
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
+		cell.setAttribute("align", "center");
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
 		
@@ -210,6 +214,7 @@
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
 		cell.setAttribute("class", "texttable");
+		cell.setAttribute("style", "display: none");
 		cell.innerHTML = "";
 		
 		if(error_msg != '')
@@ -249,6 +254,7 @@
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("class", "texttable");
+		cell.setAttribute("style", "display: none");
 		cell.innerHTML = "&nbsp;";
 	}
 	/*
@@ -269,18 +275,21 @@
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Subtotal';
 		cell = row.insertCell(-1);
+		cell.setAttribute("class", "right");
 		cell.innerHTML = subtotal;
 		
 		row = table.insertRow(-1);
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Shipping';
 		cell = row.insertCell(-1);
+		cell.setAttribute("class", "right");
 		cell.innerHTML = shipping;
 		
 		row = table.insertRow(-1);
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Tax';
 		cell = row.insertCell(-1);
+		cell.setAttribute("class", "right");
 		cell.innerHTML = tax;
 		
 		if(discount != '') {
@@ -288,6 +297,7 @@
 			cell = row.insertCell(-1);
 			cell.innerHTML = 'Discount';
 			cell = row.insertCell(-1);
+			cell.setAttribute("class", "right");
 			cell.innerHTML = discount;
 		}
 		
@@ -296,6 +306,7 @@
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Total';
 		cell = row.insertCell(-1);
+		cell.setAttribute("class", "right");
 		cell.innerHTML = total;
 	}
 	/*
