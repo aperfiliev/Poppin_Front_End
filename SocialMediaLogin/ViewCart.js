@@ -13,7 +13,7 @@
 	{
 		quantity = document.getElementById(itemid).value;
 
-		if(quantity>0 && quantity == parseInt(quantity)) {
+		if(quantity>=0 && quantity == parseInt(quantity)) {
 			max_quantity = document.getElementById('max'+itemid).value;
 			itemid = itemid.split('_')[1];
 			var params = {orderitemid: itemid, quantity: quantity};
@@ -22,6 +22,14 @@
 			$("#dialogresponse").html("Your quantity must be positive numeric value");
 			$("#dialogresponse").dialog({ title: "Info" });
 		};
+	}
+	/*
+	 * Add item to cart (click action in up-sell banner)
+	 */
+	function addItem(itemid)
+	{
+		var params = {netsuiteid: itemid, quantity: 1};
+		sendAction('add', params);
 	}
 	/*
 	 * remove single item
@@ -112,6 +120,7 @@
 		{
 			alert(ex);
 		}
+		document.body.style.cursor = 'wait';
 	}
 	/*
 	 * Process result of AJAX call
@@ -120,6 +129,7 @@
 	{
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
 		{
+			document.body.style.cursor = 'default';
 			try
 			{
 				var resp = JSON.parse(xmlhttp.responseText);

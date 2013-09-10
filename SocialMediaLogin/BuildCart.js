@@ -90,7 +90,7 @@
 			$(".checkoutDiv").show();
 			$(".promoCode").show();
 			
-			//showTips();
+			showTips();
 		} else {
 			$(".checkoutDiv").hide();
 			$(".promoCode").hide();
@@ -103,8 +103,14 @@
 	 */
 	function showTips()
 	{
-		$(".input-red").powerTip('show');
+		$(".input-red").each(function() { $(this).powerTip('show'); });
+		
 		$(".promoInput-red").powerTip('show');
+	}
+	function removeTips()
+	{
+		$(".input-red").each(function() { $(this).powerTip('destroy'); });
+		$(".promoInput-red").powerTip('destroy');
 	}
 	/*
 	 * Dynamically build out the item row
@@ -138,7 +144,6 @@
 		ctnt.setAttribute("class", "titlelink");
 		ctnt.innerHTML = name;
 		cell.appendChild(ctnt);
-		cell.innerHTML += '<br><span class="titlespan">' + storedescription + '</span>';
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
@@ -151,10 +156,10 @@
 		cell.setAttribute("valign", "top");
 		cell.setAttribute("align", "center");
 		cell.setAttribute("class", "texttable");
-		cell.setAttribute("style", "padding-top: 38px;");
+		cell.setAttribute("style", "padding-top: 38px;position: relative;");
 		var ctnt = document.createElement("input");
 		ctnt.setAttribute("class", "input");
-		ctnt.setAttribute("type", "number");
+		ctnt.setAttribute("type", "text");
 		ctnt.setAttribute("size", "6");
 		ctnt.setAttribute("maxlength", "6");
 		ctnt.setAttribute("value", quantity);
@@ -162,8 +167,9 @@
 		ctnt.setAttribute("id", '_'+orderitemid);
 		if(quantityavailable < quantity)
 		{
+			var plus_one = quantityavailable +1;
 			ctnt.setAttribute("class", "input-red");
-			error_msg = '<p>Your quantity must be</p><p> less than ' + quantityavailable + '</p>';
+			error_msg = '<p>Your quantity must be</p><p> less than ' + plus_one + '</p>';
 		}
 		cell.appendChild(ctnt);
 		var ctnt = document.createElement("input");
@@ -220,7 +226,15 @@
 		if(error_msg != '')
 		{
 			$('#'+'_'+orderitemid).data('powertip', error_msg);
-			$('#'+'_'+orderitemid).powerTip({ placement: 'n', mouseOnToPopup: true });
+			$('#' + '_' + orderitemid).powerTip({
+				placement : 'n',
+				popupId : 'powerTip' + orderitemid,
+				manual : true,
+				parent : $('#' + '_' + orderitemid).parent(),
+				top: -6,
+				left: 20
+			});
+			$('#' + '_' + orderitemid).on('focusin', function() { $('#powerTip' + orderitemid).hide(); } );
 		}
 	}
 	/*
@@ -334,10 +348,11 @@
 		promoCodeDiv.appendChild(h3);
 		
 		var span = document.createElement("span");
-		span.innerHTML = "Enter your promotional code or coupon code below. Limit one per customer please.";
+		span.innerHTML = "Enter your promotional code or coupon code below. Limit one per order please.";
 		promoCodeDiv.appendChild(span);
 		
 		var div = document.createElement("div");
+		div.setAttribute("style", "position: relative;");
 		
 		var ctnt = document.createElement("input");
 		ctnt.setAttribute("class", "promoInput");
@@ -347,6 +362,10 @@
 		if(isvalid === 'F')
 		{
 			ctnt.setAttribute("class", "promoInput-red");
+		}
+		else if(code != '')
+		{
+			ctnt.setAttribute("style", "background: #8ACEDF;");
 		}
 		div.appendChild(ctnt);
 		
@@ -363,7 +382,7 @@
 		if(code != '')
 		{
 			var ctnt = document.createElement("input");
-			ctnt.setAttribute("class", "promoApply");
+			ctnt.setAttribute("class", "promoRemove");
 			ctnt.setAttribute("id", "removePromo");
 			ctnt.setAttribute("type", "submit");
 			ctnt.setAttribute("value", "Remove");
@@ -375,7 +394,15 @@
 		if(isvalid === 'F')
 		{
 			$('#promoInput').data('powertip', '<p>Invalid code</p>');
-			$('#promoInput').powerTip({ placement: 'n', mouseOnToPopup: true });
+				$('#promoInput').powerTip({
+				placement : 'n',
+				popupId : 'powerTipPromo',
+				manual : true,
+				parent : $('#promoInput').parent(),
+				top: -6,
+				left: 140
+			});
+			$('#promoInput').on('focusin', function() { $('#powerTipPromo').hide(); });
 		}
 	}
 	/*

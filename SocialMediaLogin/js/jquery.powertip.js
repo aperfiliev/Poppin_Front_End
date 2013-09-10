@@ -167,7 +167,10 @@
 		smartPlacement: false,
 		offset: 10,
 		mouseOnToPopup: false,
-		manual: false
+		manual: false,
+		parent: $('body'),
+		top: 0,
+		left: 0
 	};
 
 	/**
@@ -424,22 +427,25 @@
 		 * @param {number} offset Distance to offset tooltips in pixels.
 		 * @return {CSSCoordinates} A CSSCoordinates object with the position.
 		 */
-		function computePlacementCoords(element, placement, tipWidth, tipHeight, offset) {
+		function computePlacementCoords(element, placement, tipWidth, tipHeight, offset, top, left) {
 			var placementBase = placement.split('-')[0], // ignore 'alt' for corners
 				coords = new CSSCoordinates(),
-				position;
+				position, 
+				parentposition;
 
 			if (isSvgElement(element)) {
 				position = getSvgPlacement(element, placementBase);
+				parentposition = getSvgPlacement(element.parent(), placementBase);
 			} else {
 				position = getHtmlPlacement(element, placementBase);
+				parentposition = getHtmlPlacement(element.parent(), placementBase);
 			}
 
 			// calculate the appropriate x and y position in the document
 			switch (placement) {
 			case 'n':
-				coords.set('left', position.left - 20);
-				coords.set('top', position.top - tipHeight - 6);
+				coords.set('left', position.left - parentposition.left + left);
+				coords.set('top', position.top - parentposition.top - tipHeight + top);
 				break;
 			case 'e':
 				coords.set('left', position.left + offset);
@@ -641,7 +647,7 @@
 			if ($body.length === 0) {
 				$body = $('body');
 			}
-			$body.append(tipElement);
+			options.parent.append(tipElement);
 		}
 
 		// hook mousemove for cursor follow tooltips
@@ -933,7 +939,9 @@
 					placement,
 					tipWidth,
 					tipHeight,
-					options.offset
+					options.offset,
+					options.top,
+					options.left
 				);
 
 				// place the tooltip
