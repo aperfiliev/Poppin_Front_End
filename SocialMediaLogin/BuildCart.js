@@ -156,7 +156,10 @@
 		cell.setAttribute("valign", "top");
 		cell.setAttribute("align", "center");
 		cell.setAttribute("class", "texttable");
-		cell.setAttribute("style", "padding-top: 38px;position: relative;");
+		cell.setAttribute("style", "padding-top: 38px;");
+		var div = document.createElement("div");
+		div.setAttribute("style", "position: relative;");
+		
 		var ctnt = document.createElement("input");
 		ctnt.setAttribute("class", "input");
 		ctnt.setAttribute("type", "text");
@@ -171,12 +174,12 @@
 			ctnt.setAttribute("class", "input-red");
 			error_msg = '<p>Your quantity must be</p><p> less than ' + plus_one + '</p>';
 		}
-		cell.appendChild(ctnt);
+		div.appendChild(ctnt);
 		var ctnt = document.createElement("input");
 		ctnt.setAttribute("type", "hidden");
 		ctnt.setAttribute("value", quantityavailable);
 		ctnt.setAttribute("id", 'max_'+orderitemid);
-		cell.appendChild(ctnt);
+		div.appendChild(ctnt);
 		
 		if(orderitemid != 0)
 		{
@@ -187,9 +190,9 @@
 			ctnt.setAttribute("onclick", "updateQtyField('_"+orderitemid+"')");
 			ctnt.setAttribute("alt", "Click to update quantity");
 			ctnt.innerHTML += 'Update';
-			cell.appendChild(ctnt);
+			div.appendChild(ctnt);
 			
-			cell.innerHTML += '<br>';
+			div.innerHTML += '<br>';
 			var ctnt = document.createElement("a");
 			ctnt.setAttribute("href", "#");
 			ctnt.setAttribute("id", "remove"+num);
@@ -197,9 +200,10 @@
 			ctnt.setAttribute("onclick", "removeItem('_"+orderitemid+"')");
 			ctnt.setAttribute("alt", "Click to remove item");
 			ctnt.innerHTML += 'Remove';
-			cell.appendChild(ctnt);
-			cell.innerHTML += '<br>';
+			div.appendChild(ctnt);
+			div.innerHTML += '<br>';
 		}
+		cell.appendChild(div);
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
@@ -232,7 +236,7 @@
 				manual : true,
 				parent : $('#' + '_' + orderitemid).parent(),
 				top: -6,
-				left: 20
+				left: 10
 			});
 			$('#' + '_' + orderitemid).on('focusin', function() { $('#powerTip' + orderitemid).hide(); } );
 		}
