@@ -72,6 +72,7 @@
 						order['items'][i].orderitemid, 
 						order['items'][i].storedescription, 
 						order['items'][i].price, 
+						order['items'][i].price_discounted, 
 						order['items'][i].amount,
 						order['items'][i].promotionamount
 					);
@@ -115,7 +116,7 @@
 	/*
 	 * Dynamically build out the item row
 	 */
-	function buildItemRow(table, num, storedisplaythumbnail, itemurl, name, quantity, quantityavailable, orderitemid, storedescription, rate_formatted, amount_formatted, promotionamount)
+	function buildItemRow(table, num, storedisplaythumbnail, itemurl, name, quantity, quantityavailable, orderitemid, storedescription, rate_formatted, rate_discounted, amount_formatted, promotionamount)
 	{
 		var row, cell;
 		var error_msg = '';
@@ -150,7 +151,13 @@
 		cell.setAttribute("align", "center");
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
-		cell.innerHTML = '<span class="titlespan">' + formatPrice(rate_formatted) + '</span>';
+		
+		if(rate_discounted) {
+			cell.innerHTML = '<span class="titlespan"><span style="text-decoration: line-through;">' + formatPrice(rate_formatted) 
+							+ '</span><br>' + formatPrice(rate_discounted) + '</span>';
+		} else {
+			cell.innerHTML = '<span class="titlespan">' + formatPrice(rate_formatted) + '</span>';
+		}
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
@@ -211,13 +218,9 @@
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
 		
-		if(promotionamount)
-		{
-			cell.innerHTML = '<span class="titlespan"><span style="text-decoration: line-through;">' + formatPrice(amount_formatted) 
-							+ '</span><br>' + formatPrice(promotionamount) + '</span>';
-		}
-		else
-		{
+		if(promotionamount) {
+			cell.innerHTML = '<span class="titlespan">' + formatPrice(promotionamount) + '</span>';
+		} else {
 			cell.innerHTML = '<span class="titlespan">' + formatPrice(amount_formatted) + '</span>';
 		}
 		
@@ -415,11 +418,12 @@
 	function formatPrice(price)
 	{
 		var tmp = price.split('$')[1].split('.');
+		tmp[0] = tmp[0].replace(/(\d{1,2}?)((\d{3})+)$/, "$1,$2");
 		
 		if (tmp[1] == '00') {
 			return '$' + tmp[0];
 		} else {
-			return price;
+			return '$' + tmp[0] + '.' + tmp[1];
 		}
 	}
 	/*

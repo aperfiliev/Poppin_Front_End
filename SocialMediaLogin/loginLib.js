@@ -27,6 +27,8 @@ var LoginLib = {
 				for(var i=0; i<items.length; i++)
 				{
 					retobj.totalfound += items[i].quantity;
+					var price_discounted = items[i].rate - (items[i].promotiondiscount / items[i].quantity);
+					price_discounted = '$' + price_discounted.toFixed(2);
 					var item = {'id' : items[i].internalid, 
 								'storedisplaythumbnail' : items[i].storedisplaythumbnail, 
 								'storeurl' : items[i].canonicalurl, 
@@ -35,7 +37,8 @@ var LoginLib = {
 								'quantityavailable': items[i].quantityavailable,
 								'orderitemid' : items[i].orderitemid, 
 								'storedescription' : items[i].storedescription,
-								'price' : items[i].rate_formatted, 
+								'price' : items[i].rate_formatted,
+								'price_discounted' : price_discounted,
 								'amount' : items[i].amount_formatted, 
 								'promotionamount' : items[i].promotionamount_formatted,
 								'options' : items[i].options,
