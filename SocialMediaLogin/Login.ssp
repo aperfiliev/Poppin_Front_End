@@ -14,7 +14,7 @@ visibility:hidden;
 }
 #loginregisterbody #div__body{
 position:relative;
-left:120px;
+left:80px;
 padding-top: 30px;
 }
 #login-register{
@@ -474,8 +474,8 @@ function forgotPasswordSocialLink()
 </script>
 </head>
 <body id='loginregisterbody'>
-<div id='outerwrapper' style='width:968'>
-<div id='innerwrapper'>
+<div id='outerwrapper' >
+<div id='innerwrapper' >
 <div id='div__header' class='noprint' leftmargin='0' topmargin='0' marginwidth='1' >
 <div id='div__title' style='margin: 0px;'>
 </div>
@@ -484,13 +484,14 @@ function forgotPasswordSocialLink()
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<PP_LOGIN_PAGETOP>
 </table>
-<div class="promo-banner" style="text-align: center;">
+<div class="promo-banner">
 	<%=getRecordAttribute('189',1,'custrecord_bannerhtml')%>
 </div>
 </div>
-<div style="font-style: italic;font-size: 14px;padding: 15px 0 0px 220px;">**All fields are required</div>
+<div id='div__body_outer'>
+<div id='div__body_inner'>
 <div id='div__body' style="left: 100px;">
-		<div class="login-login" style="height:500px" >
+		<div class="login-login" >
 			<form id="link-social" style="display:none; text-align:center;width:430px;margin:0 auto;">
 				<input type="hidden" name="emaillink" value=""/>
 				<input type="hidden" name="timestamp" value=""/>
@@ -556,13 +557,14 @@ function forgotPasswordSocialLink()
 			</form>
 			<div class="login-case-block">
 				<div class="social" style="width: 190px;">
-					<h3>CHECKOUT WITH SOCIAL</h3>
+					<h3>LOGIN WITH SOCIAL</h3>
 					<div id="iframecontainer" style="padding-left: 20px;"></div>
+					<div class="required">**All fields are required</div>
 				</div>
 				<div class="verticalHr">
 					<div class="hr"></div>
 					or
-					<div class="hr"></div>
+					<div class="hrlong"></div>
 				</div>
 				<div class="returning">
 					<h3>RETURNING CUSTOMERS</h3>
@@ -582,15 +584,17 @@ function forgotPasswordSocialLink()
 						</fieldset>
 						<fieldset>
 							<div class="forgot-link"><a style="text-decoration:underline;margin:0;" href="#" onclick="forgotPassword();">Forgot password?</a></div>
-							<input id="remember" name="remember" type="checkbox"checked /><label class="checkLbl" for="pass">Remember Me</label>
 							<input type="submit" value="continue" class="orangeBtn" name="login" id="login" style="float: left;" />
+						</fieldset>
+						<fieldset>
+							<input id="remember" name="remember" type="checkbox"checked /><label class="checkLbl" for="pass">Remember Me</label>
 						</fieldset>
 					</form>
 				</div>
 				<div class="verticalHr">
 					<div class="hr"></div>
 					or
-					<div class="hr"></div>
+					<div class="hrlong"></div>
 				</div>
 				<div class="new-customer">
 					<h3>NEW CUSTOMERS</h3>
@@ -614,9 +618,9 @@ function forgotPasswordSocialLink()
 						<fieldset>
 							<input type="submit" value="Continue" class="orangeBtn" name="submit" id="submit" style="margin: 0px;"/>
 						</fieldset>
-						<fieldset style="width: 300px;">
+						<fieldset style="width: 260px;">
 							<input id="subscribe" name="subscribe" type="checkbox" checked />
-							<label class="checkLbl" style="font-size: 9px;"><b>I would like to receive emails about Poppin products, promotions, and sales from Poppin.</b> (Note: if you do not want to receive emails from Poppin, please uncheck this box.)</label>
+							<label class="checkLbl">I would like to receive emails about Poppin products, promotions, and sales.</label>
 						</fieldset>
 						<fieldset>
 							<input id="business" name="business" type="checkbox" />
@@ -632,6 +636,9 @@ function forgotPasswordSocialLink()
 </div>
 </div>
 </div>
+</div>
+</div>
+<div id="empty" style="height: 120px;"></div>
 <div id='div__footer' class='noprint' leftmargin='0' topmargin='0' marginwidth='1' marginheight='1'>
 <PP_FOOTER>
 <!-- ERP Guru NetSuite Display Override-->
