@@ -136,6 +136,7 @@ function registerUser(request)
 	var EmailAddr = request.getParameter("email");
 	var password = request.getParameter("password");
 	var password2 = request.getParameter("password2");
+	var emailsubscribe = request.getParameter("emailsubscribe");
 	var company = request.getParameter("company");
 	if(request.getParameter("requesttype")=="sociallogin"){
 		//password = password2 = generateRandomPassword();
@@ -150,7 +151,7 @@ function registerUser(request)
 	custObj.email = EmailAddr;
 	custObj.password = password;
 	custObj.password2 = password2;
-	if(request.getParameter("emailsubscribe") == "T"){custObj.emailsubscribe = EmailAddr;}
+	custObj.emailsubscribe = emailsubscribe;
 	
 	nlapiLogExecution('DEBUG','custObj for reg: ',JSON.stringify(custObj));
 	var result = session.registerCustomer(custObj);

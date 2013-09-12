@@ -143,6 +143,8 @@
 		ctnt.setAttribute("href", itemurl);
 		ctnt.setAttribute("target", "_self");
 		ctnt.setAttribute("class", "titlelink");
+		ctnt.setAttribute("onclick", "window.open(this.href,'_blank'); return false;");
+		
 		ctnt.innerHTML = name;
 		cell.appendChild(ctnt);
 		
@@ -152,7 +154,7 @@
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
 		
-		if(rate_discounted) {
+		if(promotionamount) {
 			cell.innerHTML = '<span class="titlespan"><span style="text-decoration: line-through;">' + formatPrice(rate_formatted) 
 							+ '</span><br>' + formatPrice(rate_discounted) + '</span>';
 		} else {
@@ -194,7 +196,7 @@
 			ctnt.setAttribute("href", "#");
 			ctnt.setAttribute("id", "remove"+num);
 			ctnt.setAttribute("class", "updateLink");
-			ctnt.setAttribute("onclick", "updateQtyField('_"+orderitemid+"')");
+			ctnt.setAttribute("onclick", "updateQtyField('"+orderitemid+"')");
 			ctnt.setAttribute("alt", "Click to update quantity");
 			ctnt.innerHTML += 'Update';
 			div.appendChild(ctnt);
@@ -376,7 +378,7 @@
 		}
 		div.appendChild(ctnt);
 		
-		if(code == '')
+		if(isvalid === 'F' || isvalid === 'N')
 		{
 			var ctnt = document.createElement("input");
 			ctnt.setAttribute("class", "promoApply");
@@ -384,10 +386,7 @@
 			ctnt.setAttribute("value", "Apply");
 			ctnt.setAttribute("onclick", "applyPromo()");
 			div.appendChild(ctnt);
-		}
-		
-		if(code != '')
-		{
+		} else {
 			var ctnt = document.createElement("input");
 			ctnt.setAttribute("class", "promoRemove");
 			ctnt.setAttribute("id", "removePromo");
@@ -400,14 +399,14 @@
 		promoCodeDiv.appendChild(div);
 		if(isvalid === 'F')
 		{
-			$('#promoInput').data('powertip', '<p>Invalid code</p>');
+			$('#promoInput').data('powertip', '<p>Gone are the days of humdrum</p><p>office products &#8211; and that promo code</p>');
 				$('#promoInput').powerTip({
 				placement : 'n',
 				popupId : 'powerTipPromo',
 				manual : true,
 				parent : $('#promoInput').parent(),
 				top: -6,
-				left: 140
+				left: 120
 			});
 			$('#promoInput').on('focusin', function() { $('#powerTipPromo').hide(); });
 		}

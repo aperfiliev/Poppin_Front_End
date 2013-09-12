@@ -29,7 +29,7 @@ overflow:hidden;
 }
 /* Configure powerTip */
 
-#powerTip {
+div[id^="powerTip"] {
 	background-color:#fff;
 	border-radius:8px;
 	-moz-border-radius:8px;
@@ -47,13 +47,11 @@ overflow:hidden;
 	line-height: 0px;
 	font-size: 14px;
 }
-
-#powerTip:before {
+div[id^="powerTip"]:before {
 	content: "";
 	position: absolute;
 }
-
-#powerTip.n:before {
+div[id^="powerTip"].n:before {
 	margin-top:0px; /* approx. half the height to center it */
 	margin-left:-5px;
 	top:100%;
@@ -62,7 +60,13 @@ overflow:hidden;
 	height:7px;
 	background:url(images/tip-yellowsimple_arrows.gif) no-repeat -18px 0;
 }
-
+#remember {
+	margin: 3px 3px 3px 0px;
+}
+.message {
+	margin: 0;
+	font-size: 15px;
+}
 </style>
 <script language="javascript">
 function getQuerystring(key, default_)
@@ -123,7 +127,7 @@ $(function() {
 	
 	$('form#new-customer-register > fieldset > input#business').on('click', function(e) {
 		var display = $(this).is(':checked') ? 'block' : 'none';
-		$('form#new-customer-register > fieldset#company').css('display', display);
+		$('form#new-customer-register > fieldset#fs_company').css('display', display);
 	});
 });
 function switchview(viewtype)
@@ -141,7 +145,6 @@ function switchview(viewtype)
 		$('#login-register').css('display', 'block');
 		$('#twitter-email').css('display', 'none');
 		$('#link-social').css('display', 'none');
-		$('div#div__header').next('div').css('display', 'none');
 		break
 	case 'twitteremail':
 		$('.login-case-block').css('display', 'none');
@@ -258,10 +261,10 @@ function validateRegisterForm()
 	var regText		= /^[0-9a-zA-Z-]{2,}$/;
 	var regPass		= /^[0-9a-zA-Z]{6,}$/;
 	
-	var email		= $('form#new-customer-register > fieldset > input#emailreg').first();
-	var fname		= $('form#new-customer-register > fieldset > input#fname').first();
-	var lname		= $('form#new-customer-register > fieldset > input#lname').first();
-	var pass		= $('form#new-customer-register > fieldset > input#password').first();
+	var email		= $('form#new-customer-register > fieldset > div > input#emailreg').first();
+	var fname		= $('form#new-customer-register > fieldset > div > input#fname').first();
+	var lname		= $('form#new-customer-register > fieldset > div > input#lname').first();
+	var pass		= $('form#new-customer-register > fieldset > div > input#password').first();
 	
 	$("input.input-red").powerTip("destroy");
 	$("input.input-red").removeClass("input-red");
@@ -269,32 +272,70 @@ function validateRegisterForm()
 	if(!regEmail.test(email.val()))
 	{
 		email.attr( "class", "input-red");
-		email.data('powertip', "<p>Please, enter valid email</p>");
-		email.powerTip({ placement: 'n', mouseOnToPopup: true });
+		email.data('powertip', "<p>Don't use your thumbs<p></p>and try again.</p>");
+		email.powerTip({
+			placement : 'n',
+			popupId : 'powerTipEmail',
+			manual : true,
+			parent : email.parent(),
+			top: -6,
+			left: 120
+		});
+		email.attr('class','input-red');
+		email.on('focusin', function() { $('#powerTipEmail').hide(); });
+		email.powerTip('show');
 	}
 	if(!regText.test(fname.val()))
 	{
 		fname.attr( "class", "input-red");
-		fname.data('powertip', "<p>Only letters</p>");
-		fname.powerTip({ placement: 'n', mouseOnToPopup: true });
+		fname.data('powertip', "<p>Is that really your first<p></p>name? Try again.</p>");
+		fname.powerTip({
+			placement : 'n',
+			popupId : 'powerTipFName',
+			manual : true,
+			parent : fname.parent(),
+			top: -6,
+			left: 120
+		});
+		fname.attr('class','input-red');
+		fname.on('focusin', function() { $('#powerTipFName').hide(); });
+		fname.powerTip('show');
 	}
 	if(!regText.test(lname.val()))
 	{
 		lname.attr( "class", "input-red");
-		lname.data('powertip', "<p>Only letters</p>");
-		lname.powerTip({ placement: 'n', mouseOnToPopup: true });
+		lname.data('powertip', "<p>Hey, Professor Imistypedmyname,<p></p>want to try again?</p>");
+		lname.powerTip({
+			placement : 'n',
+			popupId : 'powerTipLName',
+			manual : true,
+			parent : lname.parent(),
+			top: -6,
+			left: 120
+		});
+		lname.attr('class','input-red');
+		lname.on('focusin', function() { $('#powerTipLName').hide(); });
+		lname.powerTip('show');
 	}
 	if(!regPass.test(pass.val()))
 	{
 		pass.attr( "class", "input-red");
-		pass.data('powertip', "<p>Letters and numbers only, minimun 6 digits</p>");
-		pass.powerTip({ placement: 'n', mouseOnToPopup: true });
+		pass.data('powertip', "<p>Oops. Something's not lining up<p></p>with those passwords.</p>");
+		pass.powerTip({
+			placement : 'n',
+			popupId : 'powerTipPass',
+			manual : true,
+			parent : pass.parent(),
+			top: -6,
+			left: 120
+		});
+		pass.attr('class','input-red');
+		pass.on('focusin', function() { $('#powerTipPass').hide(); });
+		pass.powerTip('show');
 	}
 	
 	if($("input.input-red").size() > 0)
 	{
-		$("#dialogresponse").html("Some fields are filled incorrectly");
-		$("#dialogresponse").dialog({ title: "Info" });
 		return false;
 	}
 	else
@@ -451,7 +492,7 @@ function forgotPasswordResponse(data)
 			message = "Response type is null";
 		break
 		case 'success':
-			message = "An email has been sent to your email with password reset instructions";
+			message = "Ok. We've sent you instructions on how to update your password, aka Your Personal Key to Work Happiness. Please check your email.";
 		break
 		case 'error':
 			message = responseObject.message;
@@ -558,7 +599,7 @@ function forgotPasswordSocialLink()
 			<div class="login-case-block">
 				<div class="social" style="width: 190px;">
 					<h3>LOGIN WITH SOCIAL</h3>
-					<div id="iframecontainer" style="padding-left: 20px;"></div>
+					<div id="iframecontainer"></div>
 					<div class="required">**All fields are required</div>
 				</div>
 				<div class="verticalHr">
@@ -601,33 +642,33 @@ function forgotPasswordSocialLink()
 					<form id="new-customer-register" action="LoginService.ss">
 						<fieldset>
 							<label for="fname">First Name</label>
-							<input id="fname" name="fname" type="text"/>
+							<div style="position: relative;"><input id="fname" name="fname" type="text"/></div>
 						</fieldset>
 						<fieldset>
 							<label for="lname">Last Name</label>
-							<input id="lname" name="lname" type="text"/>
+							<div style="position: relative;"><input id="lname" name="lname" type="text"/></div>
 						</fieldset>
 						<fieldset>
 							<label for="email">Email Address</label>
-							<input id="emailreg" name="email" type="text" />
+							<div style="position: relative;"><input id="emailreg" name="email" type="text" /></div>
 						</fieldset>
 						<fieldset>
 							<label for="password">Password</label>
-							<input id="password" name="password" type="password"/>
+							<div style="position: relative;"><input id="password" name="password" type="password"/></div>
 						</fieldset>
 						<fieldset>
 							<input type="submit" value="Continue" class="orangeBtn" name="submit" id="submit" style="margin: 0px;"/>
 						</fieldset>
 						<fieldset style="width: 260px;">
 							<input id="subscribe" name="subscribe" type="checkbox" checked />
-							<label class="checkLbl">I would like to receive emails about Poppin products, promotions, and sales.</label>
+							<label class="checkLbl">Yes, please! I'd love to receive emails about new Poppin products, promotions, and sales.</label>
 						</fieldset>
 						<fieldset>
 							<input id="business" name="business" type="checkbox" />
 							<label class="checkLbl">I'm a business customer</label>
 						</fieldset>
-						<fieldset id="company" style="display: none">
-							<label for="company">Company Name<i>(optional)</i></label>
+						<fieldset id="fs_company" style="display: none;">
+							<label for="company" style="margin-bottom: 10px; display: block;">Company Name<i>(optional)</i></label>
 							<input id="company" name="company" type="text"/>
 						</fieldset>
 					</form>

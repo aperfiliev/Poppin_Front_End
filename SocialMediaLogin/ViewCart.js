@@ -9,8 +9,9 @@
 	/*
 	 * Updates single item quantity
 	 */
-	function updateQtyField(itemid)
+	function updateQtyField(orderitemid)
 	{
+		var itemid = "_" + orderitemid;
 		quantity = document.getElementById(itemid).value;
 
 		if(quantity>=0 && quantity == parseInt(quantity)) {
@@ -19,8 +20,19 @@
 			var params = {orderitemid: itemid, quantity: quantity};
 			sendAction('update', params);
 		} else {
-			$("#dialogresponse").html("Your quantity must be positive numeric value");
-			$("#dialogresponse").dialog({ title: "Info" });
+			var error_msg = "<p>Wait, how many do you want?</p><p>Better double-check that.</p>";
+			$('#' + '_' + orderitemid).data('powertip', error_msg);
+			$('#' + '_' + orderitemid).powerTip({
+				placement : 'n',
+				popupId : 'powerTip' + orderitemid,
+				manual : true,
+				parent : $('#' + '_' + orderitemid).parent(),
+				top: -6,
+				left: 10
+			});
+			$('#' + '_' + orderitemid).attr('class','input-red');
+			$('#' + '_' + orderitemid).on('focusin', function() { $('#powerTip' + orderitemid).hide(); } );
+			$('#' + '_' + orderitemid).powerTip('show');
 		};
 	}
 	/*
@@ -70,7 +82,11 @@
 	 */
 	function checkout()
 	{
-		if($("input.input-red, input.promoInput-red").size() > 0)
+		if($("input.promoInput-red").size() > 0)
+		{
+			removePromo();
+		}
+		if($("input.input-red").size() > 0)
 		{
 			$("#dialogresponse").html("Some fields are filled incorrectly");
 			$("#dialogresponse").dialog({ title: "Info" });
