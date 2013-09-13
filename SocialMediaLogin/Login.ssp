@@ -67,6 +67,9 @@ div[id^="powerTip"].n:before {
 	margin: 0;
 	font-size: 15px;
 }
+fieldset {
+padding: 0 0 11px 0;
+}
 </style>
 <script language="javascript">
 function getQuerystring(key, default_)
