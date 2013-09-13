@@ -493,8 +493,8 @@ function forgotPasswordResponse(data)
 			message = "Ok. We've sent you instructions on how to update your password, aka Your Personal Key to Work Happiness. Please check your email.";
 		break
 		case 'error':
-			message = responseObject.message;
-			message = errormessage.substring(message.lastIndexOf(":")+1,message.length);
+			href = 'Login.ssp?reg=T';
+			message = 'The email that you entered is not recognized, please try again or <a href="'+ href +'" style="text-decoration: underline;">create a new account</a>';
 		break
 		default:
 			message = "Unknown Response type";
