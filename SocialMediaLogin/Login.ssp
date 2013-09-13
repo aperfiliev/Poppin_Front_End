@@ -141,7 +141,6 @@ function switchview(viewtype)
 		$('#login-register').css('display', 'none');
 		$('#twitter-email').css('display', 'none');
 		$('#link-social').css('display', 'none');
-		//$('div#div__header').next('div').css('display', 'block');
 		break
 	case 'register':
 		$('.login-case-block').css('display', 'none');
@@ -154,14 +153,12 @@ function switchview(viewtype)
 		$('#login-register').css('display', 'none');
 		$('#twitter-email').css('display', 'block');
 		$('#link-social').css('display', 'none');
-		//$('div#div__header').next('div').css('display', 'none');
 		break
 	case 'linksocial':
 		$('.login-case-block').css('display', 'none');
 		$('#login-register').css('display', 'none');
 		$('#twitter-email').css('display', 'none');
 		$('#link-social').css('display', 'block');
-		//$('div#div__header').next('div').css('display', 'none');
 		break
 		
 	default:jQuery("#dialogresponse").html('Unknown view type');
@@ -190,7 +187,6 @@ var socket = new easyXDM.Socket({
 });
 function socialLogin(deserialized)
 {
-	//console.log(deserialized);
 	var newUser = {
 			"requesttype":"sociallogin",
 			"remember":true,
@@ -233,7 +229,6 @@ function registerformSubmitUser()
 }
 function registerformSubmitUserNew()
 {
-	//if(!checkemailvalue(document.forms['new-customer-register'].elements['emailreg'].value)){return false;};
 	if(!validateRegisterForm()){return false;};
 	
 	var company = '';

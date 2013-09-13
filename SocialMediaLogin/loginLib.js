@@ -9,12 +9,12 @@ var LoginLib = {
 	getOrder : function() {
 		var retobj = {"totalfound": 0, 
 						 "items": [],
-						 "allitems": [],	// TODO: REMOVE allitems ON PRODUCTION
 						 "promocode": {}, 
 						 "giftcertificate": {},
 						 "summary": {} };
 
 		var order = nlapiGetWebContainer().getShoppingSession().getOrder().getFieldValues();
+		//(["name", "email"]);
 		if (order != null)
 		{
 			var items = order.items;
@@ -44,7 +44,6 @@ var LoginLib = {
 								'options' : items[i].options,
 								'isavailable' : items[i].isavailable };
 					retobj.items[i] = item;
-					retobj.allitems[i] = items[i];	// TODO: REMOVE allitems ON PRODUCTION
 				}
 			}
 

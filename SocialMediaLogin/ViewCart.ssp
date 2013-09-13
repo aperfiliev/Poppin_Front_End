@@ -333,7 +333,7 @@ color: grey;
 												</div>
 											</td>
 											<td valign="top" style="padding: 5px 5px 5px 20px; border-left: 1px solid gray;" align="right">
-											<div id="floatingTotal" style="position:relative;width:310px;">
+											<div id="floatingTotal" style="position:relative;">
 											<div class="checkoutDiv">
 											<input type="submit" class="bgbutton" value="checkout" onclick="checkout()"/>
 											</div>
