@@ -138,7 +138,7 @@ function switchview(viewtype)
 		$('#login-register').css('display', 'none');
 		$('#twitter-email').css('display', 'none');
 		$('#link-social').css('display', 'none');
-		$('div#div__header').next('div').css('display', 'block');
+		//$('div#div__header').next('div').css('display', 'block');
 		break
 	case 'register':
 		$('.login-case-block').css('display', 'none');
@@ -151,14 +151,14 @@ function switchview(viewtype)
 		$('#login-register').css('display', 'none');
 		$('#twitter-email').css('display', 'block');
 		$('#link-social').css('display', 'none');
-		$('div#div__header').next('div').css('display', 'none');
+		//$('div#div__header').next('div').css('display', 'none');
 		break
 	case 'linksocial':
 		$('.login-case-block').css('display', 'none');
 		$('#login-register').css('display', 'none');
 		$('#twitter-email').css('display', 'none');
 		$('#link-social').css('display', 'block');
-		$('div#div__header').next('div').css('display', 'none');
+		//$('div#div__header').next('div').css('display', 'none');
 		break
 		
 	default:jQuery("#dialogresponse").html('Unknown view type');
@@ -320,7 +320,7 @@ function validateRegisterForm()
 	if(!regPass.test(pass.val()))
 	{
 		pass.attr( "class", "input-red");
-		pass.data('powertip', "<p>Oops. Something's not lining up<p></p>with those passwords.</p>");
+		pass.data('powertip', "<p>Oops. We want to keep your info safe<p></p>and require your password to be a minimum</p><p>of 6 letters or numbers.</p>");
 		pass.powerTip({
 			placement : 'n',
 			popupId : 'powerTipPass',
