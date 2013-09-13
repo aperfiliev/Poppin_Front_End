@@ -1,0 +1,12 @@
+<project info="SuiteCloud IDE generated file, do not edit." setAttributesOnUpdate="false">
+  <folder name="SocialMediaProcess" bundleable="false">
+    <file name="AdBannerSettings.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="AdBannerSettingsFieldChanged.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="BackendForgotPasswordSocialLoginSuitelet.js.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="BackendRedirectSocialLoginSuitelet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="BackendStoreSocialLinkSuitelet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="CheckExistingCustomerRestlet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="PlacingOrderHelpSuitlet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="PromoDescriptionSuitelet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+  </folder>
+</project>
