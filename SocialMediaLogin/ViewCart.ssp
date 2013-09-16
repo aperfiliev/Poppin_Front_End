@@ -3,9 +3,6 @@
 <html>
 <head>
 <%= getPageFullHead() %>
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="/SSP Applications/Poppin/SocialMediaLogin/js/jquery-ui-1.10.3.custom.min.js"></script>
-<link href="/site/social-login/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery.powertip.js"></script>
 <script type="text/javascript" src="BuildCart.js"></script>
 <script type="text/javascript" src="ViewCart.js"></script>
@@ -13,9 +10,9 @@
 <script>
 var set='';
 
-$(document).ready(
+jQuery(document).ready(
 		function(){
-			$(window).scroll(function () {
+			jQuery(window).scroll(function () {
 				if($(window).scrollTop() + $(window).height() > $(document).height() - 300 ) {
 					//do nothing
 				} else if($(window).scrollTop()<300){
@@ -212,7 +209,7 @@ div[id^="powerTip"] {
 	padding: 0px 20px 0px 20px;
 	position: absolute;
 	white-space: nowrap;
-	z-index:90;
+	z-index:1000;
 	text-align:left;
 	border:2px solid red;
 	min-width:50px;

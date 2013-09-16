@@ -6,43 +6,40 @@
 {
 	siteName: 'poppin.com (Default site)'
 	,enabledProviders: 'facebook,twitter,googleplus,linkedin,yahoo,messenger'
-	,connectWithoutLoginBehavior: 'alwaysLogin'     // change the connect without login behavior    
+	,connectWithoutLoginBehavior: 'alwaysLogin'		// change the connect without login behavior
 }
 </script>
 <script type="text/javascript" src="js/easyXDM.js"></script>
-<script language="javascript">
+<script type="text/javascript">
 var socket=null;
 socket = new easyXDM.Socket({
 	remote: "https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin/Login.ssp",
 	onMessage:function(message, origin) {
-    	var notifyobject = JSON.parse(message);
-    	if(notifyobject.type=='login'){
-    		var notifier = {
-    				siteUID : notifyobject.params.siteUID,
-    				UIDTimestamp : notifyobject.params.timestamp,
-    				UIDSig : notifyobject.params.signature,
-    				callback : function(response){alert(response);}
-    		}
-    		//alert(JSON.stringify(notifier));
-    		gigya.socialize.notifyLogin(notifier);
-    	}
-    	else if (notifyobject.type=='register'){
-    		var notifier = {
-    				siteUID : notifyobject.params.siteUID,
-    				UIDTimestamp : notifyobject.params.timestamp,
-    				UIDSig : notifyobject.params.signature,
-    				newUser : true,
-    				callback : function(response){alert(response);}
-    		}
-    		//alert(JSON.stringify(notifier));
-    		gigya.socialize.notifyLogin(notifier);    		
-    	}
+		var notifyobject = JSON.parse(message);
+		if(notifyobject.type=='login'){
+			var notifier = {
+					siteUID : notifyobject.params.siteUID,
+					UIDTimestamp : notifyobject.params.timestamp,
+					UIDSig : notifyobject.params.signature,
+					callback : function(response){alert(response);}
+			}
+			gigya.socialize.notifyLogin(notifier);
+		}
+		else if (notifyobject.type=='register'){
+			var notifier = {
+					siteUID : notifyobject.params.siteUID,
+					UIDTimestamp : notifyobject.params.timestamp,
+					UIDSig : notifyobject.params.signature,
+					newUser : true,
+					callback : function(response){alert(response);}
+			}
+			gigya.socialize.notifyLogin(notifier);
+		}
 	}
 });
 function printResponse(response) {
 	alert('Gigya response start');
-	alert('entire notifyLogin'+JSON.stringify(response));    
-   
+	alert('entire notifyLogin'+JSON.stringify(response));	
 }
 var parenturl='http://sandbox.poppin.com';
 $(function(){
@@ -58,18 +55,17 @@ $(function(){
 		,callback:'onLogin(response)'
 		,hideGigyaLink:true
 	}
-	
+
 	gigya.socialize.addEventHandlers({
-	    onLogin: onLoginHandler
+		onLogin: onLoginHandler
 	});
 
 	function onLoginHandler(eventObj) {
 		var userstr = JSON.stringify(eventObj);
 		socket.postMessage(userstr);
 	}
-	
- 	gigya.socialize.showLoginUI(login_params);
 
+	gigya.socialize.showLoginUI(login_params);
 })
 </script>
 </head>
