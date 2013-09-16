@@ -1,0 +1,18 @@
+.clear {clear:both;}
+.card-wrap { width:700px; float:left; margin: 20px 0;} 
+.select-card { width:420px; float:left; background:#F7F5F5; padding:10px; font-family:Arial, Helvetica, sans-serif; font-size:12px;}
+.select-card .select-ocation { width:600px; float:left;}
+.select-card .select-ocation select { }
+.select-card .select-ocation span {float:left; font-size:14px; font-weight:bold; padding-right:5px;}
+.select-card .card-no-card { float:left; padding:10px;}
+.select-card .message-area { float:left; width:400px; display:none; background: #979797; padding:10px; color:#FFF;}
+.select-card .message-area label { float:left;padding-right:5px;}
+.select-card .message-area textarea { float:left; width:200px; height:100px; resize:none; color:#000}
+.select-card .message-area span { color:#F57B20; font-weight:bold;}
+.message-selector { width:236px; float:left; padding:10px; display:none;font-family:Arial, Helvetica, sans-serif; font-size:12px;}
+.message-selector .message-content {  display:none; margin:10px; height: 150px; width:230px; overflow:auto;background:#F7F5F5; border: 1px solid #979797}
+.message-selector .message-content ul { list-style:none; margin:5px 0; padding:0;}
+.message-selector .message-content ul li { border-bottom: 1px solid #979797; margin: 0 5px; padding:5px;}
+.message-selector .message-content ul li:hover { background: #979797; }
+.message-selector .message-content ul li a { color: #333; text-decoration:none; display:block; width:100%; cursor:pointer;}
+#custbody13, #custbody_cardmessage_occasion, #custbody_cardmessage_message, #custbody_cardmessage_fs, #custbody13_fs_lbl, #custbody_cardmessage_occasion_fs_lbl, #custbody_cardmessage_message_fs_lbl, #custbody_cardmessage_fs_lbl, #custbody_cardocation_fs, #custbody_cardocation_fs_lbl { display:none;}

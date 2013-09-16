@@ -1,0 +1,21 @@
+.blockPage{background:transparent!important}
+.qad_dialog{width:433px;padding:10px;background:#FFF;border:1px solid #cbc3bc;box-shadow:1px 1px 3px #b6b4af;text-align:left;color:#89889a;position:relative}
+.qad_headline{height:21px;padding:0 17px 14px;font-size:14px;font-weight:700;border-bottom:1px solid #eaeaea;color:#000;line-height:31px;margin-bottom:8px}
+.qad_choices_list{background:#ffffd1;padding:17px 15px;border:1px solid #d8d7d5}
+.qad_suggestion_header, .qad_invalid_suggestion_header{padding:0 0 0 31px;background:url(/site/pp-files/smartystreets/warning-msg.png) no-repeat 0 0}
+.qad_choice.qad_original{width:24px;height:23px;position:absolute;right:-12px;top:-12px;text-indent:-1000px;overflow: hidden;background:url(/site/pp-files/smartystreets/close-btn.png);cursor:pointer}
+.qad_foreground .red{color:#e9214e;font-weight:700}
+.qad_suggestion{margin:10px 0;padding:5px;border:1px solid #209401;background:#99db99;color:#FFF;font-weight:700;cursor:pointer}
+.qad_invalid_suggestion{background:#fe8095;color:#d00426;border:1px solid #d00426;margin:10px 0;padding:10px;font-weight:700;cursor:pointer}
+.formmsg{margin-bottom:10px}
+.qad_foreground label{display: inline-block;width: 146px;text-align: right}
+.qad_foreground label span{display:inline-block;width:21px;margin-right:5px;color:#ffa249}
+.qad_foreground input{width:145px}
+.qad_foreground input.short{width:91px}
+.qad_foreground select{width:149px}
+.qad_foreground select[name=country]{width:95px}
+.qad_foreground .cyan{color:#74daf0}
+.qad_foreground .note{padding:2px 0 0 146px;font-weight:400;font-size:13px}
+.note.red{margin-bottom:5px}
+.qad_foreground .formaddress, .qad_foreground .closebtn{display:inline-block;cursor:pointer;height:27px;background:url(/site/pp-files/smartystreets/use-this-address.png);text-indent:-1000px;overflow:hidden;width:177px;margin:0 26px 0 57px}
+.qad_foreground .closebtn{width:93px;margin:0;background:url(/site/pp-files/smartystreets/cancel.png)}

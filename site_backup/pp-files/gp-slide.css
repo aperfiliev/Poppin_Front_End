@@ -1,0 +1,17 @@
+/* slide home (required script) */
+.slide-wrap { margin: 0 0 20px; width: 968px; height: 350px; position: relative; overflow: hidden; }
+.body-safari .slide-wrap { z-index: 0; }
+.slide-wrap ul { margin: 0; padding: 0; list-style: none; }
+.slide-wrap .slide {}
+.slide-wrap .slide li { position: absolute; width: 968px; height: 395px; left: 0; top: 0; z-index: 1; }
+.slide-wrap .slide li.active { z-index: 2; }
+
+.slide-wrap .gp-wrap-slide-btns { position: absolute; right: 0; bottom: 0; z-index: 3; background: #fff; padding: 5px 10px 5px 0; }
+.slide-wrap .gp-wrap-slide-btns li { float: left; cursor: pointer; background: url(../pp-templates/btns-slide.jpg) no-repeat left bottom; margin: 0 0 0 10px; width: 20px; height: 20px; text-indent: -999px; overflow: hidden; }
+.slide-wrap .gp-wrap-slide-btns li.active { background-position: left top; }
+
+.slide-wrap .gp-wrap-slide .gp-btn-left,
+.slide-wrap .gp-wrap-slide .gp-btn-right { cursor: pointer; height: 38px; position: absolute; top: 150px; width: 19px; z-index: 3; }
+
+.slide-wrap .gp-wrap-slide .gp-btn-left { background: #000; left: 15px; }
+.slide-wrap .gp-wrap-slide .gp-btn-right { background: #000; right: 15px; }
