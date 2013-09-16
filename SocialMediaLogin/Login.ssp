@@ -169,7 +169,8 @@ function switchview(viewtype)
 <script language="javascript">
 
 var socket = new easyXDM.Socket({
-	remote: "http://sandbox.poppin.com/SSP%20Applications/Poppin/SocialMediaLogin/gigya.html",
+	//remote: "http://sandbox.poppin.com/SSP%20Applications/Poppin/SocialMediaLogin/gigya.html",
+	remote: "https://checkout.sandbox.netsuite.com/c.3363929/SSP%20Applications/Poppin/SocialMediaLogin/gigya.html",
 	container: "iframecontainer",
 	onMessage:function(message, origin) {
 		var deserialized = JSON.parse(message);
