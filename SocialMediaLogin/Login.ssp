@@ -541,7 +541,7 @@ function forgotPasswordSocialLink()
 				<fieldset>
 					<label for="Poppin password" style="display:block;">*Password</label>
 					<input id="pwdlink" name="pwdlink" type="password" style="width:180px;"/>
-					<div class="forgot-link"><a style="text-decoration:underline;margin:0;" href="#" onclick="forgotPasswordSocialLink();">Forgot your password?</a></div>
+					<div class="forgot-link"><a style="text-decoration:underline;margin:0;" href="#" onclick="forgotPasswordSocialLink();return false;">Forgot your password?</a></div>
 				</fieldset>
 				<fieldset>
 							<input type="submit" name="linkaccounts" id="linkaccounts" value="Continue" class="orangeBtn" style="margin:0;"/>	

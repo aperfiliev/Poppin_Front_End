@@ -303,7 +303,7 @@ color: grey;
 				<table border="0" cellpadding="5" cellspacing="0" width="100%">
 					<tbody id="helpBody"></tbody>
 				</table>
-				<a class="close-button" onclick="closeHelp()">X</a>
+				<a class="close-button" onclick="closeHelp();return false;">X</a>
 			</div>
 
 			<div id="div__help_bg"></div>
@@ -329,7 +329,7 @@ color: grey;
 													<tbody id="cartBody"></tbody>
 												</table>
 												<div class="helpLink">
-													<a href="#" onclick="showHelp()">Need help placing your order? It's okay to ask for help!</a>
+													<a href="#" onclick="showHelp();return false;">Need help placing your order? It's okay to ask for help!</a>
 												</div>
 												<div class="upsell_options" style="text-align: center;">
 													<%=getRecordAttribute('189',3,'custrecord_bannerhtml')%>
@@ -338,7 +338,7 @@ color: grey;
 											<td valign="top" style="padding: 5px 5px 5px 20px; border-left: 1px solid gray;" align="right">
 											<div id="floatingTotal" style="position:relative;">
 											<div class="checkoutDiv">
-											<input type="submit" class="bgbutton" value="checkout" onclick="checkout()"/>
+											<input type="submit" class="bgbutton" value="checkout" onclick="checkout();return false;"/>
 											</div>
 												<table class="orderSummary" border="0" cellspacing="0" cellpadding="0">
 												<col class="summaryLabels" />
@@ -349,7 +349,7 @@ color: grey;
 												<div class="promoCode" id="promoCodeDiv">
 												</div>
 												<div class="checkoutDiv">
-												<input type="submit" class="bgbutton" value="checkout" onclick="checkout()"/>
+												<input type="submit" class="bgbutton" value="checkout" onclick="checkout();return false;"/>
 												<span class="span-or-use">- Or use -</span>
 													<%
 														var checkoutSettings = nlapiGetWebContainer().getShoppingSession().getSiteSettings(['checkout']); 
