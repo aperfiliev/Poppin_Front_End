@@ -407,7 +407,7 @@
 				manual : true,
 				parent : $('#promoInput').parent(),
 				top: -6,
-				left: 120
+				left: 80
 			});
 			$('#promoInput').on('focusin', function() { $('#powerTipPromo').hide(); });
 		}
