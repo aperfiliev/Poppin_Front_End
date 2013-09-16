@@ -39,7 +39,7 @@ div[id^="powerTip"] {
 	padding: 0px 20px 0px 20px;
 	position: absolute;
 	white-space: nowrap;
-	z-index:1000;
+	z-index:90;
 	text-align:left;
 	border:2px solid red;
 	min-width:50px;
