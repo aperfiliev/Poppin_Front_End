@@ -156,7 +156,8 @@
 		
 		if(promotionamount) {
 			cell.innerHTML = '<span class="titlespan"><span style="text-decoration: line-through;">' + formatPrice(rate_formatted) 
-							+ '</span><br>' + formatPrice(rate_discounted) + '</span>';
+							+ '</span><br><span style="color:red">' 
+							+ formatPrice(rate_discounted) + '</span></span>';
 		} else {
 			cell.innerHTML = '<span class="titlespan">' + formatPrice(rate_formatted) + '</span>';
 		}
