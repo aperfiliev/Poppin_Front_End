@@ -329,7 +329,7 @@ color: grey;
 													<tbody id="cartBody"></tbody>
 												</table>
 												<div class="helpLink">
-													<a href="#" onclick="showHelp();return false;">Need help placing your order? It's okay to ask for help!</a>
+													<a href="#" onclick="showHelp();">Need help placing your order? It's okay to ask for help!</a>
 												</div>
 												<div class="upsell_options" style="text-align: center;">
 													<%=getRecordAttribute('189',3,'custrecord_bannerhtml')%>
