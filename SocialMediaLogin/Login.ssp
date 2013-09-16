@@ -623,7 +623,7 @@ function forgotPasswordSocialLink()
 							<input id="password" name="password" type="password"/>
 						</fieldset>
 						<fieldset>
-							<div class="forgot-link"><a style="text-decoration:underline;margin:0;" href="#" onclick="forgotPassword();">Forgot password?</a></div>
+							<div class="forgot-link"><a style="text-decoration:underline;margin:0;" href="#" onclick="forgotPassword();return false;">Forgot password?</a></div>
 							<input type="submit" value="continue" class="orangeBtn" name="login" id="login" style="float: left;" />
 						</fieldset>
 						<fieldset>
