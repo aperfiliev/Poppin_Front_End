@@ -61,6 +61,7 @@
 
 		if(order!=0 && order.totalfound!=0)
 		{
+			$("li.mini-cart > a").html(order.totalfound);
 			// Insert table rows and cells into body
 			for ( var i = 0; i < order['items'].length; i++) {
 				buildItemRow(cartBody, i, 
