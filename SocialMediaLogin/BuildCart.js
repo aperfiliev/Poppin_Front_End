@@ -339,6 +339,7 @@
 	function buildPromoCodeDiv(promocode)
 	{
 		var code = '';
+		var description = '';
 		var isvalid = 'N';
 		
 		if(promocode.isvalid != null)
@@ -348,6 +349,7 @@
 		if(promocode.promocode != null)
 		{
 			code = promocode.promocode;
+			description = promocode.description;
 		}
 		
 		var promoCodeDiv = document.getElementById('promoCodeDiv');
@@ -369,6 +371,7 @@
 		ctnt.setAttribute("id", "promoInput");
 		ctnt.setAttribute("type", "text");
 		ctnt.setAttribute("value", code);
+		ctnt.setAttribute("title", description);
 		if(isvalid === 'F')
 		{
 			ctnt.setAttribute("class", "promoInput-red");

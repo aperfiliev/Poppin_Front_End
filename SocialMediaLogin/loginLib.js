@@ -49,8 +49,7 @@ var LoginLib = {
 			if (promocodes && promocodes.length > 0)
 			{
 				retobj.promocode = promocodes[0];
-				// TODO: replace hardcoded 119 with promocodes[0].internalid
-				//retobj.promocode.description = LoginLib.getPromoDescription(119);
+				retobj.promocode.description = LoginLib.getPromoDescription(retobj.promocode.promocode);
 			}
 
 			if (giftcertificates && giftcertificates.length > 0) {
@@ -91,13 +90,16 @@ var LoginLib = {
 		var helpresponse = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=278&deploy=1&compid=3363929&h=e99bd31ff84dd428f826');
 		return helpresponse.getBody();
 	},
-	getPromoDescription : function(internalid) {
+	getPromoDescription : function(code) {
 		var description = "";
 		try
 		{
-			var response = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=280&deploy=1&compid=3363929&h=17e42ce4a6e832b8a0f8&internalid='+internalid);
+			var response = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=280&deploy=1&compid=3363929&h=17e42ce4a6e832b8a0f8&code='+code);
 			var respObj = JSON.parse(response.getBody());
-			description = respObj.description;
+			if(respObj.length > 0 && respObj[0].columns)
+			{
+				description = respObj[0].columns.description;
+			}
 		}
 		catch (e)
 		{
