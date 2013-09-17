@@ -171,7 +171,7 @@ font-size: 12px;
 font-family: Arial, Helvetica, sans-serif;
 }
 .promoInput{
-width:110px;
+width:100px;
 }
 .promoInput-red{
 border: 2px solid red;
