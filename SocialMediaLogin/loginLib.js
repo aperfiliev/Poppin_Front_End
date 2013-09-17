@@ -14,7 +14,6 @@ var LoginLib = {
 						 "summary": {} };
 
 		var order = nlapiGetWebContainer().getShoppingSession().getOrder().getFieldValues();
-		//(["name", "email"]);
 		if (order != null)
 		{
 			var items = order.items;
