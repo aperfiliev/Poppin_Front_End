@@ -12,7 +12,11 @@
  * @returns {Void} Any output is written via response object
  */
 function suitelet(request, response){
-	var internalid = request.getParameter('internalid');
-	var promotioncode = nlapiLoadRecord('promotioncode', internalid);
+	var code = request.getParameter('code');
+	var columns = [];
+	columns[0]= new nlobjSearchColumn('description');
+	var filters = [];
+	filters[0] = new nlobjSearchFilter('code', null, 'is', code, null);
+	var promotioncode = nlapiSearchRecord('promotioncode', null, filters, columns);
 	response.write(JSON.stringify(promotioncode));
 }
