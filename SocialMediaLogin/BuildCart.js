@@ -183,7 +183,11 @@
 		{
 			var plus_one = quantityavailable +1;
 			ctnt.setAttribute("class", "input-red");
-			error_msg = '<p>Your quantity must be</p><p> less than ' + plus_one + '</p>';
+			if(quantityavailable == 0){
+				error_msg = '<p>This item is out of stock</p>';
+			} else {
+				error_msg = '<p>Your quantity must be</p><p> less than ' + plus_one + '</p>';
+			}
 		}
 		div.appendChild(ctnt);
 		var ctnt = document.createElement("input");
@@ -380,6 +384,7 @@
 		else if(code != '')
 		{
 			ctnt.setAttribute("style", "background: #8ACEDF;");
+			ctnt.setAttribute("readonly", "");
 		}
 		div.appendChild(ctnt);
 		
