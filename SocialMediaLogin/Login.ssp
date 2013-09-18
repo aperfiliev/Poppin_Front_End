@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <%= getPageFullHead() %>
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
