@@ -1,0 +1,21 @@
+
+/* styles to add by JavaScript on type KB pages */
+.td-left a.active { color:#F57B20; font-weight:normal !important; }
+
+
+/* content area styles */
+
+/* hide title */
+.td-content-area td.medtextboldnolink { display:none; }				
+
+/* change title links */
+.td-content-area td.medtext a.medtextbold, .td-content-area td.medtext h3 { color:#666666; font: bold 18px/20px "OmnesRegularRegular",Arial,Helvetica,sans-serif !important; cursor:pointer; }
+.td-content-area td.medtext a.active, .td-content-area td.medtext h3.active { color:#F57B20 !important; }
+
+/* hide brief descriptions */
+.td-content-area td.medtext td.medtext {display:none;}
+/* show only solutions */
+.td-content-area td.medtext td.solution {display:block !important;}
+/* ajax response initially hidden */
+.td-content-area td.medtext .description {display:none; font:normal 18px/20px "OmnesRegularRegular",Arial,Helvetica,sans-serif !important; color:#666; margin:5px 0 20px; }
+
