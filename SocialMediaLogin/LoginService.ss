@@ -6,6 +6,7 @@
 function service(request, response){
 	try
 	{
+		
 	var session = nlapiGetWebContainer().getShoppingSession();
 		if(request.getParameter('requesttype')==null)
 		{
@@ -17,7 +18,7 @@ function service(request, response){
 			case 'forgotpassword':
 				nlapiLogExecution('DEBUG','forgotpassword case');
 				result = forgotPassword(request);
-				response.write(buildResponseObjectStringified("success","Password reset details sent to your email"));
+				response.write(buildResponseObjectStringified("success",poppinservres.text.forgotpasswordsent));
 				break
 			case 'login':
 				nlapiLogExecution('DEBUG', 'login start', new Date().toTimeString());
@@ -49,7 +50,7 @@ function service(request, response){
 		var errormessage;
 		if(e instanceof nlobjError)
 			{
-				errormessage = 'Netsuite error: '+ e.getCode()+ ' ' + e.getDetails();
+				errormessage = 'Netsuite error: ' + e.getDetails();
 				nlapiLogExecution('ERROR',e.getCode(),e.getDetails());
 			}
 		else
@@ -128,7 +129,7 @@ function loginUser(request, sociallink)
 }
 function registerUser(request)
 {
-	if(checkExistingEmail(request).length>0){throw "A user already exists with this email address"};
+	if(checkExistingEmail(request).length>0){throw poppinservres.text.useralreadyexist};
 	nlapiLogExecution('DEBUG','reg1');
 	var session = nlapiGetWebContainer().getShoppingSession();
 	//create user
@@ -172,7 +173,7 @@ function checkExistingEmail(request)
 {
 	var checkemail = {"email":request.getParameter("email")};
 	nlapiLogExecution('DEBUG','enter request', new Date().toTimeString());
-	var checkexistinguserresponse = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=272&deploy=1&compid=3363929&h=998696f5b08fd08e8297',checkemail);
+	var checkexistinguserresponse = nlapiRequestURL(poppinservres.url.checkexistinguser ,checkemail);
 	nlapiLogExecution('DEBUG','check existing user body:', checkexistinguserresponse.getBody());
 	nlapiLogExecution('DEBUG','exit request', new Date().toTimeString());
 	var checkexistinguser = JSON.parse(checkexistinguserresponse.getBody());
@@ -248,7 +249,7 @@ function socialMediaLinkAccount(request,sociallink)
 	nlapiLogExecution('DEBUG','sociallinkaccount1result', JSON.stringify(result)+new Date().toTimeString());
 	//store result for further redirect
 	nlapiLogExecution('DEBUG','enter store link request', new Date().toTimeString());
-	var storelinkpwdstring = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=277&deploy=1&compid=3363929&h=48069b02f983db8cdd31', params);
+	var storelinkpwdstring = nlapiRequestURL(poppinservres.url.storelink, params);
 	nlapiLogExecution('DEBUG','exit store link request', new Date().toTimeString());
 	var storelinkpwd = JSON.parse(storelinkpwdstring.getBody());
 	nlapiLogExecution('DEBUG','storelinkpwdstring: ', storelinkpwdstring.getBody()+new Date().toTimeString());
@@ -266,7 +267,7 @@ function socialMediaLinkAccount(request,sociallink)
 		nlapiLogExecution('DEBUG','sociallinkaccount1newuserredirect',JSON.stringify(gigyanotifier)+new Date().toTimeString());
 		}
 	else{
-		throw "Cant link account, please contact system administrator."
+		throw poppinservres.text.cantlinkaccount
 	}
 	sociallinkresult ={
 			"result":result,

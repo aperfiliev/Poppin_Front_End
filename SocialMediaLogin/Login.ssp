@@ -169,8 +169,7 @@ function switchview(viewtype)
 <script language="javascript">
 
 var socket = new easyXDM.Socket({
-	//remote: "http://sandbox.poppin.com/SSP%20Applications/Poppin/SocialMediaLogin/gigya.html",
-	remote: "https://checkout.sandbox.netsuite.com/c.3363929/SSP%20Applications/Poppin/SocialMediaLogin/gigya.html",
+	remote: poppinres.url.gigyacontrol,
 	container: "iframecontainer",
 	onMessage:function(message, origin) {
 		var deserialized = JSON.parse(message);
@@ -271,7 +270,7 @@ function validateRegisterForm()
 	if(!regEmail.test(email.val()))
 	{
 		email.attr( "class", "input-red");
-		email.data('powertip', "<p>Don't use your thumbs<p></p>and try again.</p>");
+		email.data('powertip', poppinres.text.emailvalidation);
 		email.powerTip({
 			placement : 'n',
 			popupId : 'powerTipEmail',
@@ -287,7 +286,7 @@ function validateRegisterForm()
 	if(!regText.test(fname.val()))
 	{
 		fname.attr( "class", "input-red");
-		fname.data('powertip', "<p>Is that really your first<p></p>name? Try again.</p>");
+		fname.data('powertip', poppinres.text.firstnamevalidation);
 		fname.powerTip({
 			placement : 'n',
 			popupId : 'powerTipFName',
@@ -303,7 +302,7 @@ function validateRegisterForm()
 	if(!regText.test(lname.val()))
 	{
 		lname.attr( "class", "input-red");
-		lname.data('powertip', "<p>Hey, Professor Imistypedmyname,<p></p>want to try again?</p>");
+		lname.data('powertip', poppinres.text.lastnamevalidation);
 		lname.powerTip({
 			placement : 'n',
 			popupId : 'powerTipLName',
@@ -319,7 +318,7 @@ function validateRegisterForm()
 	if(!regPass.test(pass.val()))
 	{
 		pass.attr( "class", "input-red");
-		pass.data('powertip', "<p>Oops. We want to keep your info safe<p></p>and require your password to be a minimum</p><p>of 6 letters or numbers.</p>");
+		pass.data('powertip', poppinres.text.passwordvalidation);
 		pass.powerTip({
 			placement : 'n',
 			popupId : 'powerTipPass',
@@ -376,15 +375,15 @@ function linkSocialAccount()
 function sendLoginRequest(user)
 {
 	//console.log(user);
-	if(typeof user.email ==='undefined' || user.email === '') {jQuery("#dialogresponse").html(user.email + ' Please input email address.');
+	if(typeof user.email ==='undefined' || user.email === '') {jQuery("#dialogresponse").html(user.email + );
 	jQuery("#dialogresponse").dialog({ title: "Info" }); return false;
 	return false;
 	}
-	if( !validateEmail(user.email)) {jQuery("#dialogresponse").html(user.email + ' Please enter a valid email address.');
+	if( !validateEmail(user.email)) {jQuery("#dialogresponse").html(user.email + poppinres.text.emailinvalid);
 	jQuery("#dialogresponse").dialog({ title: "Info" }); return false;}
 	if(user.remember){storeLoginCookie(user);}
 	jQuery.ajax({
-			url: 'https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin/LoginService.ss',
+			url: poppinres.url.loginservice,
 			data: user,
 			dataType: 'jsonp',
 			jsonp: 'json.wrf',
@@ -397,10 +396,10 @@ function sendLoginRequest(user)
 function response(data)
 {
 	document.body.style.cursor = 'default';
-	if(data.responseText==null){alert('null response object')};
+	//if(data.responseText==null){alert('null response object')};
 	var responseObject = JSON.parse(data.responseText);
 	//console.log(responseObject);
-	if(responseObject.responsetype==null){jQuery("#dialogresponse").html('Response type is null');
+	if(responseObject.responsetype==null){jQuery("#dialogresponse").html(poppinres.text.responsetypenull);
 	jQuery("#dialogresponse").dialog({ title: "Info" });return;};
 	switch(responseObject.responsetype)
 	{
@@ -436,7 +435,7 @@ function response(data)
 			break
 		default:
 			//alert("Unknown Response type");
-			jQuery("#dialogresponse").html("Unknown Response type");
+			jQuery("#dialogresponse").html(poppinres.text.responsetypeunknown);
 			jQuery("#dialogresponse").dialog({ title: "Info" });
 			return false;	
 		}
@@ -456,7 +455,7 @@ function forgotPassword()
 	'</form></div>';
 	
 	jQuery("#dialogresponse").html(formHtml);
-	jQuery("#dialogresponse").dialog({ title: "Password Reset" });
+	jQuery("#dialogresponse").dialog({ title: poppinres.text.passwordresettitle });
 	
 	$('#forgot-pass-form').on('submit', function(e) {
 		e.preventDefault();
@@ -474,7 +473,7 @@ function sendForgotPasswordRequest()
 			"email":document.forms['forgot-pass-form'].elements['email'].value
 			}
 	jQuery.ajax({
-		url: 'https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin/LoginService.ss',
+		url: poppinres.url.loginservice,
 		data: userforgotpassword,
 		dataType: 'jsonp',
 		jsonp: 'json.wrf',
@@ -487,22 +486,21 @@ function forgotPasswordResponse(data)
 {
 	var message = '';
 	document.body.style.cursor = 'default';
-	if(data.responseText==null) { message = "null response object"; };
+	if(data.responseText==null) { message = poppinres.text.responseobjectnull; };
 	var responseObject = JSON.parse(data.responseText);
 	switch(responseObject.responsetype)
 	{
 		case null:
-			message = "Response type is null";
+			message = poppinres.text.responsetypenull;
 		break
 		case 'success':
-			message = "Ok. We've sent you instructions on how to update your password, aka Your Personal Key to Work Happiness. Please check your email.";
+			message = poppinres.text.forgotpasswordsent;
 		break
 		case 'error':
-			href = 'Login.ssp?reg=T';
-			message = 'The email that you entered is not recognized, please try again or <a href="'+ href +'" style="text-decoration: underline;">create a new account</a>';
+			message = poppinres.text.forgotpasswordunrecognized; 
 		break
 		default:
-			message = "Unknown Response type";
+			message = poppinres.text.responsetypeunknown;
 	}
 	$("form#forgot-pass-form > fieldset > input#submit.orangeBtn").val("Close");
 	$("form#forgot-pass-form > fieldset > p.message").html(message);
