@@ -127,12 +127,13 @@ else
 			htmloutput = '<img '+ paramshtml +'></img>';
 			var redirecturl = bannerinfoitem.getFieldValue('custrecord_redirecturl');
 			var redirectitemid = bannerinfoitem.getFieldValue('custrecord_redirectitemid');
-			if(redirecturl !== '#' && recirecturl !== '' && redirectitemid === ''){//make banner clickable if redirect url provided
+			if(typeof redirecturl !== 'undefined' && redirecturl !== '#' && redirecturl !== ''){//make banner clickable if redirect url provided
 				htmloutput =  '<a href="' + redirecturl + '">' + htmloutput + '</a>';
 			}
-			else if(redirectitemid !== ''){
+			if(typeof redirecturl !== 'undefined' && redirectitemid != ''){
 				htmloutput =  '<a href="#" onclick="addItem(' + redirectitemid + ');return false">' + htmloutput + '</a>';
 			}
+			
 			//htmloutput = '<a href="'+bannerinfoitem.getFieldValue('custrecord_redirecturl')+'"><img '+ paramshtml +'></img></a>';
 		}
 		nlapiLogExecution('DEBUG','Html output', htmloutput);
