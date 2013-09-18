@@ -1,6 +1,6 @@
 <!doctype html>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
 <%= getPageFullHead() %>
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
@@ -204,7 +204,7 @@ function socialLogin(deserialized)
 }
 function loginformSubmitUser()
 {
-	if(!checkemailvalue(document.forms['loginform'].elements['emaillog'].value)){return false;};
+	//if(!checkemailvalue(document.forms['loginform'].elements['emaillog'].value)){return false;};
 	var loginUser = {
 			"requesttype":"login",
 			"remember":document.forms['loginform'].elements['remember'].checked,
@@ -216,7 +216,7 @@ function loginformSubmitUser()
 }
 function registerformSubmitUser()
 {
-	if(!checkemailvalue(document.forms['login-register'].elements['emailreg'].value)){return false;};
+	//if(!checkemailvalue(document.forms['login-register'].elements['emailreg'].value)){return false;};
 	var newUser = {
 			"requesttype":"manualregister",
 			"remember":true,
@@ -376,6 +376,10 @@ function linkSocialAccount()
 function sendLoginRequest(user)
 {
 	//console.log(user);
+	if(typeof user.email ==='undefined' || user.email === '') {jQuery("#dialogresponse").html(user.email + ' Please input email address.');
+	jQuery("#dialogresponse").dialog({ title: "Info" }); return false;
+	return false;
+	}
 	if( !validateEmail(user.email)) {jQuery("#dialogresponse").html(user.email + ' Please enter a valid email address.');
 	jQuery("#dialogresponse").dialog({ title: "Info" }); return false;}
 	if(user.remember){storeLoginCookie(user);}
