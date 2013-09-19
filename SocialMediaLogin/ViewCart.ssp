@@ -335,7 +335,7 @@ color: grey;
 													<%=getRecordAttribute('189',3,'custrecord_bannerhtml')%>
 												</div>
 											</td>
-											<td valign="top" style="padding: 5px 5px 5px 20px; border-left: 1px solid gray;" align="right">
+											<td valign="top" style="padding: 5px 5px 5px 20px; border-left: 1px solid gray;width: 197px;" align="right">
 											<div id="floatingTotal" style="position:relative;">
 											<div class="checkoutDiv">
 											<input type="submit" class="bgbutton" value="checkout" onclick="checkout();return false;"/>
