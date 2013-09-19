@@ -375,7 +375,7 @@ function linkSocialAccount()
 function sendLoginRequest(user)
 {
 	//console.log(user);
-	if(typeof user.email ==='undefined' || user.email === '') {jQuery("#dialogresponse").html(user.email + );
+	if(typeof user.email ==='undefined' || user.email === '') {jQuery("#dialogresponse").html(user.email + poppinres.text.emailempty);
 	jQuery("#dialogresponse").dialog({ title: "Info" }); return false;
 	return false;
 	}
