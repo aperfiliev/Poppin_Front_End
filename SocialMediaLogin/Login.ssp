@@ -440,7 +440,7 @@ function response(data)
 			return false;	
 		}
 }
-function forgotPassword()
+function forgotPasswordOld()
 {
 	var formHtml = '<div class="new-customer"><form id="forgot-pass-form" action="sendForgotPasswordRequest()">'+
 		'<fieldset style="border: 0px none;">'+
@@ -460,13 +460,13 @@ function forgotPassword()
 	$('#forgot-pass-form').on('submit', function(e) {
 		e.preventDefault();
 		if($("form#forgot-pass-form > fieldset > input#submit.orangeBtn").val() == 'Continue') {
-			sendForgotPasswordRequest();
+			sendForgotPasswordRequestOld();
 		} else {
 			jQuery("#dialogresponse").dialog('close');
 		}
 	});
 }
-function sendForgotPasswordRequest()
+function sendForgotPasswordRequestOld()
 {
 	var userforgotpassword = {
 			"requesttype":"forgotpassword",
@@ -477,12 +477,12 @@ function sendForgotPasswordRequest()
 		data: userforgotpassword,
 		dataType: 'jsonp',
 		jsonp: 'json.wrf',
-		success: forgotPasswordResponse,
-		error: forgotPasswordResponse
+		success: forgotPasswordResponseOld,
+		error: forgotPasswordResponseOld
 	});
 	document.body.style.cursor = 'wait';
 }
-function forgotPasswordResponse(data)
+function forgotPasswordResponseOld(data)
 {
 	var message = '';
 	document.body.style.cursor = 'default';
@@ -625,7 +625,7 @@ function forgotPasswordSocialLink()
 							<input id="password" name="password" type="password"/>
 						</fieldset>
 						<fieldset>
-							<div class="forgot-link"><a style="text-decoration:underline;margin:0;" href="#" onclick="forgotPassword();return false;">Forgot password?</a></div>
+							<div class="forgot-link"><a style="text-decoration:underline;margin:0;" href="#" onclick="forgotPasswordOld();return false;">Forgot password?</a></div>
 							<input type="submit" value="continue" class="orangeBtn" name="login" id="login" style="float: left;" />
 						</fieldset>
 						<fieldset>

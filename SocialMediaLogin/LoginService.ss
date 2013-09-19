@@ -20,6 +20,11 @@ function service(request, response){
 				result = forgotPassword(request);
 				response.write(buildResponseObjectStringified("success",poppinservres.text.forgotpasswordsent));
 				break
+			case 'resetpassword':
+				nlapiLogExecution('DEBUG','resetpassword case');
+				result = forgotPassword(request);
+				response.write(buildResponseObjectStringified("resetpasswordsuccess",poppinservres.text.forgotpasswordsent));
+				break
 			case 'login':
 				nlapiLogExecution('DEBUG', 'login start', new Date().toTimeString());
 				result = loginUser(request);
@@ -48,18 +53,24 @@ function service(request, response){
 	catch(e)
 	{
 		var errormessage;
-		if(e instanceof nlobjError)
+		if(request.getParameter('requesttype') == 'resetpassword')
 			{
+				code = "resetpassworderror";
+				errormessage = e.getDetails();
+			}
+		else if(e instanceof nlobjError)
+			{
+				code = "error";
 				errormessage = 'Netsuite error: ' + e.getDetails();
 				nlapiLogExecution('ERROR',e.getCode(),e.getDetails());
 			}
 		else
 			{
-			   //nlapiLogExecution('DEBUG','UE', JSON.stringify(e));
+				code = "error";
 				nlapiLogExecution('ERROR', 'Unexpected error: ', e.toString());
 				errormessage = 'Unexpected error: ' + e.toString();
 			}
-		response.write(buildResponseObjectStringified("error",errormessage));
+		response.write(buildResponseObjectStringified(code,errormessage));
 	}
 }
 function writeResponse(result, gigyanotifier)

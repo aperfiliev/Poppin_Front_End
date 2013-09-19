@@ -31,6 +31,10 @@ socket = new easyXDM.Socket({
 	    		{
 	    			sendLoginRequest(messageObject);
 	    		}
+	    	else if(messageObject.requesttype=='resetpassword')
+    			{
+    				sendLoginRequest(messageObject);
+    			}
 	    	else if(messageObject.requesttype=='twitterlogin')
 	    		{
 	    			twitterLogin(messageObject);
