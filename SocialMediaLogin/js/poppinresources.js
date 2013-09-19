@@ -19,6 +19,6 @@ var poppinres = {
 	passwordresettitle:"Password Reset",
 	responseobjectnull:"null response object",
 	forgotpasswordsent:"Ok. We've sent you instructions on how to update your password, aka Your Personal Key to Work Happiness. Please check your email.",
-	forgotpasswordunrecognized:'The email that you entered is not recognized, please try again or <a href="'+ '/Login.ssp' +'" style="text-decoration: underline;">create a new account</a>'
+	forgotpasswordunrecognized:'The email that you entered is not recognized, please try again or <a href="Login.ssp?reg=T" style="text-decoration: underline;">create a new account</a>'
 	}
 };

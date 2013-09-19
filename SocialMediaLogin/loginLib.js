@@ -9,6 +9,7 @@ var LoginLib = {
 	getOrder : function() {
 		var retobj = {"totalfound": 0, 
 						 "items": [],
+						 "allitems": [], // TODO: remove
 						 "promocode": {}, 
 						 "giftcertificate": {},
 						 "summary": {} };
@@ -42,6 +43,7 @@ var LoginLib = {
 								'promotionamount' : items[i].promotionamount_formatted,
 								'options' : items[i].options,
 								'isavailable' : items[i].isavailable };
+					retobj.allitems[i] = items[i]; // TODO: remove
 					retobj.items[i] = item;
 				}
 			}
@@ -49,7 +51,10 @@ var LoginLib = {
 			if (promocodes && promocodes.length > 0)
 			{
 				retobj.promocode = promocodes[0];
-				retobj.promocode.description = LoginLib.getPromoDescription(retobj.promocode.promocode);
+				if(retobj.promocode.isvalid == 'T')
+				{
+					retobj.promocode.description = LoginLib.getPromoDescription(retobj.promocode.promocode);
+				}
 			}
 
 			if (giftcertificates && giftcertificates.length > 0) {
