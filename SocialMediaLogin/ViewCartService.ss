@@ -89,6 +89,13 @@ function service(request,response)
 			var error = nlapiCreateError(e);
 			retobj.header.status.code = error.getCode();
 			retobj.header.status.message = error.getDetails();
+			
+			// invalid coupon code handling
+			if(error.getCode() == "ERR_WS_INVALID_COUPON")
+			{
+				retobj.header.status.message = params.promocode;
+				orderObj.removePromotionCode(params.promocode);
+			}
 		}
 
 		retobj.result = LoginLib.getOrder();

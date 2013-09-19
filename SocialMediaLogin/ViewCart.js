@@ -154,6 +154,12 @@
 				
 				if(code == "SUCCESS" || code == "ERR_WS_INVALID_COUPON")
 				{
+					if(code == "ERR_WS_INVALID_COUPON")
+					{
+						items.promocode.isvalid = "F";
+						items.promocode.promocode = resp.header.status.message;
+						items.promocode.description = "";
+					}
 					document.getElementById('cartBody').innerHTML = '';
 					buildCartItems(items);
 				}
