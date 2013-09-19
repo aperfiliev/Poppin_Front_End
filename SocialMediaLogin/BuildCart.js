@@ -186,7 +186,7 @@
 			if(quantity>250)
 			{
 				ctnt.setAttribute("class", "input-red");
-				error_msg = '<p>Your quantity must be</p><p> less than 250</p>';
+				error_msg = '<p>Your quantity must be</p><p> less or equal 250</p>';
 			}
 		}
 		else if(quantityavailable < quantity)
