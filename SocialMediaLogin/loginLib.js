@@ -42,7 +42,8 @@ var LoginLib = {
 								'amount' : items[i].amount_formatted, 
 								'promotionamount' : items[i].promotionamount_formatted,
 								'options' : items[i].options,
-								'isavailable' : items[i].isavailable };
+								'isavailable' : items[i].isavailable, 
+								'isdropshipitem': items[i].isdropshipitem};
 					retobj.allitems[i] = items[i]; // TODO: remove
 					retobj.items[i] = item;
 				}

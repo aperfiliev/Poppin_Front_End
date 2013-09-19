@@ -75,7 +75,8 @@
 						order['items'][i].price, 
 						order['items'][i].price_discounted, 
 						order['items'][i].amount,
-						order['items'][i].promotionamount
+						order['items'][i].promotionamount,
+						order['items'][i].isdropshipitem
 					);
 			}
 			addEmptyRow(cartBody);
@@ -117,7 +118,7 @@
 	/*
 	 * Dynamically build out the item row
 	 */
-	function buildItemRow(table, num, storedisplaythumbnail, itemurl, name, quantity, quantityavailable, orderitemid, storedescription, rate_formatted, rate_discounted, amount_formatted, promotionamount)
+	function buildItemRow(table, num, storedisplaythumbnail, itemurl, name, quantity, quantityavailable, orderitemid, storedescription, rate_formatted, rate_discounted, amount_formatted, promotionamount, isdropshipitem)
 	{
 		var row, cell;
 		var error_msg = '';
@@ -179,7 +180,16 @@
 		ctnt.setAttribute("value", quantity);
 		ctnt.setAttribute("name", '_'+orderitemid);
 		ctnt.setAttribute("id", '_'+orderitemid);
-		if(quantityavailable < quantity)
+		
+		if(isdropshipitem)
+		{
+			if(quantity>250)
+			{
+				ctnt.setAttribute("class", "input-red");
+				error_msg = '<p>Your quantity must be</p><p> less than 250</p>';
+			}
+		}
+		else if(quantityavailable < quantity)
 		{
 			var plus_one = quantityavailable +1;
 			ctnt.setAttribute("class", "input-red");
