@@ -19,7 +19,7 @@ function suitelet(request, response){
 			selectedbanner = 1;
 			}
 		var form = nlapiCreateForm('Checkout Banner Settings');
-		form.setScript('customscript276');
+		form.setScript('customscript279');
 		var bannerinfoitem = nlapiLoadRecord('customrecord189', selectedbanner);
 		var bannerselect = form.addField('bansettings_bannerid', 'select', 'Banner Select');
 		bannerselect.addSelectOption(1, 'Login Banner');
@@ -82,8 +82,8 @@ else
 		
 		var file = request.getFile('bansettings_image');
 		//nlapiLogExecution('DEBUG', 'File url:', file.getURL()+' '+file.getValue());
-		//var folderrecord = nlapiLoadRecord('folder', 64780);
-		var folderId = '64780';		//hardcoded later should be loaded from file cabinet
+		//var folderrecord = nlapiLoadRecord('folder', 65283);
+		var folderId = '135899';		//hardcoded later should be loaded from file cabinet
 		fileResultUrl = '';
 		if ((file != null && file != '') && (folderId != null && folderId != ''))
 		{
@@ -141,7 +141,7 @@ else
 		nlapiSubmitRecord(bannerinfoitem);
 		var params = new Array();
 		params['selectedbanner'] = selectedbanner;
-		nlapiSetRedirectURL("SUITELET", "customscript275", "customdeploy1", null, params);
+		nlapiSetRedirectURL("SUITELET", "customscript278", "customdeploy1", null, params);
 	}
 }
 function refreshSuitelet()

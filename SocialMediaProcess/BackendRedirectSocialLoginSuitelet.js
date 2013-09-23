@@ -28,7 +28,7 @@ function suitelet(request, response){
 			responseObject={
 					"length":results.length,
 					"customerid":results[0].getId(),
-					"sociallinkpwd":custrecord.getFieldValue('custentity33')
+					"sociallinkpwd":custrecord.getFieldValue('custentity27')
 			};
 		}
 	else{

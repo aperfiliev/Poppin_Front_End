@@ -23,7 +23,7 @@ function suitelet(request, response){
 	if(results!=null)
 		{
 			var custrecord = nlapiLoadRecord('customer', results[0].getId());
-			custrecord.setFieldValue('custentity33', request.getParameter('password'));
+			custrecord.setFieldValue('custentity27', request.getParameter('password'));
 			var result = nlapiSubmitRecord(custrecord, null, true);
 			if (result){
 				responseObject={
