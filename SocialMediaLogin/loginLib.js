@@ -9,7 +9,6 @@ var LoginLib = {
 	getOrder : function() {
 		var retobj = {"totalfound": 0, 
 						 "items": [],
-						 "allitems": [], // TODO: remove
 						 "promocode": {}, 
 						 "giftcertificate": {},
 						 "summary": {} };
@@ -44,7 +43,6 @@ var LoginLib = {
 								'options' : items[i].options,
 								'isavailable' : items[i].isavailable, 
 								'isdropshipitem': items[i].isdropshipitem};
-					retobj.allitems[i] = items[i]; // TODO: remove
 					retobj.items[i] = item;
 				}
 			}
@@ -93,14 +91,14 @@ var LoginLib = {
 		return retobj;
 	},
 	getHelp : function() {
-		var helpresponse = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=278&deploy=1&compid=3363929&h=e99bd31ff84dd428f826');
+		var helpresponse = nlapiRequestURL(poppinservres.url.placingorderhelpsuitlet);
 		return helpresponse.getBody();
 	},
 	getPromoDescription : function(code) {
 		var description = "";
 		try
 		{
-			var response = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=280&deploy=1&compid=3363929&h=17e42ce4a6e832b8a0f8&code='+code);
+			var response = nlapiRequestURL(poppinservres.url.promodescriptionsuitlet+'&code='+code);
 			var respObj = JSON.parse(response.getBody());
 			if(respObj.length > 0 && respObj[0].columns)
 			{

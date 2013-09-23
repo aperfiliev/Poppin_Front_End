@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin/js/poppinresources.js"></script>
 <script src="js/jquery-1.10.2.min.js"></script>
 <!--  <script type="text/javascript" src="http://cdn.gigya.com/js/socialize.js?apiKey=3_I2Mjv1WInkkrH24KFFTRILLRY38x3T3zP2j_ktD55kvl2Sk3l0uWhw_i9xEOiTqG">-->
 <script type="text/javascript" src="https://cdns.gigya.com/JS/socialize.js?apiKey=3_I2Mjv1WInkkrH24KFFTRILLRY38x3T3zP2j_ktD55kvl2Sk3l0uWhw_i9xEOiTqG">
@@ -16,7 +15,7 @@
 <script type="text/javascript">
 var socket=null;
 socket = new easyXDM.Socket({
-	remote: poppinres.url.loginpage,
+	remote: "https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin/Login.ssp",
 	onMessage:function(message, origin) {
 		var notifyobject = JSON.parse(message);
 		if(notifyobject.type=='login'){
@@ -40,6 +39,11 @@ socket = new easyXDM.Socket({
 		}
 	}
 });
+function printResponse(response) {
+	alert('Gigya response start');
+	alert('entire notifyLogin'+JSON.stringify(response));	
+}
+var parenturl='http://sandbox.poppin.com';
 $(function(){
 	var login_params=
 	{

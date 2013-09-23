@@ -19,7 +19,7 @@ function service(request, response) {
 		var shoppingSession = nlapiGetWebContainer().getShoppingSession();
 		var siteSetting = shoppingSession.getSiteSettings([ 'touchpoints' ]);
 		var viewcart = siteSetting.touchpoints.viewcart;
-		var homeurl = siteSetting.touchpoints.home;
+		var homeurl = siteSetting.touchpoints.checkout;
 
 		var checkoutSetting = {
 			type : 'paypalexpress',

@@ -1,6 +1,6 @@
 <html>
 <head>
-<script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin/js/poppinresources.js"></script>
+<script type="text/javascript" src="<%=poppinservres.url.poppinresources%>"></script>
 <script src="js/jquery-1.10.2.min.js"></script>
 <link href="/site/social-login/css/login.css" rel="stylesheet" type="text/css" />
 <style>

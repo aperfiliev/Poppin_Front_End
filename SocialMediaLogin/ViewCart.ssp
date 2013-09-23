@@ -4,8 +4,8 @@
 <head>
 <%= getPageFullHead() %>
 <script src="js/jquery-1.10.2.min.js"></script>
-<script src="/SSP Applications/Poppin/SocialMediaLogin/js/jquery-ui-1.10.3.custom.min.js"></script>
-<link href="/site/social-login/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
+<script src="<%=poppinservres.url.jsjqueryui%>"></script>
+<link href="<%=poppinservres.url.cssjqueryui%>" rel="stylesheet" type="text/css" />
 <script src="js/jquery.powertip.js"></script>
 <script type="text/javascript" src="BuildCart.js"></script>
 <script type="text/javascript" src="ViewCart.js"></script>
@@ -295,7 +295,7 @@ color: grey;
 					<PP_CART_PAGETOP>
 				</table>
 				<div class="promo-banner" style="text-align: center;">
-					<%=getRecordAttribute('189',2,'custrecord_bannerhtml')%>
+					<%=getRecordAttribute(poppinservres.id.banner,2,'custrecord_bannerhtml')%>
 				</div>
 			</div>
 
@@ -332,7 +332,7 @@ color: grey;
 													<a href="#" onclick="showHelp();">Need help placing your order? It's okay to ask for help!</a>
 												</div>
 												<div class="upsell_options" style="text-align: center;">
-													<%=getRecordAttribute('189',3,'custrecord_bannerhtml')%>
+													<%=getRecordAttribute(poppinservres.id.banner,3,'custrecord_bannerhtml')%>
 												</div>
 											</td>
 											<td valign="top" style="padding: 5px 5px 5px 20px; border-left: 1px solid gray;width: 197px;" align="right">
