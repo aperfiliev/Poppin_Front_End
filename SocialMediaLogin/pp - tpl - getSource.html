@@ -1,0 +1,29 @@
+<script type="text/javascript">
+var xmlhttp = new XMLHttpRequest();
+function contentRequest(){
+	xmlhttp.onreadystatechange = contentResponseHandle;
+	xmlhttp.open('post', "<%=getCurrentAttribute('sitecategory','storedetaileddescription','')%>", true);
+	xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	try{
+		xmlhttp.send();
+	} catch(e){
+		console.log('error with processing contentRequest() : ' + e.message);
+	}
+}
+function contentResponseHandle(){
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+		try{
+			var resp = xmlhttp.responseText;
+			document.getElementById('contentBody').innerHTML = resp;
+		} catch(e){
+			console.log('error with processing contentResponseHandle() : ' + e.message);
+		}
+	}
+}
+$j(document).ready(function(){
+	contentRequest();
+	$j.getScript("<%=getCurrentAttribute('sitecategory','storedetaileddescription','')%>.js");
+});
+</script>
+<td id='contentBody'>
+</td>
