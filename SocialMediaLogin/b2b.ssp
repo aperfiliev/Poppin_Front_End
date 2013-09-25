@@ -1,12 +1,10 @@
 <table border="0" cellpadding="5" cellspacing="0" width="100%">
 	<tbody id="content_master">
-		<tr valign="top" height="85">
+		<tr>
 			<td>
-				<div>
-					<h1>Let's Get Down to Business</h1>
-				</div>
+				<h1>Let's Get Down to Business</h1>
 				<div class="div__presentation">
-					Check out the Poppin Ping-Pong Conference Table >
+					<a href="" ><img src="/site/pp-sources/business/poppin-business.animation.gif" ></a>
 				</div>
 				<div class="div__register">
 					<h3>COME ON, WORK HAPPY!</h3>
@@ -21,70 +19,100 @@
 						</fieldset>
 						<fieldset>
 							<label for="email">Email Address</label>
-							<div style="position: relative;"><input id="emailreg" name="email" type="text" /></div>
+							<div style="position: relative;"><input id="emailreg" name="email" type="text"/></div>
 						</fieldset>
 						<fieldset>
-							<label for="company" style="margin-bottom: 10px; display: block;">Company</label>
-							<input id="company" name="company" type="text"/>
+							<label for="company">Company</label>
+							<div style="position: relative;"><input id="company" name="company" type="text"/></div>
+						</fieldset>
+						<fieldset>
+							<div class="div__select" style="position: relative;">
+								<select id="hearaboutus" name="hearaboutus" >
+									<option selected="selected" style="display:none;">How'd you hear about us?</option>
+									<option>Option 1</option>
+								</select>
+							</div>
 						</fieldset>
 						<fieldset>
 							<input id="subscribe" name="subscribe" type="checkbox" checked />
+							<label class="checkLbl">I want in on the Poppin action!</label>
 						</fieldset>
 						<fieldset>
-							<input id="subscribe" name="subscribe" type="checkbox" checked />
-							<label class="checkLbl">I would like to receive Poppin emails</label>
-						</fieldset>
-						<fieldset>
-							<input type="submit" value="Continue" class="orangeBtn" name="submit" id="submit" style="margin: 0px;"/>
+							<input type="submit" value="Submit" class="orangeBtn" name="submit" id="submit" style="margin: 0px;"/>
 						</fieldset>
 					</form>
 				</div>
 			</td>
 		</tr>
 		
-		<tr valign="top" height="85">
+		<tr>
 			<td>
-				<div class="div__options">
-				Shop Desktop >
-				</div>
-				<div class="div__options">
-				Customization >
-				</div>
-				<div class="div__options">
-				Shop Furniture >
+
+							<div class="div__options">
+								<a href=""><p>Shop Desktop ></p></a>
+								<img alt="Shop Desktop" src="/site/pp-sources/business/shop-desktop.png">
+							</div>
+
+							<div class="div__options">
+								<a href=""><p>Brand It ></p></a>
+								<img alt="Brand It" src="/site/pp-sources/business/brand-it.png">
+							</div>
+
+							<div class="div__options">
+								<a href=""><p>Shop Furniture ></p></a>
+								<img alt="Shop Furniture" src="/site/pp-sources/business/shop-furniture.png">
+							</div>
+
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div>
+					<h2>Join the Work Happy Revolution!</h2>
+					<p>At Poppin, we've taken the humdrum, ordinary objects of the workspace and transformed them into extraordinary things, making it 
+					easy to establish a workplace atmosphere that excites fresh-thinking, increases productivity, and gets everyone working happy. 
+					With our full color palette of fashionable, functional, utterly affordable, and fully customizable furnishing and supply-closet 
+					fixing, our work happy revolution has already taken hold with corporate clients that prize creativity, productivity, and innovation. 
+					For more information about our specific business offerings, contact our workstylists at 866 &#8226; 926 &#8226; 4922 &#8211; and get everyone in gear 
+					to work happy.</p>
+					<h4>Call your WorkStylist today 866 &#8226; 926 &#8226; 4922</h4>
 				</div>
 			</td>
 		</tr>
-		<tr valign="top" height="85">
+		<tr>
 			<td>
 				<div>
-	Join the Work Happy Revolution!
-	At Poppin, we've taken the humdrum, ordinary objects of the workspace and transformed them into extraordinary things, making it 
-	easy to establish a workplace atmosphere that excites fresh-thinking, increases productivity, and gets everyone working happy. 
-	With our full color palette of fashionable, functional, utterly affordable, and fully customizable furnishing and supply-closet 
-	fixing, our work happy revolution has already taken hold with corporate clients that prize creativity, productivity, and innovation. 
-	For more information about our specific business offerings, contact our workstylists at 866 &#8226; 926 &#8226; 4922 &#8211; and get everyone in gear 
-	to work happy.
+					<h2>Who's Working Happy?</h2>
+					"A Univercity of Exeter study found 
+					that people who were allowed to 
+					design their work area, were up to 
+					32% more productive &#8211; without any 
+					increase in errors."
+					...................................
+					Johan Leher
+					HOW CREATIVITY WORKS
+				</div>
+			</td>
+		</tr>
+		<tr>
+		<td>
 		
-	Call your WorkStylist today 866&#8226;926&#8226;4922
-				</div>
-			</td>
-		</tr>
-		<tr valign="top" height="85">
-			<td>
-				<div>
-	Who's Working Happy?
-	
-	"A Univercity of Exeter study found 
-	that people who were allowed to 
-	design their work area, were up to 
-	32% more productive &#8211; without any 
-	increase in errors."
-	...................................
-	Johan Leher
-	HOW CREATIVITY WORKS
-				</div>
-			</td>
+		<div class="form">
+<NLFORM> 
+<label>Your Email</label>
+<NLEMAIL>
+<label>YOUR EMAIL AGAIN PRETTY PLEASE</label>
+<NLCUSTENTITY_EMAILAGAIN>
+<label>First Name</label>
+<NLFIRSTNAME>
+<label>Last Name</label>
+<NLLASTNAME>
+
+<div class="clear"></div>
+<input class="btn" type="button" name="send" value="" onclick="$j("#main_form").submit();" />
+</form> 
+		
+		</td>
 		</tr>
 	</tbody>
 </table>
