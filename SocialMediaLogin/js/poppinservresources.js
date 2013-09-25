@@ -1,9 +1,9 @@
 var poppinservres = {
 	url:{
-	gigyacontrol:"https://checkout.netsuite.com/c.3363929/SSP%20Applications/Poppin/SocialMediaLogin2/gigya.html",
-	loginservice:"https://checkout.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/LoginService.ss",
-	loginpage:"https://checkout.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/Login.ssp",
-	poppinglobal:"http://www.poppin.com",
+	gigyacontrol:"https://checkout.sandbox.netsuite.com/c.3363929/SSP%20Applications/Poppin/SocialMediaLogin2/gigya.html",
+	loginservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/LoginService.ss",
+	loginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/Login.ssp",
+	poppinglobal:"http://sandbox.poppin.com",
 	checkexistinguser:"https://forms.netsuite.com/app/site/hosting/scriptlet.nl?script=281&deploy=1&compid=3363929&h=afdf73f46a683569f999",
 	storelink:"https://forms.netsuite.com/app/site/hosting/scriptlet.nl?script=277&deploy=1&compid=3363929&h=48069b02f983db8cdd31",
 	placingorderhelpsuitlet: "https://forms.netsuite.com/app/site/hosting/scriptlet.nl?script=282&deploy=1&compid=3363929&h=288eeb5121d7dd217ad5",
