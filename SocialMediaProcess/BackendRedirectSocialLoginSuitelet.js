@@ -18,7 +18,7 @@ function suitelet(request, response){
 	columns[0]= new nlobjSearchColumn('Email');
 	var filters = [];
 	filters[0] = new nlobjSearchFilter('email', null, 'is', email, null);
-	filters[1]= new nlobjSearchFilter('weblead', null, 'is', true, null);
+	filters[1]= new nlobjSearchFilter('weblead', null, 'is', 'T', null);
 	var results = nlapiSearchRecord('customer', null, filters , columns);
 	var responseObject;
 	if(results!=null)
