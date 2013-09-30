@@ -1,0 +1,95 @@
+<html>
+<head>
+<script type="text/javascript" src="<%=poppinservres.url.poppinresources%>"></script>
+<script src="js/jquery-1.10.2.min.js"></script>
+<link href="/site/social-login/css/login.css" rel="stylesheet" type="text/css" />
+<style>
+body {
+	margin: 0;
+	padding: 0;
+}
+</style>
+<script type="text/javascript" src="js/easyXDM.js"></script>
+<script type="text/javascript">
+var socket = null;
+socket = new easyXDM.Socket({
+		remote:poppinres.url.poppinglobal,
+		onReady: function(){
+			
+     },
+	    onMessage:function(message, origin) {
+	    	var messageObject = JSON.parse(message);
+	    	if(messageObject.requesttype=='login')
+	    		{
+	    			sendLoginRequest(messageObject);
+	    		}
+	    	else if(messageObject.requesttype=='sociallogin')
+	    		{
+	    			socialLogin(messageObject.user);	
+	    		}
+	    	else if(messageObject.requesttype=='forgotpassword')
+	    		{
+	    			sendLoginRequest(messageObject);
+	    		}
+	    	else if(messageObject.requesttype=='resetpassword')
+    			{
+    				sendLoginRequest(messageObject);
+    			}
+	    	else if(messageObject.requesttype=='twitterlogin')
+	    		{
+	    			twitterLogin(messageObject);
+	    		}
+	    }
+	});
+function socialLogin(deserialized)
+{
+    var newUser = {
+    		"requesttype":"sociallogin",
+    		"email":deserialized['user'].email,
+    		"name":deserialized['user'].firstName +' ' +deserialized['user'].lastName,
+    		"password":'',
+    		"password2":'',
+    		"checkout":false,
+    		"timestamp":deserialized.signatureTimestamp,
+			"UID":deserialized.UID,
+			"signature":deserialized.UIDSignature
+    		};
+  sendLoginRequest(newUser);
+}
+function twitterLogin(deserialized)
+{
+    var newUser = {
+    		"requesttype":"sociallogin",
+    		"email":deserialized.email,
+    		"name":deserialized.name,
+    		"password":'',
+    		"password2":'',
+    		"checkout":false,
+    		"timestamp":deserialized.signatureTimestamp,
+			"UID":deserialized.UID,
+			"signature":deserialized.UIDSignature
+    		};
+  sendLoginRequest(newUser);
+}
+function sendLoginRequest(user)
+{
+	jQuery.ajax({
+		  url: poppinres.url.loginservice,
+		  data: user,
+		  dataType: 'jsonp',
+		  jsonp: 'json.wrf',
+		  success: response,
+		  error: response
+		});
+	    document.body.style.cursor = 'wait';
+}
+function response(data)
+{
+	socket.postMessage(data.responseText);
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
