@@ -1,0 +1,54 @@
+<script type="text/javascript">
+jQuery(function(){
+ jQuery('#miniloginform').on('submit', function(e) {
+	e.preventDefault();
+	var loginUser = {
+		"requesttype":"login",
+		"remember":document.forms['miniloginform'].elements['remember'].checked,
+		"email":document.forms['miniloginform'].elements['email'].value,
+		"password":document.forms['miniloginform'].elements['password'].value,
+		"checkout":false
+	};
+	if(loginUser.email === ''){
+		jQuery("#dialogresponse").html(loginUser.email + ' Please input email address.');
+		jQuery("#dialogresponse").dialog({title:"Info"}); return false;
+	}
+	if(!validateEmail(loginUser.email)){
+		jQuery("#dialogresponse").html(loginUser.email + ' Please enter a valid email address.');
+		jQuery("#dialogresponse").dialog({title:"Info"}); return false;
+	}
+	var userstr = JSON.stringify(loginUser);
+	socket.postMessage(userstr);
+	document.body.style.cursor = 'wait';
+ });
+
+ jQuery('#minitwitter-email').on('submit', function(e){ 
+	e.preventDefault();
+	var loginUser = {
+		"requesttype":"twitterlogin",
+		"remember":true,
+		"email":document.forms['minitwitter-email'].elements['emailtwitter'].value,
+		"name":document.forms['minitwitter-email'].elements['customername'].value,
+		"password":'',
+		"password2":'',
+		"checkout":false,
+		"signatureTimestamp":document.forms['minitwitter-email'].elements['timestamp'].value,
+		"UID":document.forms['minitwitter-email'].elements['UID'].value,
+		"UIDSignature":document.forms['minitwitter-email'].elements['signature'].value
+	};
+	if(loginUser.email === ''){
+		jQuery("#dialogresponse").html(loginUser.email + ' Please input email address.');
+		jQuery("#dialogresponse").dialog({title:"Info"});
+		return false;
+	}
+	if(!validateEmail(loginUser.email)){
+		jQuery("#dialogresponse").html(loginUser.email + ' Please enter a valid email address.');
+		jQuery("#dialogresponse").dialog({title:"Info"});
+		return false;
+	}
+	var userstr = JSON.stringify(loginUser);
+	socket.postMessage(userstr);
+	document.body.style.cursor = 'wait';
+ });
+});
+</script>
