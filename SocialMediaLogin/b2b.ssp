@@ -48,16 +48,68 @@
 		</tr>
 		<tr>
 			<td>
-				<div>
+				<div style="position: relative;">
 					<h2>Who's Working Happy?</h2>
-					"A Univercity of Exeter study found 
-					that people who were allowed to 
-					design their work area, were up to 
-					32% more productive &#8211; without any 
-					increase in errors."
-					...................................
-					Johan Leher
-					HOW CREATIVITY WORKS
+					<table border="0" cellpadding="5" cellspacing="0" width="100%">
+						<tbody id="logos">
+							<tr>
+								<td>
+									<img src="/site/pp-sources/business/logo01.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo02.png">
+								</td>
+								<td colspan="2">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="/site/pp-sources/business/logo03.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo04.png">
+								</td>
+								<td colspan="2">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="/site/pp-sources/business/logo05.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo06.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo07.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo08.png">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="/site/pp-sources/business/logo09.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo10.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo11.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo12.png">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div id="powerTip" class="n">
+						<p>A University of Exeter study </p>
+						<p>found that people who were </p>
+						<p>allowed to design their work </p>
+						<p>area, were up to 32% more </p>
+						<p>productive &#8211; without any </p>
+						<p>increase in errors.</p>
+					</div>
 				</div>
 			</td>
 		</tr>
