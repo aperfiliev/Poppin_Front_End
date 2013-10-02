@@ -68,9 +68,7 @@ tbody#logos td{
 	padding: 20px 0 20px 0;
 }
 
-/* Configure powerTip */
-
-div[id^="powerTip"] {
+div[id^="quotedBox"] {
 	background-color:rgb(248, 124, 2);
 	color:#fff;
 	padding: 35px 50px 35px 50px;
@@ -89,11 +87,11 @@ div[id^="powerTip"] {
 	bottom: auto;
 	display: block;
 }
-div[id^="powerTip"]:before {
+div[id^="quotedBox"]:before {
 	content: "";
 	position: absolute;
 }
-div[id^="powerTip"].n:before {
+div[id^="quotedBox"].n:before {
 	top: 100%;
 	left: 173px;
 	width: 92px;
