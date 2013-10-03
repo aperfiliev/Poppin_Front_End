@@ -1,0 +1,63 @@
+<!--
+  Module Description
+
+  Version    Date            Author           Remarks
+  1.00       24 Sep 2013     ashykalov
+//-->
+
+<!doctype html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin2/js/poppinresources.js"></script>
+<script type="text/javascript" src="js/easyXDM.js"></script>
+<script type="text/javascript">
+var ordernum = '';
+var socket = new easyXDM.Socket({
+   onMessage: function(message, origin){
+	   ordernum = message;
+	   //alert(JSON.stringify(ordernum));
+   }
+});
+</script>
+<link href="/site/pp-files/pp-all-styles.min.css?c=" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin2/exitsurvey.css" />
+<script type="text/javascript">
+function closeExitSurvey(){
+	socket.postMessage("close");
+}
+function submitExitSurvey(){
+	var e = document.getElementById("ddlquestion1");
+	var selectedHearUs = e.options[e.selectedIndex].value;
+	//alert(selectedHearUs);
+	
+	var esresult = {
+			orderid : ordernum,
+			question : "1",
+			answer : selectedHearUs
+	}
+	$.ajax({
+		url: poppinres.url.storeexitsurveyservice,
+		data: esresult,
+		dataType: 'jsonp',
+		jsonp: 'json.wrf',
+		success: response,
+		error: response
+	});
+}
+function response(data){
+	console.log(data);
+	socket.postMessage("close");
+}
+
+</script>
+
+</head>
+<body style="width:400px; background:white;">
+<!--  check if company !=null show survey 2 else 1 -->
+<div >
+
+<%=getRecordAttribute('203',1,'custrecord_eshtml')%>
+</div>
+</body>
+</html>
