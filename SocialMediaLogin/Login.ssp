@@ -527,7 +527,7 @@ function forgotPasswordSocialLink()
 	<PP_LOGIN_PAGETOP>
 </table>
 <div class="promo-banner">
-	<%=getRecordAttribute(poppinservres.id.banner,1,'custrecord_bannerhtml')%>
+	<%=getRecordAttribute('199',1,'custrecord_bannerhtml')%>
 </div>
 </div>
 <div id='div__body_outer'>
