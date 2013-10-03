@@ -12,7 +12,16 @@
 
 <script>
 var set='';
+function setGARedirectUrl(url) {
+	   var redir_elem = url;
 
+	   _gaq.push(function() {
+	    var tracker = _gaq._getAsyncTracker();
+	    redir_elem = tracker._getLinkerUrl(url);
+	   });
+	   window.location = redir_elem;
+	   return false;
+	  }
 $(document).ready(
 		function(){
 			$(window).scroll(function () {
@@ -28,6 +37,40 @@ $(document).ready(
 				}
 			});
 		});
+// $(function() { 
+// 	$('#cartform').on('submit', function(e) { 
+// //	 	<input type='hidden' name='c' value='3363929'>
+// //	 	<input type='hidden' name='sc' value='3'>
+// //	 	<input type='hidden' name='vid' value='wzxHh0i-AVs-_kTy'>
+// //	 	<input type='hidden' name='ck' value='wzxHh2C-AXyys5Tk'>
+// //	 	<input type='hidden' name='cktime' value='114292'>
+// //	 	<input type='hidden' name='cart' value='182390'>
+// 		 try {
+// 	            e.preventDefault();
+	         
+		 
+// 	            var form = this;
+// 	            if (typeof _gat !== 'undefined') {
+// 	                _gaq.push(['_linkByPost', this]);
+// 	                var pageTracker = _gat._getTrackerByName();
+// 	                var url = pageTracker._getLinkerUrl(form.action);
+// 	                var match = url.match(/[^=&?]+\s*=\s*[^&#]*/g);
+// 	                for ( var i = match.length; i--; ) {
+// 	                    var spl = match[i].split("=");
+// 	                    var name = spl[0].replace("[]", "");
+// 	                    var value = spl[1];
+// 	                    $('<input>').attr({
+// 	                        type: 'hidden',
+// 	                        name: name,
+// 	                        value: value
+// 	                    }).appendTo(form);
+// 	                }
+// 	            }
+// 	            setTimeout(function() { form.submit(); }, 400);
+// 	        } catch (e) { form.submit(); }
+// 	});
+	
+// });
 	
 </script>
 
@@ -295,7 +338,7 @@ color: grey;
 					<PP_CART_PAGETOP>
 				</table>
 				<div class="promo-banner" style="text-align: center;">
-					<%=getRecordAttribute(poppinservres.id.banner,2,'custrecord_bannerhtml')%>
+					<%=getRecordAttribute('199',2,'custrecord_bannerhtml')%>
 				</div>
 			</div>
 
@@ -307,7 +350,8 @@ color: grey;
 			</div>
 
 			<div id="div__help_bg"></div>
-
+			<!-- <form method='post' name='cart' id='cart' onsubmit="_gaq.push(['_linkByPost', this]); return true;"> -->
+			<input type='hidden' name='redirect' value=''>
 			<div id='div__body'>
 				<table border="0" cellspacing="0" cellpadding="0" width="100%">
 					<tbody>
@@ -332,13 +376,13 @@ color: grey;
 													<a href="#" onclick="showHelp();">Need help placing your order? It's okay to ask for help!</a>
 												</div>
 												<div class="upsell_options" style="text-align: center;">
-													<%=getRecordAttribute(poppinservres.id.banner,3,'custrecord_bannerhtml')%>
+													<%=getRecordAttribute('199',3,'custrecord_bannerhtml')%>
 												</div>
 											</td>
 											<td valign="top" style="padding: 5px 5px 5px 20px; border-left: 1px solid gray;width: 197px;" align="right">
 											<div id="floatingTotal" style="position:relative;">
 											<div class="checkoutDiv">
-											<input type="submit" class="bgbutton" value="checkout" onclick="checkout();return false;"/>
+											<input type="submit" class="bgbutton" value="checkout" onclick="if(checkout()){setGARedirectUrl(checkoutUrl.value);};"/>
 											</div>
 												<table class="orderSummary" border="0" cellspacing="0" cellpadding="0">
 												<col class="summaryLabels" />
@@ -349,7 +393,7 @@ color: grey;
 												<div class="promoCode" id="promoCodeDiv">
 												</div>
 												<div class="checkoutDiv">
-												<input type="submit" class="bgbutton" value="checkout" onclick="checkout();return false;"/>
+												<input type="submit" class="bgbutton" value="checkout" onclick="if(checkout()){setGARedirectUrl(checkoutUrl.value);}"/>
 												<span class="span-or-use">- Or use -</span>
 													<%
 														var checkoutSettings = nlapiGetWebContainer().getShoppingSession().getSiteSettings(['checkout']); 
@@ -357,9 +401,9 @@ color: grey;
 														var paypalImageUrl = checkoutSettings.checkout.paypalexpress.imageurl;
 														paypalImageUrl = (paypalImageUrl != undefined) ? paypalImageUrl : 'http://www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif';
 													%>
-												<form name='paypalform' action='<%=paypalUrl%>' method='post'>
-													<input type='image' src='<%=paypalImageUrl%>' class="nlbutton" style="background: #FFF;border: 0px solid #fff;"/>
-												</form>
+												
+													<input type='image' src='<%=paypalImageUrl%>' onclick='if(checkout()){setGARedirectUrl("<%=paypalUrl%>");}' class="nlbutton" style="background: #FFF;border: 0px solid #fff;"/>
+												
 												</div>
 											</div>
 											</td>
@@ -371,6 +415,7 @@ color: grey;
 					</tbody>
 				</table>
 			</div>
+			<!--  </form>-->
 		</div>
 	</div>
 	<div id='div__footer' class='noprint' leftmargin='0' topmargin='0'

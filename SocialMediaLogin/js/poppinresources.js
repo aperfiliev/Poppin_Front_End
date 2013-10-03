@@ -1,10 +1,11 @@
 var poppinres = {
 	url:{
-	gigyacontrol:"https://checkout.netsuite.com/c.3363929/SSP%20Applications/Poppin/SocialMediaLogin2/gigya.html",
-	loginservice:"https://checkout.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/LoginService.ss",
-	loginpage:"https://checkout.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/Login.ssp",
-	miniloginpage:"https://checkout.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/MiniLogin.ssp",
-	poppinglobal:"http://www.poppin.com"
+	gigyacontrol:"https://checkout.sandbox.netsuite.com/c.3363929/SSP%20Applications/Poppin/SocialMediaLogin2/gigya.html",
+	loginservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/LoginService.ss",
+	storeexitsurveyservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/StoreExitSurveyResult.ss",
+	loginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/Login.ssp",
+	miniloginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/MiniLogin.ssp",
+	poppinglobal:"http://sandbox.poppin.com"
 	},
 	text : {
 	forgotpassword:"",
@@ -20,5 +21,8 @@ var poppinres = {
 	responseobjectnull:"null response object",
 	forgotpasswordsent:"Ok. We've sent you instructions on how to update your password, aka Your Personal Key to Work Happiness. Please check your email.",
 	forgotpasswordunrecognized:'The email that you entered is not recognized, please try again or <a href="'+ 'Login.ssp?reg=T' +'" style="text-decoration: underline;">create a new account</a>'
+	},
+	id : {
+		banner:'199'
 	}
 };

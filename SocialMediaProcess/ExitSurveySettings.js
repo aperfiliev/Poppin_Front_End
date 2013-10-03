@@ -101,7 +101,7 @@ else
 		filters[0] = new nlobjSearchFilter('custrecord_esquestionlink', null, 'is', selectedexitsurvey, null);
 		var results = nlapiSearchRecord('customrecord201', null, filters , columns);
 		var optionsresulthtml='';
-		optionsresulthtml = '<select id="ddlquestion1"><option value="0" selected="selected">Howou hear about us?</option>';//TODO:get question name
+		optionsresulthtml = '<select id="ddlquestion1"><option value="0" selected="selected">How\'d you hear about us?</option>';//TODO:get question name
 		if(results!=null)
 			{
 				for(var i = 0; i < results.length; i++)
@@ -116,10 +116,10 @@ else
 		}
 		optionsresulthtml = optionsresulthtml + '</select>';
 		nlapiLogExecution('DEBUG','options html result', optionsresulthtml);		
-			htmloutput = '<div class="exitsurvey">'+ '<input type="button" class="closebutton" value="X" onclick="alert(\'close\');">' + '<h2>' + exitsurveyitem.getFieldValue('custrecord_estitle') + '</h2>';
+			htmloutput = '<div class="exitsurvey">'+ '<input type="button" class="closebutton" value="X" onclick="closeExitSurvey();">' + '<h2>' + exitsurveyitem.getFieldValue('custrecord_estitle') + '</h2>';
 			htmloutput = htmloutput + '<p>' + exitsurveyitem.getFieldValue('custrecord_esbody') + '</p>';
 			htmloutput = htmloutput + optionsresulthtml;
-			htmloutput = htmloutput + '<div><input class="orangeBtn" type="button" value="SUBMIT" onclick="alert(\'submit\');return false;"/></div>';
+			htmloutput = htmloutput + '<div><input class="orangeBtn" type="button" value="SUBMIT" onclick="submitExitSurvey();return false;"/></div>';
 			htmloutput = htmloutput + '</div>';
 			
 //		}

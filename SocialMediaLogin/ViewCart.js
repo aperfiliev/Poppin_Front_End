@@ -90,11 +90,13 @@
 		{
 			$("#dialogresponse").html("Some fields are filled incorrectly");
 			$("#dialogresponse").dialog({ title: "Info" });
+			return false;
 		}
 		else
 		{
-			var checkoutUrl = document.getElementById('checkoutUrl');
-			document.location.href = checkoutUrl.value;
+			//var checkoutUrl = document.getElementById('checkoutUrl');
+			//document.location.href = checkoutUrl.value;
+			return true;
 		}
 	}
 	/*
