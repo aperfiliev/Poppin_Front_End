@@ -70,16 +70,28 @@ function miniForgotPassword(){
 		"password" : document.forms['miniloginform'].elements['password'].value
 	};
 	if (user.email === ''){
-		jQuery("#dialogresponse").html(poppinres.text.emailempty);
-		jQuery("#dialogresponse").dialog({title : "Info"});
+		showtip('miniemail','<p>'+poppinres.text.emailempty+'</p>');
 		return false;
 	}
 	if (!validateEmail(user.email)){
-		jQuery("#dialogresponse").html(user.email + poppinres.text.emailinvalid);
-		jQuery("#dialogresponse").dialog({title : "Info"});
+		showtip('miniemail','<p>'+user.email + poppinres.text.emailinvalid+'</p>');
 		return false;
 	}
 	var userstr = JSON.stringify(user);
 	socket.postMessage(userstr);
+}
+function showtip(control, msg){
+	$('#'+control).data('powertip', msg);
+	$('#'+control).powerTip({
+		placement : 'n',
+		popupId : 'powerTip' + control,
+		manual : true,
+		parent : $('#'+control).parent(),
+		top: -6,
+		left: 10
+	});
+	$('#'+control).attr('class','input-red');
+	$('#'+control).on('focusin', function() { $('#powerTip' + control).hide(); } );
+	$('#'+control).powerTip('show');
 }
 </script>
