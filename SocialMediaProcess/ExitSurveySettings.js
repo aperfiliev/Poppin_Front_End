@@ -18,6 +18,10 @@ function suitelet(request, response){
 		if(selectedexitsurvey == null || selectedexitsurvey == undefined){
 			selectedexitsurvey = 1;
 			}
+		var selectedquestion = request.getParameter('selectedquestion');
+		if(selectedquestion == null || selectedquestion == undefined){
+			selectedquestion = 1;
+			}
 		var form = nlapiCreateForm('Exit Survey Settings');
 		form.setScript('customscript286');
 		var exitsurveyitem = nlapiLoadRecord('customrecord203', selectedexitsurvey);
@@ -25,7 +29,8 @@ function suitelet(request, response){
 		exitsurveyselect.addSelectOption(1, 'Customer Exit Survey');
 		exitsurveyselect.addSelectOption(2, 'Business Customer Exit Survey');
 		exitsurveyselect.setDefaultValue(selectedexitsurvey);
-		
+		var questionselect = form.addField('essettings_questionid', 'select', 'Question Select');
+		//for(var i=0;i<)
 		form.addField('essettings_title', 'text','Survey Title').setDefaultValue(exitsurveyitem.getFieldValue('custrecord_estitle'));
 		form.addField('essettings_body', 'textarea','Survey Body Text').setDefaultValue(exitsurveyitem.getFieldValue('custrecord_esbody'));
 		
@@ -44,29 +49,32 @@ function suitelet(request, response){
 	     
 	     for(var i = 0; i < questiondata.length; i++)
 			{
-	    	 	questionsublist.setLineItemValue('sublistid', i+1, questiondata[i].getValue('internalid'));
+	    	 	questionselect.addSelectOption(questiondata[i].getValue('internalid'), questiondata[i].getValue('name'));
+	    	 	questionsublist.setLineItemValue('sublistquestionid', i+1, questiondata[i].getValue('internalid'));
 	    	 	questionsublist.setLineItemValue('sublistname', i+1, questiondata[i].getValue('name'));
 	    	 	questionsublist.setLineItemValue('sublistsurveylink', i+1, questiondata[i].getValue('custrecord_essurveylink'));
 			}
+	     questionselect.setDefaultValue(selectedquestion);
 		//----------------answers sublist
 	     var answersublist = form.addSubList('essettings_answerssublist','inlineeditor','Answers');
 
-	     //answersublist.addField('sublistid','text', 'internalid');
-	     
-	     answersublist.addField('sublistquestionlink','select', 'Question','customrecord200');
+	     var sublistanswerid = answersublist.addField('sublistanswerid','text', 'internalid');
+	     sublistanswerid.setDisplayType('hidden');
+	     var sublistquestionlink = answersublist.addField('sublistquestionlink','select', 'Question','customrecord200');
+	     sublistquestionlink.setDisplayType('hidden');
 	     answersublist.addField('sublistname','text', 'Answer');
 
-	     var answerdata = nlapiSearchRecord('customrecord201', null, null,
-	    		 //new nlobjSearchFilter('custrecord_esquestionlink', null, 'is', selectedexitsurvey),//TODO:selected question
+	     var answerdata = nlapiSearchRecord('customrecord201', null,
+	    		 new nlobjSearchFilter('custrecord_esquestionlink', null, 'is', selectedquestion),
 	    			[new nlobjSearchColumn('internalid'), new nlobjSearchColumn('name'), new nlobjSearchColumn('custrecord_esquestionlink')]);
-	     
-	     for(var i = 0; i < answerdata.length; i++)
-			{
-	    	 	//answersublist.setLineItemValue('sublistid', i+1, answerdata[i].getValue('internalid'));
-	    	 	answersublist.setLineItemValue('sublistname', i+1, answerdata[i].getValue('name'));
-	    	 	answersublist.setLineItemValue('sublistquestionlink', i+1, answerdata[i].getValue('custrecord_esquestionlink'));
-			}
-	     
+	     if(answerdata!=null){
+		     for(var i = 0; i < answerdata.length; i++)
+				{
+		    	 	answersublist.setLineItemValue('sublistanswerid', i+1, answerdata[i].getValue('internalid'));
+		    	 	answersublist.setLineItemValue('sublistname', i+1, answerdata[i].getValue('name'));
+		    	 	answersublist.setLineItemValue('sublistquestionlink', i+1, answerdata[i].getValue('custrecord_esquestionlink'));
+				}
+	     }
 		form.addSubmitButton('Save Survey');
 //		form.getField('essettings_bannerid').setHelpText('Selects banner and loads its current settings');//TODO: help text for fields
 

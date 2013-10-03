@@ -16,15 +16,16 @@
  * @returns {Void}
  */
 function clientFieldChanged(type, name, linenum){
-	if (name == 'essettings_exitsurveyid'){
+	if (name == 'essettings_exitsurveyid' || name == 'essettings_questionid'){
 		var surveyid = nlapiGetFieldValue('essettings_exitsurveyid');
+		var questionid = nlapiGetFieldValue('essettings_questionid');
 		window.onbeforeunload = null;
-		window.location = 'https://system.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=285&deploy=1&selectedexitsurvey='+surveyid;
+		window.location = 'https://system.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=285&deploy=1&selectedexitsurvey='+surveyid+'&selectedquestion='+questionid;
 	}
 }
 function validateLine(type){
 	if(type==='essettings_questionssublist'){
-		var id = nlapiGetCurrentLineItemValue(type, 'sublistid');
+		var id = nlapiGetCurrentLineItemValue(type, 'sublistquestionid');
 		var name = nlapiGetCurrentLineItemValue(type, 'sublistname');
 		
 		if(typeof id == null || id == ''){
@@ -40,7 +41,23 @@ function validateLine(type){
 		}
 		
 	}
-	
+	else if(type==='essettings_answerssublist'){
+		var id = nlapiGetCurrentLineItemValue(type, 'sublistanswerid');
+		var name = nlapiGetCurrentLineItemValue(type, 'sublistname');
+		
+		if(typeof id == null || id == ''){
+			var questionlink = nlapiGetFieldValue('essettings_questionid');
+			var newAnswerId = CreateAnswer(name, questionlink);
+			nlapiSetCurrentLineItemValue(type, 'sublistid', newAnswerId, false);
+		}
+		else{
+			console.log(id);
+			var answerRecord = nlapiLoadRecord('customrecord201', id);
+			answerRecord.setFieldValue('name', name);
+			nlapiSubmitRecord(answerRecord);
+		}
+		
+	}
 	return true;
 }
 function validateInsert(type){
@@ -49,20 +66,20 @@ function validateInsert(type){
 }
 function validateDelete(type){
 	if(type==='essettings_questionssublist'){
-		var id = nlapiGetCurrentLineItemValue(type, 'sublistid');
+		var id = nlapiGetCurrentLineItemValue(type, 'sublistquestionid');
 		var questionRecord = nlapiLoadRecord('customrecord200', id);
 		questionRecord.setFieldValue('custrecord_essurveylink', '');
 		nlapiSubmitRecord(questionRecord);
 		return true;
 	}
+	if(type==='essettings_answerssublist'){
+		var id = nlapiGetCurrentLineItemValue(type, 'sublistanswerid');
+		var answerRecord = nlapiLoadRecord('customrecord201', id);
+		answerRecord.setFieldValue('custrecord_esquestionlink', '');
+		nlapiSubmitRecord(answerRecord);
+		return true;
+	}
 	
-}
-function recalc(type){
-	//console.log('recalc' + type);
-	//return true;
-}
-function lineInit(type){
-	//console.log('lineinit' + type);
 }
 function CreateQuestion(name, surveylink){
 	var newQuestion = nlapiCreateRecord('customrecord200');
@@ -71,4 +88,19 @@ function CreateQuestion(name, surveylink){
 	newQuestionId = nlapiSubmitRecord(newQuestion);
 	console.log(newQuestionId);
 	return newQuestionId;
+}
+function CreateAnswer(name, questionlink){
+	var newAnswer = nlapiCreateRecord('customrecord201');
+	newAnswer.setFieldValue('name', name);
+	newAnswer.setFieldValue('custrecord_esquestionlink', questionlink);
+	newAnswerId = nlapiSubmitRecord(newAnswer);
+	//console.log(newQuestionId);
+	return newAnswerId;
+}
+function recalc(type){
+	//console.log('recalc' + type);
+	//return true;
+}
+function lineInit(type){
+	//console.log('lineinit' + type);
 }
