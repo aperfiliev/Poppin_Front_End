@@ -21,18 +21,10 @@
 			sendAction('update', params);
 		} else {
 			var error_msg = "<p>Wait, how many do you want?</p><p>Better double-check that.</p>";
-			$('#' + '_' + orderitemid).data('powertip', error_msg);
-			$('#' + '_' + orderitemid).powerTip({
-				placement : 'n',
-				popupId : 'powerTip' + orderitemid,
-				manual : true,
-				parent : $('#' + '_' + orderitemid).parent(),
-				top: -6,
-				left: 10
-			});
+			
+			powerTip.create('_'+orderitemid, error_msg, 'powerTip' + orderitemid, -52, 10);
+			$('#' + '_' + orderitemid).on('focusin', function() { powerTip.hide('powerTip' + orderitemid); }) ;
 			$('#' + '_' + orderitemid).attr('class','input-red');
-			$('#' + '_' + orderitemid).on('focusin', function() { $('#powerTip' + orderitemid).hide(); } );
-			$('#' + '_' + orderitemid).powerTip('show');
 		};
 	}
 	/*

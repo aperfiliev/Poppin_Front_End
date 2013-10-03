@@ -33,7 +33,25 @@ tbody#content_master h4{
 tbody#content_master p{
 	margin: 0px 0px 10px 0px;
 }
-
+tbody#content_master td.callstylist{
+	text-align: center;
+	padding: 20px 0 20px 0;
+}
+tbody#content_master span.orange{
+	font-size: 28px;
+	text-transform: uppercase;
+	color: #f37a31;
+}
+tbody#content_master span.number{
+	font-size: 28px;
+	color: #f37a31;
+	font-family: OmnesMediumRegular;
+	font-weight: bold;
+}
+tbody#content_master span.grey{
+	color: rgb(194, 194, 194);
+	font-size: 24px;
+}
 tbody#content_master div.div__presentation{
 	display: table-cell;
 	float: left;

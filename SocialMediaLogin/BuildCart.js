@@ -93,27 +93,12 @@
 			$(".checkoutDiv").show();
 			$(".promoCode").show();
 			
-			showTips();
 		} else {
 			$(".checkoutDiv").hide();
 			$(".promoCode").hide();
 			
 			buildOrderSummary(actionbar, order['summary'].subtotal, order['summary'].tax, order['summary'].shippingcost, order['summary'].discount, order['summary'].total);
 		}
-	}
-	/*
-	 * 
-	 */
-	function showTips()
-	{
-		$(".input-red").each(function() { $(this).powerTip('show'); });
-		
-		$(".promoInput-red").powerTip('show');
-	}
-	function removeTips()
-	{
-		$(".input-red").each(function() { $(this).powerTip('destroy'); });
-		$(".promoInput-red").powerTip('destroy');
 	}
 	/*
 	 * Dynamically build out the item row
@@ -250,16 +235,8 @@
 		
 		if(error_msg != '')
 		{
-			$('#'+'_'+orderitemid).data('powertip', error_msg);
-			$('#' + '_' + orderitemid).powerTip({
-				placement : 'n',
-				popupId : 'powerTip' + orderitemid,
-				manual : true,
-				parent : $('#' + '_' + orderitemid).parent(),
-				top: -6,
-				left: 10
-			});
-			$('#' + '_' + orderitemid).on('focusin', function() { $('#powerTip' + orderitemid).hide(); } );
+			powerTip.create('_'+orderitemid, error_msg, 'powerTip' + orderitemid, -52, 10);
+			$('#' + '_' + orderitemid).on('focusin', function() { powerTip.hide('powerTip' + orderitemid); }) ;
 		}
 	}
 	/*
@@ -419,16 +396,9 @@
 		promoCodeDiv.appendChild(div);
 		if(isvalid === 'F')
 		{
-			$('#promoInput').data('powertip', '<p>Gone are the days of humdrum</p><p>office products &#8211; and that promo code</p>');
-				$('#promoInput').powerTip({
-				placement : 'n',
-				popupId : 'powerTipPromo',
-				manual : true,
-				parent : $('#promoInput').parent(),
-				top: -6,
-				left: 80
-			});
-			$('#promoInput').on('focusin', function() { $('#powerTipPromo').hide(); });
+			powerTip.create('promoInput', '<p>Gone are the days of humdrum</p><p>office products &#8211; and that promo code</p>',
+					'powerTipPromo', -50, 40);
+			$('#promoInput').on('focusin', function() { powerTip.hide('powerTipPromo'); }) ;
 		}
 	}
 	/*

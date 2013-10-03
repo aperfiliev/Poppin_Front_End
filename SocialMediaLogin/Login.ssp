@@ -243,10 +243,10 @@ function registerformSubmitUserNew()
 	var newUser = {
 			"requesttype":"manualregister",
 			"remember":true,
-			"email":document.forms['new-customer-register'].elements['emailreg'].value,
+			"email":document.forms['new-customer-register'].elements['emailregnew'].value,
 			"name":document.forms['new-customer-register'].elements['fname'].value + " " +document.forms['new-customer-register'].elements['lname'].value,
-			"password":document.forms['new-customer-register'].elements['password'].value,
-			"password2":document.forms['new-customer-register'].elements['password'].value,
+			"password":document.forms['new-customer-register'].elements['passwordnew'].value,
+			"password2":document.forms['new-customer-register'].elements['passwordnew'].value,
 			"company":company,
 			"emailsubscribe":emailsubscribe,
 			"checkout":checkout
@@ -259,77 +259,36 @@ function validateRegisterForm()
 	var regText		= /^[0-9a-zA-Z-]{2,}$/;
 	var regPass		= /^[0-9a-zA-Z]{6,}$/;
 	
-	var email		= $('form#new-customer-register > fieldset > div > input#emailreg').first();
+	var email		= $('form#new-customer-register > fieldset > div > input#emailregnew').first();
 	var fname		= $('form#new-customer-register > fieldset > div > input#fname').first();
 	var lname		= $('form#new-customer-register > fieldset > div > input#lname').first();
-	var pass		= $('form#new-customer-register > fieldset > div > input#password').first();
+	var pass		= $('form#new-customer-register > fieldset > div > input#passwordnew').first();
 	
-	$("input.input-red").powerTip("destroy");
 	$("input.input-red").removeClass("input-red");
 	
 	if(!regEmail.test(email.val()))
 	{
+		powerTip.create('emailregnew', poppinres.text.emailvalidation, 'powerTipEmail', -52, 123);
+		$('#emailregnew').on('focusin', function() { powerTip.hide('powerTipEmail'); }) ;
 		email.attr( "class", "input-red");
-		email.data('powertip', poppinres.text.emailvalidation);
-		email.powerTip({
-			placement : 'n',
-			popupId : 'powerTipEmail',
-			manual : true,
-			parent : email.parent(),
-			top: -6,
-			left: 120
-		});
-		email.attr('class','input-red');
-		email.on('focusin', function() { $('#powerTipEmail').hide(); });
-		email.powerTip('show');
 	}
 	if(!regText.test(fname.val()))
 	{
+		powerTip.create('fname', poppinres.text.firstnamevalidation, 'powerTipFName', -52, 123);
+		$('#fname').on('focusin', function() { powerTip.hide('powerTipFName'); }) ;
 		fname.attr( "class", "input-red");
-		fname.data('powertip', poppinres.text.firstnamevalidation);
-		fname.powerTip({
-			placement : 'n',
-			popupId : 'powerTipFName',
-			manual : true,
-			parent : fname.parent(),
-			top: -6,
-			left: 120
-		});
-		fname.attr('class','input-red');
-		fname.on('focusin', function() { $('#powerTipFName').hide(); });
-		fname.powerTip('show');
 	}
 	if(!regText.test(lname.val()))
 	{
+		powerTip.create('lname', poppinres.text.firstnamevalidation, 'powerTipLName', -52, 123);
+		$('#lname').on('focusin', function() { powerTip.hide('powerTipLName'); }) ;
 		lname.attr( "class", "input-red");
-		lname.data('powertip', poppinres.text.lastnamevalidation);
-		lname.powerTip({
-			placement : 'n',
-			popupId : 'powerTipLName',
-			manual : true,
-			parent : lname.parent(),
-			top: -6,
-			left: 120
-		});
-		lname.attr('class','input-red');
-		lname.on('focusin', function() { $('#powerTipLName').hide(); });
-		lname.powerTip('show');
 	}
 	if(!regPass.test(pass.val()))
 	{
+		powerTip.create('passwordnew', poppinres.text.firstnamevalidation, 'powerTipPass', -52, 123);
+		$('#passwordnew').on('focusin', function() { powerTip.hide('powerTipPass'); }) ;
 		pass.attr( "class", "input-red");
-		pass.data('powertip', poppinres.text.passwordvalidation);
-		pass.powerTip({
-			placement : 'n',
-			popupId : 'powerTipPass',
-			manual : true,
-			parent : pass.parent(),
-			top: -6,
-			left: 120
-		});
-		pass.attr('class','input-red');
-		pass.on('focusin', function() { $('#powerTipPass').hide(); });
-		pass.powerTip('show');
 	}
 	
 	if($("input.input-red").size() > 0)
@@ -651,11 +610,11 @@ function forgotPasswordSocialLink()
 						</fieldset>
 						<fieldset>
 							<label for="email">Email Address</label>
-							<div style="position: relative;"><input id="emailreg" name="email" type="text" /></div>
+							<div style="position: relative;"><input id="emailregnew" name="email" type="text" /></div>
 						</fieldset>
 						<fieldset>
 							<label for="password">Password</label>
-							<div style="position: relative;"><input id="password" name="password" type="password"/></div>
+							<div style="position: relative;"><input id="passwordnew" name="password" type="password"/></div>
 						</fieldset>
 						<fieldset>
 							<input type="submit" value="Continue" class="orangeBtn" name="submit" id="submit" style="margin: 0px;"/>
