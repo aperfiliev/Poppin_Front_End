@@ -8,6 +8,7 @@
 <!doctype html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<%= getPageFullHead() %>
 <script src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin2/js/poppinresources.js"></script>
 <script type="text/javascript" src="js/easyXDM.js"></script>
@@ -51,13 +52,26 @@ function response(data){
 }
 
 </script>
+<%
+	var customerfields = nlapiGetWebContainer().getShoppingSession().getCustomer().getFieldValues(["companyname"]);
+	var isBusinessCustomer = customerfields.companyName!=null;
+%>
 
 </head>
 <body style="width:400px; background:white;">
 <!--  check if company !=null show survey 2 else 1 -->
 <div >
 
-<%=getRecordAttribute('203',1,'custrecord_eshtml')%>
+<div id="customerSurvey" style="display:none">
+<%=getRecordAttribute('203',2,'custrecord_eshtml')%>
+</div>
+<div id="businessSurvey" style="display:none">
+<%=getRecordAttribute('203',2,'custrecord_eshtml')%>
+</div>
 </div>
 </body>
+<script type="text/javascript">
+if (<%=isBusinessCustomer%>){jQuery('#businessSurvey').show();}
+else{jQuery('#customerSurvey').show();}
+</script>
 </html>

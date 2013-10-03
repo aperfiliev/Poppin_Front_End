@@ -19,9 +19,7 @@ function suitelet(request, response){
 			selectedexitsurvey = 1;
 			}
 		var selectedquestion = request.getParameter('selectedquestion');
-		if(selectedquestion == null || selectedquestion == undefined){
-			selectedquestion = 1;
-			}
+		
 		var form = nlapiCreateForm('Exit Survey Settings');
 		form.setScript('customscript286');
 		var exitsurveyitem = nlapiLoadRecord('customrecord203', selectedexitsurvey);
@@ -49,7 +47,11 @@ function suitelet(request, response){
 	     
 	     for(var i = 0; i < questiondata.length; i++)
 			{
+	    	 	
 	    	 	questionselect.addSelectOption(questiondata[i].getValue('internalid'), questiondata[i].getValue('name'));
+	    	 	nlapiLogExecution('DEBUG', 'selectedquestion', selectedquestion);
+	    	 	if(i==0 && (selectedquestion == null || selectedquestion == undefined) ){selectedquestion = questiondata[i].getId(); nlapiLogExecution('DEBUG', 'QuestionId', selectedquestion);}//set default question option
+	    	 	
 	    	 	questionsublist.setLineItemValue('sublistquestionid', i+1, questiondata[i].getValue('internalid'));
 	    	 	questionsublist.setLineItemValue('sublistname', i+1, questiondata[i].getValue('name'));
 	    	 	questionsublist.setLineItemValue('sublistsurveylink', i+1, questiondata[i].getValue('custrecord_essurveylink'));
@@ -65,7 +67,7 @@ function suitelet(request, response){
 	     answersublist.addField('sublistname','text', 'Answer');
 
 	     var answerdata = nlapiSearchRecord('customrecord201', null,
-	    		 new nlobjSearchFilter('custrecord_esquestionlink', null, 'is', selectedquestion),
+	    		   new nlobjSearchFilter('custrecord_esquestionlink', null , 'is', selectedquestion),
 	    			[new nlobjSearchColumn('internalid'), new nlobjSearchColumn('name'), new nlobjSearchColumn('custrecord_esquestionlink')]);
 	     if(answerdata!=null){
 		     for(var i = 0; i < answerdata.length; i++)
@@ -87,7 +89,7 @@ else
 		//save text data
 		
 		var selectedexitsurvey = request.getParameter('essettings_exitsurveyid');
-		
+		var selectedquestion = request.getParameter('selectedquestion');
 		//nlapiLogExecution('DEBUG', 'selectedes:', selectedexitsurvey);
 		
 		if(selectedexitsurvey == null || selectedexitsurvey == undefined){
@@ -103,30 +105,43 @@ else
 //		if(bannerinfoitem.getFieldValue('custrecord_enabled')=='T')
 //		{
 			//img params
-		var columns = new Array();
-		columns[0]= new nlobjSearchColumn('name');
-		var filters = [];
-		filters[0] = new nlobjSearchFilter('custrecord_esquestionlink', null, 'is', selectedexitsurvey, null);
-		var results = nlapiSearchRecord('customrecord201', null, filters , columns);
-		var optionsresulthtml='';
-		optionsresulthtml = '<select id="ddlquestion1"><option value="0" selected="selected">How\'d you hear about us?</option>';//TODO:get question name
-		if(results!=null)
-			{
-				for(var i = 0; i < results.length; i++)
-					{
-						optionsresulthtml = optionsresulthtml + '<option value="' + results[i].getId() + '">' + results[i].getValue('name') + '</option>';
-						nlapiLogExecution('DEBUG','found answer', results[i].getId() + ' ' +  results[i].getValue('name'));
+		var questiondata = nlapiSearchRecord('customrecord200', null, 
+	    		 new nlobjSearchFilter('custrecord_essurveylink', null, 'is', selectedexitsurvey),
+	    			[new nlobjSearchColumn('internalid'), new nlobjSearchColumn('name'), new nlobjSearchColumn('custrecord_essurveylink')]);
+		
+		var resulthtml='';
+		if(questiondata!=null)
+		{
+			for(var i = 0; i < questiondata.length; i++)
+				{
+					//get question for ns db and set default option that equals question name 
+					resulthtml = resulthtml + '<select id="ddlquestion'+questiondata[i].getId()+'"><option value="0" selected="selected">'+questiondata[i].getValue('name')+'</option>';
+					
+					//get answers for current question
+					var answerdata = nlapiSearchRecord('customrecord201', null,
+				    		 new nlobjSearchFilter('custrecord_esquestionlink', null, 'is', questiondata[i].getId()),
+				    			[new nlobjSearchColumn('internalid'), new nlobjSearchColumn('name'), new nlobjSearchColumn('custrecord_esquestionlink')]);
+					
+					if(answerdata!=null)
+						{
+							for(var i = 0; i < answerdata.length; i++)
+								{
+									resulthtml = resulthtml + '<option value="' + answerdata[i].getId() + '">' + answerdata[i].getValue('name') + '</option>';
+									nlapiLogExecution('DEBUG','found answer', answerdata[i].getId() + ' ' +  answerdata[i].getValue('name'));
+								}
+						}
+					else{
+							nlapiLogExecution('DEBUG','Answers not found');
 					}
-				
-			}
-		else{
-				nlapiLogExecution('DEBUG','Answers not found');
+					resulthtml = resulthtml + '</select>';
+				}
 		}
-		optionsresulthtml = optionsresulthtml + '</select>';
-		nlapiLogExecution('DEBUG','options html result', optionsresulthtml);		
+		//close question
+		
+		nlapiLogExecution('DEBUG','options html result', resulthtml);		
 			htmloutput = '<div class="exitsurvey">'+ '<input type="button" class="closebutton" value="X" onclick="closeExitSurvey();">' + '<h2>' + exitsurveyitem.getFieldValue('custrecord_estitle') + '</h2>';
 			htmloutput = htmloutput + '<p>' + exitsurveyitem.getFieldValue('custrecord_esbody') + '</p>';
-			htmloutput = htmloutput + optionsresulthtml;
+			htmloutput = htmloutput + resulthtml;
 			htmloutput = htmloutput + '<div><input class="orangeBtn" type="button" value="SUBMIT" onclick="submitExitSurvey();return false;"/></div>';
 			htmloutput = htmloutput + '</div>';
 			

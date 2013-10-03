@@ -16,7 +16,12 @@
  * @returns {Void}
  */
 function clientFieldChanged(type, name, linenum){
-	if (name == 'essettings_exitsurveyid' || name == 'essettings_questionid'){
+	if (name == 'essettings_exitsurveyid'){
+		var surveyid = nlapiGetFieldValue('essettings_exitsurveyid');
+		window.onbeforeunload = null;
+		window.location = 'https://system.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=285&deploy=1&selectedexitsurvey='+surveyid;
+	}
+	else if(name == 'essettings_questionid'){
 		var surveyid = nlapiGetFieldValue('essettings_exitsurveyid');
 		var questionid = nlapiGetFieldValue('essettings_questionid');
 		window.onbeforeunload = null;
