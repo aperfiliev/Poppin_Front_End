@@ -152,6 +152,9 @@
 		ctnt.setAttribute("value", order.quantity);
 		ctnt.setAttribute("name", '_'+order.orderitemid);
 		ctnt.setAttribute("id", '_'+order.orderitemid);
+		if(order.itemtype !== 'invtpart'){
+			ctnt.setAttribute("disabled", "disabled");
+		}
 
 		if(order.isdropshipitem)
 		{
@@ -161,7 +164,7 @@
 				error_msg = '<p>Your quantity must be</p><p> less or equal 250</p>';
 			}
 		}
-		else if(order.quantityavailable < order.quantity)
+		else if(order.itemtype ==='invtpart' && order.quantityavailable < order.quantity)
 		{
 			var plus_one = order.quantityavailable +1;
 			ctnt.setAttribute("class", "input-red");
