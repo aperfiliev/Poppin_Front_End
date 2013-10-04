@@ -64,20 +64,7 @@
 			$("li.mini-cart > a").html(order.totalfound);
 			// Insert table rows and cells into body
 			for ( var i = 0; i < order['items'].length; i++) {
-				buildItemRow(cartBody, i, 
-						order['items'][i].storedisplaythumbnail, 
-						order['items'][i].storeurl, 
-						order['items'][i].name, 
-						order['items'][i].quantity, 
-						order['items'][i].quantityavailable, 
-						order['items'][i].orderitemid, 
-						order['items'][i].storedescription, 
-						order['items'][i].price, 
-						order['items'][i].price_discounted, 
-						order['items'][i].amount,
-						order['items'][i].promotionamount,
-						order['items'][i].isdropshipitem
-					);
+				buildItemRow(cartBody, i, order['items'][i]);
 			}
 			addEmptyRow(cartBody);
 			
@@ -103,7 +90,7 @@
 	/*
 	 * Dynamically build out the item row
 	 */
-	function buildItemRow(table, num, storedisplaythumbnail, itemurl, name, quantity, quantityavailable, orderitemid, storedescription, rate_formatted, rate_discounted, amount_formatted, promotionamount, isdropshipitem)
+	function buildItemRow(table, num, order)
 	{
 		var row, cell;
 		var error_msg = '';
@@ -113,10 +100,10 @@
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
 		cell.setAttribute("class", "texttablectr");
-		if(storedisplaythumbnail != "")
+		if(order.storedisplaythumbnail != "")
 		{
 			var ctnt = document.createElement("img");
-			ctnt.setAttribute("src", storedisplaythumbnail);
+			ctnt.setAttribute("src", order.storedisplaythumbnail);
 			ctnt.setAttribute("height", "120");
 			ctnt.setAttribute("border", "0");
 			cell.appendChild(ctnt);
@@ -127,12 +114,12 @@
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
 		var ctnt = document.createElement("a");
-		ctnt.setAttribute("href", itemurl);
+		ctnt.setAttribute("href", order.storeurl);
 		ctnt.setAttribute("target", "_self");
 		ctnt.setAttribute("class", "titlelink");
 		ctnt.setAttribute("onclick", "window.open(this.href,'_blank'); return false;");
 		
-		ctnt.innerHTML = name;
+		ctnt.innerHTML = order.name;
 		cell.appendChild(ctnt);
 		
 		cell = row.insertCell(-1);
@@ -141,12 +128,12 @@
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
 		
-		if(promotionamount) {
-			cell.innerHTML = '<span class="titlespan"><span style="text-decoration: line-through;">' + formatPrice(rate_formatted) 
+		if(order.promotionamount) {
+			cell.innerHTML = '<span class="titlespan"><span style="text-decoration: line-through;">' + formatPrice(order.price) 
 							+ '</span><br><span style="color:red">' 
-							+ formatPrice(rate_discounted) + '</span></span>';
+							+ formatPrice(order.price_discounted) + '</span></span>';
 		} else {
-			cell.innerHTML = '<span class="titlespan">' + formatPrice(rate_formatted) + '</span>';
+			cell.innerHTML = '<span class="titlespan">' + formatPrice(order.price) + '</span>';
 		}
 		
 		cell = row.insertCell(-1);
@@ -162,23 +149,23 @@
 		ctnt.setAttribute("type", "text");
 		ctnt.setAttribute("size", "6");
 		ctnt.setAttribute("maxlength", "6");
-		ctnt.setAttribute("value", quantity);
-		ctnt.setAttribute("name", '_'+orderitemid);
-		ctnt.setAttribute("id", '_'+orderitemid);
+		ctnt.setAttribute("value", order.quantity);
+		ctnt.setAttribute("name", '_'+order.orderitemid);
+		ctnt.setAttribute("id", '_'+order.orderitemid);
 
-		if(isdropshipitem)
+		if(order.isdropshipitem)
 		{
-			if(quantity>250)
+			if(order.quantity>250)
 			{
 				ctnt.setAttribute("class", "input-red");
 				error_msg = '<p>Your quantity must be</p><p> less or equal 250</p>';
 			}
 		}
-		else if(quantityavailable < quantity)
+		else if(order.quantityavailable < order.quantity)
 		{
-			var plus_one = quantityavailable +1;
+			var plus_one = order.quantityavailable +1;
 			ctnt.setAttribute("class", "input-red");
-			if(quantityavailable == 0){
+			if(order.quantityavailable == 0){
 				error_msg = '<p>This item is out of stock</p>';
 			} else {
 				error_msg = '<p>Your quantity must be</p><p> less than ' + plus_one + '</p>';
@@ -187,17 +174,17 @@
 		div.appendChild(ctnt);
 		var ctnt = document.createElement("input");
 		ctnt.setAttribute("type", "hidden");
-		ctnt.setAttribute("value", quantityavailable);
-		ctnt.setAttribute("id", 'max_'+orderitemid);
+		ctnt.setAttribute("value", order.quantityavailable);
+		ctnt.setAttribute("id", 'max_'+order.orderitemid);
 		div.appendChild(ctnt);
 		
-		if(orderitemid != 0)
+		if(order.orderitemid != 0)
 		{
 			var ctnt = document.createElement("a");
 			ctnt.setAttribute("href", "#");
 			ctnt.setAttribute("id", "remove"+num);
 			ctnt.setAttribute("class", "updateLink");
-			ctnt.setAttribute("onclick", "updateQtyField('"+orderitemid+"')");
+			ctnt.setAttribute("onclick", "updateQtyField('"+order.orderitemid+"')");
 			ctnt.setAttribute("alt", "Click to update quantity");
 			ctnt.innerHTML += 'Update';
 			div.appendChild(ctnt);
@@ -207,7 +194,7 @@
 			ctnt.setAttribute("href", "#");
 			ctnt.setAttribute("id", "remove"+num);
 			ctnt.setAttribute("class", "removeLink");
-			ctnt.setAttribute("onclick", "removeItem('_"+orderitemid+"')");
+			ctnt.setAttribute("onclick", "removeItem('_"+order.orderitemid+"')");
 			ctnt.setAttribute("alt", "Click to remove item");
 			ctnt.innerHTML += 'Remove';
 			div.appendChild(ctnt);
@@ -221,10 +208,10 @@
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
 		
-		if(promotionamount) {
-			cell.innerHTML = '<span class="titlespan">' + formatPrice(promotionamount) + '</span>';
+		if(order.promotionamount) {
+			cell.innerHTML = '<span class="titlespan">' + formatPrice(order.promotionamount) + '</span>';
 		} else {
-			cell.innerHTML = '<span class="titlespan">' + formatPrice(amount_formatted) + '</span>';
+			cell.innerHTML = '<span class="titlespan">' + formatPrice(order.amount) + '</span>';
 		}
 		
 		cell = row.insertCell(-1);
@@ -235,8 +222,8 @@
 		
 		if(error_msg != '')
 		{
-			powerTip.create('_'+orderitemid, error_msg, 'powerTip' + orderitemid, -52, 10);
-			$('#' + '_' + orderitemid).on('focusin', function() { powerTip.hide('powerTip' + orderitemid); }) ;
+			powerTip.create('_'+order.orderitemid, error_msg, 'powerTip' + order.orderitemid, -52, 10);
+			$('#' + '_' + order.orderitemid).on('focusin', function() { powerTip.hide('powerTip' + order.orderitemid); }) ;
 		}
 	}
 	/*
