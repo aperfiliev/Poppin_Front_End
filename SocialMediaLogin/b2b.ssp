@@ -6,12 +6,11 @@
 				<div class="div__presentation">
 					<a href="/Ping-Pong-Conference-Table.html" ><img src="/site/pp-sources/business/poppin-business.animation.gif" ></a>
 				</div>
-				<div class="div__register">
-					<h3>COME ON, WORK HAPPY!</h3>
+				<div>
 					<iframe scrolling="no" frameborder="0" allowtransparency="yes"
 						marginheight="0" marginwidth="0"
 						src="https://forms.sandbox.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&amp;formid=14&amp;h=7330270d3afe48c04a57&amp;redirect_count=1&amp;did_javascript_redirect=T"
-						style="width: 245px; height: 300px; overflow: hidden;">
+						style="width: 323px; height: 373px; overflow: hidden;">
 					</iframe>
 				</div>
 			</td>
@@ -26,15 +25,15 @@
 			<td>
 				<div class="div__options">
 					<a href="/Desktop/"><p>Shop Desktop ></p></a>
-					<img alt="Shop Desktop" src="/site/pp-sources/business/shop-desktop.png">
+					<a href="/Desktop/"><img alt="Shop Desktop" src="/site/pp-sources/business/shop-desktop.png"></a>
 				</div>
 				<div class="div__options">
 					<a href="/Customize-it/"><p>Brand It ></p></a>
-					<img alt="Brand It" src="/site/pp-sources/business/brand-it.png">
+					<a href="/Customize-it/"><img alt="Brand It" src="/site/pp-sources/business/brand-it.png"></a>
 				</div>
 				<div class="div__options">
 					<a href="/Furniture/"><p>Shop Furniture ></p></a>
-					<img alt="Shop Furniture" src="/site/pp-sources/business/shop-furniture.png">
+					<a href="/Furniture/"><img alt="Shop Furniture" src="/site/pp-sources/business/shop-furniture.png"></a>
 				</div>
 			</td>
 		</tr>
