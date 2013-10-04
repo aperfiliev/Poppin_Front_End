@@ -5,7 +5,8 @@ var poppinres = {
 	storeexitsurveyservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/StoreExitSurveyResult.ss",
 	loginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/Login.ssp",
 	miniloginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/MiniLogin.ssp",
-	poppinglobal:"http://sandbox.poppin.com"
+	poppinglobal:"http://sandbox.poppin.com",
+	selectbackgroundimg: "/site/social-login/images/bg_select.png"
 	},
 	text : {
 	forgotpassword:"",
@@ -20,7 +21,8 @@ var poppinres = {
 	passwordresettitle:"Password Reset",
 	responseobjectnull:"null response object",
 	forgotpasswordsent:"Ok. We've sent you instructions on how to update your password, aka Your Personal Key to Work Happiness. Please check your email.",
-	forgotpasswordunrecognized:'The email that you entered is not recognized, please try again or <a href="'+ 'Login.ssp?reg=T' +'" style="text-decoration: underline;">create a new account</a>'
+	forgotpasswordunrecognized:'The email that you entered is not recognized, please try again or <a href="'+ 'Login.ssp?reg=T' +'" style="text-decoration: underline;">create a new account</a>',
+	exitsurveyempty:"Please fill out the survey"
 	},
 	id : {
 		banner:'199'

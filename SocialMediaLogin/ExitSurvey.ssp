@@ -8,7 +8,7 @@
 <!doctype html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<%= getPageFullHead() %>
+<script type="text/javascript" src="/site/pp-files/pp-all_header_scripts.js"></script>
 <script src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin2/js/poppinresources.js"></script>
 <script type="text/javascript" src="js/easyXDM.js"></script>
@@ -23,28 +23,79 @@ var socket = new easyXDM.Socket({
 </script>
 <link href="/site/pp-files/pp-all-styles.min.css?c=" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin2/exitsurvey.css" />
+<style>
+.div__select {
+	position: relative;
+    width: 351px;
+	height: 26px;
+	padding: 0;
+	margin-top: 5px;
+	font-family: 'OmnesRegularRegular', sans-serif;
+	font-size: 14px;
+	overflow: hidden;
+	background: url('<%=poppinres.url.selectbackgroundimg%>') no-repeat right;
+}
+select{
+	border: 0;
+	width: 351px;
+	height: 24px;
+	padding: 0 0 0 4px;
+	font-family: 'OmnesRegularRegular', sans-serif;
+	font-size: 14px;
+	color: white;
+	background: transparent;
+	-webkit-appearance: none;
+}
+p{
+	color:#616161;
+}
+.orangeBtn{
+	width:110px;
+}
+.div__select select option {
+	width:351px;
+	background: #c2c2c2;
+	text-transform: uppercase;
+}
+</style>
 <script type="text/javascript">
+var selectedSurvey='';
 function closeExitSurvey(){
 	socket.postMessage("close");
 }
 function submitExitSurvey(){
-	var e = document.getElementById("ddlquestion1");
-	var selectedHearUs = e.options[e.selectedIndex].value;
-	//alert(selectedHearUs);
-	
-	var esresult = {
-			orderid : ordernum,
-			question : "1",
-			answer : selectedHearUs
-	}
-	$.ajax({
-		url: poppinres.url.storeexitsurveyservice,
-		data: esresult,
-		dataType: 'jsonp',
-		jsonp: 'json.wrf',
-		success: response,
-		error: response
+	var esResults = [];
+	var isEmpty = false;
+	jQuery(selectedSurvey + ' select').each(function() {
+    	var questionid = this.id;
+    	questionid = questionid.substring(11);
+    	var answerid = this.value;
+    	if(answerid==0){isEmpty=true;}
+    	var result = {
+    				"question":questionid,
+    				"answer":answerid
+    			}
+    	esResults.push(result);
 	});
+	if(isEmpty==true){
+		socket.postMessage('answerempty');
+	}
+	else{
+		esResults = JSON.stringify(esResults);
+		var result = {
+				"orderid" : ordernum,
+				"result" : esResults
+		}
+		console.log(result);
+		$.ajax({
+			url: poppinres.url.storeexitsurveyservice,
+			data: result,
+			dataType: 'jsonp',
+			jsonp: 'json.wrf',
+			success: response,
+			error: response
+		});
+	}
 }
 function response(data){
 	console.log(data);
@@ -54,16 +105,15 @@ function response(data){
 </script>
 <%
 	var customerfields = nlapiGetWebContainer().getShoppingSession().getCustomer().getFieldValues(["companyname"]);
-	var isBusinessCustomer = customerfields.companyName!=null;
+	var isBusinessCustomer = customerfields.companyname!=null;
 %>
 
 </head>
 <body style="width:400px; background:white;">
 <!--  check if company !=null show survey 2 else 1 -->
 <div >
-
 <div id="customerSurvey" style="display:none">
-<%=getRecordAttribute('203',2,'custrecord_eshtml')%>
+<%=getRecordAttribute('203',1,'custrecord_eshtml')%>
 </div>
 <div id="businessSurvey" style="display:none">
 <%=getRecordAttribute('203',2,'custrecord_eshtml')%>
@@ -71,7 +121,19 @@ function response(data){
 </div>
 </body>
 <script type="text/javascript">
-if (<%=isBusinessCustomer%>){jQuery('#businessSurvey').show();}
-else{jQuery('#customerSurvey').show();}
+jQuery(document).ready(function(){
+
+if (<%=isBusinessCustomer%>){
+		jQuery('#businessSurvey').show(); selectedSurvey = '#businessSurvey';
+		socket.postMessage('setHeight:'+document.body.scrollHeight);
+		if('<%=getRecordAttribute('203',2,'custrecord_esenabled')%>'=='Yes'){socket.postMessage('show');}
+	}
+else{
+		jQuery('#customerSurvey').show(); selectedSurvey = '#customerSurvey';
+		socket.postMessage('setHeight:'+document.body.scrollHeight);
+		if('<%=getRecordAttribute('203',1,'custrecord_esenabled')%>'=='Yes'){socket.postMessage('show');}
+	}
+
+});
 </script>
 </html>

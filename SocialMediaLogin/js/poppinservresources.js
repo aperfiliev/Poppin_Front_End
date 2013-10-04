@@ -12,6 +12,7 @@ var poppinservres = {
 	poppinresources:"/SSP Applications/Poppin/SocialMediaLogin2/js/poppinresources.js",
 	jsjqueryui:"/SSP Applications/Poppin/SocialMediaLogin2/js/jquery-ui-1.10.3.custom.min.js",
 	cssjqueryui:"/SSP Applications/Poppin/SocialMediaLogin2/smoothness/jquery-ui-1.10.3.custom.css"
+	
 	},
 	text : {
 	forgotpassword:"1234",

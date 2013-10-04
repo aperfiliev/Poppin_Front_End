@@ -14,6 +14,7 @@
 function suitelet(request, response){
 	if(request.getMethod()=='GET')
 	{
+		
 		var selectedexitsurvey = request.getParameter('selectedexitsurvey');
 		if(selectedexitsurvey == null || selectedexitsurvey == undefined){
 			selectedexitsurvey = 1;
@@ -23,6 +24,7 @@ function suitelet(request, response){
 		var form = nlapiCreateForm('Exit Survey Settings');
 		form.setScript('customscript286');
 		var exitsurveyitem = nlapiLoadRecord('customrecord203', selectedexitsurvey);
+		form.addField('essettings_enabled', 'checkbox','Enabled').setDefaultValue(exitsurveyitem.getFieldValue('custrecord_esenabled'));
 		var exitsurveyselect = form.addField('essettings_exitsurveyid', 'select', 'Exit Survey Select');
 		exitsurveyselect.addSelectOption(1, 'Customer Exit Survey');
 		exitsurveyselect.addSelectOption(2, 'Business Customer Exit Survey');
@@ -97,6 +99,7 @@ else
 		}
 	
 		var exitsurveyitem = nlapiLoadRecord('customrecord203', selectedexitsurvey);
+		exitsurveyitem.setFieldValue('custrecord_esenabled', request.getParameter('essettings_enabled'));
 		exitsurveyitem.setFieldValue('custrecord_estitle', request.getParameter('essettings_title'));
 		exitsurveyitem.setFieldValue('custrecord_esbody', request.getParameter('essettings_body'));
 	
@@ -112,10 +115,11 @@ else
 		var resulthtml='';
 		if(questiondata!=null)
 		{
+			nlapiLogExecution('DEBUG', 'lengthquestiondata', questiondata.length);
 			for(var i = 0; i < questiondata.length; i++)
 				{
 					//get question for ns db and set default option that equals question name 
-					resulthtml = resulthtml + '<select id="ddlquestion'+questiondata[i].getId()+'"><option value="0" selected="selected">'+questiondata[i].getValue('name')+'</option>';
+					resulthtml = resulthtml + '<div class="div__select"><span style="white-space: nowrap;"><select id="ddlquestion'+questiondata[i].getId()+'"><option value="0" selected="selected" style="display:none;">'+questiondata[i].getValue('name')+'</option>';
 					
 					//get answers for current question
 					var answerdata = nlapiSearchRecord('customrecord201', null,
@@ -124,21 +128,23 @@ else
 					
 					if(answerdata!=null)
 						{
-							for(var i = 0; i < answerdata.length; i++)
+							for(var j = 0; j < answerdata.length; j++)
 								{
-									resulthtml = resulthtml + '<option value="' + answerdata[i].getId() + '">' + answerdata[i].getValue('name') + '</option>';
-									nlapiLogExecution('DEBUG','found answer', answerdata[i].getId() + ' ' +  answerdata[i].getValue('name'));
+									resulthtml = resulthtml + '<option value="' + answerdata[j].getId() + '">' + answerdata[j].getValue('name') + '</option>';
+									nlapiLogExecution('DEBUG','found answer', answerdata[j].getId() + ' ' +  answerdata[j].getValue('name'));
 								}
 						}
 					else{
 							nlapiLogExecution('DEBUG','Answers not found');
 					}
-					resulthtml = resulthtml + '</select>';
+					resulthtml = resulthtml + '</select></span></div>';
+					
 				}
 		}
 		//close question
 		
-		nlapiLogExecution('DEBUG','options html result', resulthtml);		
+		nlapiLogExecution('DEBUG','options html result', resulthtml);
+		
 			htmloutput = '<div class="exitsurvey">'+ '<input type="button" class="closebutton" value="X" onclick="closeExitSurvey();">' + '<h2>' + exitsurveyitem.getFieldValue('custrecord_estitle') + '</h2>';
 			htmloutput = htmloutput + '<p>' + exitsurveyitem.getFieldValue('custrecord_esbody') + '</p>';
 			htmloutput = htmloutput + resulthtml;

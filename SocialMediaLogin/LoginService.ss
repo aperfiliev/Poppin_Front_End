@@ -157,12 +157,14 @@ function loginUser(request, sociallink)
 				}
 		nlapiLogExecution('DEBUG','no origin',JSON.stringify(params));
 		result = session.login(params);
-		var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
-		orderObjNew.removeAllItems();
-		orderObjNew.addItems(items);
-		if(promocodes && promocodes.length > 0)
-		{
-			orderObj.applyPromotionCode(promocodes[0]);
+		if(items !=null){
+			var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
+			orderObjNew.removeAllItems();
+			orderObjNew.addItems(items);
+			if(promocodes && promocodes.length > 0)
+			{
+				orderObj.applyPromotionCode(promocodes[0]);
+			}
 		}
 		result.redirecturl = nlapiGetWebContainer().getStandardTagLibrary().getCartUrl();
 	}

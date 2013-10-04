@@ -14,8 +14,7 @@
 function service(request, response){
 	var exitsurveyresult = {
 			orderid:request.getParameter('orderid'),
-			question:request.getParameter('question'),
-			answer:request.getParameter('answer')
+			result:request.getParameter('result')
 	}
 	nlapiLogExecution('DEBUG','enter store result', JSON.stringify(exitsurveyresult));
 	var storeresult = nlapiRequestURL(poppinservres.url.storeexitsurveyresult ,exitsurveyresult);
