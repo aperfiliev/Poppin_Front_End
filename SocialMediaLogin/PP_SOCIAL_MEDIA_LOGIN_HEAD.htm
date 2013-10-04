@@ -70,28 +70,24 @@ function miniForgotPassword(){
 		"password" : document.forms['miniloginform'].elements['password'].value
 	};
 	if (user.email === ''){
-		showtip('miniemail','<p>'+poppinres.text.emailempty+'</p>');
+		showTipEmail('<p>'+poppinres.text.emailempty+'</p>');
 		return false;
 	}
 	if (!validateEmail(user.email)){
-		showtip('miniemail','<p>'+user.email + poppinres.text.emailinvalid+'</p>');
+		showTipEmail('<p>'+poppinres.text.emailinvalid+'</p>');
 		return false;
 	}
 	var userstr = JSON.stringify(user);
 	socket.postMessage(userstr);
 }
-function showtip(control, msg){
-	$('#'+control).data('powertip', msg);
-	$('#'+control).powerTip({
-		placement : 'n',
-		popupId : 'powerTip' + control,
-		manual : true,
-		parent : $('#'+control).parent(),
-		top: -6,
-		left: 10
-	});
-	$('#'+control).attr('class','input-red');
-	$('#'+control).on('focusin', function() { $('#powerTip' + control).hide(); } );
-	$('#'+control).powerTip('show');
+function showTipEmail(error_msg){
+	powerTip.create('miniemail', '<p>'+error_msg+'</p>', 'powerTipminiemail', -69, 20);
+	$('#miniemail').on('focusin', function() { powerTip.hide('powerTipminiemail'); });
+	$('#miniemail').attr('class','input-red');
+}
+function showTipPwd(error_msg){
+	powerTip.create('minipassword', '<p>'+error_msg+'</p>', 'powerTipminipassword', -69, 20);
+	$('#minipassword').on('focusin', function() { powerTip.hide('powerTipminipassword'); });
+	$('#minipassword').attr('class','input-red');
 }
 </script>

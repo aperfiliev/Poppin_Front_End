@@ -6,7 +6,6 @@
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="<%=poppinservres.url.jsjqueryui%>"></script>
 <link href="<%=poppinservres.url.cssjqueryui%>" rel="stylesheet" type="text/css" />
-<script src="js/jquery.powertip.js"></script>
 <script type="text/javascript" src="BuildCart.js"></script>
 <script type="text/javascript" src="ViewCart.js"></script>
 

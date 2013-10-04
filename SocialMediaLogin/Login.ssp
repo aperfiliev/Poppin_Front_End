@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin/smoothness/jquery-ui-1.10.3.custom.min.css" />
 
 <link href="/site/social-login/css/login.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery.powertip.js"></script>
 <style>
 .breadcrumbs{
 visibility:hidden;
