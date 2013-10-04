@@ -9,12 +9,13 @@ jQuery(function(){
 		"password":document.forms['miniloginform'].elements['password'].value,
 		"checkout":false
 	};
+	$('#miniemail').removeClass('input-red');
 	if(loginUser.email === ''){
 		showTipEmail('<p>'+poppinres.text.emailempty+'</p>');
 		return false;
 	}
 	if(!validateEmail(loginUser.email)){
-		showTipEmail('<p>'+user.email+poppinres.text.emailinvalid+'</p>');
+		showTipEmail('<p>'+poppinres.text.emailinvalid+'</p>');
 	}
 	var userstr = JSON.stringify(loginUser);
 	socket.postMessage(userstr);

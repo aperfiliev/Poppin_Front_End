@@ -14,6 +14,7 @@ var poppinres = {
 	firstnamevalidation:"<p>Is that really your first<p></p>name? Try again.</p>",
 	lastnamevalidation:"<p>Hey, Professor Imistypedmyname,<p></p>want to try again?</p>",
 	passwordvalidation:"<p>Oops. We want to keep your info safe<p></p>and require your password to be a minimum</p><p>of 6 letters or numbers.</p>",
+	howdyouhearvalidation:"<p>Let us know how you heard about Poppin, </p><p>select a value from the drop down</p>",
 	emailempty:" Please input email address.",
 	emailinvalid: " Please enter a valid email address.",
 	responsetypenull: "Response type is null",

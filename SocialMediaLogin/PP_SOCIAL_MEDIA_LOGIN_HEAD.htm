@@ -68,12 +68,13 @@ function miniForgotPassword(){
 		"email" : document.forms['miniloginform'].elements['email'].value,
 		"password" : document.forms['miniloginform'].elements['password'].value
 	};
+	$('#miniemail').removeClass('input-red');
 	if (user.email === ''){
 		showTipEmail('<p>'+poppinres.text.emailempty+'</p>');
 		return false;
 	}
 	if (!validateEmail(user.email)){
-		showTipEmail('<p>'+user.email+poppinres.text.emailinvalid+'</p>');
+		showTipEmail('<p>'+poppinres.text.emailinvalid+'</p>');
 		return false;
 	}
 	var userstr = JSON.stringify(user);

@@ -279,13 +279,13 @@ function validateRegisterForm()
 	}
 	if(!regText.test(lname.val()))
 	{
-		powerTip.create('lname', poppinres.text.firstnamevalidation, 'powerTipLName', -52, 123);
+		powerTip.create('lname', poppinres.text.lastnamevalidation, 'powerTipLName', -52, 123);
 		$('#lname').on('focusin', function() { powerTip.hide('powerTipLName'); }) ;
 		lname.attr( "class", "input-red");
 	}
 	if(!regPass.test(pass.val()))
 	{
-		powerTip.create('passwordnew', poppinres.text.firstnamevalidation, 'powerTipPass', -52, 123);
+		powerTip.create('passwordnew', poppinres.text.passwordvalidation, 'powerTipPass', -52, 123);
 		$('#passwordnew').on('focusin', function() { powerTip.hide('powerTipPass'); }) ;
 		pass.attr( "class", "input-red");
 	}
