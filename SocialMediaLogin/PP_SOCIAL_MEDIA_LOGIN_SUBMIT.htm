@@ -10,12 +10,11 @@ jQuery(function(){
 		"checkout":false
 	};
 	if(loginUser.email === ''){
-		jQuery("#dialogresponse").html(loginUser.email + ' Please input email address.');
-		jQuery("#dialogresponse").dialog({title:"Info"}); return false;
+		showTipEmail('<p>'+poppinres.text.emailempty+'</p>');
+		return false;
 	}
 	if(!validateEmail(loginUser.email)){
-		jQuery("#dialogresponse").html(loginUser.email + ' Please enter a valid email address.');
-		jQuery("#dialogresponse").dialog({title:"Info"}); return false;
+		showTipEmail('<p>'+user.email+poppinres.text.emailinvalid+'</p>');
 	}
 	var userstr = JSON.stringify(loginUser);
 	socket.postMessage(userstr);

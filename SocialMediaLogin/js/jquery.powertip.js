@@ -1,5 +1,6 @@
 var powerTip = {
 	create : function(inputId, data, popupId, top, left) {
+		jQuery("#"+popupId).remove();
 		tipElement = jQuery('<div/>', { id: popupId, html: data})
 			.attr("class", "n")
 			.css("top", top)

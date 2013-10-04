@@ -62,7 +62,6 @@ if(window.location.href.indexOf('checkout.sandbox.netsuite.com')<0){
 	}
   });
 }
-
 function miniForgotPassword(){
 	var user = {
 		"requesttype" : "forgotpassword",
@@ -74,7 +73,7 @@ function miniForgotPassword(){
 		return false;
 	}
 	if (!validateEmail(user.email)){
-		showTipEmail('<p>'+poppinres.text.emailinvalid+'</p>');
+		showTipEmail('<p>'+user.email+poppinres.text.emailinvalid+'</p>');
 		return false;
 	}
 	var userstr = JSON.stringify(user);
