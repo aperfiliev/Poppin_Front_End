@@ -12,45 +12,45 @@ function validateEmail($email) {
 }
 jQuery(document).ready(function(){
 //position popup
-var offset1 = jQuery('.top-links').offset();
-jQuery('#loginpositionhelper').offset({top:offset1.top+26,left:offset1.left+jQuery('.top-links').width()-jQuery('#loginpositionhelper').width()});
-jQuery('.loginli').mouseenter(function(){
-if(jQuery(".login.hidden").length==1 || window.location.href.indexOf("checkout.netsuite.com")!=-1){
-jQuery('#loginpositionhelper').css('display','none');
-//jQuery("#exitsurveyplaceholder").html('<iframe src="https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/ExitSurvey.ssp"/>');
-}
-else
-{
-jQuery('#loginpositionhelper').css('display','block');
-}
+	var offset1 = jQuery('.top-links').offset();
+	jQuery('#loginpositionhelper').offset({top:offset1.top+26,left:offset1.left+jQuery('.top-links').width()-jQuery('#loginpositionhelper').width()});
+	jQuery('.loginli').mouseenter(function(){
+	if(jQuery(".login.hidden").length==1 || window.location.href.indexOf(poppinres.url.poppincheckout)!=-1){
+		jQuery('#loginpositionhelper').css('display','none');
+		//jQuery("#exitsurveyplaceholder").html('<iframe src="https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/ExitSurvey.ssp"/>');
+	}
+	else
+	{
+		jQuery('#loginpositionhelper').css('display','block');
+	}
 });
 jQuery('#loginpositionhelper').mouseenter(function(){
-if(jQuery(".login.hidden").length==1 || window.location.href.indexOf("checkout.netsuite.com")!=-1){
-jQuery('#loginpositionhelper').css('display','none');
-}
-else
-{
-jQuery('#loginpositionhelper').css('display','block');
-}
+	if(jQuery(".login.hidden").length==1 || window.location.href.indexOf(poppinres.url.poppincheckout)!=-1){
+		jQuery('#loginpositionhelper').css('display','none');
+	}
+	else
+	{
+		jQuery('#loginpositionhelper').css('display','block');
+	}
 });
 jQuery('.loginli').mouseleave(function(){jQuery('#loginpositionhelper').css('display','none')});
 jQuery('#loginpositionhelper').mouseleave(function(){jQuery('#loginpositionhelper').css('display','none')});
 //void sign in link
 jQuery('.login a').attr('href','#');
 //remove mini login when on login page or checkout or if user is signed in
-if(window.location.href.indexOf("checkout.netsuite.com")!=-1 ||  jQuery(".login.hidden").length==1)
+if(window.location.href.indexOf(poppinres.url.poppincheckout)!=-1 )
 {
-jQuery('#loginpositionhelper').attr('style','display:none');
+	jQuery('#loginpositionhelper').attr('style','display:none');
 }
-if(window.location.href.indexOf("checkout.netsuite.com/s.nl?c=3363929&sc=4")!=-1 &&  jQuery("submitter").length!=-1){
-document.getElementById("submitter").onclick = function (){alert('dsds');};
-}
+//if(window.location.href.indexOf("checkout.netsuite.com/s.nl?c=3363929&sc=4")!=-1 &&  jQuery("submitter").length!=-1){
+//	document.getElementById("submitter").onclick = function (){alert('dsds');};
+//}
 //add link to sociallogin checkout
 if(window.location.href.indexOf("shopping-cart")!=-1 && jQuery(".login.hidden").length==0){
-var redirectquerystring = GPR_OPTIONS.options().loginURL + '&checkout=T';
-jQuery("#checkout").removeAttr("onclick");
-document.getElementById("checkout").onclick = function (){
-setGARedirectUrl( redirectquerystring  );};
+	var redirectquerystring = GPR_OPTIONS.options().loginURL + '&checkout=T';
+	jQuery("#checkout").removeAttr("onclick");
+	document.getElementById("checkout").onclick = function (){
+	setGARedirectUrl( redirectquerystring  );};
 }
 });
 /*
@@ -96,23 +96,27 @@ function deleteCookie(name, path, domain) {
     return true;
 }
 jQuery(function(){
-if(getLoginCookie('poppinemail')&&getLoginCookie('poppinpassword'))
-{
-document.forms['miniloginform'].elements['email'].value = getLoginCookie('poppinemail');
-document.forms['miniloginform'].elements['password'].value = getLoginCookie('poppinpassword');
-if(window.location.href.indexOf("checkout.netsuite.com")!=-1)
-{
-document.forms['loginform'].elements['emaillog'].value = getLoginCookie('poppinemail');
-document.forms['loginform'].elements['password'].value = getLoginCookie('poppinpassword');
-}
+	if(getLoginCookie('poppinemail')&&getLoginCookie('poppinpassword'))
+	{
+		document.forms['miniloginform'].elements['email'].value = getLoginCookie('poppinemail');
+		document.forms['miniloginform'].elements['password'].value = getLoginCookie('poppinpassword');
+	if(window.location.href.indexOf(poppinres.url.poppincheckout)!=-1)
+	{
+		document.forms['loginform'].elements['emaillog'].value = getLoginCookie('poppinemail');
+		document.forms['loginform'].elements['password'].value = getLoginCookie('poppinpassword');
+	}
 }
 });
 /*
  * PP_SOCIAL_MEDIA_LOGIN_HEAD
  */
+var MINILOGINSOCKET;
+jQuery(document).ready(function(){
+	var miniloginqs = GPR_OPTIONS.options().checkoutURL;
+	miniloginqs = miniloginqs.substring(miniloginqs.indexOf('?'), miniloginqs.length);
 if(window.location.href.indexOf('checkout.sandbox.netsuite.com')<0){
-	  var socket = new easyXDM.Socket({
-		remote:poppinres.url.miniloginpage,
+	MINILOGINSOCKET = new easyXDM.Socket({
+		remote:poppinres.url.miniloginpage + miniloginqs,
 		onMessage:function(message,origin)
 		{
 			document.body.style.cursor = 'default';
@@ -170,6 +174,7 @@ if(window.location.href.indexOf('checkout.sandbox.netsuite.com')<0){
 		}
 	  });
 	}
+});
 	function miniForgotPassword(){
 		var user = {
 			"requesttype" : "forgotpassword",
@@ -186,7 +191,7 @@ if(window.location.href.indexOf('checkout.sandbox.netsuite.com')<0){
 			return false;
 		}
 		var userstr = JSON.stringify(user);
-		socket.postMessage(userstr);
+		MINILOGINSOCKET.postMessage(userstr);
 	}
 	function showTipEmail(error_msg){
 		powerTip.create('miniemail', '<p>'+error_msg+'</p>', 'powerTipminiemail', -69, 20);
@@ -221,7 +226,7 @@ if(window.location.href.indexOf('checkout.sandbox.netsuite.com')<0){
 		                return false;
 			}
 			var userstr = JSON.stringify(loginUser);
-			socket.postMessage(userstr);
+			MINILOGINSOCKET.postMessage(userstr);
 			document.body.style.cursor = 'wait';
 		 });
 
@@ -250,7 +255,7 @@ if(window.location.href.indexOf('checkout.sandbox.netsuite.com')<0){
 				return false;
 			}
 			var userstr = JSON.stringify(loginUser);
-			socket.postMessage(userstr);
+			MINILOGINSOCKET.postMessage(userstr);
 			document.body.style.cursor = 'wait';
 		 });
 		});
@@ -286,7 +291,7 @@ if(window.location.href.indexOf('checkout.sandbox.netsuite.com')<0){
 	    	else {
 	var socialloginobject = {"requesttype":"sociallogin","user":eventObj};
 	var userstr = JSON.stringify(socialloginobject );
-			   socket.postMessage(userstr);
+		MINILOGINSOCKET.postMessage(userstr);
 			   document.body.style.cursor = 'wait';
 		}
 	}
