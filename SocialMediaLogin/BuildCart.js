@@ -154,6 +154,8 @@
 		ctnt.setAttribute("id", '_'+order.orderitemid);
 		if(order.itemtype !== 'invtpart'){
 			ctnt.setAttribute("disabled", "disabled");
+			ctnt.setAttribute("style", "border:0;");
+			
 		}
 
 		if(order.isdropshipitem)
@@ -183,16 +185,17 @@
 		
 		if(order.orderitemid != 0)
 		{
-			var ctnt = document.createElement("a");
-			ctnt.setAttribute("href", "#");
-			ctnt.setAttribute("id", "remove"+num);
-			ctnt.setAttribute("class", "updateLink");
-			ctnt.setAttribute("onclick", "updateQtyField('"+order.orderitemid+"')");
-			ctnt.setAttribute("alt", "Click to update quantity");
-			ctnt.innerHTML += 'Update';
-			div.appendChild(ctnt);
-			
-			div.innerHTML += '<br>';
+			if(order.itemtype ==='invtpart'){
+				var ctnt = document.createElement("a");
+				ctnt.setAttribute("href", "#");
+				ctnt.setAttribute("id", "remove"+num);
+				ctnt.setAttribute("class", "updateLink");
+				ctnt.setAttribute("onclick", "updateQtyField('"+order.orderitemid+"')");
+				ctnt.setAttribute("alt", "Click to update quantity");
+				ctnt.innerHTML += 'Update';
+				div.appendChild(ctnt);
+				div.innerHTML += '<br>';
+			}
 			var ctnt = document.createElement("a");
 			ctnt.setAttribute("href", "#");
 			ctnt.setAttribute("id", "remove"+num);

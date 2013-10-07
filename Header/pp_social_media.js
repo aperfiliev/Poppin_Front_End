@@ -112,7 +112,7 @@ jQuery(function(){
  */
 var MINILOGINSOCKET;
 jQuery(document).ready(function(){
-	var miniloginqs = GPR_OPTIONS.options().checkoutURL;
+	var miniloginqs = GPR_OPTIONS.options().loginURL;
 	miniloginqs = miniloginqs.substring(miniloginqs.indexOf('?'), miniloginqs.length);
 if(window.location.href.indexOf('checkout.sandbox.netsuite.com')<0){
 	MINILOGINSOCKET = new easyXDM.Socket({

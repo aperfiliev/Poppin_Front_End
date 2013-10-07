@@ -12,8 +12,8 @@ body {
 </style>
 <script type="text/javascript" src="js/easyXDM.js"></script>
 <script type="text/javascript">
-var socket = null;
-socket = new easyXDM.Socket({
+var MINILOGINSOCKET = null;
+MINILOGINSOCKET = new easyXDM.Socket({
 		remote:poppinres.url.poppinglobal,
 		onReady: function(){
 			//alert(location.href);
@@ -87,10 +87,11 @@ function sendLoginRequest(user)
 }
 function response(data)
 {
-	socket.postMessage(data.responseText);
+	MINILOGINSOCKET.postMessage(data.responseText);
 }
 </script>
 </head>
 <body>
+<PP_TOP_LINKS>
 </body>
 </html>

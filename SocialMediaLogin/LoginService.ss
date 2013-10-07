@@ -144,12 +144,10 @@ function loginUser(request, sociallink)
 	}
 	else
 	{
-		nlapiLogExecution('DEBUG','1',items);
+		// saving items to variable
 		var orderObj = nlapiGetWebContainer().getShoppingSession().getOrder();
-		nlapiLogExecution('DEBUG','2',items);
 		var items = orderObj.getItems(["internalId", "quantity"]);
-		//nlapiLogExecution('DEBUG','items in new cart',items);
-		//var promocodes = orderObj.promocodes;
+		var promocodes = orderObj.promocodes;
 		
 		params = {
 				"email":email,
@@ -158,6 +156,7 @@ function loginUser(request, sociallink)
 		nlapiLogExecution('DEBUG','no origin',JSON.stringify(params));
 		result = session.login(params);
 		if(items !=null){
+			// restoring session items
 			var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
 			orderObjNew.removeAllItems();
 			orderObjNew.addItems(items);
