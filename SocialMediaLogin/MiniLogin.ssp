@@ -1,9 +1,9 @@
 <html>
 <head>
-<%= getPageFullHead() %>
 <script type="text/javascript" src="<%=poppinservres.url.poppinresources%>"></script>
+<script type="text/javascript" src="/site/pp-files/pp-all_header_scripts.js"></script>
 <script src="js/jquery-1.10.2.min.js"></script>
-<link href="/site/social-login/css/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/easyXDM.js"></script>
 <style>
 body {
 	margin: 0;
@@ -92,6 +92,6 @@ function response(data)
 </script>
 </head>
 <body>
-<PP_TOP_LINKS>
+<!-- <PP_TOP_LINKS> -->
 </body>
 </html>
