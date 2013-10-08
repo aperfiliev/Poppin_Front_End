@@ -36,8 +36,9 @@ function suitelet(request, response){
 		
 		//----------------questions sublist
 	     var questionsublist = form.addSubList('essettings_questionssublist','inlineeditor','Questions');
-
-	     var sublistidfield = questionsublist.addField('sublistid','text', 'internalid');
+	     
+	     var sublistidfield = questionsublist.addField('sublistquestionid','text', 'internalid');
+	     
 	     sublistidfield.setDisplayType('hidden');
 	     var sublistsurveylinkfield = questionsublist.addField('sublistsurveylink','select', 'Survey','customrecord203');
 	     sublistsurveylinkfield.setDisplayType('hidden');
@@ -46,19 +47,21 @@ function suitelet(request, response){
 	     var questiondata = nlapiSearchRecord('customrecord200', null, 
 	    		 new nlobjSearchFilter('custrecord_essurveylink', null, 'is', selectedexitsurvey),
 	    			[new nlobjSearchColumn('internalid'), new nlobjSearchColumn('name'), new nlobjSearchColumn('custrecord_essurveylink')]);
-	     
-	     for(var i = 0; i < questiondata.length; i++)
-			{
-	    	 	
-	    	 	questionselect.addSelectOption(questiondata[i].getValue('internalid'), questiondata[i].getValue('name'));
-	    	 	nlapiLogExecution('DEBUG', 'selectedquestion', selectedquestion);
-	    	 	if(i==0 && (selectedquestion == null || selectedquestion == undefined) ){selectedquestion = questiondata[i].getId(); nlapiLogExecution('DEBUG', 'QuestionId', selectedquestion);}//set default question option
-	    	 	
-	    	 	questionsublist.setLineItemValue('sublistquestionid', i+1, questiondata[i].getValue('internalid'));
-	    	 	questionsublist.setLineItemValue('sublistname', i+1, questiondata[i].getValue('name'));
-	    	 	questionsublist.setLineItemValue('sublistsurveylink', i+1, questiondata[i].getValue('custrecord_essurveylink'));
-			}
-	     questionselect.setDefaultValue(selectedquestion);
+	     if(questiondata!=null){
+	    	 questiondata.sort(function(a,b) { return parseFloat(a.getValue('internalid')) - parseFloat(b.getValue('internalid'));});
+		     for(var i = 0; i < questiondata.length; i++)
+				{
+		    	 	
+		    	 	questionselect.addSelectOption(questiondata[i].getValue('internalid'), questiondata[i].getValue('name'));
+		    	 	nlapiLogExecution('DEBUG', 'selectedquestion', selectedquestion);
+		    	 	if(i==0 && (selectedquestion == null || selectedquestion == undefined) ){selectedquestion = questiondata[i].getId(); nlapiLogExecution('DEBUG', 'QuestionId', selectedquestion);}//set default question option
+		    	 	
+		    	 	questionsublist.setLineItemValue('sublistquestionid', i+1, questiondata[i].getValue('internalid'));
+		    	 	questionsublist.setLineItemValue('sublistname', i+1, questiondata[i].getValue('name'));
+		    	 	questionsublist.setLineItemValue('sublistsurveylink', i+1, questiondata[i].getValue('custrecord_essurveylink'));
+				}
+		     questionselect.setDefaultValue(selectedquestion);
+	     }
 		//----------------answers sublist
 	     var answersublist = form.addSubList('essettings_answerssublist','inlineeditor','Answers');
 
@@ -72,6 +75,7 @@ function suitelet(request, response){
 	    		   new nlobjSearchFilter('custrecord_esquestionlink', null , 'is', selectedquestion),
 	    			[new nlobjSearchColumn('internalid'), new nlobjSearchColumn('name'), new nlobjSearchColumn('custrecord_esquestionlink')]);
 	     if(answerdata!=null){
+	    	 answerdata.sort(function(a,b) { return parseFloat(a.getValue('internalid')) - parseFloat(b.getValue('internalid'));});
 		     for(var i = 0; i < answerdata.length; i++)
 				{
 		    	 	answersublist.setLineItemValue('sublistanswerid', i+1, answerdata[i].getValue('internalid'));
@@ -115,6 +119,7 @@ else
 		var resulthtml='';
 		if(questiondata!=null)
 		{
+			questiondata.sort(function(a,b) { return parseFloat(a.getValue('internalid')) - parseFloat(b.getValue('internalid'));});
 			nlapiLogExecution('DEBUG', 'lengthquestiondata', questiondata.length);
 			for(var i = 0; i < questiondata.length; i++)
 				{
@@ -128,6 +133,7 @@ else
 					
 					if(answerdata!=null)
 						{
+							answerdata.sort(function(a,b) { return parseFloat(a.getValue('internalid')) - parseFloat(b.getValue('internalid'));});
 							for(var j = 0; j < answerdata.length; j++)
 								{
 									resulthtml = resulthtml + '<option value="' + answerdata[j].getId() + '">' + answerdata[j].getValue('name') + '</option>';
