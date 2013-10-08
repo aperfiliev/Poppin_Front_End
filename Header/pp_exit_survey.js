@@ -13,7 +13,6 @@ jQuery(document).ready(function(){
 				onReady:function(){
 					this.container.getElementsByTagName("iframe")[0].style.width= "440px";
 					//this.container.getElementsByTagName("iframe")[0].style.height= "230px";
-					$("#exitsurveyplaceholder iframe").on("load", function() { $(this).height($(this).contents().find("body").height());});
 					//parse ordernumber
 					var ordernum = $( "td:contains('Your confirmation number is')" ).text();
 					ordernum = ordernum.substring(ordernum.lastIndexOf('Your confirmation number is ')+28,ordernum.length);
@@ -28,6 +27,7 @@ jQuery(document).ready(function(){
 					else if(message.indexOf('show')>-1){
 						jQuery('#exitsurveyplaceholder').show();
 						jQuery('#coverdiv').show();
+						$("#exitsurveyplaceholder iframe").height($("#exitsurveyplaceholder iframe").contents().find("body").height());
 					}
 					else if(message.indexOf('setHeight')>-1){
 						//this.container.getElementsByTagName("iframe")[0].style.height= message.substring(message.indexOf(':')+1)+"px";
