@@ -45,6 +45,9 @@ select{
 	color: white;
 	background: transparent;
 	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-indent: 0.01px;
+	text-overflow: '';
 }
 p{
 	color:#616161;
@@ -53,7 +56,6 @@ p{
 	width:110px;
 }
 .div__select select option {
-	width:351px;
 	background: #c2c2c2;
 }
 </style>
