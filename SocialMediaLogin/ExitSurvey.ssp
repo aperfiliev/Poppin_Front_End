@@ -55,7 +55,6 @@ p{
 .div__select select option {
 	width:351px;
 	background: #c2c2c2;
-	text-transform: uppercase;
 }
 </style>
 <script type="text/javascript">
