@@ -27,10 +27,9 @@ jQuery(document).ready(function(){
 					else if(message.indexOf('show')>-1){
 						jQuery('#exitsurveyplaceholder').show();
 						jQuery('#coverdiv').show();
-						jQuery("#exitsurveyplaceholder iframe").height(jQuery("#exitsurveyplaceholder iframe").contents().find("body").height());
 					}
 					else if(message.indexOf('setHeight')>-1){
-						//this.container.getElementsByTagName("iframe")[0].style.height= message.substring(message.indexOf(':')+1)+"px";
+						jQuery("#exitsurveyplaceholder iframe").height(jQuery("#exitsurveyplaceholder iframe").contents().find("body").height());
 					}
 					else if(message.indexOf('answerempty')>-1){
 						alert(poppinres.text.exitsurveyempty);
