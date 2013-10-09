@@ -27,6 +27,7 @@ jQuery(document).ready(function(){
 					else if(message.indexOf('show')>-1){
 						jQuery('#exitsurveyplaceholder').show();
 						jQuery('#coverdiv').show();
+						jQuery("#exitsurveyplaceholder iframe").height(jQuery("#exitsurveyplaceholder iframe").contents().find("body").height());
 					}
 					else if(message.indexOf('setHeight')>-1){
 						jQuery("#exitsurveyplaceholder iframe").height(jQuery("#exitsurveyplaceholder iframe").contents().find("body").height());
