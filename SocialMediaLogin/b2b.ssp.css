@@ -10,7 +10,7 @@ tbody#content_master tr:not(:last-child){
 	background: url(/site/pp-sources/business/bg-dotted-small.gif) repeat-x left bottom;
 }
 tbody#content_master td{
-	padding: 30px 0 40px 0;
+	padding: 10px 0 10px 0;
 }
 tbody#content_master tr:first-child td{
 	padding-top: 0;
@@ -35,7 +35,7 @@ tbody#content_master p{
 }
 tbody#content_master td.callstylist{
 	text-align: center;
-	padding: 20px 0 20px 0;
+	padding: 20px 0 10px 0;
 }
 tbody#content_master span.orange{
 	font-size: 28px;
@@ -118,4 +118,7 @@ div[id^="quotedBox"].n:before {
 	width: 92px;
 	height: 54px;
 /* 	background: url(/site/pp-sources/business/arrow.png) no-repeat; */
+}
+td.medtextbold {
+	display: none;
 }
