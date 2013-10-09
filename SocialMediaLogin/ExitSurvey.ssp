@@ -15,10 +15,10 @@
 <script type="text/javascript">
 var ordernum = '';
 var socket = new easyXDM.Socket({
-   onMessage: function(message, origin){
-	   ordernum = message;
-	   //alert(JSON.stringify(ordernum));
-   }
+	onMessage: function(message, origin){
+		ordernum = message;
+		//alert(JSON.stringify(ordernum));
+	}
 });
 </script>
 <link href="/site/pp-files/pp-all-styles.min.css?c=" rel="stylesheet" type="text/css" />
@@ -26,7 +26,7 @@ var socket = new easyXDM.Socket({
 <style>
 .div__select {
 	position: relative;
-    width: 351px;
+	width: 351px;
 	height: 26px;
 	padding: 0;
 	margin-top: 5px;
@@ -34,6 +34,17 @@ var socket = new easyXDM.Socket({
 	font-size: 14px;
 	overflow: hidden;
 	background: url('<%=poppinres.url.selectbackgroundimg%>') no-repeat right;
+}
+.div__other {
+	padding-top: 10px;
+	display: none;
+}
+.div__other input{
+	width: 341px;
+	height: 24px;
+	padding: 0 4px 0 4px;
+	font-family: 'OmnesRegularRegular', sans-serif;
+	font-size: 14px;
 }
 select{
 	border: 0;
@@ -68,15 +79,20 @@ function submitExitSurvey(){
 	var esResults = [];
 	var isEmpty = false;
 	jQuery(selectedSurvey + ' select').each(function() {
-    	var questionid = this.id;
-    	questionid = questionid.substring(11);
-    	var answerid = this.value;
-    	if(answerid==0){isEmpty=true;}
-    	var result = {
-    				"question":questionid,
-    				"answer":answerid
-    			}
-    	esResults.push(result);
+		var questionid = this.id;
+		questionid = questionid.substring(11);
+		var answerid = this.value;
+		if(answerid==0){isEmpty=true;}
+		var othertext = '';
+		if($("#othertext"+questionid).parent().css("display") == 'block'){
+			var othertext = $("#othertext"+questionid).val();
+		}
+		var result = {
+					"question":questionid,
+					"answer":answerid,
+					"othertext" : othertext
+				}
+		esResults.push(result);
 	});
 	if(isEmpty==true){
 		socket.postMessage('answerempty');
@@ -124,16 +140,33 @@ function response(data){
 <script type="text/javascript">
 jQuery(document).ready(function(){
 
-if (<%=isBusinessCustomer%>){
-		jQuery('#businessSurvey').show(); selectedSurvey = '#businessSurvey';
-		socket.postMessage('setHeight:'+document.body.scrollHeight);
+	if (<%=isBusinessCustomer%>) {
+		jQuery('#businessSurvey').show();
+		selectedSurvey = '#businessSurvey';
+		socket.postMessage('setHeight');
 		if('<%=getRecordAttribute('203',2,'custrecord_esenabled')%>'=='Yes'){socket.postMessage('show');}
 	}
-else{
-		jQuery('#customerSurvey').show(); selectedSurvey = '#customerSurvey';
-		socket.postMessage('setHeight:'+document.body.scrollHeight);
+	else
+	{
+		jQuery('#customerSurvey').show();
+		selectedSurvey = '#customerSurvey';
+		socket.postMessage('setHeight');
 		if('<%=getRecordAttribute('203',1,'custrecord_esenabled')%>'=='Yes'){socket.postMessage('show');}
 	}
+	
+	jQuery(selectedSurvey + ' select').each(function() {
+		var questionid = this.id.substring(11);
+		$(this).parent().parent().after('<div class="div__other"><input type="text" id="othertext'+questionid+'" value=""></div>');
+		$(this).on('click', function(e){
+			if($("option:selected", this).html() == 'Other'){
+				$(".div__other").css("display", "block");
+				socket.postMessage('setHeight');
+			} else {
+				$(".div__other").css("display", "none");
+				socket.postMessage('setHeight');
+			}
+		});
+	});
 
 });
 </script>
