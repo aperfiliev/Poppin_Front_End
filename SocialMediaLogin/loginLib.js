@@ -111,5 +111,5 @@ var LoginLib = {
 			//
 		}
 		return description;
-	},
+	}
 };

@@ -104,6 +104,9 @@ div[id^="quotedBox"] {
 	right: auto;
 	bottom: auto;
 	display: block;
+        -moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
 }
 div[id^="quotedBox"]:before {
 	content: "";
@@ -114,8 +117,5 @@ div[id^="quotedBox"].n:before {
 	left: 173px;
 	width: 92px;
 	height: 54px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
 /* 	background: url(/site/pp-sources/business/arrow.png) no-repeat; */
 }

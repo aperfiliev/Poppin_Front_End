@@ -11,8 +11,8 @@ var poppinservres = {
 	promodescriptionsuitlet: "https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=283&deploy=1&compid=3363929&h=9fb0da1f95d5a10adfdc",
 	poppinresources:"/SSP Applications/Poppin/SocialMediaLogin2/js/poppinresources.js",
 	jsjqueryui:"/SSP Applications/Poppin/SocialMediaLogin2/js/jquery-ui-1.10.3.custom.min.js",
-	cssjqueryui:"/SSP Applications/Poppin/SocialMediaLogin2/smoothness/jquery-ui-1.10.3.custom.css"
-	
+	cssjqueryui:"/SSP Applications/Poppin/SocialMediaLogin2/smoothness/jquery-ui-1.10.3.custom.css",
+	selectbackgroundimg: "/site/pp-sources/business/bg_select.png"
 	},
 	text : {
 	forgotpassword:"1234",

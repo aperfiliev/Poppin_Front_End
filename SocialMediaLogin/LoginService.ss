@@ -183,8 +183,11 @@ function registerUser(request)
 	var emailsubscribe = request.getParameter("emailsubscribe");
 	var company = request.getParameter("company");
 	if(request.getParameter("requesttype")=="sociallogin"){
-		//password = password2 = generateRandomPassword();
-		password = password2 = 'poppin';
+		var setRandomPwd = '';
+		setRandomPwd = randomString(8, 'a#');
+		password = password2 = setRandomPwd;
+		//password2 = password;
+		//password = password2 = '7tpI07cw';
 	}
 	nlapiLogExecution('DEBUG','reg2');
 	//create javascript object of values. 
@@ -202,15 +205,15 @@ function registerUser(request)
 	nlapiLogExecution('DEBUG','registered: ', result.customerid);
 	return password;
 }
-function generateRandomPassword()
-{
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for( var i=0; i < 8; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    nlapiLogExecution('DEBUG', 'pwdgenerator', text);
-    return text;
+function randomString(length, chars) {
+    var mask = '';
+    if (chars.indexOf('a') > -1) mask += 'abcdefghijklmnopqrstuvwxyz';
+    if (chars.indexOf('A') > -1) mask += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    if (chars.indexOf('#') > -1) mask += '0123456789';
+    if (chars.indexOf('!') > -1) mask += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
+    var result = '';
+    for (var i = length; i > 0; --i) result += mask[Math.round(Math.random() * (mask.length - 1))];
+    return result;
 }
 function checkExistingEmail(email)
 {
