@@ -143,14 +143,14 @@ jQuery(document).ready(function(){
 	if (<%=isBusinessCustomer%>) {
 		jQuery('#businessSurvey').show();
 		selectedSurvey = '#businessSurvey';
-		socket.postMessage('setHeight');
+		//socket.postMessage('setHeight');
 		if('<%=getRecordAttribute('203',2,'custrecord_esenabled')%>'=='Yes'){socket.postMessage('show');}
 	}
 	else
 	{
 		jQuery('#customerSurvey').show();
 		selectedSurvey = '#customerSurvey';
-		socket.postMessage('setHeight');
+		//socket.postMessage('setHeight');
 		if('<%=getRecordAttribute('203',1,'custrecord_esenabled')%>'=='Yes'){socket.postMessage('show');}
 	}
 	
@@ -159,10 +159,10 @@ jQuery(document).ready(function(){
 		$(this).parent().parent().after('<div class="div__other"><input type="text" id="othertext'+questionid+'" value=""></div>');
 		$(this).on('click', function(e){
 			if($("option:selected", this).html() == 'Other'){
-				$(".div__other").css("display", "block");
+				$(this).parent().parent().next().css("display", "block");
 				socket.postMessage('setHeight');
 			} else {
-				$(".div__other").css("display", "none");
+				$(this).parent().parent().next().css("display", "none");
 				socket.postMessage('setHeight');
 			}
 		});
