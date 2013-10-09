@@ -26,6 +26,7 @@ function suitelet(request, response){
 		//newResult.setFieldValue('custrecord_esresulttransaction', request.getParameter('orderid'));
 		newResult.setFieldValue('custrecord_esresultquestion', result[i].question);
 		newResult.setFieldValue('custrecord_esresultanswer', result[i].answer);
+		newResult.setFieldValue('custrecord4', result[i].othertext);
 		newResultId = nlapiSubmitRecord(newResult);
 		nlapiLogExecution('DEBUG','result id', newResultId);
 	}
