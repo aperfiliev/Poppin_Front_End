@@ -60,6 +60,9 @@ select{
 	text-indent: 0.01px;
 	text-overflow: '';
 }
+select::-ms-expand {
+	display: none;
+}
 p{
 	color:#616161;
 }
