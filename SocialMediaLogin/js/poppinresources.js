@@ -6,7 +6,8 @@ var poppinres = {
 	loginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/Login.ssp",
 	miniloginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/MiniLogin.ssp",
 	poppinglobal:"http://sandbox.poppin.com",
-	selectbackgroundimg: "/site/social-login/images/bg_select.png"
+	selectbackgroundimg: "/site/social-login/images/bg_select.png",
+	cardmessageservice: "https://checkout.sandbox.netsuite.com/c.3363929/CardMessage/cardmessage.ss"
 	},
 	text : {
 	forgotpassword:"",
