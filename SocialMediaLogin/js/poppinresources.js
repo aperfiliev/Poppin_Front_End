@@ -2,6 +2,7 @@ var poppinres = {
 	url:{
 	gigyacontrol:"https://checkout.sandbox.netsuite.com/c.3363929/SSP%20Applications/Poppin/SocialMediaLogin2/gigya.html",
 	loginservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/LoginService.ss",
+	loginservice1:"http://sandbox.poppin.com/Poppin/SocialMediaLogin2/LoginService.ss",
 	storeexitsurveyservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/StoreExitSurveyResult.ss",
 	loginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/Login.ssp",
 	miniloginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/MiniLogin.ssp",
