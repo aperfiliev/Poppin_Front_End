@@ -1,3 +1,9 @@
+.breadcrumbs {
+	padding: 13px 0 0px;
+}
+.breadcrumbs .free-shipping-container {
+	height: auto;
+}
 td#contentBody{
 	padding: 0;
 }
@@ -31,11 +37,11 @@ tbody#content_master h4{
 	font-weight: bold;
 }
 tbody#content_master p{
-	margin: 0px 0px 10px 0px;
+	margin: 5px 0 0 0;
 }
 tbody#content_master td.callstylist{
 	text-align: center;
-	padding: 20px 0 10px 0;
+	padding: 10px 0 10px 0;
 }
 tbody#content_master span.orange{
 	font-size: 28px;
@@ -65,12 +71,18 @@ tbody#content_master div.div__register{
 	background-color: #f2f2f2;
 	padding: 30px 40px 20px 40px;
 }
-tbody#content_master div.div__options{
+tbody#content_master div.div__options#left {
 	display: table-cell;
 	float: left;
 }
-tbody#content_master div.div__options:not(:first-child){
-	padding-left: 10px;
+tbody#content_master div.div__options#center {
+	display: table-cell;
+	float: left;
+	padding-left: 13px;
+}
+tbody#content_master div.div__options#right {
+	display: table-cell;
+	float: right;
 }
 tbody#content_master div.div__options p{
 	padding-bottom: 10px;

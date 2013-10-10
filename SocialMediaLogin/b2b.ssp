@@ -23,15 +23,15 @@
 		</tr>
 		<tr>
 			<td>
-				<div class="div__options">
+				<div class="div__options" id="left">
 					<a href="/Desktop/"><p>Shop Desktop ></p></a>
 					<a href="/Desktop/"><img alt="Shop Desktop" src="/site/pp-sources/business/shop-desktop.png"></a>
 				</div>
-				<div class="div__options">
+				<div class="div__options" id="center">
 					<a href="/Customize-it/"><p>Brand It ></p></a>
 					<a href="/Customize-it/"><img alt="Brand It" src="/site/pp-sources/business/brand-it.png"></a>
 				</div>
-				<div class="div__options">
+				<div class="div__options" id="right">
 					<a href="/Furniture/"><p>Shop Furniture ></p></a>
 					<a href="/Furniture/"><img alt="Shop Furniture" src="/site/pp-sources/business/shop-furniture.png"></a>
 				</div>
