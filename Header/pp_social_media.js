@@ -193,6 +193,78 @@ if(window.location.href.indexOf('checkout.sandbox.netsuite.com')<0){
 		var userstr = JSON.stringify(user);
 		MINILOGINSOCKET.postMessage(userstr);
 	}
+	
+	function forgotPasswordOld()
+	{
+		var formHtml = '<div class="new-customer"><form id="forgot-pass-form" action="sendForgotPasswordRequest()">'+
+			'<fieldset style="border: 0px none;">'+
+				'<label for="email">Email Address*</label>'+
+				'<input id="email" name="email" type="text" style="font-size:16px;font-family:Arial,Helvetica,sans-serif">'+
+			'</fieldset>'+
+			'<fieldset style="border: 0px none;">'+
+				'<input type="submit" value="Continue" class="orangeBtn" name="submit" id="submit" '+
+				'style="margin: 0px;font-size:10pt;font-family:OmnesMediumRegular,sans-serif">'+
+			'</fieldset>'+
+			'<fieldset style="border: 0px none;"><p class="message"></p></fieldset>'
+		'</form></div>';
+		
+		jQuery("#dialogresponse").html(formHtml);
+		jQuery("#dialogresponse").dialog({ title: poppinres.text.passwordresettitle });
+		
+		$('#forgot-pass-form').on('submit', function(e) {
+			e.preventDefault();
+			if($("form#forgot-pass-form > fieldset > input#submit.orangeBtn").val() == 'Continue') {
+				sendForgotPasswordRequestOld();
+			} else {
+				jQuery("#dialogresponse").dialog('close');
+			}
+		});
+	}
+	function sendForgotPasswordRequestOld()
+	{
+		var loginserviceurl = poppinres.url.loginservice;
+		if(location.protocol == 'http:') {
+			loginserviceurl = poppinres.url.loginservice1;
+		}
+		
+		var userforgotpassword = {
+				"requesttype":"forgotpassword",
+				"email":document.forms['forgot-pass-form'].elements['email'].value
+				}
+		jQuery.ajax({
+			url: loginserviceurl,
+			data: userforgotpassword,
+			dataType: 'jsonp',
+			jsonp: 'json.wrf',
+			success: forgotPasswordResponseOld,
+			error: forgotPasswordResponseOld
+		});
+		document.body.style.cursor = 'wait';
+	}
+	function forgotPasswordResponseOld(data)
+	{
+		var message = '';
+		document.body.style.cursor = 'default';
+		if(data.responseText==null) { message = poppinres.text.responseobjectnull; };
+		var responseObject = JSON.parse(data.responseText);
+		switch(responseObject.responsetype)
+		{
+			case null:
+				message = poppinres.text.responsetypenull;
+			break
+			case 'success':
+				message = poppinres.text.forgotpasswordsent;
+			break
+			case 'error':
+				message = poppinres.text.forgotpasswordunrecognized; 
+			break
+			default:
+				message = poppinres.text.responsetypeunknown;
+		}
+		$("form#forgot-pass-form > fieldset > input#submit.orangeBtn").val("Close");
+		$("form#forgot-pass-form > fieldset > p.message").html(message);
+	}
+	
 	function showTipEmail(error_msg){
 		powerTip.create('miniemail', '<p>'+error_msg+'</p>', 'powerTipminiemail', -69, 20);
 		$('#miniemail').on('focusin', function() { powerTip.hide('powerTipminiemail'); });
