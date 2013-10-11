@@ -26,12 +26,13 @@ var LoginLib = {
 				for(var i=0; i<items.length; i++)
 				{
 					retobj.totalfound += items[i].quantity;
+					var name = (items[i].parent == null) ? items[i].storedisplayname2 : items[i].salesdescription;
 					var price_discounted = items[i].rate - (items[i].promotiondiscount / items[i].quantity);
 					price_discounted = '$' + price_discounted.toFixed(2);
 					var item = {'id' : items[i].internalid, 
 								'storedisplaythumbnail' : items[i].storedisplaythumbnail, 
 								'storeurl' : items[i].canonicalurl, 
-								'name' : items[i].storedisplayname2, 
+								'name' : name, //items[i].displayname, 
 								'quantity' : items[i].quantity, 
 								'quantityavailable': items[i].quantityavailable,
 								'orderitemid' : items[i].orderitemid, 

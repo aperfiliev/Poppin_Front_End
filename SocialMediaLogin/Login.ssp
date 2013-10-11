@@ -26,6 +26,9 @@ height:120px;
 width:160px;
 overflow:hidden;
 }
+div.free-shipping-container{
+display:none;
+}
 /* Configure powerTip */
 
 div[id^="powerTip"] {
