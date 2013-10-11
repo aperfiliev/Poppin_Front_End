@@ -184,10 +184,10 @@ function registerUser(request)
 	var company = request.getParameter("company");
 	if(request.getParameter("requesttype")=="sociallogin"){
 		var setRandomPwd = '';
-		setRandomPwd = randomString(8, 'a#');
-		password = password2 = setRandomPwd;
+		//setRandomPwd = randomString(8, 'a#');
+		//password = password2 = setRandomPwd;
 		//password2 = password;
-		//password = password2 = '7tpI07cw';
+		password = password2 = '7tpI07cw';
 	}
 	nlapiLogExecution('DEBUG','reg2');
 	//create javascript object of values. 
@@ -249,6 +249,7 @@ function socialMediaLogin(request)
 				response.write(buildResponseObjectStringified("linksocial", 
 					{
 						"email":request.getParameter("email"),
+						"uid":request.getParameter("UID"),
 						"timestamp":request.getParameter("timestamp"),
 						"signature":request.getParameter("signature")
 					}));
@@ -259,7 +260,7 @@ function socialMediaLogin(request)
 				gigyanotifier ={
 						"type":"login",
 						"params": {
-							"siteUID":checkexistinguser.customerid,
+							"siteUID":request.getParameter("UID"),
 							"timestamp":request.getParameter("timestamp"),
 							"signature":request.getParameter("signature")
 							}
@@ -295,14 +296,14 @@ function socialMediaLinkAccount(request,sociallink)
 	var result = loginUser(request, pwd);
 	//store link if login successful
 	var storelinkpwd = storeSocialLink(params);
-	nlapiLogExecution('DEBUG','storelinkpwdstring: ', storelinkpwdstring.getBody()+new Date().toTimeString());
+	//nlapiLogExecution('DEBUG','storelinkpwdstring: ', storelinkpwdstring.getBody()+new Date().toTimeString());
 	var gigyanotifier;
 	if(storelinkpwd.message==="success")
 		{
 		gigyanotifier ={
 				"type":"register",
 				"params": {
-					"siteUID":storelinkpwd.customerid,
+					"siteUID":request.getParameter("UID"),
 					"timestamp":request.getParameter("timestamp"),
 					"signature":request.getParameter("signature")
 					}
