@@ -27,6 +27,8 @@ function suitelet(request, response){
 		newResult.setFieldValue('custrecord_esresultquestion', result[i].question);
 		newResult.setFieldValue('custrecord_esresultanswer', result[i].answer);
 		newResult.setFieldValue('custrecord4', result[i].othertext);
+		newResult.setFieldValue('custrecord_esresultemail', result[i].email);
+		newResult.setFieldValue('custrecord_esresultsurveytype', result[i].surveytype);
 		newResultId = nlapiSubmitRecord(newResult);
 		nlapiLogExecution('DEBUG','result id', newResultId);
 	}

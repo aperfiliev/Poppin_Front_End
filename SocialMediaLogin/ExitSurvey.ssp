@@ -4,7 +4,11 @@
   Version    Date            Author           Remarks
   1.00       24 Sep 2013     ashykalov
 //-->
-
+<%
+	var customerfields = nlapiGetWebContainer().getShoppingSession().getCustomer().getFieldValues(["companyname", "email"]);
+	var isBusinessCustomer = customerfields.companyname!=null;
+	var email = customerfields.email;
+%>
 <!doctype html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -90,10 +94,13 @@ function submitExitSurvey(){
 		if($("#othertext"+questionid).parent().css("display") == 'block'){
 			var othertext = $("#othertext"+questionid).val();
 		}
+		var surveytype = (<%=isBusinessCustomer%>) ? 'Business' : 'Customer';
 		var result = {
 					"question":questionid,
 					"answer":answerid,
-					"othertext" : othertext
+					"othertext":othertext,
+					"email":'<%=email%>',
+					"surveytype":surveytype
 				}
 		esResults.push(result);
 	});
@@ -123,11 +130,6 @@ function response(data){
 }
 
 </script>
-<%
-	var customerfields = nlapiGetWebContainer().getShoppingSession().getCustomer().getFieldValues(["companyname"]);
-	var isBusinessCustomer = customerfields.companyname!=null;
-%>
-
 </head>
 <body style="width:400px; background:white;">
 <!--  check if company !=null show survey 2 else 1 -->

@@ -27,11 +27,12 @@ var LoginLib = {
 				{
 					retobj.totalfound += items[i].quantity;
 					var name = (items[i].parent == null) ? items[i].storedisplayname2 : items[i].salesdescription;
+					var storeurl = (items[i].parent == null) ? items[i].canonicalurl : '/s.nl/c.3363929/n.1/it.A/id.'+items[i].parentid+'/.f';
 					var price_discounted = items[i].rate - (items[i].promotiondiscount / items[i].quantity);
 					price_discounted = '$' + price_discounted.toFixed(2);
 					var item = {'id' : items[i].internalid, 
 								'storedisplaythumbnail' : items[i].storedisplaythumbnail, 
-								'storeurl' : items[i].canonicalurl, 
+								'storeurl' : storeurl, 
 								'name' : name, //items[i].displayname, 
 								'quantity' : items[i].quantity, 
 								'quantityavailable': items[i].quantityavailable,
