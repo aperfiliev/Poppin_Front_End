@@ -17,7 +17,9 @@ var socket=null;
 socket = new easyXDM.Socket({
 	remote: "https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin/Login.ssp",
 	onMessage:function(message, origin) {
+		alert(message);
 		var notifyobject = JSON.parse(message);
+		notifyobject.type = 'register';
 		if(notifyobject.type=='login'){
 			var notifier = {
 					siteUID : notifyobject.params.siteUID,

@@ -4,8 +4,12 @@
     <file name="AdBannerSettingsFieldChanged.js" bundleable="false" hideInBundle="false" isOnline="false"/>
     <file name="BackendForgotPasswordSocialLoginSuitelet.js.js" bundleable="false" hideInBundle="false" isOnline="false"/>
     <file name="BackendRedirectSocialLoginSuitelet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="BackendStoreExitSurveyResultSuitelet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
     <file name="BackendStoreSocialLinkSuitelet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
     <file name="CheckExistingCustomerRestlet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="ExitSurveySettings.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="ExitSurveySettingsFieldChanged.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="JaneTest.js" bundleable="true" hideInBundle="false" isOnline="false"/>
     <file name="PlacingOrderHelpSuitlet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
     <file name="PromoDescriptionSuitelet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
   </folder>

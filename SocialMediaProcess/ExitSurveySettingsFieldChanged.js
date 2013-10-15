@@ -32,7 +32,7 @@ function validateLine(type){
 	if(type==='essettings_questionssublist'){
 		var id = nlapiGetCurrentLineItemValue(type, 'sublistquestionid');
 		var name = nlapiGetCurrentLineItemValue(type, 'sublistname');
-		console.log(id);
+		
 		if(typeof id == null || id == ''){
 			var surveylink = nlapiGetFieldValue('essettings_exitsurveyid');
 			var newQuestionId = CreateQuestion(name, surveylink);
