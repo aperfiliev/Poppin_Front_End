@@ -16,11 +16,6 @@ position:relative;
 left:80px;
 padding-top: 30px;
 }
-#login-register{
-position:relative;
-left:200px;
-width:300px;
-}
 iframe{
 height:120px;
 width:160px;
@@ -83,14 +78,9 @@ function getQuerystring(key, default_)
 }
 var checkout = false;
 if(window.location.href.indexOf('checkout=T')>-1)
-	{
-		checkout = true;
-	}
-var registerstart = false;
-if(window.location.href.indexOf('reg=T')>-1)
-	{
-		registerstart = true;
-	}
+{
+	checkout = true;
+}
 $(function(){
 	if(getQuerystring('linksocial')=='T'){
 		//store link social data in form
@@ -99,17 +89,12 @@ $(function(){
 		document.forms['link-social'].elements['signature'].value = decodeURIComponent(getQuerystring('signature'));
 		switchview('linksocial');
 	}
-	
 })
 
 $(function() { 
 	$('#loginform').on('submit', function(e) { 
 		e.preventDefault();  
 		loginformSubmitUser();
-	});
-	$('#login-register').on('submit', function(e) { 
-		e.preventDefault();  
-		registerformSubmitUser();
 	});
 	$('#twitter-email').on('submit', function(e) { 
 		e.preventDefault();  
@@ -121,10 +106,8 @@ $(function() {
 	});
 	$('#new-customer-register').on('submit', function(e) { 
 		e.preventDefault();  
-		registerformSubmitUserNew();
+		registerformSubmitUser();
 	});
-	if(registerstart)
-		switchview('register');
 	
 	$('form#new-customer-register > fieldset > input#business').on('click', function(e) {
 		var display = $(this).is(':checked') ? 'block' : 'none';
@@ -136,31 +119,28 @@ function switchview(viewtype)
 	switch(viewtype){
 	case 'login':
 		$('.login-case-block').css('display', 'block');
-		$('#login-register').css('display', 'none');
 		$('#twitter-email').css('display', 'none');
 		$('#link-social').css('display', 'none');
 		break
 	case 'register':
 		$('.login-case-block').css('display', 'none');
-		$('#login-register').css('display', 'block');
 		$('#twitter-email').css('display', 'none');
 		$('#link-social').css('display', 'none');
 		break
 	case 'twitteremail':
 		$('.login-case-block').css('display', 'none');
-		$('#login-register').css('display', 'none');
 		$('#twitter-email').css('display', 'block');
 		$('#link-social').css('display', 'none');
 		break
 	case 'linksocial':
 		$('.login-case-block').css('display', 'none');
-		$('#login-register').css('display', 'none');
 		$('#twitter-email').css('display', 'none');
 		$('#link-social').css('display', 'block');
 		break
 		
-	default:jQuery("#dialogresponse").html('Unknown view type');
-	jQuery("#dialogresponse").dialog({ title: "Info" });
+	default:
+		jQuery("#dialogresponse").html('Unknown view type');
+		jQuery("#dialogresponse").dialog({ title: "Info" });
 	}
 }
 </script>
@@ -201,7 +181,6 @@ function socialLogin(deserialized)
 }
 function loginformSubmitUser()
 {
-	//if(!checkemailvalue(document.forms['loginform'].elements['emaillog'].value)){return false;};
 	var loginUser = {
 			"requesttype":"login",
 			"remember":document.forms['loginform'].elements['remember'].checked,
@@ -212,20 +191,6 @@ function loginformSubmitUser()
 	sendLoginRequest(loginUser);
 }
 function registerformSubmitUser()
-{
-	//if(!checkemailvalue(document.forms['login-register'].elements['emailreg'].value)){return false;};
-	var newUser = {
-			"requesttype":"manualregister",
-			"remember":true,
-			"email":document.forms['login-register'].elements['emailreg'].value,
-			"name":document.forms['login-register'].elements['name'].value,
-			"password":document.forms['login-register'].elements['password'].value,
-			"password2":document.forms['login-register'].elements['password2'].value,
-			"checkout":checkout
-			};
-	sendLoginRequest(newUser);
-}
-function registerformSubmitUserNew()
 {
 	if(!validateRegisterForm()){return false;};
 	
@@ -262,7 +227,7 @@ function validateRegisterForm()
 	var lname		= $('form#new-customer-register > fieldset > div > input#lname').first();
 	var pass		= $('form#new-customer-register > fieldset > div > input#passwordnew').first();
 	
-	$("input.input-red").removeClass("input-red");
+	$("#new-customer-register .input-red").removeClass("input-red");
 	
 	if(!regEmail.test(email.val()))
 	{
@@ -331,13 +296,28 @@ function linkSocialAccount()
 }
 function sendLoginRequest(user)
 {
-	//console.log(user);
-	if(typeof user.email ==='undefined' || user.email === '') {jQuery("#dialogresponse").html(user.email + poppinres.text.emailempty);
-	jQuery("#dialogresponse").dialog({ title: "Info" }); return false;
-	return false;
+	$("#loginform .input-red").removeClass("input-red");
+	powerTip.hide('powerTipEmaillog');
+	powerTip.hide('powerTipPassword');
+	
+	if(typeof user.email ==='undefined' || user.email === '') {
+		powerTip.create('emaillog', poppinres.text.emailempty, 'powerTipEmaillog', -37, 123);
+		$('#emaillog').on('focusin', function() { powerTip.hide('powerTipEmaillog'); }) ;
+		$('#emaillog').attr( "class", "input-red");
 	}
-	if( !validateEmail(user.email)) {jQuery("#dialogresponse").html(user.email + poppinres.text.emailinvalid);
-	jQuery("#dialogresponse").dialog({ title: "Info" }); return false;}
+	if( !validateEmail(user.email)) {
+		powerTip.create('emaillog', poppinres.text.emailinvalid, 'powerTipEmaillog', -37, 123);
+		$('#emaillog').on('focusin', function() { powerTip.hide('powerTipEmaillog'); }) ;
+		$('#emaillog').attr( "class", "input-red");
+	}
+	if(user.requesttype ==='login' && user.password === '') {
+		powerTip.create('password', poppinres.text.passwordempty, 'powerTipPassword', -37, 123);
+		$('#password').on('focusin', function() { powerTip.hide('powerTipPassword'); }) ;
+		$('#password').attr( "class", "input-red");
+	}
+	if($("#loginform .input-red").size() > 0) {
+		return false;
+	}
 	if(user.remember){storeLoginCookie(user);}
 	jQuery.ajax({
 			url: poppinres.url.loginservice,
@@ -353,30 +333,27 @@ function sendLoginRequest(user)
 function response(data)
 {
 	document.body.style.cursor = 'default';
-	//if(data.responseText==null){alert('null response object')};
 	var responseObject = JSON.parse(data.responseText);
-	//console.log(responseObject);
-	if(responseObject.responsetype==null){jQuery("#dialogresponse").html(poppinres.text.responsetypenull);
-	jQuery("#dialogresponse").dialog({ title: "Info" });return;};
+
+	if(responseObject.responsetype==null){
+		jQuery("#dialogresponse").html(poppinres.text.responsetypenull);
+		jQuery("#dialogresponse").dialog({ title: "Info" });
+		return;
+	};
 	switch(responseObject.responsetype)
 	{
 		case 'success':
-			//alert(responseObject.message);
 			jQuery("#dialogresponse").html(responseObject.message);
 			jQuery("#dialogresponse").dialog({ title: "Info" });
 		break
 		case 'linksocial':
-			//show linking window
-			//alert('received linksocial:'+JSON.stringify(responseObject));
 			document.forms['link-social'].elements['emaillink'].value = responseObject.message.email;
 			document.forms['link-social'].elements['timestamp'].value = responseObject.message.timestamp;
-			//document.forms['link-social'].elements['UID'].value = responseObject.message.UID;
 			document.forms['link-social'].elements['signature'].value = responseObject.message.signature;
 			switchview('linksocial');
 		break
 		case 'redirect':
 			if(responseObject.socializenotify!=undefined){
-				//alert(responseObject.socializenotify);
 				var notifyString = JSON.stringify(responseObject.socializenotify);
 				socket.postMessage(notifyString);
 				}
@@ -385,13 +362,19 @@ function response(data)
 		case 'error':
 			var errormessage = responseObject.message;
 			errormessage = errormessage.substring(errormessage.lastIndexOf(":")+1,errormessage.length);
-			//alert(errormessage);
-			jQuery("#dialogresponse").html(errormessage);
-			jQuery("#dialogresponse").dialog({ title: "Info" });
+
+			if(errormessage.indexOf('password')!=-1){
+				powerTip.create('password', errormessage, 'powerTipPassword', -51, 123);
+				$('#password').on('focusin', function() { powerTip.hide('powerTipPassword'); }) ;
+				$('#password').attr( "class", "input-red");
+			} else {
+				powerTip.create('emaillog', errormessage, 'powerTipEmaillog', -51, 123);
+				$('#emaillog').on('focusin', function() { powerTip.hide('powerTipEmaillog'); }) ;
+				$('#emaillog').attr( "class", "input-red");
+			}
 			return false;
 			break
 		default:
-			//alert("Unknown Response type");
 			jQuery("#dialogresponse").html(poppinres.text.responsetypeunknown);
 			jQuery("#dialogresponse").dialog({ title: "Info" });
 			return false;	
@@ -455,40 +438,6 @@ function forgotPasswordSocialLink()
 							<a href="#" onclick="switchview('login');">Go back</a>	
 				</fieldset>
 			</form>
-			<form id="login-register" action="LoginService.ss" style="display:none;">
-				<input type="hidden" name="manualregister" value="manualregister"/>
-				<input type="hidden" name="checkout" value=""/>
-				<div id="ErrorMsg"></div>
-				<h2>Customer Registration Information</h2>
-				<fieldset>
-					<label for="name">*Name</label>
-					<input id="name" name="name" type="text"/>
-				</fieldset>
-				<fieldset>
-					<label for="company">Company Name</label>
-					<input id="company" name="company" type="text"/>
-				</fieldset>
-				<fieldset>
-					<label for="email">*Email Address</label>
-					<input id="emailreg" name="email" type="text" />
-				</fieldset>
-				<fieldset>
-					<label for="password">*Password</label>
-					<input id="password" name="password" type="password"/>
-				</fieldset>
-				<fieldset>
-					<label for="password2">*Re-enter Password</label>
-					<input id="password2" name="password2" type="password"/>
-				</fieldset>
-				<fieldset>
-					<label for="partnercode">Partner Code</label>
-					<input id="partnercode" name="partnercode" type="text"/>
-				</fieldset>
-				<fieldset>
-					<input type="submit" name="register" id="register" value="Continue" class="orangeBtn"/>	
-					<a href="#" onclick="switchview('login');">Returning customer? Click here</a>	
-				</fieldset>
-			</form>
 			<div class="login-case-block">
 				<div class="social" style="width: 190px;">
 					<h3>LOGIN WITH SOCIAL</h3>
@@ -510,11 +459,11 @@ function forgotPasswordSocialLink()
 						</fieldset>
 						<fieldset>
 							<label for="email">Email Address</label>
-							<input id="emaillog" name="email" type="text" onchange="resetLoginCookie();"/>
+							<div style="position: relative;"><input id="emaillog" name="email" type="text" onchange="resetLoginCookie();"/></div>
 						</fieldset>
 						<fieldset>
 							<label for="pass">Password</label>
-							<input id="password" name="password" type="password"/>
+							<div style="position: relative;"><input id="password" name="password" type="password"/></div>
 						</fieldset>
 						<fieldset>
 							<div class="forgot-link"><a style="text-decoration:underline;margin:0;" href="#" onclick="forgotPasswordOld();return false;">Forgot password?</a></div>

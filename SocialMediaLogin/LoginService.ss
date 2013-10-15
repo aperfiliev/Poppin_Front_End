@@ -55,38 +55,36 @@ function service(request, response){
 	{
 		var errormessage;
 		if(request.getParameter('requesttype') == 'resetpassword')
-			{
-				code = "resetpassworderror";
-				errormessage = e.getDetails();
-			}
+		{
+			code = "resetpassworderror";
+			errormessage = e.getDetails();
+		}
 		else if(e instanceof nlobjError)
-			{
-				code = "error";
-				if(e.getCode()==='ERR_WS_RECORD_NOT_FOUND'){
-					errormessage="Looks like you haven't registered yet, <a href='<NLLOGINURL>'>create</a> a Poppin account today.";
-				}
-				else if(e.getCode()==='ERR_WS_CUSTOMER_LOGIN'){
-					var emailcheck = request.getParameter("email");
-					nlapiLogExecution('DEBUG','email value', emailcheck);
-					if(checkExistingEmail(emailcheck).length>0){
-						errormessage="Oops. Something's not lining up with that password.";
-					}
-					else{
-						errormessage="Looks like you haven't registered yet, <a href='<NLLOGINURL>'>create</a> a Poppin account today.";
-					}
-					
-				}
-				else{
-				errormessage = 'Netsuite error: ' + e.getDetails();
-				}
-				nlapiLogExecution('ERROR',e.getCode(),e.getDetails());
+		{
+			code = "error";
+			if(e.getCode() === 'ERR_WS_RECORD_NOT_FOUND' || e.getCode() === 'ERR_WS_INVALID_EMAIL'){
+				errormessage = "<p>Looks like you haven't registered yet, </p><p> <a href='<NLLOGINURL>'>create a Poppin account today.</a></p>";
 			}
+			else if(e.getCode() === 'ERR_WS_CUSTOMER_LOGIN')
+			{
+				var emailcheck = request.getParameter("email");
+				nlapiLogExecution('DEBUG','email value', emailcheck);
+				if(checkExistingEmail(emailcheck).length> 0 ){
+					errormessage = "<p>Oops. Something's not lining up </p><p>with that password.</p>";
+				} else {
+					errormessage = "<p>Looks like you haven't registered yet, </p><p> <a href='<NLLOGINURL>'>create a Poppin account today.</a></p>";
+				}
+			} else {
+				errormessage = e.getCode() + e.getDetails();
+			}
+			nlapiLogExecution('ERROR',e.getCode(),e.getDetails());
+		}
 		else
-			{
-				code = "error";
-				nlapiLogExecution('ERROR', 'Unexpected error: ', e.toString());
-				errormessage = 'Unexpected error: ' + e.toString();
-			}
+		{
+			code = "error";
+			nlapiLogExecution('ERROR', 'Unexpected error: ', e.toString());
+			errormessage = 'Unexpected error: ' + e.toString();
+		}
 		response.write(buildResponseObjectStringified(code,errormessage));
 	}
 }

@@ -278,6 +278,25 @@ div[id^="powerTip"].n:before {
 	background:url(images/tip-yellowsimple_arrows.gif) no-repeat -18px 0;
 }
 
+#powerDiv {
+	background-color:#fff;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	color:#000;
+	display: none;
+	padding: 0px 20px 0px 20px;
+	position: absolute;
+	white-space: nowrap;
+	z-index:90;
+	text-align:left;
+	border: 1px solid #ccc;
+	min-width:50px;
+	max-width:300px;
+	line-height: 0px;
+	font-size: 14px;
+}
+
 #div__help {
 	display: none;
 	top: 100px;

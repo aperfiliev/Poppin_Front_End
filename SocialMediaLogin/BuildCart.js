@@ -356,7 +356,7 @@
 		ctnt.setAttribute("id", "promoInput");
 		ctnt.setAttribute("type", "text");
 		ctnt.setAttribute("value", code);
-		ctnt.setAttribute("title", description);
+		//ctnt.setAttribute("title", description);
 		if(isvalid === 'F')
 		{
 			ctnt.setAttribute("class", "promoInput-red");
@@ -392,6 +392,12 @@
 			powerTip.create('promoInput', '<p>Gone are the days of humdrum</p><p>office products &#8211; and that promo code</p>',
 					'powerTipPromo', -50, 40);
 			$('#promoInput').on('focusin', function() { powerTip.hide('powerTipPromo'); }) ;
+		}
+		else if(code != '')
+		{
+			$('#promoInput').hover(
+					function() { powerTip.create('promoInput', '<p>'+description+'</p>', 'powerDiv', -28, 40); },
+					function() { powerTip.hide('powerDiv');});
 		}
 	}
 	/*
