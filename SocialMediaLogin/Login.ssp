@@ -218,7 +218,7 @@ function registerformSubmitUser()
 }
 function validateRegisterForm()
 {
-	var regEmail	= /^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$/;
+	var regEmail	= /^([0-9a-zA-Z_\\.-]+)@([\\da-zA-Z\\.-]+)\\.([a-zA-Z\\.]{2,6})$/;
 	var regText		= /^[0-9a-zA-Z-]{2,}$/;
 	var regPass		= /^[0-9a-zA-Z]{6,}$/;
 	
