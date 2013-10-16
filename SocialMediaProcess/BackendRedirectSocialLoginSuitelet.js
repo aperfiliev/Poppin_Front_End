@@ -24,7 +24,7 @@ function suitelet(request, response){
 	var responseObject;
 	if(results!=null)
 		{
-			nlapiLogExecution('DEBUG','found lead with weblead = true');
+nlapiLogExecution('DEBUG','found lead with weblead = true',filters.toString());
 			var custrecord = nlapiLoadRecord('customer', results[0].getId());
 			responseObject={
 					"length":results.length,

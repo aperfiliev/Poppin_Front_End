@@ -16,7 +16,6 @@ var MINILOGINSOCKET = null;
 MINILOGINSOCKET = new easyXDM.Socket({
 		remote:poppinres.url.poppinglobal,
 		onReady: function(){
-			//alert(location.href);
 			
      },
 	    onMessage:function(message, origin) {
@@ -92,6 +91,5 @@ function response(data)
 </script>
 </head>
 <body>
-<!-- <PP_TOP_LINKS> -->
 </body>
 </html>

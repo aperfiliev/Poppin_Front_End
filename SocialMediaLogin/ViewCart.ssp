@@ -36,40 +36,6 @@ $(document).ready(
 				}
 			});
 		});
-// $(function() { 
-// 	$('#cartform').on('submit', function(e) { 
-// //	 	<input type='hidden' name='c' value='3363929'>
-// //	 	<input type='hidden' name='sc' value='3'>
-// //	 	<input type='hidden' name='vid' value='wzxHh0i-AVs-_kTy'>
-// //	 	<input type='hidden' name='ck' value='wzxHh2C-AXyys5Tk'>
-// //	 	<input type='hidden' name='cktime' value='114292'>
-// //	 	<input type='hidden' name='cart' value='182390'>
-// 		 try {
-// 	            e.preventDefault();
-	         
-		 
-// 	            var form = this;
-// 	            if (typeof _gat !== 'undefined') {
-// 	                _gaq.push(['_linkByPost', this]);
-// 	                var pageTracker = _gat._getTrackerByName();
-// 	                var url = pageTracker._getLinkerUrl(form.action);
-// 	                var match = url.match(/[^=&?]+\s*=\s*[^&#]*/g);
-// 	                for ( var i = match.length; i--; ) {
-// 	                    var spl = match[i].split("=");
-// 	                    var name = spl[0].replace("[]", "");
-// 	                    var value = spl[1];
-// 	                    $('<input>').attr({
-// 	                        type: 'hidden',
-// 	                        name: name,
-// 	                        value: value
-// 	                    }).appendTo(form);
-// 	                }
-// 	            }
-// 	            setTimeout(function() { form.submit(); }, 400);
-// 	        } catch (e) { form.submit(); }
-// 	});
-	
-// });
 	
 </script>
 
@@ -368,7 +334,6 @@ color: grey;
 			</div>
 
 			<div id="div__help_bg"></div>
-			<!-- <form method='post' name='cart' id='cart' onsubmit="_gaq.push(['_linkByPost', this]); return true;"> -->
 			<input type='hidden' name='redirect' value=''>
 			<div id='div__body'>
 				<table border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -433,7 +398,6 @@ color: grey;
 					</tbody>
 				</table>
 			</div>
-			<!--  </form>-->
 		</div>
 	</div>
 	<div id='div__footer' class='noprint' leftmargin='0' topmargin='0'
