@@ -367,10 +367,19 @@ function response(data)
 				powerTip.create('password', errormessage, 'powerTipPassword', -51, 123);
 				$('#password').on('focusin', function() { powerTip.hide('powerTipPassword'); }) ;
 				$('#password').attr( "class", "input-red");
-			} else {
+			} else if (errormessage.indexOf("haven't registered yet")!=-1) {
 				powerTip.create('emaillog', errormessage, 'powerTipEmaillog', -51, 123);
 				$('#emaillog').on('focusin', function() { powerTip.hide('powerTipEmaillog'); }) ;
 				$('#emaillog').attr( "class", "input-red");
+			} else if (errormessage.indexOf('user already exists')!=-1) {
+				// registration form 
+				powerTip.create('emailregnew', errormessage, 'powerTipEmail', -52, 123);
+				$('#emailregnew').on('focusin', function() { powerTip.hide('powerTipEmail'); }) ;
+				$('#emailregnew').attr( "class", "input-red");
+			} else {
+				// default errors message
+				jQuery("#dialogresponse").html(errormessage);
+				jQuery("#dialogresponse").dialog({ title: "Info" });
 			}
 			return false;
 			break
