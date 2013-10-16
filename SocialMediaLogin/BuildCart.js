@@ -152,7 +152,7 @@
 		ctnt.setAttribute("value", order.quantity);
 		ctnt.setAttribute("name", '_'+order.orderitemid);
 		ctnt.setAttribute("id", '_'+order.orderitemid);
-		if(order.itemtype !== 'invtpart'){
+		if(order.itemtype === 'giftcert'){
 			ctnt.setAttribute("disabled", "disabled");
 			ctnt.setAttribute("style", "border:0;");
 			
@@ -166,7 +166,7 @@
 				error_msg = '<p>Your quantity must be</p><p> less or equal 250</p>';
 			}
 		}
-		else if(order.itemtype ==='invtpart' && order.quantityavailable < order.quantity)
+		else if(order.itemtype !=='giftcert' && order.quantityavailable < order.quantity)
 		{
 			var plus_one = order.quantityavailable +1;
 			ctnt.setAttribute("class", "input-red");
@@ -185,7 +185,7 @@
 		
 		if(order.orderitemid != 0)
 		{
-			if(order.itemtype ==='invtpart'){
+			if(order.itemtype !=='giftcert'){
 				var ctnt = document.createElement("a");
 				ctnt.setAttribute("href", "#");
 				ctnt.setAttribute("id", "remove"+num);
