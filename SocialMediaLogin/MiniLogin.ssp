@@ -12,82 +12,69 @@ body {
 </style>
 <script type="text/javascript" src="js/easyXDM.js"></script>
 <script type="text/javascript">
-var MINILOGINSOCKET = null;
-MINILOGINSOCKET = new easyXDM.Socket({
-		remote:poppinres.url.poppinglobal,
-		onReady: function(){
-			
-     },
-	    onMessage:function(message, origin) {
-	    	var messageObject = JSON.parse(message);
-	    	if(messageObject.requesttype=='login')
-	    		{
-	    			sendLoginRequest(messageObject);
-	    		}
-	    	else if(messageObject.requesttype=='sociallogin')
-	    		{
-	    			socialLogin(messageObject.user);	
-	    		}
-	    	else if(messageObject.requesttype=='forgotpassword')
-	    		{
-	    			sendLoginRequest(messageObject);
-	    		}
-	    	else if(messageObject.requesttype=='resetpassword')
-    			{
-    				sendLoginRequest(messageObject);
-    			}
-	    	else if(messageObject.requesttype=='twitterlogin')
-	    		{
-	    			twitterLogin(messageObject);
-	    		}
-	    }
+	var MINILOGINSOCKET = null;
+	MINILOGINSOCKET = new easyXDM.Socket({
+		remote : poppinres.url.poppinglobal,
+		onReady : function() {
+
+		},
+		onMessage : function(message, origin) {
+			var messageObject = JSON.parse(message);
+			if (messageObject.requesttype == 'login') {
+				sendLoginRequest(messageObject);
+			} else if (messageObject.requesttype == 'sociallogin') {
+				socialLogin(messageObject.user);
+			} else if (messageObject.requesttype == 'forgotpassword') {
+				sendLoginRequest(messageObject);
+			} else if (messageObject.requesttype == 'resetpassword') {
+				sendLoginRequest(messageObject);
+			} else if (messageObject.requesttype == 'twitterlogin') {
+				twitterLogin(messageObject);
+			}
+		}
 	});
-function socialLogin(deserialized)
-{
-    var newUser = {
-    		"requesttype":"sociallogin",
-    		"email":deserialized['user'].email,
-    		"name":deserialized['user'].firstName +' ' +deserialized['user'].lastName,
-    		"password":'',
-    		"password2":'',
-    		"checkout":false,
-    		"timestamp":deserialized.signatureTimestamp,
-			"UID":deserialized.UID,
-			"signature":deserialized.UIDSignature
-    		};
-  sendLoginRequest(newUser);
-}
-function twitterLogin(deserialized)
-{
-    var newUser = {
-    		"requesttype":"sociallogin",
-    		"email":deserialized.email,
-    		"name":deserialized.name,
-    		"password":'',
-    		"password2":'',
-    		"checkout":false,
-    		"timestamp":deserialized.signatureTimestamp,
-			"UID":deserialized.UID,
-			"signature":deserialized.UIDSignature
-    		};
-  sendLoginRequest(newUser);
-}
-function sendLoginRequest(user)
-{
-	jQuery.ajax({
-		  url: poppinres.url.loginservice,
-		  data: user,
-		  dataType: 'jsonp',
-		  jsonp: 'json.wrf',
-		  success: response,
-		  error: response
+	function socialLogin(deserialized) {
+		var newUser = {
+			"requesttype" : "sociallogin",
+			"email" : deserialized['user'].email,
+			"name" : deserialized['user'].firstName + ' ' + deserialized['user'].lastName,
+			"password" : '',
+			"password2" : '',
+			"checkout" : false,
+			"timestamp" : deserialized.signatureTimestamp,
+			"UID" : deserialized.UID,
+			"signature" : deserialized.UIDSignature
+		};
+		sendLoginRequest(newUser);
+	}
+	function twitterLogin(deserialized) {
+		var newUser = {
+			"requesttype" : "sociallogin",
+			"email" : deserialized.email,
+			"name" : deserialized.name,
+			"password" : '',
+			"password2" : '',
+			"checkout" : false,
+			"timestamp" : deserialized.signatureTimestamp,
+			"UID" : deserialized.UID,
+			"signature" : deserialized.UIDSignature
+		};
+		sendLoginRequest(newUser);
+	}
+	function sendLoginRequest(user) {
+		jQuery.ajax({
+			url : poppinres.url.loginservice,
+			data : user,
+			dataType : 'jsonp',
+			jsonp : 'json.wrf',
+			success : response,
+			error : response
 		});
-	    document.body.style.cursor = 'wait';
-}
-function response(data)
-{
-	MINILOGINSOCKET.postMessage(data.responseText);
-}
+		document.body.style.cursor = 'wait';
+	}
+	function response(data) {
+		MINILOGINSOCKET.postMessage(data.responseText);
+	}
 </script>
 </head>
 <body>
