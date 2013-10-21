@@ -68,7 +68,7 @@
 			}
 			addEmptyRow(cartBody);
 			
-			buildOrderSummary(actionbar, order['summary'].subtotal, order['summary'].tax, order['summary'].shippingcost, order['summary'].discount, order['summary'].total);
+			buildOrderSummary(order['summary'].subtotal, order['summary'].tax, order['summary'].shippingcost, order['summary'].discount, order['summary'].total);
 			buildPromoCodeDiv(order.promocode);
 			
 			var checkoutUrl = document.getElementById('checkoutUrl');
@@ -84,7 +84,7 @@
 			$(".checkoutDiv").hide();
 			$(".promoCode").hide();
 			
-			buildOrderSummary(actionbar, order['summary'].subtotal, order['summary'].tax, order['summary'].shippingcost, order['summary'].discount, order['summary'].total);
+			buildOrderSummary(order['summary'].subtotal, order['summary'].tax, order['summary'].shippingcost, order['summary'].discount, order['summary'].total);
 		}
 	}
 	/*
@@ -269,32 +269,33 @@
 	/*
 	 * 
 	 */
-	function buildOrderSummary(table, subtotal, tax, shipping, discount, total)
+	function buildOrderSummary(subtotal, tax, shipping, discount, total)
 	{
-		table.innerHTML = '';
+		$("#actionbar").html("");
+		tbody = document.getElementById('actionbar');
 		
 		var row, cell;
-		row = table.insertRow(-1);
+		row = tbody.insertRow(-1);
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("colspan", "2");
 		cell.innerHTML = '<h3>Order Summary</h3>';
 		
-		row = table.insertRow(-1);
+		row = tbody.insertRow(-1);
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Subtotal';
 		cell = row.insertCell(-1);
 		cell.setAttribute("class", "right");
 		cell.innerHTML = subtotal;
 		
-		row = table.insertRow(-1);
+		row = tbody.insertRow(-1);
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Shipping';
 		cell = row.insertCell(-1);
 		cell.setAttribute("class", "right");
 		cell.innerHTML = shipping;
 		
-		row = table.insertRow(-1);
+		row = tbody.insertRow(-1);
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Tax';
 		cell = row.insertCell(-1);
@@ -302,7 +303,7 @@
 		cell.innerHTML = tax;
 		
 		if(discount != '') {
-			row = table.insertRow(-1);
+			row = tbody.insertRow(-1);
 			cell = row.insertCell(-1);
 			cell.innerHTML = 'Discount';
 			cell = row.insertCell(-1);
@@ -310,7 +311,7 @@
 			cell.innerHTML = discount;
 		}
 		
-		row = table.insertRow(-1);
+		row = tbody.insertRow(-1);
 		row.setAttribute("class", "totalRow");
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Total';

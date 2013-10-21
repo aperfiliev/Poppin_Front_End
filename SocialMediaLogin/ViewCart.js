@@ -154,7 +154,7 @@
 						items.promocode.promocode = resp.header.status.message;
 						items.promocode.description = "";
 					}
-					document.getElementById('cartBody').innerHTML = '';
+					$("#cartBody").html("");
 					buildCartItems(items);
 				}
 			}
