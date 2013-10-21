@@ -4,6 +4,7 @@
 <script type="text/javascript" src="/site/pp-files/pp-all_header_scripts.js"></script>
 <script src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/easyXDM.js"></script>
+<!--[if lt IE 8]><script src="/SSP Applications/Poppin/SocialMediaLogin2/js/json3.min.js"></script><![endif]-->
 <style>
 body {
 	margin: 0;
