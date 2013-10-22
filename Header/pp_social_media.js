@@ -29,11 +29,21 @@ jQuery(document).ready(function() {
 			jQuery('#loginpositionhelper').css('display', 'block');
 		}
 	});
+	jQuery('#miniemail, #minipassword').on('focusin', function() {
+		jQuery('#loginpositionhelper').addClass("noblur");
+	});
+	jQuery('#miniemail, #minipassword').on('focusout', function() {
+		jQuery('#loginpositionhelper').removeClass("noblur");
+	});
 	jQuery('.loginli').mouseleave(function() {
-		jQuery('#loginpositionhelper').css('display', 'none');
+		if(!jQuery('#loginpositionhelper').hasClass("noblur")) {
+			jQuery('#loginpositionhelper').css('display', 'none');
+		}
 	});
 	jQuery('#loginpositionhelper').mouseleave(function() {
-		jQuery('#loginpositionhelper').css('display', 'none');
+		if(!jQuery('#loginpositionhelper').hasClass("noblur")) {
+			jQuery('#loginpositionhelper').css('display', 'none');
+		}
 	});
 	jQuery('.login a').attr('href', '#');
 	
@@ -48,10 +58,12 @@ jQuery(document).ready(function() {
 		};
 	}
 });
+function miniloginInit() {
+}
 /*
  * PP_SOCIAL_MEDIA_LOGIN_COOKIES
  */
-function setCookie(name, value, expires, path, domain, secure) {
+ function setCookie(name, value, expires, path, domain, secure) {
 	if (!name || value === undefined)
 		return false;
 	var str = name + '=' + encodeURIComponent(value);
