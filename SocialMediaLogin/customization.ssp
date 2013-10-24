@@ -3,15 +3,13 @@
 		<tr>
 			<td>
 				<h1>Get Your Brand On</h1>
-				<div>
-					<iframe scrolling="no" frameborder="0" allowtransparency="yes"
-						marginheight="0" marginwidth="0"
-						src="https://forms.sandbox.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&amp;formid=14&amp;h=7330270d3afe48c04a57&amp;redirect_count=1&amp;did_javascript_redirect=T"
-						style="width: 323px; height: 373px; overflow: hidden;">
+				<div class="div__regform">
+					<iframe scrolling="no" frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0"
+						src="https://forms.sandbox.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&amp;formid=14&amp;h=7330270d3afe48c04a57&amp;redirect_count=1&amp;did_javascript_redirect=T">
 					</iframe>
 				</div>
 				<div class="div__presentation">
-					<a href="/Ping-Pong-Conference-Table.html" ><img src="/site/pp-sources/business/poppin-business.animation.gif" ></a>
+					<a href="#" ><img src="/site/pp-sources/customization/poppin-customization.png" ></a>
 				</div>
 			</td>
 		</tr>
