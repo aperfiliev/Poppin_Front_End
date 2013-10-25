@@ -9,8 +9,8 @@ function openLegacy()
 {
 	var legacyHtml = "<h3>Obviously, we're pretty compatible already.</h3>" +
 	"<div id='dotted'></div>" +
-	"<h2>But with an updated browser you'll " +
-	"have complete access to the charismatic wonder that is poppin.com. Besides, an update will increase " +
+	"<h2>But, with an updated browser you'll " +
+	"have complete access to the charismatic wonder that is poppin.com.<br /><br /> Besides, an update will increase " +
 	"your online security, enhance your browsing experience, and it's free. We just want the best for you" +
 	"&mdash;and Error Messages just make us feel so misunderstood.</h2>" +
 	'<p><input type="submit" class="lgbutton" value="" onclick="location.href=' +
