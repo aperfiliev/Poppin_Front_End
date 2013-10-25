@@ -14,7 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <script type="text/javascript" src="/site/pp-files/pp-all_header_scripts.js"></script>
 <script src="js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="<%=poppinservres.url.poppinresources%>"></script>
+<script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin2/js/poppinresources.js"></script>
 <script type="text/javascript" src="js/easyXDM.js"></script>
 <script type="text/javascript">
 var ordernum = '';

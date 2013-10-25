@@ -81,3 +81,45 @@ tbody#content_master div.div__register{
 td.medtextbold {
 	display: none;
 }
+tbody#content_master .customization_item{
+	box-shadow: 0 0 10px #7b7b7b;
+	-webkit-box-shadow: 0 0 10px #7b7b7b;
+	-moz-box-shadow: 0 0 10px #7b7b7b;
+	zoom: 1;
+	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(color=#7b7b7b,direction=0,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=45,strength=2), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=90,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=135,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=180,strength=10), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=225,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=270,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=315,strength=2)
+}
+.customization_item{
+text-align:center;
+padding:18px 0px;
+}
+tbody#content_master .customization_types .customization_item{
+	height:139px;
+	width:315px;
+	margin: 0px 6px;
+}
+tbody#content_master .customization_item{
+	margin: 0px 6px;
+	padding:21px 5px;
+}
+tbody#content_master .customization_notebooks .customization_detail{
+text-align:left;	
+}
+tbody#content_master .customization_detail{
+	color:#000;
+	font-size: 18px;
+	text-align:center;
+	background: url(/site/pp-sources/business/bg-dotted-small.gif) repeat-x left top;
+	margin: 15px 20px;
+	padding: 10px;
+}
+tbody#content_master .customization_detail h3{
+	color:#000;	
+}
+}

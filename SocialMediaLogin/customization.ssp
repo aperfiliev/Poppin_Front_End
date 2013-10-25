@@ -13,27 +13,221 @@
 				</div>
 			</td>
 		</tr>
-		<tr>
-			<td class="callstylist">
-				<span class="orange">Call your WorkStylist today </span><span class="number">866 &#8226; 926 &#8226; 4922</span><br/>
-				<span class="grey">Trade discounts available for architects and interior designers.</span>
-			</td>
-		</tr>
-		<tr>
+			<tr>
 			<td>
-				<div>
-					<h2>Join the Work Happy Revolution!</h2>
-					<p>Through bright color and great design, Poppin has transformed humdrum office products into extraordinary objects 
-					that inspire fresh-thinking, increase productivity and bring out the smiles. Poppin enhances office culture, supports
-					 team building and brand initiatives, and of course makes the perfect gift for employees and clients. To learn more 
-					 or to place an order <b>Call your WorkStylist today 866 &#8226; 926 &#8226; 4922</b></p>
+				<div class="customization_types">
+					<h2>Types of Customization</h2>
+					<table>
+					<tr>
+					<td>
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_03.gif"/>
+							<div class="customization_detail">
+								<h3>FOIL STAMP</h3>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_05.gif"/>
+							<div class="customization_detail">
+								<h3>FULL COLOR LOGO</h3>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_07.gif"/>
+							<div class="customization_detail">
+								<h3>BLIND DEBOSS</h3>
+							</div>
+						</div>
+					</td>
+					</tr>
+					</table>
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<div style="position: relative;">
-					<h2>Who's Working Happy?</h2>
+				<div class="customization_notebooks">
+					<h2>Notebooks + Folios</h2>
+					<table>
+					<tr>
+					<td colspan="2">
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_17.gif"/>
+							<div class="customization_detail">
+								<h3>Medium Softcover Notebooks</h3>
+							</div>
+						</div>	
+					</td>
+					<td colspan="2">
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_23.gif"/>
+							<div class="customization_detail">
+								<h3>Small Softcover Notebooks</h3>
+							</div>
+						</div>
+					</td>
+					<td colspan="2">
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_20.gif"/>
+							<div class="customization_detail">
+								<h3>Medium Softcover Notebooks</h3>
+							</div>
+						</div>
+					</td>
+					</tr>
+					<tr>
+					<td colspan="3">
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_29.gif"/>
+							<div class="customization_detail">
+								<h3>Large Spiral Notebook</h3>
+							</div>
+						</div>
+					</td>
+					<td colspan="3">
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_31.gif"/>
+							<div class="customization_detail">
+								<h3>Folio</h3>
+							</div>
+						</div>
+					</td>
+					</tr>
+					<tr>
+					<td colspan="6">Volume discounts are available</td>
+					</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+			<tr>
+			<td>
+				<div class="customization_desktop">
+					<h2>Desktop Products</h2>
+					<table>
+					<tr>
+					<td>
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_39.gif"/>
+							<div class="customization_detail">
+									<h3>Tape Dispenser</h3>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_35.gif"/>
+							<div class="customization_detail">
+									<h3>Mouse Pad</h3>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_37.gif"/>
+							<div class="customization_detail">
+									<h3>Pen Cup</h3>
+							</div>
+						</div>
+					</td>
+					</tr>
+					<tr>
+					<td>
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_47.gif"/>
+							<div class="customization_detail">
+									<h3>Ruler</h3>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_45.gif"/>
+							<div class="customization_detail">
+									<h3>Stapler</h3>
+							</div>
+						</div>
+					</td>
+					</tr>
+					<tr>
+					<td colspan="2">Your logo is so fab, we just want to wear it!</td>
+					</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+			<tr>
+			<td>
+				<div>
+					<h2>Writing</h2>
+					<table>
+					<tr>
+					<td colspan="2">
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_52.gif"/>
+							<div class="customization_detail">
+								<h3>Signature Ballpoints</h3>
+							</div>
+						</div>
+					</td>
+					<td colspan="2">
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_54.gif"/>
+							<div class="customization_detail">
+								<h3>Thin Highlighters</h3>
+							</div>
+						</div>
+					</td>
+					<td colspan="2">
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_56.gif"/>
+							<div class="customization_detail">
+								<h3>Retractable Gel Lux</h3>
+							</div>
+						</div>
+					</td>
+					</tr>
+					<tr>
+					<td colspan="2">
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_65.gif"/>
+							<div class="customization_detail">
+								<h3>Retractable Ballpoint</h3>
+							</div>
+						</div>
+					</td>
+					<td colspan="4">
+						<div class="customization_item">
+							<img src="/site/pp-sources/customization/images/cust_img_62.gif"/>
+							<div class="customization_detail">
+								<h3>Metal Ballpoint Pen</h3>
+							</div>
+						</div>
+					</td>
+					</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div>
+					<h2>Ready to make your mark? Call:  <b>866.929.4922</b></h2>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div>
+					<h2>Terms + Conditions</h2>
+					<p>Through bright color and great design, Poppin has transformed humdrum office products into extraordinary objects 
+					that inspire fresh-thinking, increase productivity and bring out the smiles. Poppin enhances office culture, supports
+					 team building and brand initiatives, and of course makes the perfect gift for employees and clients. To learn more 
+					 or to place an order</p>
 				</div>
 			</td>
 		</tr>

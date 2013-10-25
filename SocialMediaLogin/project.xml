@@ -21,6 +21,7 @@
       <file name="jquery.cookie.js" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="jquery.esn.autobrowse.js" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="jquery.powertip.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="json3.min.js" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="jstorage.js" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="poppinresources.js" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="poppinservresources.js" bundleable="false" hideInBundle="false" isOnline="true"/>
@@ -58,6 +59,9 @@
     <file name="b2b.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
     <file name="b2b.ssp.css" bundleable="false" hideInBundle="false" isOnline="true"/>
     <file name="b2b.ssp.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="customization.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="customization.ssp.css" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="customization.ssp.js" bundleable="false" hideInBundle="false" isOnline="true"/>
     <file name="exitsurvey.css" bundleable="false" hideInBundle="false" isOnline="true"/>
     <file name="gigya.html" bundleable="false" hideInBundle="false" isOnline="true"/>
     <file name="loginLib.js" bundleable="false" hideInBundle="false" isOnline="true"/>

@@ -75,7 +75,7 @@ function service(request, response){
 					errormessage = "<p>Looks like you haven't registered yet, </p><p> <a href='<NLLOGINURL>'>create a Poppin account today.</a></p>";
 				}
 			} else {
-				errormessage = e.getDetails();
+				errormessage = e.getCode() + e.getDetails();
 			}
 			nlapiLogExecution('ERROR',e.getCode(),e.getDetails());
 		}
@@ -170,9 +170,7 @@ function loginUser(request, sociallink)
 function registerUser(request)
 {
 	var emailcheck = request.getParameter("email");
-	if(checkExistingEmail(emailcheck).length>0){
-		throw poppinservres.text.useralreadyexist
-	};
+	if(checkExistingEmail(emailcheck).length>0){throw poppinservres.text.useralreadyexist};
 	nlapiLogExecution('DEBUG','reg1');
 	var session = nlapiGetWebContainer().getShoppingSession();
 	//create user

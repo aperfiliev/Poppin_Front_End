@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>basic</title>
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.esn.autobrowse.js"></script>
+	<script type="text/javascript" src="js/jstorage.js"></script>
+
+
+<style>
+.grid-sizer{
+width:23%;
+}
+.gutter-sizer{
+width: 2.5%
+}
+#content{
+height:200px;
+}
+#container{
+width:900px;
+}
+
+</style>
+</head>
+<body>
+
+ <div id="container" class="index ">
+  <div class="grid-sizer"></div>
+   <div class="gutter-sizer"></div>
+ </div>
+ <div class="items">
+ 
+ </div>
+  
+</body>
+<script type="text/javascript">
+
+//       var container = document.querySelector('#container');
+// 	  var msnry = new Masonry( container, {
+// 	  // options...
+// 	  "itemSelector": '.tumblr_post',
+// 	  "columnWidth": 100,
+// 	  "gutter": 10
+	  
+// });
+$(".items").autobrowse(
+    {
+        url: function (offset)
+        {
+            return "http://api.flickr.com/services/feeds/photos_public.gne?id=67517523@N02&format=json&jsoncallback=?";
+        },
+        template: function (response)
+        {
+        	//alert(response);
+		console.log(response);
+			var markup='';
+	        for (var i=0; i<response.items.length; i++)
+	        {
+	            markup+='<a href="'+response.items[i].link+'"><img src="'+response.items[i].media.m+'" width="400"  /></a>'
+	        };
+	        return markup;
+        },
+        itemsReturned: function (response) { 
+			return response.items.length; 
+		},
+        offset: 0,
+        max: 100,
+        loader: '<div class="loader"></div>',
+        useCache: true,
+        expiration: 1
+    }
+);
+</script>
+</html>
