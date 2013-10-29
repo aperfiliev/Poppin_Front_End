@@ -249,7 +249,7 @@ function validateRegisterForm()
 	}
 	if(!regPass.test(pass.val()))
 	{
-		powerTip.create('passwordnew', poppinres.text.passwordvalidation, 'powerTipPass', -52, 123);
+		powerTip.create('passwordnew', poppinres.text.passwordvalidation, 'powerTipPass', -65, 123);
 		$('#passwordnew').on('focusin', function() { powerTip.hide('powerTipPass'); }) ;
 		pass.attr( "class", "input-red");
 	}
