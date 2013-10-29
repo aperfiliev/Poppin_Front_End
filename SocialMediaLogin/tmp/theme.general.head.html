@@ -1,33 +1,6 @@
-<PP_MOBILE_REDIRECT>
 <script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin2/js/poppinresources.js"></script>
-<style>
-span[id^='custcol8']
-{ 
-display:none; 
-} 
-</style>
-<!--[if IE]>						
-<style>
-#canadaimage{
-position: absolute; 
-left:72% !important;
-top:50% !important;
-}
-#usimage{
-position: absolute; 
-left:62% !important; 
-top:50% !important;
-}
-</style>
-<style>
-.home-login{
-position:relative;
-}
-#homeiframecontainer{
-height:110px;
-}
-</style>
-<![endif]-->
+<link href="/site/css/head.css" rel="stylesheet" type="text/css" />
+<!--[if IE]><link href="/site/css/ie.css" rel="stylesheet" type="text/css" /><![endif]-->
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link href="/site/pp-files/pp-all-styles.min.css?c=" rel="stylesheet" type="text/css" />
 <PP_EMAILS_STYLESHEET>
@@ -46,23 +19,24 @@ height:110px;
 <link rel="stylesheet" href="/site/canadapopup/css/popup.css" type="text/css"/>
 <script language="JavaScript" src="https://j.maxmind.com/app/geoip.js"></script>
 <script language="JavaScript" src="/site/canadapopup/scripts/popupcanada.js"></script>
-<script language="JavaScript" type="text/JavaScript">
-jQuery(document).ready(function(){
-var countrycode = geoip_country_code();
-if(countrycode == 'CA' )
+<script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin/easyXDM.js"></script>
+<script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin2/js/jquery.powertip.js"></script>
+<link href="/site/social-login/css/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://cdns.gigya.com/JS/socialize.js?apikey=3_I2Mjv1WInkkrH24KFFTRILLRY38x3T3zP2j_ktD55kvl2Sk3l0uWhw_i9xEOiTqG">
 {
-	if(jQuery(".home-container").length>0){
-		showPopUp('dialog');
-	}
-};
-});
+	siteName: 'poppin.com (Default site)'
+	,enabledProviders: 'facebook,twitter,googleplus,linkedin,yahoo,messenger'
+	,connectWithoutLoginBehavior: 'alwaysLogin'     // change the connect without login behavior    
+}
 </script>
-<PP_SOCIAL_MEDIA_ALL>
+<script src="/SSP Applications/Poppin/Header/pp_social_media.js"></script>
 <PP_CANADA_POPUP>
 <!--[if lt IE 9]><script src="/SSP Applications/Poppin/Header/pp_legacy_browser.js"></script><![endif]-->
 <!--[if lt IE 8]><script src="/SSP Applications/Poppin/SocialMediaLogin2/js/json3.min.js"></script><![endif]-->
 <script src="/SSP Applications/Poppin/SocialMediaLogin2/js/jquery-ui-1.10.3.custom.min.js"></script>
 <link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin2/smoothness/jquery-ui-1.10.3.custom.css" />
 <div id="dialogresponse" title="Basic dialog" style="display:none;"></div>
-<PP_SOCIAL_MEDIA_EXITSURVEY>
+<link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin2/exitsurvey.css" />
+<script type="text/javascript" src="/SSP Applications/Poppin/Header/pp_exit_survey.js"></script>
+<div id="exitsurveyplaceholder" style="display:none;"></div>
 <div id="coverdiv"></div>
