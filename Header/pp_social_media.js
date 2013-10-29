@@ -1,4 +1,112 @@
 /*
+ * PP_MOBILE_REDIRECT
+ */
+function setCookie(name, value, expires, path, domain, secure) {
+   if (!name || value===undefined) return false;
+    var str = name + '=' + encodeURIComponent(value);
+    
+    if (expires) str += '; expires=' + expires.toGMTString();
+    if (path)    str += '; path=' + path;
+    if (domain)  str += '; domain=' + domain;
+    if (secure)  str += '; secure';
+    
+    document.cookie = str;
+    return true;
+}
+function getCookie(name){
+var pattern = "(?:; )?" + name + "=([^;]*);?";
+    var regexp  = new RegExp(pattern);
+    
+    if (regexp.test(document.cookie))
+    return decodeURIComponent(RegExp["$1"]);
+    
+    return false;
+}
+function deleteCookie(name, path, domain) {
+    setCookie(name, null, new Date(0), path, domain);
+    return true;
+}
+function getQuerystring(key, default_)
+{
+	if (default_==null) default_=""; 
+	key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
+	var qs = regex.exec(window.location.href);
+	if(qs == null)
+	return default_;
+	else
+	return qs[1];
+}
+var isTablet = {
+    iPad: function() {
+        return navigator.userAgent.match(/iPad/);
+    },
+    Xoom: function() {
+        return navigator.userAgent.match(/Xoom/);
+    },
+    Playbook: function() {
+        return navigator.userAgent.match(/Playbook/);
+    },
+    Silk: function() {
+        return navigator.userAgent.match(/Silk/);
+    },
+    any: function() {
+        return (isTablet.iPad() || isTablet.Xoom() || isTablet.Playbook() || isTablet.Silk());
+    }
+};
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    GoogleBotMobile: function() {
+        return navigator.userAgent.match(/GoogleBotMobile/i);
+    },
+    OperaMobi: function() {
+        return navigator.userAgent.match(/Opera\ Mobi/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows() || isMobile.GoogleBotMobile() || isMobile.OperaMobi());
+    }
+};
+function checkMobileAndTablet(){
+var qsMobile = getQuerystring('MobileOptOut');
+var coMobile = getCookie('MobileOptOut');
+if( qsMobile == '1' ||  coMobile == '1' || isTablet.any() || navigator.userAgent.match(/BrandingBrand/)){
+var cookietime= new Date();
+cookietime.setMinutes(cookietime.getMinutes() + 30);
+setCookie('MobileOptOut',1,cookietime);
+return;
+}
+if( qsMobile == '0'){ deleteCookie('MobileOptOut');}
+//check if executed on mobile device
+if(isMobile.any()){
+//check querystring
+var mobileurl = window.location.href;
+var mobilequerystring='';
+if(mobileurl.indexOf(".com")>0){
+mobilequerystring= mobileurl.substring((mobileurl.indexOf(".com")+4), mobileurl.length);
+}
+var paypalurl = '';
+if(mobileurl.indexOf('expresscheckoutreturn.nl')>0){
+paypalurl = '/app/site/backend/paypal/expresscheckoutreturn.nl';
+}
+window.location.href = "http://poppin.uat.bbhosted.com" + paypalurl + mobilequerystring;
+}
+}
+checkMobileAndTablet();
+/*
  * PP_SOCIAL_MEDIA_UI_ADJUSTMENTS
  */
 function validateEmail($email) {
