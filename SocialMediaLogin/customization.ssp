@@ -3,48 +3,14 @@
 		<tr>
 			<td>
 				<h1>Get Your Brand On</h1>
+				<p class="p_logo">Our products + your logo. Let's get together and turn some heads.</p>
+				<div class="div__presentation">
+					<img src="/site/pp-sources/customization/poppin-customization.jpg" >
+				</div>
 				<div class="div__regform">
 					<iframe scrolling="no" frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0"
 						src="https://forms.sandbox.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&amp;formid=16&amp;h=83c16054acd61616ac7e&amp;redirect_count=1&amp;did_javascript_redirect=T">
 					</iframe>
-				</div>
-				<div class="div__presentation">
-					<a href="#" ><img src="/site/pp-sources/customization/poppin-customization.png" ></a>
-				</div>
-			</td>
-		</tr>
-			<tr>
-			<td>
-				<div class="customization_types">
-					<h2>Types of Customization</h2>
-					<table>
-					<tr>
-					<td>
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_03.gif"/>
-							<div class="customization_detail">
-								<h3>FOIL STAMP</h3>
-							</div>
-						</div>
-					</td>
-					<td>
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_05.gif"/>
-							<div class="customization_detail">
-								<h3>FULL COLOR LOGO</h3>
-							</div>
-						</div>
-					</td>
-					<td>
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_07.gif"/>
-							<div class="customization_detail">
-								<h3>BLIND DEBOSS</h3>
-							</div>
-						</div>
-					</td>
-					</tr>
-					</table>
 				</div>
 			</td>
 		</tr>
@@ -52,182 +18,224 @@
 			<td>
 				<div class="customization_notebooks">
 					<h2>Notebooks + Folios</h2>
-					<table>
-					<tr>
-					<td colspan="2">
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_17.gif"/>
-							<div class="customization_detail">
-								<h3>Medium Softcover Notebooks</h3>
-							</div>
-						</div>	
-					</td>
-					<td colspan="2">
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_23.gif"/>
-							<div class="customization_detail">
-								<h3>Small Softcover Notebooks</h3>
-							</div>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Small + Medium Soft Cover Notebooks</h3>
+							<p class="p_details">Make a list, check it twice, this little notebook will make you look oh-so-nice.</p>
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; BLIND DEBOSS</p>
+							<p class="p_fullcolor">&#8226; FOIL STAMP</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
 						</div>
-					</td>
-					<td colspan="2">
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_20.gif"/>
-							<div class="customization_detail">
-								<h3>Medium Softcover Notebooks</h3>
-							</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/small_notebooks.jpg"/>
 						</div>
-					</td>
-					</tr>
-					<tr>
-					<td colspan="3">
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_29.gif"/>
-							<div class="customization_detail">
-								<h3>Large Spiral Notebook</h3>
-							</div>
+					</div>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Medium + Large Spiral Notebooks</h3>
+							<p class="p_details">Spiraling into control has never been so easy.</p>
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+							<p class="p_fullcolor">&#8226; FOIL STAMP</p>
 						</div>
-					</td>
-					<td colspan="3">
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_31.gif"/>
-							<div class="customization_detail">
-								<h3>Folio</h3>
-							</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/large_notebooks.jpg"/>
 						</div>
-					</td>
-					</tr>
-					<tr>
-					<td colspan="6">Volume discounts are available</td>
-					</tr>
-					</table>
+					</div>
+					<div class="grey_separator">
+						Volume discounts are available.
+					</div>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Folios</h3>
+							<p class="p_details">Protect for carrying your papers from here to there in style.</p>
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; BLIND DEBOSS</p>
+							<p class="p_fullcolor">&#8226; FOIL STAMP</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+						</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/folios.jpg"/>
+						</div>
+					</div>
 				</div>
 			</td>
 		</tr>
-			<tr>
-			<td>
-				<div class="customization_desktop">
-					<h2>Desktop Products</h2>
-					<table>
-					<tr>
-					<td>
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_39.gif"/>
-							<div class="customization_detail">
-									<h3>Tape Dispenser</h3>
-							</div>
-						</div>
-					</td>
-					<td>
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_35.gif"/>
-							<div class="customization_detail">
-									<h3>Mouse Pad</h3>
-							</div>
-						</div>
-					</td>
-					<td>
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_37.gif"/>
-							<div class="customization_detail">
-									<h3>Pen Cup</h3>
-							</div>
-						</div>
-					</td>
-					</tr>
-					<tr>
-					<td>
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_47.gif"/>
-							<div class="customization_detail">
-									<h3>Ruler</h3>
-							</div>
-						</div>
-					</td>
-					<td>
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_45.gif"/>
-							<div class="customization_detail">
-									<h3>Stapler</h3>
-							</div>
-						</div>
-					</td>
-					</tr>
-					<tr>
-					<td colspan="2">Your logo is so fab, we just want to wear it!</td>
-					</tr>
-					</table>
-				</div>
-			</td>
-		</tr>
-			<tr>
+		<tr>
 			<td>
 				<div>
 					<h2>Writing</h2>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Signature Ballpoints</h3>
+							<p class="p_details">Coordinate your brand, desk, or just your outfit with these pens.</p>
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+						</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/signature.jpg"/>
+						</div>
+					</div>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Retractable Ballpoints</h3>
+							<p class="p_details">Everybody loves a pen that can play peek-a-boo.</p>
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+						</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/retractable_ballpoints.jpg"/>
+						</div>
+					</div>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Thin Highlighters</h3>
+							<p class="p_details">Go ahead and call a little attention to yourself.</p>
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+						</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/highlighters.jpg"/>
+						</div>
+					</div>
+					<div class="grey_separator">
+						Your logo is so awesome, we just want to wear it!
+					</div>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Retractable Gel Luxe</h3>
+							<p class="p_details">The only thing more satisfying than a gel pen is one that goes click.</p>
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+						</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/retractable_gel_luxe.jpg"/>
+						</div>
+					</div>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Metal Ballpoints</h3>
+							<p class="p_details">Heavy metal makes it to the top of your playlist.</p>
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+						</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/metal_ballpoints.jpg"/>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="customization_desktop">
+					<h2>Desktop</h2>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Pen Cup</h3>
+							<p class="p_details">Keep yourself and your pens from going over the edge with this clever cup.</p>
+							
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+						</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/pencup.jpg"/>
+						</div>
+					</div>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Mouse Pads</h3>
+							<p class="p_details">Provide a squeak-free experience for your mouse.</p>
+							
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+						</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/mousepads.jpg"/>
+						</div>
+					</div>
+					<div class="grey_separator">
+						Get your brand in hand!
+					</div>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Stapler</h3>
+							<p class="p_details">Your heart will go ku-chank ku-chank.</p>
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+						</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/stapler.jpg"/>
+						</div>
+					</div>
+					<div class="customization_item">
+						<div class="customization_detail">
+							<h3>Ruler</h3>
+							<p class="p_details">Lines so sleek, design so awesome, colors so vibrant you may find yourself making up excuses to measure everything.</p>
+							<p class="p_options">CUSTOMIZATION OPTIONS</p>
+							<p class="p_fullcolor">&#8226; FULL COLOR LOGO</p>
+						</div>
+						<div class="customization_image">
+							<img src="/site/pp-sources/customization/images/ruler.jpg"/>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="customization_types">
+					<h2>Types of Customization</h2>
 					<table>
-					<tr>
-					<td colspan="2">
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_52.gif"/>
-							<div class="customization_detail">
-								<h3>Signature Ballpoints</h3>
-							</div>
-						</div>
-					</td>
-					<td colspan="2">
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_54.gif"/>
-							<div class="customization_detail">
-								<h3>Thin Highlighters</h3>
-							</div>
-						</div>
-					</td>
-					<td colspan="2">
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_56.gif"/>
-							<div class="customization_detail">
-								<h3>Retractable Gel Lux</h3>
-							</div>
-						</div>
-					</td>
-					</tr>
-					<tr>
-					<td colspan="2">
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_65.gif"/>
-							<div class="customization_detail">
-								<h3>Retractable Ballpoint</h3>
-							</div>
-						</div>
-					</td>
-					<td colspan="4">
-						<div class="customization_item">
-							<img src="/site/pp-sources/customization/images/cust_img_62.gif"/>
-							<div class="customization_detail">
-								<h3>Metal Ballpoint Pen</h3>
-							</div>
-						</div>
-					</td>
-					</tr>
+						<tr>
+							<td>
+								<div class="customization_titem">
+									<img src="/site/pp-sources/customization/images/dailycandy1.jpg"/>
+									<div class="customization_tdetail">
+										<h3>FOIL STAMP</h3>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="customization_titem">
+									<img src="/site/pp-sources/customization/images/dailycandy2.jpg"/>
+									<div class="customization_tdetail">
+										<h3>FULL COLOR LOGO</h3>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="customization_titem">
+									<img src="/site/pp-sources/customization/images/dailycandy3.jpg"/>
+									<div class="customization_tdetail">
+										<h3>BLIND DEBOSS</h3>
+									</div>
+								</div>
+							</td>
+						</tr>
 					</table>
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<div>
-					<h2>Ready to make your mark? Call:  <b>866.929.4922</b></h2>
+				<div class="customization_mark">
+					<h2>Ready to make your mark? Call: <b>866.929.4922</b></h2>
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<div>
+				<div class="customization_terms">
 					<h2>Terms + Conditions</h2>
-					<p>Through bright color and great design, Poppin has transformed humdrum office products into extraordinary objects 
-					that inspire fresh-thinking, increase productivity and bring out the smiles. Poppin enhances office culture, supports
-					 team building and brand initiatives, and of course makes the perfect gift for employees and clients. To learn more 
-					 or to place an order</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonummy nibh eusmcd tincindunt it laoreet dolore magna 
+					aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea 
+					commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonummy nibh eusmcd tincindunt it laoreet dolore magna 
+					aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
+					<p>ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate
+					velit esse molestie consequat,</p>
 				</div>
 			</td>
 		</tr>

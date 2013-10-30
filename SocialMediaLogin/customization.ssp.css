@@ -18,26 +18,28 @@ tbody#content_master tr:not(:last-child){
 tbody#content_master td{
 	padding: 10px 0 10px 0;
 }
-tbody#content_master tr:first-child td{
-	padding-top: 0;
+tbody#content_master .customization_types tr:first-child td{
+	padding-right: 5px;
 }
 tbody#content_master h1{
 	color: #f67a00;
 	font-family: OmnesLightRegular, Arial, Helvetica, sans-serif;
 	font-size: 48px;
-	margin: 0 0 10px;
+	margin: 0px;
 }
 tbody#content_master h2{
 	color: #f37a31;
-	padding-bottom: 6px;
+	padding: 6px 0 6px 0;
 }
 tbody#content_master h4{
 	font-family: OmnesMediumRegular;
 	font-size: 19px;
 	font-weight: bold;
 }
-tbody#content_master p{
-	margin: 5px 0 0 0;
+tbody#content_master .p_logo{
+	font-size: 18px;
+	color: #4B4B4B;
+	margin: 5px 0 28px 0;
 }
 tbody#content_master td.callstylist{
 	text-align: center;
@@ -61,14 +63,17 @@ tbody#content_master span.grey{
 tbody#content_master div.div__regform{
 	display: table-cell;
 	float: left;
+	margin-bottom: 15px;
 }
 tbody#content_master div.div__regform iframe{
-	width: 207px;
+	width: 203px;
 	height: 550px;
 	overflow: hidden;
 }
 tbody#content_master div.div__presentation{
-	
+	display: table-cell;
+	float: left;
+	margin-bottom: 15px;
 }
 tbody#content_master div.div__register{
 	display: table-cell;
@@ -81,45 +86,105 @@ tbody#content_master div.div__register{
 td.medtextbold {
 	display: none;
 }
-tbody#content_master .customization_item{
-	box-shadow: 0 0 10px #7b7b7b;
-	-webkit-box-shadow: 0 0 10px #7b7b7b;
-	-moz-box-shadow: 0 0 10px #7b7b7b;
+tbody#content_master .customization_item, tbody#content_master .customization_titem{
+	box-shadow: 0px 4px 10px rgba(120, 120, 120, 0.3);
+	-webkit-box-shadow: 0px 4px 10px rgba(120, 120, 120, 0.3);
+	-moz-box-shadow: 0px 4px 10px rgba(120, 120, 120, 0.3);
 	zoom: 1;
 	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(color=#7b7b7b,direction=0,strength=5), 
 	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=45,strength=2), 
-	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=90,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=90,strength=0), 
 	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=135,strength=5), 
 	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=180,strength=10), 
 	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=225,strength=5), 
 	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=270,strength=5), 
 	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=315,strength=2)
 }
-.customization_item{
-text-align:center;
-padding:18px 0px;
-}
-tbody#content_master .customization_types .customization_item{
-	height:139px;
-	width:315px;
-	margin: 0px 6px;
-}
+
 tbody#content_master .customization_item{
-	margin: 0px 6px;
-	padding:21px 5px;
+	display: table;
+	text-align:center;
+	margin: 10px 0px;
+	padding:25px 0px 25px 5px;
 }
 tbody#content_master .customization_notebooks .customization_detail{
-text-align:left;	
+	text-align:left;	
 }
 tbody#content_master .customization_detail{
+	display: table-cell;
+	float: left;
+	color: #4B4B4B;
+	font-size: 18px;
+	text-align: left;
+	margin: 0;
+	padding: 62px 15px 70px 15px;
+	width: 175px;
+}
+tbody#content_master .customization_image{
+	display: table-cell;
+	float: left;
+	padding-left: 8px;
+	background: url(/site/pp-sources/business/bg-dotted-small-vert.gif) repeat-y left top;
+}
+
+tbody#content_master .customization_detail h3{
+	color:#000;
+	font-family: 'OmnesMediumRegular',sans-serif;
+	font-size: 20px;
+}
+
+tbody#content_master .customization_detail .p_details{
+	font-size: 13px;
+	margin: 0;
+	font-family: 'OmnesRegularRegular', sans-serif;
+}
+
+tbody#content_master .customization_detail .p_options{
+	color: #C0C0C0;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: underline;
+	margin: 30px 0 0 0;
+}
+
+tbody#content_master .customization_detail .p_fullcolor{
+	color: #C0C0C0;
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: bold;
+	font-family: 'OmnesRegularRegular', sans-serif;
+	margin: 0;
+}
+
+tbody#content_master .customization_tdetail{
+	display: block;
+	float: none;
 	color:#000;
 	font-size: 18px;
 	text-align:center;
 	background: url(/site/pp-sources/business/bg-dotted-small.gif) repeat-x left top;
-	margin: 15px 20px;
-	padding: 10px;
+	margin: 15px 15px 0 15px;
+	padding: 10px 0 0 0;
 }
-tbody#content_master .customization_detail h3{
-	color:#000;	
+
+tbody#content_master .customization_titem{
+	height: 139px;
+	width: 300px;
+	margin: 0px 3px;
+	padding: 15px 4px;
+	text-align: center;
 }
+
+tbody#content_master .customization_types h3{
+	
+}
+tbody#content_master .customization_mark{
+	padding: 14px 0 14px 0;
+}
+tbody#content_master .grey_separator{
+	font-family: 'OmnesBoldRegular', sans-serif;
+	font-size: 28px;
+	padding: 10px 0 10px 0;
+	text-align: center;
+	color: #cfcfcf;
 }
