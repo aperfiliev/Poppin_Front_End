@@ -102,9 +102,11 @@
 		cell.setAttribute("class", "texttablectr");
 		if(order.storedisplaythumbnail != "")
 		{
+
 			var ctnt = document.createElement("img");
 			ctnt.setAttribute("src", order.storedisplaythumbnail);
-			ctnt.setAttribute("height", "120");
+			ctnt.setAttribute("style", "height:120px; width: auto;");
+//ctnt.setAttribute("width", "120");
 			ctnt.setAttribute("border", "0");
 			cell.appendChild(ctnt);
 		}
