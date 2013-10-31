@@ -19,7 +19,7 @@
 				<div class="customization_notebooks">
 					<h2>Notebooks + Folios</h2>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail1">
 							<h3>Small + Medium Soft Cover Notebooks</h3>
 							<p class="p_details">Make a list, check it twice, this little notebook will make you look oh-so-nice.</p>
 							<p class="p_options">CUSTOMIZATION OPTIONS</p>
@@ -32,7 +32,7 @@
 						</div>
 					</div>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail2">
 							<h3>Medium + Large Spiral Notebooks</h3>
 							<p class="p_details">Spiraling into control has never been so easy.</p>
 							<p class="p_options">CUSTOMIZATION OPTIONS</p>
@@ -47,7 +47,7 @@
 						Volume discounts are available.
 					</div>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail3">
 							<h3>Folios</h3>
 							<p class="p_details">Protect for carrying your papers from here to there in style.</p>
 							<p class="p_options">CUSTOMIZATION OPTIONS</p>
@@ -67,7 +67,7 @@
 				<div>
 					<h2>Writing</h2>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail4>
 							<h3>Signature Ballpoints</h3>
 							<p class="p_details">Coordinate your brand, desk, or just your outfit with these pens.</p>
 							<p class="p_options">CUSTOMIZATION OPTIONS</p>
@@ -78,7 +78,7 @@
 						</div>
 					</div>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail5">
 							<h3>Retractable Ballpoints</h3>
 							<p class="p_details">Everybody loves a pen that can play peek-a-boo.</p>
 							<p class="p_options">CUSTOMIZATION OPTIONS</p>
@@ -89,7 +89,7 @@
 						</div>
 					</div>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail6">
 							<h3>Thin Highlighters</h3>
 							<p class="p_details">Go ahead and call a little attention to yourself.</p>
 							<p class="p_options">CUSTOMIZATION OPTIONS</p>
@@ -103,7 +103,7 @@
 						Your logo is so awesome, we just want to wear it!
 					</div>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail7">
 							<h3>Retractable Gel Luxe</h3>
 							<p class="p_details">The only thing more satisfying than a gel pen is one that goes click.</p>
 							<p class="p_options">CUSTOMIZATION OPTIONS</p>
@@ -114,7 +114,7 @@
 						</div>
 					</div>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail8">
 							<h3>Metal Ballpoints</h3>
 							<p class="p_details">Heavy metal makes it to the top of your playlist.</p>
 							<p class="p_options">CUSTOMIZATION OPTIONS</p>
@@ -132,7 +132,7 @@
 				<div class="customization_desktop">
 					<h2>Desktop</h2>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail9">
 							<h3>Pen Cup</h3>
 							<p class="p_details">Keep yourself and your pens from going over the edge with this clever cup.</p>
 							
@@ -144,7 +144,7 @@
 						</div>
 					</div>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail10">
 							<h3>Mouse Pads</h3>
 							<p class="p_details">Provide a squeak-free experience for your mouse.</p>
 							
@@ -159,7 +159,7 @@
 						Get your brand in hand!
 					</div>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail11">
 							<h3>Stapler</h3>
 							<p class="p_details">Your heart will go ku-chank ku-chank.</p>
 							<p class="p_options">CUSTOMIZATION OPTIONS</p>
@@ -170,7 +170,7 @@
 						</div>
 					</div>
 					<div class="customization_item">
-						<div class="customization_detail">
+						<div class="customization_detail" id="customization_detail12">
 							<h3>Ruler</h3>
 							<p class="p_details">Lines so sleek, design so awesome, colors so vibrant you may find yourself making up excuses to measure everything.</p>
 							<p class="p_options">CUSTOMIZATION OPTIONS</p>
