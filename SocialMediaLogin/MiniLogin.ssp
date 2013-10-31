@@ -14,6 +14,7 @@ body {
 <script type="text/javascript" src="js/easyXDM.js"></script>
 <script type="text/javascript">
 	var MINILOGINSOCKET = null;
+	jQuery(document).ready(function() {
 	MINILOGINSOCKET = new easyXDM.Socket({
 		remote : poppinres.url.poppinglobal,
 		onReady : function() {
@@ -33,6 +34,7 @@ body {
 				twitterLogin(messageObject);
 			}
 		}
+	});
 	});
 	function socialLogin(deserialized) {
 		var newUser = {
