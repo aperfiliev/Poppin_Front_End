@@ -9,7 +9,8 @@ var poppinservres = {
 	storelink:"https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=277&deploy=1&compid=3363929&h=48069b02f983db8cdd31",
 	placingorderhelpsuitlet: "https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=282&deploy=1&compid=3363929&h=288eeb5121d7dd217ad5",
 	promodescriptionsuitlet: "https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=283&deploy=1&compid=3363929&h=9fb0da1f95d5a10adfdc",
-	poppinresources:"/SSP Applications/Poppin/SocialMediaLogin2/js/poppinresources.js",
+	poppinresources:"/Poppin/SocialMediaLogin2/js/poppinresources.js",
+	poppinresourcesmini:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/js/poppinresources.js",
 	jsjqueryui:"/SSP Applications/Poppin/SocialMediaLogin2/js/jquery-ui-1.10.3.custom.min.js",
 	cssjqueryui:"/SSP Applications/Poppin/SocialMediaLogin2/smoothness/jquery-ui-1.10.3.custom.css",
 	selectbackgroundimg: "/site/pp-sources/business/bg_select.png"
