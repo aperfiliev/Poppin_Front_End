@@ -141,7 +141,7 @@ tbody#content_master .customization_detail .p_details{
 }
 
 tbody#content_master .customization_detail .p_options{
-	color: #C0C0C0;
+	color: #777777;
 	font-size: 12px;
 	font-weight: bold;
 	text-decoration: underline;
@@ -149,7 +149,7 @@ tbody#content_master .customization_detail .p_options{
 }
 
 tbody#content_master .customization_detail .p_fullcolor{
-	color: #C0C0C0;
+	color: #777777;
 	font-size: 12px;
 	line-height: 16px;
 	font-weight: bold;
