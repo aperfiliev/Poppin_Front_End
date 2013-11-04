@@ -17,27 +17,14 @@ function suitelet(request, response){
 	var sessionid = request.getParameter('sessionId');
 	var sourcefrom = request.getParameter('sourceFrom');
 	var timestamp = new Date();
-	
 	var convertedtimestamp = nlapiDateToString(timestamp, 'datetimetz');
-	
-	
-	//var data = request.getParameter('data');
-	//nlapiLogExecution('DEBUG', 'data:',request.getAllParameters());
-	//var result = JSON.parse(result);//parse json result
-	
-//	var page = data.pageName;
-//	var sessionid = data.sessionId;
-//	var sourcefrom = data.sourceFrom;
-//	var timestamp = data.timeStamp;
-//	
 	var newResult = nlapiCreateRecord('customrecord_poppinanalyticsrecord');
-	nlapiLogExecution('DEBUG', 'name', newResult.getId());
-	newResult.setFieldValue('name', newResult.getId());
+	newResult.setFieldValue('name', 'sessionid:'+sessionid);
 	newResult.setFieldValue('custrecord_popanalyticspage', page );
 	newResult.setFieldValue('custrecord_popanalyticssessionid', sessionid);
 	newResult.setFieldValue('custrecord_popanalyticssourcefrom', sourcefrom);
-	//nlapiSetDateTimeValue('custrecord_popanalyticstimestamp', timestamp);
 	newResult.setFieldValue('custrecord_popanalyticstimestamp', convertedtimestamp);
+        nlapiLogExecution('DEBUG','date', convertedtimestamp);
 	newResultId = nlapiSubmitRecord(newResult);
 	nlapiLogExecution('DEBUG','result id', newResultId);
 	return newResultId;
