@@ -1,0 +1,139 @@
+.breadcrumbs {
+	padding: 13px 0 0px;
+}
+.breadcrumbs .free-shipping-container {
+	height: auto;
+}
+td#contentBody{
+	padding: 0;
+}
+tbody#content_master tr{
+	color: #333;
+	font-size: 17px;
+	vertical-align: top;
+}
+tbody#content_master tr:not(:last-child){
+	background: url(/site/pp-sources/business/bg-dotted-small.gif) repeat-x left bottom;
+}
+tbody#content_master td{
+	padding: 10px 0 10px 0;
+}
+tbody#content_master tr:first-child td{
+	padding-top: 0;
+}
+tbody#content_master h1{
+	color: #f67a00;
+	font-family: OmnesLightRegular, Arial, Helvetica, sans-serif;
+	font-size: 48px;
+	margin: 0 0 10px;
+}
+tbody#content_master h2{
+	color: #f37a31;
+	padding-bottom: 6px;
+}
+tbody#content_master h4{
+	font-family: OmnesMediumRegular;
+	font-size: 19px;
+	font-weight: bold;
+}
+tbody#content_master p{
+	margin: 5px 0 0 0;
+}
+tbody#content_master td.callstylist{
+	text-align: center;
+	padding: 10px 0 10px 0;
+}
+tbody#content_master span.orange{
+	font-size: 28px;
+	text-transform: uppercase;
+	color: #f37a31;
+}
+tbody#content_master span.number{
+	font-size: 28px;
+	color: #f37a31;
+	font-family: OmnesMediumRegular;
+	font-weight: bold;
+}
+tbody#content_master span.grey{
+	color: rgb(194, 194, 194);
+	font-size: 24px;
+}
+tbody#content_master div.div__presentation{
+	display: table-cell;
+	float: left;
+
+}
+tbody#content_master div.div__register{
+	display: table-cell;
+	float: left;
+	height: 323px;
+	width: 245px;
+	background-color: #f2f2f2;
+	padding: 30px 40px 20px 40px;
+}
+tbody#content_master div.div__options#left {
+	display: table-cell;
+	float: left;
+}
+tbody#content_master div.div__options#center {
+	display: table-cell;
+	float: left;
+	padding-left: 13px;
+}
+tbody#content_master div.div__options#right {
+	display: table-cell;
+	float: right;
+}
+tbody#content_master div.div__options p{
+	padding-bottom: 10px;
+	font-family: OmnesMediumRegular;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+tbody#logos tr:not(:last-child){
+	background: none;
+}
+tbody#logos td{
+	padding: 20px 0 20px 0;
+}
+
+div[id^="quotedBox"] {
+	background-color:rgb(248, 124, 2);
+	color:#fff;
+	padding: 35px 50px 35px 50px;
+	position: absolute;
+	z-index:90;
+	text-align:left;
+	
+	line-height: 20px;
+	font-family: OmnesMediumRegular;
+	font-size: 28px;
+	font-weight: bold;
+	
+	top: 40px;
+	left: 480px;
+	right: auto;
+	bottom: auto;
+	display: block;
+        -moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+}
+div[id^="quotedBox"]:before {
+	content: "";
+	position: absolute;
+}
+div[id^="quotedBox"].n:before {
+	top: 100%;
+	left: 173px;
+	width: 92px;
+	height: 54px;
+/* 	background: url(/site/pp-sources/business/arrow.png) no-repeat; */
+}
+td.medtextbold {
+	display: none;
+}
+.joincompany{
+	display:inline;
+}
