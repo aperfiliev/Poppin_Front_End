@@ -1,0 +1,95 @@
+<table border="0" cellpadding="5" cellspacing="0" width="100%">
+	<tbody id="content_master">
+		<tr>
+			<td>
+				<div class="div__presentation">
+					<img src="/site/pp-sources/b2b-landing-pages/poppin-fashion.jpg" >
+				</div>
+				<div class="div__regform">
+					<div><img src="/site/pp-sources/b2b-landing-pages/fashion-offer.jpg" ></div>
+					<iframe scrolling="no" frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0"
+						src="https://forms.sandbox.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&amp;formid=17&amp;h=8fdbaa0d1c52374db506&amp;redirect_count=1&amp;did_javascript_redirect=T">
+					</iframe>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="div__hrsep"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="div__callstylist">
+					<p class="p_callstylist">CALL YOUR WORKSTYLIST TODAY</p>
+					<p class="p_phone">866.926.4898</p>
+					<p class="p_discounts">VOLUME DISCOUNTS AVAILABLE</p>
+				</div>
+				<div class="div__vtsep"><img src="/site/pp-sources/b2b-landing-pages/separator.jpg" ></div>
+				<div class="div__readmore">
+					<p>&ldquo;People who worked in &ldquo;empowered&rdquo; workspaces, in which the individual was allowed to design the area,
+					were up to 32 percent more productive...&rdquo;&nbsp;&nbsp;<a href="#">READ MORE</a></p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="div__options" id="left">
+					<img src="/site/pp-sources/b2b-landing-pages/fashion/desktop.jpg" >
+				</div>
+				<div class="div__options" id="center">
+					<img src="/site/pp-sources/b2b-landing-pages/fashion/furniture.jpg" >
+				</div>
+				<div class="div__options" id="right">
+					<img src="/site/pp-sources/b2b-landing-pages/fashion/customization.jpg" >
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="div__hrsep1"></div>
+				<div class="div__joincompanies">JOIN THE 3,000+ COMPANIES THAT ARE ALREADY WORKING HAPPY</div>
+				<div class="div__hrsep2"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="div__logos">
+					<img src="/site/pp-sources/b2b-landing-pages/fashion/chanel.jpg" >
+				</div>
+				<div class="div__logos">
+					<img src="/site/pp-sources/b2b-landing-pages/fashion/colehaan.jpg" >
+				</div>
+				<div class="div__logos">
+					<img src="/site/pp-sources/b2b-landing-pages/fashion/theory.jpg" >
+				</div>
+				<div class="div__logos">
+					<img src="/site/pp-sources/b2b-landing-pages/fashion/calvinklein.jpg" >
+				</div>
+				<div class="div__logos">
+					<img src="/site/pp-sources/b2b-landing-pages/fashion/modaoperandi.jpg" >
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="div__hrsep"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="div__terms">
+					<h3>Terms and conditions apply.</h3>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
+					tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, 
+					quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo 
+					consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
+					tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, 
+					quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo 
+					consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
