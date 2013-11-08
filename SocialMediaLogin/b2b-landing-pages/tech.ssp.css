@@ -57,6 +57,7 @@ tbody#content_master span.number{
 tbody#content_master span.grey{
 	color: rgb(194, 194, 194);
 	font-size: 24px;
+	font-family: OmnesMediumRegular;
 }
 tbody#content_master div.div__presentation{
 	display: table-cell;
@@ -135,5 +136,12 @@ td.medtextbold {
 	display: none;
 }
 .joincompany{
-	display:inline;
+	display: table-cell;
+float: left;
+padding: 0px 5px 0px 5px;
+margin: 10px 0px 16px 0px;
+
+}
+tbody#content_master .joincompany:not(:first-child) {
+background: url(/site/pp-sources/business/bg-dotted-small-vert.gif) repeat-y left top;
 }
