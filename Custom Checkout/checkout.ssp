@@ -1,0 +1,75 @@
+<%
+	var container = nlapiGetWebContainer(),
+		session = container.getShoppingSession(),
+		settings = session.getSiteSettings(),
+		checkout = settings.checkout;
+	
+	if ( !session.isLoggedIn() ) {
+		var redirectURL = settings.touchpoints.login,
+			parameters = request.getAllParameters();
+
+		delete parameters.sitepath;
+		parameters.origin = 'checkout';
+		
+		response.sendRedirect('EXTERNAL', redirectURL, null, false, parameters);
+	}
+%>
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Checkout</title>
+	<%=getPageFullHead()%>
+	<script>
+		var N = {
+				search: {
+					config: {
+						view: 'checkout',
+						isGuest: <%= session.getCustomer().isGuest() %>,
+						requireCCV: <%= settings.checkout.requireccsecuritycode === 'T' %>,
+						siteName: '<%= settings.displayname %>'
+					},
+					requestObject: {}
+				},
+				feature: 'checkout',
+				touchpoints: <%= JSON.stringify( settings.touchpoints ) %>
+			};
+	</script>
+	<link rel="stylesheet" href="js/libs/prototip2.2.5/css/prototip.css">
+	<link rel="stylesheet" href="js/libs/lightview2.8.0/css/lightview.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<iframe id="yui-history-iframe" src="blank.html" width="1" height="1"></iframe>
+	<input id="yui-history-field" type="hidden">
+	<img id="progress" src="images/ajax-loader.gif" style="display:none;" />
+	<div id='div__header' class='noprint' leftmargin='0' topmargin='0' marginwidth='1' >
+		<table border='0' cellspacing='0' cellpadding='0' width='100%'>
+			<%=getPageTop()%>
+		</table>
+	</div>
+
+	<div id="main"></div>
+
+	<script src="js/libs/bdk_all-01386d1d224a.js"></script>
+	<script src="js/libs/prototip2.2.5/js/prototip/prototip.js"></script>
+	<script src="js/libs/lightview2.8.0/js/lightview.js"></script>
+	<script src="js/libs/validation.js"></script>
+	<script src="js/site-0142336f759c.js"></script>
+	<script src="templates/combined-0142336f8779.js"></script>
+
+	<script src="languages/en.js"></script>
+	<% if ( session.getShopperLanguageLocale() != 'en' ){ %>
+	<script src="languages/<%= session.getShopperLanguageLocale() %>.js"></script>
+	<% } %>
+
+	<script>
+		BDK.preload = {};
+		BDK.preload.baseURL = "";
+		BDK.preload.bdkURL = "";
+		BDK.imageBaseURL = "";
+		BDK.preload.ctx = ".";
+		BDK.appImageURL = "";
+	</script>
+</body>
+</html>

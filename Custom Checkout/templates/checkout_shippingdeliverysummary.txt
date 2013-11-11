@@ -1,0 +1,16 @@
+<!-- BEGIN checkout content -->
+<div class="entered-content clearfix">
+    <div class="col">
+        <h3>${"Shipping Address"|translate}</h3>
+	<div id="shippingAddressSummary"></div>
+    </div>
+    <div class="col fl-r">
+        <h3>${"Delivery Method"|translate}</h3>
+	<div id="shipmethodSummary"></div>
+    </div>
+</div>
+<!-- END checkout content -->
+
+<!--
+<button class="edit" name="saveButton" onclick='BDK.fire(BDK.konst.Events.CHECKOUT_STEP, "shipping");return false;''>Edit</button>		
+-->

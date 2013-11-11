@@ -1,0 +1,12 @@
+<!-- BEGIN checkout content -->
+<div class="entered-content clearfix">
+	<div class="col">
+		<h3>${"Billing Address"|translate}</h3>
+		<div id="billingAddressSummary"></div>
+	</div>
+	<div class="col fl-r">
+		<h3>${"Payment Information"|translate}</h3>
+		<div id="creditCardSummary"></div>
+	</div>
+</div>
+<!-- END checkout content -->

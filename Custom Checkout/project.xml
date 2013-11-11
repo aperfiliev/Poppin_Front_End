@@ -1,0 +1,450 @@
+<project info="SuiteCloud IDE generated file, do not edit." setAttributesOnUpdate="false">
+  <folder name="Custom Checkout" bundleable="false">
+    <folder name="css" bundleable="false">
+      <file name="style.css" bundleable="false" hideInBundle="false" isOnline="true"/>
+    </folder>
+    <folder name="images" bundleable="false">
+      <folder name="bg" bundleable="false">
+        <file name="btn-disable.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="popup.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="sep2.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="sep3.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="tooltip.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+      </folder>
+      <folder name="btn" bundleable="false">
+        <file name="btn-disable.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="btn.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="btn2.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="popup-close.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="remove.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+      </folder>
+      <folder name="ico" bundleable="false">
+        <file name="alert.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="alert2.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="alert3.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="breadcrumbs.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+      </folder>
+      <folder name="photo" bundleable="false">
+        <file name="advertisment.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="banner.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="ccv.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="paypal.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="product1.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="product2.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="product3.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="thumb1.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="thumb2.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="thumb3.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+      </folder>
+      <file name="ajax-loader.gif" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="ajax-loader2.gif" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="bezel.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="logo-print.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="smoke.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="sprite.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="x.gif" bundleable="false" hideInBundle="false" isOnline="true"/>
+    </folder>
+    <folder name="js" bundleable="false">
+      <folder name="libs" bundleable="false">
+        <folder name="lightview2.8.0" bundleable="false">
+          <folder name="css" bundleable="false">
+            <file name="lightview.css" bundleable="false" hideInBundle="false" isOnline="true"/>
+          </folder>
+          <folder name="example" bundleable="false">
+            <folder name="css" bundleable="false">
+              <file name="style.css" bundleable="false" hideInBundle="false" isOnline="true"/>
+            </folder>
+            <folder name="images" bundleable="false">
+              <file name="blue.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="blue_thumb.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="pink.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="pink_thumb.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="yellow.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="yellow_thumb.jpg" bundleable="false" hideInBundle="false" isOnline="true"/>
+            </folder>
+            <file name="index.html" bundleable="false" hideInBundle="false" isOnline="true"/>
+          </folder>
+          <folder name="images" bundleable="false">
+            <folder name="lightview" bundleable="false">
+              <file name="blank.gif" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="close_innertop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="close_large.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="close_small.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="controller_close.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="controller_next.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="controller_prev.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="controller_slideshow.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="controller_slideshow_play.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="controller_slideshow_stop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="controller_stop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="inner_next.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="inner_prev.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="inner_slideshow_play.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="inner_slideshow_stop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="loading.gif" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="next.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="overlay.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="prev.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="topclose.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+            </folder>
+          </folder>
+          <folder name="js" bundleable="false">
+            <file name="lightview.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+          </folder>
+        </folder>
+        <folder name="prototip2.2.5" bundleable="false">
+          <folder name="css" bundleable="false">
+            <file name="prototip.css" bundleable="false" hideInBundle="false" isOnline="true"/>
+          </folder>
+          <folder name="images" bundleable="false">
+            <folder name="prototip" bundleable="false">
+              <folder name="styles" bundleable="false">
+                <folder name="creamy" bundleable="false">
+                  <file name="bottomleft.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="bottommiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="bottomright.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="close.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="close_hover.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="leftbottom.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="leftmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="lefttop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="loader.gif" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="rightbottom.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="rightmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="righttop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topleft.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topright.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                </folder>
+                <folder name="darkgrey" bundleable="false">
+                  <file name="bottomleft.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="bottommiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="bottomright.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="close.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="close_hover.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="leftbottom.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="leftmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="lefttop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="loader.gif" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="rightbottom.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="rightmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="righttop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topleft.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topright.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                </folder>
+                <folder name="default" bundleable="false">
+                  <file name="bottomleft.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="bottommiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="bottomright.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="close.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="close_hover.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="leftbottom.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="leftmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="lefttop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="loader.gif" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="rightbottom.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="rightmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="righttop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topleft.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topright.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                </folder>
+                <folder name="protoblue" bundleable="false">
+                  <file name="bottomleft.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="bottommiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="bottomright.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="close.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="close_hover.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="leftbottom.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="leftmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="lefttop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="loader.gif" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="rightbottom.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="rightmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="righttop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topleft.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topright.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                </folder>
+                <folder name="protogrey" bundleable="false">
+                  <file name="bottomleft.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="bottommiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="bottomright.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="close.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="close_hover.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="leftbottom.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="leftmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="lefttop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="loader.gif" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="rightbottom.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="rightmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="righttop.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topleft.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topmiddle.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                  <file name="topright.png" bundleable="false" hideInBundle="false" isOnline="true"/>
+                </folder>
+              </folder>
+            </folder>
+          </folder>
+          <folder name="js" bundleable="false">
+            <folder name="prototip" bundleable="false">
+              <file name="prototip.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="styles.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+            </folder>
+          </folder>
+        </folder>
+        <file name="bdk_all-01386d1d224a.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="validation.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      </folder>
+      <file name="combiner.config" bundleable="false" hideInBundle="false" isOnline="false"/>
+      <file name="current.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="site-013715186472.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="site-01386d917655.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="site-0142336f759c.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="site.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="site_settings.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+    </folder>
+    <folder name="languages" bundleable="false">
+      <file name="cs.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="da.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="de.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="en.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="es.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="fr.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="fr_CA.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="fr_FR.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="it.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="ja.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="ko.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="nl.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="pt.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="ru.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="sv.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="th.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="zh.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="zh_CN.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="zh_TW.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+    </folder>
+    <folder name="library" bundleable="false">
+      <file name="NSCheckout.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="NSEmail.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="NSPostInstall.js" bundleable="false" hideInBundle="true" isOnline="false"/>
+    </folder>
+    <folder name="services" bundleable="false">
+      <file name="address.ss" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="cart.ss" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="country.ss" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="creditcard.ss" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="jsonp.ss" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="order.ss" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="payment.ss" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="shipping.ss" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="sitesettings.ss" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="user.ss" bundleable="false" hideInBundle="false" isOnline="true"/>
+    </folder>
+    <folder name="templates" bundleable="false">
+      <file name="breadcrumb.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>breadcrumb_tmpl</altTagCaption>
+      </file>
+      <file name="cart.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>cart_tmpl</altTagCaption>
+      </file>
+      <file name="cart_createpromocodeformmacro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="cart_emailconfirmation.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>cartEmailConfirmation_tmpl</altTagCaption>
+      </file>
+      <file name="cart_estimateshipping.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="cart_item.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="cart_itemlist.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="cart_macro_thirdPartyCheckoutButtons.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="cart_ordersummary.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="cart_promotions.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl</altTagCaption>
+      </file>
+      <file name="checkout_addresses.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_addresses</altTagCaption>
+      </file>
+      <file name="checkout_addressform.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_address_form</altTagCaption>
+      </file>
+      <file name="checkout_addressformmacro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout_addressitem.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout_addresslistitem.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout_addressstatesectionmacro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout_addresssummary.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_address_summary</altTagCaption>
+      </file>
+      <file name="checkout_billingPayment.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_billing</altTagCaption>
+      </file>
+      <file name="checkout_billingpaymentsummary.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_billing_summary</altTagCaption>
+      </file>
+      <file name="checkout_body.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_body</altTagCaption>
+      </file>
+      <file name="checkout_ccvmacro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout_confirmation.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_confirmation</altTagCaption>
+      </file>
+      <file name="checkout_confirmation_info.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_confirmation_info</altTagCaption>
+      </file>
+      <file name="checkout_creategiftcardformmacro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout_creditcardform.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_creditcard_form</altTagCaption>
+      </file>
+      <file name="checkout_creditcardformmacro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout_creditcarditem.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout_creditcardlistitem.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout_creditcards.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_credit_cards</altTagCaption>
+      </file>
+      <file name="checkout_creditcardssummary.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_credit_cards_summary</altTagCaption>
+      </file>
+      <file name="checkout_giftpromo.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_giftpromo</altTagCaption>
+      </file>
+      <file name="checkout_guestemailform.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_guestemail</altTagCaption>
+      </file>
+      <file name="checkout_minicart.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_mini_cart</altTagCaption>
+      </file>
+      <file name="checkout_promocode.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_promocode</altTagCaption>
+      </file>
+      <file name="checkout_remove_address.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_remove_address</altTagCaption>
+      </file>
+      <file name="checkout_remove_creditcard.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_remove_creditcard</altTagCaption>
+      </file>
+      <file name="checkout_reviewinfo.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_review_info</altTagCaption>
+      </file>
+      <file name="checkout_reviewyourorder.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_review</altTagCaption>
+      </file>
+      <file name="checkout_shippingdelivery.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_shipping</altTagCaption>
+      </file>
+      <file name="checkout_shippingdeliverysummary.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_shipping_summary</altTagCaption>
+      </file>
+      <file name="checkout_shippingmethodcarriers.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_shipping_methods</altTagCaption>
+      </file>
+      <file name="checkout_shippingmethoditem.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="checkout_shippingmethodssummary.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_shipping_methods_summary</altTagCaption>
+      </file>
+      <file name="checkout_shippingrates.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_shipping_rates</altTagCaption>
+      </file>
+      <file name="checkout_storeTerms.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_store_terms_form</altTagCaption>
+      </file>
+      <file name="checkout_termsandconditions.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>checkout_tmpl_store_terms_popup</altTagCaption>
+      </file>
+      <file name="combined-01370aef6475.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="combined-0137151a2c65.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="combined-0137151a3286.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="combined-0137151a38a1.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="combined-0142336f8779.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="compare.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>compare_tmpl</altTagCaption>
+      </file>
+      <file name="current.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="detailsOuter.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>detailsOuter_tmpl</altTagCaption>
+      </file>
+      <file name="login.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>login_tmpl</altTagCaption>
+      </file>
+      <file name="login_createaccountformmacro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="login_createaccountmessage.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>login_tmpl_createAccountMessage</altTagCaption>
+      </file>
+      <file name="login_createaccountsectionmacro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>macro</altTagCaption>
+      </file>
+      <file name="login_passwordhint.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>login_tmpl_passwordHint</altTagCaption>
+      </file>
+      <file name="login_returningcustomer.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>login_tmpl_returningCustomer</altTagCaption>
+      </file>
+      <file name="navArea.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>navArea_tmpl</altTagCaption>
+      </file>
+      <file name="pageSizes.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>pageSizes_tmpl</altTagCaption>
+      </file>
+      <file name="pager.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>pager_tmpl</altTagCaption>
+      </file>
+      <file name="resultsTooltip.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>resultsTooltip_tmpl</altTagCaption>
+      </file>
+      <file name="resultsViewChooser.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>resultsViewChooser_tmpl</altTagCaption>
+      </file>
+      <file name="sitemap.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>sitemap_tmpl</altTagCaption>
+      </file>
+      <file name="sorter.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>sorter_tmpl</altTagCaption>
+      </file>
+      <file name="templates.config" bundleable="false" hideInBundle="false" isOnline="false"/>
+      <file name="windowTitle.txt" bundleable="false" hideInBundle="false" isOnline="true">
+        <altTagCaption>windowTitle_tmpl</altTagCaption>
+      </file>
+    </folder>
+    <file name="DeveloperCheatSheet.docx" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="blank.html" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="cart.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="checkout.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="loginregister.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+  </folder>
+</project>

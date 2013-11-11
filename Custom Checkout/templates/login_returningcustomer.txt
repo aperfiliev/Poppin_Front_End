@@ -1,0 +1,34 @@
+<div class="f-row f-row-link hidden">
+	<p id='loginStatus'></p>
+</div>
+{if obj.user.hint}
+	<p id='passwordStatus'>${"Your password hint is: $(0)"|translate: "<strong>"+ obj.user.hint + "</strong>" }</p>
+{else}
+	<p>${"Sign in below to checkout with an existing account"|translate}:</p>
+{/if}
+<div class="f-row">
+	<label for="email">${"Email Address"|translate}</label>
+	<div class="f-input"><input type="text" id="login_email" name="email"  class="required validate-email" value="${obj.user.email}"/></div>
+</div>
+<div class="f-row">
+	<label for="password">${"Password"|translate}</label>
+	<div class="f-input"><input type="password" id="password" name="password" class="required"/></div>
+</div>
+{if obj.user.hint}
+	<div class="f-row f-row-link">
+		<p class="hint">${"Still don't remember your password?"|translate} <a href="#" onclick='BDK.fire("sendPasswordRetrievalEmail"); return false;'>${"Click here and we will email you instructions to reset your password."|translate}</a></p>
+	</div>
+{/if}
+<!-- <div class="f-row f-row-btn"> -->
+<div class="f-row">
+	<button id="loginUser" onclick='BDK.fire("loginUser", $("returningCustomerLoginForm").serialize(true));return false;' class="button3">
+		{if N.origin == 'checkout'}
+			${"Sign In &amp; Checkout"|translate}
+		{else}
+			${"Sign In"|translate}
+		{/if}
+	</button>
+	{if !obj.user.hint}
+		<a id="forgotPassword" href="#" onclick='BDK.fire("forgotPassword", {email:$("login_email").value}); return false;'>${"Forgot password?"|translate}</a>
+	{/if}
+</div>

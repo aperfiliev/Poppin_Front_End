@@ -1,0 +1,33 @@
+{macro orderSummary(obj)}
+{var cart = obj.cart}
+<!-- BEGIN order summary -->
+<div class="block order-summary clearfix">
+	<h2>${"Order Summary"|translate}</h2>
+	<ul class="list-summary">
+		<li><span>${"Subtotal"|translate}</span><em>${cart.summary.subtotal|formatCurrency}</em></li>
+		{if cart.promocode.hasOwnProperty('promocode') && cart.promocode.isvalid==='T'}
+			<li class="color-r"><span>${"Promo code $(0)"|translate: cart.promocode.promocode}</span><em class="color-r">-${cart.summary.discount|formatCurrency}</em></li>
+		{/if}
+
+		{if obj.checkout}
+			<li><span>${"Shipping"|translate}</span><em>${cart.summary.shippingcost|formatCurrency}</em></li>
+		{else}
+			<li><span>${"Shipping"|translate}</span><em>${cart.summary.estimatedshipping|formatCurrency}</em></li>
+		{/if}   
+
+		{if cart.summary.handlingcost}
+			<li><span>${"Handling"|translate}</span><em>${cart.summary.handlingcost|formatCurrency}</em></li>
+		{/if}
+		
+		{if cart.giftcertificates}
+		{for gift in cart.giftcertificates}
+			<li><span>${"Gift Certificate"|translate}</span><em>(${gift.amountapplied|formatCurrency})</em></li>
+		{/for}
+		{/if}
+
+		<li><span>${"Tax"|translate}</span><em>${cart.summary.tax|formatCurrency}</em></li>
+		<li class="total"><span>${"Total"|translate}</span><em>${cart.summary.total|formatCurrency}</em></li>
+	</ul>
+</div>
+<!-- END order summary -->
+{/macro}

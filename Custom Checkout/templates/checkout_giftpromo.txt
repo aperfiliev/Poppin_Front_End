@@ -1,0 +1,2 @@
+<div>${createGiftCardForm(obj)}</div>
+<div>${createPromoCodeForm(obj)}</div>

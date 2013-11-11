@@ -1,0 +1,25 @@
+{if obj.hasAddresses}
+	<h2>${"Select your $(0) address"|translate: BDK.translate(obj.type)}</h2>
+	<div class="add-to-box clearfix">
+		<a href="javascript:void(0)" onclick='BDK.fire("customShowAddAddress", "${obj.type}");'>${"Add a New Address"|translate}</a>
+	</div>
+	<div class="scroll-box">
+		<div class="scroll-hold clearfix">
+		{if obj.defaultAddress}
+			<ul>
+				${addressListItem(obj.defaultAddress, obj.type)}
+			</ul>
+		{/if}
+		{for address in obj.noneDefaults}
+			<ul>
+				${addressListItem(address, obj.type)}
+			</ul>
+		{/for}
+		</div>
+	</div>
+{else}
+	<h2>${"Enter your $(0) address"|translate: obj.type|translate}</h2>
+	<form id="addressForm">
+		${addressForm(obj, "")}
+	</form>
+{/if}

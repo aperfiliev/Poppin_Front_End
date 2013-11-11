@@ -1,0 +1,13 @@
+<div class="box-input-code box-input-code-alt clearfix">
+    <form  id="guestCheckoutEmailForm" action="">
+        <fieldset>
+			<div id="guestCheckoutFields">
+				<div class="f-row">
+					<label for="login-email">${"Email (This is where your receipt will be sent)"|translate}</label>
+					<div class="f-input"><input type="email" id="login-email" name="email" value="${obj.user.email}" class="required validate-email"/></div>
+					<input type="hidden" id="emailsubscribe" name="emailsubscribe"/>
+				</div>
+			</div>
+        </fieldset>
+	</form>
+</div>

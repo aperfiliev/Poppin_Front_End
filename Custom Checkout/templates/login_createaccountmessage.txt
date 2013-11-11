@@ -1,0 +1,1 @@
+<img class="confirmation-message-image" src="images/x.gif" />${"Thank you, $(0)! Your account has been created. Please check your email for a welcome message."|translate: obj.user.name}

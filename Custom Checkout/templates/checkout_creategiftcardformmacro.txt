@@ -1,0 +1,19 @@
+{macro createGiftCardForm(obj)}
+<h2 id="applyGiftCardCheckout"><span>+</span> ${"Apply Gift Card or Gift Certificate"|translate}</h2>
+<div class="box-input-code box-input-code-alt clearfix">
+	<p class="hidden">${"Enter your gift card or certificate code below."|translate}</p>
+	<div class="box-input-wrap clearfix hidden">
+		<input id="cart-gift" type="text" class="field" placeholder="${"Gift Card or Gift Certificate"|translate}" value="" />
+		<div class="button2"><input id="applyGiftCertificate" type="button" value="${"Apply"|translate}" onclick="BDK.fire('customApplyGiftCertificate', $('cart-gift').value);" /></div>
+	</div>
+	<div class="custom-error hidden" id="giftError"></div>
+	{if obj.cart.giftcertificates}
+		<div class="box-input-wrap clearfix">
+		  {for gift in obj.cart.giftcertificates}
+			   <strong class="code-applied">${"$(0) gift certificate applied"|translate: gift.amountapplied|formatCurrency}</strong>
+		  {/for}
+		  <a id="removeAllGiftCertificates" onclick="BDK.fire('customRemoveAllGiftCertificates');" class="button2">${"Remove All"|translate}</a>
+		</div>
+	{/if}
+</div>
+{/macro}
