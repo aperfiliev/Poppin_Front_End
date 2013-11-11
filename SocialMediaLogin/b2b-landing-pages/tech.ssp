@@ -35,8 +35,16 @@
 				</div>
 			</td>
 		</tr>
-			<td>
-				<a href="#"><img alt="Read more" src="/site/pp-sources/b2b-landing-pages/tech/readmore.jpg"></a>
+			<td style="padding-top: 0;">
+				<div class="div__readmore">
+					<div class="left">
+						&ldquo;People who worked in &ldquo;empowered&rdquo; workspaces, in which the individual was allowed to design the area,
+						were up to <b>32 percent more productive...&rdquo;</b>
+					</div>
+					<!-- <div class="right">
+						Read More
+					</div> -->
+				</div>
 			</td>
 		<tr>
 		</tr>

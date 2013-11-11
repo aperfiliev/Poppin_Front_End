@@ -145,3 +145,30 @@ margin: 10px 0px 16px 0px;
 tbody#content_master .joincompany:not(:first-child) {
 background: url(/site/pp-sources/business/bg-dotted-small-vert.gif) repeat-y left top;
 }
+.div__readmore{
+	background: url(/site/pp-sources/b2b-landing-pages/tech/readmore.jpg) no-repeat;
+	height: 76px;
+	width: 967px;
+	color: #fff;
+	font-size: 22px;
+	margin: 0px;
+}
+.div__readmore .left {
+	font-family: 'OmnesMediumItalic', sans-serif;
+	display: table-cell;
+	line-height: 20px;
+	float: left;
+	width: 735px;
+	padding: 18px 30px 10px 30px;
+}
+.div__readmore .left b{
+	font-family: 'OmnesBoldItalic', sans-serif;
+}
+.div__readmore .right {
+	font-family: 'OmnesMediumRegular', sans-serif;
+	display: table-cell;
+	float: right;
+	width: 105px;
+	padding: 26px 38px 0px 0px;
+	text-decoration: underline;
+}
