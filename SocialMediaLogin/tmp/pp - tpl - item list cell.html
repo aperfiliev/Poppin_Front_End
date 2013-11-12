@@ -1,0 +1,19 @@
+<td class="td-item-cell">
+<div class="item-cell" <GPR_AAE_QVI_CELLIMGID>>
+  <p class="thumb"><a href="<%=getCurrentAttribute('item','storeurl')%>" title="<%=getCurrentAttribute('item','storedisplayname2')%>"><img src="<%=getCurrentAttribute('item','custitem_display_thumbnail','http://cdn-web.poppin.com/site/pp-templates/thumb.gif')%>" alt="<%=getCurrentAttribute('item','storedisplayname2')%>" /></a></p>
+  <p class="short-desc"><%=getCurrentAttribute('item','storedescription')%></p>
+  <h2><a href="<%=getCurrentAttribute('item','storeurl')%>" title="<%=getCurrentAttribute('item','storedisplayname2')%>"><%=getCurrentAttribute('item','storedisplayname2')%></a></h2>
+  <p class="price"><%=getCurrentAttribute('item','salesprice')%></p>
+</div>
+<div class="itemcellinfo" title="<%=getCurrentAttribute('item','internalid')%>" style="display:none">
+	<div class="custitem3"><%=getCurrentAttribute('item','custitem3', '')%></div>
+	<div class="displayname"><%=getCurrentAttribute('item','storedisplayname2')%></div>
+	<div class="thumbnailurl"><%=getCurrentAttribute('item','custitem_display_thumbnail', 'http://cdn-web.poppin.com/site/pp-templates/thumb.gif')%></div>
+	<div class="custitem_price_description"><%=getCurrentAttribute('item','custitem_price_description', '')%></div>
+	<div class="storedescription"><%=getCurrentAttribute('item','storedescription', '')%></div>
+	<div class="onlinecustomerprice"><%=getCurrentAttribute('item','onlineprice', '')%></div>
+	<div class="imageurl"><%=getCurrentAttribute('item','custitem_display_image')%></div>
+	<div class="type"><%=getCurrentAttribute('item','type')%></div>
+    <div class="salesprice"><%=getCurrentAttribute('item','salesprice')%></div>
+</div>
+</td>
