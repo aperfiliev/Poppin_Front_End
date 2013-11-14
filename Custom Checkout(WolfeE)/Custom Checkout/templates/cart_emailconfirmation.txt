@@ -1,0 +1,26 @@
+    <!-- BEGIN popup alert -->
+    <div class="main-wrapper popup">
+        <div class="popup-top"></div>
+        <div class="popup-frame clearfix">
+            <div class="popup-hold clearfix">
+                <div class="popup-heading no-marg clearfix">
+                    <a href="javascript:void(0)" onclick='Lightview.hide();return false;' class="close-popup">close</a>
+                    <h2>${"Email Cart"|translate}</h2>
+                </div>
+                <div class="popup-content clearfix">
+                    <div class="wrap clearfix">
+                        <p>${"Your cart will be send to your email address"|translate}</p>
+						<p>${obj.cart.email.email}</p>
+                    </div>
+                </div>
+                <div class="f-row f-row-btn">
+					<a href="#" class="button2 fl-r close-popup" name="cancelButton">${"Cancel"|translate}</a>
+					<a href="javascript:void(0)" class="button2" name="saveButton" onclick='BDK.fire("emailCartToCustomer");return false;'>${"Send"|translate}</a>
+                </div>
+            </div>
+        </div>
+        <div class="popup-btm"></div>
+    </div>
+    <!-- END popup alert -->
+
+		

@@ -1,0 +1,39 @@
+<div class="main-wrapper clearfix">
+    <!-- BEGIN main-container -->
+    <div class="main-container clearfix">
+    <!-- BEGIN breadcrumbs -->
+    <div class="breadcrumbs clearfix">
+        <ul>
+            <li><a href="#">${"Home"|translate}</a></li>
+            <li>${"Checkout"|translate}</li>
+        </ul>
+    </div>
+    <!-- END breadcrumbs -->
+ 		<div class="heading-page clearfix">
+            		<h1>${"Checkout"|translate}</h1>
+        	</div>
+
+
+        <!-- BEGIN content-part -->
+        <div class="content-part fl-l clearfix">
+              <div id="checkoutContainer"></div>
+       </div>
+       <!-- END content-part -->
+
+        <!-- BEGIN aside -->
+        <div class="aside fl-r">
+
+            <!-- BEGIN sopping cart -->
+                   <div id="sideMiniCart"></div>
+            <!-- END sopping cart -->
+            <!-- BEGIN order summary -->
+                   <div id="checkoutViewCartSummary"></div>
+           <!-- END order summary -->
+
+        </div>
+        <!-- END aside -->
+
+    </div>
+    <!-- END main-container -->
+    
+</div>

@@ -1,0 +1,5 @@
+<p>
+	<input type="checkbox" name="agreeTermsConditions" id="agreeTermsConditions"{if obj.agreed} checked{/if}>
+	<label for="agreeTermsConditions">${'I AGREE to the'|translate}</label> <a id="showTermsConditions" href="#">${'terms &amp; conditions'|translate}</a>
+</p>
+<hr>

@@ -1,0 +1,74 @@
+{var title = BDK.translate( N.origin == 'checkout' ? 'Checkout' : 'Sign In' );}
+<div class="main-wrapper clearfix">
+	<!-- BEGIN breadcrumbs -->
+	<div class="breadcrumbs clearfix">
+		<ul>
+			<li><a href="${N.touchpoints.home}">${"Home"|translate}</a></li>
+			<li>${title}</li>
+		</ul>
+	</div>
+	<!-- END breadcrumbs -->
+	<!-- BEGIN heading -->
+	<div class="heading clearfix">
+		<h1>${title}</h1>
+	</div>
+	<!-- END heading -->
+	<!-- BEGIN form -->
+	<div class="block form-sign">
+		<div class="form clearfix">
+			<div class="form-col-wrap clearfix">
+				<!-- BEGIN form col -->
+				<div class="form-col clearfix">
+					<form id="returningCustomerLoginForm">
+						<fieldset class="form-frame clearfix">
+							<h2>${"Returning Customers"|translate}</h2>
+							<div id="returningCustomer"></div>
+						</fieldset>
+					</form>
+				</div>
+				<!-- END form col -->
+				<!-- BEGIN form col -->
+				<div class="form-col fl-r clearfix">
+					<form id="newCustomerLoginForm">
+						<div class="form-frame clearfix">
+							<fieldset>
+								<h2>${"New Customers"|translate}</h2>
+								{if N.guests && N.origin == 'checkout' && N.cartItems.items}
+									<p>
+										<strong>${"Checkout without an account"}</strong> <br>
+										${"You will have an opportunity to create an account at a later time."}
+									</p>
+									<div class="f-row f-row-link hidden">
+										<p id='registerGuestStatus'></p>
+									</div>
+									<div class="f-row">
+										<button id="registerGuest" type="button" class="button3" onclick='BDK.fire("registerGuest");'>${"Checkout"|translate}</button>
+									</div>
+									<p>- or -</p>
+									<p>
+										<strong>${"Create an account & checkout"}</strong> <br>
+										${"Enter your information below to create an account."|translate}
+									</p>
+								{else}
+									<p>${"Enter your information below to create an account."|translate}</p>
+								{/if}
+								<p id='registerUserStatus'></p>
+								${createAccountForm(false, obj.user)}
+							</fieldset>
+							<br>
+							<div>
+								<p><strong>${"Benefits of creating an account:"|translate}</strong></p>
+								<ul class="default-list">
+									<li>${"Expedite future checkouts."|translate}</li>
+									<li>${"Manage your orders."|translate}</li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- END form col -->
+			</div>
+		</div>
+		<!-- END form -->
+	</div>
+</div>

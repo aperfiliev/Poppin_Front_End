@@ -1,0 +1,19 @@
+						
+		{macro cartPromotions(cart)}
+     <div class="cart-promotion">
+          <div class="cart-actions-title">${"Have a Promo Code?"|translate}</div>
+          <div class="cart-actions-text" >${"Enter your promotional code or coupon code below. Limit one per customer, please."|translate}</div>
+          {if cart.promocode.promocode} 
+              <div>
+                   <input id='cart-promocode' class="cart-actions-input" type="text" size="25" value='${cart.promocode}'>
+                   <button id="removePromo" class="cart-actions-button" onclick="BDK.fire('removePromo', $('cart-promocode').value);" >${"Remove"|translate}</button>
+              </div>
+         {else}
+             <div>
+                   <input id='cart-promocode' class="cart-actions-input" type="text" size="25">
+                   <button id="applyPromo" class="cart-actions-button" onclick="BDK.fire('applyPromo', $('cart-promocode').value);" >${"Apply"|translate}</button>
+             </div> 
+         {/if}
+    </div>
+{/macro}		
+

@@ -1,0 +1,29 @@
+{macro addressListItem(address, type)}
+{if _m.isAddressSelected(address, type)}
+<li class="${type}-address-list-item active"  id="${type}-address-list-item-${address.internalid}">
+{else}
+<li class="${type}-address-list-item"  id="${type}-address-list-item-${address.internalid}">
+{/if}
+	<div class="f-radio">
+		<input type="radio" name="addressId" id="address-${address.internalid}"  value="${address.internalid}"  onclick='BDK.fire("customAddressSelected", {type:"${type}", id:"${address.internalid}", zip:"${address.zip}", country: "${address.country}"});return false;' {if _m.isAddressSelected(address, type)} checked {/if}>
+	</div>	
+	<div class="info-card clearfix">
+		<strong>${address.addressee}</strong>
+		<span>${address.addr1}</span>
+		{if address.addr2}
+			<span>${address.addr2}</span>
+		{/if}
+		{if address.addr3}
+			<span>${address.addr3}</span>
+		{/if}
+		<span>${address.city}, ${address.state}</span>
+		<span>${address.zip} ${address.country}</span>
+		<span>${address.phone}</span>
+		<div class="btn-choice clearfix">
+			<a href="javascript:void(0)" onclick='BDK.fire("customShowEditAddress", "${address.internalid}")';>${"Edit"|translate}</a>
+			<em>&nbsp;</em>
+			<a href="javascript:void(0)" onclick='BDK.fire("customShowRemoveAddress", "${address.internalid}")';>${"Delete"|translate}</a>
+		</div>
+	</div>
+</li>
+{/macro}

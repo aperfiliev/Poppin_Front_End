@@ -1,0 +1,27 @@
+{macro creditCardListItem(cc)}
+{var isSelected = _m.isCreditCardSelected(cc)}
+<li class="card-list-item{if isSelected} active{/if}" id="card-list-item-${cc.internalid}">
+	<div class="f-radio">
+		<input type="radio" name="creditCardId" id="creditCard-${cc.internalid}" value="${cc.internalid}" class="credit-card-item" onclick='BDK.fire("customCreditCardSelected", "${cc.internalid}");return false;'{if isSelected} checked{/if}>
+	</div>
+	<div class="ico-card">
+		{if cc.paymentmethod.name == "VISA"}
+		<div class="card-img card-visa"></div>
+		{elseif cc.paymentmethod.name == "Master Card"}
+		<div class="card-img card-mastercard"></div>
+		{elseif cc.paymentmethod.name == "American Express"}
+		<div class="card-img card-am-express"></div>
+		{elseif cc.paymentmethod.name == "Discover"}
+		<div class="card-img card-discover"></div>
+		{/if}
+	</div>
+	<div class="info-card clearfix">
+		${this.creditCardItem(cc, isSelected)}
+		<div class="btn-choice clearfix">
+			<a href="javascript:void(0)" onclick='BDK.fire("customShowEditCreditCard", "${cc.internalid}");'>${"Edit"|translate}</a>
+			<em>&nbsp;</em>
+			<a href="javascript:void(0)" onclick='BDK.fire("customShowRemoveCreditCard", "${cc.internalid}");'>${"Delete"|translate}</a>
+		</div>
+	</div>
+</li>
+{/macro}

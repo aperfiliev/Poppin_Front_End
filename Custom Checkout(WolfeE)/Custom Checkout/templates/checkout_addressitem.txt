@@ -1,0 +1,10 @@
+{macro addressItem(address)}
+	<ul>
+		<li>${address.addressee}</li>
+		<li>${address.addr1}</li>
+		<li>${address.addr2}</li>
+		<li>${address.addr3}</li>
+		<li>${address.city}, ${address.state} ${address.zip} ${address.country}</li>
+		<li>${address.phone}</li>
+	<ul>
+{/macro}

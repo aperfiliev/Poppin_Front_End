@@ -1,0 +1,7 @@
+<project info="SuiteCloud IDE generated file, do not edit." setAttributesOnUpdate="false">
+  <folder name="Custom Checkout" bundleable="false">
+    <folder name="css" bundleable="false">
+      <file name="style.css" bundleable="false" hideInBundle="false" isOnline="true"/>
+    </folder>
+  </folder>
+</project>

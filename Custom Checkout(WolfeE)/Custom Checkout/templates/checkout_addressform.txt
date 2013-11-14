@@ -1,0 +1,21 @@
+<div class="main-wrapper popup" style="left:auto; right:0;">
+	<div class="popup-top"></div>
+	<div class="popup-frame clearfix">
+		<div class="popup-hold clearfix">
+			<div class="popup-heading no-marg clearfix">
+				<a class="close-popup" href="#">close</a>
+				<h2>${"Enter a new Address"|translate}</h2>
+			</div>
+			<div class="form popup-addressForm">
+				<form id="addressForm">
+					${addressForm(obj, BDK.translate("Enter Your Address"))}
+				</form>
+			</div>
+			<div class="f-row f-row-btn">
+				<a href="#" class="button2 fl-r close-popup" name="cancelButton">${"Cancel"|translate}</a>
+				<a href="javascript:void(0)" class="button2" name="saveButton" onclick='BDK.fire("customSaveAddress");return false;'>${"Save Address"|translate}</a>
+			</div>
+		</div>
+	</div>
+	<div class="popup-btm"></div> 
+</div>

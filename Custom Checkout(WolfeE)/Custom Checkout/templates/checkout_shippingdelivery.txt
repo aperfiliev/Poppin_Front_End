@@ -1,0 +1,22 @@
+<div class="checkout-content clearfix">
+	<!-- form -->
+	<div class="form clearfix">
+		<fieldset>
+			<div class="form-col-wrap clearfix">
+				<!-- form col -->
+				<div class="form-col clearfix">
+					<div id="addresses"></div>
+				</div>
+				<div class="form-col fl-r clearfix">
+					<div id="shippingMethods"></div>
+				</div>
+			</div>
+			<hr>
+			<div class="f-row f-row-btn">
+				<div class="button next">
+					<input type="button" onclick='BDK.fire("customSaveShippingStep")' value="${'Next: Payment'|translate} &gt;" />
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+{macro cartItemList(cart, bEdit)}
+	<table width="100%" cellspacing="0" cellpadding="0" border="0">
+	<tbody>
+		<tr>
+		<th width="167">${"Item"|translate}</th>
+		<th width="143">${"Name"|translate}</th>
+		<th width="270">${"Image"|translate}</th>
+		<th width="168" align="center">${"Qty."|translate}</th>
+		<th width="150">${"Options"|translate}</th>
+		<th width="150">${"Subtotal"|translate}</th>
+		<th> </th>
+		</tr>
+			{for item in cart.items}
+				${this.cartItem(item, bEdit)}
+			{/for}
+	</tbody>
+	</table>
+{/macro}

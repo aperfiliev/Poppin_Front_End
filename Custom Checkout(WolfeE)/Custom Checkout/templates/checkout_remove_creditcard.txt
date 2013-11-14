@@ -1,0 +1,25 @@
+<!-- BEGIN popup alert -->
+<div class="main-wrapper popup">
+    <div class="popup-top"></div>
+    <div class="popup-frame clearfix">
+        <div class="popup-hold clearfix">
+            <div class="popup-heading no-marg clearfix">
+                <a href="javascript:void(0)" onclick='Lightview.hide();return false;' class="close-popup">${"close"|translate}</a>
+                <h2>${"Delete Credit Card"|translate}</h2>
+            </div>
+            <div class="popup-content clearfix">
+                <img class="img" src="images/ico/alert.png" width="33" height="30" alt="" />
+                <div class="wrap clearfix">
+                    <p>${"Are you sure you want to delete this credit card?"|translate}</p>
+                    <p>${creditCardItem(obj.creditCard)}</p>
+                </div>
+            </div>
+            <div class="f-row f-row-btn">
+				<a href="#" class="button2 fl-r close-popup" name="cancelButton">${"Cancel"|translate}</a>
+				<a href="javascript:void(0)" class="button2" name="saveButton" onclick='BDK.fire("customRemoveCreditCard", "${obj.creditCard.internalid}");return false;'>${"Delete Credit Card"|translate}</a>
+            </div>
+        </div>
+    </div>
+    <div class="popup-btm"></div>
+</div>
+<!-- END popup alert -->
