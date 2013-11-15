@@ -40,6 +40,8 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div id='outerwrapper' style='width:968'>
+<div id='innerwrapper'>
 	<iframe id="yui-history-iframe" src="blank.html" width="1" height="1"></iframe>
 	<input id="yui-history-field" type="hidden">
 	<img id="progress" src="images/ajax-loader.gif" style="display:none;" />
@@ -47,12 +49,15 @@
 		<table border='0' cellspacing='0' cellpadding='0' width='100%'>
 			<%=getPageTop()%>
 		</table>
-<div class="promo-banner" style="text-align: center;">
-					<%=getRecordAttribute('199',2,'custrecord_bannerhtml')%>
-				</div>
+		<div class="promo-banner" style="text-align: center;">
+			<%=getRecordAttribute('199',2,'custrecord_bannerhtml')%>
+		</div>
 	</div>
 
 	<div id="main"></div>
+</div>
+</div>
+<PP_FOOTER_CLEAN>
 
 	<script src="js/libs/bdk_all-01386d1d224a.js"></script>
 	<script src="js/libs/prototip2.2.5/js/prototip/prototip.js"></script>
@@ -74,11 +79,5 @@
 		BDK.preload.ctx = ".";
 		BDK.appImageURL = "";
 	</script>
-
-	<div id='div__footer' class='noprint' leftmargin='0' topmargin='0'
-		marginwidth='1' marginheight='1'>
-		<PP_FOOTER> <GA_FUNNELS> <SMARTYSTREETS>
-		<CARD_SELECTOR_EMPTY>
-	</div>
 </body>
 </html>
