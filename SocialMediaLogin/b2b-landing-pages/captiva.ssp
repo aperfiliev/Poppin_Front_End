@@ -1,0 +1,87 @@
+<table border="0" cellpadding="5" cellspacing="0" width="100%">
+	<tbody id="content_master">
+		<tr>
+			<td>
+				<h1>Happy Hour starts at 9am</h1>
+				<div class="div__presentation">
+					<a><img src="/site/pp-sources/b2b-landing-pages/tech/main_b.jpg" ></a>
+				</div>
+				<div>
+					<img style="float:right;" src="/site/pp-sources/b2b-landing-pages/tech/header_b.jpg">
+					<iframe scrolling="no" frameborder="0" allowtransparency="yes"
+						marginheight="0" marginwidth="0"
+						src="https://forms.sandbox.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&formid=15&h=638505243f067f7c6aeb&redirect_count=1&did_javascript_redirect=T"
+						style="width: 209px; height: 427px; overflow: hidden;">
+					</iframe>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="callstylist">
+				<span class="orange">Call your WorkStylist today </span><span class="number">866 &#8226; 926 &#8226; 4898</span><br/>
+				<span class="grey">Volume Discounts Available</span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="div__options" id="left">
+					<a href="/Desktop/"><img alt="Shop Desktop" src="/site/pp-sources/b2b-landing-pages/tech/desktop.jpg"></a>
+				</div>
+				<div class="div__options" id="right">
+					<a href="/Furniture/"><img alt="Shop Furniture" src="/site/pp-sources/b2b-landing-pages/tech/furniture.jpg"></a>
+				</div>
+				<div class="div__options" id="center">
+					<a href="/Customize-it/"><img alt="Customization" src="/site/pp-sources/b2b-landing-pages/tech/customization.jpg"></a>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="div__readmore">
+					<div class="left">
+						&ldquo;People who worked in &ldquo;empowered&rdquo; workspaces, in which the individual was allowed to design the area,
+						were up to <b>32 percent more productive...&rdquo;</b>
+					</div>
+					<!-- <div class="right">
+						Read More
+					</div> -->
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div style="text-align:center">
+					<h2>Join the 3000+ Companies Already Working Happy</h2>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="joincompany">
+					<a href="#"><img src="/site/pp-sources/b2b-landing-pages/tech/wparker.jpg"></a>
+				</div>
+				<div class="joincompany">
+					<a href="#"><img src="/site/pp-sources/b2b-landing-pages/tech/pandora.jpg"></a>
+				</div>
+				<div class="joincompany">
+					<a href="#"><img src="/site/pp-sources/b2b-landing-pages/tech/fab.jpg"></a>
+				</div>
+				<div class="joincompany">
+					<a href="#"><img src="/site/pp-sources/b2b-landing-pages/tech/foursquare.jpg"></a>
+				</div>
+				<div class="joincompany">
+					<a href="#"><img src="/site/pp-sources/b2b-landing-pages/tech/linkedin.jpg"></a>
+				</div>
+				<div class="joincompany">
+					<a href="#"><img src="/site/pp-sources/b2b-landing-pages/tech/sailthru.jpg"></a>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span style="color: #f37a31;font-size:28px;">Terms + Conditions</span>
+				<p>No purchase necessary to enter or win. A purchase does not improve your chances of winning. Odds of winning will depend on the total number of entries received. Void where prohibited by law. Open to US residents only, who are 18 years of age or older. Winner will be chosen at random and contacted via email by 12/15/2013. By contacting us we'll have the right to contact you, but wont share your information with any third parties.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
