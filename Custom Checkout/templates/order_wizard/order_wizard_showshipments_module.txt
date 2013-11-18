@@ -1,0 +1,72 @@
+<section class="shipments-shipping-details">
+	<div class="row-fluid shipments-shipping-details-body">
+		<div class="span6 shipments-shipping-address">
+			<h4 class="section-header">
+				<%= _('Shipping Address').translate() %>
+			</h4>
+			
+			<%= address(view.profile.get('addresses').get(view.model.get('shipaddress')), {
+				hideActions: true
+			,	hideDefaults: true
+			}) %>
+
+			<% if (view.options.edit_url) { %>
+				<a href="<%- view.options.edit_url %>?force=true" class="btn-edit-address">
+					<%= _('Edit').translate() %>
+				</a>
+			<% } %>
+		</div>
+		<div class="span6 shipments-shipping-method">
+			<h4 class="section-header">
+				<%= _('Shipping Method').translate() %>
+			</h4>
+			<% if (view.options.edit_url) { %>
+				<select id="delivery-options" class="input-xlarge" name="delivery-options">
+					<% 
+					var shipmethods = view.model.get('shipmethods')
+					,	selected_shipmethod = shipmethods.findWhere({internalid: view.model.get('shipmethod')});
+					%>
+					<% if(!selected_shipmethod){ %>
+						<option><%= _('Please select a shipping method').translate() %></option>
+					<% } %>
+					<% shipmethods.each(function(shipmethod) { %>
+						<option value="<%- shipmethod.get('internalid')%>"
+							<%= view.model.get('shipmethod') === shipmethod.get('internalid') ? 'selected' : '' %>>
+							<%= shipmethod.get('name') %>: <%= shipmethod.get('rate_formatted') %>
+						</option>
+					<% }); %>
+				</select>
+			<% } else { %>
+				<span class="shipmethod-name">
+					<%= view.model.get('shipmethods').get(view.model.get('shipmethod')).get('name') %>
+				</span>
+				: 
+				<span class="shipmethod-rate">
+					<%= view.model.get('shipmethods').get(view.model.get('shipmethod')).get('rate_formatted') %>
+				</span>				
+			<% } %>
+		</div>
+	</div>
+</section>
+
+<section class="shipments-cart-details">
+	<div class="shipments-cart-details-header">
+		<h3>
+			<%= _('Items').translate() %>
+
+			<% if (view.options.show_edit_button) { %>
+				<a href="#" class="btn btn-link btn-edit-cart" data-touchpoint="viewcart">
+					<%= _('Edit Order').translate() %>
+				</a>
+			<% } %>
+		</h3>
+		<h3 class="pull-right"><%= _('Total').translate() %></h3>
+	</div>
+	<div class="shipments-cart-details-body">
+		<% view.model.get('lines').each(function (lines, index) { %>
+			<%= shoppingCartItem(lines, view, {
+				showActions:false
+			}) %>
+		<% }) %>
+	</div>
+</section>

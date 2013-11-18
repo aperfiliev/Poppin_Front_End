@@ -1,0 +1,82 @@
+<%
+	var is_same_as_enabled = view.isSameAsEnabled
+	,	selected_address = view.address
+	,	address_book = view.getAddressesToShow();
+%>
+<% if (view.getTitle()) { %>
+	<h3 class="section-header">
+		<%= view.getTitle() %>
+	</h3>
+<% } %>
+
+<% if (is_same_as_enabled) { %>
+	<label class="checkbox same-as-address">
+		<input
+			type="checkbox"
+			name="same-as-address"
+			data-action="same-as"
+			value="1"
+			<%= view.sameAs ? 'checked' : '' %>
+		>
+		<%= view.sameAsMessage %>
+	</label>
+<% } %>
+
+<% if ((is_same_as_enabled && view.sameAs) || view.addressId && !selected_address.isNew()) { %>
+
+	<%= address(selected_address, {
+		hideActions: true
+	,	hideDefaults: true
+	}) %>
+
+	<% if (!is_same_as_enabled || !view.sameAs) { %>
+		<% if (!view.isGuest && !view.options.edit_url) { %>
+			<a class="btn btn-link" href="/addressbook/<%- selected_address.get('internalid') %>" data-toggle="show-in-modal">
+				<%= _('Edit Address').translate() %>
+			</a>
+		<% } %>
+
+		<a href="#" class="btn btn-link" data-action="change-address">
+			<%= view.changeLinkText %>
+		</a>
+	<% } %>
+<% } else if (address_book.length && !view.isGuest) { %>
+	<div id="address-module-list-placeholder" class="address-module-list-placeholder">
+		<p>
+			<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal">
+				<%= _('Add New Address').translate() %>
+			</a>
+		</p>
+
+		<%
+			// Wrap the address address macro to pass options in
+			var addressWrap = function (address) {
+				return SC.macros['address'](address, {
+					showSelect: true
+				,	selectMessage: view.selectMessage
+				,	hideDefaults: true
+				});
+			}
+		%>
+
+		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+	</div>
+<% } else { %>
+	<div id="address-module-form-placeholder" class="address-module-form-placeholder">
+		<form method="POST">
+		<%= addressFrom(selected_address, {
+				countries: view.wizard.application.getConfig('siteSettings.countries')
+			,	manage: view.manage
+			,	hideDefaults: true
+		}) %>
+		</form>
+
+		<% if (view.showSaveButton) { %>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary" data-action="submit">
+					<%= _('Save Address').translate() %>
+				</button>
+			</div>
+		<% } %>	
+	</div>
+<% } %>

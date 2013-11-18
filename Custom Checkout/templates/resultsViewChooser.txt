@@ -1,1 +1,0 @@
-resultsViewChooser_tmpl

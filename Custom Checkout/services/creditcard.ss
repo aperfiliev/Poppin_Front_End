@@ -1,94 +1,59 @@
-/*
- * Copyright 1998 - 2012 NetSuite Inc.
- */
-function service(request,response) {
-	var retobj = {
-			header: {
-				status: {
-					code: 'SUCCESS',
-					message: 'success'
-				}
-			},
-			result: {}
-		};
+/*exported service*/
+// creditcard.ss
+// ----------------
+// Service to manage credit cards requests
+function service (request)
+{
+	'use strict';
+	// Application is defined in ssp library commons.js
+	try
+	{
+		if (session.isLoggedIn())
+		{
+			var method = request.getMethod()
+			,	id = request.getParameter('internalid')
+			,	data = JSON.parse(request.getBody() || '{}')
+			//  CreditCard model is defined on ssp library Models.js
+			,	CreditCard = Application.getModel('CreditCard');
 
-	try {
-		var data = JSON.parse( request.getBody() ),
-			method = data.method,
-			params = data.params,
-			container = nlapiGetWebContainer(),
-			session = container.getShoppingSession(),
-			isLoggedIn = session.isLoggedIn();
+			switch (method)
+			{
+				case 'GET':
+					//If the id exist, sends the response of CreditCard.get(id), else send the response of (CreditCard.list() || [])
+					Application.sendContent(id ? CreditCard.get(id) : (CreditCard.list() || []));
+				break;
 
-		// all methods require user to be logged in. Lets make sure that.
-		if ( !isLoggedIn ) {
-			retobj.header.status.code = 'ERR_USER_NOT_LOGGED_IN';
-			retobj.header.status.message = 'Not logged In';
-			response.setContentType('JSON');
-			response.writeLine( JSON.stringify( retobj ) );
-			return;
-		}
+				case 'PUT':
+					// Pass the data to the CreditCard's update method and send it response
+					CreditCard.update(id, data);
+					Application.sendContent(CreditCard.get(id));
+				break;
 
-		var customer = session.getCustomer();
+				case 'POST':
+					// Handles the creation of credit cards and send the response
+					id = CreditCard.create(data);
+					Application.sendContent(CreditCard.get(id), {'status': 201});
+				break;
 
-		if ( method == 'getAll' ) {
-			var result = customer.getCreditCards();
-			if ( result ) {
-				retobj.result.totalfound = result.length;
-				retobj.result.creditcards = result;
+				case 'DELETE':
+					// The credit card is removed and we send a JSON Obj containing {'status': 'ok'}
+					CreditCard.remove(id);
+					Application.sendContent({'status': 'ok'});
+				break;
+
+				default: 
+					// methodNotAllowedError is defined in ssp library commons.js
+					Application.sendError(methodNotAllowedError);
 			}
-			else {
-				retobj.result.totalfound = 0;
-				retobj.result.creditcards = [];
-			}
 		}
-		else if ( method == 'add' ) {
-			var result = customer.addCreditCard( params );
-			retobj.result.id = result;
-
-		}
-		else if ( method == 'get' ) {
-			var result = customer.getCreditCard( params.id );
-			retobj.result.totalfound = 1;
-			retobj.result.creditcards = [ result ];
-		}
-		else if ( method == 'update' ) {
-			var result = customer.updateCreditCard( params );
-		}
-		else if ( method == 'remove' ) {
-			var id = params.id;
-
-			if ( !id ) {
-				id = customer.addCreditCard( params );
-			}
-
-			retobj.result = customer.removeCreditCard( id );
-		}
-		else {
-			retobj.header.status.code = 'ERR_NO_METHOD_FOUND';
-			retobj.header.status.message = 'No method found.';
+		else
+		{
+			// unauthorizedError is defined in ssp library commons.js
+			Application.sendError(unauthorizedError);
 		}
 	}
-	catch (e) {
-		var code = 'ERR_UNEXPECTED',
-			msg = 'error';
-
-		if ( e instanceof nlobjError ) {
-			code = e.getCode();
-			msg = e.getDetails();
-			nlapiLogExecution( 'DEBUG', 'system error', e.getCode() + '\n' + e.getDetails() );
-		}
-		else {
-			var error = nlapiCreateError(e);
-			code = error.getCode();
-			msg = error.getDetails();
-			nlapiLogExecution( 'DEBUG', 'unexpected error', msg );
-		}
-
-		retobj.header.status.code = code;
-		retobj.header.status.message = msg;
+	catch (e)
+	{
+		Application.sendError(e);
 	}
-
-	response.setContentType('JSON');
-	response.writeLine( JSON.stringify( retobj ) );
 }

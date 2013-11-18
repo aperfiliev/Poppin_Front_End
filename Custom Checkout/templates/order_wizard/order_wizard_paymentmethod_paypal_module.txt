@@ -1,0 +1,23 @@
+<div class="row-fluid">
+	<div class="span4">
+		<img class="paypal-logo" src="img/paypal.png" alt="PayPal">
+	</div>
+	<div class="span8">
+
+		<% if (view.model.get('isPaypalComplete')) { %>
+			<p>
+				<%= _('You have selected to pay using PayPal as your payment method.').translate() %>
+			</p>
+			<p>
+				<%= _('To review your order, click the "Continue" button below.').translate() %>
+			</p>
+		<% } else { %>
+			<p>
+				<%= _('Please select the "Continue To PayPal" button below to sign in into your PayPal account.').translate() %>
+			</p>
+			<p>
+				<%= _('You will be redirected to PayPal, but will have an opportunity to review your order back on our site before purchasing.').translate() %>
+			</p>
+		<% } %>
+	</div>
+</div>

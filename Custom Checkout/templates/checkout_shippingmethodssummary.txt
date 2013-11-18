@@ -1,4 +1,0 @@
-						
-		${shipmethodItem(obj.selected)}
-		
-

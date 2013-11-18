@@ -1,0 +1,60 @@
+<% registerMacro('creditcard', function (creditcard, options) { %>
+<%
+	var payment_name = creditcard.get('paymentmethod').name
+	,	expiration_month = creditcard.get('expmonth')
+	,	icons = options.icons;
+%>
+<article class="creditcard">
+	<% if (options.showSecurityCodeForm) { %>
+	<div class="row-fluid">
+		<div class="span6">
+	<% } %>
+			<h4 class="summary-header">
+			<% if (payment_name in icons) { %>
+				<img class="credit-card-icon" src="<%- icons[payment_name] %>" alt="<%- payment_name %>">
+			<% } else { %>
+				<%= payment_name %>
+			<% } %> &ndash; 
+			<%= _('Ending in $(0)').translate(creditcard.get('ccnumber').replace(/\*/g, '')) %>
+			</h4>
+			<p>
+				<%= creditcard.get('ccname') %> <br>
+				<%= _('Expires').translate() + ' ' + (expiration_month < 10 ? '0' : '') + expiration_month + '/' + creditcard.get('expyear') %>
+			</p>
+			<% if (options.showDefaults) { %>
+			<p>
+				<% if (creditcard.get('ccdefault') === 'T') { %>
+					<i class="icon-star"></i>
+					<%= _('Default Credit Card').translate() %>
+				<% } %>
+			</p>
+			<% } %>
+		<% if (options.showSecurityCodeForm) { %>
+		</div>
+		<div class="span6">
+			<%= SC.macros.creditcardSecurityNumberForm({
+				error: options.securityNumberError
+            ,   value: options.ccsecuritycode
+			}) %>
+		</div>
+	</div>
+	<% } %>
+
+	<% if (options.showSelect) { %>
+		<button class="btn btn-primary btn-block" data-action="select" data-id="<%- creditcard.get('internalid')%>">
+			<%= options.selectMessage %>
+		</button>
+	<% } %>
+
+	<% if (options.showActions) { %>
+		<p class="actions">
+			<a class="btn btn-link" href="/creditcards/<%= creditcard.get('internalid') %>" data-toggle="show-in-modal">
+				<%= _('Edit Card').translate() %>
+			</a>
+			<button class="btn btn-link" data-action="remove" data-id="<%- creditcard.get('internalid') %>">
+				<%= _('Remove').translate() %>
+			</button>
+		</p>
+	<% } %>
+</article>
+<% }) %>

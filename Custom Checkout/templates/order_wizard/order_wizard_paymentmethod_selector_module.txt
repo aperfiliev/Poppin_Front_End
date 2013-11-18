@@ -1,0 +1,30 @@
+<% var active_modules = _.filter(view.modules,function(module){ return module.isActive;}) %>
+<h4 class="section-header">
+	<% if (active_modules.length > 1) { %>
+		<%= _('Pay With:').translate() %>
+	<% } else { %>
+		<%= _('Pay With: $(0)').translate(active_modules[0].name) %>
+	<% }  %>
+</h4>
+
+<% if (active_modules.length > 1) { %>
+	<ul class="nav nav-tabs">
+	<% _.each(view.modules, function (module) { %>
+	<% if (module.isActive) { %>
+		<li class="<%- view.selectedModule.type === module.type ? 'active' : ''%>">
+			<a data-target="#payment-method-selector-<%= module.type %>" data-toggle="tab" data-type="<%- module.type %>" href="#">
+				<%= module.name %>
+			</a>
+		</li>
+	<% } %>
+	<% }) %>
+	</ul>
+<% }  %>
+
+<div class="tab-content">
+<% _.each(view.modules, function (module) { %>
+	<% if (module.isActive) { %>
+		<div class="tab-pane <%= view.selectedModule.type === module.type ? 'active' : ''%> payment-method-selector-<%= module.type %>" id="payment-method-selector-<%= module.type %>"></div>
+	<% } %>
+<% }) %>
+</div>

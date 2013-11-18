@@ -1,8 +1,0 @@
-{macro cartEstimateShipping(cart)}
-<div class="cart-shipping" >
-    <div class="cart-actions-title">${"Estimate Tax &amp; Shipping?"|translate}</div>
-    <div class="cart-actions-text">${"Enter your shipping address zip code to calculate tax and shipping cost. Limit one per customer, please."|translate}</div>
-    <div><input class="cart-action-input" id='cart-zipcode' type="text" size="25"><button class="cart-actions-button" onclick="BDK.fire('applyZipcode', $('cart-zipcode').value);">${"Update Now"|translate}</button></div>
-</div>
-{/macro}		
-

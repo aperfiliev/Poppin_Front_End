@@ -1,0 +1,101 @@
+<% registerMacro('creditcardForm', function (creditcard, options) { %>
+<% var application = options.application %>
+<fieldset>
+	<div data-type="alert-placeholder"></div>
+
+	<div class="control-group">
+		<div class="controls">
+			<%
+				var icons = application.getConfig('creditCardIcons')
+				,	selected_payment_method = creditcard.get('paymentmethod')
+				,	creditcards = _.where(application.getConfig('siteSettings.paymentmethods'), {ispaypal : 'F'});
+			%>
+			<input type="hidden" id="paymentmethod" name="paymentmethod" value="<%- selected_payment_method && selected_payment_method.internalid %>"/>
+			<% _.each(creditcards, function (paymentmethod) { %>
+				<img
+					class="credit-card-icon <%- creditcard.isNew() || selected_payment_method && paymentmethod.internalid === selected_payment_method.internalid ? '' : 'hidden' %>"
+					src="<%- icons[paymentmethod.name] %>"
+					data-value="<%- paymentmethod.internalid %>"
+					alt="<%- paymentmethod.name %>"
+					data-image="creditcard-icon"
+				/>
+			<% }) %>
+			</select>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="ccnumber">
+			<%= _('Credit Card Number').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-xlarge" id="ccnumber" name="ccnumber" value="<%- creditcard.get('ccnumber') %>" <%= !creditcard.isNew() ? 'disabled':'' %> >
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="expmonth">
+			<%= _('Expiration Date').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<select class="input-mini" id="expmonth" name="expmonth">					
+				<% var currentMonth = creditcard.get('expmonth') ? creditcard.get('expmonth') : options.currentMonth  %>
+				<% _.each(options.months, function (month, index) { %>
+					<option value="<%- month %>" <%= month == currentMonth ? 'selected' : '' %>>
+						<%= month %>
+					</option>
+				<% }) %>
+			</select>
+			<select class="input-small" id="expyear" name="expyear">
+				<% _.each(options.years, function (year, index) { %>
+					<option value="<%- year %>" <%= year == creditcard.get('expyear') ? 'selected' : '' %> <%= options.expyear == year ? 'disabled' : '' %>>
+						<%= year %>
+					</option>
+				<% }) %>
+			</select>
+		</div>
+	</div>
+	
+	<% if (options.showSecurityCodeForm) { %>
+		<%= SC.macros.creditcardSecurityNumberForm() %>
+	<% } %>
+
+	<div class="control-group">
+		<label class="control-label" for="ccname">
+			<%= _('Name on Card').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+
+		<div class="controls">
+			<input type="text" class="input-xlarge" id="ccname" name="ccname" maxlength="26" value="<%- creditcard.get('ccname') %>">
+		</div>
+	</div>
+
+	<% if (application.getUser().get('isGuest') !== 'T' && options.showDefaults) { %>
+	<div class="control-group">
+		<div class="controls">
+			<label class="checkbox">
+				<input
+					type="checkbox"
+					id="ccdefault"
+					value="T"
+					data-unchecked-value="F"
+					name="ccdefault"
+					<%= creditcard.get('ccdefault') === 'T' ? 'checked' : '' %>
+				>
+				<%= _('Make this my default credit card').translate() %>
+			</label>
+		</div>
+	</div>
+	<% } %>
+	
+</fieldset>
+<% }) %>

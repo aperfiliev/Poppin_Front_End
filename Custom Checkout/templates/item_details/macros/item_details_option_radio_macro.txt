@@ -1,0 +1,29 @@
+<% registerMacro('itemDetailsOptionRadio', function (option, selected_value, item_model) { %>
+<% var htmlid = 'option-'+ option.cartOptionId; %>
+<div id="<%= htmlid %>-container" class="<%= htmlid %>-container" data-type="option" data-cart-option-id="<%= option.cartOptionId %>">
+	<p class="option-label strong">
+		<%= option.label %><% if (selected_value) { %>: <span><%= selected_value.label %></span><% } %>
+	</p>
+	<div id="<%= htmlid %>" class="<%= htmlid %>">
+		<% _.each(option.values, function (item) { %>
+			<% if (item.internalid) { %>
+				<% 
+					var is_active = selected_value && item.internalid == selected_value.internalid
+					,	is_available = item.isAvailable;
+				%>
+				<label class="radio <%= (is_active ? 'active' : '') +' '+ (is_available ? '' : 'muted') %>">
+					<input 
+						type="radio" 
+						name="<%= htmlid %>" 
+						value="<%= item.internalid %>" 
+						<%= is_active ? 'checked' : '' %> 
+						data-toggle="set-option" 
+						data-active="<%= is_active %>" 
+						data-available="<%= is_available %>">
+					<%= item.label %>
+				</label>
+			<% } %>
+		<% }) %>
+	</div>
+</div>
+<% }) %>

@@ -1,0 +1,43 @@
+<%
+	var is_active = false
+	,	order_delivery_method = view.model.get('shipmethod')
+	,	shipping_methods = view.model.get('shipmethods');
+%>
+
+<% if (view.getTitle()) { %>
+	<h3 class="section-header">
+		<%= view.getTitle() %>
+	</h3>
+<% } %>
+
+<form class="delivery-options" action="">
+	<fieldset>
+		<legend class="delivery-options-header section-header">
+			<%= _('Delivery options:').translate() %>
+		</legend>
+		<% if (!view.model.get('isEstimating') && !view.wizard.application.getUser().get('addresses').get(view.model.get('shipaddress'))) { %>
+			<%= _('Warning: Please enter a valid shipping address first').translate() %>
+		<% } else if (!shipping_methods.length) { %>
+			<%= _('Warning: No Shipping Methods are available for this address').translate() %>
+		<% } else { %>
+			<% shipping_methods.each(function (shipmethod) { %>
+				<% is_active = order_delivery_method === shipmethod.get('internalid') %>
+				<label class="delivery-option <%= is_active ? 'active' : '' %>">
+					<input
+						type="radio"
+						name="delivery-options"
+						id="delivery-options-<%= shipmethod.get('internalid')%>"
+						value="<%- shipmethod.get('internalid')%>" 
+						<%= is_active ? 'checked' : '' %>
+					>
+					<span class="delivery-option-label">
+						<%= shipmethod.get('name') %>:
+					</span>
+					<span class="delivery-option-rate">
+						<%= shipmethod.get('rate_formatted') %>
+					</span>
+				</label>
+			<% }); %>
+		<% } %>
+	</fieldset>
+</form>

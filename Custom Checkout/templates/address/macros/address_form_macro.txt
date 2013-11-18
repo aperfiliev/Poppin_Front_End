@@ -1,0 +1,179 @@
+<% registerMacro('addressFrom', function (address, options) { %>
+<% 
+	var site_settings = SC.ENVIRONMENT.siteSettings
+	,	manage = options.manage ? options.manage + '-' : ''
+	,	countries = options.countries
+	,	quantity_countries = _.size(countries)
+	,	selected_country = address.get('country') || site_settings.defaultshipcountry
+	,	application = this.view.options.application || this.view.options.wizard.application;
+
+	if (quantity_countries === 1)
+	{
+		selected_country = _.keys(countries)[0];
+	}
+%>
+<fieldset>
+	<div data-type="alert-placeholder"></div>
+	
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>fullname">
+			<%= _('Full Name').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-xlarge" id="<%= manage %>fullname" name="fullname" value="<%- address.get('fullname')%>">
+		</div>
+	</div>
+	<% /* 
+	TODO: the next field should be shown/hidden depending on a feature in Setup Website > Shopping
+	registration has 2 fields: displaycompanyfield and showcompanyfield, not sure which to use 
+	*/ %>
+	<% if (site_settings.registration.displaycompanyfield === 'T') { %>
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>company">
+			<%= _('Company').translate() %>
+			<% if (site_settings.registration.companyfieldmandatory === 'T') { %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+			<% } %>
+		</label>
+		<div class="controls">
+			<input
+				type="text"
+				class="input-xlarge"
+				id="<%= manage %>company"
+				name="company"
+				value="<%- address.get('company') %>"
+				<% if (site_settings.registration.companyfieldmandatory !== 'T') { %>
+					placeholder="<%= _('(optional)').translate() %>"
+				<% } %>
+			>
+		</div>
+	</div>
+	<% } %>
+	
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>addr1">
+			<%= _('Address').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-xlarge" id="<%= manage %>addr1" name="addr1" value="<%- address.get('addr1') %>">
+		</div>
+		<span class="help-block">
+			<%= _('Example: 1234 Main Street').translate() %>
+		</span>
+	</div>
+
+	<div class="control-group control-group-big">
+		<div class="controls">
+			<input type="text" class="input-xlarge" id="<%= manage %>addr2" name="addr2" value="<%- address.get('addr2') %>" placeholder="<%= _('(optional)').translate() %>">
+		</div>
+		<span class="help-block">
+			<%= _('Example: Apt. 3 or Suite #1516').translate() %>
+		</span>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>city">
+			<%= _('City').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-xlarge" id="<%= manage %>city" name="city" value="<%- address.get('city') %>">
+		</div>
+	</div>
+
+	<div class="control-group <%= quantity_countries <= 1 ? 'hide' : '' %>">
+		<label class="control-label" for="<%= manage %>country">
+			<%= _('Country').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<%= SC.macros.countriesDropdown(countries, selected_country, manage) %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= SC.macros.statesDropdown({
+			countries: options.countries
+		,	selectedCountry: selected_country
+		,	selectedState: address.get('state')
+		,	manage: manage
+		}) %>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>zip">
+			<%= _('Zip Code').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-medium" id="<%= manage %>zip" name="zip" value="<%- address.get('zip') %>" data-type="zip">
+		</div>
+		<span class="help-block">
+			<%= _('Example: 94117').translate() %>
+		</span>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>phone">
+			<%= _('Phone Number').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="tel" class="input-xlarge" id="<%= manage %>phone" name="phone" value="<%- address.get('phone') %>" data-type="phone">
+		</div>
+		<span class="help-block">
+			<%= _('Example: 555-123-1234').translate() %>
+		</span>
+	</div>
+	
+	<div class="control-group">
+		<div class="controls">
+			<label class="checkbox">
+				<input type="checkbox" id="<%= manage %>isresidential" value="T" data-unchecked-value="F" name="isresidential" <%= address.get('isresidential') === 'T' ? 'checked' : '' %>>
+				<%= _('This is a Residential Address').translate() %>
+				<a href="#" rel="tooltip" data-toggle="tooltip" title="<%= _('Indicating that this is a residential address will help us determine the best delivery method for your items.').translate() %>">
+					<i class="icon-question-sign"></i>
+				</a>
+			</label>
+		</div>
+	</div>
+	
+	<% if (!options.hideDefaults) { %>
+		<div class="control-group">
+			<div class="controls">
+				<label class="checkbox">
+					<input type="checkbox" id="<%= manage %>defaultbilling" value="T" data-unchecked-value="F" name="defaultbilling" <%= address.get('defaultbilling') === 'T' ? 'checked' : '' %>>
+					<%= application.getConfig('currentTouchpoint') === 'checkout' ? _('Save as my primary billing address').translate() : _('Make this my default billing address').translate() %>
+				</label>
+			</div>
+		</div>
+	<% } %>
+
+	<% if (!options.hideDefaults) { %>
+		<div class="control-group">
+			<div class="controls">
+				<label class="checkbox">
+					<input type="checkbox" id="<%= manage %>defaultshipping" value="T" data-unchecked-value="F" name="defaultshipping" <%= address.get('defaultshipping') === 'T' ? 'checked' : '' %>>
+					<%= application.getConfig('currentTouchpoint') === 'checkout' ? _('Save as my primary shipping address').translate() : _('Make this my default shipping address').translate() %>
+				</label>
+			</div>
+		</div>
+	<% } %>
+</fieldset>
+<% }) %>

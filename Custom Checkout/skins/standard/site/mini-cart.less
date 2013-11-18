@@ -1,0 +1,56 @@
+.navbar-inverse .nav .mini-cart-container > a {
+	background-color: lighten(@navbarInverseBackground, 5%);
+	
+	&:hover, &:focus {
+		background-color: lighten(@navbarInverseBackground, 5%);
+		color: @navbarInverseLinkColor;
+	}	
+}
+
+.mini-cart-container {
+
+	> a > .caret {
+		display: none;
+	}
+
+	.item-count b {
+		background: @btnPrimaryBackground;
+		.border-radius(50%);
+		display: inline-block;
+		font-weight: normal;
+		padding: 1.5px;
+		text-align: center;
+		min-width: 15px;
+	}
+
+	.dropdown-menu {
+		border: @navbarInverseLinkBackgroundActive 6px solid;
+		.border-radius(0);
+		margin: 0;
+		min-width: 300px;
+		padding: 0;
+
+		&::after {
+			border-bottom-color: @navbarInverseBackground !important;
+		}
+
+		> ul {
+			list-style: none;
+			margin: 0;
+		}
+	}
+
+	.mini-cart-empty {
+		padding: 10px;
+	}
+
+	.summary {
+		border-top: @navbarInverseLinkBackgroundActive 6px solid;
+		padding: 10px;
+	}
+}
+
+.mini-cart-items {
+	max-height: 250px;
+	padding: @baseLineHeight @baseLineHeight / 2;
+}

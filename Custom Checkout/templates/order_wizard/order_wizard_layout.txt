@@ -1,0 +1,14 @@
+<% var position = view.wizard.getStepPosition() %>
+<% if(!view.wizard.getCurrentStep().hideBreadcrumb && position.toLast > 0){ %>
+	<header class="order-wizard-layout-header">
+	<%= wizadStepNavigation(view.wizard.stepGroups) %>
+	</header>
+<%}%>
+<div class="row-fluid <%= position.toLast === 1 ? 'review-step' : '' %>">
+	<div class="span6">
+		<div id="wizard-content" class="wizard-content"></div>
+	</div>
+	<div class="offset2 span4" id="order-summary">
+
+	</div>
+</div>

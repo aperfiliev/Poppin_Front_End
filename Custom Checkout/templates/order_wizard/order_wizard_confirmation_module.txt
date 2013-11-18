@@ -1,0 +1,8 @@
+<div class="alert alert-block alert-success fade in">
+	<h4 class="alert-heading"><%= _('Thank you for shopping with us!').translate() %></h4>
+	<p><%= _('We received your order and will process it right away.').translate() %></p>
+	<p><%= _('Your order number is <big><strong>#$(0)</strong></big>.').translate(view.confirmationNumber) %></p>
+	<p>
+		<a class="btn btn-success" href="/" data-touchpoint="home" data-hashtag="#/"><%= _('Continue shopping').translate() %></a>
+	</p>
+</div>

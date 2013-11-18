@@ -1,0 +1,25 @@
+<% registerMacro('showItemPrice', function (item) { %>
+<% var price = item.getPrice(); %>
+<% if (price.min && price.max) { %>
+	<!-- Price Range -->
+	<strong class="lead-price">
+		<%= _('$(0) to $(1)').translate(_.formatCurrency(price.min.price), _.formatCurrency(price.max.price)) %>
+	</strong>
+	<meta itemprop="lowPrice" content="<%- _.formatCurrency(price.min.price)%>" />
+	<meta itemprop="highPrice" content="<%- _.formatCurrency(price.max.price)%>" />   
+	<meta itemprop="priceCurrency" content="<%- SC.ENVIRONMENT.currentCurrency.code %>" />     
+	<% if (price.max.price < price.compare_price) { %>
+		<small class="muted crossed"><%= _.formatCurrency(price.compare_price) %></small>
+	<% } %>
+<% } else { %>
+	<!-- Single -->
+	<strong class="lead-price">
+		<%= _.formatCurrency(price.price) %>
+	</strong>
+	<meta itemprop="price" content="<%- _.formatCurrency(price.price)%>" /> 
+	<meta itemprop="priceCurrency" content="<%- SC.ENVIRONMENT.currentCurrency.code %>" /> 
+	<% if (price.price < price.compare_price) { %>
+		<small class="muted crossed"><%= _.formatCurrency(price.compare_price) %></small>
+	<% } %>
+<% } %>
+<% }) %>

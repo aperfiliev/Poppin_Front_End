@@ -1,0 +1,12 @@
+<% registerMacro('countriesDropdown', function (countries, selected_country, manage) { %>
+<select class="input-xlarge" id="<%= manage ? manage : ''%>country" name="country" data-type="country">
+	<option value="">
+		<%= _('-- Select --').translate() %>
+	</option>
+	<% _.each(_.values(countries), function (country, index) { %>
+		<option value="<%- country.code %>" <%= country.code === selected_country ? 'selected' : '' %>>
+			<%= country.name %>
+		</option>
+	<% }) %>
+</select>
+<% }) %>

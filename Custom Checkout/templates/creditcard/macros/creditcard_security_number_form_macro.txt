@@ -1,0 +1,28 @@
+<% registerMacro('creditcardSecurityNumberForm', function (options) { %>
+<% options = options || {}; %>
+<div class="credit-card-security-number">
+	<div class="control-group <%= options.error ? 'error' : '' %>">
+		<label class="control-label" for="ccsecuritycode">
+			<%= _('Security Number').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input
+				type="text"
+				class="input-small"
+				id="ccsecuritycode"
+				name="ccsecuritycode"
+				value="<%- options.value %>"
+				maxlength="4"
+			>
+			<% if (options.error) { %>
+				<p class="help-block">
+					<%= options.error.errorMessage %>
+				</p>
+			<% } %>
+		</div>
+	</div>
+</div>
+<% }) %>

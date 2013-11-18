@@ -1,0 +1,72 @@
+<% if (view.getTitle()) { %>
+	<h3 class="section-header">
+		<%= view.getTitle() %>
+	</h3>
+<% } %>
+<p class="collapsible collapsed section-header"  data-toggle="collapse" data-target="#gift-certificate-form">
+	<a href="#">
+		<% if (view.giftCertificates && view.giftCertificates.length) { %>
+			<%=_('Add other Gift Certificate').translate() %>
+		<% } else { %>
+			<%=_('Pay with Gift Certificate').translate() %>
+		<% } %>
+		<i class="icon-plus-sign pull-right"></i>
+		<i class="icon-minus-sign pull-right"></i>
+	</a>
+</p>
+<div data-type="alert-placeholder-gif-certificate"></div>
+<form id="gift-certificate-form" class="collapse gift-certificate-form">
+	<fieldset>
+		<div class="control-group">
+			<label class="strong">
+				<%= _('Gift Certificate Number').translate() %>
+			</label>
+			<div class="controls">
+				<input type="text" class="input-medium" name="code">
+
+				<button type="submit" class="btn">
+					<%= _('Apply').translate() %>
+				</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+
+<% if (view.giftCertificates && view.giftCertificates.length) { %>
+<table class="table">
+	<tr>
+		<td>
+			<b><%= _('Gift Certicficate number').translate() %></b>
+		</td>
+		<td class="right-aligned">
+			<b><%= _('Amount applied').translate() %></b>
+		</td>	
+		</td>
+		<td class="right-aligned">
+			<b><%= _('Remaining balance').translate() %></b>
+		</td>	
+		<td>
+			&nbsp;
+		</td>
+	</tr>
+<%  _.each(view.giftCertificates, function (giftCertificate) { %>
+	<% var giftcertificate = giftCertificate.get('giftcertificate') %>
+	<tr>
+		<td>
+			<%= SC.macros.formatPaymentMethod(giftCertificate) %>
+		</td>
+		<td class="right-aligned">
+			<%= _('$(0)').translate(giftcertificate.amountapplied_formatted) %>
+		</td>
+		<td class="right-aligned">
+			<%= _('$(0)').translate(giftcertificate.amountremaining_formatted) %>
+		</td>		
+		<td class="right-aligned">
+			<a href="#" data-action="remove" data-id="<%- giftcertificate.code %>">
+				<%= _('Remove').translate() %>
+			</a>
+		</td>
+	</tr>
+<% }) %>
+</table>
+<% } %>

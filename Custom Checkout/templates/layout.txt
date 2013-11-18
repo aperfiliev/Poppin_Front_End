@@ -1,0 +1,9 @@
+<div id="layout" class="layout">
+	<% if (view.application.getConfig('siteSettings.sitetype') === 'ADVANCED') { %>
+		<%= header(view) %>
+	<% } %>
+	<!-- Main Content Area -->
+	<div id="content" class="container content checkout-content"></div>
+	<!-- / Main Content Area -->
+	<%= footer(view) %>
+</div>

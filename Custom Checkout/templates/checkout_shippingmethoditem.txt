@@ -1,5 +1,0 @@
-						
-		{macro shipmethodItem(method)}
-${method.name} - ${method.rate}
-{/macro}		
-

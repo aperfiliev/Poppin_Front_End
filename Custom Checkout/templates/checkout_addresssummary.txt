@@ -1,3 +1,0 @@
-						
-		${addressItem(obj.selected)}		
-

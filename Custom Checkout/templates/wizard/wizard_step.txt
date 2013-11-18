@@ -1,0 +1,37 @@
+<% if (view.getName()) { %>
+	<header class="page-header step-header">
+		<h2><%= view.getName() %></h2>
+	</header>
+<% } %>
+
+<div data-type="alert-placeholder-step"></div>
+
+<% if (!view.hideContinueButton) { %>
+<div class="step-navigation-buttons-top form-actions form-actions-top">
+	<button class="btn btn-primary btn-large btn-block btn-continue" data-action="submit-step">
+		<%= view.continueButtonLabel %>
+	</button>
+</div>
+<% } %>
+
+<div id="wizard-step-content" class="wizard-step-content"></div>
+
+<div class="step-navigation-buttons form-actions">
+	<% if (!view.hideContinueButton) { %>
+		<button class="btn btn-primary btn-large btn-continue<%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step">
+			<%= view.continueButtonLabel %>
+		</button>
+	<% } %>		
+	<% if (!view.hideBackButton) { %>
+		<button class="btn btn-large btn-back" data-action="previous-step">
+			<%= _('Back').translate() %>
+		</button>
+	<% }  %>
+</div>
+
+<% if (view.bottomMessage) { %>
+	<br>
+	<p class="help-block stepgroup-bottom-message">
+		<%= view.bottomMessage %>
+	</p>
+<% } %>

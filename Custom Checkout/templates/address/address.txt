@@ -1,0 +1,51 @@
+<% var model = view.model || new Backbone.Model(); %>
+<% if (!view.inModal) { %>
+	<h1 class="">
+		<%= model.isNew() ? _('Add a new Address').translate() : _('Update Address').translate() %>
+	</h1>
+
+	<a href="/" class="back-btn">
+		<%= _('&lt; Back to Account').translate() %>
+	</a>
+
+	<hr class="divider-small">
+	<% if (!view.collection.length) { %>
+		<p>
+			<b><%= _('We have no address on file for this account.').translate() %></b><br>
+			<%= _('For faster checkouts, please enter a shipping address bellow').translate() %>
+		</p>
+		<hr class="divider-small">
+	<% } %>
+<% } %>
+
+<form class="" action="addressbook.ss" method="POST">
+<% if (view.inModal) { %>
+	<div class="modal-body">
+<% } %>
+
+<%= addressFrom(model, {
+	countries: view.options.application.getConfig('siteSettings.countries')
+,	hideDefaults: true
+}) %>
+
+<% if (view.inModal) { %>
+	</div>
+<% } %>
+	<div class="<%- view.inModal ? 'modal-footer' : 'form-actions' %>">
+		<button type="submit" class="btn btn-primary">
+			<%= model.isNew() ? _('Save Address').translate() : _('Update Address').translate() %>
+		</button>
+
+		<% if (view.inModal || view.collection.length) { %>
+			<a class="btn btn-link" data-dismiss="modal">
+				<%= _('Cancel').translate() %>
+			</a>
+		<% } %>
+
+		<% if (!view.inModal) { %>
+			<button type="reset" class="btn btn-link hide" data-action="reset">
+				<%= _('Reset').translate() %>
+			</button>
+		<% } %>
+	</div>
+</form>
