@@ -6,7 +6,7 @@
 		<p class="short-desc"><%=getCurrentAttribute('item','storedescription')%></p>
 		<h2><a href="<%=getCurrentAttribute('item','storeurl')%>" title="<%=getCurrentAttribute('item','storedisplayname2')%>"><%=getCurrentAttribute('item','storedisplayname2')%></a></h2>
 		<p class="price"><%=getCurrentAttribute('item','salespricehtml')%></p>
-		<div class="div__addtocart"><a href="/app/site/query/additemtocart.nl?c=3363929&n=1&buyid=<%=getCurrentAttribute('item','internalId')%>" onClick="_gaq.push(['_trackEvent', 'Add Item To Cart On The Category Page']);">ADD TO CART</a></div>
+		<div class="div__addtocart"><div class="div__addtocart1"><a href="/app/site/query/additemtocart.nl?c=3363929&n=1&buyid=<%=getCurrentAttribute('item','internalId')%>" onClick="_gaq.push(['_trackEvent', 'Add Item To Cart On The Category Page']);">ADD TO CART</a></div></div>
 	</div>
 	<div class="itemcellinfo" title="<%=getCurrentAttribute('item','internalid')%>" style="display:none">
 		<div class="custitem3"><%=getCurrentAttribute('item','custitem3', '')%></div>
