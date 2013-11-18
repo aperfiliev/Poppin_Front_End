@@ -35,8 +35,7 @@
 				</div>
 			</td>
 		</tr>
-		<tr>
-			<td>
+			<td style="padding-top: 0;">
 				<div class="div__readmore">
 					<div class="left">
 						&ldquo;People who worked in &ldquo;empowered&rdquo; workspaces, in which the individual was allowed to design the area,
@@ -47,6 +46,7 @@
 					</div> -->
 				</div>
 			</td>
+		<tr>
 		</tr>
 		<tr>
 			<td>

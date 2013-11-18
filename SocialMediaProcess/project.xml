@@ -14,6 +14,7 @@
     <file name="BackendStoreExitSurveyResultSuitelet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
     <file name="BackendStoreSocialLinkSuitelet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
     <file name="CheckExistingCustomerRestlet.js" bundleable="false" hideInBundle="false" isOnline="false"/>
+    <file name="CustomizationTabClient.js" bundleable="false" hideInBundle="false" isOnline="false"/>
     <file name="ExitSurveySettings.js" bundleable="false" hideInBundle="false" isOnline="false"/>
     <file name="ExitSurveySettingsFieldChanged.js" bundleable="false" hideInBundle="false" isOnline="false"/>
     <file name="GetTransactionForExitSurveyResultMassUpdate.js" bundleable="false" hideInBundle="false" isOnline="false"/>
