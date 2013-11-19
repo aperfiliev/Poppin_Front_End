@@ -1,0 +1,48 @@
+<td class="td-itemlist td-itemlist-shopbycolor">
+<div class="category_data" style="display: none;">
+<div class="parent_category"><%=getCurrentAttribute('sitecategory','parentcategory','No')%></div>
+<div class="name_category"><%=getCurrentAttribute('sitecategory','itemid','')%></div>
+</div>
+<div class="item-list">
+<NLPROCESSONCE>
+<div class="cat-banner"><%=getCurrentAttribute('sitecategory','storedisplayimagehtml','')%></div>
+</NLPROCESSONCE>
+<div class="toolbar">
+	<span class="sortlabel">Sort by</span><div class="sort"></div>
+	<div class="filter"><span>Show me</span></div>	
+</div>
+<div class="itemlist">
+<table class="table-item-list" width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+  <NLITEMLIST>
+  </tr>
+</table>
+</div>
+</div>
+<div class="paginationtoolbar"><b>Page</b><div class="pagination"></div></div>
+<script type="text/javascript">
+	//The tab image is load from the File Cabinet,
+	//the image name should be the name of the tab
+	//just text without spaces or special characters and all lowercase
+	//example: Category Name => categoryname.jpg
+	
+	var parent_category = $j('.category_data .parent_category').text();
+	var name_category = $j('.category_data .name_category').text();
+	
+	if(parent_category == 'No'){
+		name_image = name_category.replace(/[^A-Za-z0-9]/g,"");
+		name_image = name_image.toLowerCase();
+	
+		image_url = '/site/pp-cat-images/'+name_image+'.jpg';
+		
+		$j('<img />').error(function(){
+			return false;
+		}).load(function(){
+			$j('.cat-banner').html(this);
+		}).attr({src: image_url, alt: name_category});
+		
+	}
+</script>
+<script type="text/javascript" src="/site/pp-files/gp-itemlist.lib.js?rev=2"></script>
+<script type="text/javascript" src="/site/pp-files/sc-item_list_shopbycolor_init.js?rev=1"></script>
+</td>

@@ -1,0 +1,10 @@
+<td class="td-item-cell">
+	<div class="item-cell">
+		<p class="thumb"><a href="<%=getCurrentAttribute('item','storeurl')%>" title="<%=getCurrentAttribute('item','storedisplayname2')%>"><img src="<%=getCurrentAttribute('item','custitem_display_thumbnail', 'http://cdn-web.poppin.com/site/pp-templates/thumb.gif')%>" alt="<%=getCurrentAttribute('item','storedisplayname2')%>" /></a></p>
+		<p class="short-desc"><%=getCurrentAttribute('item','storedescription')%></p>
+		<h2><a href="<%=getCurrentAttribute('item','storeurl')%>" title="<%=getCurrentAttribute('item','storedisplayname2')%>"><%=getCurrentAttribute('item','storedisplayname2')%></a></h2>
+		<p class="price"><%=getCurrentAttribute('item','salesprice')%></p>
+	</div>
+	<div class="itemcellinfo" title="<%=getCurrentAttribute('item','internalid')%>" style="display:none">
+	</div>
+</td>
