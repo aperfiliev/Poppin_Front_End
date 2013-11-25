@@ -108,6 +108,20 @@ font-family: 'OmnesMediumRegular';
 font-weight: bold;
 text-transform:capitalize;
 }
+.promoLink{
+color: #f37a31;
+text-decoration: underline;
+font-size: 11px;
+font-family: Arial,Helvetica,sans-serif;
+cursor: pointer;
+}
+.promoDescription{
+padding: 10px 0 10px 0;
+color: blue;
+font-weight: bold;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 13px;
+}
 .checkoutDiv{
 text-align:left;
 margin: 10px;

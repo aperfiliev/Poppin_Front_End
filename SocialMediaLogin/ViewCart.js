@@ -151,7 +151,8 @@
 					if(code == "ERR_WS_INVALID_COUPON")
 					{
 						items.promocode.isvalid = "F";
-						items.promocode.promocode = resp.header.status.message;
+						items.promocode.promocode = resp.header.status.promocode;
+						items.promocode.message = resp.header.status.message;
 						items.promocode.description = "";
 					}
 					$("#cartBody").html("");

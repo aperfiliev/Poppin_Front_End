@@ -392,15 +392,30 @@
 		promoCodeDiv.appendChild(div);
 		if(isvalid === 'F')
 		{
-			powerTip.create('promoInput', '<p>Gone are the days of humdrum</p><p>office products &#8211; and that promo code</p>',
+			powerTip.create('promoInput', promocode.message,
 					'powerTipPromo', -50, 40);
 			$('#promoInput').on('focusin', function() { powerTip.hide('powerTipPromo'); }) ;
 		}
 		else if(code != '')
 		{
-			$('#promoInput').hover(
+			div = document.createElement("div");
+			div.setAttribute("class", "promoLink");
+			div.innerHTML = "Promo details";	// Promo details text
+			promoCodeDiv.appendChild(div);
+			
+			div = document.createElement("div");
+			div.setAttribute("class", "promoDescription");
+			div.setAttribute("style", "display: none;");
+			div.innerHTML = description;
+			promoCodeDiv.appendChild(div);
+			
+			$('.promoLink').hover(
+					function() { $('.promoDescription').css('display', 'block'); },
+					function() { $('.promoDescription').css('display', 'none'); });
+
+			/*$('#promoInput').hover(
 					function() { powerTip.create('promoInput', '<p>'+description+'</p>', 'powerDiv', -28, 40); },
-					function() { powerTip.hide('powerDiv');});
+					function() { powerTip.hide('powerDiv');});*/
 		}
 	}
 	/*

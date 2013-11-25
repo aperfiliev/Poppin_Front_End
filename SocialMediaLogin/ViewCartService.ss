@@ -16,13 +16,18 @@ function service(request,response)
 	var returnVal = null;
 	try
 	{
-		var retobj = {	"header": {"status":{"code":"SUCCESS", "message":"success" }}, 
-						"result": {"totalfound": 0, 
+		var retobj = {	"header": {
+							"status": {
+								 "code": "SUCCESS",
+								 "message": "success",
+								 "promocode": ""
+							}}, 
+						"result": {
+								 "totalfound": 0, 
 								 "items": [],
 								 "promocode": {}, 
 								 "giftcertificate": {}, 
 								 "summary": {}} };
-
 		var params = request.getAllParameters();
 		var method = params.method;
 		var orderObj = nlapiGetWebContainer().getShoppingSession().getOrder();
@@ -45,6 +50,7 @@ function service(request,response)
 			{
 				if(JSON.stringify(params.promocode) != "{}")
 				{
+					retobj.header.status.promocode = params.promocode;
 					orderObj.applyPromotionCode(params.promocode);
 				}
 				else
@@ -90,10 +96,21 @@ function service(request,response)
 			retobj.header.status.code = error.getCode();
 			retobj.header.status.message = error.getDetails();
 			
-			// invalid coupon code handling
 			if(error.getCode() == "ERR_WS_INVALID_COUPON")
 			{
-				retobj.header.status.message = params.promocode;
+				// change notifications about invalid promocode
+				switch (error.getDetails()) {
+				case "This coupon code has expired or is invalid":
+					retobj.header.status.message = "<p>Hmm, that didn't seem to work, please </p><p>check the date on you promo code.</p>";
+					break;
+				case "Coupon code is invalid or unrecognized":
+					retobj.header.status.message = "<p>Unfortunately we don't recognize that </p><p>promo code. Please try again.</p>";
+				default:
+					if(error.getDetails().indexOf("minimum order amount") !== -1)
+						retobj.header.status.message = "<p>In order for your code to work, you need </p><p>to add more Poppin products to your cart.</p>";
+					break;
+				}
+				// and remove invalid promocode
 				orderObj.removePromotionCode(params.promocode);
 			}
 		}
