@@ -244,7 +244,8 @@ GPItemList = (function($) {
 			if (objAttrInfo.useInSort)
 				item_list._sortAttrs[objAttrInfo.id] = {
 					"order" : objAttrInfo.sortOrder,
-					"label" : objAttrInfo.label
+					"label" : objAttrInfo.label,
+					"desc" : objAttrInfo.sortDesc
 				};
 			if (objAttrInfo.useInFilter) {
 				item_list._filterAttrs[objAttrInfo.id] = {
@@ -572,6 +573,9 @@ GPItemList = (function($) {
 		var specialCharRegex = /[\(\)\\\.\/\-\*\?\+\^\$\:\]\[\}\{]/g;
 		for (var attr in objItemData) {
 			var attr_vals = objItemData[attr];
+			if(attr=="salesprice" && parseInt(attr_vals[0])!==attr_vals[0]){
+				attr_vals[0] = attr_vals[0].formatMoney(2,'.');
+			}
 			var regex = new RegExp('\\{\\{' + attr.replace(specialCharRegex, "\\$&").replace(whiteSpaceRegex, "\\s+") + '\\}\\}', 'g');
 			htmlTpl = htmlTpl.replace(regex, attr_vals.toString());
 		}
@@ -683,23 +687,24 @@ GPItemList = (function($) {
 					arrSortOpts.splice(i, 0, arrSortOpts.pop().id);
 				}
 				if (arrSortOpts.length) {
-					_sortSelector = _sortSelector.html('<div class="selectwrap"><select class="sortoptions" title="Select the sort criteria"><\/select><\/div>').find("select");
+					_sortSelector = _sortSelector.html('<div class="selectwrap"><select class="sortoptions" title="Select the sort criteria" onchange="_gaq.push([' + "'_trackEvent', 'Category Page Sorting Event'" + ']);"><\/select><\/div>').find("select");
 					_sortSelector.append('<option value="clear" selected="selected">Select</option>');
 					for (var i = 0; op = arrSortOpts[i]; i++)
-						_sortSelector.append('<option value="' + op + '">' + sort_opts[op].label + '</option>');
+						_sortSelector.append('<option value="' + op + '" name="' + sort_opts[op].desc + '">' + sort_opts[op].label + '</option>');
 
 					function _sortItems() {
 						_item_list.clearSortCriteria();
 						var selected_option = _sortSelector.val();
+						var sortDesc = _sortSelector.find(':selected').attr('name') == 'true';
 						if (selected_option != 'clear') {
 							_item_list.sortItems([{
-								'attrName' : selected_option,
-								'descOrder' : _descSortOrder
+								'attrName' : selected_option.replace(/[0-9]/g, ''),
+								'descOrder' : sortDesc
+								//'descOrder' : _descSortOrder
 							}]);
 							_getItemsList(_item_list);
 						}
 					}
-
 
 					_sortSelector.bind('change', _sortItems);
 					// Sort order switch
@@ -881,7 +886,7 @@ GPItemList = (function($) {
 											_html += min_range;
 											_html += _opts.attrMultiValSep;
 											_html += max_range;
-											_html += '">';
+											_html += '" onclick="_gaq.push([' + "'_trackEvent', 'Category Page Filtering Event'" + ']);" >';
 											_html += min_range;
 											_html += " to ";
 											_html += max_range;
@@ -906,7 +911,7 @@ GPItemList = (function($) {
 									for (var i = 0, len2 = arrSorted.length; i < len2; i++) {
 										var val = arrSorted[i];
 										options++;
-										_filterSelector.append('<li class="' + val.toString().toLowerCase().replace(/\s+|\++/g, "-") + '"><a href="#" title="' + val + '">' + val + ' (' + attr_vals[val] + ')<\/a><\/li>');
+										_filterSelector.append('<li class="' + val.toString().toLowerCase().replace(/\s+|\++/g, "-") + '"><a href="#" onclick="_gaq.push([' + "'_trackEvent', 'Category Page Filtering Event'" + ']);" title="' + val + '">' + val + ' (' + attr_vals[val] + ')<\/a><\/li>');
 									}
 									if (options > 1) {
 										_innerContainer.append('<span class="filtertitle ' + attr + '">' + label + '<\/span>');

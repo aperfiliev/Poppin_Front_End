@@ -9,8 +9,9 @@
 		<div class="tab-message css-reset"><%=getCurrentAttribute('sitecategory','storedetaileddescription','')%></div>
 		</NLPROCESSONCE>
 		<div class="toolbar">
-			<div class="catname"><%=getCurrentAttribute('sitecategory','itemid','')%></div>
-			<div class="itemscount"></div>
+			<div class="sort-by">
+				<span class="sortlabel">Sort by</span><div class="sort"></div>
+			</div>
 			<div class="filter">
 			</div>
 			<div class="itemsperpage">
@@ -19,9 +20,9 @@
 					<select id="itemsperpageselector">
 						<option value="6">6</option>
 						<option value="12">12</option>
-						<option value="24" selected="selected">24</option>
+						<option value="24">24</option>
 						<option value="50">50</option>
-						<option value="0">All</option>
+						<option value="0" selected="selected">All</option>
 					</select>
 				</div>
 			</div>
@@ -54,10 +55,9 @@
 		}).load(function(){
 			$j('.cat-banner').html(this);
 		}).attr({src: image_url, alt: name_category});
-		
 	}
 </script>
-<script type="text/javascript" src="http://cdn-web.poppin.com/site/pp-files/gp-itemlist.lib.min.js"></script>
-<script type="text/javascript" src="http://cdn-web.poppin.com/site/pp-files/itemlist.getter.lib.min.js"></script>
-<script type="text/javascript" src="http://sandbox.poppin.com/site/pp-files/sc-item_list_filters_init.min.js"></script>
+<script type="text/javascript" src="/site/pp-files/gp-itemlist.lib.js"></script>
+<script type="text/javascript" src="/site/pp-files/itemlist.getter.lib.min.js"></script>
+<script type="text/javascript" src="/site/pp-files/sc-item_list_filters_init.min.js"></script>
 </td>
