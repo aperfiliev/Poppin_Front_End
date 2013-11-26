@@ -28,7 +28,7 @@ window.GPItemList = new GPItemList({
 		})
 	},
 	enableSortOrderSwitcher : false,
-	itemListCellTemplate : '<div class="item-cell"><p class="thumb"><a href="/s.nl/it.A/id.{{id}}/.f"><img src="{{thumbnailurl}}" alt="{{displayname}}" /></a></p><p class="short-desc">{{storedescription}}</p><h2><a href="/s.nl/it.A/id.{{id}}/.f">{{displayname}}</a></h2><p class="price">${{salesprice}}</p><div class="div__addtocart"><div class="div__addtocart1"><a href="/app/site/query/additemtocart.nl?c=3363929&n=1&buyid={{buyid}}" onClick="_gaq.push([' + "'_trackEvent', 'Categories', 'AddToCart', '{{displayname}}'" + ']);">ADD TO CART</a></div></div></div>',
+	itemListCellTemplate : '<div class="item-cell"><p class="thumb"><a href="/s.nl/it.A/id.{{id}}/.f"><img src="{{thumbnailurl}}" alt="{{displayname}}" /></a></p><p class="short-desc">{{storedescription}}</p><h2><a href="/s.nl/it.A/id.{{id}}/.f">{{displayname}}</a></h2><p class="price">${{salesprice}}</p><div class="div__addtocart"><div class="div__addtocart1"><a href="/app/site/query/additemtocart.nl?c=3363929&n=1&buyid={{buyid}}" onClick="_gaq.push([' + "'_trackEvent', 'Shop By Color', 'AddToCart', '{{displayname}}'" + ']);">ADD TO CART</a></div></div></div>',
 	itemsPerPage : 0
 });
 GPItemList.setAttributes([ {

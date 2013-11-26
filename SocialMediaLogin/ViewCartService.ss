@@ -101,7 +101,7 @@ function service(request,response)
 				// change notifications about invalid promocode
 				switch (error.getDetails()) {
 				case "This coupon code has expired or is invalid":
-					retobj.header.status.message = "<p>Hmm, that didn't seem to work, please </p><p>check the date on you promo code.</p>";
+					retobj.header.status.message = "<p>Hmm, that didn't seem to work, please </p><p>check the date on your promo code.</p>";
 					retobj.header.status.event = "Expired promo code";
 					break;
 				case "Coupon code is invalid or unrecognized":
