@@ -329,17 +329,17 @@
 		var code = '';
 		var description = '';
 		var isvalid = 'N';
-		
 		if(promocode.isvalid != null)
 		{
 			isvalid = promocode.isvalid;
+			if(isvalid === 'F' && promocode.message === undefined )
+				promocode.message = "<p>In order for your code to work, you need </p><p>to add more Poppin products to your cart.</p>";
 		}
 		if(promocode.promocode != null)
 		{
 			code = promocode.promocode;
 			description = promocode.description;
 		}
-		
 		var promoCodeDiv = document.getElementById('promoCodeDiv');
 		promoCodeDiv.innerHTML = '';
 		
@@ -396,7 +396,7 @@
 					'powerTipPromo', -50, 40);
 			$('#promoInput').on('focusin', function() { powerTip.hide('powerTipPromo'); }) ;
 		}
-		else if(code != '')
+		if(description != '')
 		{
 			div = document.createElement("div");
 			div.setAttribute("class", "promoLink");

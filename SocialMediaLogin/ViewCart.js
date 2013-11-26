@@ -153,7 +153,8 @@
 						items.promocode.isvalid = "F";
 						items.promocode.promocode = resp.header.status.promocode;
 						items.promocode.message = resp.header.status.message;
-						items.promocode.description = "";
+						items.promocode.description = resp.header.status.description;
+						_gaq.push(['_trackEvent', 'Shopping Cart', 'Promocode error', resp.header.status.event]);
 					}
 					$("#cartBody").html("");
 					buildCartItems(items);

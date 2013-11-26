@@ -53,10 +53,10 @@ var LoginLib = {
 			if (promocodes && promocodes.length > 0)
 			{
 				retobj.promocode = promocodes[0];
-				if(retobj.promocode.isvalid == 'T')
-				{
+				//if(retobj.promocode.isvalid == 'T')
+				//{
 					retobj.promocode.description = LoginLib.getPromoDescription(retobj.promocode.promocode);
-				}
+				//}
 			}
 
 			if (giftcertificates && giftcertificates.length > 0) {
