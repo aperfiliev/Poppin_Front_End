@@ -687,7 +687,7 @@ GPItemList = (function($) {
 					arrSortOpts.splice(i, 0, arrSortOpts.pop().id);
 				}
 				if (arrSortOpts.length) {
-					_sortSelector = _sortSelector.html('<div class="selectwrap"><select class="sortoptions" title="Select the sort criteria" onchange="_gaq.push([' + "'_trackEvent', 'Category Page Sorting Event'" + ']);"><\/select><\/div>').find("select");
+					_sortSelector = _sortSelector.html('<div class="selectwrap"><select class="sortoptions" title="Select the sort criteria" onchange="_gaq.push([' + "'_trackEvent', 'Categories', 'Sorting'" + ']);"><\/select><\/div>').find("select");
 					_sortSelector.append('<option value="clear" selected="selected">Select</option>');
 					for (var i = 0; op = arrSortOpts[i]; i++)
 						_sortSelector.append('<option value="' + op + '" name="' + sort_opts[op].desc + '">' + sort_opts[op].label + '</option>');
@@ -886,7 +886,7 @@ GPItemList = (function($) {
 											_html += min_range;
 											_html += _opts.attrMultiValSep;
 											_html += max_range;
-											_html += '" onclick="_gaq.push([' + "'_trackEvent', 'Category Page Filtering Event'" + ']);" >';
+											_html += '" onclick="_gaq.push([' + "'_trackEvent', 'Categories', 'Filter', 'ByRange'" + ']);" >';
 											_html += min_range;
 											_html += " to ";
 											_html += max_range;
@@ -911,7 +911,7 @@ GPItemList = (function($) {
 									for (var i = 0, len2 = arrSorted.length; i < len2; i++) {
 										var val = arrSorted[i];
 										options++;
-										_filterSelector.append('<li class="' + val.toString().toLowerCase().replace(/\s+|\++/g, "-") + '"><a href="#" onclick="_gaq.push([' + "'_trackEvent', 'Category Page Filtering Event'" + ']);" title="' + val + '">' + val + ' (' + attr_vals[val] + ')<\/a><\/li>');
+										_filterSelector.append('<li class="' + val.toString().toLowerCase().replace(/\s+|\++/g, "-") + '"><a href="#" onclick="_gaq.push([' + "'_trackEvent', 'Categories', 'Filter', '" + val + "'" + ']);" title="' + val + '">' + val + ' (' + attr_vals[val] + ')<\/a><\/li>');
 									}
 									if (options > 1) {
 										_innerContainer.append('<span class="filtertitle ' + attr + '">' + label + '<\/span>');
