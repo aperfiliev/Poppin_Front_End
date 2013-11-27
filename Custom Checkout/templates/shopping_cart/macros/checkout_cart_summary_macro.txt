@@ -17,7 +17,7 @@
 	<header class="checkout-cart-summary-header">
 		<% if (options.stepPosition.toLast > 0) { %>
 			<a href="#" class="btn btn-link btn-edit-cart pull-right" data-touchpoint="viewcart">
-				<%= _('Edit Order').translate() %>
+				<%= _('edit cart').translate() %>
 			</a>
 		<% } %>
 
@@ -141,7 +141,7 @@ text-transform: uppercase;">
 		<div class="cart-summary-shipping-cost-applied">
 			<p>
 				<span class="pull-right cart-summary-shipping-cost-formatted">
-					<%= summary.shippingcost_formatted %>
+					<%= summary.shippingcost_formatted == "$0.00" ? '-' : summary.shippingcost_formatted %>
 				</span>
 				<%= _('Shipping').translate() %>
 			</p>
@@ -156,7 +156,7 @@ text-transform: uppercase;">
 			<% } %>
 			<p>
 				<span class="pull-right cart-summary-tax-total-formatted">
-					<%= summary.taxtotal_formatted %>
+					<%= summary.taxtotal_formatted=="$0.00" ? '-' : summary.taxtotal_formatted %>
 				</span>
 				<%= _('Tax').translate() %>
 			</p>
@@ -200,6 +200,7 @@ padding: 10px 0px;">
 				</i>
 			</p>
 			<div id="promo-code-container" class="collapse promo-code-container">
+			<p>Enter your promotional code or coupon code below. Limit one per order please.</p>
 				<%= SC.macros.promocodeForm(promocode) %>
 			</div>
 		</div>

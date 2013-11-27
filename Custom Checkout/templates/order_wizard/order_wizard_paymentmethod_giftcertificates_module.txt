@@ -8,7 +8,7 @@
 		<% if (view.giftCertificates && view.giftCertificates.length) { %>
 			<%=_('Add other Gift Certificate').translate() %>
 		<% } else { %>
-			<%=_('Pay with Gift Certificate').translate() %>
+			<%=_('Use a gift card or a gift certificate').translate() %>
 		<% } %>
 		<i class="icon-plus-sign pull-right"></i>
 		<i class="icon-minus-sign pull-right"></i>
@@ -19,7 +19,7 @@
 	<fieldset>
 		<div class="control-group">
 			<label class="strong">
-				<%= _('Gift Certificate Number').translate() %>
+				<%= _('Enter your promotional code or coupon code below. Limit one per order please.').translate() %>
 			</label>
 			<div class="controls">
 				<input type="text" class="input-medium" name="code">
