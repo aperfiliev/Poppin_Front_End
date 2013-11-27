@@ -1,28 +1,7 @@
 <% registerMacro('wizadStepNavigation', function (step_groups) { %>
 <ul class="wizard-step-groups">
 <% var index_counter = 0; %>
-<style>
-.wizard-step-link .circle {
-    border-radius: 50%;
-    height: 23px;
-    border-radius: 50%;
-    background: none repeat scroll 0% 0% rgb(254, 107, 56);
-    width: 23px;
-    padding: 0px;
-    float: left;
-}}
-.active .circle {
-    background: none repeat scroll 0% 0% rgb(254, 107, 56);
-}
-.disabled .circle {
-    background: none repeat scroll 0% 0% rgb(153, 153, 153);
-}
-.stepN{
-    margin: 2px 8px;
-    color: #fff;
-    font-size: 15px;
-}
-</style>
+
 <% _.each(step_groups, function (step_group) { %>
 	<%
 		var list_item_class = 'wizard-step-link';

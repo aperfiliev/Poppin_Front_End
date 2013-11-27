@@ -1,15 +1,15 @@
 <div class="" style="padding: 10px;">
 <!--alert alert-block alert-success fade in-->
-	<h4 style="color: rgb(254, 107, 56);
+	<h4 class="thankyou-title" style="color: rgb(254, 107, 56);
 display: block;
-font-family: 'OmnesRegularRegular';
-font-size: 20px;
-font-weight: 700;
+font-size: 36px;
 line-height: 18px;
-padding-bottom: 10px;"><%= _('Thank you for your order!').translate() %></h4>
+margin: 20px 0px 30px;
+padding-bottom: 10px;
+font-family: OmnesRegularRegular,sans-serif;"><%= _('Thank you for your order!').translate() %></h4>
 	<div style="float: left;" >
-	<p><%= _('Your confirmation number is <big><strong>#$(0)</strong></big>.').translate(view.confirmationNumber) %></p>
-<p><%= _('Keep your eyes peeled for an order confirmation email').translate() %></p>
+	<%= _('Your confirmation number is <big><strong>#$(0)</strong></big>.').translate(view.confirmationNumber) %><br/>
+<%= _('Keep your eyes peeled for an order confirmation email').translate() %>
 	</div>
 <div style="float: right;"><input class="bgbutton-checkout" type="button" onclick="location.href='/'" data-touchpoint="home" data-hashtag="#/" value="<%= _('Continue shopping').translate() %>" style="display: block;"></input>
 	</div>

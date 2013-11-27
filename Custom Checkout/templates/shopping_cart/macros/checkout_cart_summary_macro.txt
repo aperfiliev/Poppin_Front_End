@@ -8,7 +8,7 @@
 	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || []; 
 %>
 <div class="checkout-cart-summary">
-<div class="step-navigation-buttons form-actions" style="clear:both; padding-left: 35px;">
+<div class="btncheckout-cart-summary-macro">
 		<button class="bgbutton-checkout" data-action="submit-step">
 			Next Step
 		</button>
@@ -21,14 +21,7 @@
 			</a>
 		<% } %>
 
-		<h2 class="checkout-cart-summary-title" style="color: rgb(243, 122, 49);
-font-family: 'OmnesMediumRegular';
-font-size: 14px;
-font-weight: 700;
-margin: 0px;
-padding-bottom: 0px;
-text-align: left;
-text-transform: uppercase;">
+		<h2 class="checkout-cart-summary-macro-title">
 			<%= _('Order Summary').translate() %>
 		</h2>
 	</header>
@@ -51,8 +44,7 @@ text-transform: uppercase;">
 						<img src="<%- options.application.resizeImage(thumbnail.url, 'tinythumb') %>" alt="<%- thumbnail.altimagetext %>">
 					</div>
 					<div class="span9 cart-summary-item-details checkout-summary-item-details">
-						<div class="pull-right cart-summary-item-total" style="border-top: rgb(128, 128, 128) 1px solid;
-	padding-top: 9px;">
+						<div class="pull-right cart-summary-item-total">
 							<%= line.get('total_formatted') %>
 							<% if (line.get('amount') > line.get('total')) {%>
 								<small class="muted crossed cart-summary-item-amount">
@@ -162,8 +154,7 @@ text-transform: uppercase;">
 			</p>
 		</div>
 
-		<div class="cart-summary-total" style="border-top: 1px solid rgb(243, 243, 243);
-padding: 10px 0px;">
+		<div class="checkout-cart-summary-macro-total">
 			<p class="strong">
 				<span class="pull-right cart-summary-total-formatted">
 					<%= summary.total_formatted %>
@@ -190,7 +181,7 @@ padding: 10px 0px;">
 	<% if (!is_promocode_valid && options.stepPosition.toLast > 0) { %>
 	<footer class="checkout-cart-summary-footer accordion">
 		<div class="collapsible">
-			<p class="collapser collapsed" data-target="#promo-code-container" data-toggle="collapse">					
+			<p class="collapser collapsed checkout-cart-summary-macro-promo-title" data-target="#promo-code-container" data-toggle="collapse">					
 				<i class="icon-minus-sign pull-right"></i>
 				<i class="icon-plus-sign pull-right"></i>
 				<%= _('Have a Promo Code?').translate() %>
@@ -208,7 +199,7 @@ padding: 10px 0px;">
 	<% } %>
 
 
-<div class="step-navigation-buttons form-actions" style="clear:both; padding-left: 35px;">
+<div class="btncheckout-cart-summary-macro">
 		<button class="bgbutton-checkout" data-action="submit-step">
 			Next Step
 		</button>

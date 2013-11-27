@@ -15,8 +15,8 @@
 		<div class="span<%= span %>">
 			<% if (_.isFunction(macro)){ %>
 				<input type="radio" data-action="select" name="selectAddress" data-id="<%- item.id %>" style='float: left'
-				<%= (item.attributes.defaultshipping==="T" && url.indexOf("#shipping")>-1) ? 'checked' : '' %>
-				<%= (item.attributes.defaultbilling==="T" && url.indexOf("#billing")>-1) ? 'checked' : '' %>>
+				<%= (item.attributes.defaultshipping==="T" ) ? 'checked' : '' %>
+
 				<%= macro(item) %>
 			<% }else{ %>
 				<%= item %>
