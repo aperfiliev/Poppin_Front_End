@@ -1,14 +1,22 @@
 <% registerMacro('displayInRows', function(items, macro, items_per_row) { %>
 	<% items_per_row = parseInt(items_per_row, 10) || 3 %>
-	<% var span = 12 / items_per_row %>
+	<% var span = 12 / items_per_row 
+	var url = window.location.hash;
+	console.log(url);
+	console.log(items);
+	console.log(Backbone.history);
+	%>
 	<div class="row-fluid">
-	<% _.each(items, function (item, index){ %>
+	<% _.each(items, function (item, index){%>
 		<% if ((index % items_per_row) == 0 && index > 0){ %>
 			</div>
 			<div class="row-fluid">
 		<% } %>
 		<div class="span<%= span %>">
 			<% if (_.isFunction(macro)){ %>
+				<input type="radio" data-action="select" name="selectAddress" data-id="<%- item.id %>" style='float: left'
+				<%= (item.attributes.defaultshipping==="T" && url.indexOf("#shipping")>-1) ? 'checked' : '' %>
+				<%= (item.attributes.defaultbilling==="T" && url.indexOf("#billing")>-1) ? 'checked' : '' %>>
 				<%= macro(item) %>
 			<% }else{ %>
 				<%= item %>
