@@ -3,22 +3,11 @@
 	,	selected_address = view.address
 	,	address_book = view.getAddressesToShow();
 %>
-
 <% if (view.getTitle()) { %>
 	<h3 class="section-header">
 		<%= view.getTitle() %>
 	</h3>
-<% } else {%>
-<h3 class="section-header car-background">
-
-<% if (view.addressId) {%>
-<%= _('SELECT YOUR SHIPPING ADDRESS').translate() %>
-<% } else {%>
-<%= _('ENTER YOUR SHIPPING ADDRESS').translate() %>
-<%}%>
-
-</h3>
-<%}%>
+<% } %>
 
 <% if (is_same_as_enabled) { %>
 	<label class="checkbox same-as-address">
@@ -35,29 +24,35 @@
 
 <% if ((is_same_as_enabled && view.sameAs) || view.addressId && !selected_address.isNew()) { %>
 
-	<%= address(selected_address, {
-		hideActions: true
-	,	hideDefaults: true
-	}) %>
 
 	<% if (!is_same_as_enabled || !view.sameAs) { %>
 		<% if (!view.isGuest && !view.options.edit_url) { %>
-			<a class="btn btn-link" href="/addressbook/<%- selected_address.get('internalid') %>" data-toggle="show-in-modal">
-				<%= _('Edit Address').translate() %>
-			</a>
+		
+		
+		
+		<div id="address-module-list-placeholder" class="address-module-list-placeholder">
+		
+		<%
+			// Wrap the address address macro to pass options in
+			var addressWrap = function (address) {
+				return SC.macros['address'](address, {
+					showSelect: true
+				,	selectMessage: view.selectMessage
+				,	hideDefaults: true
+				});
+			}
+		%>
+
+		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
+	</div>
+		
+		
 		<% } %>
 
-		<a href="#" class="btn btn-link" data-action="change-address">
-			<%= view.changeLinkText %>
-		</a>
+
 	<% } %>
 <% } else if (address_book.length && !view.isGuest) { %>
 	<div id="address-module-list-placeholder" class="address-module-list-placeholder">
-		<p>
-			<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal">
-				<%= _('Add New Address').translate() %>
-			</a>
-		</p>
 
 		<%
 			// Wrap the address address macro to pass options in
@@ -70,7 +65,7 @@
 			}
 		%>
 
-		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
 	</div>
 <% } else { %>
 	<div id="address-module-form-placeholder" class="address-module-form-placeholder">
