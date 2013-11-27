@@ -101,16 +101,12 @@ var LoginLib = {
 		var description = "";
 		try
 		{
-			var response = nlapiRequestURL(poppinservres.url.promodescriptionsuitlet+'&code='+code);
-			var respObj = JSON.parse(response.getBody());
-			if(respObj.length > 0 && respObj[0].columns)
-			{
-				description = respObj[0].columns.description;
-			}
+			response = nlapiRequestURL(poppinservres.url.promodescriptionsuitlet+'&code='+code);
+			description = response.getBody();
 		}
 		catch (e)
 		{
-			//
+			nlapiLogExecution( 'DEBUG', 'system error', e );
 		}
 		return description;
 	}

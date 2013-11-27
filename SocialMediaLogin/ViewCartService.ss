@@ -103,19 +103,21 @@ function service(request,response)
 				case "This coupon code has expired or is invalid":
 					retobj.header.status.message = "<p>Hmm, that didn't seem to work, please </p><p>check the date on your promo code.</p>";
 					retobj.header.status.event = "Expired promo code";
+					retobj.header.status.description = LoginLib.getPromoDescription(params.promocode);
 					break;
 				case "Coupon code is invalid or unrecognized":
 					retobj.header.status.message = "<p>Unfortunately we don't recognize that </p><p>promo code. Please try again.</p>";
 					retobj.header.status.event = "Promo not recognized";
+					retobj.header.status.description = "";
 				default:
 					if(error.getDetails().indexOf("minimum order amount") !== -1)
 					{
 						retobj.header.status.message = "<p>In order for your code to work, you need </p><p>to add more Poppin products to your cart.</p>";
 						retobj.header.status.event = "Promo rules not met";
+						retobj.header.status.description = LoginLib.getPromoDescription(params.promocode);
 					}
 					break;
 				}
-				retobj.header.status.description = LoginLib.getPromoDescription(params.promocode);
 				// and remove invalid promocode
 				orderObj.removePromotionCode(params.promocode);
 			}

@@ -14,9 +14,14 @@
 function suitelet(request, response){
 	var code = request.getParameter('code');
 	var columns = [];
-	columns[0]= new nlobjSearchColumn('description');
+	columns[0]= new nlobjSearchColumn('custrecord_promo_details_html');
+	columns[1]= new nlobjSearchColumn('description');
 	var filters = [];
 	filters[0] = new nlobjSearchFilter('code', null, 'is', code, null);
-	var promotioncode = nlapiSearchRecord('promotioncode', null, filters, columns);
-	response.write(JSON.stringify(promotioncode));
+	var searchresults = nlapiSearchRecord('promotioncode', null, filters, columns);
+	var description = searchresults[0].getValue(columns[0]);
+	if (description === '') {
+		description = searchresults[0].getValue(columns[1]);
+	}
+	response.write(description);
 }
