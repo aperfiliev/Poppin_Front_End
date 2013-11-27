@@ -599,6 +599,7 @@ GPItemList = (function($) {
 			'itemsCountCont' : '.itemscount',
 			'itemListCellTemplate' : '',
 			'onItemsLoaded' : null,
+			'onAfterShow' : null,
 			'attrMultiValSep' : '^',
 			'filterByRange' : {/*
 				 //Only numeric attributes should be specified, for instance:
@@ -663,6 +664,13 @@ GPItemList = (function($) {
 					console.log(e);
 			}
 			_items_container.show();
+			try {
+				if ( typeof _opts.onAfterShow == 'function')
+					_opts.onAfterShow();
+			} catch(e) {
+				if (console && console.log)
+					console.log(e);
+			}
 			var count_info = _item_list.getSelectedItemsCountInfo();
 			if (count_info.total)
 				_itemscount.html(count_info.start + "-" + count_info.end + " of " + count_info.total);
