@@ -4,6 +4,7 @@
 	,	expiration_month = creditcard.get('expmonth')
 	,	icons = options.icons;
 %>
+</style>
 <article class="creditcard">
 	<% if (options.showSecurityCodeForm) { %>
 	<div class="row-fluid">
@@ -40,20 +41,20 @@
 	</div>
 	<% } %>
 
-	<% if (options.showSelect) { %>
-		<button class="btn btn-primary btn-block" data-action="select" data-id="<%- creditcard.get('internalid')%>">
-			<%= options.selectMessage %>
-		</button>
-	<% } %>
 
 	<% if (options.showActions) { %>
 		<p class="actions">
+	<% if (options.showSelect) { %>
+		<btn class="btn btn-link" data-action="select" data-id="<%- creditcard.get('internalid')%>">
+			<%= options.selectMessage %>
+		</btn>
+	<% } %>
 			<a class="btn btn-link" href="/creditcards/<%= creditcard.get('internalid') %>" data-toggle="show-in-modal">
 				<%= _('Edit Card').translate() %>
 			</a>
-			<button class="btn btn-link" data-action="remove" data-id="<%- creditcard.get('internalid') %>">
+			<btn class="btn btn-link" data-action="remove" data-id="<%- creditcard.get('internalid') %>">
 				<%= _('Remove').translate() %>
-			</button>
+			</btn>
 		</p>
 	<% } %>
 </article>

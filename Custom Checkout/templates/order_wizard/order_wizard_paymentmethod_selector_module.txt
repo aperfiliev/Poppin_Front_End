@@ -1,11 +1,11 @@
 <% var active_modules = _.filter(view.modules,function(module){ return module.isActive;}) %>
-<h4 class="section-header">
-	<% if (active_modules.length > 1) { %>
-		<%= _('Pay With:').translate() %>
+<h3 class="section-header">
+	<% if (active_modules.length < 1) { %>
+		<%= _('ADD A NEW CREDIT CARD:').translate() %>
 	<% } else { %>
-		<%= _('Pay With: $(0)').translate(active_modules[0].name) %>
+                <%= _('SELECT YOUR CREDIT CARD:').translate() %>
 	<% }  %>
-</h4>
+</h3>
 
 <% if (active_modules.length > 1) { %>
 	<ul class="nav nav-tabs">

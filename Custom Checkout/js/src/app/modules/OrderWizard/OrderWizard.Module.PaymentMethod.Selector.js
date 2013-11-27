@@ -25,7 +25,7 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 			this.modules = options.modules || [
 				{
 					classModule: 'OrderWizard.Module.PaymentMethod.Creditcard'
-				,	name: _('Credit / Debit Card').translate()
+				//,	name: _('Credit / Debit Card').translate()
 				,	type: 'creditcard'
 				,	options: {}
 				}

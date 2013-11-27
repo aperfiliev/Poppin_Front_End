@@ -76,24 +76,37 @@
 			</div>
 		</div>
 	</noscript>
-	
+	<div id='outerwrapper' style='width:968'>
+		<div id='innerwrapper'>
 	<% if (siteType && siteType === 'STANDARD') { %>
 		<div id='div__header' style="overflow: hidden;" class='noprint' leftmargin='0' topmargin='0' marginwidth='1' >
 			<table border='0' cellspacing='0' cellpadding='0' width='100%'>
-				<%= getPageTop() %>
+<PP_CART_PAGETOP>				
 			</table>
 		</div>
 	<% } %>
-	
-	<div id="main"></div>
+			<div class="promo-banner" style="text-align: center;">
+							<%=getRecordAttribute('199',2,'custrecord_bannerhtml')%>
+			</div>
+			<div id="main">
+			</div>
 
+                <div class="upsell_options" style="margin: auto; width: 968px;">
+													<%=getRecordAttribute('199',3,'custrecord_bannerhtml')%>
+												</div>
+</div>
+		</div>
+
+	<div id="div__footer" class="noprint" leftmargin="0" topmargin="0" marginwidth="1" marginheight="1">
+	<PP_FOOTER_CLEAN>
+	</div>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'sc.environment.ssp?lang=' + (request.getParameter('lang') || '') + '&cur=' + (request.getParameter('cur') || '') ) %>"></script>
 	<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 	<% } %>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-01426b0ff236.js') %>"></script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-01426b0feae1.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-014294eb1e34.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-014294f56677.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
 </body>
 </html>

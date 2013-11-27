@@ -17,7 +17,17 @@
 %>
 <div class="well shopping-cart-summary">
 	<header class="well-header">
-		<h2>
+		<h2 style="color: rgb(243, 122, 49);
+font-family: 'OmnesMediumRegular';
+font-size: 14px;
+font-weight: 700;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 6px;
+text-align: left;
+text-transform: uppercase;">
 			<%= _('Order Summary').translate() %>
 		</h2>
 	</header>

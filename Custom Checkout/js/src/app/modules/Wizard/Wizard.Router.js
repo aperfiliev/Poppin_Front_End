@@ -117,6 +117,7 @@ define('Wizard.Router', ['Wizard.View', 'Wizard.Step', 'Wizard.StepGroup'], func
 	,	goToNextStep: function()
 		{
 			var next_step_url = this.getNextStepUrl();
+			console.log(next_step_url);
 			if (next_step_url)
 			{
 				this.navigate(next_step_url, {trigger: true});	

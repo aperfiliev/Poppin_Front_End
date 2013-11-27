@@ -3,11 +3,22 @@
 	,	selected_address = view.address
 	,	address_book = view.getAddressesToShow();
 %>
+
 <% if (view.getTitle()) { %>
 	<h3 class="section-header">
 		<%= view.getTitle() %>
 	</h3>
-<% } %>
+<% } else {%>
+<h3 class="section-header car-background">
+
+<% if (view.addressId) {%>
+<%= _('SELECT YOUR SHIPPING ADDRESS').translate() %>
+<% } else {%>
+<%= _('ENTER YOUR SHIPPING ADDRESS').translate() %>
+<%}%>
+
+</h3>
+<%}%>
 
 <% if (is_same_as_enabled) { %>
 	<label class="checkbox same-as-address">

@@ -8,6 +8,12 @@
 	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || []; 
 %>
 <div class="checkout-cart-summary">
+<div class="step-navigation-buttons form-actions" style="clear:both; padding-left: 35px;">
+		<button class="bgbutton-checkout" data-action="submit-step">
+			Next Step
+		</button>
+</div>
+
 	<header class="checkout-cart-summary-header">
 		<% if (options.stepPosition.toLast > 0) { %>
 			<a href="#" class="btn btn-link btn-edit-cart pull-right" data-touchpoint="viewcart">
@@ -15,14 +21,21 @@
 			</a>
 		<% } %>
 
-		<h2 class="checkout-cart-summary-title">
+		<h2 class="checkout-cart-summary-title" style="color: rgb(243, 122, 49);
+font-family: 'OmnesMediumRegular';
+font-size: 14px;
+font-weight: 700;
+margin: 0px;
+padding-bottom: 0px;
+text-align: left;
+text-transform: uppercase;">
 			<%= _('Order Summary').translate() %>
 		</h2>
 	</header>
 	
 	<div class="checkout-cart-summary-body">
 		<% if (!options.hideItems) { %>
-		<ul class="cart-summary-items checkout-summary-items">
+		<ul class="cart-summary-items checkout-summary-items" style="display:none;">
 		<%
 			var thumbnail = ''
 			,	item = null;
@@ -38,7 +51,8 @@
 						<img src="<%- options.application.resizeImage(thumbnail.url, 'tinythumb') %>" alt="<%- thumbnail.altimagetext %>">
 					</div>
 					<div class="span9 cart-summary-item-details checkout-summary-item-details">
-						<div class="pull-right cart-summary-item-total">
+						<div class="pull-right cart-summary-item-total" style="border-top: rgb(128, 128, 128) 1px solid;
+	padding-top: 9px;">
 							<%= line.get('total_formatted') %>
 							<% if (line.get('amount') > line.get('total')) {%>
 								<small class="muted crossed cart-summary-item-amount">
@@ -148,7 +162,8 @@
 			</p>
 		</div>
 
-		<div class="cart-summary-total">
+		<div class="cart-summary-total" style="border-top: 1px solid rgb(243, 243, 243);
+padding: 10px 0px;">
 			<p class="strong">
 				<span class="pull-right cart-summary-total-formatted">
 					<%= summary.total_formatted %>
@@ -156,7 +171,7 @@
 				<%= _('Total').translate() %>
 			</p>
 		</div>
-
+<!--
 	<% if (options.stepPosition.toLast === 1) { %>
 		<div>
 		<% if (SC.ENVIRONMENT.siteSettings.checkout.requiretermsandconditions === 'T') { %>
@@ -167,6 +182,9 @@
 			</button>
 		</div>
 	<% } %>
+-->
+
+
 	</div>
 
 	<% if (!is_promocode_valid && options.stepPosition.toLast > 0) { %>
@@ -187,5 +205,13 @@
 		</div>
 	</footer>
 	<% } %>
+
+
+<div class="step-navigation-buttons form-actions" style="clear:both; padding-left: 35px;">
+		<button class="bgbutton-checkout" data-action="submit-step">
+			Next Step
+		</button>
+</div>
 </div>
 <% }) %>
+

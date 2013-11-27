@@ -2,6 +2,9 @@
 	<% if (view.application.getConfig('siteSettings.sitetype') === 'ADVANCED') { %>
 		<%= header(view) %>
 	<% } %>
+                 <h1 style="color: rgb(243, 122, 49); font-family: 'OmnesLightRegular'; font-size: 38px; font-weight: 400; width: 965px; margin-right: auto; margin-left: auto;" class="checkout-header">Checkout</h1>
+
+       
 	<!-- Main Content Area -->
 	<div id="content" class="container content checkout-content"></div>
 	<!-- / Main Content Area -->

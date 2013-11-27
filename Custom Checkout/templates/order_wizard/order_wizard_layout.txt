@@ -1,14 +1,66 @@
 <% var position = view.wizard.getStepPosition() %>
+<div class="row-fluid <%= position.toLast === 1 ? 'review-step' : '' %>"  <% if(position.toLast<= 0){ %>style="background: rgb(243, 243, 243);"<%}%>>
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" <% if(position.toLast<= 0){ %>style="width: 677px; margin: auto;" <%}%>>
+	<tr>
+	<td  valign="top" <% if(position.toLast > 0){ %>style="border-top: 1px solid rgb(153, 153, 153);
+border-right: 1px solid rgb(153, 153, 153);"<%}%>>
 <% if(!view.wizard.getCurrentStep().hideBreadcrumb && position.toLast > 0){ %>
 	<header class="order-wizard-layout-header">
 	<%= wizadStepNavigation(view.wizard.stepGroups) %>
 	</header>
 <%}%>
-<div class="row-fluid <%= position.toLast === 1 ? 'review-step' : '' %>">
-	<div class="span6">
-		<div id="wizard-content" class="wizard-content"></div>
-	</div>
-	<div class="offset2 span4" id="order-summary">
+		<div class="span6">
+			<div id="wizard-content" class="wizard-content"></div>
+		</div>
+<% if(position.toLast<= 0){ %>
+<style>
+.checkout-header {display: none;}
+.bgbutton-checkout {display: none;}
 
-	</div>
+.shipments-cart-details{
+display: block;
+width: 667px;
+background: white;
+}
+
+.orderwizard-module-confirmation {
+width: 667px;
+background: rgb(243, 243, 243);
+padding: 0px;
+}
+.upsell_options{
+margin: auto;
+width: 968px;
+text-align: center;
+background-color: rgb(243, 243, 243);
+padding-bottom: 10px;
+}
+#main .order-wizard-layout {
+    margin-bottom: 0px;
+}
+
+#main .lead-price {
+ color: rgb(0, 0, 0);
+}
+.bgbutton-checkout{
+background-color: rgb(244, 122, 32);
+border-color: rgb(244, 122, 32);
+}
+</style>
+<div style="width: 667px;
+float: left;
+background: white;
+margin-top: 4px;">
+                <div class="offset2 span4" id="order-summary" style="width: 300px; float: right;">
+		</div>
+</div>
+<%}%>
+
+	</td>
+	<td  valign="top" <% if(position.toLast<= 0){ %>style="display:none;"<%}%>>
+		<div class="offset2 span4" id="order-summary">
+		</div>
+	</td>
+	</tr>
+	</table>
 </div>

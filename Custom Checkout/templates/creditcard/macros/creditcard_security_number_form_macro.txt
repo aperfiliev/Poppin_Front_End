@@ -2,8 +2,8 @@
 <% options = options || {}; %>
 <div class="credit-card-security-number">
 	<div class="control-group <%= options.error ? 'error' : '' %>">
-		<label class="control-label" for="ccsecuritycode">
-			<%= _('Security Number').translate() %>
+		<label class="control-label" for="ccsecuritycode" style="width:30px;">
+			<%= _('CVV').translate() %>
 			<small>
 				<%= _('(required)').translate() %>
 			</small>

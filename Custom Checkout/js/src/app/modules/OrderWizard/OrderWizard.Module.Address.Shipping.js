@@ -41,6 +41,7 @@ define('OrderWizard.Module.Address.Shipping', ['OrderWizard.Module.Address'],  f
 
 	,	changeAddress: function ()
 		{
+			console.log('change address main module');
 			OrderWizardModuleAddress.prototype.changeAddress.apply(this, arguments);
 
 			if (this.address)

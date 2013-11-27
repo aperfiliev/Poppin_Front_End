@@ -14,16 +14,19 @@
 </div>
 <% } %>
 
-<div id="wizard-step-content" class="wizard-step-content"></div>
+<div id="wizard-step-content" class="wizard-step-content" style="overflow: hidden;"></div>
 
-<div class="step-navigation-buttons form-actions">
+<div class="step-navigation-buttons form-actions" style="float: right; margin-right: 20px; clear: both;">
 	<% if (!view.hideContinueButton) { %>
+<!--
 		<button class="btn btn-primary btn-large btn-continue<%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step">
-			<%= view.continueButtonLabel %>
+-->
+		<button class="bgbutton-checkout <%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step">
+			Next Step
 		</button>
 	<% } %>		
 	<% if (!view.hideBackButton) { %>
-		<button class="btn btn-large btn-back" data-action="previous-step">
+		<button class="btn btn-large btn-back" data-action="previous-step" style="display: none;">
 			<%= _('Back').translate() %>
 		</button>
 	<% }  %>

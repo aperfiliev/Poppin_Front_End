@@ -29,14 +29,14 @@
 	<% } %>
 
 	<div class="<%- view.inModal ? 'modal-footer left-aligned' : 'form-actions' %>">
-		<button type="submit" class="btn btn-primary">
+		<button type="submit" class="btn btn-link">
 			<%= view.model.isNew() ? _('Add Card').translate() : _('Update Card').translate() %>
 		</button>
 
 		<% if (view.inModal || view.collection.length) { %>
-			<btn class="btn btn-link" data-dismiss="modal">
+			<button class="btn btn-link" data-dismiss="modal">
 				<%= _('Cancel').translate() %>
-			</btn>
+			</button>
 		<% } %>
 
 		<% if (!view.inModal) { %>

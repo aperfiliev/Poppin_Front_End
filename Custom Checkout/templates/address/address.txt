@@ -32,7 +32,7 @@
 	</div>
 <% } %>
 	<div class="<%- view.inModal ? 'modal-footer' : 'form-actions' %>">
-		<button type="submit" class="btn btn-primary">
+		<button type="submit" class="btn btn-link">
 			<%= model.isNew() ? _('Save Address').translate() : _('Update Address').translate() %>
 		</button>
 

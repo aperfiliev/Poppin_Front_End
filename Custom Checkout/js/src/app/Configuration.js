@@ -102,78 +102,66 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 /* the normal three step checkout */
 	,	checkoutSteps: [
 			{
-				name: _('Shipping').translate()
+				name: _('Shipping & Delivery').translate()
 			,	steps: [
 					{
-						name: _('Enter Shipping Address').translate()
-					,	hideBackButton: true
+					//	name: _('Enter Shipping Address').translate(),	
+					hideBackButton: true
 					,	hideSummary: screen_width < 768 //hide summary on phone
-					,	getName: function()	
+					/*,	getName: function()	
 						{
 							if (this.wizard.options.profile.get('addresses').length)
 							{
-								return _('Choose Shipping Address').translate();
+								return _('SELECT YOUR SHIPPING ADDRESS').translate();
 							}
 							else
 							{
-								return _('Enter Shipping Address').translate();
+								return _('ENTER YOUR SHIPPING ADDRESS').translate();
 							}
-						}
+						}*/
 					,	url: 'shipping/address'
 					,	modules: [
-							'OrderWizard.Module.Address.Shipping'
+							['OrderWizard.Module.Address.Shipping']
 						]
 					}
 				,	{
-						name: _('Choose delivery method').translate()
-					,	url: 'shipping/method'
+					//	name: _('Select your delivery method').translate(),	
+					url: 'shipping/method'
 					,	hideBackButton: true
 					,	hideSummary: screen_width < 768 //hide summary on phone
 					,	modules: [
-							['OrderWizard.Module.Address.Shipping', {title: _('Ship To:').translate()}]
+							['OrderWizard.Module.Address.Shipping', {title: _('SELECT YOUR SHIPPING ADDRESS:').translate()}]
 						,	'OrderWizard.Module.Shipmethod'
 						]
 					}
 				]
 			}
 		,	{
-				name: _('Payment').translate()
+				name: _('Billing & Payment').translate()
 			,	steps: [
 					{
-						name: _('Choose Payment Method').translate()
-					,	url: 'billing'
+					//	name: _('Choose Payment Method').translate(),
+					url: 'billing'
 					,	hideSummary: screen_width < 768 //hide summary on phone
 					,	bottomMessage: _('You will have an opportunity to review your order on the next step.').translate()
-					,	modules: [
-							'OrderWizard.Module.PaymentMethod.GiftCertificates'
-						,	'OrderWizard.Module.PaymentMethod.Selector'
-						//	configure the address module to show a "same as XXX address" checkbox
-						,	['OrderWizard.Module.Address.Billing', {enable_same_as: true, title: _('Enter Billing Address').translate()}]
-						,	'OrderWizard.Module.RegisterEmail'
-						]
-					}
-				]
-			}
-		,	{
-				name: _('Review & Place Order').translate()
-			,	steps: [
-					{
-						name: _('Review Your Order').translate()
-					,	url: 'review'
 					,	continueButtonLabel: _('Place Order').translate()
-					,	hideBackButton: true
-					,	hideSummaryItems: true
-					,	modules: [
-							['OrderWizard.Module.ShowPayments', {edit_url_billing: '/billing', edit_url_address: '/billing'}]
-						,	['OrderWizard.Module.ShowShipments', {edit_url: '/shipping/address', show_edit_button: true}]
-						,	'OrderWizard.Module.TermsAndConditions'
-						]
 					,	save: function()
 						{
 							return this.wizard.model.submit();
 						}
-					}
-				,	{
+					,	modules: [
+['OrderWizard.Module.Address.Billing', {enable_same_as: true, title: _('Enter Billing Address').translate()}], 
+'OrderWizard.Module.PaymentMethod.Selector',
+'OrderWizard.Module.PaymentMethod.GiftCertificates'
+					 	          /*
+							'OrderWizard.Module.PaymentMethod.GiftCertificates'
+						,	'OrderWizard.Module.PaymentMethod.Selector'
+						//	configure the address module to show a "same as XXX address" checkbox
+						,	['OrderWizard.Module.Address.Billing', {enable_same_as: true, title: _('Enter Billing Address').translate()}]
+						,	'OrderWizard.Module.RegisterEmail'*/
+						]
+					},
+					{
 						url: 'confirmation'
 					,	headerMacro: 'header'
 					,	hideSummaryItems: true
@@ -192,6 +180,30 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					}
 				]
 			}
+//		,	{
+//				name: _('Review & Place Order').translate()
+//			,	steps: [
+//					{
+//						name: _('Review Your Order').translate()
+//					,	url: 'review'
+//					,	continueButtonLabel: _('Place Order').translate()
+//					,	hideBackButton: true
+//					,	hideSummaryItems: true
+//					,	modules: [
+//							['OrderWizard.Module.ShowPayments', {edit_url_billing: '/billing', edit_url_address: '/billing'}]
+//						,	['OrderWizard.Module.ShowShipments', {edit_url: '/shipping/address', show_edit_button: true}]
+//						,	'OrderWizard.Module.TermsAndConditions'
+//						]
+//					,	save: function()
+//						{
+//							return this.wizard.model.submit();
+//						}
+//					}
+//				,
+//				
+//				
+//				]
+//			}
 		]
 
 /* The One Page Checkout Scenario */

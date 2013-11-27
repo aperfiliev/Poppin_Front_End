@@ -18,7 +18,6 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			errorCode: 'ERR_CHK_INVALID_ADDRESS'
 		,	errorMessage: _('The selected address is invalid').translate()
 		}
-
 	,	events: {
 			'click [data-action="submit"]': 'submit'
 		,	'click [data-action="select"]': 'selectAddress'
@@ -28,7 +27,6 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		}
 
 	,	errors: ['ERR_CHK_INCOMPLETE_ADDRESS', 'ERR_CHK_INVALID_ADDRESS']
-
 		// module.render
 		// -------------
 	,	render: function (not_trigger_ready)
@@ -68,11 +66,12 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			// The following is used to match the logic on file order_wizard_address_module.txt
 			// when the conditions apply, only the address details are shown
 			// that means there are no form or list views required
-			if ((this.isSameAsEnabled && this.sameAs) || this.addressId && !is_address_new)
-			{
-				null;
-			}
-			else if (this.getAddressesToShow().length && !this.isGuest)
+//			if ((this.isSameAsEnabled && this.sameAs) || this.addressId && !is_address_new)
+//			{
+//				null;
+//			}
+//			else if (this.getAddressesToShow().length && !this.isGuest)
+			if (this.getAddressesToShow().length && !this.isGuest)
 			{
 				this.addressListView = new AddressViews.List({
 					application: this.wizard.application
@@ -260,6 +259,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 	,	changeAddress: function (e)
 		{
+			console.log('change address');
 			e.preventDefault();
 			e.stopPropagation();
 			

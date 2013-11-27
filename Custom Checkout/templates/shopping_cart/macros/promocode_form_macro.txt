@@ -11,8 +11,10 @@
 				value="<%- promocode && promocode.code %>"
 				placeholder="<%- _('Promo code').translate() %>"
 				required
+style="width: 90px;"
+
 			>
-			<button type="submit" class="btn">
+			<button type="submit" class="bgbutton-checkout" style="background-color: rgb(40, 185, 240); border:color: rgb(40, 185, 240); width: 68px; margin-left:5px;">
 				<%= _('Apply').translate() %>
 			</button>
 		</div>

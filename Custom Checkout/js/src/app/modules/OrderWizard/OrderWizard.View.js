@@ -19,7 +19,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			'submit form[data-action="apply-promocode"]': 'applyPromocode'
 		,	'click [data-action="remove-promocode"]': 'removePromocode'
 		,	'shown #promo-code-container' : 'onShownPromocodeForm' 
-		,	'click #order-summary [data-action="submit-step"]' : 'submitStep' //only for Order Place button in the Order Summary
+		,	'click [data-action="submit-step"]' : 'submitStep' //only for Order Place button in the Order Summary
 		,	'click [data-toggle="show-terms-summary"]' : 'showTerms' //only for "Show terms and cond" in the Order Summary
 		}
 
@@ -141,8 +141,15 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		}
 
 	,	submitStep: function(e) { //only for Order Place button in the Order Summary
+		console.log('lalala');
+		//if(this.currentStep.wizard.currentStep==='billing'){
+			//console.log('lalala2');
+			//this.wizard.model.submit();
 			var step = this.currentStep;
 			step.submit(e);
+		//}
+			//var step = this.currentStep;
+			//step.submit(e);
 		}
 
 	,	showTerms: TermsAndConditions.prototype.showTerms //only for "Show terms and cond" in the Order Summary
