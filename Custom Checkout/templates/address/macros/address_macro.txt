@@ -14,17 +14,19 @@
 
 %>
 <article class="address">
-	<address class="">
+	<address class="">	
+		<span class="address-line address-firstfullname">
+			<%= address.get('firstfullname') %>
+		</span>
+		
+
 		<span class="address-line address-title summary-header">
-			<%= label || company || fullname %>
+			<%= label || company %>
 		</span>
 
 		<% if (label && company) { %>
 			<span class="address-line address-company">
 				<%= company %>
-			</span>
-			<span class="address-line address-name">
-				<%= fullname %>
 			</span>
 		<% } else if (label ? !company : company ) { %>
 			<span class="address-line address-name">
@@ -59,7 +61,6 @@
 			<%= address.get('phone') %>
 		</span>
 	</address>
-		
 	<% if (!options.hideDefaults) { %>
 		<% if (address.get('defaultshipping') === 'T') { %>
 		<p>
@@ -75,23 +76,24 @@
 		<% } %>
 	<% } %>
 
-	
+	<% if (options.showSelect) { %>
+
+	<% } %>
 
 	<% if (!options.hideActions) { %>
 	<p class="actions">
-<% if (options.showSelect) { %>
-		<button class="btn btn-link" data-action="select" data-id="<%- address.get('internalid') %>">
-			<%= options.selectMessage || _('Select this address').translate() %>
-		</button>
-	<% } %>
-
 		<a class="btn btn-link" href="/addressbook/<%- address.get('internalid') %>" data-toggle="show-in-modal">
 			<%= _('Edit Address').translate() %>
 		</a>
 
+
 		<button class="btn btn-link" data-action="remove" data-id="<%- address.get('internalid') %>">
 			<%= _('Remove').translate() %>
 		</button>
+		
+		<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal">
+			<%= _('Add New Address').translate() %>
+		</a>
 	</p>
 	<% } %>
 </article>

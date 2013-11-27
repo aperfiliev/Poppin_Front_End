@@ -16,16 +16,49 @@
 	<div data-type="alert-placeholder"></div>
 	
 	<div class="control-group">
-		<label class="control-label" for="<%= manage %>fullname">
-			<%= _('Full Name').translate() %>
+		<label class="control-label" for="<%= manage %>namePrefix">
+			<%= _('Prefix').translate() %>
+		</label>
+		<div class="controls">
+			<select id="<%= manage %>namePrefix" name="namePrefix">
+				<option></option>
+				<option value="Mr." <%= address.get('namePrefix')==='Mr.' ? 'selected' : '' %>>Mr.</option>
+				<option value="Ms." <%= address.get('namePrefix')==='Ms.' ? 'selected' : '' %>>Ms.</option>
+				<option value="Mss."<%= address.get('namePrefix')==='Mss.' ? 'selected' : '' %>>Mss.</option>
+				<option value="Dr."<%= address.get('namePrefix')==='Dr.' ? 'selected' : '' %>>Dr.</option>
+			</select>
+		</div>
+	</div>
+	
+	
+	
+		<div class="control-group">
+		<label class="control-label" for="<%= manage %>firstfullname">
+			<%= _('First Name').translate() %>
 			<small>
 				<%= _('(required)').translate() %>
 			</small>
 		</label>
 		<div class="controls">
-			<input type="text" class="input-xlarge" id="<%= manage %>fullname" name="fullname" value="<%- address.get('fullname')%>">
+			<input type="text" class="input-xlarge" id="<%= manage %>firstfullname" name="firstfullname" value="<%- address.get('firstfullname')%>">
 		</div>
 	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>lastfullname">
+			<%= _('Last Name').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-xlarge" id="<%= manage %>lastfullname" name="lastfullname" value="<%- address.get('lastfullname')%>">
+		</div>
+	</div>
+	
+	
+	
+	
 	<% /* 
 	TODO: the next field should be shown/hidden depending on a feature in Setup Website > Shopping
 	registration has 2 fields: displaycompanyfield and showcompanyfield, not sure which to use 

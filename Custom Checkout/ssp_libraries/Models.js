@@ -232,20 +232,23 @@ Application.defineModel('Address', {
 ,	wrapAddressee: function (address)
 	{
 		'use strict';
-
-		if (address.attention && address.addressee)
-		{
-			address.fullname = address.attention;
-			address.company = address.addressee;
-		}
-		else
-		{
-			address.fullname = address.addressee;
-			address.company = null;
+		
+		var s = address.addressee;
+		var res = s.split(",");
+		var res1 =  res[0].split(".");
+		if(res1.length == 2){
+			address.namePrefix = res1[0]+'.';
+			address.firstfullname = res1[1];
+		}else{
+			address.firstfullname = res[0];
 		}
 		
+		
+		address.company = address.attention;
+		address.lastfullname = res[1];
+		
 		delete address.attention;
-		delete address.addressee;	
+		delete address.addressee;
 		
 		return address;
 	}
@@ -254,20 +257,24 @@ Application.defineModel('Address', {
 ,	unwrapAddressee: function (address)
 	{
 		'use strict';
-
-		if (address.company)
-		{
-			address.attention = address.fullname;
-			address.addressee = address.company;
-		}
-		else
-		{
-			address.addressee = address.fullname;
-			address.attention = null;
-		}
+		var res;
+		var prefix = address.namePrefix;
+		var firstName = address.firstfullname+",";
+		var lastName = address.lastfullname;
 		
-		delete address.fullname;
-		delete address.company;	
+		var firstAndLast = firstName.concat(lastName);
+		if(prefix != ""){
+			res = prefix.concat(firstAndLast);
+		}else{res = firstAndLast;}
+		
+		address.attention = address.company;
+		address.addressee = res;
+		
+		
+		delete address.company;
+		delete address.firstfullname;
+		delete address.lastfullname;
+		delete address.namePrefix;
 		
 		return address;
 	}
