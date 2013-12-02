@@ -94,7 +94,7 @@ function service(request,response)
 		{
 			var error = nlapiCreateError(e);
 			retobj.header.status.code = error.getCode();
-			retobj.header.status.message = error.getDetails();
+			retobj.header.status.message = "<p>"+error.getDetails()+"</p>";
 			
 			if(error.getCode() == "ERR_WS_INVALID_COUPON")
 			{
@@ -108,6 +108,10 @@ function service(request,response)
 				case "Coupon code is invalid or unrecognized":
 					retobj.header.status.message = "<p>Unfortunately we don't recognize that </p><p>promo code. Please try again.</p>";
 					retobj.header.status.event = "Promo not recognized";
+					retobj.header.status.description = "";
+				case "This coupon does not apply to items in cart.":
+					retobj.header.status.message = "<p>This coupon does not apply to </p><p>items in cart.</p>";
+					retobj.header.status.event = "Promo not applied";
 					retobj.header.status.description = "";
 				default:
 					if(error.getDetails().indexOf("minimum order amount") !== -1)
