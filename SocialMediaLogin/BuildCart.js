@@ -398,24 +398,24 @@
 		}
 		if(description != '')
 		{
+			promoHover = document.createElement("div");
+			promoHover.setAttribute("class", "promoHover");
+			
 			div = document.createElement("div");
 			div.setAttribute("class", "promoLink");
 			div.innerHTML = "Promo details";	// Promo details text
-			promoCodeDiv.appendChild(div);
+			promoHover.appendChild(div);
 			
 			div = document.createElement("div");
 			div.setAttribute("class", "promoDescription");
 			div.setAttribute("style", "display: none;");
 			div.innerHTML = description;
-			promoCodeDiv.appendChild(div);
+			promoHover.appendChild(div);
+			promoCodeDiv.appendChild(promoHover);
 			
-			$('.promoLink').hover(
+			$('.promoHover').hover(
 					function() { $('.promoDescription').css('display', 'block'); },
 					function() { $('.promoDescription').css('display', 'none'); });
-
-			/*$('#promoInput').hover(
-					function() { powerTip.create('promoInput', '<p>'+description+'</p>', 'powerDiv', -28, 40); },
-					function() { powerTip.hide('powerDiv');});*/
 		}
 	}
 	/*
