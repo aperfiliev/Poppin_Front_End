@@ -13,7 +13,7 @@
 <form class="delivery-options" action="">
 	<fieldset>
 		<h3 class="delivery-options-header section-header">
-			<%= _('SELECT YOUR DELIVERY METHOD:').translate() %>
+			<%= _('SELECT YOUR DELIVERY METHOD').translate() %>
 		</h3>
 		<% if (!view.model.get('isEstimating') && !view.wizard.application.getUser().get('addresses').get(view.model.get('shipaddress'))) { %>
 			<%= _('Warning: Please enter a valid shipping address first').translate() %>

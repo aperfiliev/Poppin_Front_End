@@ -130,7 +130,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					,	hideBackButton: true
 					,	hideSummary: screen_width < 768 //hide summary on phone
 					,	modules: [
-							['OrderWizard.Module.Address.Shipping', {title: _('SELECT YOUR SHIPPING ADDRESS:').translate()}]
+							['OrderWizard.Module.Address.Shipping', {title: _('SELECT YOUR SHIPPING ADDRESS').translate()}]
 						,	'OrderWizard.Module.Shipmethod'
 						]
 					}
@@ -150,7 +150,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 							return this.wizard.model.submit();
 						}
 					,	modules: [
-['OrderWizard.Module.Address.Billing', {enable_same_as: true, title: _('Enter Billing Address').translate()}], 
+['OrderWizard.Module.Address.Billing', {enable_same_as: true, title: _('Select Your Billing Address').translate()}], 
 'OrderWizard.Module.PaymentMethod.Selector',
 'OrderWizard.Module.PaymentMethod.GiftCertificates'
 					 	          /*

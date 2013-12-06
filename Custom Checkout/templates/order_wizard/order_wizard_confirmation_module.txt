@@ -1,16 +1,17 @@
-<div class="" style="padding: 10px;">
+<div class="" style="padding-top: 10px; padding-bottom:10px;">
 <!--alert alert-block alert-success fade in-->
 	<h4 class="thankyou-title" style="color: rgb(254, 107, 56);
 display: block;
 font-size: 36px;
 line-height: 18px;
-margin: 20px 0px 30px;
-padding-bottom: 10px;
+margin: 20px 0px 20px;
+padding-bottom: 0px;
 font-family: OmnesRegularRegular,sans-serif;"><%= _('Thank you for your order!').translate() %></h4>
 	<div style="float: left;" >
 	<%= _('Your confirmation number is <big><strong>#$(0)</strong></big>.').translate(view.confirmationNumber) %><br/>
 <%= _('Keep your eyes peeled for an order confirmation email').translate() %>
 	</div>
-<div style="float: right;"><input class="bgbutton-checkout" type="button" onclick="location.href='/'" data-touchpoint="home" data-hashtag="#/" value="<%= _('Continue shopping').translate() %>" style="display: block;"></input>
+<div style="float: right;">
+<input onclick="location.href='<%= SC.ENVIRONMENT.siteSettings.touchpoints.home %>'" class="bgbutton-checkout" type="button" data-touchpoint="home" data-hashtag="#/" value="<%= _('Continue shopping').translate() %>" style="display: block; font-weight: 400;"></input>
 	</div>
 </div>

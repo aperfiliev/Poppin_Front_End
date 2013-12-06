@@ -1,9 +1,11 @@
 <% registerMacro('creditcardSecurityNumberForm', function (options) { %>
-<% options = options || {}; %>
+<% options = options || {}; 
+jQuery('#whatisthisinfo').hide();
+%>
 <div class="credit-card-security-number">
 	<div class="control-group <%= options.error ? 'error' : '' %>">
-		<label class="control-label" for="ccsecuritycode" style="width:30px;">
-			<%= _('CVV').translate() %>
+		<label class="control-label" for="ccsecuritycode">
+			<%= _('CVC').translate() %>
 			<small>
 				<%= _('(required)').translate() %>
 			</small>
@@ -11,7 +13,7 @@
 		<div class="controls">
 			<input
 				type="text"
-				class="input-small"
+				class="input-mini"
 				id="ccsecuritycode"
 				name="ccsecuritycode"
 				value="<%- options.value %>"
@@ -22,6 +24,8 @@
 					<%= options.error.errorMessage %>
 				</p>
 			<% } %>
+			<a href="#" name="whatisthis">what is this?</a> <br/>
+			<div id="whatisthisinfo">Some text</div>
 		</div>
 	</div>
 </div>

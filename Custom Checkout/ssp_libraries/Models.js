@@ -224,7 +224,7 @@ Application.defineModel('Address', {
 		}
 	,	city: {required: true, msg: 'City is required'}
 	,	zip: {required: true, msg: 'Zip Code is required'}
-	,	phone: {required: true, msg: 'Phone Number is required'}
+	//,	phone: {required: true, msg: 'Phone Number is required'}
 	}
 
 // our model has "fullname" and "company" insted of  the fields "addresse" and "attention" used on netsuite.

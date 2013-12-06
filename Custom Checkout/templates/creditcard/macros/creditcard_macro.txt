@@ -10,18 +10,19 @@
 	<div class="row-fluid">
 		<div class="span6">
 	<% } %>
-			<h4 class="summary-header">
+			<div style="float:left;">
 			<% if (payment_name in icons) { %>
 				<img class="credit-card-icon" src="<%- icons[payment_name] %>" alt="<%- payment_name %>">
-			<% } else { %>
-				<%= payment_name %>
-			<% } %> &ndash; 
-			<%= _('Ending in $(0)').translate(creditcard.get('ccnumber').replace(/\*/g, '')) %>
+			<% } %>
+			</div>
+			<div style="float:left; padding-left: 10px;">
+			<h4 class="summary-header">
+				<%= payment_name %> ************<%= creditcard.get('ccnumber').replace(/\*/g, '')%>
 			</h4>
-			<p>
-				<%= creditcard.get('ccname') %> <br>
-				<%= _('Expires').translate() + ' ' + (expiration_month < 10 ? '0' : '') + expiration_month + '/' + creditcard.get('expyear') %>
+			<p> 
+				<%= (expiration_month < 10 ? '0' : '') + expiration_month + '/' + creditcard.get('expyear') %>
 			</p>
+			</div>
 			<% if (options.showDefaults) { %>
 			<p>
 				<% if (creditcard.get('ccdefault') === 'T') { %>
@@ -43,18 +44,20 @@
 
 
 	<% if (options.showActions) { %>
+		<div style="clear: both;"></div>
 		<p class="actions">
 	<% if (options.showSelect) { %>
-		<btn class="btn btn-link" data-action="select" data-id="<%- creditcard.get('internalid')%>">
-			<%= options.selectMessage %>
-		</btn>
+
 	<% } %>
 			<a class="btn btn-link" href="/creditcards/<%= creditcard.get('internalid') %>" data-toggle="show-in-modal">
-				<%= _('Edit Card').translate() %>
+				<%= _('Edit').translate() %>
 			</a>
 			<btn class="btn btn-link" data-action="remove" data-id="<%- creditcard.get('internalid') %>">
-				<%= _('Remove').translate() %>
+				<%= _('Delete').translate() %>
 			</btn>
+			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">
+				<%= _('Add New Credit Card').translate() %>
+			</a>
 		</p>
 	<% } %>
 </article>

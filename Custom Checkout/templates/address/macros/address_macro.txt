@@ -16,7 +16,7 @@
 <article class="address">
 	<address class="">	
 		<span class="address-line address-firstfullname">
-			<%= address.get('firstfullname') %>
+			<%= address.get('firstfullname') %> <%= address.get('lastfullname') %>
 		</span>
 		
 
@@ -87,12 +87,12 @@
 			<%= options.selectMessage || _('Select this address').translate() %>
 		</button>
 	<% } %>		<a class="btn btn-link" href="/addressbook/<%- address.get('internalid') %>" data-toggle="show-in-modal">
-			<%= _('Edit Address').translate() %>
+			<%= _('Edit').translate() %>
 		</a>
 
 
 		<button class="btn btn-link" data-action="remove" data-id="<%- address.get('internalid') %>">
-			<%= _('Remove').translate() %>
+			<%= _('Delete').translate() %>
 		</button>
 		
 		<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal">

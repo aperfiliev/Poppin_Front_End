@@ -1,32 +1,34 @@
 <% var view_credit_card = view.creditcard %>
 
 <% if (view_credit_card && !view_credit_card.isNew()) { %>
-<div class="credit-card-selected">
-	<%= creditcard(view_credit_card, {
-		showSecurityCodeForm: view.requireccsecuritycode
-	,	securityNumberError: view.isSecurityNumberInvalid && view.securityNumberErrorMessage
-	,	icons: view.wizard.application.getConfig('creditCardIcons')
-	,	ccsecuritycode: view.ccsecuritycode
-	}) %>
-	<div class="actions">
-		<a class="btn btn-link" href="/creditcards/<%= view_credit_card.get('internalid') %>" data-toggle="show-in-modal">
-			<%= _('Edit Card').translate() %>
-		</a>
-		| 
-		<a href="#" class="btn btn-link" data-action="change-creditcard">
-			<%= _('Change Card').translate() %>
-		</a>
+	<div id="creditcard-module-list-placeholder" class="creditcard-module-list-placeholder">
+		<!--<p>
+			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">
+				<%= _('Add New Credit Card').translate() %>
+			</a>
+		</p>-->
+		<%
+			var creditcardWrap = function (creditcard) {
+				return SC.macros.creditcard(creditcard, {
+					showSelect: true
+				,	showActions: true
+				,	showDefaults: false
+				,	selectMessage: view.selectMessage
+				,	icons: view.wizard.application.getConfig('creditCardIcons')
+				});
+			} 
+		%>
+		<%= displayInRows(view.creditcards.models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
 	</div>
-</div>
 <% } %>
 
 <% if (view.creditcards.length >= 1 && !view_credit_card) { %>
 	<div id="creditcard-module-list-placeholder" class="creditcard-module-list-placeholder">
-		<p>
+		<!--<p>
 			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">
 				<%= _('Add New Credit Card').translate() %>
 			</a>
-		</p>
+		</p>-->
 		<%
 			var creditcardWrap = function (creditcard) {
 				return SC.macros.creditcard(creditcard, {

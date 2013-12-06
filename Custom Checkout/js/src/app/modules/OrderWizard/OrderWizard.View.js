@@ -141,7 +141,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		}
 
 	,	submitStep: function(e) { //only for Order Place button in the Order Summary
-		console.log('lalala');
+		//console.log('lalala');
 		//if(this.currentStep.wizard.currentStep==='billing'){
 			//console.log('lalala2');
 			//this.wizard.model.submit();

@@ -56,9 +56,6 @@
 		</div>
 	</div>
 	
-	
-	
-	
 	<% /* 
 	TODO: the next field should be shown/hidden depending on a feature in Setup Website > Shopping
 	registration has 2 fields: displaycompanyfield and showcompanyfield, not sure which to use 
@@ -90,7 +87,11 @@
 	
 	<div class="control-group">
 		<label class="control-label" for="<%= manage %>addr1">
-			<%= _('Address').translate() %>
+			<% if (address.isNew()) {%> 
+				<%= _('Address 1').translate() %>
+			<% } else { %>
+				<%= _('Address').translate() %>
+			<% } %>
 			<small>
 				<%= _('(required)').translate() %>
 			</small>
@@ -104,6 +105,8 @@
 	</div>
 
 	<div class="control-group control-group-big">
+		<label class="control-label" for="<%= manage %>addr2">
+		</label>
 		<div class="controls">
 			<input type="text" class="input-xlarge" id="<%= manage %>addr2" name="addr2" value="<%- address.get('addr2') %>" placeholder="<%= _('(optional)').translate() %>">
 		</div>
@@ -124,17 +127,6 @@
 		</div>
 	</div>
 
-	<div class="control-group <%= quantity_countries <= 1 ? 'hide' : '' %>">
-		<label class="control-label" for="<%= manage %>country">
-			<%= _('Country').translate() %>
-			<small>
-				<%= _('(required)').translate() %>
-			</small>
-		</label>
-		<div class="controls">
-			<%= SC.macros.countriesDropdown(countries, selected_country, manage) %>
-		</div>
-	</div>
 
 	<div class="control-group">
 		<%= SC.macros.statesDropdown({
@@ -159,7 +151,21 @@
 			<%= _('Example: 94117').translate() %>
 		</span>
 	</div>
-	
+
+ <!-- <%= quantity_countries <= 1 ? 'hide' : '' %> -->
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>country">
+			<%= _('Country').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<%= SC.macros.countriesDropdown(countries, selected_country, manage) %>
+		</div>
+	</div>
+
+<% if (address.isNew()) {%>		
 	<div class="control-group">
 		<label class="control-label" for="<%= manage %>phone">
 			<%= _('Phone Number').translate() %>
@@ -174,6 +180,7 @@
 			<%= _('Example: 555-123-1234').translate() %>
 		</span>
 	</div>
+<%}%>
 	
 	<div class="control-group">
 		<div class="controls">

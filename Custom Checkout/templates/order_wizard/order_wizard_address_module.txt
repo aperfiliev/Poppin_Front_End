@@ -4,34 +4,32 @@
 	,	address_book = view.getAddressesToShow();
 %>
 <% if (view.getTitle()) { %>
-	<h3 class="section-header">
+	<h3 class="section-header car-background">
 		<%= view.getTitle() %>
 	</h3>
+<% } else { %>
+<% if (view.addressId && !selected_address.isNew()) { %>
+	<h3 class="section-header car-background">
+		<%= _('SELECT YOUR SHIPPING ADDRESS').translate() %>
+	</h3>
+<%} else { %>
+	<h3 class="section-header car-background">
+		<%= _('ENTER YOUR SHIPPING ADDRESS').translate() %>
+	</h3>
+<% } %>
 <% } %>
 
-<% if (is_same_as_enabled) { %>
-	<label class="checkbox same-as-address">
-		<input
-			type="checkbox"
-			name="same-as-address"
-			data-action="same-as"
-			value="1"
-			<%= view.sameAs ? 'checked' : '' %>
-		>
-		<%= view.sameAsMessage %>
-	</label>
-<% } %>
+
 
 <% if ((is_same_as_enabled && view.sameAs) || view.addressId && !selected_address.isNew()) { %>
 
+	<div id="address-module-list-placeholder" class="address-module-list-placeholder">
+<!--		<p>
+			<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal">
+				<%= _('Add New Address').translate() %>
+			</a>
+		</p> -->
 
-	<% if (!is_same_as_enabled || !view.sameAs) { %>
-		<% if (!view.isGuest && !view.options.edit_url) { %>
-		
-		
-		
-		<div id="address-module-list-placeholder" class="address-module-list-placeholder">
-		
 		<%
 			// Wrap the address address macro to pass options in
 			var addressWrap = function (address) {
@@ -43,16 +41,15 @@
 			}
 		%>
 
-		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
+		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
 	</div>
-		
-		
-		<% } %>
-
-
-	<% } %>
 <% } else if (address_book.length && !view.isGuest) { %>
 	<div id="address-module-list-placeholder" class="address-module-list-placeholder">
+<!--		<p>
+			<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal">
+				<%= _('Add New Address').translate() %>
+			</a>
+		</p> -->
 
 		<%
 			// Wrap the address address macro to pass options in
@@ -65,7 +62,7 @@
 			}
 		%>
 
-		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
+		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
 	</div>
 <% } else { %>
 	<div id="address-module-form-placeholder" class="address-module-form-placeholder">

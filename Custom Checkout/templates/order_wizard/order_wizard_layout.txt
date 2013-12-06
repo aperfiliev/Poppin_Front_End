@@ -12,6 +12,7 @@ border-right: 1px solid rgb(153, 153, 153);"<%}%>>
 		<div class="span6">
 			<div id="wizard-content" class="wizard-content"></div>
 		</div>
+		
 <% if(position.toLast<= 0){ %>
 <style>
 .checkout-header {display: none;}
@@ -30,10 +31,11 @@ padding: 0px;
 }
 .upsell_options{
 margin: auto;
-width: 968px;
+margin-top: 0px;
+width: 965px;
 text-align: center;
 background-color: rgb(243, 243, 243);
-padding-bottom: 10px;
+border-bottom: 10px solid rgb(256, 256, 256);
 }
 #main .order-wizard-layout {
     margin-bottom: 0px;
@@ -42,9 +44,16 @@ padding-bottom: 10px;
 #main .lead-price {
  color: rgb(0, 0, 0);
 }
-.bgbutton-checkout{
+
+#main #order-summary .lead-price {
+ color: rgb(254, 107, 56);
+}
+
+
+#main .bgbutton-checkout, #main .bgbutton-checkout:hover {
 background-color: rgb(244, 122, 32);
 border-color: rgb(244, 122, 32);
+font-weight: 400;
 }
 </style>
 <div style="width: 667px;
@@ -54,6 +63,14 @@ margin-top: 4px;">
                 <div class="offset2 span4" id="order-summary" style="width: 300px; float: right;">
 		</div>
 </div>
+<script type="text/javascript">
+			jQuery('.upsell_options').clone().show().appendTo('.order-wizard-layout');
+			jQuery('.upsell_options').style("margin-top:0px");
+		</script>
+<%} else {%>
+		<script type="text/javascript">
+			jQuery('.upsell_options').clone().show().appendTo('.wizard-content');
+		</script>
 <%}%>
 
 	</td>

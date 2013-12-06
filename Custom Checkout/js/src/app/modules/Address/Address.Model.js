@@ -38,7 +38,7 @@ define('Address.Model', function ()
 		,	state: { fn: _.validateState }
 		,	city: { required: true, msg: _('City is required').translate() }
 		,	zip: { required: true, msg: _('Zip Code is required').translate() }
-		,	phone: { required:true, fn: _.validatePhone }
+		//,	phone: { required:true, fn: _.validatePhone }
 		}
 	
 	,	getFormattedAddress: function ()

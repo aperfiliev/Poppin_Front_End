@@ -3,28 +3,40 @@
 		<%= view.getTitle() %>
 	</h3>
 <% } %>
-<p class="collapsible collapsed section-header"  data-toggle="collapse" data-target="#gift-certificate-form">
-	<a href="#">
+<!-- <p class="collapsible collapsed section-header"  data-toggle="collapse" data-target="#gift-certificate-form" style="padding-bottom: 10px;margin: 3px;"> -->
+<p class="section-header" style="padding-bottom: 10px;margin: 3px;">
+	<a href="#" style="font-size: 14px;color: #adadad;font-weight: bold;text-transform:none">
 		<% if (view.giftCertificates && view.giftCertificates.length) { %>
 			<%=_('Add other Gift Certificate').translate() %>
 		<% } else { %>
 			<%=_('Use a gift card or a gift certificate').translate() %>
 		<% } %>
+		<!-- 
 		<i class="icon-plus-sign pull-right"></i>
 		<i class="icon-minus-sign pull-right"></i>
+		-->
 	</a>
 </p>
 <div data-type="alert-placeholder-gif-certificate"></div>
-<form id="gift-certificate-form" class="collapse gift-certificate-form">
+<form id="gift-certificate-form" class="gift-certificate-form">
+<div style="width:100%;border-top-width: 1px;border-top-style: dotted;height: auto;"></div>
 	<fieldset>
 		<div class="control-group">
-			<label class="strong">
+			<label class="strong" style="width:100%; font-size:14px; font-weight:normal">
 				<%= _('Enter your promotional code or coupon code below. Limit one per order please.').translate() %>
 			</label>
 			<div class="controls">
-				<input type="text" class="input-medium" name="code">
+				<input type="text" class="input-medium" name="code" style="width:145px;">
 
-				<button type="submit" class="btn">
+				<button type="submit" class="btn" style="background: #35c6f5;
+					border-color: #35c6f5;
+					border-radius: 18.5px;
+					border-style: solid;
+					border-width: 1px;
+					color: rgb(255, 255, 255);
+					cursor: pointer;
+					width: 70px;
+					text-transform: uppercase;">
 					<%= _('Apply').translate() %>
 				</button>
 			</div>

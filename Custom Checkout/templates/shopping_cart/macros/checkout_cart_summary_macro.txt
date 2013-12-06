@@ -81,32 +81,18 @@
 		</div>
 
 		<% if (is_promocode_valid || summary.giftcertapplied) { %>
-			<% if (is_promocode_valid) { %>
+			<% if (is_promocode_valid && summary.discounttotal) { %>
 			<div class="cart-summary-promocode-applied">
 				<p>
 					<strong class="lead-price pull-right">
-						<%= summary.discountrate_formatted %>
+						-<%= summary.discounttotal_formatted %>
 					</strong>
-					<%= _('Promo Code Applied').translate() %>
-				</p>
-				<p class="text-success">
-					#<%= promocode.code %> - <%= _('Instant Rebate').translate() %>
-					<% if (options.stepPosition.toLast > 0) { %>
+					<%= _('Promo Code').translate() %> #<%= promocode.code %>
+										<% if (options.stepPosition.toLast > 0) { %>
 						<a href="#" data-action="remove-promocode">
 							<i class="icon-remove"></i>
 						</a>
 					<% } %>
-				</p>
-			</div>
-			<% } %>
-
-			<% if (summary.discounttotal) { %>
-			<div class="cart-summary-discount-applied">
-				<p>
-					<span class="pull-right">
-						<%= summary.discounttotal_formatted %>
-					</span>
-					<%= _('Discount Total').translate() %>
 				</p>
 			</div>
 			<% } %>

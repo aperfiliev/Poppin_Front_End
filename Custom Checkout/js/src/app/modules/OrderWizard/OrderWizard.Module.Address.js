@@ -21,7 +21,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 	,	events: {
 			'click [data-action="submit"]': 'submit'
-		,	'click input[name="selectAddress"]': 'selectAddress'
+		,	'click [data-action="select"]': 'selectAddress'
 		,	'click [data-action="change-address"]': 'changeAddress'
 		,	'change [data-action="same-as"]': 'markSameAs'
 		,	'change form': 'changeForm'
@@ -31,7 +31,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 		// module.render
 		// -------------
-	,	render: function (not_trigger_ready, e)
+	,	render: function (not_trigger_ready)
 		{
 			var profile = this.wizard.options.profile;
 
@@ -64,21 +64,15 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 			var is_address_new = this.address.isNew()
 			,	show_address_form = is_address_new || (this.isGuest && !this.addressId);
-			
+
 			// The following is used to match the logic on file order_wizard_address_module.txt
 			// when the conditions apply, only the address details are shown
 			// that means there are no form or list views required
-//			if ((this.isSameAsEnabled && this.sameAs) || this.addressId && !is_address_new)
-//			{
-//				null;
-//			}
-//			if(/**this.isSameAsEnabled && this.sameAs &&*/ typeof(e)!=='undefined'){
-//				
-//				jQuery(e.target).attr('checked', 'checked');
-//				jQuery(e.target).on('click',function(){return true;});
-//				alert(e.target);
-//			}
-			if (this.getAddressesToShow().length && !this.isGuest)
+	/**		if ((this.isSameAsEnabled && this.sameAs) || this.addressId && !is_address_new)
+			{
+				null;
+			}
+			else*/ if (this.getAddressesToShow().length && !this.isGuest)
 			{
 				this.addressListView = new AddressViews.List({
 					application: this.wizard.application
@@ -118,7 +112,6 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 					});
 				}
 			}
-			
 
 			// TODO: Add comments
 			if (!show_address_form && !this.addressId)
@@ -234,12 +227,13 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 	,	selectAddress: function (e)
 		{
 			jQuery('.wizard-content .alert-error').hide(); 
+
 			// Grabs the address id and sets it to the model
 			// on the position in which our sub class is manageing (billaddress or shipaddress)
 			this.setAddress(jQuery(e.target).data('id').toString());
-			//console.log(e.target);
+
 			// re render so if there is changes to be shown they are represented in the view
-			//this.render(undefined, e);
+			this.render();              
 
 			// As we already set the address, we let the step know that we are ready
 			this.trigger('ready', true);
@@ -350,10 +344,10 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 			if (selected_address)
 			{
-				if (selected_address.get('isvalid') === 'T')
-				{
+//				if (selected_address.get('isvalid') === 'T')
+//				{
 					return jQuery.Deferred().resolve();
-				}
+//				}
 
 				return jQuery.Deferred().reject(this.invalidAddressErrorMessage);
 			}

@@ -340,6 +340,7 @@ define('Wizard.Step', function ()
 			});
 
 			var self = this;
+			
 			jQuery.when.apply(jQuery, promises).then(
 				// Success Callback
 				function ()
@@ -353,6 +354,7 @@ define('Wizard.Step', function ()
 						// Other ways we re render showing errors
 					,	function (error)
 						{
+						//console.log("2222 "+error);
 							self.wizard.manageError(error,self);
 							e && self.enableNavButtons();
 						}
@@ -364,9 +366,11 @@ define('Wizard.Step', function ()
 				// Error Callback
 			,	function (error)
 				{
+				//if(error.errorMessage.indexOf('address is invalid')>-1 /**|| error.errorMessage.indexOf('address is incomplete')>-1*/){self.wizard.goToNextStep();}else{
+					console.log(error.errorMessage);
 					self.wizard.manageError(error,self);
-					e && self.enableNavButtons();
-				}
+					e && self.enableNavButtons();}
+				//}
 			);
 		}
 
