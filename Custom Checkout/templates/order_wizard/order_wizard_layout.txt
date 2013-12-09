@@ -1,4 +1,12 @@
 <% var position = view.wizard.getStepPosition() %>
+<% if((view.wizard.getCurrentStep().wizard.currentStep == 'shipping/address') || (view.wizard.getCurrentStep().wizard.currentStep == 'shipping/method')) {%>
+<style>
+.addressform-phonenumber {
+display: none;
+}
+</style>
+<%}%>
+
 <div class="row-fluid <%= position.toLast === 1 ? 'review-step' : '' %>"  <% if(position.toLast<= 0){ %>style="background: rgb(243, 243, 243);"<%}%>>
 	<table cellpadding="0" cellspacing="0" border="0" width="100%" <% if(position.toLast<= 0){ %>style="width: 677px; margin: auto;" <%}%>>
 	<tr>

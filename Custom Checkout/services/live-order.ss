@@ -32,11 +32,13 @@ function service (request)
 				break;
 
 				case 'POST':
+					//nlapiLogExection('DEBUG','received data:',JSON.string(data));
 					// Updates the order with the passed in data
 					LiveOrder.update(data);
 					
 					// Gets the status 
 					var order_info = LiveOrder.get();
+					//nlapiLogExection('DEBUG','LievOrder.get():',order_info);
 					
 					// Finally Submits the order 
 					order_info.confirmation = LiveOrder.submit();

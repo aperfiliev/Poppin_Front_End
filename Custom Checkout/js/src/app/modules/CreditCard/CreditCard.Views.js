@@ -17,7 +17,11 @@ define('CreditCard.Views', function ()
 		,	'change form:has([data-action="reset"])': 'toggleReset'
 		,	'click [data-action="reset"]': 'resetForm'
 		,	'change form [name="ccnumber"]': 'setPaymethodId'
+		,	'click [name="whatisthis"]': 'showCVCInfo'
 		}
+	,	showCVCInfo: function (){
+		jQuery('#whatisthisinfo').show();
+	}
 		
 	,	initialize: function ()
 		{

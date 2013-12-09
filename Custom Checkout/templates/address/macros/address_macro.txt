@@ -14,6 +14,7 @@
 
 %>
 <article class="address">
+	<input type="radio" data-action="select" data-id="<%- address.get('internalid') %>" <%=address.get('internalid') == options.selectedAddress ? 'checked="checked"' : ''%>/>
 	<address class="">	
 		<span class="address-line address-firstfullname">
 			<%= address.get('firstfullname') %> <%= address.get('lastfullname') %>

@@ -37,6 +37,7 @@
 					showSelect: true
 				,	selectMessage: view.selectMessage
 				,	hideDefaults: true
+				,	selectedAddress: view.addressId
 				});
 			}
 		%>

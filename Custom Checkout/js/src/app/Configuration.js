@@ -120,6 +120,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 							}
 						}*/
 					,	url: 'shipping/address'
+,	continueButtonLabel: _('Next Step').translate()
 					,	modules: [
 							['OrderWizard.Module.Address.Shipping']
 						]
@@ -129,9 +130,11 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					url: 'shipping/method'
 					,	hideBackButton: true
 					,	hideSummary: screen_width < 768 //hide summary on phone
+,	continueButtonLabel: _('Next Step').translate()
 					,	modules: [
 							['OrderWizard.Module.Address.Shipping', {title: _('SELECT YOUR SHIPPING ADDRESS').translate()}]
 						,	'OrderWizard.Module.Shipmethod'
+						,	['OrderWizard.Module.CardMessage',{title:_('IS THIS ORDER A GIFT?').translate()}]
 						]
 					}
 				]
@@ -150,9 +153,9 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 							return this.wizard.model.submit();
 						}
 					,	modules: [
-['OrderWizard.Module.Address.Billing', {enable_same_as: true, title: _('Select Your Billing Address').translate()}], 
-'OrderWizard.Module.PaymentMethod.Selector',
-'OrderWizard.Module.PaymentMethod.GiftCertificates'
+						['OrderWizard.Module.Address.Billing', {enable_same_as: true, title: _('Select Your Billing Address').translate()}], 
+						'OrderWizard.Module.PaymentMethod.Selector',
+						'OrderWizard.Module.PaymentMethod.GiftCertificates'
 					 	          /*
 							'OrderWizard.Module.PaymentMethod.GiftCertificates'
 						,	'OrderWizard.Module.PaymentMethod.Selector'

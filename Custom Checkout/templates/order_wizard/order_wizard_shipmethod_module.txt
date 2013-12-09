@@ -22,6 +22,7 @@
 		<% } else { %>
 			<% shipping_methods.each(function (shipmethod) { %>
 				<% is_active = order_delivery_method === shipmethod.get('internalid') %>
+
 				<label class="delivery-option <%= is_active ? 'active' : '' %>">
 					<input
 						type="radio"

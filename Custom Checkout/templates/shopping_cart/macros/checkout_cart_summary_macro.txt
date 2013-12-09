@@ -1,4 +1,5 @@
 <% registerMacro('checkoutCartSummary', function (options) { %>
+
 <%
 	var cart = options.cart
 	,	summary = cart.get('summary')
@@ -10,7 +11,7 @@
 <div class="checkout-cart-summary">
 <div class="btncheckout-cart-summary-macro">
 		<button class="bgbutton-checkout" data-action="submit-step">
-			Next Step
+			<%= options.continueButtonLabel %>
 		</button>
 </div>
 
@@ -187,7 +188,7 @@
 
 <div class="btncheckout-cart-summary-macro">
 		<button class="bgbutton-checkout" data-action="submit-step">
-			Next Step
+			<%= options.continueButtonLabel %>
 		</button>
 </div>
 </div>

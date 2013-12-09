@@ -8906,6 +8906,13 @@ display: block;
 margin-left: 35px;
 margin-right: 35px;
 }
+.orderwizard-module-cardmessage{
+float:left;
+width: 233px;
+display: block;
+margin-left: 35px;
+margin-right: 35px;
+}
 
 .car-background{
 background: url("../../img/img_car.jpg") no-repeat scroll 0% 35% transparent;
