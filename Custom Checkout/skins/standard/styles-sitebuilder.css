@@ -374,7 +374,7 @@ gift#main
 	min-height: 28px;
 	moz-box-sizing: border-box;
 	webkit-box-sizing: border-box;
-	width: 100%;
+	//width: 100%;
 }
 #main .row-fluid [class*="span"]
 {
@@ -414,11 +414,7 @@ gift#main
 	//width: 57.39361702127659%;
 	//width: 57.44680851063829%;
 }
-#main .row-fluid .span6
-{
-	//width: 48.88297872340425%;
-	width: 677px;
-}
+
 #main .row-fluid .span5
 {
 	//width: 40.37234042553192%;
@@ -6108,11 +6104,6 @@ width: 150px;
 		width: 57.12912895262725%;
 		width: 57.18232044198895%;
 	}
-	#main .row-fluid .span6
-	{
-		width: 48.56559304102504%;
-		width: 48.61878453038674%;
-	}
 	#main .row-fluid .span5
 	{
 		width: 40.00205712942283%;
@@ -8430,7 +8421,7 @@ font-weight: bold;
 	display: inline;
 	display: inline-block;
 	zoom: 1;
-        width: 48%;
+        width: 336px;
 }
 #main .wizard-step-link a
 {
@@ -8454,7 +8445,7 @@ font-weight: bold;
 {
 	#main .wizard-step-link a
 	{
-		padding: 5px;
+		//padding: 5px;
 	}
 	#main .wizard-step-link a .step-index
 	{
@@ -8512,6 +8503,7 @@ border-bottom: 1px solid rgb(153, 153, 153);
 	{
 		margin-bottom: 18px;
 		padding: 10px;
+                width: 677px;
 	}
 }
 #main .orderwizard-module
@@ -8815,7 +8807,7 @@ padding-left: 19px;
 .wizard-step-content {
         display: table;
         table-layout: fixed;
-        width: 100%;
+        width: 677px;
 }
 
 .orderwizard-module-registeremail {
@@ -8859,14 +8851,14 @@ width: 100%;
 #main .orderwizard-module-address-billing {
 height: 100%;
 display: block;
-width: 268px;
+width: 303px;
 overflow: hidden;
 float: left;
 padding-bottom: 5500px;
 margin-bottom: -5500px;
 border-right: 1px dotted rgb(153, 153, 153);
-padding-left: 35px;
-padding-right: 35px;
+//padding-left: 35px;
+margin-left: 35px;
 }
 
 .orderwizard-module-paymentmethod-selector{
@@ -8874,7 +8866,7 @@ float: left;
 width: 268px;
 display: block;
 padding-left: 35px;
-padding-right: 35px;
+//padding-right: 35px;
 }
 
 .orderwizard-module-paymentmethod-giftcertificates{
@@ -9007,6 +8999,11 @@ text-align:right
 #creditcard-module-form-placeholder .control-label {
 text-align:right;
 width: 100px;
+}
+
+#main .credit-card-security-number .control-label{
+text-align:right;
+width: 30px;
 }
 
 #main .credit-card-selected .control-label{

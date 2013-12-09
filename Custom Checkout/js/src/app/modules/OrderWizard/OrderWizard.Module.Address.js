@@ -52,6 +52,12 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 			this.evaluateSameAs();
 			this.address = this.getSelectedAddress();
+			
+			if(this.address.isNew()){
+				this.address.set("firstfullname",profile.get("firstname"));
+				this.address.set("lastfullname",profile.get("lastname"));
+				this.address.set("company",profile.get("companyname"));
+			}
 
 			// Add event listeners to allow special flows
 			this.eventHandlersOn();
@@ -344,10 +350,10 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 			if (selected_address)
 			{
-//				if (selected_address.get('isvalid') === 'T')
-//				{
+				if (selected_address.get('isvalid') === 'T')
+				{
 					return jQuery.Deferred().resolve();
-//				}
+				}
 
 				return jQuery.Deferred().reject(this.invalidAddressErrorMessage);
 			}

@@ -188,9 +188,10 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 			this.setCreditCard({
 				id: jQuery(e.target).data('id')
 			});
-
+			
 			// As we alreay already set the credit card, we let the step know that we are ready
 			this.trigger('ready', !this.requireccsecuritycode);
+			console.log(this.requireccsecuritycode);
 		}
 
 	,	setSecurityNumber: function ()

@@ -73,7 +73,7 @@ margin-top: 4px;">
 </div>
 <script type="text/javascript">
 			jQuery('.upsell_options').clone().show().appendTo('.order-wizard-layout');
-			jQuery('.upsell_options').style("margin-top:0px");
+			//jQuery('.upsell_options').style("margin-top:0px");
 		</script>
 <%} else {%>
 		<script type="text/javascript">

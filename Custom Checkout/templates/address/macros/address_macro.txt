@@ -83,11 +83,12 @@
 
 	<% if (!options.hideActions) { %>
 	<p class="actions">
-<% if (options.showSelect) { %>
+<!--<% if (options.showSelect) { %>
 		<button class="btn btn-link" data-action="select" data-id="<%- address.get('internalid') %>">
 			<%= options.selectMessage || _('Select this address').translate() %>
 		</button>
-	<% } %>		<a class="btn btn-link" href="/addressbook/<%- address.get('internalid') %>" data-toggle="show-in-modal">
+	<% } %>-->	
+		<a class="btn btn-link" href="/addressbook/<%- address.get('internalid') %>" data-toggle="show-in-modal">
 			<%= _('Edit').translate() %>
 		</a>
 

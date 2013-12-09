@@ -6,6 +6,8 @@
 %>
 </style>
 <article class="creditcard">
+
+	<input type="radio" data-action="select" data-id="<%- creditcard.get('internalid') %>" <%=creditcard.get('internalid') == options.selectedCreditcard ? 'checked="checked"' : ''%>/>
 	<% if (options.showSecurityCodeForm) { %>
 	<div class="row-fluid">
 		<div class="span6">
@@ -31,7 +33,7 @@
 				<% } %>
 			</p>
 			<% } %>
-		<% if (options.showSecurityCodeForm) { %>
+		<% console.log(options.showSecurityCodeForm); if (options.showSecurityCodeForm) { %>
 		</div>
 		<div class="span6">
 			<%= SC.macros.creditcardSecurityNumberForm({
