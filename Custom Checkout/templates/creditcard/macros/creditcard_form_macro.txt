@@ -31,7 +31,7 @@
 	<div class="control-group">
 		<label class="control-label">
 		</label>
-		<div class="controls">
+		<div class="controls" style="padding-bottom: 10px;">
 			<%
 				var icons = application.getConfig('creditCardIcons')
 				,	selected_payment_method = creditcard.get('paymentmethod')
