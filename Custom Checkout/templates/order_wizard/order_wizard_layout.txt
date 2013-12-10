@@ -63,6 +63,9 @@ background-color: rgb(244, 122, 32);
 border-color: rgb(244, 122, 32);
 font-weight: 400;
 }
+.btncheckout-cart-summary-macro {
+ display:none;
+}
 </style>
 <div style="width: 667px;
 float: left;
