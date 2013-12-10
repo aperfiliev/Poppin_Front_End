@@ -109,10 +109,12 @@ function service(request,response)
 					retobj.header.status.message = "<p>Unfortunately we don't recognize that </p><p>promo code. Please try again.</p>";
 					retobj.header.status.event = "Promo not recognized";
 					retobj.header.status.description = "";
+					break;
 				case "This coupon does not apply to items in cart.":
-					retobj.header.status.message = "<p>This coupon does not apply to </p><p>items in cart.</p>";
+					retobj.header.status.message = "<p>Coupon code is invalid or unrecognized</p>";
 					retobj.header.status.event = "Promo not applied";
 					retobj.header.status.description = "";
+					break;
 				default:
 					if(error.getDetails().indexOf("minimum order amount") !== -1)
 					{

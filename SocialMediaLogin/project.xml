@@ -13,6 +13,9 @@
       <file name="B-tech.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="B-tech.ssp.css" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="B-tech.ssp.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="BFF.css" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="BFF.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="BFF.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="C-fashion.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="C-fashion.ssp.css" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="C-fashion.ssp.js" bundleable="false" hideInBundle="false" isOnline="true"/>
@@ -22,6 +25,9 @@
       <file name="b2b.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="b2b.ssp.css" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="b2b.ssp.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="captiva.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="captiva.ssp.css" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="captiva.ssp.js" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="fashion.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="fashion.ssp.css" bundleable="false" hideInBundle="false" isOnline="true"/>
       <file name="fashion.ssp.js" bundleable="false" hideInBundle="false" isOnline="true"/>
