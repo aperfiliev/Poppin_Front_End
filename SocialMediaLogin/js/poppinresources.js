@@ -18,6 +18,7 @@ var poppinres = {
 	lastnamevalidation:"<p>Hey, Professor Imistypedmyname,</p><p>want to try again?</p>",
 	passwordvalidation:"<p>Oops. We want to keep your info safe and</p><p>require your password to be a minimum of</p><p>6 letters or numbers (no special characters).</p>",
 	howdyouhearvalidation:"<p>Let us know how you heard about </p><p>Poppin, select a value from the </p><p>drop down</p>",
+	industryvalidation:"<p>Let us know what industry you are </p><p>working in, select a value from the </p><p>drop down</p>",
 	emailempty:"<p>Please input email address.</p>",
 	emailinvalid: " <p>Please enter a valid email address.</p>",
 	passwordempty: "<p>You must provide a login password.</p>",
