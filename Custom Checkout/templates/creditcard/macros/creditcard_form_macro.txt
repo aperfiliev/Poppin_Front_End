@@ -5,7 +5,7 @@
 	
 	<div class="control-group">
 		<label class="control-label" for="ccname">
-			<%= _('Name').translate() %>
+			<%= _('Name on Card').translate() %>
 			<small>
 				<%= _('(required)').translate() %>
 			</small>
@@ -18,7 +18,7 @@
 
 	<div class="control-group">
 		<label class="control-label" for="ccnumber">
-			<%= _('Credit Number').translate() %>
+			<%= _('Card Number').translate() %>
 			<small>
 				<%= _('(required)').translate() %>
 			</small>
