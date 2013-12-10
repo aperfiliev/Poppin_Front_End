@@ -5,13 +5,14 @@
 	,	icons = options.icons;
 %>
 </style>
-<article class="creditcard">
+<article class="creditcard" >
 
-	<input type="radio" data-action="select" data-id="<%- creditcard.get('internalid') %>" <%=creditcard.get('internalid') == options.selectedCreditcard ? 'checked="checked"' : ''%>/>
+	
 	<% if (options.showSecurityCodeForm) { %>
 	<div class="row-fluid">
 		<div class="span6">
 	<% } %>
+			<input type="radio" style="float:left; margin-right:5px;" data-action="select" data-id="<%- creditcard.get('internalid') %>" <%=creditcard.get('internalid') == options.selectedCreditcard ? 'checked="checked"' : ''%>/>
 			<div style="float:left;">
 			<% if (payment_name in icons) { %>
 				<img class="credit-card-icon" src="<%- icons[payment_name] %>" alt="<%- payment_name %>">
@@ -63,4 +64,10 @@
 		</p>
 	<% } %>
 </article>
+			<!--	<div style="width:100%; font-size:14px; font-weight:normal; display: none;" id="whatisthisinfo">
+				<img src="img/explain_cvc.png" alt="explain"><br/>
+				For security purposes, we require the Card Security Code on your credit card. 
+				For most credit cards, enter the three-digit number that follows your account number on the back of your card. 
+				If you have an American Express card, enter the four-digit number printed above your account number on the front of your card.
+			</div>-->
 <% }) %>

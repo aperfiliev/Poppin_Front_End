@@ -145,6 +145,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					{
 					//	name: _('Choose Payment Method').translate(),
 					url: 'billing'
+					,	hideBackButton: false
 					,	hideSummary: screen_width < 768 //hide summary on phone
 					,	bottomMessage: _('You will have an opportunity to review your order on the next step.').translate()
 					,	continueButtonLabel: _('Place Order').translate()

@@ -16,20 +16,21 @@
 
 <div id="wizard-step-content" class="wizard-step-content" style="overflow: hidden;"></div>
 
-<div class="step-navigation-buttons form-actions" style="float: right; margin-right: 20px; clear: both;">
+<div class="step-navigation-buttons form-actions" style="float: right; margin-right: 20px; clear: both; width:100%">
+	<% if (!view.hideBackButton) { %>
+		<button class="bgbutton-checkout" data-action="previous-step" style="">
+			<%= _('Back').translate() %>
+		</button>
+	<% }  %>
 	<% if (!view.hideContinueButton) { %>
 <!--
 		<button class="btn btn-primary btn-large btn-continue<%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step">
 -->
-		<button class="bgbutton-checkout <%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step">
+		<button class="bgbutton-checkout <%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step" style="float:right;">
 			Next Step
 		</button>
 	<% } %>		
-	<% if (!view.hideBackButton) { %>
-		<button class="btn btn-large btn-back" data-action="previous-step" style="display: none;">
-			<%= _('Back').translate() %>
-		</button>
-	<% }  %>
+	
 </div>
 
 <% if (view.bottomMessage) { %>

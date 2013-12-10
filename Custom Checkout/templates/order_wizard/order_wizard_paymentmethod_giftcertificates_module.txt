@@ -49,11 +49,12 @@
 
 <% if (view.giftCertificates && view.giftCertificates.length) { %>
 
-<table class="table">
+<table class="table" style="font-size: 11px; color: grey;">
 <%  _.each(view.giftCertificates, function (giftCertificate) { %>
 	<% var giftcertificate = giftCertificate.get('giftcertificate') %>
 	
 		<button data-action="remove" data-id="<%- giftcertificate.code %>" class="btn" style="background: #35c6f5;
+			display:none;
 			border-color: #35c6f5;
 			border-radius: 18.5px;
 			border-style: solid;

@@ -57,7 +57,7 @@ font-weight: bold;">
 <tr style="height: 40px;
 font-weight: 500;">
 <th align="center" width="125px">Item</td>
-<th align="center" width="220px">Decsription</td>
+<th align="left" width="220px">Decsription</td>
 <th align="center" width="100px">Price</td>
 <th align="center" width="100px">Qty</td>
 <th align="center" width="100px">Total</td>

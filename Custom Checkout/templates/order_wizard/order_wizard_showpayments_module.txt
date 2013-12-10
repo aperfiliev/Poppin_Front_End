@@ -28,7 +28,7 @@
 				<% _.each(paymentmethods, function (paymentmethod) { %>
 					<%= SC.macros.formatPaymentMethod(paymentmethod, view.wizard.application.getConfig('creditCardIcons')) %>
 				<% }); %>
-
+					
 				<% if (giftcertificates.length) { %>
 					<br>
 					<b><%= _('Gift Certificates').translate() %></b><br>

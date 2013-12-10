@@ -81,6 +81,31 @@
 			</p>
 		</div>
 
+
+		<div class="cart-summary-shipping-cost-applied">
+			<p>
+				<span class="pull-right cart-summary-shipping-cost-formatted">
+					<%= summary.shippingcost_formatted == "$0.00" ? '-' : summary.shippingcost_formatted %>
+				</span>
+				<%= _('Shipping').translate() %>
+			</p>
+
+			<% if (summary.handlingcost) { %>
+			<p>
+				<span class="pull-right cart-summary-handling-cost-formatted">
+					<%= summary.handlingcost_formatted %>
+				</span>
+				<%= _('Handling').translate() %>
+			</p>
+			<% } %>
+			<p>
+				<span class="pull-right cart-summary-tax-total-formatted">
+					<%= summary.taxtotal_formatted=="$0.00" ? '-' : summary.taxtotal_formatted %>
+				</span>
+				<%= _('Tax').translate() %>
+			</p>
+		</div>
+
 		<% if (is_promocode_valid || summary.giftcertapplied) { %>
 			<% if (is_promocode_valid && summary.discounttotal) { %>
 			<div class="cart-summary-promocode-applied">
@@ -116,31 +141,6 @@
 				</div>
 			<% } %>
 		<% } %>
-
-		<div class="cart-summary-shipping-cost-applied">
-			<p>
-				<span class="pull-right cart-summary-shipping-cost-formatted">
-					<%= summary.shippingcost_formatted == "$0.00" ? '-' : summary.shippingcost_formatted %>
-				</span>
-				<%= _('Shipping').translate() %>
-			</p>
-
-			<% if (summary.handlingcost) { %>
-			<p>
-				<span class="pull-right cart-summary-handling-cost-formatted">
-					<%= summary.handlingcost_formatted %>
-				</span>
-				<%= _('Handling').translate() %>
-			</p>
-			<% } %>
-			<p>
-				<span class="pull-right cart-summary-tax-total-formatted">
-					<%= summary.taxtotal_formatted=="$0.00" ? '-' : summary.taxtotal_formatted %>
-				</span>
-				<%= _('Tax').translate() %>
-			</p>
-		</div>
-
 		<div class="checkout-cart-summary-macro-total">
 			<p class="strong">
 				<span class="pull-right cart-summary-total-formatted">

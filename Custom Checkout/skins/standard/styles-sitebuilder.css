@@ -8943,7 +8943,7 @@ padding-bottom: 10px;
 color: rgb(243, 122, 49);
 font-family: 'OmnesMediumRegular';
 font-size: 14px;
-font-weight: 400;
+font-weight: 600;
 margin: 0px;
 padding-bottom: 0px;
 text-align: left;
@@ -9001,7 +9001,7 @@ text-align:right;
 width: 100px;
 }
 
-#main .credit-card-security-number .control-label{
+#main .creditcard .credit-card-security-number .control-label{
 text-align:right;
 width: 30px;
 }
@@ -9042,4 +9042,7 @@ margin: auto;
 width: 968px; 
 margin-top: 60px;
 display:none
+}
+#cardmessageblock textarea {
+width: 280px;
 }

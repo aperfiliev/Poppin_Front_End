@@ -21,6 +21,7 @@
 			} 
 		%>
 		<%= displayInRows(view.creditcards.models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
+		
 	</div>
 <% } %>
 
@@ -61,3 +62,10 @@
 		</form>
 	</div>
 <% } %>
+
+					<div style="width:100%; font-size:14px; font-weight:normal; display: none;" id="whatisthisinfo">
+				<img src="img/explain_cvc.png" alt="explain"><br/>
+				For security purposes, we require the Card Security Code on your credit card. 
+				For most credit cards, enter the three-digit number that follows your account number on the back of your card. 
+				If you have an American Express card, enter the four-digit number printed above your account number on the front of your card.
+			</div>
