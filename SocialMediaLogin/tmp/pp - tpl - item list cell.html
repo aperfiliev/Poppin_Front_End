@@ -6,7 +6,9 @@
 		<p class="short-desc"><%=getCurrentAttribute('item','storedescription')%></p>
 		<h2><a href="<%=getCurrentAttribute('item','storeurl')%>" title="<%=getCurrentAttribute('item','storedisplayname2')%>"><%=getCurrentAttribute('item','storedisplayname2')%></a></h2>
 		<p class="price"><%=getCurrentAttribute('item','salespricehtml')%></p>
-		<div class="div__addtocart"><div class="div__addtocart1"><a href="/app/site/query/additemtocart.nl?c=3363929&n=1&buyid=<%=getCurrentAttribute('item','internalId')%>" onClick="_gaq.push(['_trackEvent', 'Add Item To Cart On The Category Page']);">ADD TO CART</a></div></div>
+		<div class="div__addtocart"><div class="div__addtocart1">
+		<a href="/app/site/query/additemtocart.nl?c=3363929&n=1&buyid=<%=getCurrentAttribute('item','internalId')%>" onClick="_gaq.push(['_trackEvent', 'Add Item To Cart On The Category Page']);">ADD TO CART</a>
+		</div></div>
 	</div>
 	<div class="itemcellinfo" title="<%=getCurrentAttribute('item','internalid')%>" style="display:none">
 		<div class="custitem3"><%=getCurrentAttribute('item','custitem3', '')%></div>
@@ -19,5 +21,11 @@
 		<div class="type"><%=getCurrentAttribute('item','type')%></div>
 		<div class="salesprice"><%=getCurrentAttribute('item','salespricehtml')%></div>
 		<div class="buyid"><%=getCurrentAttribute('item','internalId')%></div>
+		<div class="itemtype"><%=getCurrentAttribute('item','itemtype')%></div>
+		<div class="isdropshipitem"><%=getCurrentAttribute('item','isdropshipitem')%></div>
+		<div class="onlinematrixpricerange"><%=getCurrentAttribute('item','onlinematrixpricerange')%></div>
+		<div class="quantityavailable"><%=getCurrentAttribute('item','quantityavailable')%></div>
+		<div class="flipimage"><%=getCurrentAttribute('item','custitem_category_page_flip_image')%></div>
+		<!-- <div class="addtocartoptionshtml"><%=getCurrentAttribute('item','addtocartoptionshtml')%></div> -->
 	</div>
 </td>

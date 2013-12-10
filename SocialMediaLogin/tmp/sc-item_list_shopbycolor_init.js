@@ -7,6 +7,36 @@ window.GPItemList = new GPItemList({
 				this.setAttribute("src", "/site/pp-templates/thumb.gif")
 			}
 		});
+		$j(".div__addtocart", b).each(function() {
+			if($j(this).find(".onlinematrixpricerange").val() !== ''){
+				// Matrix
+				$j(this).find("a").css("display", "none");
+				$j(this).parent().css("padding-bottom", "10px");
+			}else if($j(this).find(".isdropshipitem").val() === "Yes"){
+				// Non-inventory
+			}else if($j(this).find(".itemtype").val() === 'Kit') {
+				// Kits
+				if($j(this).find(".quantityavailable").val() === "0"){
+					$j(this).find("a").css("display", "none");
+					$j(this).find("a").after('<p>Coming Soon!</p>');
+				}
+			}else{
+				// Inventory
+				if($j(this).find(".quantityavailable").val() === "0"){
+					$j(this).find("a").css("display", "none");
+					$j(this).find("a").after('<p>Coming Soon!</p>');
+				}
+			}
+		});
+		$j(".thumb", b).each(function() {
+			var flipimage = $j(this).find(".flipimage").val();
+			var href = $j(this).find("a").attr("href");
+			if(flipimage !== ""){
+				var mainimage = $j(this).find("img").attr("src");
+				$j(this).addClass("flipper");
+				$j(this).html('<div class="face"><a href="'+href+'"><img src="'+mainimage+'"></a></div><div class="back"><a href="'+href+'"><img src="'+flipimage+'"></a></div>');
+			}
+		});
 		var a = $j(".pagination");
 		if (!a.html().length) {
 			a.prev().hide()
@@ -45,7 +75,7 @@ window.GPItemList = new GPItemList({
 		});
 	},
 	enableSortOrderSwitcher : false,
-	itemListCellTemplate : '<div class="item-cell"><p class="thumb"><a href="/s.nl/it.A/id.{{id}}/.f"><img src="{{thumbnailurl}}" alt="{{displayname}}" /></a></p><p class="short-desc">{{storedescription}}</p><h2><a href="/s.nl/it.A/id.{{id}}/.f">{{displayname}}</a></h2><p class="price">${{salesprice}}</p><div class="div__addtocart"><div class="div__addtocart1"><a href="/app/site/query/additemtocart.nl?c=3363929&n=1&buyid={{buyid}}" onClick="_gaq.push([' + "'_trackEvent', 'Shop By Color', 'AddToCart', '{{displayname}}'" + ']);">ADD TO CART</a></div></div></div>',
+	itemListCellTemplate : '<div class="item-cell"><p class="thumb"><input type="hidden" class="flipimage" value="{{flipimage}}"><a href="/s.nl/it.A/id.{{id}}/.f"><img src="{{thumbnailurl}}" alt="{{displayname}}" /></a></p><p class="short-desc">{{storedescription}}</p><h2><a href="/s.nl/it.A/id.{{id}}/.f">{{displayname}}</a></h2><p class="price">${{salesprice}}</p><div class="div__addtocart"><div class="div__addtocart1"><input type="hidden" class="itemtype" value="{{itemtype}}"><input type="hidden" class="isdropshipitem" value="{{isdropshipitem}}"><input type="hidden" class="onlinematrixpricerange" value="{{onlinematrixpricerange}}"><input type="hidden" class="quantityavailable" value="{{quantityavailable}}"><a href="/app/site/query/additemtocart.nl?c=3363929&n=1&buyid={{buyid}}" onClick="_gaq.push([' + "'_trackEvent', 'Shop By Color', 'AddToCart', '{{displayname}}'" + ']);">ADD TO CART</a></div></div></div>',
 	itemsPerPage : 0
 });
 GPItemList.setAttributes([ {
