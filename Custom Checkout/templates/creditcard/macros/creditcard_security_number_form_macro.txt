@@ -22,8 +22,14 @@
 					<%= options.error.errorMessage %>
 				</p>
 			<% } %>
-			<a href="#" name="whatisthis" onclick="jQuery('#whatisthisinfo').toggle()">what is this?</a> <br/>
-
+			 <a href="#" name="whatisthis" class="whatisthis">what is this?</a> <br/>
+<script>
+jQuery('.whatisthis').hover(function(){
+        jQuery('#whatisthisinfo').show("slow");
+},function(){
+        jQuery('#whatisthisinfo').hide("slow");
+});
+</script>
 		</div>
 	</div>
 </div>
