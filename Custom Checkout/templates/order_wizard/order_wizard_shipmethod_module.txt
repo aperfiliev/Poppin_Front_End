@@ -1,7 +1,9 @@
 <%
-	var is_active = false
-	,	order_delivery_method = view.model.get('shipmethod')
-	,	shipping_methods = view.model.get('shipmethods');
+ var is_active = false
+ , order_delivery_method = view.model.get('shipmethod')
+ , shipping_methods = view.model.get('shipmethods');
+ shipping_methods.models.sort(function(obj1, obj2) {
+ return obj1.get('rate') - obj2.get('rate');}); 
 %>
 
 <% if (view.getTitle()) { %>
