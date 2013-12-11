@@ -10,7 +10,7 @@
 				class="input-medium promocode"
 				value="<%- promocode && promocode.code %>"
 				placeholder="<%- _('Promo code').translate() %>"
-				required
+				
 style="width: 90px;"
 
 			>
@@ -19,7 +19,7 @@ style="width: 90px;"
 			</button>
 		</div>
 		<div data-type="promocode-error-placeholder">
-		<% if (is_invalid) { %>
+		<% if (is_invalid) {%>
 			<%= SC.macros.message(promocode.error, 'error', true) %>
 		<% } %>
 		</div>

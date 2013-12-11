@@ -1,4 +1,4 @@
-<% registerMacro('showItemPrice', function (item) { %>
+<% registerMacro('showItemPrice', function (item) {%>
 <% var price = item.getPrice(); %>
 <% if (price.min && price.max) { %>
 	<!-- Price Range -->

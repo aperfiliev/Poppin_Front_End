@@ -1,6 +1,7 @@
 <% registerMacro('shoppingCartItem', function(line, view, options) { %>
-<% 
+<% console.log(line);
 var item = line.get('item');
+var newprice = line.get('total')/line.get('quantity');
 options = _.extend({ showActions: true}, options || {});
 
 var url = _(item.get('_url')).fixUrl();
@@ -114,12 +115,15 @@ else if (url)
 <% var thumbnail = item.get('_thumbnail'); %>
 <img src="<%- view.options.application.resizeImage(thumbnail.url, 'thumbnail') %>" alt="<%- thumbnail.altimagetext %>" style="width:75px;"></td>
 <td align="left" style="padding-left: 5px; padding-right: 5px;"><%= item.get('_name') %></td>
-<td align="center"><%= SC.macros.showItemPrice(item) %></td>
+
+<td align="center">
+				<% if( line.get('amount') > line.get('total') ) {%>
+					<small class="muted crossed"><%= SC.macros.showItemPrice(item) %></small><br/>
+					<span style="color:red"><%= Math.round(newprice*100)/1000 %></span>
+				<% } else {%> <%= SC.macros.showItemPrice(item) %> <%}%></td>
+				
 <td align="center"><%=line.get('quantity') %></td>
 <td align="center"><%= line.get('total_formatted') %>
-				<% if( line.get('amount') > line.get('total') ) {%>
-					<small class="muted crossed"><%=  line.get('amount_formatted') %></small>
-				<% } %></td>
 </tr>
 
 <%}%>

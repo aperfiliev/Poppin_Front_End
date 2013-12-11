@@ -24,13 +24,13 @@
 	<% }  %>
 	<% if (!view.hideContinueButton) { %>
 <!--
-		<button class="btn btn-primary btn-large btn-continue<%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step">
+  <button class="btn btn-primary btn-large btn-continue<%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step">
 -->
-		<button class="bgbutton-checkout <%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step" style="float:right;">
-			Next Step
-		</button>
-	<% } %>		
-	
+  <button class="bgbutton-checkout <%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step" style="float:right;">
+   Next Step
+  </button>
+ <% } %>  
+ 
 </div>
 
 <% if (view.bottomMessage) { %>

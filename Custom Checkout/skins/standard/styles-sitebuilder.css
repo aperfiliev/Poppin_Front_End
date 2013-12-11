@@ -8928,9 +8928,9 @@ margin-right: 10px;
     background: none repeat scroll 0% 0% rgb(153, 153, 153);
 }
 .stepN{
-margin: 0px 7px;
+margin: 0px 7px 0px 7px;
 color: rgb(255, 255, 255);
-font-size: 11px;
+font-size: 10px;
 }
 
 .btncheckout-cart-summary-macro{
@@ -9045,4 +9045,19 @@ display:none
 }
 #cardmessageblock textarea {
 width: 280px;
+}
+
+#labelIsresidential label {
+width: 220px; 
+text-align: center;
+}
+
+#in-modal-labelIsresidential label {
+width: 350px; 
+text-align: center;
+}
+
+#in-modal-labelIsresidential .checkbox input[type="checkbox"], #labelIsresidential .checkbox input[type="checkbox"] {
+margin-left: 0px;
+float: none;
 }

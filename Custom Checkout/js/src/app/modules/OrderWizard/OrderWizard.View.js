@@ -90,6 +90,9 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					self.model.unset('promocode');
 					jqXhr.preventDefault = true;
 					var message = ErrorManagement.parseErrorMessage(jqXhr, self.options.application.getLayout().errorMessageKeys);
+					console.log(message);
+					if(message.indexOf("Coupon code is invalid or unrecognized")>-1)
+						message = "Gone are the days of humdrum office products and that promo code";
 					self.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
 					$target.find('input[name=promocode]').val('').focus();
 				}

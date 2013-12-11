@@ -6,7 +6,8 @@
 	,	promocode = cart.get('promocode')
 	,	item_count = _.reduce(cart.get('lines').pluck('quantity'), function (memo, quantity) { return memo + (parseFloat(quantity) || 1); }, 0)
 	,	is_promocode_valid = promocode && promocode.isvalid
-	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || []; 
+	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || [];
+	//,	paypalUrl = nlapiGetWebContainer().getShoppingSession().getAbsoluteUrl("checkout", "PaypalCheckout.ss");
 %>
 <div class="checkout-cart-summary">
 <div class="btncheckout-cart-summary-macro">
@@ -189,7 +190,11 @@
 <div class="btncheckout-cart-summary-macro">
 		<button class="bgbutton-checkout" data-action="submit-step">
 			<%= options.continueButtonLabel %>
-		</button>
+		</button><br/>
+		<span class="span-or-use">- or use -</span><br/>
+		<input type="image" src="http://www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif" 
+		onclick=""
+		class="nlbutton" style="background: #FFF;border: 0px solid #fff;">
 </div>
 </div>
 <% }) %>

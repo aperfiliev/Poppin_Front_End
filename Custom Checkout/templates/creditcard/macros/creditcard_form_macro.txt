@@ -11,10 +11,10 @@
 			</small>
 		</label>
 
-		<div class="controls">
-			<input type="text" class="input-xlarge" id="ccname" name="ccname" maxlength="26" value="<%- creditcard.get('ccname') %>">
-		</div>
-	</div>
+  <div class="controls">
+   <input type="text" class="input-xlarge" id="ccname" name="ccname" maxlength="26" value="<%- creditcard.get('ccname') %>">
+  </div>
+ </div>
 
 	<div class="control-group">
 		<label class="control-label" for="ccnumber">
@@ -83,23 +83,23 @@
 
 
 
-	<% if (application.getUser().get('isGuest') !== 'T' && options.showDefaults) { %>
-	<div class="control-group">
-		<div class="controls">
-			<label class="checkbox">
-				<input
-					type="checkbox"
-					id="ccdefault"
-					value="T"
-					data-unchecked-value="F"
-					name="ccdefault"
-					<%= creditcard.get('ccdefault') === 'T' ? 'checked' : '' %>
-				>
-				<%= _('Make this my default credit card').translate() %>
-			</label>
-		</div>
-	</div>
-	<% } %>
-	
+ <% if (application.getUser().get('isGuest') !== 'T' && options.showDefaults) { %>
+ <div class="control-group">
+  <div class="controls">
+   <label class="checkbox">
+    <input
+     type="checkbox"
+     id="ccdefault"
+     value="T"
+     data-unchecked-value="F"
+     name="ccdefault"
+     <%= creditcard.get('ccdefault') === 'T' ? 'checked' : '' %>
+    >
+    <%= _('Make this my default credit card').translate() %>
+   </label>
+  </div>
+ </div>
+ <% } %>
+ 
 </fieldset>
 <% }) %>
