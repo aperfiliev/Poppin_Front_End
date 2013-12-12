@@ -12,6 +12,6 @@ font-family: OmnesRegularRegular,sans-serif;"><%= _('Thank you for your order!')
 <%= _('Keep your eyes peeled for an order confirmation email').translate() %>
 	</div>
 <div style="float: right;">
-<input onclick="location.href='<%= SC.ENVIRONMENT.siteSettings.touchpoints.home %>'" class="bgbutton-checkout" type="button" data-touchpoint="home" data-hashtag="#/" value="<%= _('Poppin.com').translate() %>" style="display: block; font-weight: 400;"></input>
+<input onclick="location.href='<%= SC.ENVIRONMENT.siteSettings.touchpoints.home %>'" class="bgbutton-checkout" type="button" data-touchpoint="home" data-hashtag="#/" value="<%= _('Continue shopping').translate() %>" alt="<%= _('Poppin.com').translate() %>" style="display: block; font-weight: 400;"></input>
 	</div>
 </div>
