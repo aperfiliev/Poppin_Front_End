@@ -1,6 +1,6 @@
 <% var active_modules = _.filter(view.modules,function(module){ return module.isActive;}) %>
 <h3 class="section-header">
-	<%= _('ADD A NEW CREDIT CARD').translate() %>
+	<%= _('CREDIT CARD').translate() %>
 <!--
 	<% if (active_modules.length < 1) { %>
 		<%= _('CREDIT CARD').translate() %>
