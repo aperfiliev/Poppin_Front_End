@@ -206,7 +206,7 @@ color: grey;
 	<footer class="checkout-cart-summary-footer accordion">
 		<div class="promoCode">							
 
-			<p class="checkout-cart-summary-macro-promo-title"><%= _('Have a Promo Code1?').translate() %></p>
+			<p class="checkout-cart-summary-macro-promo-title"><%= _('Have a Promo Code?').translate() %></p>
 
 			<p>Enter your promotional code or coupon code below. Limit one per order please.</p>
 			
