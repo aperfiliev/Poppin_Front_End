@@ -3,9 +3,9 @@
 	<%= _('ADD A NEW CREDIT CARD').translate() %>
 <!--
 	<% if (active_modules.length < 1) { %>
-		<%= _('ADD A NEW CREDIT CARD').translate() %>
+		<%= _('CREDIT CARD').translate() %>
 	<% } else { %>
-                <%= _('SELECT YOUR CREDIT CARD').translate() %>
+                <%= _('CREDIT CARD').translate() %>
 	<% }  %>
 	-->
 </h3>
