@@ -22,7 +22,7 @@
 					<%= options.error.errorMessage %>
 				</p>
 			<% } %>
-			 <a href="#" name="whatisthis" class="whatisthis">what is this?</a> <br/>
+			<a href="#" name="whatisthis" class="whatisthis">what is this?</a> <br/>
 <script>
 jQuery('.whatisthis').hover(function(){
         jQuery('#whatisthisinfo').show("slow");

@@ -384,8 +384,10 @@ Application.defineModel('Profile', {
 
 			//Define the fields to be returned
 			this.fields = this.fields || ['isperson', 'email', 'internalid', 'name', 'phoneinfo', 'companyname', 'firstname', 'lastname', 'middlename', 'emailsubscribe', 'campaignsubscriptions', 'paymentterms','creditlimit','balance','creditholdoverride'];
-
+			
 			profile = customer.getFieldValues(this.fields);
+			
+			console.log(JSON.stringify(profile));
 
 			//Make some attributes more friendly to the response
 			profile.phone = profile.phoneinfo.phone;
@@ -400,6 +402,7 @@ Application.defineModel('Profile', {
 			profile.balance_formatted = formatCurrency(profile.balance);
 			profile.creditholdoverride = profile.creditholdoverride;
 			profile.paymentterms = profile.paymentterms;
+			//profile.firstname = "test";
 		}
 
 		return profile;
@@ -784,6 +787,7 @@ Application.defineModel('LiveOrder', {
 			});
 
 			result.options = options;
+			console.log(JSON.stringify(options));
 		}
 
 		return result;
@@ -826,7 +830,7 @@ Application.defineModel('LiveOrder', {
 ,	update: function (data)
 	{
 		'use strict';
-
+		console.log(JSON.stringify(data));
 		var current_order = this.get()
 		,	is_secure = request.getURL().indexOf('https') === 0;
 
@@ -908,7 +912,10 @@ Application.defineModel('LiveOrder', {
 				});
 			}
 		}
-
+		//Card message
+		
+		
+		
 		//Because of an api issue regarding Gift Certificates, we are going to handle them separately
 			var gift_certificate_methods = _.where(data.paymentmethods, {type: 'giftcertificate'})
 			,	non_certificate_methods = _.difference(data.paymentmethods, gift_certificate_methods);
@@ -1012,7 +1019,7 @@ Application.defineModel('LiveOrder', {
 		// Transaction Body Field
 		if (is_secure && !_.isEmpty(data.options))
 		{
-			order.setCustomFieldValues(data.options);
+			//order.setCustomFieldValues(data.options);
 		}
 		
 	}

@@ -15,9 +15,7 @@
 	<% _.each(view.modules, function (module) { %>
 	<% if (module.isActive) { %>
 		<li class="<%- view.selectedModule.type === module.type ? 'active' : ''%>">
-			<a data-target="#payment-method-selector-<%= module.type %>" data-toggle="tab" data-type="<%- module.type %>" href="#">
-				<% if (module.type=='creditcard'){ %>Credit Card<%} else {%><%= module.name %><%}%>
-			</a>
+
 		</li>
 	<% } %>
 	<% }) %>

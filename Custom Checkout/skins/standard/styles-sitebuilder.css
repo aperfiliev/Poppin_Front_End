@@ -8928,8 +8928,12 @@ margin-right: 10px;
     background: none repeat scroll 0% 0% rgb(153, 153, 153);
 }
 .stepN{
-margin: 0px 7px 0px 7px;
 color: rgb(255, 255, 255);
+vertical-align: middle;
+text-align: center;
+height: 20px;
+width: 20px;
+display: table-cell;
 font-size: 10px;
 }
 
@@ -9061,3 +9065,13 @@ text-align: center;
 margin-left: 0px;
 float: none;
 }
+
+#in-modal-labelIsresidential input[type="checkbox"], #labelIsresidential input[type="checkbox"]
+{
+	margin-top: -2px;
+}
+
+#main .delivery-option input[type="radio"] {
+	margin-top: -2px;
+}
+#cardmessage_module input[type="checkbox"] {margin-top: -2px;}

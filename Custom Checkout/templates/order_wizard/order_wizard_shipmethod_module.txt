@@ -4,8 +4,9 @@
  , shipping_methods = view.model.get('shipmethods');
  shipping_methods.models.sort(function(obj1, obj2) {
  return obj1.get('rate') - obj2.get('rate');}); 
+	shipping_methods.models.sort(function(obj1, obj2) {
+ return obj1.get('rate') - obj2.get('rate');});	
 %>
-
 <% if (view.getTitle()) { %>
 	<h3 class="section-header">
 		<%= view.getTitle() %>

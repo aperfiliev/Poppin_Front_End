@@ -165,7 +165,7 @@
 		</div>
 	</div>
 
-<% if (address.isNew()) {%>		
+<%// if (address.isNew()) {%>		
 	<div class="control-group">
 		<label class="control-label" for="<%= manage %>phone">
 			<%= _('Phone Number').translate() %>
@@ -180,7 +180,7 @@
 			<%= _('Example: 555-123-1234').translate() %>
 		</span>
 	</div>
-<%}%>
+<%//}%>
 	
 	<div class="control-group" id="labelIsresidential">
 		<div class="controls">

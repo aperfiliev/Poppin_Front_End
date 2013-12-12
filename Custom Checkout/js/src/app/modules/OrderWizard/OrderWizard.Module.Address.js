@@ -52,6 +52,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 			this.evaluateSameAs();
 			this.address = this.getSelectedAddress();
+			console.log(profile);
 			
 			if(this.address.isNew()){
 				this.address.set("firstfullname",profile.get("firstname"));

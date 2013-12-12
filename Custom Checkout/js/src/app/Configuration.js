@@ -104,28 +104,28 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 			{
 				name: _('Shipping & Delivery').translate()
 			,	steps: [
-					{
+					//{
 					//	name: _('Enter Shipping Address').translate(),	
-					hideBackButton: true
-					,	hideSummary: screen_width < 768 //hide summary on phone
-					/*,	getName: function()	
-						{
-							if (this.wizard.options.profile.get('addresses').length)
-							{
-								return _('SELECT YOUR SHIPPING ADDRESS').translate();
-							}
-							else
-							{
-								return _('ENTER YOUR SHIPPING ADDRESS').translate();
-							}
-						}*/
-					,	url: 'shipping/address'
-,	continueButtonLabel: _('Next Step').translate()
-					,	modules: [
-							['OrderWizard.Module.Address.Shipping']
-						]
-					}
-				,	{
+//					hideBackButton: true
+//					,	hideSummary: screen_width < 768 //hide summary on phone
+//					/*,	getName: function()	
+//						{
+//							if (this.wizard.options.profile.get('addresses').length)
+//							{
+//								return _('SELECT YOUR SHIPPING ADDRESS').translate();
+//							}
+//							else
+//							{
+//								return _('ENTER YOUR SHIPPING ADDRESS').translate();
+//							}
+//						}*/
+//					,	url: 'shipping/address'
+//,	continueButtonLabel: _('Next Step').translate()
+//					,	modules: [
+//							['OrderWizard.Module.Address.Shipping']
+//						]
+//					},
+					{
 					//	name: _('Select your delivery method').translate(),	
 					url: 'shipping/method'
 					,	hideBackButton: true
@@ -467,9 +467,9 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 	,	tracking: {
 			trackPageview: true
 		,	google: {
-				propertyID: ''
+				propertyID: 'UA-37219823-1'
 				// [Tracking Between a Domain and a Sub-Directory on Another Domain](https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSite?hl=en#domainAndSubDirectory)
-			,	domainName: 'checkout.netsuite.com'
+			,	domainName: 'none'
 			}
 		}
 

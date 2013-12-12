@@ -5,15 +5,15 @@
 <% } %>
 <!-- <p class="collapsible collapsed section-header"  data-toggle="collapse" data-target="#gift-certificate-form" style="padding-bottom: 10px;margin: 3px;"> -->
 <p class="section-header" style="padding-bottom: 10px;margin: 3px;">
- 
-  <p class="checkout-cart-summary-macro-promo-title">
-   <%=_('Use a gift card or a gift certificate').translate() %>
-  </p>
-  <!-- 
-  <i class="icon-plus-sign pull-right"></i>
-  <i class="icon-minus-sign pull-right"></i>
-  -->
- 
+	
+		<p class="checkout-cart-summary-macro-promo-title">
+			<%=_('Use a gift card or a gift certificate').translate() %>
+		</p>
+		<!-- 
+		<i class="icon-plus-sign pull-right"></i>
+		<i class="icon-minus-sign pull-right"></i>
+		-->
+	
 </p>
 <div data-type="alert-placeholder-gif-certificate"></div>
 

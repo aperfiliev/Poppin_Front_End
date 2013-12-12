@@ -7,8 +7,18 @@
 	,	item_count = _.reduce(cart.get('lines').pluck('quantity'), function (memo, quantity) { return memo + (parseFloat(quantity) || 1); }, 0)
 	,	is_promocode_valid = promocode && promocode.isvalid
 	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || [];
-	//,	paypalUrl = nlapiGetWebContainer().getShoppingSession().getAbsoluteUrl("checkout", "PaypalCheckout.ss");
+	//var	paypalUrl = nlapiGetWebContainer().getShoppingSession().getAbsoluteUrl("checkout", "PaypalCheckout.ss");
+	var sum = 0;		
 %>
+
+<style>
+.span-or-use {
+padding: 10px 10px 10px 50px;
+font-size: 13px;
+color: grey;
+}
+</style>
+
 <div class="checkout-cart-summary">
 <div class="btncheckout-cart-summary-macro">
 		<button class="bgbutton-checkout" data-action="submit-step">
@@ -29,7 +39,7 @@
 	</header>
 	
 	<div class="checkout-cart-summary-body">
-		<% if (!options.hideItems) { %>
+		<%// if (!options.hideItems) { %>
 		<ul class="cart-summary-items checkout-summary-items" style="display:none;">
 		<%
 			var thumbnail = ''
@@ -37,6 +47,7 @@
 		%>
 		<% cart.get('lines').each(function (line) { %>
 			<%
+				sum += line.get('total') - line.get('amount');
 				item = line.get('item');
 				thumbnail = item.get('_thumbnail');
 			%>
@@ -70,7 +81,7 @@
 			</li>
 		<% }) %>
 		</ul>
-		<% } %>
+		<%// } %>
 		<div class="cart-summary-subtotal">
 			<p class="strong">
 				<span class="pull-right cart-summary-subtotal-formatted">
@@ -82,8 +93,17 @@
 			</p>
 		</div>
 
+		
 
 		<div class="cart-summary-shipping-cost-applied">
+			<% if(sum<0){ %>
+			<p>
+				<span class="pull-right cart-summary-shipping-cost-formatted" style="color:red">
+					<%= sum.toFixed(2) %>
+				</span>
+				<%= _('Discount').translate() %>
+			</p>
+			<% } %>
 			<p>
 				<span class="pull-right cart-summary-shipping-cost-formatted">
 					<%= summary.shippingcost_formatted == "$0.00" ? '-' : summary.shippingcost_formatted %>
@@ -193,7 +213,7 @@
 		</button><br/>
 		<span class="span-or-use">- or use -</span><br/>
 		<input type="image" src="http://www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif" 
-		onclick=""
+		onclick="window.location='https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=EC-0DJ66956KT6899818&docookiecheck=T&whence='"
 		class="nlbutton" style="background: #FFF;border: 0px solid #fff;">
 </div>
 </div>

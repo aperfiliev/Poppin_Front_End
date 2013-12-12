@@ -1,7 +1,8 @@
 <% registerMacro('shoppingCartItem', function(line, view, options) { %>
-<% console.log(line);
+<%
 var item = line.get('item');
 var newprice = line.get('total')/line.get('quantity');
+var newprice_formatted = Math.round(newprice*100)/100;
 options = _.extend({ showActions: true}, options || {});
 
 var url = _(item.get('_url')).fixUrl();
@@ -119,7 +120,7 @@ else if (url)
 <td align="center">
 				<% if( line.get('amount') > line.get('total') ) {%>
 					<small class="muted crossed"><%= SC.macros.showItemPrice(item) %></small><br/>
-					<span style="color:red"><%= Math.round(newprice*100)/1000 %></span>
+					<span style="color:red"><%= newprice_formatted.toFixed(2) %></span>
 				<% } else {%> <%= SC.macros.showItemPrice(item) %> <%}%></td>
 				
 <td align="center"><%=line.get('quantity') %></td>
