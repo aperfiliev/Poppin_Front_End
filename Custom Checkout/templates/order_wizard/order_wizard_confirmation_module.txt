@@ -14,12 +14,12 @@ font-family: OmnesRegularRegular,sans-serif;"><%= _('Thank you for your order!')
 	</div>
 <div style="float: right; margin-top: 20px;">
 <input onclick="location.href='<%= SC.ENVIRONMENT.siteSettings.touchpoints.home %>'" class="bgbutton-checkout" type="button" data-touchpoint="home" data-hashtag="#/" value="<%= _('Continue shopping').translate() %>" alt="<%= _('Poppin.com').translate() %>" style="display: block; font-weight: 400;"></input>
-	<div class="social">
+	<div class="social" style="padding-left: 50px;">
 	  	<p class="social-links">
 	  		<a class="facebook" href="https://www.facebook.com/poppin" title="Facebook" target="_blank">Facebook</a>
 	  		<a class="twitter" href="http://twitter.com/poppin" title="Twitter" target="_blank">Twitter</a>
 	  		<a class="pinterest" href="http://pinterest.com/poppin" title="Pinterest" target="_blank">Pinterest</a>
-	  		<a class="icon-print" title="Print" href="<script>window.print();</script>">Print</a>
+	  		<a class="icon-print" title="Print" href="#" onclick="window.print()">Print</a>
 	  	</p>
 	</div>
 	</div>
