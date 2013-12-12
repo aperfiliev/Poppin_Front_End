@@ -8,7 +8,8 @@
 	,	is_promocode_valid = promocode && promocode.isvalid
 	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || [];
 	//var	paypalUrl = nlapiGetWebContainer().getShoppingSession().getAbsoluteUrl("checkout", "PaypalCheckout.ss");
-	var sum = 0;		
+	var sum = 0;	
+	//console.log(promocode);	
 %>
 
 <style>
@@ -101,7 +102,7 @@ color: grey;
 				<span class="pull-right cart-summary-shipping-cost-formatted" style="color:red">
 					<%= sum.toFixed(2) %>
 				</span>
-				<%= _('Discount').translate() %>
+				<%= promocode.code %>
 			</p>
 			<% } %>
 			<p>
@@ -136,9 +137,9 @@ color: grey;
 					</strong>
 					<%= _('Promo Code').translate() %> #<%= promocode.code %>
 										<% if (options.stepPosition.toLast > 0) { %>
-						<a href="#" data-action="remove-promocode">
+					<!--	<a href="#" data-action="remove-promocode">
 							<i class="icon-remove"></i>
-						</a>
+						</a>	-->
 					<% } %>
 				</p>
 			</div>
@@ -188,23 +189,46 @@ color: grey;
 
 	<% if (!is_promocode_valid && options.stepPosition.toLast > 0) { %>
 	<footer class="checkout-cart-summary-footer accordion">
-		<div class="collapsible">
-			<p class="collapser collapsed checkout-cart-summary-macro-promo-title" data-target="#promo-code-container" data-toggle="collapse">					
-				<i class="icon-minus-sign pull-right"></i>
-				<i class="icon-plus-sign pull-right"></i>
-				<%= _('Have a Promo Code?').translate() %>
-				<i class="icon-question-sign"
-					data-toggle="tooltip"
-					title="<%= _('<b>Promo Code</b><br>To redeem a promo code, simply enter your information and we will apply the offer to your purchase during checkout.').translate() %>">
-				</i>
-			</p>
-			<div id="promo-code-container" class="collapse promo-code-container">
+		<div >
+
+			<p class="checkout-cart-summary-macro-promo-title"><%= _('Have a Promo Code?').translate() %></p>
+			<div id="promo-code-container" >
 			<p>Enter your promotional code or coupon code below. Limit one per order please.</p>
 				<%= SC.macros.promocodeForm(promocode) %>
 			</div>
 		</div>
 	</footer>
 	<% } %>
+	
+	
+	
+		<% if (is_promocode_valid && options.stepPosition.toLast > 0) { %>
+	<footer class="checkout-cart-summary-footer accordion">
+		<div class="promoCode">							
+
+			<p class="checkout-cart-summary-macro-promo-title"><%= _('Have a Promo Code1?').translate() %></p>
+
+			<p>Enter your promotional code or coupon code below. Limit one per order please.</p>
+			
+			<div class="control-group">
+			<input
+				type="text"
+				class="input-medium promocode"
+				value="<%= promocode.code %>"
+				readonly
+style="width: 90px;"
+
+			>
+			<button data-action="remove-promocode" class="bgbutton-checkout-apply">
+				<%= _('Remove').translate() %>
+			</button>
+			</div>
+			
+		</div>
+	</footer>
+	<% } %>
+
+
 
 
 <div class="btncheckout-cart-summary-macro">
