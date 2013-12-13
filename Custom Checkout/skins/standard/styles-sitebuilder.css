@@ -8423,7 +8423,7 @@ font-weight: bold;
 	zoom: 1;
         width: 336px;
 }
-#main .wizard-step-link a
+#main .wizard-step-link a, #main .wizard-step-link.disabled a
 {
 	color: rgb(153, 153, 153);
 	display: block;
@@ -8432,6 +8432,11 @@ font-weight: bold;
         border-bottom: 1px solid rgb(153, 153, 153);
 }
 
+#main .wizard-step-link a:hover
+{
+	color: rgb(254, 107, 56);
+        border-bottom: 1px solid rgb(254, 107, 56);
+}
 
 #main .wizard-step-link.active a
 {
@@ -8441,6 +8446,24 @@ font-weight: bold;
 	text-decoration: none;
         border-bottom: 2px solid rgb(254, 107, 56);
 }
+
+
+#main .wizard-step-link.active a:hover
+{
+	color: rgb(153, 153, 153);
+	border-bottom: 2px solid rgb(153, 153, 153);
+}
+
+#main .wizard-step-link.active a:hover .circle, 
+#main .wizard-step-link.disabled a:hover .circle  {
+    background: none repeat scroll 0% 0% rgb(153, 153, 153);
+}
+
+
+#main .wizard-step-link a:hover .circle {
+    background: none repeat scroll 0% 0% rgb(254, 107, 56);
+}
+
 @media(max-width:767px)
 {
 	#main .wizard-step-link a
@@ -9075,3 +9098,13 @@ float: none;
 	margin-top: -2px;
 }
 #cardmessage_module input[type="checkbox"] {margin-top: -2px;}
+
+#main .social a{float:left;height:22px;margin:0 7px 0 0;overflow:hidden;text-indent:-999px;width:22px}
+#main .social .title{margin:0 0 8px}
+#main .social .facebook, .social-links .facebook{background:url(../../img/poppin-sprite.png) -22px -14px}
+#main .social .twitter, .social-links .twitter{background:url(../../img/poppin-sprite.png) -44px -14px}
+#main .social .pinterest, .social-links .pinterest {background:url(../../img/poppin-sprite.png) no-repeat 0 -14px}
+
+.orderwizard-module-confirmation module-rendered{
+height: 140px;
+}

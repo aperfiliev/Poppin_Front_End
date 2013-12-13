@@ -8,7 +8,9 @@ define('Address.Model', function ()
 	return Backbone.Model.extend(
 	{
 		urlRoot: 'services/address.ss'
-	
+	,	events:{
+		'error': 'showError'
+	}
 	,	validation: {
 			lastfullname: { /*required: true, msg: _('Last Name is required').translate()*/ 
 				fn: function(value){
@@ -52,6 +54,14 @@ define('Address.Model', function ()
 
 			return address_formatted;
 		}
-
+		// render the error message
+	,	showError: function (error)
+	{
+		console.log('address model show error');
+		// Note: in special situations (like in payment-selector), there are modules inside modules, so we have several place holders, so we only want to show the error in the first place holder. 
+//		this.$('[data-type="alert-placeholder-module"]:first').html( 
+//			SC.macros.message('dsd', 'error', true) 
+//		);
+	}
 	});
 });

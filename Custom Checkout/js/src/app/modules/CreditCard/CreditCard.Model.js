@@ -46,8 +46,16 @@ define('CreditCard.Model', function ()
 					// It validates that the number pass the Luhn test and also that it has the right starting digits that identify the card issuer
 					fn: function (cc_number, attr, form)
 					{
+						console.log(cc_number.length);
+						if(cc_number.length>16){
+							console.log(form);
+							return "We only accept credit cards number that are up to 16 digits - might want to check that number again";
+//							jQuery('[data-type="alert-placeholder"]').html(
+//									SC.macros.message(_('We only accept credit cards number that are up to 16 digits - might want to check that number again').translate(), 'error', true )
+//								);
+						}
 						// this check shouldn't be necessary, maybe it needs to be removed
-						if (_.isUndefined(form.internalid) && (_.isUndefined(this.attributes.ccnumber) || cc_number === this.attributes.ccnumber))
+						else if (_.isUndefined(form.internalid) && (_.isUndefined(this.attributes.ccnumber) || cc_number === this.attributes.ccnumber))
 						{
 							cc_number = cc_number.replace(/\s/g, '');
 
@@ -80,6 +88,22 @@ define('CreditCard.Model', function ()
 		,	expyear: { fn: validateExpirationDate }
 		,	expmonth: { fn: validateExpirationDate }
 		}
+	/**
+	 		validation: {
+			ccname: {
+				required: true, msg: _('It is required').translate()
+			}
+		,	ccnumber: {
+			fn: function(value){
+				if(value.length > 16){
+					return _('We only accept credit cards number that are up to 16 digits - might want to check that number again').translate();
+				}
+			}
+		}
+		,	expyear: { fn: validateExpirationDate }
+		,	expmonth: { fn: validateExpirationDate }
+		}
+	 */
 
 	,	initialize: function (attributes, options)
 		{

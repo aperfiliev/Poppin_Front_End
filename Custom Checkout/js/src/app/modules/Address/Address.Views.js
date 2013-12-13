@@ -26,8 +26,10 @@ define('Address.Views', function ()
 		
 	,	initialize: function ()
 		{
+			var self = this;
 			this.title = this.model.isNew() ? _('Add New Address').translate() : _('Update Address').translate();
 			this.page_header = this.title;
+			this.model.on('error',function(err){self.showError(err.errorMessage);});
 		}
 
 	,	showContent: function ( path, label )

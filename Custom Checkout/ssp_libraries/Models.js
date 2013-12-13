@@ -387,7 +387,8 @@ Application.defineModel('Profile', {
 			
 			profile = customer.getFieldValues(this.fields);
 			
-			console.log(JSON.stringify(profile));
+			//console.log(JSON.stringify(profile));
+//			console.log(JSON.stringify(customer.getFieldValues([''])));
 
 			//Make some attributes more friendly to the response
 			profile.phone = profile.phoneinfo.phone;

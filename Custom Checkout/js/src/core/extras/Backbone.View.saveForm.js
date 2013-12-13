@@ -11,9 +11,11 @@
 		// Event halders added to all views
 		saveForm: function (e, model, props)
 		{
+		
 			e.preventDefault();
 
 			model = model || this.model;
+			
 			
 			this.$savingForm = jQuery(e.target).closest('form');
 			
@@ -28,41 +30,67 @@
 			this.hideError();
 
 			var self = this;
+			//LiveView address validation
+			var addr = {
+					//street: model.attributes.addr1,
+					city: this.$savingForm.find('input[name="city"]').val()
+					//state: model.attributes.state,
+					//zipcode: model.attributes.zip
+				};
+//			LiveAddress.verify(addr, 
+//					function(response){
+//						if(response.length==10){
+//							console.log(model);
+//							self.$savingForm.find('[data-type="alert-placeholder"]').html( 
+//									SC.macros.message('Address error', 'error', true) 
+//								);
+//							self.model.trigger('error',{
+//								errorCode: 'ERR_CHK_INVALID_ADDRESS'
+//							,	errorMessage: _('The selected address is invalid').translate()
+//							});
+//						}
+//						else{
+							//End liveview validation
+							// Returns the promise of the save acction of the model
+							return self.model.save(props || self.$savingForm.serializeObject(), {
 
-			// Returns the promise of the save acction of the model
-			return model.save(props || this.$savingForm.serializeObject(), {
+									wait: true
 
-					wait: true
+									// Hides error messages, re enables buttons and triggers the save event 
+									// if we are in a modal this also closes it 
+								,	success: function (model, response)
+									{
+										if (self.inModal && self.$containerModal)
+										{
+											self.$containerModal.modal('hide');
+										}
+										
+										if (self.$savingForm.length)
+										{
+											self.hideError( self.$savingForm );
+											self.$savingForm.find('[type="submit"], [type="reset"]').attr('disabled', false);
+											model.trigger('save', model, response);
+										}
+									}
 
-					// Hides error messages, re enables buttons and triggers the save event 
-					// if we are in a modal this also closes it 
-				,	success: function (model, response)
-					{
-						if (self.inModal && self.$containerModal)
-						{
-							self.$containerModal.modal('hide');
-						}
+									// Re enables all button and shows an error message
+								,	error: function (model, response)
+									{
+										self.$savingForm.find('*[type=submit], *[type=reset]').attr('disabled', false);
+
+										if (response.responseText)
+										{
+											//console.log(jQuery.parseJSON(response.responseText));
+											model.trigger('error', jQuery.parseJSON(response.responseText));
+										}
+									}
+								//}
+							//);
+						//}
 						
-						if (self.$savingForm.length)
-						{
-							self.hideError( self.$savingForm );
-							self.$savingForm.find('[type="submit"], [type="reset"]').attr('disabled', false);
-							model.trigger('save', model, response);
-						}
-					}
-
-					// Re enables all button and shows an error message
-				,	error: function (model, response)
-					{
-						self.$savingForm.find('*[type=submit], *[type=reset]').attr('disabled', false);
-
-						if (response.responseText)
-						{
-							model.trigger('error', jQuery.parseJSON(response.responseText));
-						}
-					}
-				}
-			);
+						//model.trigger('error', 'some error');
+				});
+			
 		}
 	});
 })();

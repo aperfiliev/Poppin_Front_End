@@ -103,7 +103,7 @@ define('OrderWizard.Module.PaymentMethod.GiftCertificates', ['Wizard.Module'], f
 			{
 				this.wizard.manageError({
 					errorCode: 'ERR_WS_EMPTY_GIFTCERTIFICATE'
-				,	errorMessage: 'Gift Certificate is empty'
+				,	errorMessage: 'This gift card does not have any credit left'
 				});
 			}
 			else if (is_applied)

@@ -75,6 +75,7 @@ define('ErrorManagement', function ()
 		
 	,	showError: function (message)
 		{
+			alert('dsd');
 			this.hideError();
 			// Finds or create the placeholder for the error message
 			var placeholder = this.$('[data-type="alert-placeholder"]');

@@ -1,0 +1,32 @@
+<%
+	console.log(view.cardmessages);
+%>
+<div id="cardmessage_module" style="width:300px; border-top:dotted 1px">
+<% if (view.getTitle()) { %>
+	<h3 class="section-header" style="padding:0; margin:9px 0 0 0;line-height: 30px;">
+		<%= view.getTitle() %>
+	</h3>
+<% } %>
+<form class="delivery-options" action="">
+	<fieldset>
+		<input id="cardmessagetoggle" type="checkbox" name="orderisgift" style="margin: 0 3px 2px 0;">Yes, this order is a gift!
+		<div id="cardmessageblock" style="display:none">
+			<p style="margin-top:9px;">
+				Need some help deciding what to say?<br/>
+				Use one of our messages to get you started:
+			</p>
+			<select id="cardmessage-options">
+				<option selected disabled></option>
+				<% view.cardmessages.forEach(function(cardmessage) { %>
+					<option value="<%- cardmessage.id %>">
+						<%= cardmessage.occasion %>
+					</option>
+				<% }); %>
+			</select>
+			<textarea id="cardmessagetext" maxlength="500">
+			</textarea>
+			<div id="textcounterblock">Remaining characters: <span id="textcounter">500</span></div>
+		</div>
+	</fieldset>
+	
+</div>

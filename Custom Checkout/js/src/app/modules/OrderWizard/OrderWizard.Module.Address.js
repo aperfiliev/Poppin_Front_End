@@ -309,8 +309,10 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 				// and add the model to the profile collection
 				if (result)
 				{
+					
 					return result.always(function (model)
 					{
+
 						// Address id to the order model. This has to go after before the following model.add() as it triggers the render
 						self.setAddress(model.internalid);
 
@@ -353,6 +355,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			{
 				if (selected_address.get('isvalid') === 'T')
 				{
+					console.log(selected_address);
 					return jQuery.Deferred().resolve();
 				}
 
