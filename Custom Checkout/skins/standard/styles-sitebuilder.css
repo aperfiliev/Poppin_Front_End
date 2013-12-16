@@ -2070,7 +2070,10 @@ width: 150px;
 }
 #main .icon-print
 {
-	background-position: -96px -48px;
+	//background-position: -96px -48px;
+background: url("../../img/print.png"); 
+width: 22px;
+height: 22px;
 }
 #main .icon-camera
 {
@@ -8463,7 +8466,33 @@ font-weight: bold;
 #main .wizard-step-link a:hover .circle {
     background: none repeat scroll 0% 0% rgb(254, 107, 56);
 }
+#main .stepN-1, #main .stepN-2 {
+width: 20px;
+height: 20px;
+margin-right: 10px;
+float: left;
+}
+#main .wizard-step-link.active .stepN-1, 
+#main .wizard-step-link a:hover .stepN-1  {
+   background: url("../../img/step1-orange.jpg") no-repeat bottom center;
+}
+#main .wizard-step-link.active .stepN-2, 
+#main .wizard-step-link a:hover .stepN-2 {
+   background: url("../../img/step2-orange.jpg") no-repeat bottom center;
+}
 
+#main .wizard-step-link.disabled .stepN-1, 
+#main .wizard-step-link .stepN-1,
+#main .wizard-step-link.active a:hover .stepN-1  {
+   background: url("../../img/step1-grey.jpg") no-repeat bottom center;
+}
+#main .wizard-step-link.disabled .stepN-2, 
+#main .wizard-step-link .stepN-2,
+#main .wizard-step-link.active a:hover .stepN-2  {
+   background: url("../../img/step2-grey.jpg") no-repeat bottom center;
+}
+
+ no-repeat bottom center
 @media(max-width:767px)
 {
 	#main .wizard-step-link a
@@ -9107,4 +9136,7 @@ float: none;
 
 .orderwizard-module-confirmation module-rendered{
 height: 140px;
+}
+.promoCode {
+padding: 10px;
 }

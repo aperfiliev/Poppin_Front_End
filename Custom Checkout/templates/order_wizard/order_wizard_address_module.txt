@@ -2,6 +2,12 @@
 	var is_same_as_enabled = view.isSameAsEnabled
 	,	selected_address = view.address
 	,	address_book = view.getAddressesToShow();
+
+	if(view.addressId==null && address_book.models.length > 0){
+		view.manualSelectAddress(address_book.models[0].id);
+		view.addressId = address_book.models[0].id;
+		console.log(address_book.models[0].id);
+	}
 %>
 <% if (view.getTitle()) { %>
 	<h3 class="section-header car-background">
@@ -59,6 +65,7 @@
 					showSelect: true
 				,	selectMessage: view.selectMessage
 				,	hideDefaults: true
+				,	selectedAddress: view.addressId
 				});
 			}
 		%>

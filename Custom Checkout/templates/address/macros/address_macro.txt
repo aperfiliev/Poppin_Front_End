@@ -10,12 +10,12 @@
 	,	state_object = (country_object && country_object.states)? _.findWhere(countries[address.get('country')].states, {code: address.get('state')}): null
 	,	state = (state_object)? state_object.name: address.get('state');
 	
-	var b = [];
-	b.push(address.cid);
-	console.log("123");
-	console.log(address.cid);
-	console.log(options);
-	console.log(b);
+	//var b = [];
+	//b.push(address.cid);
+	//console.log("123");
+	//console.log(address.cid);
+	//console.log(options);
+	//console.log(b);
 %>
 <article class="address" >
 	<input type="radio" style="float:left; margin-right:5px;" data-action="select" data-id="<%- address.get('internalid') %>" <%=address.get('internalid') == options.selectedAddress ? 'checked="checked"' : ''%>/>

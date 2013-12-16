@@ -9,7 +9,6 @@ define('OrderWizard.Module.Address.Billing', ['OrderWizard.Module.Address'],  fu
 
 		manage: 'billaddress'
 	,	sameAsManage: 'shipaddress'
-
 	,	errors: ['ERR_CHK_INCOMPLETE_ADDRESS', 'ERR_CHK_SELECT_BILLING_ADDRESS', 'ERR_CHK_INVALID_BILLING_ADDRESS', 'ERR_WS_INVALID_BILLING_ADDRESS']
 	,	sameAsMessage: _('Same as shipping address').translate()
 

@@ -29,6 +29,13 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			this.wizard = options.wizard;
 			this.currentStep = options.currentStep;
 			
+//			this.model.manualSelectAddress
+			console.log(this);
+//			console.log(this.model.attributes.addresses.models[0]);
+//			_.each(this.model.attributes.addresses.models, function(address){
+//				
+//			});
+			
 			//on change model we need to refresh summary
 			this.model.on('sync change:summary', function ()
 			{
@@ -50,6 +57,8 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		{
 			var current_step = this.wizard.getCurrentStep()
 			,	was_confirmation = this.wizard.model.previous('confirmation');
+			
+			var profile = this.wizard.options.profile;
 
 			if (!current_step.hideSummary && !was_confirmation)
 			{
@@ -60,6 +69,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					,	stepPosition: this.wizard.getStepPosition()
 					,	continueButtonLabel: current_step.changedContinueButtonLabel || current_step.continueButtonLabel || _('Place Order').translate()
 					,	hideItems: current_step.hideSummaryItems
+					,	payPalUrl: profile.get("paypalUrl")
 					})
 				);				
 			}

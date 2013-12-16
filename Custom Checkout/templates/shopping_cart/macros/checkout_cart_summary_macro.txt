@@ -7,9 +7,8 @@
 	,	item_count = _.reduce(cart.get('lines').pluck('quantity'), function (memo, quantity) { return memo + (parseFloat(quantity) || 1); }, 0)
 	,	is_promocode_valid = promocode && promocode.isvalid
 	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || [];
-	//var	paypalUrl = nlapiGetWebContainer().getShoppingSession().getAbsoluteUrl("checkout", "PaypalCheckout.ss");
-	var sum = 0;	
-	//console.log(promocode);	
+	var sum = 0;
+	console.log(options);
 %>
 
 <style>
@@ -237,7 +236,7 @@ style="width: 90px;"
 		</button><br/>
 		<span class="span-or-use">- or use -</span><br/>
 		<input type="image" src="http://www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif" 
-		onclick="window.location='https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=EC-0DJ66956KT6899818&docookiecheck=T&whence='"
+		onclick="window.location='options.payPalUrl'"
 		class="nlbutton" style="background: #FFF;border: 0px solid #fff;">
 </div>
 </div>

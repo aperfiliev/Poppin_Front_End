@@ -86,7 +86,7 @@
 			</div>
 		</div>
 	</noscript>
-
+	
 	<div id='outerwrapper' style='width:968'>
 		<div id='innerwrapper'>
 	<% if (siteType && siteType === 'STANDARD') { %>
@@ -96,7 +96,7 @@
 			</table>
 		</div>
 	<% } %>
-
+	
 	
 <div class="promo-banner" style="text-align: center;">
 							<%=getRecordAttribute('199',2,'custrecord_bannerhtml')%>
@@ -114,16 +114,14 @@
 	<div id="div__footer" class="noprint" leftmargin="0" topmargin="0" marginwidth="1" marginheight="1">
 	<PP_FOOTER_CLEAN>
 	</div>
-	
+
 	<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'sc.environment.ssp?lang=' + (request.getParameter('lang') || '') + '&cur=' + (request.getParameter('cur') || '') ) %>"></script>
 	<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 	<% } %>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0142eb713bd4.js') %>"></script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0142eb82bf1b.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0142fabc4a47.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0142fac60615.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
-	
 </body>
 </html>
-

@@ -1,6 +1,3 @@
-<%
-	console.log(view.cardmessages);
-%>
 <div id="cardmessage_module" style="width:300px; border-top:dotted 1px">
 <% if (view.getTitle()) { %>
 	<h3 class="section-header" style="padding:0; margin:9px 0 0 0;line-height: 30px;">

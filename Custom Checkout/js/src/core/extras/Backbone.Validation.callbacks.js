@@ -20,13 +20,15 @@
 
 	,	invalid: function (view, attr, error, selector)
 		{
+			console.log(error);
 			var $target
 			,	$control = view.$el.find('['+ selector +'="'+ attr +'"]')
 			,	$group = $control.parents('.control-group').addClass('error');
 
 
 			view.$('[data-type="alert-placeholder"]').html(
-				SC.macros.message(_(' Sorry, the information below is either incomplete or needs to be corrected.').translate(), 'error', true )
+				//SC.macros.message(_(' Sorry, the information below is either incomplete or needs to be corrected.').translate(), 'error', true )
+				SC.macros.message(_(error).translate(), 'error', true )
 			);
 
 			view.$savingForm.find('*[type=submit], *[type=reset]').attr('disabled', false);

@@ -29,6 +29,13 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 	,	errors: ['ERR_CHK_INCOMPLETE_ADDRESS', 'ERR_CHK_INVALID_ADDRESS']
 
+//	,	initialize: function(){
+//		console.log(this.getAddressesToShow());
+//		if(this.addressId==null && this.getAddressesToShow().length>0){
+////			this.manualSelectAddress(this.getAddressesToShow().models[0].id);
+////			console.log(address_book.models[0].id);
+//		}
+//	}
 		// module.render
 		// -------------
 	,	render: function (not_trigger_ready)
@@ -52,8 +59,8 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 			this.evaluateSameAs();
 			this.address = this.getSelectedAddress();
-			console.log(profile);
 			
+			this.address.set("payPalUrl",profile.get("paypalUrl"));
 			if(this.address.isNew()){
 				this.address.set("firstfullname",profile.get("firstname"));
 				this.address.set("lastfullname",profile.get("lastname"));
@@ -245,6 +252,20 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			// As we already set the address, we let the step know that we are ready
 			this.trigger('ready', true);
 		}
+	,	manualSelectAddress: function (addressid)
+	{
+		jQuery('.wizard-content .alert-error').hide(); 
+
+		// Grabs the address id and sets it to the model
+		// on the position in which our sub class is manageing (billaddress or shipaddress)
+		this.setAddress(addressid);
+
+		// re render so if there is changes to be shown they are represented in the view
+		this.render();              
+
+		// As we already set the address, we let the step know that we are ready
+		this.trigger('ready', true);
+	}
 
 	,	setAddress: function (address_id, options)
 		{

@@ -12,6 +12,8 @@ var container = nlapiGetWebContainer()
 ,	context = nlapiGetContext()
 ,	order = session.getOrder();
 
+var paypalUrl = nlapiGetWebContainer().getShoppingSession().getAbsoluteUrl("checkout", "PaypalCheckout.ss");
+
 //SiteSettings.js
 // SiteSettings.js
 // ---------------
@@ -389,6 +391,8 @@ Application.defineModel('Profile', {
 			
 			//console.log(JSON.stringify(profile));
 //			console.log(JSON.stringify(customer.getFieldValues([''])));
+//			console.log(paypalUrl);
+			profile.paypalUrl = paypalUrl;
 
 			//Make some attributes more friendly to the response
 			profile.phone = profile.phoneinfo.phone;
@@ -541,7 +545,7 @@ Application.defineModel('LiveOrder', {
 			,	'agreetermcondition': []
 			,	'purchasenumber': []
 			};
-
+		
 		if (context.getSetting('FEATURE', 'MULTISHIPTO') === 'T')
 		{
 			order_field_keys.items.push('shipaddress', 'shipmethod');
