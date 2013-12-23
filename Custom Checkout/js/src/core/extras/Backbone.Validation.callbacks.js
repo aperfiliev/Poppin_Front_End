@@ -20,7 +20,8 @@
 
 	,	invalid: function (view, attr, error, selector)
 		{
-			console.log(error);
+			//alert(error);
+			//console.log(error);
 			var $target
 			,	$control = view.$el.find('['+ selector +'="'+ attr +'"]')
 			,	$group = $control.parents('.control-group').addClass('error');

@@ -88,22 +88,20 @@
 	</noscript>
 	
 	<div id='outerwrapper' style='width:968'>
-		<div id='innerwrapper'>
-	<% if (siteType && siteType === 'STANDARD') { %>
+		<div id='innerwrapper'>	
+			<% if (siteType && siteType === 'STANDARD') { %>
 		<div id='div__header' style="overflow: hidden;" class='noprint' leftmargin='0' topmargin='0' marginwidth='1' >
 			<table border='0' cellspacing='0' cellpadding='0' width='100%'>
-<PP_LOGIN_PAGETOP>	
+<PP_REF_CHECKOUT_PAGETOP>	
 			</table>
 		</div>
 	<% } %>
-	
-	
 <div class="promo-banner" style="text-align: center;">
 							<%=getRecordAttribute('199',2,'custrecord_bannerhtml')%>
 			</div>
 
 
-	<div id="main"></div>
+	<div id="main" style="border: 17px #e5e5e5 solid;width: 933px;margin: 0 auto;"></div>
         <div class="upsell_options">
 	<%=getRecordAttribute('199',3,'custrecord_bannerhtml')%>
         </div>
@@ -115,13 +113,13 @@
 	<PP_FOOTER_CLEAN>
 	</div>
 
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
+		<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'sc.environment.ssp?lang=' + (request.getParameter('lang') || '') + '&cur=' + (request.getParameter('cur') || '') ) %>"></script>
 	<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 	<% } %>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0142fabc4a47.js') %>"></script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0142fac60615.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-01431faa4eac.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-01431f8b344b.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
 </body>
 </html>

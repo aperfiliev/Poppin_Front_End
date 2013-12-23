@@ -21,6 +21,9 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		,	'shown #promo-code-container' : 'onShownPromocodeForm' 
 		,	'click [data-action="submit-step"]' : 'submitStep' //only for Order Place button in the Order Summary
 		,	'click [data-toggle="show-terms-summary"]' : 'showTerms' //only for "Show terms and cond" in the Order Summary
+		,	'click [data-action="remove-item"]': 'removeItem'//minicart remove item
+		,	'submit [data-action="update-quantity"]': 'updateItemQuantity'//minicart update item quantity
+		,	'blur [name="quantity"]': 'updateItemQuantity'//minicart update quantity
 		}
 
 	,	initialize: function(options)
@@ -28,9 +31,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			var self = this;
 			this.wizard = options.wizard;
 			this.currentStep = options.currentStep;
-			
 //			this.model.manualSelectAddress
-			console.log(this);
 //			console.log(this.model.attributes.addresses.models[0]);
 //			_.each(this.model.attributes.addresses.models, function(address){
 //				
@@ -71,7 +72,9 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					,	hideItems: current_step.hideSummaryItems
 					,	payPalUrl: profile.get("paypalUrl")
 					})
-				);				
+					
+				);
+				
 			}
 			
 			this.$('[data-toggle="tooltip"]').tooltip({html: true});
@@ -140,6 +143,43 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		{
 			jQuery(e.target).find('input[name="promocode"]').focus();
 		}
+	// minicart updateItemQuantity:
+	// executes on blur of the quantity input
+	// Finds the item in the cart model, updates its quantity and saves the cart model
+	,	updateItemQuantity: function (e)
+	{
+		e.preventDefault();
+
+		var self = this
+		,	$line = null
+		,	options = jQuery(e.target).closest('form').serializeObject()
+		,	line = this.model.get('lines').get(options.internalid);
+
+		if (parseInt(line.get('quantity'),10) !==  parseInt(options.quantity,10))
+		{
+			line.set('quantity', options.quantity);
+
+			$line = this.$('#' + options.internalid);
+
+			this.model.updateLine(line)
+				.success(_.bind(this.showContent, this))
+				.error(
+					function (jqXhr)
+					{
+						jqXhr.preventDefault = true;
+						var result = JSON.parse(jqXhr.responseText);
+
+						self.showError(result.errorMessage, $line, result.errorDetails);
+					}
+				);
+		}
+	}
+	//minicart actions
+	,	removeItem: function (e)
+	{
+		this.model.removeLine(this.model.get('lines').get(jQuery(e.target).data('internalid')))
+			.success(_.bind(this.showContent, this));
+	}
 
 	,	destroy: function ()
 		{

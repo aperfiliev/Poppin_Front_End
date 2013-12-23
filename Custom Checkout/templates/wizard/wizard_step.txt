@@ -18,17 +18,17 @@
 
 <div class="step-navigation-buttons form-actions" style="float: right; margin-right: 20px; margin-left: 20px; clear: both; width:100%">
  <% if (!view.hideBackButton) { %>
-  <button class="bgbutton-checkout" data-action="previous-step" style="">
+ <!-- <button class="bgbutton-checkout" data-action="previous-step" style="">
    <%= _('Previous Step').translate() %>
-  </button>
+  </button>-->
  <% }  %>
  <% if (!view.hideContinueButton) { %>
 <!--
   <button class="btn btn-primary btn-large btn-continue<%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step">
 -->
-  <button class="bgbutton-checkout <%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step" style="float:right;">
+ <!-- <button class="bgbutton-checkout <%=(view.hideSecondContinueButtonOnPhone)? ' hidden-phone': ''%>" data-action="submit-step" style="float:right;">
    Next Step
-  </button>
+  </button>-->
  <% } %>  
  
 </div>

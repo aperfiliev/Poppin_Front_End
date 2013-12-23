@@ -407,7 +407,17 @@ Application.defineModel('Profile', {
 			profile.balance_formatted = formatCurrency(profile.balance);
 			profile.creditholdoverride = profile.creditholdoverride;
 			profile.paymentterms = profile.paymentterms;
-			//profile.firstname = "test";
+			
+			if(!profile.isperson){
+				var email = {
+							"email" : profile.email
+						};
+				var response = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=325&deploy=1&compid=3363929&h=328732b9e6071ab7e077', email);
+				var responsebody = JSON.parse(response.getBody());
+				var fullnamesplit =  responsebody.contact.split(' ');
+				profile.firstname =fullnamesplit[0];
+				profile.lastname = fullnamesplit[1];
+			}
 		}
 
 		return profile;

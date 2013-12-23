@@ -130,7 +130,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					url: 'shipping/method'
 					,	hideBackButton: true
 					,	hideSummary: screen_width < 768 //hide summary on phone
-,	continueButtonLabel: _('Next Step').translate()
+,	continueButtonLabel: _('Next: BILLING & PAYMENT').translate()
 					,	modules: [
 							['OrderWizard.Module.Address.Shipping', {title: _('SELECT YOUR SHIPPING ADDRESS').translate()}]
 						,	'OrderWizard.Module.Shipmethod'
@@ -164,50 +164,66 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 						,	['OrderWizard.Module.Address.Billing', {enable_same_as: true, title: _('Enter Billing Address').translate()}]
 						,	'OrderWizard.Module.RegisterEmail'*/
 						]
-					},
-					{
-						url: 'confirmation'
-					,	headerMacro: 'header'
-					,	hideSummaryItems: true
-					,	hideContinueButton: true
-					,	hideBackButton: true
-					,	modules: [
-							'OrderWizard.Module.Confirmation'
-						,	'OrderWizard.Module.RegisterGuest'
-						,	'OrderWizard.Module.ShowPayments'
-						,	'OrderWizard.Module.ShowShipments'
-						]
-					,	present: function ()
-						{
-							this.wizard.application.trackTransaction(this.wizard.model);
-						}
-					}
-				]
-			}
-//		,	{
-//				name: _('Review & Place Order').translate()
-//			,	steps: [
+					}//,
 //					{
-//						name: _('Review Your Order').translate()
-//					,	url: 'review'
-//					,	continueButtonLabel: _('Place Order').translate()
-//					,	hideBackButton: true
+//						url: 'confirmation'
+//					,	headerMacro: 'header'
 //					,	hideSummaryItems: true
+//					,	hideContinueButton: true
+//					,	hideBackButton: true
 //					,	modules: [
-//							['OrderWizard.Module.ShowPayments', {edit_url_billing: '/billing', edit_url_address: '/billing'}]
-//						,	['OrderWizard.Module.ShowShipments', {edit_url: '/shipping/address', show_edit_button: true}]
-//						,	'OrderWizard.Module.TermsAndConditions'
+//							'OrderWizard.Module.Confirmation'
+//						,	'OrderWizard.Module.RegisterGuest'
+//						,	'OrderWizard.Module.ShowPayments'
+//						,	'OrderWizard.Module.ShowShipments'
 //						]
-//					,	save: function()
+//					,	present: function ()
 //						{
-//							return this.wizard.model.submit();
+//							this.wizard.application.trackTransaction(this.wizard.model);
 //						}
 //					}
-//				,
-//				
-//				
-//				]
-//			}
+				]
+			}
+		,	{
+				name: _('Review & Place Order').translate()
+			,	steps: [
+					{
+						name: _('Review Your Order').translate()
+					,	url: 'review'
+					,	continueButtonLabel: _('Place Order').translate()
+					,	hideBackButton: true
+					,	hideSummaryItems: true
+					,	modules: [
+							['OrderWizard.Module.ShowPayments', {edit_url_billing: '/billing', edit_url_address: '/billing'}]
+						,	['OrderWizard.Module.ShowShipments', {edit_url: '/shipping/address', show_edit_button: true}]
+						,	'OrderWizard.Module.TermsAndConditions'
+						]
+					,	save: function()
+						{
+							return this.wizard.model.submit();
+						}
+					}
+				,
+				{
+					url: 'confirmation'
+				,	headerMacro: 'header'
+				,	hideSummaryItems: true
+				,	hideContinueButton: true
+				,	hideBackButton: true
+				,	modules: [
+						'OrderWizard.Module.Confirmation'
+					,	'OrderWizard.Module.RegisterGuest'
+					,	'OrderWizard.Module.ShowPayments'
+					,	'OrderWizard.Module.ShowShipments'
+					]
+				,	present: function ()
+					{
+						this.wizard.application.trackTransaction(this.wizard.model);
+					}
+				}
+				
+				]
+			}
 		]
 
 /* The One Page Checkout Scenario */

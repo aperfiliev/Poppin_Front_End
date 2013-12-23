@@ -8,36 +8,66 @@
 	,	is_promocode_valid = promocode && promocode.isvalid
 	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || [];
 	var sum = 0;
+	var view = {};
 	console.log(options);
 %>
-
 <style>
-.span-or-use {
-padding: 10px 10px 10px 50px;
-font-size: 13px;
-color: grey;
+.cart-layover{
+	position:absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -484px;
+	margin-top: -50px;
+	width: 967px;
+	background: white;
+	-webkit-box-shadow: 10px 10px 10px #9E9E9E;
+    -moz-box-shadow:    10px 10px 10px #9E9E9E;
+    box-shadow:         10px 10px 10px #9E9E9E;
+    z-index:999;
+}
+.close{
+	
+	font-size: 18px;
+	line-height: 18px;
+	color: rgba(255, 255, 255, 0.4);
+	background: #f27337;
+	position: relative;
+	float: right;
+	right: 10px;
+	top: 10px;
+	cursor: pointer;
 }
 </style>
+<div class="cart-layover" style="display:none;">
+<input type="button" class="close" value="X" onclick="jQuery('.cart-layover').hide()">
+<h1 style="color: rgb(243, 122, 49); font-family: 'OmnesLightRegular'; font-size: 38px; font-weight: 400; width: 965px; margin-right: auto; margin-left: auto;">Cart</h1>
+<% cart.get('lines').each(function (lines, index) { %>
+			<%= SC.macros.shoppingCartItemLayover(lines, view, {
+				showActions:true,
+				application:options.application
+			}) %>
+		<% }) %>
+</div>
+
 
 <div class="checkout-cart-summary">
 <div class="btncheckout-cart-summary-macro">
 		<button class="bgbutton-checkout" data-action="submit-step">
 			<%= options.continueButtonLabel %>
 		</button>
-</div>
-
+</div><div style="background-color:#f87c00; margin-left:18px; margin-bottom: 11px">
 	<header class="checkout-cart-summary-header">
 		<% if (options.stepPosition.toLast > 0) { %>
-			<a href="#" class="btn btn-link btn-edit-cart pull-right" data-touchpoint="viewcart">
+			<a href="#" class="btn btn-link btn-edit-cart pull-right" onclick="jQuery('.cart-layover').show()" style="color:white;">
 				<%= _('edit cart').translate() %>
 			</a>
 		<% } %>
 
-		<h2 class="checkout-cart-summary-macro-title">
+		<h2 class="checkout-cart-summary-macro-title" style="color:white;">
 			<%= _('Order Summary').translate() %>
 		</h2>
 	</header>
-	
+	<div class="dottedLine" style="color:white; margin-top:-10px; margin-bottom: 21px; text-align: center;">......................................</div>
 	<div class="checkout-cart-summary-body">
 		<%// if (!options.hideItems) { %>
 		<ul class="cart-summary-items checkout-summary-items" style="display:none;">
@@ -52,11 +82,11 @@ color: grey;
 				thumbnail = item.get('_thumbnail');
 			%>
 			<li class="cart-summary-item-cell checkout-summary-item-cell">
-				<div class="row-fluid">
+				<div class="row-fluid" style="color:white;">
 					<div class="span3 thumbnail checkout-summary-item-thumbnail">
 						<img src="<%- options.application.resizeImage(thumbnail.url, 'tinythumb') %>" alt="<%- thumbnail.altimagetext %>">
 					</div>
-					<div class="span9 cart-summary-item-details checkout-summary-item-details">
+					<div class="span9 cart-summary-item-details checkout-summary-item-details" style="color:white;">
 						<div class="pull-right cart-summary-item-total">
 							<%= line.get('total_formatted') %>
 							<% if (line.get('amount') > line.get('total')) {%>
@@ -65,13 +95,13 @@ color: grey;
 								</small>
 							<% } %>
 						</div>
-						<div>
+						<div style="color:white;">
 							<strong class="cart-summary-item-name"><%= item.get('_name') %></strong>
 						</div>
-						<div class="cart-summary-item-quantity">
+						<div class="cart-summary-item-quantity" style="color:white;">
 							<%= _('Qty: $(0)').translate(line.get('quantity')) %>
 						</div>
-						<div class="cart-summary-item-price">
+						<div class="cart-summary-item-price" style="color:white;">
 							<%= SC.macros.showItemPrice(line.get('item')) %>
 						</div>
 						<%= /* Renders the selected options for the item */ 
@@ -82,7 +112,7 @@ color: grey;
 		<% }) %>
 		</ul>
 		<%// } %>
-		<div class="cart-summary-subtotal">
+		<div class="cart-summary-subtotal" style="color:white;">
 			<p class="strong">
 				<span class="pull-right cart-summary-subtotal-formatted">
 					<%= summary.subtotal_formatted %>
@@ -95,10 +125,10 @@ color: grey;
 
 		
 
-		<div class="cart-summary-shipping-cost-applied">
+		<div class="cart-summary-shipping-cost-applied" style="color:white;">
 			<% if(sum<0){ %>
 			<p>
-				<span class="pull-right cart-summary-shipping-cost-formatted" style="color:red">
+				<span class="pull-right cart-summary-shipping-cost-formatted">
 					<%= sum.toFixed(2) %>
 				</span>
 				<%= promocode.code %>
@@ -125,11 +155,11 @@ color: grey;
 				</span>
 				<%= _('Tax').translate() %>
 			</p>
-		</div>
+		</div></div>
 
 		<% if (is_promocode_valid || summary.giftcertapplied) { %>
 			<% if (is_promocode_valid && summary.discounttotal) { %>
-			<div class="cart-summary-promocode-applied">
+			<div class="cart-summary-promocode-applied" style="color:white">
 				<p>
 					<strong class="lead-price pull-right">
 						-<%= summary.discounttotal_formatted %>
@@ -143,7 +173,7 @@ color: grey;
 				</p>
 			</div>
 			<% } %>
-
+			
 			<% if (summary.giftcertapplied) { %>
 			<div class="cart-summary-giftcertificate-applied">
 				<p>
@@ -162,7 +192,7 @@ color: grey;
 				</div>
 			<% } %>
 		<% } %>
-		<div class="checkout-cart-summary-macro-total">
+		<div class="checkout-cart-summary-macro-total" style="background-color:#f5631a; color: white;">
 			<p class="strong">
 				<span class="pull-right cart-summary-total-formatted">
 					<%= summary.total_formatted %>
@@ -233,11 +263,10 @@ style="width: 90px;"
 <div class="btncheckout-cart-summary-macro">
 		<button class="bgbutton-checkout" data-action="submit-step">
 			<%= options.continueButtonLabel %>
-		</button><br/>
-		<span class="span-or-use">- or use -</span><br/>
-		<input type="image" src="http://www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif" 
-		onclick="window.location='options.payPalUrl'"
-		class="nlbutton" style="background: #FFF;border: 0px solid #fff;">
+		</button>
+		<!--<input type="image" src="http://www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif" 
+		onclick="window.location='<%=options.payPalUrl%>'"
+		class="nlbutton" style="background: #FFF;border: 0px solid #fff;">-->
 </div>
 </div>
 <% }) %>
