@@ -59,7 +59,7 @@
 	 */
 	function buildCartItems(order) {
 
-		$("li.mini-cart > a").html(order.totalfound);
+		jQuery("li.mini-cart > a").html(order.totalfound);
 		if(order!=0 && order.totalfound!=0)
 		{
 			// Insert table rows and cells into body
@@ -77,12 +77,12 @@
 			var continueUrl = document.getElementById('continueUrl');
 			continueUrl.value = order.continueshoppingurl;
 			
-			$(".checkoutDiv").show();
-			$(".promoCode").show();
+			jQuery(".checkoutDiv").show();
+			jQuery(".promoCode").show();
 			
 		} else {
-			$(".checkoutDiv").hide();
-			$(".promoCode").hide();
+			jQuery(".checkoutDiv").hide();
+			jQuery(".promoCode").hide();
 			
 			buildOrderSummary(order['summary'].subtotal, order['summary'].tax, order['summary'].shippingcost, order['summary'].discount, order['summary'].total);
 		}
@@ -231,7 +231,7 @@
 		if(error_msg != '')
 		{
 			powerTip.create('_'+order.orderitemid, error_msg, 'powerTip' + order.orderitemid, -52, 10);
-			$('#' + '_' + order.orderitemid).on('focusin', function() { powerTip.hide('powerTip' + order.orderitemid); }) ;
+			jQuery('#' + '_' + order.orderitemid).on('focusin', function() { powerTip.hide('powerTip' + order.orderitemid); }) ;
 		}
 	}
 	/*
@@ -273,7 +273,7 @@
 	 */
 	function buildOrderSummary(subtotal, tax, shipping, discount, total)
 	{
-		$("#actionbar").html("");
+		jQuery("#actionbar").html("");
 		tbody = document.getElementById('actionbar');
 		
 		var row, cell;
@@ -394,7 +394,7 @@
 		{
 			powerTip.create('promoInput', promocode.message,
 					'powerTipPromo', -50, 40);
-			$('#promoInput').on('focusin', function() { powerTip.hide('powerTipPromo'); }) ;
+			jQuery('#promoInput').on('focusin', function() { powerTip.hide('powerTipPromo'); }) ;
 		}
 		if(description != '')
 		{
@@ -413,9 +413,9 @@
 			promoHover.appendChild(div);
 			promoCodeDiv.appendChild(promoHover);
 			
-			$('.promoHover').hover(
-					function() { $('.promoDescription').css('display', 'block'); },
-					function() { $('.promoDescription').css('display', 'none'); });
+			jQuery('.promoHover').hover(
+					function() { jQuery('.promoDescription').css('display', 'block'); },
+					function() { jQuery('.promoDescription').css('display', 'none'); });
 		}
 	}
 	/*
@@ -463,13 +463,13 @@
 			}
 		}
 		
-		$('td.solution > .title').on('click', function(e) {
+		jQuery('td.solution > .title').on('click', function(e) {
 			e.preventDefault();
-			var newclass = $(this).hasClass('active')?'title':'title active';
-			$(this).attr('class',newclass);
+			var newclass = jQuery(this).hasClass('active')?'title':'title active';
+			jQuery(this).attr('class',newclass);
 			
-			var content = $(this).next('div');
-			if($(this).hasClass('active')) {
+			var content = jQuery(this).next('div');
+			if(jQuery(this).hasClass('active')) {
 				content.slideDown('fast');
 			} else {
 				content.slideUp('slow');

@@ -3,9 +3,10 @@
 <html>
 <head>
 <%= getPageFullHead() %>
-<script src="js/jquery-1.10.2.min.js"></script>
+<!-- <script src="js/jquery-1.10.2.min.js"></script>
 <script src="<%=poppinservres.url.jsjqueryui%>"></script>
 <link href="<%=poppinservres.url.cssjqueryui%>" rel="stylesheet" type="text/css" />
+ -->
 <script type="text/javascript" src="BuildCart.js"></script>
 <script type="text/javascript" src="ViewCart.js"></script>
 
@@ -21,18 +22,18 @@ function setGARedirectUrl(url) {
 	   window.location = redir_elem;
 	   return false;
 	  }
-$(document).ready(
+jQuery(document).ready(
 		function(){
-			$(window).scroll(function () {
-				if($(window).scrollTop() + $(window).height() > $(document).height() - 300 ) {
+			jQuery(window).scroll(function () {
+				if(jQuery(window).scrollTop() + jQuery(window).height() > jQuery(document).height() - 300 ) {
 					//do nothing
-				} else if($(window).scrollTop()<300){
-					$('#floatingTotal').animate({top:0},{duration:1000,queue:false});
-				} else if($(window).scrollTop()%200==0){
+				} else if(jQuery(window).scrollTop()<300){
+					jQuery('#floatingTotal').animate({top:0},{duration:1000,queue:false});
+				} else if(jQuery(window).scrollTop()%200==0){
 					//do nothing
 				} else{
-					set = $(document).scrollTop()-200+"px";
-					$('#floatingTotal').animate({top:set},{duration:1000,queue:false});
+					set = jQuery(document).scrollTop()-200+"px";
+					jQuery('#floatingTotal').animate({top:set},{duration:1000,queue:false});
 				}
 			});
 		});
