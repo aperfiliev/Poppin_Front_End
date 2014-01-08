@@ -94,7 +94,7 @@
 
 	function validatePhone (phone)
 	{
-		var minLength = 7;
+		var minLength = 6;
 
 		if (_.isNumber(phone))
 		{
@@ -136,7 +136,6 @@
 			}
 		}
 	}
-	
 
 	// translate:
 	// used on all of the harcoded texts in the templates

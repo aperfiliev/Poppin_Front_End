@@ -245,7 +245,7 @@ Application.defineModel('Address', {
 			address.firstfullname = res[0];
 		}
 		
-		
+//		nlapiLogExecution('DEBUG', 'after', address.label);
 		address.company = address.attention;
 		address.lastfullname = res[1];
 		
@@ -263,20 +263,27 @@ Application.defineModel('Address', {
 		var prefix = address.namePrefix;
 		var firstName = address.firstfullname+",";
 		var lastName = address.lastfullname;
-		
+		var phone;
+		if(address.ext){
+			var phone1 = address.phone.slice(0,3);
+			var phone2 = address.phone.slice(3,6);
+			phone = "("+phone1+")" + " "+ phone2 + "-" +address.ext;
+		}else{phone = address.phone;}
 		var firstAndLast = firstName.concat(lastName);
 		if(prefix != ""){
 			res = prefix.concat(firstAndLast);
 		}else{res = firstAndLast;}
 		
+		address.phone = phone;
 		address.attention = address.company;
 		address.addressee = res;
-		
+//		nlapiLogExecution('DEBUG', 'before', JSON.stringify(address));
 		
 		delete address.company;
 		delete address.firstfullname;
 		delete address.lastfullname;
 		delete address.namePrefix;
+		delete address.ext;
 		
 		return address;
 	}
@@ -395,6 +402,7 @@ Application.defineModel('Profile', {
 			profile.paypalUrl = paypalUrl;
 
 			//Make some attributes more friendly to the response
+//			profile.label = customer.getAddress(id);
 			profile.phone = profile.phoneinfo.phone;
 			profile.altphone = profile.phoneinfo.altphone;
 			profile.fax = profile.phoneinfo.fax;

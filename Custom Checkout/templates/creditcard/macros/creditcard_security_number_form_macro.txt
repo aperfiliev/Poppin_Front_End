@@ -1,5 +1,5 @@
 <% registerMacro('creditcardSecurityNumberForm', function (options) { %>
-<% options = options || {};  %>
+<% options = options || {}; console.log(options); %>
 <div class="credit-card-security-number">
 	<div class="control-group <%= options.error ? 'error' : '' %>">
 		<label class="control-label" for="ccsecuritycode">

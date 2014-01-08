@@ -5,26 +5,26 @@
  
  <div class="control-group">
   <label class="control-label" for="ccname">
-   <%= _('Name on Card').translate() %>
+   <%= _('Name').translate() %>
    <small>
     <%= _('(required)').translate() %>
    </small>
   </label>
 
   <div class="controls">
-   <input type="text" class="input-xlarge" id="ccname" name="ccname" maxlength="26" value="<%- creditcard.get('ccname') %>">
+   <input type="text" class="input-xmedium" id="ccname" name="ccname" maxlength="26" value="<%- creditcard.get('ccname') %>">
   </div>
  </div>
 
  <div class="control-group">
   <label class="control-label" for="ccnumber">
-   <%= _('Card Number').translate() %>
+   <%= _('Card #').translate() %>
    <small>
     <%= _('(required)').translate() %>
    </small>
   </label>
   <div class="controls">
-   <input type="text" class="input-xlarge" id="ccnumber" name="ccnumber" value="<%- creditcard.get('ccnumber') %>" <%= !creditcard.isNew() ? 'disabled':'' %> >
+   <input type="text" class="input-xmedium" id="ccnumber" name="ccnumber" value="<%- creditcard.get('ccnumber') %>" <%= !creditcard.isNew() ? 'disabled':'' %> >
   </div>
  </div>
 

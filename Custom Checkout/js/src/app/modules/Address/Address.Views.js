@@ -22,8 +22,60 @@ define('Address.Views', function ()
 
 		,	'change select[data-type="country"]': 'updateStates'
 		,	'blur input[data-type="phone"]': 'formatPhone'
+//		,	'blur #ext': 'formatPhone'
+		,	'blur input[name="firstfullname"]': 'verifyFirstName'
+		,	'blur input[name="lastfullname"]': 'verifyLastName'
+		,	'blur input[name="company"]': 'verifyCompany'
+		,	'blur input[name="addr1"]': 'verifyAddress'
 		}
-		
+	,	verifyFirstName: function (e){
+			var firstname = this.$("input[name='firstfullname']");
+			var result = firstname.val();
+			var first = firstname.val().split("")[0];
+			var last = firstname.val().split("")[firstname.val().length-1];
+			var begin = first ==" "? 1:0;
+			var end = result.length;
+			if(last == " "){
+				end = result.length-1;
+			}
+			firstname.val( result.slice(begin,end) );
+		}
+	,	verifyLastName: function (e){
+		var name = this.$("input[name='lastfullname']");
+		var result = name.val();
+		var first = name.val().split("")[0];
+		var last = name.val().split("")[name.val().length-1];
+		var begin = first ==" "? 1:0;
+		var end = result.length;
+		if(last == " "){
+			end = result.length-1;
+		}
+		name.val( result.slice(begin,end) );
+	}
+	,	verifyCompany: function (e){
+			var name = this.$("input[name='company']");
+			var result = name.val();
+			var first = name.val().split("")[0];
+			var last = name.val().split("")[name.val().length-1];
+			var begin = first ==" "? 1:0;
+			var end = result.length;
+			if(last == " "){
+				end = result.length-1;
+			}
+			name.val( result.slice(begin,end) );
+	}
+	,	verifyAddress: function (e){
+		var name = this.$("input[name='addr1']");
+		var result = name.val();
+		var first = name.val().split("")[0];
+		var last = name.val().split("")[name.val().length-1];
+		var begin = first ==" "? 1:0;
+		var end = result.length;
+		if(last == " "){
+			end = result.length-1;
+		}
+		name.val( result.slice(begin,end) );
+}
 	,	initialize: function ()
 		{
 			var self = this;
@@ -55,7 +107,11 @@ define('Address.Views', function ()
 	,	formatPhone: function (e)
 		{
 			var $target = jQuery(e.target);
+//			var $target = this.$("input[name='phone1']");
+//			this.model.set("phone1",$target.val(),{validate: true});
+//			var resultPhone = this.$("input[name='phone1']").val().concat(this.$("input[name='ext']").val());
 			$target.val( _( $target.val() ).formatPhone() );
+//			this.model.set("phone",(_(resultPhone).formatPhone()),{validate: true});
 		}
 		
 	// initialize states dropdown
@@ -78,7 +134,8 @@ define('Address.Views', function ()
 	,	page_header: _('Address Book').translate() 
 	,	title: _('Address Book').translate() 
 	,	attributes: { 'class': 'AddressListView' }
-	,	events: { 'click [data-action="remove"]': 'remove' }
+	,	events: { 'click [data-action="remove"]': 'remove' 	
+	}
 
 	,	showContent: function ( path, label )
 		{

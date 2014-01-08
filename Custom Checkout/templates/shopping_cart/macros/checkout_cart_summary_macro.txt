@@ -9,7 +9,6 @@
 	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || [];
 	var sum = 0;
 	var view = {};
-	console.log(options);
 %>
 <style>
 .cart-layover{
@@ -38,6 +37,10 @@
 	cursor: pointer;
 }
 </style>
+<script>
+	jQuery('.keep-in-touch-module').clone().show().appendTo('#keepintouch-code-container');
+	'<%=options.subscription%>'=='T'?jQuery('.keep-in-touch-checkbox').prop('checked',true):jQuery('.keep-in-touch-checkbox').prop('checked',false);
+</script>
 <div class="cart-layover" style="display:none;">
 <input type="button" class="close" value="X" onclick="jQuery('.cart-layover').hide()">
 <h1 style="color: rgb(243, 122, 49); font-family: 'OmnesLightRegular'; font-size: 38px; font-weight: 400; width: 965px; margin-right: auto; margin-left: auto;">Cart</h1>
@@ -52,10 +55,10 @@
 
 <div class="checkout-cart-summary">
 <div class="btncheckout-cart-summary-macro">
-		<button class="bgbutton-checkout" data-action="submit-step">
+		<button class="bgbutton-checkout" data-action="submit-step" style="width: 220px;">
 			<%= options.continueButtonLabel %>
 		</button>
-</div><div style="background-color:#f87c00; margin-left:18px; margin-bottom: 11px">
+</div><div class="order-summary-block">
 	<header class="checkout-cart-summary-header">
 		<% if (options.stepPosition.toLast > 0) { %>
 			<a href="#" class="btn btn-link btn-edit-cart pull-right" onclick="jQuery('.cart-layover').show()" style="color:white;">
@@ -67,7 +70,7 @@
 			<%= _('Order Summary').translate() %>
 		</h2>
 	</header>
-	<div class="dottedLine" style="color:white; margin-top:-10px; margin-bottom: 21px; text-align: center;">......................................</div>
+	<div class="dottedLine" style="color:white; margin-top:-10px; margin-bottom: 21px; text-align: center;">.........................................................</div>
 	<div class="checkout-cart-summary-body">
 		<%// if (!options.hideItems) { %>
 		<ul class="cart-summary-items checkout-summary-items" style="display:none;">
@@ -228,8 +231,16 @@
 		</div>
 	</footer>
 	<% } %>
-	
-	
+	<footer class="checkout-cart-summary-footer accordion" style="margin-bottom:10px;">
+		<div id="giftcert-code-container" class="giftcert-code-container">
+			<%= SC.macros.giftcertForm( giftcertificates ) %>
+		</div>
+	</footer>
+	<footer class="checkout-cart-summary-footer accordion" style="<%=options.subscription=='F'?'display:none;':''%> background:#f5f5f5;margin-bottom:10px">
+		<div id="keepintouch-code-container" class="keepintouch-code-container">
+			
+		</div>
+	</footer>
 	
 		<% if (is_promocode_valid && options.stepPosition.toLast > 0) { %>
 	<footer class="checkout-cart-summary-footer accordion">
@@ -261,12 +272,15 @@ style="width: 90px;"
 
 
 <div class="btncheckout-cart-summary-macro">
-		<button class="bgbutton-checkout" data-action="submit-step">
+		<button class="bgbutton-checkout" data-action="submit-step" style="width: 220px;">
 			<%= options.continueButtonLabel %>
 		</button>
-		<!--<input type="image" src="http://www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif" 
+<% if (options.stepPosition.toLast == 1) { %>
+		<div style="margin-top: 15px;">Or check out with
+		<input type="image" src="img/paypal_summary.png" 
 		onclick="window.location='<%=options.payPalUrl%>'"
-		class="nlbutton" style="background: #FFF;border: 0px solid #fff;">-->
+		class="nlbutton" style="background: #FFF;border: 0px solid #fff;"></div>
+		<%}%>
 </div>
 </div>
 <% }) %>

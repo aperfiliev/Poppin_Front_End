@@ -1,26 +1,52 @@
 <div class="row-fluid">
-	<div class="span6 wizard-showpayments-billing-address">
-		<h4 class="section-header">
-			<%=_('Billing Address').translate()%>
-		</h4>
-
-		<%= address(view.profile.get('addresses').get(view.model.get('billaddress')), {
-			hideActions: true
-		,	hideDefaults: true
-		}) %>
-
-		<% if (view.options.edit_url_address) { %>
-			<a class="" href="<%- view.options.edit_url_address %>?force=true">
-				<%= _('Edit').translate() %>
-			</a>
-		<% } %>
+<%console.log(view);%>
+<div class="row-fluid shipments-shipping-details-body" style="width: 648px; height: 215px; display: inline-flex;">
+		<div class="span6 shipments-shipping-method" style="padding-left: 22px; width: 295px; height: 110px; margin-right: 24px; float: left; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+			<h4 class="section-header" style="color: #f8a66c;">
+				<%= _('DELIVERY DETAILS').translate() %>
+			</h4>
+				<div class="shipmethod-rate" style="margin-bottom: 12px;">
+					<input type="radio" checked>
+					<b><%= view.model.get('shipmethods').get(view.model.get('shipmethod')).get('name') %></b> - 
+					<%= view.model.get('shipmethods').get(view.model.get('shipmethod')).get('rate_formatted') %>
+				</div>
+				<a href="#" name="edit_shipmethods" class="btn-edit-address" data-toggle="show-in-modal">
+					<%= _('edit').translate() %>
+				</a>
+		</div>
+		
+				<div class="span6 shipments-shipping-address" style="padding-left: 22px; padding-bottom: 10px; width: 290px; height: 215px; float: left; margin-right: 16px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+			<h4 class="section-header" style="color: #f8a66c;">
+				<%= _('SHIPPING DETAILS').translate() %>
+			</h4>
+			<%= address(view.profile.get('addresses').get(view.model.get('shipaddress')), {
+				hideActions: true
+			,	hideDefaults: true
+			,	verifyReview: "review"
+			}) %>
+			<p>
+			<input type="radio" checked>
+			<b>Ship to this address</b>
+			</p>
+					<a class="btn-edit-address" href="/addressbook/<%-view.model.get('shipaddress')%>" data-toggle="show-in-modal">
+			<%= _('edit').translate() %>
+		</a>
+		<%if(view.model.get("addresses").length > 1){%>
+		<a href="<%- view.options.edit_url %>?force=true" class="btn-edit-address" style="margin-left: 20px;">
+			<%= _('change').translate() %></a><%}%>
+		</div>
 	</div>
+	
+	
+	<div style="width: 605px; height: 142px; margin-top: 15px; border-width:2px; border-color: #e2e2e2; border-style: solid; display: inline-flex;">
+		
+		
 	<% var giftcertificates = view.getGiftCertificates() %>
-	<% var paymentmethods = view.getPaymentmethods() %>
-	<div class="span6 wizard-showpayments-billing-payment-method">
+	<% var paymentmethods = view.getPaymentmethods();%>
+	<div class="span6 wizard-showpayments-billing-payment-method" style="width: 220px; height: 140px; margin-left: 20px; font-size: 15px;">
 		<% if (giftcertificates.length || paymentmethods.length || !view.wizard.hidePayment()) {%>
-			<h4 class="section-header">
-				<%= _('Payment Type').translate() %>
+			<h4 class="section-header"  style="color: #f8a66c;">
+				<%= _('BILLING DETAILS').translate() %>
 			</h4>
 
 			<div class="payment-methods-summary">		
@@ -43,13 +69,71 @@
 					</div>
 				<% } %>
 			</div>
+			
+			<a href="/creditcards/<%=paymentmethods[0].get('creditcard').internalid%>" data-toggle="show-in-modal">
+				<%= _('edit').translate() %>
+			</a>
 
 			<% if (view.options.edit_url_billing) { %>
-				<a class="" href="<%- view.options.edit_url_billing %>?force=true">
-					<%= _('Edit').translate() %>
+				<a class="" href="<%- view.options.edit_url_billing %>?force=true" style="margin-left: 20px;">
+					<%= _('change').translate() %>
 				</a>
 			<% } %>
 		<% } %>
 	</div>
+		
+		<div style="margin-top: 25px;">
+		<img src="img/vertical_dottenline.png" />
+		</div>
+		
+	<div class="span6 wizard-showpayments-billing-address" style="height: 140px; width: 335px; margin-left: 40px; padding-top: 18px;">
+		<%= address(view.profile.get('addresses').get(view.model.get('billaddress')), {
+			hideActions: true
+		,	hideDefaults: true
+		,	verifyReview: "review"
+		}) %>
+	</div>
+	
+	</div>
+	
+	
+	
+<!-- gift certificate -->
+<div style="width: 648px;">
+<h3 class="section-header" style="padding:0; margin:9px 0 0 0;line-height: 30px;color: #f8a66c;">
+		<%=_('IS THIS ORDER A GIFT?').translate()%>
+	</h3>
+
+<form class="delivery-options" action="">
+	<fieldset>
+		<input id="cardmessagetoggle" type="checkbox" name="orderisgift" style="margin: 0 3px 2px 0;">Yes, this order is a gift!
+		<div id="cardmessageblock" style="display:none">
+			<p style="margin-top:9px;">
+				Need some help deciding what to say?<br/>
+				Use one of our messages to get you started:
+			</p></div>
+	</fieldset>
+	</form>
+</div>
+
+
+
+<div class="shipments-cart-details-header" style="width: 648px;">
+	<table cellspacing="0" cellpadding="0" border="0"  style="float: left; background: white; border: 10px solid white; font-size: 12px; font-weight: bold;">
+	<tr style="height: 40px; font-weight: 500;">
+	<th align="center" width="125px">Item</td>
+	<th align="left" width="220px">Decsription</td>
+	<th align="center" width="100px">Price</td>
+	<th align="center" width="100px">Qty</td>
+	<th align="center" width="100px">Total</td>
+	</tr>
+	
+	<% view.model.get('lines').each(function (lines, index) { %>
+				<%= shoppingCartItem(lines, view, {
+					showActions:false
+				}) %>
+			<% }) %>
+	</table>
+</div>
 
 </div>

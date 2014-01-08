@@ -1,21 +1,5 @@
-<section class="shipments-shipping-details" style="display: none;">
+<section class="shipments-shipping-details" style="display:none;">
 	<div class="row-fluid shipments-shipping-details-body">
-		<div class="span6 shipments-shipping-address">
-			<h4 class="section-header">
-				<%= _('Shipping Address').translate() %>
-			</h4>
-			
-			<%= address(view.profile.get('addresses').get(view.model.get('shipaddress')), {
-				hideActions: true
-			,	hideDefaults: true
-			}) %>
-
-			<% if (view.options.edit_url) { %>
-				<a href="<%- view.options.edit_url %>?force=true" class="btn-edit-address">
-					<%= _('Edit').translate() %>
-				</a>
-			<% } %>
-		</div>
 		<div class="span6 shipments-shipping-method">
 			<h4 class="section-header">
 				<%= _('Shipping Method').translate() %>
@@ -46,10 +30,28 @@
 				</span>				
 			<% } %>
 		</div>
+		
+		
+				<div class="span6 shipments-shipping-address">
+			<h4 class="section-header">
+				<%= _('Shipping Address').translate() %>
+			</h4>
+			<%= address(view.profile.get('addresses').get(view.model.get('shipaddress')), {
+				hideActions: true
+			,	hideDefaults: true
+			}) %>
+			
+
+			<% if (view.options.edit_url) { %>
+				<a href="<%- view.options.edit_url %>?force=true" class="btn-edit-address">
+					<%= _('Edit').translate() %>
+				</a>
+			<% } %>
+		</div>
 	</div>
 </section>
 
-<section class="shipments-cart-details">
+<section class="shipments-cart-details"  style="display:none;">
 	<div class="shipments-cart-details-header">
 <table cellspacing="0" cellpadding="0" border="0"  style="float: left;
 background: white; border: 10px solid white; font-size: 12px;
@@ -72,4 +74,5 @@ font-weight: 500;">
 
 
 </table>
+</div>
 </section>

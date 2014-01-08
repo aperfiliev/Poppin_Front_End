@@ -1,6 +1,5 @@
 <% registerMacro('address', function (address, options) { 
 	options = options || {}; 
-
 	var label = address.get('label')
 	,	company = (SC.ENVIRONMENT.siteSettings.registration.displaycompanyfield === 'T') ? address.get('company') : null
 	,	fullname = address.get('fullname')
@@ -10,16 +9,10 @@
 	,	state_object = (country_object && country_object.states)? _.findWhere(countries[address.get('country')].states, {code: address.get('state')}): null
 	,	state = (state_object)? state_object.name: address.get('state');
 	
-	//var b = [];
-	//b.push(address.cid);
-	//console.log("123");
-	//console.log(address.cid);
-	//console.log(options);
-	//console.log(b);
 %>
 <article class="address" >
-	<input type="radio" style="float:left; margin-right:5px;" data-action="select" data-id="<%- address.get('internalid') %>" <%=address.get('internalid') == options.selectedAddress ? 'checked="checked"' : ''%>/>
-	<address class="" style="margin-left:18px;">	
+	
+	<address class=""">	
 		<span class="address-line address-firstfullname">
 			<%= address.get('firstfullname') %> <%= address.get('lastfullname') %>
 		</span>
@@ -65,6 +58,12 @@
 		<span class="address-line address-phone">
 			<%= address.get('phone') %>
 		</span>
+		<% if(options.verifyReview != "review"){%>
+		<div style="margin-top:10px;">
+			<input type="radio" style="float:left; margin-right:5px;" data-action="select" data-id="<%- address.get('internalid') %>" <%=address.get('internalid') == options.selectedAddress ? 'checked="checked"' : ''%>/>
+			<%=Backbone.history.fragment.indexOf('shipping')>-1?'Ship to this address':'Use this address'%>
+			</div>
+		<%}%>
 	</address>
 	<% if (!options.hideDefaults) { %>
 		<% if (address.get('defaultshipping') === 'T') { %>
@@ -93,17 +92,13 @@
 		</button>
 	<% } %>-->	
 		<a class="btn btn-link" href="/addressbook/<%- address.get('internalid') %>" data-toggle="show-in-modal">
-			<%= _('Edit').translate() %>
+			<%= _('edit').translate() %>
 		</a>
 
 
 		<button class="btn btn-link" data-action="remove" data-id="<%- address.get('internalid') %>">
-			<%= _('Delete').translate() %>
+			<%= _('remove').translate() %>
 		</button>
-		
-		<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal">
-			<%= _('Add New Address').translate() %>
-		</a>
 	</p>
 	<% } %>
 </article>

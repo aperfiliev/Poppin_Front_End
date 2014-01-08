@@ -42,6 +42,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		{
 			var profile = this.wizard.options.profile;
 
+
 			this.addresses = profile.get('addresses');
 			this.isGuest = profile.get('isGuest') === 'T';
 			this.isSameAsEnabled = this.options.enable_same_as;
@@ -65,6 +66,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 				this.address.set("firstfullname",profile.get("firstname"));
 				this.address.set("lastfullname",profile.get("lastname"));
 				this.address.set("company",profile.get("companyname"));
+//				this.address.set("label",this.wizard.currentStep);
 			}
 
 			// Add event listeners to allow special flows
@@ -195,6 +197,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			this.model
 				.on('change:' + other_address, function (model, value)
 				{
+					console.log('change event');
 					// If same as is enabled
 					// and its selected, and the other address changes to a "truthy" value
 					if (self.isSameAsEnabled && self.sameAs)
@@ -319,13 +322,14 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 				// The saveForm function expects the event to be in an element of the form or the form itself, 
 				// But in this case it may be in a button outside of the form (as the bav buttosn live in the step)
 				//  or tiggered by a module ready event, so we need to create a fake event which the target is the form itself
+				console.log('form0')
+				console.log(this.addressView.$('form').get(0));
 				var fake_event = jQuery.Event('submit', {
 						target: this.addressView.$('form').get(0)
 					})
 					// Calls the saveForm, this may kick the backbone.validation, and it may return false if there were errors, 
 					// other ways it will return an ajax promise
 				,	result = this.addressView.saveForm(fake_event);
-
 				// Went well, so there is a promise we can return, before returning we will set the address in the model 
 				// and add the model to the profile collection
 				if (result)

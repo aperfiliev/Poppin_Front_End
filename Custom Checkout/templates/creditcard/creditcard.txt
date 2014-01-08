@@ -19,7 +19,7 @@
 
 <form action="addressbook.ss" method="POST">
 	<% if (view.inModal) { %>
-		<div class="modal-body">
+		<div class="modal-body" style="margin: 0 auto;width: 400px;">
 	<% } %>
 
 	<%= creditcardForm(view.model, view.options) %>

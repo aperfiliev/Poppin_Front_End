@@ -24,7 +24,14 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		,	'click [data-action="remove-item"]': 'removeItem'//minicart remove item
 		,	'submit [data-action="update-quantity"]': 'updateItemQuantity'//minicart update item quantity
 		,	'blur [name="quantity"]': 'updateItemQuantity'//minicart update quantity
+		,	'submit form': 'applyGiftCertificate'
+		,	'click [data-action="remove"]': 'removeGiftCertificate'
+		,	'shown #gift-certificate-form' : 'onShownGiftCertificateForm'
+		,	'click [name="edit_shipmethods"]': 'edit_shipmethods'	
 		}
+	,	edit_shipmethods: function(){
+		
+	}
 
 	,	initialize: function(options)
 		{
@@ -103,9 +110,13 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					self.model.unset('promocode');
 					jqXhr.preventDefault = true;
 					var message = ErrorManagement.parseErrorMessage(jqXhr, self.options.application.getLayout().errorMessageKeys);
-					console.log(message);
 					if(message.indexOf("Coupon code is invalid or unrecognized")>-1)
 						message = "Gone are the days of humdrum office products and that promo code";
+					//powertip error for promocode
+//					powerTip.create('promocode', message, 'powerTipPromo', -49, -10);
+//					$target.find('#promocode').on('focusin', function() { powerTip.hide('powerTipPromo'); });
+//					$target.find('#promocode').css('border', '2px solid red').css('padding', '1px 6px');
+					//end of promo powertip
 					self.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
 					$target.find('input[name=promocode]').val('').focus();
 				}
@@ -143,6 +154,120 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		{
 			jQuery(e.target).find('input[name="promocode"]').focus();
 		}
+	//Gift certificate methods
+	,	updateGiftCertificates: function (codes)
+	{
+		var self = this;
+
+		// disable navigation buttons
+		this.wizard.getCurrentStep().disableNavButtons();
+		// disable inputs and buttons
+		this.$('input, button').prop('disabled', true);
+
+		return new Backbone.Model().save(
+			{
+				giftcertificates: codes
+			}
+		,	{
+				url: _.getAbsoluteUrl('services/live-order-giftcertificate.ss')
+
+			,	success: function (model, attributes)
+				{
+					self.model.set({
+						paymentmethods: attributes.paymentmethods
+					,	summary: attributes.summary
+					,	touchpoints: attributes.touchpoints
+					});
+				}
+
+			,	error: function (model, jqXhr)
+				{
+					jqXhr.preventDefault = true;
+					//self.wizard.manageError(JSON.parse(jqXhr.responseText));
+					var error =JSON.parse(jqXhr.responseText);
+					self.$('[data-type=alert-placeholder-gif-certificate]').html(SC.macros.message(error.errorMessage,'error',true));
+				}
+			}
+		).always(function(){
+			// enable navigation buttons
+			self.wizard.getCurrentStep().enableNavButtons();
+			// enable inputs and buttons
+			self.$('input, button').prop('disabled', false);
+		});
+	}
+
+,	applyGiftCertificate: function (e)
+	{
+		e.preventDefault();
+
+
+		var code = jQuery.trim(jQuery(e.target).find('[name="code"]').val())
+		,	is_applied = _.find(this.giftCertificates, function (certificate)
+			{
+				return certificate.get('giftcertificate').code === code;
+			});
+		
+		if (!code)
+		{
+//			this.wizard.manageError({
+//				errorCode: 'ERR_WS_EMPTY_GIFTCERTIFICATE'
+//			,	errorMessage: 'This gift card does not have any credit left'
+//			});
+			
+			var error = {
+					errorCode: 'ERR_WS_EMPTY_GIFTCERTIFICATE'
+				,	errorMessage: 'This gift card does not have any credit left'
+				};
+			self.$('[data-type=giftcertificate-error-placeholder]').html(SC.macros.message(error.errorMessage,'error',true));
+		}
+		else if (is_applied)
+		{
+			this.wizard.manageError({
+				errorCode: 'ERR_WS_APPLIED_GIFTCERTIFICATE'
+			,	errorMessage: 'Gift Certificate is applied'
+			});
+		}
+		else
+		{
+			this.updateGiftCertificates(this.getGiftCertificatesCodes().concat(code));
+		}
+	}
+	
+,	removeGiftCertificate: function (e)
+	{
+		var code = jQuery(e.target).data('id')
+		,	is_applied = _.find(this.giftCertificates, function (payment_method)
+			{
+				return payment_method.get('giftcertificate').code === code;
+			});
+
+		if (is_applied && confirm(_('Are you sure you want to remove this Gift certificate?').translate()))
+		{
+			this.updateGiftCertificates(_.without(this.getGiftCertificatesCodes(), code));
+		}
+	}
+
+,	getGiftCertificatesCodes: function ()
+	{
+		return _.map(this.giftCertificates, function (payment_method)
+		{
+			return payment_method.get('giftcertificate').code;
+		});
+	}
+
+,	showError: function ()
+	{
+//		this.$('.control-group').addClass('error');
+//		WizardModule.prototype.showError.apply(this, arguments);
+		self.showError(result.errorMessage, $line, result.errorDetails);
+	}
+
+	// onShownGiftCertificateForm
+	// Handles the shown of promocode form
+,	onShownGiftCertificateForm: function (e)
+	{
+		jQuery(e.target).find('input[name="code"]').focus();
+	}
 	// minicart updateItemQuantity:
 	// executes on blur of the quantity input
 	// Finds the item in the cart model, updates its quantity and saves the cart model

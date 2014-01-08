@@ -21,7 +21,6 @@
 			} 
 		%>
 		<%= displayInRows(view.creditcards.models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
-		
 	</div>
 <% } %>
 

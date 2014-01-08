@@ -21,9 +21,9 @@
 	%>
 
 	<% if (index_counter) { %>
-		<li class="divider divider-<%= index_counter %>"  style="display:none;">/</li>
+		<li>  <div  class="divider divider-<%= index_counter %>"></div></li>
 	<% } %>
-<% if (index_counter != 2) {%>
+<% if (index_counter != 3) {%>
 	<li class="<%- list_item_class %> wizard-step-<%= index_counter %>">	
 		<a href="<%- step_group.state === 'future' ? Backbone.history.fragment : step_group.url + '?force=true' %>">
 			

@@ -62,5 +62,17 @@
 			return $target.text(error);
 		}
 	});
+	 // --------------------------------
+    // Custom validators
+    // --------------------------------
+    _.extend(Backbone.Validation.validators, {
+        liveAddressValidator: function (value, attr, customValue, model) {
+            if (!value) {
+                return null;
+            }
+            console.log('custom validator liveaddress');
+            console.log(value);
+        }
+    });
 
 })();

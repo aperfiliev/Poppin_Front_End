@@ -97,13 +97,13 @@
 		</div>
 	<% } %>
 <div class="promo-banner" style="text-align: center;">
-							<%=getRecordAttribute('199',2,'custrecord_bannerhtml')%>
+							<%=getRecordAttribute('199',4,'custrecord_bannerhtml')%>
 			</div>
 
 
 	<div id="main" style="border: 17px #e5e5e5 solid;width: 933px;margin: 0 auto;"></div>
         <div class="upsell_options">
-	<%=getRecordAttribute('199',3,'custrecord_bannerhtml')%>
+	<%=getRecordAttribute('199',5,'custrecord_bannerhtml')%>
         </div>
 </div>
 </div>
@@ -113,13 +113,15 @@
 	<PP_FOOTER_CLEAN>
 	</div>
 
-		<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'sc.environment.ssp?lang=' + (request.getParameter('lang') || '') + '&cur=' + (request.getParameter('cur') || '') ) %>"></script>
 	<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 	<% } %>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-01431faa4eac.js') %>"></script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-01431f8b344b.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0143683ea641.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0143685f27ed.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
+	<PP_CHECKOUT_TAG_CONTAINER>
 </body>
 </html>

@@ -9,9 +9,9 @@
 		<small><%= _('(required)').translate() %></small>
 	</label>
 	<div class="controls">
-		<select class="input-xlarge" id="<%= options.manage ? options.manage : ''%>state" name="state" data-type="state">
+		<select class="input-small" id="<%= options.manage ? options.manage : ''%>state" name="state" data-type="state">
 			<option value="">
-				<%= _('-- Select --').translate() %>
+				<%= _(' ').translate() %>
 			</option>
 			<% _.each(states, function (state) { %>
 			<option value="<%- state.code %>" <%= state.code === options.selectedState ? 'selected' : '' %>>
@@ -29,7 +29,7 @@
 			type="text"
 			id="<%= options.manage ? options.manage : ''%>state"
 			name="state"
-			class="input-xlarge"
+			class="input-small"
 			value="<%- options.selectedState %>"
 			data-type="state"
 			placeholder="<%- _('(optional)').translate() %>"

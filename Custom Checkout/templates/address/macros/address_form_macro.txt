@@ -6,7 +6,12 @@
 	,	quantity_countries = _.size(countries)
 	,	selected_country = address.get('country') || site_settings.defaultshipcountry
 	,	application = this.view.options.application || this.view.options.wizard.application;
-
+	
+	/*if(address.isNew()){
+		address.set("label",options.currentSt);
+	}
+	console.log(options);*/
+	
 	if (quantity_countries === 1)
 	{
 		selected_country = _.keys(countries)[0];
@@ -14,13 +19,12 @@
 %>
 <fieldset>
 	<div data-type="alert-placeholder"></div>
-	
 	<div class="control-group">
 		<label class="control-label" for="<%= manage %>namePrefix">
 			<%= _('Prefix').translate() %>
 		</label>
 		<div class="controls">
-			<select id="<%= manage %>namePrefix" name="namePrefix">
+			<select id="<%= manage %>namePrefix" name="namePrefix" class="input-small">
 				<option></option>
 				<option value="Mr." <%= address.get('namePrefix')==='Mr.' ? 'selected' : '' %>>Mr.</option>
 				<option value="Ms." <%= address.get('namePrefix')==='Ms.' ? 'selected' : '' %>>Ms.</option>
@@ -29,30 +33,33 @@
 			</select>
 		</div>
 	</div>
-	
+
+			<!--<div class="controls" style="display: none;">
+			<input type="text" name="label" value="<%-options.manage%>">
+		</div>-->
 	
 	
 		<div class="control-group">
 		<label class="control-label" for="<%= manage %>firstfullname">
-			<%= _('First Name').translate() %>
+			<%= _('First').translate() %>
 			<small>
 				<%= _('(required)').translate() %>
 			</small>
 		</label>
 		<div class="controls">
-			<input type="text" class="input-xlarge" id="<%= manage %>firstfullname" name="firstfullname" value="<%- address.get('firstfullname')%>">
+			<input type="text" class="input-large" id="<%= manage %>firstfullname" maxlength="30" name="firstfullname" value="<%- address.get('firstfullname')%>">
 		</div>
 	</div>
 	
 	<div class="control-group">
 		<label class="control-label" for="<%= manage %>lastfullname">
-			<%= _('Last Name').translate() %>
+			<%= _('Last').translate() %>
 			<small>
 				<%= _('(required)').translate() %>
 			</small>
 		</label>
 		<div class="controls">
-			<input type="text" class="input-xlarge" id="<%= manage %>lastfullname" name="lastfullname" value="<%- address.get('lastfullname')%>">
+			<input type="text" class="input-large" id="<%= manage %>lastfullname" maxlength="30" name="lastfullname" value="<%- address.get('lastfullname')%>">
 		</div>
 	</div>
 	
@@ -73,9 +80,10 @@
 		<div class="controls">
 			<input
 				type="text"
-				class="input-xlarge"
+				class="input-large"
 				id="<%= manage %>company"
 				name="company"
+				maxlength="30"
 				value="<%- address.get('company') %>"
 				<% if (site_settings.registration.companyfieldmandatory !== 'T') { %>
 					placeholder="<%= _('(optional)').translate() %>"
@@ -88,7 +96,7 @@
 	<div class="control-group">
 		<label class="control-label" for="<%= manage %>addr1">
 			<% if (address.isNew()) {%> 
-				<%= _('Address 1').translate() %>
+				<%= _('Address').translate() %>
 			<% } else { %>
 				<%= _('Address').translate() %>
 			<% } %>
@@ -97,7 +105,7 @@
 			</small>
 		</label>
 		<div class="controls">
-			<input type="text" class="input-xlarge" id="<%= manage %>addr1" name="addr1" value="<%- address.get('addr1') %>">
+			<input type="text" class="input-large" id="<%= manage %>addr1" maxlength="30" name="addr1" value="<%- address.get('addr1') %>">
 		</div>
 		<span class="help-block">
 			<%= _('Example: 1234 Main Street').translate() %>
@@ -108,7 +116,7 @@
 		<label class="control-label" for="<%= manage %>addr2">
 		</label>
 		<div class="controls">
-			<input type="text" class="input-xlarge" id="<%= manage %>addr2" name="addr2" value="<%- address.get('addr2') %>" placeholder="<%= _('(optional)').translate() %>">
+			<input type="text" class="input-large" id="<%= manage %>addr2" name="addr2" value="<%- address.get('addr2') %>" placeholder="<%= _('(optional)').translate() %>">
 		</div>
 		<span class="help-block">
 			<%= _('Example: Apt. 3 or Suite #1516').translate() %>
@@ -123,7 +131,7 @@
 			</small>
 		</label>
 		<div class="controls">
-			<input type="text" class="input-xlarge" id="<%= manage %>city" name="city" value="<%- address.get('city') %>">
+			<input type="text" class="input-large" id="<%= manage %>city" name="city" maxlength="30" value="<%- address.get('city') %>">
 		</div>
 	</div>
 
@@ -139,13 +147,13 @@
 
 	<div class="control-group">
 		<label class="control-label" for="<%= manage %>zip">
-			<%= _('Zip Code').translate() %>
+			<%= _('Zip').translate() %>
 			<small>
 				<%= _('(required)').translate() %>
 			</small>
 		</label>
 		<div class="controls">
-			<input type="text" class="input-medium" id="<%= manage %>zip" name="zip" value="<%- address.get('zip') %>" data-type="zip">
+			<input type="text" class="input-small" id="<%= manage %>zip" maxlength="10" name="zip" value="<%- address.get('zip') %>" data-type="zip" style="width: 80px;">
 		</div>
 		<span class="help-block">
 			<%= _('Example: 94117').translate() %>
@@ -168,13 +176,18 @@
 <%// if (address.isNew()) {%>		
 	<div class="control-group">
 		<label class="control-label" for="<%= manage %>phone">
-			<%= _('Phone Number').translate() %>
+			<%= _('Phone').translate() %>
 			<small>
 				<%= _('(required)').translate() %>
 			</small>
 		</label>
 		<div class="controls">
-			<input type="tel" class="input-xlarge" id="<%= manage %>phone" name="phone" value="<%- address.get('phone') %>" data-type="phone">
+			<% if (address.isNew()) {%>
+				<input type="tel" class="input-medium" id="<%= manage %>phone" maxlength="6" name="phone">
+				<input type="tel" style="width: 45px" placeholder="EXT" maxlength="4" id="ext" name="ext" onfocus="this.placeholder = ''" onblur="this.placeholder = 'EXT'">
+			<%} else {%>
+				<input type="tel" class="input-large" id="<%= manage %>phone" name="phone" value="<%- address.get('phone') %>" data-type="phone">
+			<% } %>
 		</div>
 		<span class="help-block">
 			<%= _('Example: 555-123-1234').translate() %>
@@ -182,7 +195,7 @@
 	</div>
 <%//}%>
 	
-	<div class="control-group" id="labelIsresidential">
+	<!--<div class="control-group" id="labelIsresidential">
 		<div class="controls">
 			<label class="checkbox">
 				<input type="checkbox" id="<%= manage %>isresidential" value="T" data-unchecked-value="F" name="isresidential" <%= address.get('isresidential') === 'T' ? 'checked' : '' %>>
@@ -192,25 +205,25 @@
 				</a>
 			</label>
 		</div>
-	</div>
+	</div>-->
 	
-	<% if (!options.hideDefaults) { %>
+	<% if (!options.hideDefaults && jQuery('.section-header').html().indexOf('Billing')>-1) { %>
 		<div class="control-group">
-			<div class="controls">
-				<label class="checkbox">
+			<div class="controls" style="margin-left:100px">
+				<label class="checkbox" style="width:100%">
 					<input type="checkbox" id="<%= manage %>defaultbilling" value="T" data-unchecked-value="F" name="defaultbilling" <%= address.get('defaultbilling') === 'T' ? 'checked' : '' %>>
-					<%= application.getConfig('currentTouchpoint') === 'checkout' ? _('Save as my primary billing address').translate() : _('Make this my default billing address').translate() %>
+					<%= application.getConfig('currentTouchpoint') === 'checkout' ? _('Make this my default billing address').translate() : _('Make this my default billing address').translate() %>
 				</label>
 			</div>
 		</div>
 	<% } %>
 
-	<% if (!options.hideDefaults) { %>
+	<% if (!options.hideDefaults && jQuery('.section-header').html().indexOf('SHIPPING')>-1) { %>
 		<div class="control-group">
-			<div class="controls">
-				<label class="checkbox">
+			<div class="controls" style="margin-left:100px">
+				<label class="checkbox" style="width:100%">
 					<input type="checkbox" id="<%= manage %>defaultshipping" value="T" data-unchecked-value="F" name="defaultshipping" <%= address.get('defaultshipping') === 'T' ? 'checked' : '' %>>
-					<%= application.getConfig('currentTouchpoint') === 'checkout' ? _('Save as my primary shipping address').translate() : _('Make this my default shipping address').translate() %>
+					<%= application.getConfig('currentTouchpoint') === 'checkout' ? _('Make this my default shipping address').translate() : _('Make this my default shipping address').translate() %>
 				</label>
 			</div>
 		</div>

@@ -148,15 +148,11 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					,	hideBackButton: false
 					,	hideSummary: screen_width < 768 //hide summary on phone
 					,	bottomMessage: _('You will have an opportunity to review your order on the next step.').translate()
-					,	continueButtonLabel: _('Place Order').translate()
-					,	save: function()
-						{
-							return this.wizard.model.submit();
-						}
+					,	continueButtonLabel: _('Next: REVIEW ORDER').translate()
 					,	modules: [
 						['OrderWizard.Module.Address.Billing', {enable_same_as: true, title: _('Select Your Billing Address').translate()}], 
-						'OrderWizard.Module.PaymentMethod.Selector',
-						'OrderWizard.Module.PaymentMethod.GiftCertificates'
+						'OrderWizard.Module.PaymentMethod.Selector'
+						//,'OrderWizard.Module.PaymentMethod.GiftCertificates'
 					 	          /*
 							'OrderWizard.Module.PaymentMethod.GiftCertificates'
 						,	'OrderWizard.Module.PaymentMethod.Selector'
@@ -185,11 +181,11 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 				]
 			}
 		,	{
-				name: _('Review & Place Order').translate()
+				name: _('Review Order').translate()
 			,	steps: [
 					{
-						name: _('Review Your Order').translate()
-					,	url: 'review'
+					/*	name: _('Review Your Order').translate()
+					,*/	url: 'review'
 					,	continueButtonLabel: _('Place Order').translate()
 					,	hideBackButton: true
 					,	hideSummaryItems: true
@@ -197,6 +193,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 							['OrderWizard.Module.ShowPayments', {edit_url_billing: '/billing', edit_url_address: '/billing'}]
 						,	['OrderWizard.Module.ShowShipments', {edit_url: '/shipping/address', show_edit_button: true}]
 						,	'OrderWizard.Module.TermsAndConditions'
+						,	['OrderWizard.Module.CardMessage',{title:_('IS THIS ORDER A GIFT?').translate()}]
 						]
 					,	save: function()
 						{

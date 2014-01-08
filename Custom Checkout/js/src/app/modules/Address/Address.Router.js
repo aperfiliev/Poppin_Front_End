@@ -12,7 +12,7 @@ define('Address.Router', ['Address.Views','Address.Model'], function (Views, Mod
 		,	'addressbook/new': 'newAddress'
 		,	'addressbook/:id': 'addressDetailed'
 		}
-		
+
 	,	initialize: function (application)
 		{
 			this.application = application;
@@ -33,7 +33,6 @@ define('Address.Router', ['Address.Views','Address.Model'], function (Views, Mod
 				collection.on('reset destroy change add', function () {
 					this.addressBook();
 				}, this);
-				
 				view.showContent('addressbook');
 			}
 			else
@@ -66,7 +65,8 @@ define('Address.Router', ['Address.Views','Address.Model'], function (Views, Mod
 					Backbone.history.navigate('#addressbook', {trigger: true});
 				}
 			}, view);
-			
+			console.log("322");
+			console.log(view);
 			view.showContent('addressbook');
 		}
 

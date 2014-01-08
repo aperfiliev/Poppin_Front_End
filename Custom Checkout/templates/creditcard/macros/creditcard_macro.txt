@@ -3,6 +3,7 @@
 	var payment_name = creditcard.get('paymentmethod').name
 	,	expiration_month = creditcard.get('expmonth')
 	,	icons = options.icons;
+	console.log(creditcard.get('internalid'));
 %>
 </style>
 <article class="creditcard" >

@@ -11,7 +11,7 @@
 				value="<%- promocode && promocode.code %>"
 				placeholder="<%- _('Promo code').translate() %>"
 				
-style="width: 90px;"
+style="width: 125px;"
 
 			>
 			<button type="submit" class="btn" style="background: #35c6f5;	
