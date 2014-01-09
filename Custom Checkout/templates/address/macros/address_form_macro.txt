@@ -20,6 +20,14 @@
 <fieldset>
 	<div data-type="alert-placeholder"></div>
 	<div class="control-group">
+			<div class="controls" style="margin-left:75px">
+				<label class="checkbox" style="width:100%">
+					<input type="checkbox" id="copyshipping" value="F" data-unchecked-value="F" name="copyshipping" onclick="copyAddress()" <%= address == options.copy_model ? 'checked' : '' %>>
+					<%=  _('Same as shipping address').translate()  %>
+				</label>
+			</div>
+	</div>
+	<div class="control-group">
 		<label class="control-label" for="<%= manage %>namePrefix">
 			<%= _('Prefix').translate() %>
 		</label>
@@ -183,18 +191,22 @@
 		</label>
 		<div class="controls">
 			<% if (address.isNew()) {%>
-				<input type="tel" class="input-medium" id="<%= manage %>phone" maxlength="6" name="phone">
-				<input type="tel" style="width: 45px" placeholder="EXT" maxlength="4" id="ext" name="ext" onfocus="this.placeholder = ''" onblur="this.placeholder = 'EXT'">
+				<input type="tel" style="margin-bottom:0;" class="input-medium" id="<%= manage %>phone" maxlength="6" name="phone">
+				<input type="tel" style="width: 45px;margin-bottom:0;" placeholder="EXT" maxlength="4" id="ext" name="ext" onfocus="this.placeholder = ''" onblur="this.placeholder = 'EXT'">
 			<%} else {%>
-				<input type="tel" class="input-large" id="<%= manage %>phone" name="phone" value="<%- address.get('phone') %>" data-type="phone">
+				<input type="tel" style="margin-bottom:0;" class="input-large" id="<%= manage %>phone" name="phone" value="<%- address.get('phone') %>" data-type="phone">
 			<% } %>
+			
 		</div>
+		<div style="float:left;">
+				<span style="font-size:10px;color: #c5c5c5;">FOR SHIPPING PURPOSES</span>
+			</div>
 		<span class="help-block">
 			<%= _('Example: 555-123-1234').translate() %>
 		</span>
 	</div>
 <%//}%>
-	
+
 	<!--<div class="control-group" id="labelIsresidential">
 		<div class="controls">
 			<label class="checkbox">

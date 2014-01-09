@@ -150,7 +150,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					,	bottomMessage: _('You will have an opportunity to review your order on the next step.').translate()
 					,	continueButtonLabel: _('Next: REVIEW ORDER').translate()
 					,	modules: [
-						['OrderWizard.Module.Address.Billing', {enable_same_as: true, title: _('Select Your Billing Address').translate()}], 
+						['OrderWizard.Module.Address.Billing', {enable_same_as: true}], 
 						'OrderWizard.Module.PaymentMethod.Selector'
 						//,'OrderWizard.Module.PaymentMethod.GiftCertificates'
 					 	          /*

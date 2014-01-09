@@ -1,5 +1,4 @@
 <div class="row-fluid">
-<%console.log(view);%>
 <div class="row-fluid shipments-shipping-details-body" style="width: 648px; height: 215px; display: inline-flex;">
 		<div class="span6 shipments-shipping-method" style="padding-left: 22px; width: 295px; height: 110px; margin-right: 24px; float: left; border-width:2px; border-color: #e2e2e2; border-style: solid;">
 			<h4 class="section-header" style="color: #f8a66c;">
@@ -46,7 +45,7 @@
 	<div class="span6 wizard-showpayments-billing-payment-method" style="width: 220px; height: 140px; margin-left: 20px; font-size: 15px;">
 		<% if (giftcertificates.length || paymentmethods.length || !view.wizard.hidePayment()) {%>
 			<h4 class="section-header"  style="color: #f8a66c;">
-				<%= _('BILLING DETAILS').translate() %>
+				<%= _('BILLING DATAILS').translate() %>
 			</h4>
 
 			<div class="payment-methods-summary">		

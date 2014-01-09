@@ -27,6 +27,7 @@ define('Address.Views', function ()
 		,	'blur input[name="lastfullname"]': 'verifyLastName'
 		,	'blur input[name="company"]': 'verifyCompany'
 		,	'blur input[name="addr1"]': 'verifyAddress'
+		,	'click #copyshipping' : 'setSameAsShipping'
 		}
 	,	verifyFirstName: function (e){
 			var firstname = this.$("input[name='firstfullname']");
@@ -101,6 +102,9 @@ define('Address.Views', function ()
 			e.preventDefault();
 			this.showContent('addressbook');
 		}
+	,	setSameAsShipping: function(e){
+		console.log(this.options);
+	}
 
 	// Will try to reformat a phone number for a given phone Format,
 	// If no format is given, it will try to use the one in site settings.

@@ -2,35 +2,39 @@
 	var is_same_as_enabled = view.isSameAsEnabled
 	,	selected_address = view.address
 	,	address_book = view.getAddressesToShow();
+	console.log(address_book);
+	var shipping_model = _.filter(address_book.models,function(model){ return model.attributes.defaultshipping=='T';});
+	//console.log(default_addressbook);
+	//address_book.models = default_addressbook;
 	//move default address to first position
     for(var i=0;i<address_book.models.length;i++){
     	console.log(address_book.models[i]);
     }
     //address_book.models.splice(0, 0, address_book.models.splice(old_index, 1)[0]);
     
-	if(view.addressId==null && address_book.models.length > 0){
-		view.manualSelectAddress(address_book.models[0].id);
-	}
+    //select first address if none selected
+	//if(view.addressId==null && address_book.models.length > 0){
+		//view.manualSelectAddress(address_book.models[0].id);
+	//}
 	
 %>
-<% if (view.getTitle()) { %>
+<% var page_name; %>
+<% if(Backbone.history.fragment.indexOf('shipping')>-1) { page_name = 'SHIPPING'} %>
+<% if(Backbone.history.fragment.indexOf('billing')>-1) { page_name = 'BILLING'} %> 
+<% if (view.addressId && !selected_address.isNew() && Backbone.history.fragment.indexOf('shipping')>-1) { %>
 	<h3 class="section-header car-background">
-		<%= view.getTitle() %>
-	</h3>
-<% } else { %>
-<% if (view.addressId && !selected_address.isNew()) { %>
-	<h3 class="section-header car-background">
-		<%= _('SELECT YOUR SHIPPING ADDRESS').translate() %>
+		<%= _('SELECT YOUR ' + page_name + ' ADDRESS').translate() %>
 	</h3>
 <%} else { %>
 	<h3 class="section-header car-background">
-		<%= _('ENTER YOUR SHIPPING ADDRESS').translate() %>
+		<%= _('ENTER YOUR ' + page_name + ' ADDRESS').translate() %>
 	</h3>
 <% } %>
-<% } %>
+<% if (!selected_address.isNew()) { %>
 <a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal" style="margin-bottom:5px">
-			<%= Backbone.history.fragment.indexOf('shipping')>-1?_('Enter new shipping address').translate():_('Enter new billing address').translate() %>
+			<%= Backbone.history.fragment.indexOf('shipping')>-1 ?_('Enter new shipping address').translate():_('Enter new billing address').translate() %>
 </a>
+<% } %>
 <!--<% if (is_same_as_enabled) { %>
 	<label class="checkbox same-as-address">
 		<input
@@ -66,6 +70,26 @@
 		%>
 
 		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+	</div>
+<% } else if(view.addressId==null) { %>
+	<div id="address-module-form-placeholder" class="address-module-form-placeholder">
+		<form method="POST">
+		<%= addressFrom(selected_address, {
+				countries: view.wizard.application.getConfig('siteSettings.countries')	
+			,	manage: view.manage
+			,	currentSt: view.wizard.currentStep
+			,	hideDefaults: true
+			,	copy_model: shipping_model[0] 
+		}) %>
+		</form>
+
+		<% if (view.showSaveButton) { %>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary" data-action="submit">
+					<%= _('Save Address').translate() %>
+				</button>
+			</div>
+		<% } %>	
 	</div>
 <% } else if (address_book.length && !view.isGuest) { %>
 	<div id="address-module-list-placeholder" class="address-module-list-placeholder">

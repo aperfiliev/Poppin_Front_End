@@ -29,7 +29,7 @@
 						value="<%- shipmethod.get('internalid')%>" 
 						<%= is_active ? 'checked' : '' %>
 					>
-					<span class="delivery-option-label">
+					<span class="delivery-option-label" style="font-weight:bold">
 						<%= shipmethod.get('name') %>
 					</span>
 					

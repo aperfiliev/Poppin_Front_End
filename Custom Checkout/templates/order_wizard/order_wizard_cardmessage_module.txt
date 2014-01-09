@@ -1,4 +1,4 @@
-<div id="cardmessage_module" style="width:300px; border-top:dotted 1px">
+<div id="cardmessage_module" style="width:280px; border-top:dotted 1px">
 <% if (view.getTitle()) { %>
 	<h3 class="section-header" style="padding:0; margin:9px 0 0 0;line-height: 30px;">
 		<%= view.getTitle() %>
@@ -6,9 +6,9 @@
 <% } %>
 <form class="delivery-options" action="">
 	<fieldset>
-		<input id="cardmessagetoggle" type="checkbox" name="orderisgift" style="margin: 0 3px 2px 0;">Yes, this order is a gift!
+		<input id="cardmessagetoggle" type="checkbox" name="orderisgift" style="margin: 0 3px 2px 0;"><span style="font-size: 14px;">Yes, this order is a gift!</span>
 		<div id="cardmessageblock" style="display:none">
-			<p style="margin-top:9px;">
+			<p style="margin-top:9px;font-size: 14px;">
 				Need some help deciding what to say?<br/>
 				Use one of our messages to get you started:
 			</p>

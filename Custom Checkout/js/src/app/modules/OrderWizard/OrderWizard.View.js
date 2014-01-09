@@ -28,9 +28,17 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		,	'click [data-action="remove"]': 'removeGiftCertificate'
 		,	'shown #gift-certificate-form' : 'onShownGiftCertificateForm'
 		,	'click [name="edit_shipmethods"]': 'edit_shipmethods'	
+		,	'click .keep-in-touch-checkbox':'optin'
 		}
 	,	edit_shipmethods: function(){
-		
+		var shipping_methods = this.model.get('shipmethods')
+		,	is_active = false
+		,	html = "<h3>SELECT YOUR DELIVERY METHOD</h3>";
+		shipping_methods.each(function (shipmethod) {
+			is_active === shipmethod.get('internalid');
+			html+="<input type='radio'>";
+		});
+		document.write(html);
 	}
 
 	,	initialize: function(options)
@@ -38,6 +46,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			var self = this;
 			this.wizard = options.wizard;
 			this.currentStep = options.currentStep;
+			if(this.wizard.options.profile.attributes.companyname!=null){jQuery("#header-phone-number").html("(866) 926-4922");}
 //			this.model.manualSelectAddress
 //			console.log(this.model.attributes.addresses.models[0]);
 //			_.each(this.model.attributes.addresses.models, function(address){
@@ -78,6 +87,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					,	continueButtonLabel: current_step.changedContinueButtonLabel || current_step.continueButtonLabel || _('Place Order').translate()
 					,	hideItems: current_step.hideSummaryItems
 					,	payPalUrl: profile.get("paypalUrl")
+					,	subscription: this.wizard.options.profile.attributes.emailsubscribe
 					})
 					
 				);
@@ -91,6 +101,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		// Handles the submit of the apply promo code form
 	,	applyPromocode: function (e)
 		{
+			alert(e);
 			var self = this
 			,	$target = jQuery(e.target)
 			,	options = $target.serializeObject();
@@ -304,6 +315,17 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 	{
 		this.model.removeLine(this.model.get('lines').get(jQuery(e.target).data('internalid')))
 			.success(_.bind(this.showContent, this));
+	}
+	,optin:function(e){
+		console.log("optin");
+		var self=this,
+		d=jQuery(e.target);
+		if(d.prop("checked")){
+			self.wizard.options.profile.attributes.emailsubscribe="T";
+		}
+		else{
+			self.wizard.options.profile.attributes.emailsubscribe="F";
+		}
 	}
 
 	,	destroy: function ()
