@@ -24,8 +24,8 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		,	'click [data-action="remove-item"]': 'removeItem'//minicart remove item
 		,	'submit [data-action="update-quantity"]': 'updateItemQuantity'//minicart update item quantity
 		,	'blur [name="quantity"]': 'updateItemQuantity'//minicart update quantity
-		,	'submit form': 'applyGiftCertificate'
-		,	'click [data-action="remove"]': 'removeGiftCertificate'
+		,	'submit form[data-action="apply-giftcert"]': 'applyGiftCertificate'
+		,	'click [data-action="remove-giftcert"]': 'removeGiftCertificate'
 		,	'shown #gift-certificate-form' : 'onShownGiftCertificateForm'
 		,	'click [name="edit_shipmethods"]': 'edit_shipmethods'	
 		,	'click .keep-in-touch-checkbox':'optin'
@@ -66,6 +66,9 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 
 	,	render: function()
 		{
+			this.giftCertificates = this.model.get('paymentmethods').where({
+				type: 'giftcertificate'
+			});
 			WizardView.prototype.render.apply(this, arguments);
 			this.updateCartSummary();
 		}
@@ -101,7 +104,6 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		// Handles the submit of the apply promo code form
 	,	applyPromocode: function (e)
 		{
-			alert(e);
 			var self = this
 			,	$target = jQuery(e.target)
 			,	options = $target.serializeObject();
@@ -174,7 +176,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		this.wizard.getCurrentStep().disableNavButtons();
 		// disable inputs and buttons
 		this.$('input, button').prop('disabled', true);
-
+		
 		return new Backbone.Model().save(
 			{
 				giftcertificates: codes
@@ -196,6 +198,10 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					jqXhr.preventDefault = true;
 					//self.wizard.manageError(JSON.parse(jqXhr.responseText));
 					var error =JSON.parse(jqXhr.responseText);
+					
+					if(error.errorMessage == "Gift certificate redemption amount exceeds available amount on the gift certificate"){
+						error.errorMessage = "The gift card entered has no remaining value";
+					}
 					self.$('[data-type=alert-placeholder-gif-certificate]').html(SC.macros.message(error.errorMessage,'error',true));
 				}
 			}
@@ -205,6 +211,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			// enable inputs and buttons
 			self.$('input, button').prop('disabled', false);
 		});
+		this.render;
 	}
 
 ,	applyGiftCertificate: function (e)
@@ -233,6 +240,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		}
 		else if (is_applied)
 		{
+			console.log('is applioed');
 			this.wizard.manageError({
 				errorCode: 'ERR_WS_APPLIED_GIFTCERTIFICATE'
 			,	errorMessage: 'Gift Certificate is applied'
@@ -240,12 +248,14 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		}
 		else
 		{
+			console.log(this.getGiftCertificatesCodes().concat(code));
 			this.updateGiftCertificates(this.getGiftCertificatesCodes().concat(code));
 		}
 	}
 	
 ,	removeGiftCertificate: function (e)
 	{
+//		console.log(this.giftCertificates);
 		var code = jQuery(e.target).data('id')
 		,	is_applied = _.find(this.giftCertificates, function (payment_method)
 			{
@@ -260,8 +270,11 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 
 ,	getGiftCertificatesCodes: function ()
 	{
+//		console.log("aaa");
+//		console.log(this.giftCertificates);
 		return _.map(this.giftCertificates, function (payment_method)
 		{
+			console.log(payment_method.get('giftcertificate'));
 			return payment_method.get('giftcertificate').code;
 		});
 	}

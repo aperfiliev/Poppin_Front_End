@@ -7,10 +7,6 @@
 	,	selected_country = address.get('country') || site_settings.defaultshipcountry
 	,	application = this.view.options.application || this.view.options.wizard.application;
 	
-	/*if(address.isNew()){
-		address.set("label",options.currentSt);
-	}
-	console.log(options);*/
 	
 	if (quantity_countries === 1)
 	{
@@ -19,14 +15,16 @@
 %>
 <fieldset>
 	<div data-type="alert-placeholder"></div>
+	<% ;if (address.isNew() && options.manage=='billaddress') { %>
 	<div class="control-group">
 			<div class="controls" style="margin-left:75px">
 				<label class="checkbox" style="width:100%">
-					<input type="checkbox" id="copyshipping" value="F" data-unchecked-value="F" name="copyshipping" onclick="copyAddress()" <%= address == options.copy_model ? 'checked' : '' %>>
+					<input type="checkbox" id="copyshipping" value="F" data-unchecked-value="F" name="copyshipping">
 					<%=  _('Same as shipping address').translate()  %>
 				</label>
 			</div>
 	</div>
+	<% } %>
 	<div class="control-group">
 		<label class="control-label" for="<%= manage %>namePrefix">
 			<%= _('Prefix').translate() %>

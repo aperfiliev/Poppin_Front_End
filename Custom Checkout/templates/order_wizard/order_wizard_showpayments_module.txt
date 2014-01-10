@@ -9,7 +9,7 @@
 					<b><%= view.model.get('shipmethods').get(view.model.get('shipmethod')).get('name') %></b> - 
 					<%= view.model.get('shipmethods').get(view.model.get('shipmethod')).get('rate_formatted') %>
 				</div>
-				<a href="#" name="edit_shipmethods" class="btn-edit-address" data-toggle="show-in-modal">
+				<a href="#" name="edit_shipmethods" class="btn-edit-address" data-toggle="show-in-modal" style="text-decoration: underline;">
 					<%= _('edit').translate() %>
 				</a>
 		</div>

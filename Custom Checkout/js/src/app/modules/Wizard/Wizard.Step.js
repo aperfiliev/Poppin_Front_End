@@ -401,7 +401,7 @@ define('Wizard.Step', function ()
 		// If there is a model calls the save function of it.
 		// other ways it returns a resolved promise, to return something standard
 	,	_save: function ()
-		{
+		{console.log('wizard step save');
 			if (this.wizard.model && this.currentModelState !== JSON.stringify(this.wizard.model))
 			{
 				return this.wizard.model.save().error(function (jqXhr)

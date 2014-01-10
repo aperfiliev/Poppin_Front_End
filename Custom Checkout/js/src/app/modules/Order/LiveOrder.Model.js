@@ -203,7 +203,7 @@ define('LiveOrder.Model', ['Order.Model', 'OrderLine.Model', 'OrderLine.Collecti
 
 
 	,	save: function ()
-		{
+		{console.log('save liveorder');
 			if (this.get('confirmation'))
 			{
 				return jQuery.Deferred().resolve();

@@ -26,7 +26,7 @@
 			break;
 		case 'giftcertificate':
 			var code_length = payment.get('giftcertificate').code.length; %>					
-			<%= _('Ending in: $(0)').translate(payment.get('giftcertificate').code.substring(code_length - 4, code_length)) %>
+			<%= _('$(0)').translate(payment.get('giftcertificate').code.substring(code_length - 4, code_length)) %>
 			<% break;
 		case 'invoice': %>
 			<b class="payment-method-formatted-invoice-terms">

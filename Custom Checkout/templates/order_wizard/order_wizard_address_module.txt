@@ -2,20 +2,17 @@
 	var is_same_as_enabled = view.isSameAsEnabled
 	,	selected_address = view.address
 	,	address_book = view.getAddressesToShow();
-	console.log(address_book);
-	var shipping_model = _.filter(address_book.models,function(model){ return model.attributes.defaultshipping=='T';});
-	//console.log(default_addressbook);
-	//address_book.models = default_addressbook;
-	//move default address to first position
-    for(var i=0;i<address_book.models.length;i++){
-    	console.log(address_book.models[i]);
-    }
+	
     //address_book.models.splice(0, 0, address_book.models.splice(old_index, 1)[0]);
+   
+    //select default address if none selected
+    //shipping
+    console.log(address_book.models);
     
-    //select first address if none selected
-	//if(view.addressId==null && address_book.models.length > 0){
-		//view.manualSelectAddress(address_book.models[0].id);
-	//}
+		//if(view.addressId==null && address_book.models.length > 0){
+			//view.manualSelectAddress(address_book.models[0].id);
+		//}
+	
 	
 %>
 <% var page_name; %>
@@ -79,7 +76,6 @@
 			,	manage: view.manage
 			,	currentSt: view.wizard.currentStep
 			,	hideDefaults: true
-			,	copy_model: shipping_model[0] 
 		}) %>
 		</form>
 

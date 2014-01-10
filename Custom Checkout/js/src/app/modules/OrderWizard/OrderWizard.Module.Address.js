@@ -25,6 +25,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		,	'click [data-action="change-address"]': 'changeAddress'
 		,	'change [data-action="same-as"]': 'markSameAs'
 		,	'change form': 'changeForm'
+		,	'click #copyshipping' : 'setSameAsShipping'
 		}
 
 	,	errors: ['ERR_CHK_INCOMPLETE_ADDRESS', 'ERR_CHK_INVALID_ADDRESS']
@@ -88,7 +89,33 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			{
 				null;
 			}
-			else*/ if (this.getAddressesToShow().length && !this.isGuest)
+			else*/ 
+			if(this.address.isNew()){
+				this.addressView = new AddressViews.Details({
+					application: this.wizard.application
+				,	collection: this.addresses
+				,	model: this.address
+				,	manage: this.manage
+				});
+
+				// as the form was already renderd within the template of this, we just grab a reference to it 
+				this.addressView.$el = this.$('#address-module-form-placeholder');
+
+				// then we bind the events and validation
+				Backbone.Validation.bind(this.addressView);
+				this.addressView.delegateEvents();
+
+				// if the user is a guest, and its editing the already submited address
+				// we set that address as the current one so we don't create a new address
+				// in the guest's address book.
+				if (this.isGuest && !is_address_new)
+				{
+					this.setAddress(this.address.id, {
+						silent: true
+					});
+				}
+			}
+			else if (this.getAddressesToShow().length && !this.isGuest)
 			{
 				this.addressListView = new AddressViews.List({
 					application: this.wizard.application
@@ -307,6 +334,79 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 				this.unsetAddress();
 			}
 		}
+	,	parsePhoneNumber: function(phone_number){
+			var s2 = (""+phone_number).replace(/\D/g, '');
+			var m = s2.match(/^(\d{6})(\d{4})$/);
+			return (!m) ? null : [m[1], m[2]];
+		}
+	,	setSameAsShipping: function(e)
+		{
+			var addressmodels = this.getAddressesToShow();
+			var defaultshippingresult = null;
+			if(addressmodels.models.length==1){
+				defaultshippingresult =  addressmodels.models[0];
+			}
+			else{
+				for(var i=0;i< addressmodels.models.length;i++){
+					if(addressmodels.models[i].attributes.defaultshipping=='T'){
+						defaultshippingresult = addressmodels.models[i];
+					}
+				}
+				if(defaultshippingresult==null){
+					defaultshippingresult =  addressmodels.models[0];
+				}
+			}
+			
+			//var defaultshippingresult = _.filter(addressmodels.models,function(model){ return model.attributes.defaultshipping=='T';});
+//			var defaultshippingresult = _.filter(addressmodels.models,function(model){ return model.attributes.defaultshipping=='T';});
+//			if(defaultshippingresult.length==0){
+//				defaultshippingresult = addressmodels.models[0];
+//			}
+			
+			var shipping_source = defaultshippingresult;
+			console.log(this.$('input[name="state"]').val()==null);
+			if(jQuery(e.target).prop('checked')){
+				var normalizedPhoneNUmber = this.parsePhoneNumber(shipping_source.attributes.phone);
+				var formPhoneNumber = this.$('input[name="phone"]').val()+this.$('input[name="ext"]').val();
+				if(this.$('input[name="addr1"]').val()!=''
+				|| this.$('input[name="addr2"]').val()!=''
+				|| this.$('input[name="city"]').val()!=''
+				|| this.$('input[name="state"]').val()!=null 
+				|| this.$('input[name="zip"]').val()!=''
+				|| formPhoneNumber!=''
+				){
+					if(confirm('You have entered another address, by checking this box we will use your shipping address as your billing address')){
+						this.$('input[name="addr1"]').val(shipping_source.attributes.addr1);
+						this.$('input[name="addr2"]').val(shipping_source.attributes.addr2);
+						this.$('input[name="city"]').val(shipping_source.attributes.city);
+						this.$('input[name="state"]').val(shipping_source.attributes.state);
+						this.$('input[name="zip"]').val(shipping_source.attributes.zip);
+						this.$('input[name="phone"]').val(normalizedPhoneNUmber[0]);
+						this.$('input[name="ext"]').val(normalizedPhoneNUmber[1]);
+					}
+			}
+			else{
+				this.$('input[name="addr1"]').val(shipping_source.attributes.addr1);
+				this.$('input[name="addr2"]').val(shipping_source.attributes.addr2);
+				this.$('input[name="city"]').val(shipping_source.attributes.city);
+				this.$('input[name="state"]').val(shipping_source.attributes.state);
+				this.$('input[name="phone"]').val(normalizedPhoneNUmber[0]);
+				this.$('input[name="ext"]').val(normalizedPhoneNUmber[1]);
+				this.$('input[name="zip"]').val(shipping_source.attributes.zip);
+				
+			}
+			}
+			else{
+				this.$('input[name="addr1"]').val('');
+				this.$('input[name="addr2"]').val('');
+				this.$('input[name="city"]').val('');
+				this.$('input[name="state"]').val('');
+				this.$('input[name="phone"]').val('');
+				this.$('input[name="ext"]').val('');
+				this.$('input[name="zip"]').val('');
+			}
+			
+		}
 
 		// module.submit
 		// -------------
@@ -315,6 +415,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		// return a resolved promise to comply with the api
 	,	submit: function ()
 		{
+			console.log('submit form address');
 			var self = this;
 			// its a new address
 			if (this.addressView)
@@ -367,7 +468,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		}
 
 	,	isValid: function () 
-		{
+		{console.log('isvalid');
 			if (this.tempAddress)
 			{
 				return jQuery.Deferred().resolve();

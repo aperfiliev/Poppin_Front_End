@@ -13,16 +13,17 @@
 <style>
 .cart-layover{
 	position:absolute;
-	left: 50%;
-	top: 50%;
-	margin-left: -484px;
-	margin-top: -50px;
-	width: 967px;
+	margin-left: -650px;
+	margin-top: 40px;
+	width: 900px;
+	height: 575px;
 	background: white;
 	-webkit-box-shadow: 10px 10px 10px #9E9E9E;
     -moz-box-shadow:    10px 10px 10px #9E9E9E;
     box-shadow:         10px 10px 10px #9E9E9E;
     z-index:999;
+    overflow:scroll;
+    height:
 }
 .close{
 	
@@ -162,12 +163,12 @@
 
 		<% if (is_promocode_valid || summary.giftcertapplied) { %>
 			<% if (is_promocode_valid && summary.discounttotal) { %>
-			<div class="cart-summary-promocode-applied" style="color:white">
+			<div class="checkout-cart-summary-body" style="color:white">
 				<p>
-					<strong class="lead-price pull-right">
-						-<%= summary.discounttotal_formatted %>
-					</strong>
-					<%= _('Promo Code').translate() %> #<%= promocode.code %>
+				<span class="pull-right cart-summary-shipping-cost-formatted">
+					-<%=summary.discounttotal_formatted%>
+				</span>
+					<%= _('Promo').translate() %> #<%= promocode.code %>
 										<% if (options.stepPosition.toLast > 0) { %>
 					<!--	<a href="#" data-action="remove-promocode">
 							<i class="icon-remove"></i>
@@ -178,9 +179,9 @@
 			<% } %>
 			
 			<% if (summary.giftcertapplied) { %>
-			<div class="cart-summary-giftcertificate-applied">
+			<div class="checkout-cart-summary-body" style="color:white;">
 				<p>
-					<%= _('Gift Certificates Applied ($(0))').translate(giftcertificates.length) %>
+				<b>	<%= _('Gift Certificates Applied ($(0))').translate(giftcertificates.length) %></b>
 				</p>
 				<% _.each(giftcertificates, function (giftCertificate) { %>
 					<p>
@@ -188,7 +189,7 @@
 							<%= _('-$(0)').translate(giftCertificate.get('giftcertificate').amountapplied_formatted) %>
 						</span>
 						<span title="<%- giftCertificate.get('giftcertificate').code %>">
-							<%= SC.macros.formatPaymentMethod(giftCertificate) %>
+							Gift Card: <%= SC.macros.formatPaymentMethod(giftCertificate) %>
 						</span>
 					</p>
 				<% }); %>
