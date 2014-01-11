@@ -14,7 +14,6 @@ define('OrderWizard.Router', ['Wizard.Router', 'OrderWizard.View', 'OrderWizard.
 	,	initialize: function()
 		{
 			WizardRouter.prototype.initialize.apply(this, arguments);
-
 			if (this.application.getConfig('startCheckoutWizard') && !~_.indexOf(this.stepsOrder, ''))
 			{
 				this.route('', 'startWizard');
@@ -24,7 +23,13 @@ define('OrderWizard.Router', ['Wizard.Router', 'OrderWizard.View', 'OrderWizard.
 
 	,	startWizard: function()
 		{
-			Backbone.history.navigate(this.stepsOrder[0], {trigger: true});
+			if(this.model.attributes.shipaddress.indexOf('null') == -1 && this.model.attributes.billaddress.indexOf('null') == -1 ){
+				Backbone.history.navigate(this.stepsOrder[2], {trigger: true});
+			}
+			else{
+				Backbone.history.navigate(this.stepsOrder[0], {trigger: true});
+			}
+			
 		}
 
 	,	hidePayment: function()

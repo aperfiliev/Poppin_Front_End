@@ -5,22 +5,22 @@
 			var creditcard = payment.get('creditcard');
 			if(creditcard){
 				var ccpname = creditcard.paymentmethod ? creditcard.paymentmethod.name : ''; %> 
-				<b class="credit-card-icon"> 
+				<span class="credit-card-icon" style="font-size: 17px;"> 
 					<% if(creditCardIcons && ccpname in creditCardIcons){ %>
 						<img class="credit-card-icon" src="<%= creditCardIcons[ccpname] %>" alt="<%= ccpname %>">
 					<% }else{ %>
 						<%= ccpname %>	
 					<% } %>
 					<span>&nbsp;-&nbsp;</span>
-					<%= _('Ending in $(0)').translate(creditcard.ccnumber.replace(/\*/g, '')) %>
-				</b>
+					<%= _('ending in $(0)').translate(creditcard.ccnumber.replace(/\*/g, '')) %>
+				</span>
 				<br>
-				<b class="credit-card-name">
+				<b class="credit-card-name" style=" margin-left: 20px;">
 					<%= creditcard.ccname %>
 				</b>
 				<br>
-				<span class="credit-card-expiredate">
-					<%= _('Expires ').translate() + creditcard.ccexpiredate %>
+				<span class="credit-card-expiredate" style=" margin-left: 20px;">
+					<%= _('exp ').translate() + creditcard.ccexpiredate %>
 				</span>
 			<% }
 			break;
