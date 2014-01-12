@@ -112,19 +112,19 @@ else if (url)
 <% if (!options.showActions) { %>
 
 <tr style="border-top: 2px solid rgb(243, 243, 243);">
-<td align="center">
+<td align="left">
 <% var thumbnail = item.get('_thumbnail'); %>
-<img src="<%- view.options.application.resizeImage(thumbnail.url, 'thumbnail') %>" alt="<%- thumbnail.altimagetext %>" style="width:75px;"></td>
-<td align="left" style="padding-left: 5px; padding-right: 5px;"><%= item.get('_name') %></td>
+<img src="<%- view.options.application.resizeImage(thumbnail.url, 'thumbnail') %>" alt="<%- thumbnail.altimagetext %>" style="width: 150px; margin-left: -20px;"></td>
+<td align="left" style="padding-left: 5px; padding-right: 5px; color: #616161;"><%= item.get('_name') %></td>
 
-<td align="center">
+<td align="center" style="color: #616161;">
 				<% if( line.get('amount') > line.get('total') ) {%>
 					<small class="muted crossed"><%= SC.macros.showItemPrice(item) %></small><br/>
 					<span style="color:red"><%= newprice_formatted.toFixed(2) %></span>
 				<% } else {%> <%= SC.macros.showItemPrice(item) %> <%}%></td>
 				
-<td align="center"><%=line.get('quantity') %></td>
-<td align="center"><%= line.get('total_formatted') %>
+<td align="center" style="color: #616161;"><%=line.get('quantity') %></td>
+<td align="center" style="color: #616161;"><%= line.get('total_formatted') %>
 </tr>
 
 <%}%>

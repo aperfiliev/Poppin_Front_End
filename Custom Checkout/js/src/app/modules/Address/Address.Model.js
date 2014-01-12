@@ -43,7 +43,6 @@ define('Address.Model', function ()
 		,	city: { required: true, msg: _('City is required').translate() }
 		,	zip: { required: true, msg: _('Zip Code is required').translate() }
 		,	phone: { required:true,fn:_.validatePhone}
-		,	ext:{required:true}
 		}
 	
 	,	getFormattedAddress: function ()

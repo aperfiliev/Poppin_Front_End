@@ -194,6 +194,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 						,	['OrderWizard.Module.ShowShipments', {edit_url: '/shipping/address', show_edit_button: true}]
 						,	'OrderWizard.Module.TermsAndConditions'
 						,	['OrderWizard.Module.CardMessage',{title:_('IS THIS ORDER A GIFT?').translate()}]
+						
 						]
 					,	save: function()
 						{

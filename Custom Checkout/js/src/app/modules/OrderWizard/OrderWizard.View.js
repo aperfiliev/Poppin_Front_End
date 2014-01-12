@@ -29,7 +29,31 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		,	'shown #gift-certificate-form' : 'onShownGiftCertificateForm'
 		,	'click [name="edit_shipmethods"]': 'edit_shipmethods'	
 		,	'click .keep-in-touch-checkbox':'optin'
+		,	'click [data-action="select"]': 'selectAddress'	
 		}
+	,	selectAddress: function (e)
+	{
+		jQuery('.wizard-content .alert-error').hide(); 
+
+		// Grabs the address id and sets it to the model
+		// on the position in which our sub class is manageing (billaddress or shipaddress)
+		this.setAddress(jQuery(e.target).data('id').toString());
+
+		// re render so if there is changes to be shown they are represented in the view
+		this.render();              
+
+		// As we already set the address, we let the step know that we are ready
+		this.trigger('ready', true);
+	}
+	,	setAddress: function (address_id, options)
+	{
+		console.log("new");
+		console.log(this);
+		this.model.set("shipaddress", address_id, options);
+		this.addressId = address_id;
+
+		return this;
+	}
 	,	edit_shipmethods: function(){
 		var shipping_methods = this.model.get('shipmethods')
 		,	is_active = false

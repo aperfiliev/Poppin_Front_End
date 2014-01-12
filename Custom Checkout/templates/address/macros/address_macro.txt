@@ -90,7 +90,8 @@
 		<button class="btn btn-link" data-action="select" data-id="<%- address.get('internalid') %>">
 			<%= options.selectMessage || _('Select this address').translate() %>
 		</button>
-	<% } %>-->	
+	<% } %>-->
+	<%if(options.step != "review"){%>	
 		<a class="btn btn-link" href="/addressbook/<%- address.get('internalid') %>" data-toggle="show-in-modal">
 			<%= _('edit').translate() %>
 		</a>
@@ -99,6 +100,7 @@
 		<button class="btn btn-link" data-action="remove" data-id="<%- address.get('internalid') %>">
 			<%= _('remove').translate() %>
 		</button>
+		<%}%>
 	</p>
 	<% } %>
 </article>

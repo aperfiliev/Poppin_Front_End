@@ -248,7 +248,14 @@ Application.defineModel('Address', {
 //		nlapiLogExecution('DEBUG', 'after', address.label);
 		address.company = address.attention;
 		address.lastfullname = res[1];
-		
+		var phonenumber = (""+address.phone).replace(/\D/g, '');
+		if(phonenumber.length>10){
+			var m = phonenumber.match(/^(\d{3})(\d{3})(\d{4})(\d{4})$/);
+			var phoneresult = (!m) ? null : [m[1], m[2], m[3], m[4]];
+			address.phone =  "("+phoneresult[0]+")" + " "+ phoneresult[1] + "-" + phoneresult[2];
+			address.ext = phoneresult[3];
+			console.log(address.phone + ' ' + address.ext);
+		}
 		delete address.attention;
 		delete address.addressee;
 		
@@ -264,16 +271,19 @@ Application.defineModel('Address', {
 		var firstName = address.firstfullname+",";
 		var lastName = address.lastfullname;
 		var phone;
+		var s2 = (""+address.phone).replace(/\D/g, '');
+		var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
+		var phoneresult = (!m) ? null : [m[1], m[2], m[3]];
+		if(phoneresult){
+			phone = "("+phoneresult[0]+")" + " "+ phoneresult[1] + "-" + phoneresult[2];
+		}
 		if(address.ext){
-			var phone1 = address.phone.slice(0,3);
-			var phone2 = address.phone.slice(3,6);
-			phone = "("+phone1+")" + " "+ phone2 + "-" +address.ext;
-		}else{phone = address.phone;}
+			phone = phone + ' ext:' + address.ext;
+		}
 		var firstAndLast = firstName.concat(lastName);
 		if(prefix != ""){
 			res = prefix.concat(firstAndLast);
 		}else{res = firstAndLast;}
-		
 		address.phone = phone;
 		address.attention = address.company;
 		address.addressee = res;

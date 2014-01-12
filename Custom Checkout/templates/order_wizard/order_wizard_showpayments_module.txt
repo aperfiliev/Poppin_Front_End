@@ -1,7 +1,22 @@
 <style type="text/css">
 a {text-decoration: none; border-bottom: 1px blue dotted;}
-</style>
 
+.review-layover{
+	position:absolute;
+	margin-left: 50px;
+	margin-top: -170px;
+	width: 500px;
+	height: 400px;
+	background: white;
+	-webkit-box-shadow: 10px 10px 10px #9E9E9E;
+    -moz-box-shadow:    10px 10px 10px #9E9E9E;
+    box-shadow:         10px 10px 10px #9E9E9E;
+    z-index:999;
+    overflow:scroll;
+    height:
+}
+</style>
+<%console.log("23sda");console.log(view);%>
 <div class="row-fluid">
 <div class="row-fluid shipments-shipping-details-body" style="width: 648px; height: 215px; display: inline-flex;">
 		<div class="span6 shipments-shipping-method" style="padding-left: 22px; width: 295px; height: 110px; margin-right: 24px; float: left; border-width:2px; border-color: #e2e2e2; border-style: solid;">
@@ -36,10 +51,30 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 					<a class="btn-edit-address" href="/addressbook/<%-view.model.get('shipaddress')%>" data-toggle="show-in-modal" style="text-decoration: none;">
 			<%= _('edit').translate() %>
 		</a>
-		<%console.log(view.model.get("addresses").length);  if(view.model.get("addresses").length > 1){%>
-		<a href="<%- view.options.edit_url %>?force=true" class="btn-edit-address" style="margin-left: 20px; text-decoration: none;">
+		<%if(view.profile.get("addresses").length > 1){%>
+		<a href="#" class="btn-edit-address" onclick="jQuery('#change-shipping').show()" style="margin-left: 20px; text-decoration: none;">
 			<%= _('change').translate() %></a><%}%>
 		</div>
+	</div>
+	
+	<div class="review-layover" id="change-shipping" style="display:none; padding: 40px;">
+	<input type="button" class="close" value="X" onclick="jQuery('#change-shipping').hide()">
+		<p style="margin-top: 10px;">
+		<%
+			// Wrap the address address macro to pass options in
+			var addressWrap = function (address) {
+				return SC.macros['address'](address, {
+					showSelect: true
+				,	selectMessage: view.selectMessage
+				,	hideDefaults: true
+				,	selectedAddress: view.model.get("shipaddress")
+				,	step: "review"
+				});
+			}
+		%>
+		</p>
+
+		<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
 	</div>
 	
 	
@@ -104,7 +139,7 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 	
 	
 <!-- gift certificate -->
-<div style="width: 606px; height: 80px; margin-top: 15px; padding-left: 20px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+<div style="width: 586px; height: 80px; margin-top: 15px; padding-left: 20px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
 <h3 class="section-header" style="padding:0; margin:9px 0 0 0; font-size: 17px; color: #f87c00;">
 		<%=_('IS THIS ORDER A GIFT?').translate()%>
 	</h3>
@@ -123,14 +158,13 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 
 
 
-<div class="shipments-cart-details-header" style="width: 648px;">
-	<table cellspacing="0" cellpadding="0" border="0"  style="float: left; background: white; border: 10px solid white; font-size: 12px; font-weight: bold;">
-	<tr style="height: 40px; font-weight: 500;">
-	<th align="center" width="125px">Item</td>
-	<th align="left" width="220px">Decsription</td>
-	<th align="center" width="100px">Price</td>
-	<th align="center" width="100px">Qty</td>
-	<th align="center" width="100px">Total</td>
+<div class="shipments-cart-details-header" style="width: 640px;">
+	<table cellspacing="0" cellpadding="0" border="0"  style="float: left; background: white; border: 10px solid white; font-size: 13px; font-weight: bold;">
+	<tr style="height: 40px; font-weight: 500; font-size: 13px; color: #aaaaaa">
+	<th align="left" colspan="2" width="345px"><img src="img/cart_icon.png" style="margin-right: 6px;">SHOPPING CART</th>
+	<th align="center" width="100px">PRICE</th>
+	<th align="center" width="100px">QTY</th>
+	<th align="center" width="100px">TOTAL</th>
 	</tr>
 	
 	<% view.model.get('lines').each(function (lines, index) { %>
@@ -140,5 +174,7 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 			<% }) %>
 	</table>
 </div>
-
+<span>
+<a href="#" onclick="jQuery('.cart-layover').show()" style="text-decoration: none; margin-left: 568px;">edit</a>
+</span>
 </div>

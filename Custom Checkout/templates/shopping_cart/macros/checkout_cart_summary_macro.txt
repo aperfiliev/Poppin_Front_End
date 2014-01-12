@@ -272,10 +272,15 @@ style="width: 90px;"
 	
 	<footer class="checkout-cart-summary-footer accordion" style="margin-bottom:10px;">
 		<div id="giftcert-code-container" class="giftcert-code-container">
+		<div class="dottedLine" style="color:black; margin-top:-10px; text-align: center;">.........................................................</div>
+		<p class="checkout-cart-summary-macro-promo-title">
+			<%=_('Have a Gift Card?').translate() %>
+		</p>
+		<p>Enter your promotional code or coupon code below. Limit one per order please.</p>
 			<%= SC.macros.giftcertForm( giftcertificates ) %>
 		</div>
 	</footer>
-	<footer class="checkout-cart-summary-footer accordion" style="<%=options.subscription=='T'?'display:none;':''%> background:#f5f5f5;margin-bottom:10px">
+	<footer class="checkout-cart-summary-footer accordion" style="background:#f5f5f5;margin-bottom:10px">
 		<div id="keepintouch-code-container" class="keepintouch-code-container">
 			
 		</div>
@@ -291,7 +296,7 @@ style="width: 90px;"
 			<%= options.continueButtonLabel %>
 		</button>
 <% if (options.stepPosition.toLast == 1) { %>
-		<div style="margin-top: 15px;">Or check out with
+		<div style="margin-top: 15px; font-weight: bold; font-size: 12px;">Or check out with
 		<input type="image" src="img/paypal_summary.png" 
 		onclick="window.location='<%=options.payPalUrl%>'"
 		class="nlbutton" style="background: #FFF;border: 0px solid #fff;"></div>

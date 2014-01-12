@@ -299,6 +299,8 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 	,	setAddress: function (address_id, options)
 		{
+		console.log("old");
+		console.log(this.manage);
 			this.model.set(this.manage, address_id, options);
 			this.addressId = address_id;
 

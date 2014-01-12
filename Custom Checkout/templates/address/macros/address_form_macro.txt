@@ -188,13 +188,8 @@
 			</small>
 		</label>
 		<div class="controls">
-			<% if (address.isNew()) {%>
-				<input type="tel" style="margin-bottom:0;" class="input-medium" id="<%= manage %>phone" maxlength="6" name="phone">
-				<input type="tel" style="width: 45px;margin-bottom:0;" placeholder="EXT" maxlength="4" id="ext" name="ext" onfocus="this.placeholder = ''" onblur="this.placeholder = 'EXT'">
-			<%} else {%>
-				<input type="tel" style="margin-bottom:0;" class="input-large" id="<%= manage %>phone" name="phone" value="<%- address.get('phone') %>" data-type="phone">
-			<% } %>
-			
+				<input type="tel" style="margin-bottom:0;" class="input-medium" id="<%= manage %>phone" name="phone"  value="<%- address.get('phone') %>">
+				<input type="tel" style="width: 45px;margin-bottom:0;" placeholder="EXT" maxlength="4" id="ext" name="ext" onfocus="this.placeholder = ''" onblur="this.placeholder = 'EXT'"  value="<%- address.get('ext') %>">			
 		</div>
 		<div style="float:left;">
 				<span style="font-size:10px;color: #c5c5c5;">FOR SHIPPING PURPOSES</span>

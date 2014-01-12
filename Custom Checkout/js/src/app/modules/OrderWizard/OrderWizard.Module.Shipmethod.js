@@ -195,12 +195,12 @@ define('OrderWizard.Module.Shipmethod', ['Wizard.Module'], function (WizardModul
 			this.waitShipmethod = true;
 
 			this.model.set('shipmethod', this.$(e.target).val());
-			this.step.disableNavButtons();
-			this.model.save().always(function()
-			{
-				self.clearError();
-				self.step.enableNavButtons();
-			});
+//			this.step.disableNavButtons();
+//			this.model.save().always(function()
+//			{
+//				self.clearError();
+//				self.step.enableNavButtons();
+//			});
 		}
 
 		// render the error message

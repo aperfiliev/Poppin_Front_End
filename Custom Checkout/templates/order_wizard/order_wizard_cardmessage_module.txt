@@ -1,5 +1,4 @@
-<%console.log("weqw");
-console.log(view.options.step.wizard.currentStep);%>
+
 <%if(view.options.step.wizard.currentStep != "review"){%>
 <div id="cardmessage_module" style="width:280px; border-top:dotted 1px;">
 <% if (view.getTitle()) { %>
