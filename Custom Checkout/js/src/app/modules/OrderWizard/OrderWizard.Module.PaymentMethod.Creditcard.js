@@ -16,7 +16,7 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 	,	selectMessage: _('Use this Card').translate()
 
 	,	events: {
-			'click [data-action="select"]': 'selectCreditCard'
+			'click [data-action="select-creditcard"]': 'selectCreditCard'
 		,	'click [data-action="change-creditcard"]': 'changeCreditCard' 
 		}
 
@@ -185,6 +185,7 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 		
 	,	selectCreditCard: function (e)
 		{	
+			console.log('select creditcard');
 			this.setCreditCard({
 				id: jQuery(e.target).data('id')
 			});
@@ -209,9 +210,14 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 
 	,	setCreditCard: function (options)
 		{	
+			var ccattributes;
+			if(this.creditcards.get(options.id)!=undefined){
+				ccattributes = this.creditcards.get(options.id).attributes;
+			}
+			
 			this.paymentMethod = new OrderPaymentmethodModel({
 				type: 'creditcard'
-			,	creditcard: options.model || this.creditcards.get(options.id).attributes
+			,	creditcard: options.model || ccattributes
 			});
 
 			this.setSecurityNumber();

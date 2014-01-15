@@ -9,6 +9,8 @@ define('OrderWizard.Module.CardMessage', ['Wizard.Module'], function (WizardModu
 	{
 		template: 'order_wizard_cardmessage_module',
 		initialize: function() {
+			console.log('init this');
+			console.log(this);
 			this.enabled = false;
 			this.cardmessages = [];
 			//WizardModule.prototype.initialize.apply(this, arguments);

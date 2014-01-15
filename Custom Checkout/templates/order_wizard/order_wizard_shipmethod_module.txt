@@ -1,3 +1,4 @@
+<div id="shipmethod-content">
 <%
 	var is_active = false
 	,	order_delivery_method = view.model.get('shipmethod')
@@ -60,3 +61,4 @@
 		<% } %>
 	</fieldset>
 </form>
+</div>

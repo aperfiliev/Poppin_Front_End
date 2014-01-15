@@ -1,5 +1,4 @@
 <style type="text/css">
-a {text-decoration: none; border-bottom: 1px blue dotted;}
 
 .review-layover{
 	position:absolute;
@@ -16,24 +15,41 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
     height:
 }
 </style>
-<%console.log("23sda");console.log(view);%>
+<% console.log(view);
+	var is_active = false
+	,	order_delivery_method = view.model.get('shipmethod')
+	,	shipping_methods = view.model.get('shipmethods');
+	shipping_methods.models.sort(function(obj1, obj2) {
+ return obj1.get('rate') - obj2.get('rate');});	
+%>
 <div class="row-fluid">
-<div class="row-fluid shipments-shipping-details-body" style="width: 648px; height: 215px; display: inline-flex;">
-		<div class="span6 shipments-shipping-method" style="padding-left: 22px; width: 295px; height: 110px; margin-right: 24px; float: left; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+<div class="row-fluid shipments-shipping-details-body" style="width: 648px; height: 250px; display: inline-flex;">
+		<div class="span6 shipments-shipping-method" style="padding-left: 22px; width: 295px; height: 180px; margin-right: 24px; float: left; border-width:2px; border-color: #e2e2e2; border-style: solid;">
 			<h4 class="section-header" style="color: #f87c00; font-size: 17px; margin-bottom: 17px;">
 				<%= _('DELIVERY DETAILS').translate() %>
 			</h4>
-				<div class="shipmethod-rate" style="margin-bottom: 12px;">
-					<input type="radio" checked style="margin-bottom: 7px;">
-					<b style="margin-left: 5px;"><%= view.model.get('shipmethods').get(view.model.get('shipmethod')).get('name') %></b> - 
-					<%= view.model.get('shipmethods').get(view.model.get('shipmethod')).get('rate_formatted') %>
-				</div>
-				<a href="#" name="edit_shipmethods" class="btn-edit-address" data-toggle="show-in-modal" style="text-decoration: none; margin-left: 22px;">
-					<%= _('edit').translate() %>
-				</a>
+			<% shipping_methods.each(function (shipmethod) { %>
+				<% is_active = order_delivery_method === shipmethod.get('internalid') %>
+
+				<label class="delivery-option <%= is_active ? 'active' : '' %>">
+					<input
+						type="radio"
+						name="delivery-options"
+						id="delivery-options-<%= shipmethod.get('internalid')%>"
+						value="<%- shipmethod.get('internalid')%>" 
+						<%= is_active ? 'checked' : '' %>
+					>
+					<span class="delivery-option-label">
+						<b><%= shipmethod.get('name') %></b> - 
+					</span>
+					<span class="delivery-option-rate">
+						<%= shipmethod.get('rate_formatted') %>
+					</span>
+				</label>
+			<% }); %>
 		</div>
 		
-				<div class="span6 shipments-shipping-address" style="padding-left: 22px; padding-bottom: 10px; width: 290px; height: 215px; float: left; margin-right: 16px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+				<div class="span6 shipments-shipping-address" style="padding-left: 22px; padding-bottom: 10px; width: 290px; height: 250px; float: left; margin-right: 16px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
 			<h4 class="section-header" style="color: #f87c00; font-size: 17px; margin-bottom: 13px;">
 				<%= _('SHIPPING DETAILS').translate() %>
 			</h4>
@@ -46,13 +62,13 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 			
 			<p style="margin-top: 12px;">
 			<input type="radio" checked style="margin-bottom: 7px;">
-			<b>Ship to this address</b>
+			<span><b>Ship to this address</b></span>
 			</p>
-					<a class="btn-edit-address" href="/addressbook/<%-view.model.get('shipaddress')%>" data-toggle="show-in-modal" style="text-decoration: none;">
+					<a class="btn-edit-address" href="/addressbook/<%-view.model.get('shipaddress')%>" data-toggle="show-in-modal" >
 			<%= _('edit').translate() %>
 		</a>
 		<%if(view.profile.get("addresses").length > 1){%>
-		<a href="#" class="btn-edit-address" onclick="jQuery('#change-shipping').show()" style="margin-left: 20px; text-decoration: none;">
+		<a href="#" class="btn-edit-address" onclick="jQuery('#change-shipping').show()" style="margin-left: 20px; ">
 			<%= _('change').translate() %></a><%}%>
 		</div>
 	</div>
@@ -69,6 +85,7 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 				,	hideDefaults: true
 				,	selectedAddress: view.model.get("shipaddress")
 				,	step: "review"
+				,	verifyAddress: "shipaddress"
 				});
 			}
 		%>
@@ -78,7 +95,7 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 	</div>
 	
 	
-	<div style="width: 605px; height: 142px; margin-top: 15px; border-width:2px; border-color: #e2e2e2; border-style: solid; display: inline-flex;">
+	<div style="width: 605px; height: 186px; margin-top: 15px; border-width:2px; border-color: #e2e2e2; border-style: solid; display: inline-flex;">
 		
 		
 	<% var giftcertificates = view.getGiftCertificates() %>
@@ -86,7 +103,7 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 	<div class="span6 wizard-showpayments-billing-payment-method" style="width: 220px; height: 140px; margin-left: 20px; font-size: 15px;">
 		<% if (giftcertificates.length || paymentmethods.length || !view.wizard.hidePayment()) {%>
 			<h4 class="section-header"  style="color: #f87c00; font-size: 17px; margin-bottom: 20px;">
-				<%= _('BILLING DATAILS').translate() %>
+				<%= _('BILLING DETAILS').translate() %>
 			</h4>
 
 			<div class="payment-methods-summary">		
@@ -110,15 +127,22 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 				<% } %>
 			</div>
 			
-			<a href="/creditcards/<%=paymentmethods[0].get('creditcard').internalid%>" data-toggle="show-in-modal" style="text-decoration: none; margin-left: 20px;">
+			<a href="/creditcards/<%=paymentmethods[0].get('creditcard').internalid%>" data-toggle="show-in-modal" style=" margin-left: 20px;">
 				<%= _('edit').translate() %>
 			</a>
 
-			<% if (view.options.edit_url_billing) { %>
-				<a class="" href="<%- view.options.edit_url_billing %>?force=true" style="margin-left: 20px; text-decoration: none;">
+			<% if (view.profile.get("creditcards").length > 1){ %>
+				<a href="#" onclick="jQuery('#change-payment').show()" style="margin-left: 20px;">
 					<%= _('change').translate() %>
 				</a>
 			<% } %>
+			<div class="span6">
+			<%= SC.macros.creditcardSecurityNumberForm({
+				error: undefined
+            ,   value:  paymentmethods[0].get('creditcard').ccsecuritycode
+            ,	hidehelp: true
+			}) %>
+	</div>
 		<% } %>
 	</div>
 		
@@ -134,6 +158,43 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 		}) %>
 	</div>
 	
+	</div>
+	
+	<div class="review-layover" id="change-payment" style="display:none; padding: 40px;">
+		<button type="button" class="close" onclick="jQuery('#change-payment').hide()">×</button>
+		<!-- billing address here -->
+		<%
+			// Wrap the address address macro to pass options in
+			var addressWrap = function (address) {
+				return SC.macros['address'](address, {
+					showSelect: true
+				,	selectMessage: view.selectMessage
+				,	hideDefaults: true
+				,	selectedAddress: view.model.get("billaddress")
+				,	verifyAddress: "billaddress"
+				});
+			}
+		%>
+		<div style="width:200px; float:right">
+		<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+				<%
+			var creditcardWrap = function (creditcard) {
+				return SC.macros.creditcard(creditcard, {
+					showSelect: true
+				,	showActions: true
+				,	showDefaults: false
+				,	selectMessage: view.selectMessage
+				,	icons: view.wizard.application.getConfig('creditCardIcons')
+				,	selectedCreditcard: view.model.get("paymentmethods").models[0].get("creditcard").internalid
+				,	showSecurityCodeForm: true
+				,	step: "review"
+				});
+			} 
+		%>
+		</div>
+		<div  style="width:200px; float:left">
+		<%= displayInRows(view.profile.get("creditcards").models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
+		</div>
 	</div>
 	
 	
@@ -175,6 +236,6 @@ a {text-decoration: none; border-bottom: 1px blue dotted;}
 	</table>
 </div>
 <span>
-<a href="#" onclick="jQuery('.cart-layover').show()" style="text-decoration: none; margin-left: 568px;">edit</a>
+<a href="#" onclick="jQuery('.cart-layover').show()" style=" margin-left: 568px;">edit</a>
 </span>
 </div>

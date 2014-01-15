@@ -60,8 +60,8 @@
 		</span>
 		<% if(options.verifyReview != "review"){%>
 		<div style="margin-top:10px;">
-			<input type="radio" style="float:left; margin-right:5px;" data-action="select" data-id="<%- address.get('internalid') %>" <%=address.get('internalid') == options.selectedAddress ? 'checked="checked"' : ''%>/>
-			<%=Backbone.history.fragment.indexOf('shipping')>-1?'Ship to this address':'Use this address'%>
+			<input type="radio" style="float:left; margin-right:5px;" data-action="select" data-id="<%- address.get('internalid') %>" <%=address.get('internalid') == options.selectedAddress ? 'checked="checked"' : ''%> id="<%- options.verifyAddress %>"/>
+			<span><%=Backbone.history.fragment.indexOf('shipping')>-1?'Ship to this address':'Use this address'%></span>
 			</div>
 		<%}%>
 	</address>

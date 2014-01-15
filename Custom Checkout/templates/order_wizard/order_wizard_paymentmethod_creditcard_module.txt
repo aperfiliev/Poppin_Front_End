@@ -45,6 +45,7 @@
 			} 
 		%>
 		<%= displayInRows(view.creditcards.models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+	
 	</div>
 <% } else if (view.creditcards.length === 0) { %>
 	<div id="creditcard-module-form-placeholder">
@@ -61,7 +62,15 @@
 		</form>
 	</div>
 <% } %>
-
+<% if(view.paymentMethod.get('creditcard')!=undefined){ %>
+	<div class="span6">
+			<%= SC.macros.creditcardSecurityNumberForm({
+				error: undefined
+            ,   value:  view.paymentMethod.get('creditcard').ccsecuritycode
+            ,	hidehelp: false
+			}) %>
+	</div>
+	<% } %>
 					<div style="width:290px; font-size:14px; font-weight:normal; display: none;" id="whatisthisinfo">
 				<img src="img/explain_cvc.png" alt="explain"><br/>
 				For security purposes, we require the Card Security Code on your credit card. 

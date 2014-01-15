@@ -190,10 +190,10 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					,	hideBackButton: true
 					,	hideSummaryItems: true
 					,	modules: [
-							['OrderWizard.Module.ShowPayments', {edit_url_billing: '/billing', edit_url_address: '/billing'}]
-						,	['OrderWizard.Module.ShowShipments', {edit_url: '/shipping/address', show_edit_button: true}]
+					    	['OrderWizard.Module.ShowPayments', {edit_url_billing: '/billing', edit_url_address: '/billing', shipping_change_url: '/addressbook'}]	
 						,	'OrderWizard.Module.TermsAndConditions'
-						,	['OrderWizard.Module.CardMessage',{title:_('IS THIS ORDER A GIFT?').translate()}]
+						,	['OrderWizard.Module.ShowShipments', {edit_url: '/shipping/address', show_edit_button: true}]
+//						,	['OrderWizard.Module.CardMessage',{title:_('IS THIS ORDER A GIFT?').translate()}]
 						
 						]
 					,	save: function()

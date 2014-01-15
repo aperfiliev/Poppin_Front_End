@@ -79,8 +79,7 @@
  
  <% if (options.showSecurityCodeForm) { %>
   <%= SC.macros.creditcardSecurityNumberForm() %>
- <% } %>
-
+ <% } %><div><input type="checkbox" name="cccheckbox">Save for future purchases</div>
 
 
  <% if (application.getUser().get('isGuest') !== 'T' && options.showDefaults) { %>

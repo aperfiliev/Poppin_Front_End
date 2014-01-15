@@ -13,7 +13,8 @@
 	<div class="row-fluid">
 		<div class="span6">
 	<% } %>
-			<input type="radio" style="float:left; margin-right:5px;" data-action="select" data-id="<%- creditcard.get('internalid') %>" <%=creditcard.get('internalid') == options.selectedCreditcard ? 'checked="checked"' : ''%>/>
+			<input type="radio" style="float:left; margin-right:5px;" data-action="select-creditcard" data-id="<%- creditcard.get('internalid') %>" <%=creditcard.get('internalid') == options.selectedCreditcard ? 'checked="checked"' : ''%>/>
+			<span>
 			<div style="float:left;">
 			<% if (payment_name in icons) { %>
 				<img class="credit-card-icon" src="<%- icons[payment_name] %>" alt="<%- payment_name %>">
@@ -27,6 +28,7 @@
 				<%= (expiration_month < 10 ? '0' : '') + expiration_month + '/' + creditcard.get('expyear') %>
 			</p>
 			</div>
+			</span>
 			<% if (options.showDefaults) { %>
 			<p>
 				<% if (creditcard.get('ccdefault') === 'T') { %>
@@ -35,13 +37,7 @@
 				<% } %>
 			</p>
 			<% } %>
-		<% console.log(options.showSecurityCodeForm); if (options.showSecurityCodeForm) { %>
-		</div>
-		<div class="span6">
-			<%= SC.macros.creditcardSecurityNumberForm({
-				error: options.securityNumberError
-            ,   value: options.ccsecuritycode
-			}) %>
+		<% if (options.showSecurityCodeForm) { %>
 		</div>
 	</div>
 	<% } %>
@@ -52,7 +48,7 @@
 		<p class="actions" style="margin:0" >
 	<% if (options.showSelect) { %>
 
-	<% } %>
+	<% } %><%if(options.step != "review"){%>
 			<a class="btn btn-link" href="/creditcards/<%= creditcard.get('internalid') %>" data-toggle="show-in-modal">
 				<%= _('Edit').translate() %>
 			</a>
@@ -62,6 +58,7 @@
 			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">
 				<%= _('Add New Credit Card').translate() %>
 			</a>
+			<%}%>
 		</p>
 	<% } %>
 </article>

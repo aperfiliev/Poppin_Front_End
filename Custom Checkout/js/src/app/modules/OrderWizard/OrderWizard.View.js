@@ -1,7 +1,8 @@
 // OrderWizzard.View.js
 // --------------------
 //
-define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndConditions','ErrorManagement'], function (WizardView, TermsAndConditions, ErrorManagement)
+define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndConditions','ErrorManagement'], 
+		function (WizardView, TermsAndConditions, ErrorManagement, OrderPaymentmethodModel)
 {
 	'use strict';
 
@@ -26,18 +27,59 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		,	'blur [name="quantity"]': 'updateItemQuantity'//minicart update quantity
 		,	'submit form[data-action="apply-giftcert"]': 'applyGiftCertificate'
 		,	'click [data-action="remove-giftcert"]': 'removeGiftCertificate'
-		,	'shown #gift-certificate-form' : 'onShownGiftCertificateForm'
-		,	'click [name="edit_shipmethods"]': 'edit_shipmethods'	
+		,	'shown #gift-certificate-form' : 'onShownGiftCertificateForm'	
 		,	'click .keep-in-touch-checkbox':'optin'
-		,	'click [data-action="select"]': 'selectAddress'	
+		,	'click [data-action="select"]': 'selectAddress'
+		,	'click [data-action="select-creditcard"]': 'selectCreditCard'
 		}
+	
+	,	selectCreditCard: function (e)
+	{	
+		this.setCreditCard({
+			id: jQuery(e.target).data('id')
+		});
+		
+		// As we alreay already set the credit card, we let the step know that we are ready
+		this.trigger('ready', !this.requireccsecuritycode);
+		console.log(this.requireccsecuritycode);
+	}
+
+,	setSecurityNumber: function ()
+	{
+		if (this.requireccsecuritycode)
+		{
+			var credit_card = this.paymentMethod.get('creditcard');
+
+			if (credit_card)
+			{
+				credit_card.ccsecuritycode = this.ccsecuritycode;
+			}
+		}
+	}
+
+,	setCreditCard: function (options)
+	{	console.log("newCredit"); console.log(this);
+		
+		this.model.get("paymentmethods").models[0].set("creditcard", new OrderPaymentmethodModel({
+			type: 'creditcard'
+		,	creditcard: this.creditcards.get(options.id).attributes
+		})
+		);
+		this.setSecurityNumber();
+
+		OrderWizardModulePaymentMethod.prototype.submit.apply(this, arguments);
+
+		// We re render so if there is changes to be shown they are represented in the view
+		this.render();
+	}
+	
 	,	selectAddress: function (e)
 	{
 		jQuery('.wizard-content .alert-error').hide(); 
-
+		
 		// Grabs the address id and sets it to the model
 		// on the position in which our sub class is manageing (billaddress or shipaddress)
-		this.setAddress(jQuery(e.target).data('id').toString());
+		this.setAddress(jQuery(e.target).data('id').toString(),e.target.getAttribute("id"));
 
 		// re render so if there is changes to be shown they are represented in the view
 		this.render();              
@@ -47,29 +89,29 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 	}
 	,	setAddress: function (address_id, options)
 	{
-		console.log("new");
-		console.log(this);
-		this.model.set("shipaddress", address_id, options);
+		this.model.set(options, address_id, options);
+
 		this.addressId = address_id;
 
 		return this;
 	}
-	,	edit_shipmethods: function(){
-		var shipping_methods = this.model.get('shipmethods')
-		,	is_active = false
-		,	html = "<h3>SELECT YOUR DELIVERY METHOD</h3>";
-		shipping_methods.each(function (shipmethod) {
-			is_active === shipmethod.get('internalid');
-			html+="<input type='radio'>";
-		});
-		document.write(html);
-	}
-
 	,	initialize: function(options)
-		{
+		{	
+			if(Backbone.history.fragment.indexOf('review')>-1){
+				jQuery("#sipmethod-div").append(jQuery("#shipmethod-content"));
+			}
+//			jQuery("#sipmethod-div").append(jQuery("#shipmethod-content"));
+//			jQuery("#shipmethod-content").appendTo(jQuery("#sipmethod-div"));
+//			jQuery("#sipmethod-div").load("order_wizard_shipmethod_module.txt");
+//			console.log("initialize");
+//			console.log(jQuery("#shipmethod-content"));
 			var self = this;
 			this.wizard = options.wizard;
 			this.currentStep = options.currentStep;
+			console.log("initialize");
+//				this.wizard.options.profile.get("creditcards").destroy({ wait: true });
+				console.log(this.wizard.options.profile.get("creditcards"));
+
 			if(this.wizard.options.profile.attributes.companyname!=null){jQuery("#header-phone-number").html("(866) 926-4922");}
 //			this.model.manualSelectAddress
 //			console.log(this.model.attributes.addresses.models[0]);
@@ -86,10 +128,16 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					self.updateCartSummary();	
 				}
 			});
+			this.model.on('refresh', function(){
+				console.log('refreshing');
+				this.render();
+			});
 		}
 
 	,	render: function()
 		{
+			this.creditcards = this.wizard.options.profile.get('creditcards');
+			
 			this.giftCertificates = this.model.get('paymentmethods').where({
 				type: 'giftcertificate'
 			});
@@ -149,6 +197,8 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					var message = ErrorManagement.parseErrorMessage(jqXhr, self.options.application.getLayout().errorMessageKeys);
 					if(message.indexOf("Coupon code is invalid or unrecognized")>-1)
 						message = "Gone are the days of humdrum office products and that promo code";
+					if(message.indexOf("This coupon code has expired or is invalid")>-1)
+						message = "This promo code has expired or is invalid";
 					//powertip error for promocode
 //					powerTip.create('promocode', message, 'powerTipPromo', -49, -10);
 //					$target.find('#promocode').on('focusin', function() { powerTip.hide('powerTipPromo'); });

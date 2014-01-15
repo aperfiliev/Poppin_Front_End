@@ -8719,7 +8719,7 @@ width: 224px;
 }
 #main .delivery-option
 {
-	margin-bottom: 18px;
+	margin-bottom: 5px;
 width: auto;
 }
 #main .delivery-option input
@@ -8729,7 +8729,7 @@ width: auto;
 #main .creditcard-module-list-placeholder .creditcard
 {
 	//border: #eaeaea 4px solid;
-	margin-bottom: 18px;
+	margin-bottom: 10px;
 	//padding: 18px;
 }
 #main .creditcard-module-list-placeholder .creditcard .btn-primary
@@ -9202,4 +9202,43 @@ font-size: 7px;
 }
 #main .address-module-form-placeholder label{
 width:60px;
+}
+#main input[type=radio   ]:not(old){
+  width   : 28px;
+height:28px;
+  margin  : 0;
+  padding : 0;
+  opacity : 0;
+}
+
+#main input[type=radio   ]:not(old) + span{
+  display      : inline-block;
+  margin-left  : -28px;
+  padding-left : 25px;
+  background   : url('../../img/radio.gif') no-repeat center left;
+  line-height  : 16px;
+}
+
+#main input[type=radio]:not(old):checked + span{
+  background   : url('../../img/radio-selected.gif') no-repeat center left;
+}
+.btn-edit-address
+{
+text-decoration: underline;
+}
+#main div[id^="powerTip"] {
+background-color: #fff;
+border-radius: 8px;
+color: #000;
+display: none;
+padding: 17px 20px 0px 20px;
+position: absolute;
+white-space: nowrap;
+z-index: 90;
+text-align: left;
+border: 2px solid red;
+min-width: 50px;
+max-width: 300px;
+min-height:20px;
+font-size: 14px;
 }

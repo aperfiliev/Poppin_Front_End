@@ -1,4 +1,5 @@
 <section class="shipments-shipping-details" style="display:none;">
+
 	<div class="row-fluid shipments-shipping-details-body">
 		<div class="span6 shipments-shipping-method">
 			<h4 class="section-header">

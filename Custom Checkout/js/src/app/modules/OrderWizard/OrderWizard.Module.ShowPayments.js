@@ -10,13 +10,31 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module'], function (WizardMod
 		
 			template: 'order_wizard_showpayments_module'
 		
+		,	events: {
+				'click input[name="delivery-options"]': 'changeDeliveryOptions'
+			}
 		,	render: function()
 			{
 				this.application = this.wizard.application;
 				this.profile = this.wizard.options.profile;
 				this.options.application = this.wizard.application;
+				this.eventHandlersOn();
+				console.log(this.model);
+				
 				this._render();
 			}
+		,	eventHandlersOn: function(){
+				this.eventHandlersOff();
+				console.log(this.model);
+				this.model.on('refresh', function (model, value)
+				{
+					console.log('save dshow payments');
+				});
+		}
+		,	eventHandlersOff: function(){
+				this.model && this.model.off(null, null, this);
+				
+		}	
 		,	getPaymentmethods: function()
 			{
 				return _.reject(this.model.get('paymentmethods').models, function (paymentmethod)
@@ -54,6 +72,26 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module'], function (WizardMod
 				{
 					this.render();
 				}
+			}
+		,	changeDeliveryOptions: function(e) 
+		{
+			var value = this.$(e.target).val()
+			,	self = this;
+
+			this.model.set('shipmethod', value);
+			this.step.disableNavButtons();
+			this.model.save().always(function()
+			{
+				self.render();
+				self.step.enableNavButtons();
+			});
+		}
+		,	submit: function()
+			{
+				var credit_card_pm = this.model.get('paymentmethods').where({type: 'creditcard'});
+				console.log(credit_card_pm);
+				
+				credit_card_pm[0].attributes.creditcard.ccsecuritycode =  this.$('#ccsecuritycode').val();
 			}
 	});
 });

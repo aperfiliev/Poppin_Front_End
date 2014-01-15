@@ -25,7 +25,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		,	'click [data-action="change-address"]': 'changeAddress'
 		,	'change [data-action="same-as"]': 'markSameAs'
 		,	'change form': 'changeForm'
-		,	'click #copyshipping' : 'setSameAsShipping'
+		,	'click #copyshipping' : 'setSameAsShipping'	
 		}
 
 	,	errors: ['ERR_CHK_INCOMPLETE_ADDRESS', 'ERR_CHK_INVALID_ADDRESS']
@@ -299,8 +299,6 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 
 	,	setAddress: function (address_id, options)
 		{
-		console.log("old");
-		console.log(this.manage);
 			this.model.set(this.manage, address_id, options);
 			this.addressId = address_id;
 
