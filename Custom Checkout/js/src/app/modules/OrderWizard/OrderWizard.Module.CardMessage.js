@@ -28,6 +28,7 @@ define('OrderWizard.Module.CardMessage', ['Wizard.Module'], function (WizardModu
 							});
 					}
 				});
+				
 				self.render();
 			});
 		},
@@ -37,7 +38,23 @@ define('OrderWizard.Module.CardMessage', ['Wizard.Module'], function (WizardModu
 			'keyup #cardmessagetext': 'countmessage'
 		},
 		render: function(){
+			
 			this._render();
+			$j.ajax({
+				type : 'GET',
+				url : 'https://checkout.sandbox.netsuite.com/c.3363929/CardMessage/cardmessage.ss' + '?action=getordermessage',
+				cache : false
+			}).always(function(data){
+				if(data){
+					jQuery('#cardmessagetoggle').prop('checked',true);
+					jQuery('#cardmessageocation').val(data.ocation);
+					jQuery('#cardmessagetext').val(data.message);
+					jQuery('#cardmessageblock').show();
+					this.enabled = true;
+					
+					//self.render();
+				}
+			});
 		},
 		submit: function(){
 			if(this.enabled){

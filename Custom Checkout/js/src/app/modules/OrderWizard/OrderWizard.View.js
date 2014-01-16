@@ -189,7 +189,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			// disable inputs and buttons
 			$target.find('input, button').prop('disabled', true);
 
-			this.model.save({ promocode: { code: options.promocode } }).error(
+			this.model.save({ promocode: { code: options.promocode.trim() } }).error(
 				function (jqXhr) 
 				{
 					self.model.unset('promocode');
@@ -272,8 +272,8 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					jqXhr.preventDefault = true;
 					//self.wizard.manageError(JSON.parse(jqXhr.responseText));
 					var error =JSON.parse(jqXhr.responseText);
-					
-					if(error.errorMessage == "Gift certificate redemption amount exceeds available amount on the gift certificate"){
+					console.log(jqXhr);
+					if(error.errorMessage.indexOf("Gift certificate redemption amount exceeds available amount on the gift certificate")>-1){
 						error.errorMessage = "The gift card entered has no remaining value";
 					}
 					self.$('[data-type=alert-placeholder-gif-certificate]').html(SC.macros.message(error.errorMessage,'error',true));
@@ -290,9 +290,12 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 
 ,	applyGiftCertificate: function (e)
 	{
+		console.log("gift error");
+		console.log(e.target);
+		console.log(this);
+		
 		e.preventDefault();
-
-
+		
 		var code = jQuery.trim(jQuery(e.target).find('[name="code"]').val())
 		,	is_applied = _.find(this.giftCertificates, function (certificate)
 			{

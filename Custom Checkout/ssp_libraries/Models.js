@@ -1279,10 +1279,16 @@ Application.defineModel('LiveOrder', {
 
 		order.removeAllGiftCertificates();
 
-		giftcertificates.forEach(function (code)
+		try{
+			giftcertificates.forEach(function (code)
+			{
+				order.applyGiftCertificate(code);
+			});
+		}
+		catch(e)
 		{
-			order.applyGiftCertificate(code);
-		});
+			nlapiLogExecution('ERROR', 'Unexpected error: ', e.toString());
+		}
 	}
 });
 

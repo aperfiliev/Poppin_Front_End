@@ -25,11 +25,12 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module'], function (WizardMod
 			}
 		,	eventHandlersOn: function(){
 				this.eventHandlersOff();
-				console.log(this.model);
-				this.model.on('refresh', function (model, value)
-				{
-					console.log('save dshow payments');
-				});
+				var self = this;
+				Backbone.on('refresh', function ()
+						{
+							self._render();
+							console.log('rendered');
+						}, this);
 		}
 		,	eventHandlersOff: function(){
 				this.model && this.model.off(null, null, this);

@@ -108,7 +108,7 @@
 
 			<div class="payment-methods-summary">		
 			<input type="radio" checked style="margin-right: 5px; color: #f97d00; background-color: #f97d00">
-				<% _.each(paymentmethods, function (paymentmethod) { %>
+				<% console.log(paymentmethods); _.each(paymentmethods, function (paymentmethod) { %>
 					<%= SC.macros.formatPaymentMethod(paymentmethod, view.wizard.application.getConfig('creditCardIcons')) %>
 				<% }); %>
 					

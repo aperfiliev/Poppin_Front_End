@@ -38,7 +38,7 @@
 						self.$savingForm.find('[type="submit"], [type="reset"]').attr('disabled', false);
 						model.trigger('save', model, response);
 					}
-					model.trigger('refresh', model, response);
+					Backbone.trigger('refresh');
 					
 				}
 

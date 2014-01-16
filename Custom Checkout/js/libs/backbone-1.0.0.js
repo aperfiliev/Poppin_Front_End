@@ -448,7 +448,6 @@
     // If the server returns an attributes hash that differs, the model's
     // state will be `set` again.
     save: function(key, val, options) {
-    	
       var attrs, method, xhr, attributes = this.attributes;
 
       // Handle both `"key", value` and `{key: value}` -style arguments.
@@ -458,7 +457,7 @@
       } else {
         (attrs = {})[key] = val;
       }
-      console.log('attrs');
+      console.log('attr');
       console.log(attrs);
       console.log('options');
       console.log(options);
