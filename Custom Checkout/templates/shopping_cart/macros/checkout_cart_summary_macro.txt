@@ -56,7 +56,7 @@
 
 <div class="checkout-cart-summary">
 <div class="btncheckout-cart-summary-macro">
-		<button class="bgbutton-checkout" data-action="submit-step" style="width: 220px;">
+		<button class="bgbutton-checkout" data-action="submit-step" style="width: 243px;">
 			<%= options.continueButtonLabel %>
 		</button>
 </div><div class="order-summary-block">
@@ -292,7 +292,7 @@ style="width: 90px;"
 
 
 <div class="btncheckout-cart-summary-macro">
-		<button class="bgbutton-checkout" data-action="submit-step" style="width: 220px;">
+		<button class="bgbutton-checkout" data-action="submit-step" style="width: 243px;">
 			<%= options.continueButtonLabel %>
 		</button>
 <% if (options.stepPosition.toLast == 1) { %>

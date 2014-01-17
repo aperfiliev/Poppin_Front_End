@@ -14,7 +14,7 @@
 </div>
 <% } %>
 
-<div id="wizard-step-content" class="wizard-step-content" style="overflow: hidden;"></div>
+<div id="wizard-step-content" class="wizard-step-content"></div>
 
 <div class="step-navigation-buttons form-actions" style="float: right; margin-right: 20px; margin-left: 20px; clear: both; width:100%">
  <% if (!view.hideBackButton) { %>

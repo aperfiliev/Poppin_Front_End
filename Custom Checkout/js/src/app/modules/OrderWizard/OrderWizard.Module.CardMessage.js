@@ -45,7 +45,8 @@ define('OrderWizard.Module.CardMessage', ['Wizard.Module'], function (WizardModu
 				url : 'https://checkout.sandbox.netsuite.com/c.3363929/CardMessage/cardmessage.ss' + '?action=getordermessage',
 				cache : false
 			}).always(function(data){
-				if(data){
+				console.log(data);
+				if(data.ocation != '' || data.message != ''){
 					jQuery('#cardmessagetoggle').prop('checked',true);
 					jQuery('#cardmessageocation').val(data.ocation);
 					jQuery('#cardmessagetext').val(data.message);

@@ -15,7 +15,7 @@
 			</option>
 			<% _.each(states, function (state) { %>
 			<option value="<%- state.code %>" <%= state.code === options.selectedState ? 'selected' : '' %>>
-				<%= state.name %>
+				<%= state.code %>
 			</option>
 			<% }) %>
 		</select>

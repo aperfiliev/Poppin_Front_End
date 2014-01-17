@@ -42,7 +42,7 @@
 				// we need to add it. $target will be the placeholder
 				if (!$group.find('.help-inline').length)
 				{
-					$group.find('.controls').append('<span class="help-inline backbone-validation"></span>');
+					$group.find('.controls').append('<span id="powerTipError" class="help-inline backbone-validation"></span>');
 				}
 
 				$target = $group.find('.help-inline');
@@ -53,12 +53,13 @@
 				// we need to add it. $target will be the placeholder
 				if (!$group.find('.help-block').length)
 				{
-					$group.find('.controls').append('<p class="help-block backbone-validation"></p>');
+					
+					$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
 				}
 
 				$target = $group.find('.help-block');
 			}
-
+			
 			return $target.text(error);
 		}
 	});

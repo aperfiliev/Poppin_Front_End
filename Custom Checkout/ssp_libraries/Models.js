@@ -250,7 +250,7 @@ Application.defineModel('Address', {
 		address.lastfullname = res[1];
 		var phonenumber = (""+address.phone).replace(/\D/g, '');
 		if(phonenumber.length>10){
-			var m = phonenumber.match(/^(\d{3})(\d{3})(\d{4})(\d{4})$/);
+			var m = phonenumber.match(/^(\d{3})(\d{3})(\d{4})(\d{1,4})$/);
 			var phoneresult = (!m) ? null : [m[1], m[2], m[3], m[4]];
 			address.phone =  "("+phoneresult[0]+")" + " "+ phoneresult[1] + "-" + phoneresult[2];
 			address.ext = phoneresult[3];
@@ -713,11 +713,13 @@ Application.defineModel('LiveOrder', {
 
 		// Payment
 		result.paymentmethods = [];
+
 		var paypal = _.findWhere(session.getPaymentMethods(), {ispaypal: 'T'});
 		if (order_fields.payment && order_fields.payment.creditcard && order_fields.payment.creditcard.paymentmethod && order_fields.payment.creditcard.paymentmethod.creditcard === 'T' && order_fields.payment.creditcard.paymentmethod.ispaypal !== 'T')
 		{
 			// Main 
 			var cc = order_fields.payment.creditcard;
+			nlapiLogExecution('DEBUG', 'place 3',JSON.stringify(cc));
 			result.paymentmethods.push({
 				type: 'creditcard'
 			,	primary: true
@@ -740,6 +742,7 @@ Application.defineModel('LiveOrder', {
 		}
 		else if (order_fields.payment && paypal && paypal.internalid === order_fields.payment.paymentmethod)
 		{
+
 			result.paymentmethods.push({
 				type: 'paypal'
 			,	primary: true
@@ -958,10 +961,10 @@ Application.defineModel('LiveOrder', {
 		{
 		
 			_.sortBy(non_certificate_methods, 'primary').forEach(function (paymentmethod)
-			{
+			{	nlapiLogExecution('DEBUG', 'place 1',JSON.stringify(paymentmethod));
 				if (paymentmethod.type === 'creditcard' && paymentmethod.creditcard)
 				{
-					
+					nlapiLogExecution('DEBUG', 'place 2', JSON.stringify(paymentmethod.creditcard));
 					var credit_card = paymentmethod.creditcard
 					,	require_cc_security_code = session.getSiteSettings(['checkout']).checkout.requireccsecuritycode === 'T'
 					,	cc_obj = credit_card && {
@@ -1279,16 +1282,17 @@ Application.defineModel('LiveOrder', {
 
 		order.removeAllGiftCertificates();
 
-		try{
 			giftcertificates.forEach(function (code)
 			{
+			var data = {'code': code};
+				var response = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=331&deploy=1&compid=3363929&h=78ae6bbfc91f3566f5eb', data);
+				var responseresult = response.getBody();
+//				nlapiLogExecution('DEBUG', 'response', response.getBody());
+				if(responseresult==0){
+					throw new Error('The gift card entered has no remaining value');
+				}
 				order.applyGiftCertificate(code);
 			});
-		}
-		catch(e)
-		{
-			nlapiLogExecution('ERROR', 'Unexpected error: ', e.toString());
-		}
 	}
 });
 

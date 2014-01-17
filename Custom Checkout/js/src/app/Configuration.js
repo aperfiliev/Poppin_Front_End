@@ -152,6 +152,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					,	modules: [
 						['OrderWizard.Module.Address.Billing', {enable_same_as: true}], 
 						'OrderWizard.Module.PaymentMethod.Selector'
+						//'OrderWizard.Module.ShowPaymentsAndBillings'
 						//,'OrderWizard.Module.PaymentMethod.GiftCertificates'
 					 	          /*
 							'OrderWizard.Module.PaymentMethod.GiftCertificates'

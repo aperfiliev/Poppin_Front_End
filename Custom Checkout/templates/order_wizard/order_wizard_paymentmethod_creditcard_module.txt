@@ -2,11 +2,11 @@
 
 <% if (view_credit_card && !view_credit_card.isNew()) { %>
 	<div id="creditcard-module-list-placeholder" class="creditcard-module-list-placeholder">
-		<!--<p>
+		<p>
 			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">
 				<%= _('Add New Credit Card').translate() %>
 			</a>
-		</p>-->
+		</p>
 		<%
 			var creditcardWrap = function (creditcard) {
 				return SC.macros.creditcard(creditcard, {
@@ -26,11 +26,11 @@
 
 <% if (view.creditcards.length >= 1 && !view_credit_card) { %>
 	<div id="creditcard-module-list-placeholder" class="creditcard-module-list-placeholder">
-		<!--<p>
+		<p>
 			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">
 				<%= _('Add New Credit Card').translate() %>
 			</a>
-		</p>-->
+		</p>
 		<%
 			var creditcardWrap = function (creditcard) {
 				return SC.macros.creditcard(creditcard, {

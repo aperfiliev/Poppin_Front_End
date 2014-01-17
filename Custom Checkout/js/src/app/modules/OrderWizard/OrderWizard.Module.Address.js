@@ -366,12 +366,11 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			var shipping_source = defaultshippingresult;
 			console.log(this.$('input[name="state"]').val()==null);
 			if(jQuery(e.target).prop('checked')){
-				var normalizedPhoneNUmber = this.parsePhoneNumber(shipping_source.attributes.phone);
 				var formPhoneNumber = this.$('input[name="phone"]').val()+this.$('input[name="ext"]').val();
 				if(this.$('input[name="addr1"]').val()!=''
 				|| this.$('input[name="addr2"]').val()!=''
 				|| this.$('input[name="city"]').val()!=''
-				|| this.$('input[name="state"]').val()!=null 
+				|| this.$('select[name="state"]').val()!='' 
 				|| this.$('input[name="zip"]').val()!=''
 				|| formPhoneNumber!=''
 				){
@@ -379,19 +378,19 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 						this.$('input[name="addr1"]').val(shipping_source.attributes.addr1);
 						this.$('input[name="addr2"]').val(shipping_source.attributes.addr2);
 						this.$('input[name="city"]').val(shipping_source.attributes.city);
-						this.$('input[name="state"]').val(shipping_source.attributes.state);
+						this.$('select[name="state"]').val(shipping_source.attributes.state);
 						this.$('input[name="zip"]').val(shipping_source.attributes.zip);
-						this.$('input[name="phone"]').val(normalizedPhoneNUmber[0]);
-						this.$('input[name="ext"]').val(normalizedPhoneNUmber[1]);
+						this.$('input[name="phone"]').val(shipping_source.attributes.phone);
+						this.$('input[name="ext"]').val(shipping_source.attributes.ext);
 					}
 			}
 			else{
 				this.$('input[name="addr1"]').val(shipping_source.attributes.addr1);
 				this.$('input[name="addr2"]').val(shipping_source.attributes.addr2);
 				this.$('input[name="city"]').val(shipping_source.attributes.city);
-				this.$('input[name="state"]').val(shipping_source.attributes.state);
-				this.$('input[name="phone"]').val(normalizedPhoneNUmber[0]);
-				this.$('input[name="ext"]').val(normalizedPhoneNUmber[1]);
+				this.$('select[name="state"]').val(shipping_source.attributes.state);
+				this.$('input[name="phone"]').val(shipping_source.attributes.phone);
+				this.$('input[name="ext"]').val(shipping_source.attributes.ext);
 				this.$('input[name="zip"]').val(shipping_source.attributes.zip);
 				
 			}
@@ -400,7 +399,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 				this.$('input[name="addr1"]').val('');
 				this.$('input[name="addr2"]').val('');
 				this.$('input[name="city"]').val('');
-				this.$('input[name="state"]').val('');
+				this.$('select[name="state"]').val('');
 				this.$('input[name="phone"]').val('');
 				this.$('input[name="ext"]').val('');
 				this.$('input[name="zip"]').val('');

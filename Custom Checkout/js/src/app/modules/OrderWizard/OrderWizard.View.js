@@ -272,9 +272,11 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					jqXhr.preventDefault = true;
 					//self.wizard.manageError(JSON.parse(jqXhr.responseText));
 					var error =JSON.parse(jqXhr.responseText);
-					console.log(jqXhr);
-					if(error.errorMessage.indexOf("Gift certificate redemption amount exceeds available amount on the gift certificate")>-1){
+					if(error.errorMessage.indexOf('Error: The gift card entered has no remaining value')>-1){
 						error.errorMessage = "The gift card entered has no remaining value";
+					}
+					if(error.errorMessage.indexOf("Gift certificate redemption amount exceeds available amount on the gift certificate")>-1){
+						error.errorMessage = "You've waited to long, this gift card has expired";
 					}
 					self.$('[data-type=alert-placeholder-gif-certificate]').html(SC.macros.message(error.errorMessage,'error',true));
 				}
@@ -290,9 +292,6 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 
 ,	applyGiftCertificate: function (e)
 	{
-		console.log("gift error");
-		console.log(e.target);
-		console.log(this);
 		
 		e.preventDefault();
 		

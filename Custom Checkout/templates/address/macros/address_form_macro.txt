@@ -17,7 +17,7 @@
 	<div data-type="alert-placeholder"></div>
 	<% ;if (address.isNew() && options.manage=='billaddress') { %>
 	<div class="control-group">
-			<div class="controls" style="margin-left:75px">
+			<div class="controls" style="margin-left:65px">
 				<label class="checkbox" style="width:100%">
 					<input type="checkbox" id="copyshipping" value="F" data-unchecked-value="F" name="copyshipping">
 					<%=  _('Same as shipping address').translate()  %>

@@ -3405,9 +3405,18 @@ height: 22px;
 }
 #main .alert-danger,#main .alert-error
 {
-	background-color: #f2dede;
-	border-color: #eed3d7;
-	color: #b94a48;
+	background-color: #fff;
+border-radius: 8px;
+position: relative;
+z-index: 90;
+color: #b94a48;
+text-align: left;
+border: 2px solid red;
+min-width: 50px;
+max-width: 185px;
+min-height: 20px;
+font-size: 14px;
+display: block;
 }
 #main .alert-danger h4,#main .alert-error h4
 {
@@ -8938,7 +8947,7 @@ width: 100%;
 height: 100%;
 display: block;
 width: 303px;
-overflow: hidden;
+overflow: visible;
 float: left;
 padding-bottom: 5500px;
 margin-bottom: -5500px;
@@ -8969,7 +8978,7 @@ display: block;
 float: left;
 width: 303px;
 height: 100%;
-overflow: hidden;
+overflow: visible;
 padding-bottom: 5500px;
 margin-bottom: -5500px;
 border-right: 1px dotted rgb(153, 153, 153);
@@ -9084,7 +9093,7 @@ text-align:right
 
 #creditcard-module-form-placeholder .control-label {
 text-align:right;
-width:70px;
+width:55px;
 }
 
 #main .creditcard .credit-card-security-number .control-label{
@@ -9182,7 +9191,7 @@ position: relative;
 float: left;
 position: relative;
 padding: 0 0 1em 0;
-overflow: hidden;
+overflow: visible;
 }
 #main .col2{
 overflow:visible
@@ -9201,7 +9210,7 @@ letter-spacing: 3px;
 font-size: 7px;
 }
 #main .address-module-form-placeholder label{
-width:60px;
+width:50px;
 }
 #main input[type=radio   ]:not(old){
   width   : 28px;
@@ -9231,7 +9240,7 @@ background-color: #fff;
 border-radius: 8px;
 color: #000;
 display: none;
-padding: 17px 20px 0px 20px;
+padding: 14px 20px 0px 20px;
 position: absolute;
 white-space: nowrap;
 z-index: 90;
@@ -9239,6 +9248,15 @@ text-align: left;
 border: 2px solid red;
 min-width: 50px;
 max-width: 300px;
-min-height:20px;
+min-height:14px;
 font-size: 14px;
+}
+.delivery-option-label{
+	font-weight:bold;
+}
+#payment-method-selector-creditcard .credit-card-security-number .control-label{
+width: 25px;
+}
+#creditcard-module-form-placeholder .credit-card-security-number .control-label{
+width: 55px;
 }
