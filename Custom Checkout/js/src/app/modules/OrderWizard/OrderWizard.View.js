@@ -31,7 +31,13 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		,	'click .keep-in-touch-checkbox':'optin'
 		,	'click [data-action="select"]': 'selectAddress'
 		,	'click [data-action="select-creditcard"]': 'selectCreditCard'
+		,	'change #cccheckbox'  : 'ccFuturePurchases'
 		}
+	,	ccFuturePurchases: function(e){
+		if(jQuery(e.currentTarget).prop('checked')){
+			console.log("checked");
+		}else{console.log("unchecked");}
+	}
 	
 	,	selectCreditCard: function (e)
 	{	
@@ -47,7 +53,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 ,	setSecurityNumber: function ()
 	{
 		if (this.requireccsecuritycode)
-		{
+		{	console.log("setSecurityNumber");
 			var credit_card = this.paymentMethod.get('creditcard');
 
 			if (credit_card)
@@ -58,13 +64,18 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 	}
 
 ,	setCreditCard: function (options)
-	{	console.log("newCredit"); console.log(this);
+	{	console.log("newCredit"); console.log(this.paymentMethod);console.log(this.creditcards.get(options.id));
+	
+		var ccattributes;
+		if(this.creditcards.get(options.id)!=undefined){
+			ccattributes = this.creditcards.get(options.id).attributes;
+		}
 		
-		this.model.get("paymentmethods").models[0].set("creditcard", new OrderPaymentmethodModel({
+		this.paymentMethod = new OrderPaymentmethodModel({
 			type: 'creditcard'
-		,	creditcard: this.creditcards.get(options.id).attributes
-		})
-		);
+		,	creditcard: options.model || ccattributes
+		});
+		alert("1");
 		this.setSecurityNumber();
 
 		OrderWizardModulePaymentMethod.prototype.submit.apply(this, arguments);
@@ -136,12 +147,24 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 
 	,	render: function()
 		{
-			this.creditcards = this.wizard.options.profile.get('creditcards');
+			var self = this
+			// currently we only support 1 credit card as payment method
+		,	order_payment_method = this.model.get('paymentmethods').findWhere({
+				type: 'creditcard'
+			});
+		
+	
+		this.paymentMethod = order_payment_method || new OrderPaymentmethodModel({
+			type: 'creditcard'
+		});
+		this.creditcards = this.wizard.options.profile.get('creditcards');
+		
 			
 			this.giftCertificates = this.model.get('paymentmethods').where({
 				type: 'giftcertificate'
 			});
 			WizardView.prototype.render.apply(this, arguments);
+//			Backbone.View.prototype._render.apply(this, arguments);
 			this.updateCartSummary();
 		}
 
@@ -278,7 +301,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					if(error.errorMessage.indexOf("Gift certificate redemption amount exceeds available amount on the gift certificate")>-1){
 						error.errorMessage = "You've waited to long, this gift card has expired";
 					}
-					self.$('[data-type=alert-placeholder-gif-certificate]').html(SC.macros.message(error.errorMessage,'error',true));
+					self.$('[data-type=-placeholder-gif-certificate]').html(SC.macros.message(error.errorMessage,'error',true));
 				}
 			}
 		).always(function(){
@@ -286,8 +309,8 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			self.wizard.getCurrentStep().enableNavButtons();
 			// enable inputs and buttons
 			self.$('input, button').prop('disabled', false);
+			self.render();
 		});
-		this.render;
 	}
 
 ,	applyGiftCertificate: function (e)

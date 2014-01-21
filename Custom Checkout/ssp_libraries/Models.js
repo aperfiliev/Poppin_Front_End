@@ -955,7 +955,7 @@ Application.defineModel('LiveOrder', {
 		//Because of an api issue regarding Gift Certificates, we are going to handle them separately
 			var gift_certificate_methods = _.where(data.paymentmethods, {type: 'giftcertificate'})
 			,	non_certificate_methods = _.difference(data.paymentmethods, gift_certificate_methods);
-
+			nlapiLogExecution('DEBUG', 'data',JSON.stringify(data));
 		// Payment Methods non gift certificate
 		if (is_secure && non_certificate_methods && non_certificate_methods.length)
 		{

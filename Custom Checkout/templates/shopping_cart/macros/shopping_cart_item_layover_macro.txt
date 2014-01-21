@@ -30,7 +30,9 @@ else if (url)
 }
 </style>
 <% if (options.showActions) { %>
-<article id="<%- line.get('internalid') %>" class="cart-item-cell <%= line.get('internalid') %>">
+
+<tr id="<%- line.get('internalid') %>" class="cart-item-cell <%= line.get('internalid') %>">
+<td>
 	<div data-type="alert-placeholder">
 	<% if (item.get('_cartCustomAlert')) {%>
 		<div class="alert alert-<%= item.get('_cartCustomAlertType') || 'info' %>">
@@ -43,14 +45,14 @@ else if (url)
 			<% var thumbnail = item.get('_thumbnail'); %>
 			<% if (options.showActions) { %>
 				<a <%= link_attributes %>>
-					<img src="<%- options.application.resizeImage(thumbnail.url, 'thumbnail') %>" alt="<%- thumbnail.altimagetext %>">
+					<img src="<%- options.application.resizeImage(thumbnail.url, 'thumbnail') %>" style="width:125px;" alt="<%- thumbnail.altimagetext %>">
 				</a>
 			<% } else { %>
-				<img src="<%- options.application.resizeImage(thumbnail.url, 'thumbnail') %>" alt="<%- thumbnail.altimagetext %>">
+				<img src="<%- options.application.resizeImage(thumbnail.url, 'thumbnail') %>" style="width:125px;" alt="<%- thumbnail.altimagetext %>">
 			<% } %>
 		</div>
-		<div class="span9 details">
-			<div class="span9 cart-item-details">
+		</td>
+		<td>
 				<div class="name">
 					<% if (options.showActions) { %>
 						<a <%= link_attributes %>>
@@ -60,18 +62,19 @@ else if (url)
 						<%= item.get('_name') %>
 					<% } %>
 				</div>
-				<div class="lead lead-small price">
+			</td>
+			<td>
+				<div >
 					<%= SC.macros.showItemPrice(item) %>
 				</div>
-				<div class="sku">
-					<%= _('SKU: #$(0)').translate( item.get('_sku') ) %>
-				</div>
+			</td>
 				<div class="cart-item-options">
 					<%= item.renderAllOptionSelected() %>	
 				</div>
+				<td>
 				<div class="quantity-container">
 				<% if (options.showActions) { %>
-					<form action="#" data-action="update-quantity">
+					<form action="#" data-action="update-quantity" style="margin:0;padding:0;">
 						<input type="hidden" name="internalid" id="update-internalid-<%= line.get('internalid') %>" class="update-internalid-<%= line.get('internalid') %>" value="<%- line.get('internalid') %>">
 						<% if(item.get('_itemType') !== 'GiftCert') { %>
 							<input type="number" name="quantity" id="quantity-<%= line.get('internalid') %>" class="input-mini quantity-<%= line.get('internalid') %>" value="<%- line.get('quantity') %>" min="0">
@@ -83,21 +86,8 @@ else if (url)
 				<% } else { %>
 					<%=_('Qty: $(0)').translate(line.get('quantity')) %>
 				<% } %>
-				</div>
-			</div>			
-			
-			<div class="span3 amount">
-				<%= line.get('total_formatted') %>
-				<% if( line.get('amount') > line.get('total') ) {%>
-					<small class="muted crossed"><%=  line.get('amount_formatted') %></small>
-				<% } %>
-			</div>
-			<div class="clearfix"></div>
-			<div class="text-right cart-item-stock-info">
-				<%= SC.macros.itemDetailsStock(item.getStockInfo()) %>
-			</div>
-			<% if (options.showActions) { %>
-				<div class="cart-item-actions">
+				<% if (options.showActions) { %>
+				<div class="cart-item-actions" style="margin:0;padding:0;border:0;">
 					<% if (SC.ENVIRONMENT.siteType !== "STANDARD") { %>
 						<a class="btn edit" href="<%- _(item.get('_editUrl')).fixUrl() %>" data-toggle="show-in-modal">
 							<%= _('Edit').translate() %>
@@ -108,9 +98,24 @@ else if (url)
 					</button>
 				</div>
 			<% } %>
-		</div>
-	</div>
-</article>
+				</div>
+				</td>
+			</div>			
+			<td>
+			<div class="span3 amount">
+				<%= line.get('total_formatted') %>
+				<% if( line.get('amount') > line.get('total') ) {%>
+					<small class="muted crossed"><%=  line.get('amount_formatted') %></small>
+				<% } %>
+			</div>
+			</td>
+			<td>
+			<div class="clearfix"></div>
+			<div class="text-right cart-item-stock-info">
+				<%= SC.macros.itemDetailsStock(item.getStockInfo()) %>
+			</div>
+			</td>
+</tr>
 <%}%>
 <% if (!options.showActions) { %>
 

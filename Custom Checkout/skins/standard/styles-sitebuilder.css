@@ -288,7 +288,6 @@ gift#main
 }
 #main .span4
 {
-	width: 300px;
 }
 #main .span3
 {
@@ -1109,7 +1108,7 @@ width: 182px;
 }
 #main .controls>.radio:first-child,#main .controls>.checkbox:first-child
 {
-	padding-top: 5px;
+	
 }
 #main .radio.inline,#main .checkbox.inline
 {
@@ -1136,7 +1135,7 @@ width: 182px;
 }
 #main .input-xmedium
 {
-	width: 169px;
+	width: 185px;
 }
 #main .input-large
 {
@@ -5958,7 +5957,7 @@ display: block;
 	}
 	#main .container,#main .navbar-static-top .container,#main .navbar-fixed-top .container,#main .navbar-fixed-bottom .container
 	{
-		width: 724px;
+		width:auto;
 	}
 	#main .span12
 	{
@@ -6663,6 +6662,7 @@ font-family: 'OmnesMediumRegular';
 font-weight: normal;
 line-height:20px;
 margin-bottom:0;
+padding-bottom:0;
 }
 legend#main .section-header
 {
@@ -8536,7 +8536,7 @@ float: left;
 {
 	#main .wizard-step-link a
 	{
-		//padding: 5px;
+		//padding: 5px;idth: 979px) and (min-width: 768px)
 	}
 	#main .wizard-step-link a .step-index
 	{
@@ -8629,6 +8629,7 @@ float: left;
 }
 #main .checkout-cart-summary
 {
+width:243px;
 	//margin-top: 45px;
 }
 #main .checkout-cart-summary-header

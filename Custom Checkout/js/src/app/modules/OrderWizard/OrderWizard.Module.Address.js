@@ -364,11 +364,11 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 //			}
 			
 			var shipping_source = defaultshippingresult;
-			console.log(this.$('input[name="state"]').val()==null);
 			if(jQuery(e.target).prop('checked')){
 				var formPhoneNumber = this.$('input[name="phone"]').val()+this.$('input[name="ext"]').val();
 				if(this.$('input[name="addr1"]').val()!=''
 				|| this.$('input[name="addr2"]').val()!=''
+				|| this.$('select[name="namePrefix"]').val()!=''
 				|| this.$('input[name="city"]').val()!=''
 				|| this.$('select[name="state"]').val()!='' 
 				|| this.$('input[name="zip"]').val()!=''
@@ -377,6 +377,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 					if(confirm('You have entered another address, by checking this box we will use your shipping address as your billing address')){
 						this.$('input[name="addr1"]').val(shipping_source.attributes.addr1);
 						this.$('input[name="addr2"]').val(shipping_source.attributes.addr2);
+						this.$('select[name="namePrefix"]').val(shipping_source.attributes.namePrefix);
 						this.$('input[name="city"]').val(shipping_source.attributes.city);
 						this.$('select[name="state"]').val(shipping_source.attributes.state);
 						this.$('input[name="zip"]').val(shipping_source.attributes.zip);
@@ -387,6 +388,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			else{
 				this.$('input[name="addr1"]').val(shipping_source.attributes.addr1);
 				this.$('input[name="addr2"]').val(shipping_source.attributes.addr2);
+				this.$('select[name="namePrefix"]').val(shipping_source.attributes.namePrefix);
 				this.$('input[name="city"]').val(shipping_source.attributes.city);
 				this.$('select[name="state"]').val(shipping_source.attributes.state);
 				this.$('input[name="phone"]').val(shipping_source.attributes.phone);
@@ -398,6 +400,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			else{
 				this.$('input[name="addr1"]').val('');
 				this.$('input[name="addr2"]').val('');
+				this.$('select[name="namePrefix"]').val('');
 				this.$('input[name="city"]').val('');
 				this.$('select[name="state"]').val('');
 				this.$('input[name="phone"]').val('');

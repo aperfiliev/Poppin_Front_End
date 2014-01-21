@@ -1,12 +1,9 @@
 <% registerMacro('creditcardSecurityNumberForm', function (options) { %>
-<% options = options || {}; %>
+<% options = options || {}; console.log("ccoptions");console.log(options);%>
 <div class="credit-card-security-number">
-	<div class="control-group <%= options.error ? 'error' : '' %>">
-		<label class="control-label" for="ccsecuritycode" >
+	<div class="control-group <%= options.error ? 'error' : '' %>" style="display:<%= (options.value && options.step == "review") ? 'none':''%>">
+		<label class="control-label" for="ccsecuritycode" style="width: 20px; margin-left: 30px;">
 			<%= _('CVC').translate() %>
-			<small>
-				<%= _('(required)').translate() %>
-			</small>
 		</label>
 		<div class="controls">
 			<input
@@ -23,7 +20,7 @@
 				</p>
 			<% } %>
 			<% if(!options.hidehelp) { %>
-			<a href="#" name="whatisthis" class="whatisthis">what is this?</a> <br/>
+			<a href="#" name="whatisthis" class="whatisthis" style="text-decoration:underline">what is this?</a> <br/>
 			
 <script>
 jQuery('.whatisthis').hover(function(){

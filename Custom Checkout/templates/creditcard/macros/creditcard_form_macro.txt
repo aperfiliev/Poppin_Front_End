@@ -3,7 +3,6 @@
 if(creditcard.isNew()){
 	creditcard.set('cccheckbox',true);
 }
-console.log("creditCard");console.log(creditcard);console.log(creditcard.isNew());
 %>
 <fieldset>
  <div data-type="alert-placeholder"></div>
@@ -85,14 +84,16 @@ console.log("creditCard");console.log(creditcard);console.log(creditcard.isNew()
  <% if (options.showSecurityCodeForm) { %>
   <%= SC.macros.creditcardSecurityNumberForm() %>
  <% } %>
+<%if(creditcard.isNew()){%>
 <div class="control-group">
 			<div class="controls" style="margin-left:70px">
 				<label class="checkbox" style="width:100%">
-					<input type="checkbox" id="cccheckbox" value="T" data-unchecked-value="F" name="cccheckbox" checked>
+					<input type="checkbox" id="cccheckbox" name="cccheckbox" checked>
 					Save for future purchases
 				</label>
 			</div>
 	</div>
+	<%}%>
  <% if (application.getUser().get('isGuest') !== 'T' && options.showDefaults) { %>
  <div class="control-group">
   <div class="controls">

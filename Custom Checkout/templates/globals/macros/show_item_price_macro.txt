@@ -13,9 +13,9 @@
 	<% } %>
 <% } else { %>
 	<!-- Single -->
-	<strong class="lead-price" style="color: #616161;">
+	<!--<strong class="lead-price" style="color: #616161;">-->
 		<%= _.formatCurrency(price.price) %>
-	</strong>
+	<!--</strong>-->
 	<meta itemprop="price" content="<%- _.formatCurrency(price.price)%>" /> 
 	<meta itemprop="priceCurrency" content="<%- SC.ENVIRONMENT.currentCurrency.code %>" /> 
 	<% if (price.price < price.compare_price) { %>

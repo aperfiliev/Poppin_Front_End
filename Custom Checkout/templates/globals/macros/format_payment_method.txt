@@ -15,11 +15,7 @@
 					<%= _('ending in $(0)').translate(creditcard.ccnumber.replace(/\*/g, '')) %>
 				</span>
 				<br>
-				<b class="credit-card-name" style=" margin-left: 20px;">
-					<%= creditcard.ccname %>
-				</b>
-				<br>
-				<span class="credit-card-expiredate" style=" margin-left: 20px;">
+				<span class="credit-card-expiredate">
 					<%= _('exp ').translate() + creditcard.ccexpiredate %>
 				</span>
 			<% }
