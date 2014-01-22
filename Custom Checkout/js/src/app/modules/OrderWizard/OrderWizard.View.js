@@ -1,8 +1,8 @@
 // OrderWizzard.View.js
 // --------------------
 //
-define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndConditions','ErrorManagement'], 
-		function (WizardView, TermsAndConditions, ErrorManagement, OrderPaymentmethodModel)
+define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndConditions','ErrorManagement', 'OrderPaymentmethod.Model', 'OrderWizard.Module.PaymentMethod'], 
+		function (WizardView, TermsAndConditions, ErrorManagement, OrderPaymentmethodModel, OrderWizardModulePaymentMethod)
 {
 	'use strict';
 
@@ -24,7 +24,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		,	'click [data-toggle="show-terms-summary"]' : 'showTerms' //only for "Show terms and cond" in the Order Summary
 		,	'click [data-action="remove-item"]': 'removeItem'//minicart remove item
 		,	'submit [data-action="update-quantity"]': 'updateItemQuantity'//minicart update item quantity
-		,	'blur [name="quantity"]': 'updateItemQuantity'//minicart update quantity
+		//,	'blur [name="quantity"]': 'updateItemQuantity'//minicart update quantity
 		,	'submit form[data-action="apply-giftcert"]': 'applyGiftCertificate'
 		,	'click [data-action="remove-giftcert"]': 'removeGiftCertificate'
 		,	'shown #gift-certificate-form' : 'onShownGiftCertificateForm'	
@@ -64,8 +64,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 	}
 
 ,	setCreditCard: function (options)
-	{	console.log("newCredit"); console.log(this.paymentMethod);console.log(this.creditcards.get(options.id));
-	
+	{	
 		var ccattributes;
 		if(this.creditcards.get(options.id)!=undefined){
 			ccattributes = this.creditcards.get(options.id).attributes;
@@ -75,7 +74,6 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			type: 'creditcard'
 		,	creditcard: options.model || ccattributes
 		});
-		alert("1");
 		this.setSecurityNumber();
 
 		OrderWizardModulePaymentMethod.prototype.submit.apply(this, arguments);
@@ -111,11 +109,10 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			if(Backbone.history.fragment.indexOf('review')>-1){
 				jQuery("#sipmethod-div").append(jQuery("#shipmethod-content"));
 			}
-//			jQuery("#sipmethod-div").append(jQuery("#shipmethod-content"));
-//			jQuery("#shipmethod-content").appendTo(jQuery("#sipmethod-div"));
-//			jQuery("#sipmethod-div").load("order_wizard_shipmethod_module.txt");
-//			console.log("initialize");
-//			console.log(jQuery("#shipmethod-content"));
+
+			console.log('crC');
+			console.log(this);
+			
 			var self = this;
 			this.wizard = options.wizard;
 			this.currentStep = options.currentStep;
@@ -397,7 +394,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 	,	updateItemQuantity: function (e)
 	{
 		e.preventDefault();
-
+		console.log('check tghsiu');
 		var self = this
 		,	$line = null
 		,	options = jQuery(e.target).closest('form').serializeObject()

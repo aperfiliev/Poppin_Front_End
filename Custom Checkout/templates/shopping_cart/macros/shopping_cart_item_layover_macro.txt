@@ -82,7 +82,7 @@ else if (url)
 							<input type="hidden" name="quantity" id="quantity-<%= line.get('internalid') %>" value="1">
 						<% } %>
 						
-					</form>
+					
 				<% } else { %>
 					<%=_('Qty: $(0)').translate(line.get('quantity')) %>
 				<% } %>
@@ -93,11 +93,16 @@ else if (url)
 							<%= _('Edit').translate() %>
 						</a>
 					<% } %>
-					<button class="btn remove" data-action="remove-item" data-internalid="<%- line.get('internalid') %>">
+					<input type="submit" value="Update" class="btnsubmit" data-action="update-quantity" data-internalid="<%- line.get('internalid') %>" style="background: url(img/update.png) no-repeat left center;	border: 0;	box-shadow: none;	padding-left: 18px;font-size:11px;color: #969696;">
+					</input>
+					<br/>
+					<button class="btn remove" data-action="remove-item" data-internalid="<%- line.get('internalid') %>" style="background: url(img/remove.png) no-repeat left center;	border: 0;	box-shadow: none;	padding-left: 18px;font-size:11px;color: #969696;">
 						<%= _('Remove').translate() %>
 					</button>
+					
 				</div>
 			<% } %>
+			</form>
 				</div>
 				</td>
 			</div>			

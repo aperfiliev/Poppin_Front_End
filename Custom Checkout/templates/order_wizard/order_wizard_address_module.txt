@@ -7,7 +7,17 @@
    
     //select default address if none selected
     //shipping
-    console.log(address_book.models);
+    console.log("address book");
+    if(address_book.models.length>0){
+    if(address_book.models[0].get('defaultshipping') =='F'){
+		var count = 0;
+    	_.each(address_book.models,function(addr){
+    	count++;
+    	console.log(addr)
+    		if(addr.get('defaultshipping') =='T'){address_book.models.splice(0,0,addr);address_book.models.splice(count,1);}
+    	});
+    }
+    }
     
 		//if(view.addressId==null && address_book.models.length > 0){
 			//view.manualSelectAddress(address_book.models[0].id);
@@ -68,7 +78,7 @@
 
 		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
 	</div>
-<% } else if(view.addressId==null) { %>
+<% } else if(Backbone.history.fragment.indexOf('billing')>-1 && view.addressId==null) { %>
 	<div id="address-module-form-placeholder" class="address-module-form-placeholder">
 		<form method="POST">
 		<%= addressFrom(selected_address, {

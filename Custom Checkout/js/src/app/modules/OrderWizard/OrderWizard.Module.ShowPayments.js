@@ -1,7 +1,7 @@
 // OrderWizard.Module.ShowPayments.js
 // --------------------------------
 // 
-define('OrderWizard.Module.ShowPayments', ['Wizard.Module'], function (WizardModule)
+define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.CardMessage'], function (WizardModule, OrderWizardModuleCardMessage)
 {
 	'use strict';
 
@@ -13,15 +13,41 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module'], function (WizardMod
 		,	events: {
 				'click input[name="delivery-options"]': 'changeDeliveryOptions'
 			}
+		,	initialize: function(options)
+			{
+				WizardModule.prototype.initialize.apply(this, arguments);
+				var self = this;
+				this.cardMessageModule =        {
+				                   					classModule: 'OrderWizard.Module.CardMessage'
+				                   				,	options: {}
+				                   				};
+				var ModuleClass = require(this.cardMessageModule.classModule);
+
+				this.cardMessageModule.instance = new ModuleClass(_.extend({
+					wizard: self.wizard
+				,	step: self.step
+				,	stepGroup: self.stepGroup
+				}, this.cardMessageModule.options));
+
+				this.cardMessageModule.instance.on('ready', function(is_ready)
+				{	
+					self.moduleReady(is_ready);
+				});
+			}
+		,	moduleReady: function(is_ready)
+			{
+				this.trigger('ready', is_ready);
+			}
 		,	render: function()
 			{
 				this.application = this.wizard.application;
 				this.profile = this.wizard.options.profile;
 				this.options.application = this.wizard.application;
 				this.eventHandlersOn();
-				console.log(this.model);
 				
 				this._render();
+				this.cardMessageModule.instance.render();
+				this.$('#cardmessage-container').empty().append(this.cardMessageModule.instance.$el);
 			}
 		,	eventHandlersOn: function(){
 				this.eventHandlersOff();

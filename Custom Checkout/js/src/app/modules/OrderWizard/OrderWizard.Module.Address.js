@@ -420,19 +420,39 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			console.log('submit form address');
 			var self = this;
 			// its a new address
-			if (this.addressView)
+			if (this.addressView && this.addressView !=null)
 			{
 				// The saveForm function expects the event to be in an element of the form or the form itself, 
 				// But in this case it may be in a button outside of the form (as the bav buttosn live in the step)
 				//  or tiggered by a module ready event, so we need to create a fake event which the target is the form itself
 				console.log('form0')
 				console.log(this.addressView.$('form').get(0));
+				var validation_promise = jQuery.Deferred();
 				var fake_event = jQuery.Event('submit', {
 						target: this.addressView.$('form').get(0)
 					})
 					// Calls the saveForm, this may kick the backbone.validation, and it may return false if there were errors, 
 					// other ways it will return an ajax promise
-				,	result = this.addressView.saveForm(fake_event);
+				,	result = this.addressView.saveForm(fake_event, undefined, undefined, validation_promise);
+//				if(validation_promise!=void 0){
+//					
+//				}
+				validation_promise.done(function(model){
+					console.log('hooray');
+					console.log(model);
+					self.setAddress(model.id);
+
+					// we only want to trigger an event on add() when the user has some address and is not guest because if not, 
+					// in OPC case (two instances of this module in the same page), the triggered re-render erase the module errors. 
+					var add_options = (self.isGuest || self.addresses.length === 0) ? {silent: true} : null; 
+					self.addresses.add(model, add_options);
+					
+					self.model.set('temp' + self.manage, null);
+					//self.manualSelectAddress(model.id);
+					//self.isValid();
+					
+					//self.render();
+				});
 				// Went well, so there is a promise we can return, before returning we will set the address in the model 
 				// and add the model to the profile collection
 				if (result)
@@ -454,7 +474,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 						self.render();
 					});
 				}
-				else 
+				else if(!validation_promise)
 				{
 					// There were errors so we return a rejected promise
 					return jQuery.Deferred().reject({

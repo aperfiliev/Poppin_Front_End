@@ -9,13 +9,9 @@ define('OrderWizard.Module.CardMessage', ['Wizard.Module'], function (WizardModu
 	{
 		template: 'order_wizard_cardmessage_module',
 		initialize: function() {
-			console.log('init this');
-			console.log(this);
 			this.enabled = false;
 			this.cardmessages = [];
-			//WizardModule.prototype.initialize.apply(this, arguments);
-			//end of card message init
-			//console.log('here');
+			
 			var self = this;
 			$j.getJSON('https://checkout.sandbox.netsuite.com/c.3363929/CardMessage/cardmessage.ss' + '?action=get', function(data) {
 				$j.each(data, function(entryIndex, entry) {
