@@ -1,7 +1,7 @@
 // OrderWizard.Module.CardMessage.js
 // --------------------------------
 // 
-define('OrderWizard.Module.CardMessage', ['Wizard.Module'], function (WizardModule)
+define('OrderWizard.Module.CardMessage', ['Wizard.Module', 'CardMessage.Model'], function (WizardModule, CardMessageModel)
 {
 	'use strict';
 
@@ -9,9 +9,21 @@ define('OrderWizard.Module.CardMessage', ['Wizard.Module'], function (WizardModu
 	{
 		template: 'order_wizard_cardmessage_module',
 		initialize: function() {
+			WizardModule.prototype.initialize.apply(this, arguments);
+			var profile = this.wizard.options.profile;
+			//this.mappings = profile.get('creditaddressmapping');
+			
+			//this.wizard.options.profile
+			//console.log(profile.get('isGuest'));
+			//this.application.getUser()
+			
+			this.model = new CardMessageModel();
+			//console.log('cardmessagemodel');
+			//console.log(this.model);
+			console.log(profile.get("firstname"));
 			this.enabled = false;
 			this.cardmessages = [];
-			
+
 			var self = this;
 			$j.getJSON('https://checkout.sandbox.netsuite.com/c.3363929/CardMessage/cardmessage.ss' + '?action=get', function(data) {
 				$j.each(data, function(entryIndex, entry) {
@@ -54,6 +66,7 @@ define('OrderWizard.Module.CardMessage', ['Wizard.Module'], function (WizardModu
 			});
 		},
 		submit: function(){
+			
 			if(this.enabled){
 				var messagelink = {
 						msg: jQuery('#cardmessagetext').val(),

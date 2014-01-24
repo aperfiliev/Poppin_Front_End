@@ -227,7 +227,7 @@
 	
 	
 <!-- gift certificate -->
-<div  style="width: 586px;  margin-top: 15px; padding-left: 20px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+<div  style="width: 586px;  margin-top: 15px; padding-left: 20px; padding-bottom: 20px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
 <h3 class="section-header" style="padding:0; margin:15px 0 6px 0; font-size: 17px; color: #f87c00;">
 		<%=_('IS THIS ORDER A GIFT?').translate()%>
 	</h3>

@@ -325,9 +325,10 @@ define('Wizard.Step', function ()
 		// and asks the wizard to go to the next step
 	,	submit: function (e)
 		{
+			console.log('dadada');
 			// Disables the navigation Buttons
 			e && this.disableNavButtons();
-	
+
 			// Calls the submite method of the modules and collects errors they may have
 			var promises = [];
 			
@@ -339,41 +340,34 @@ define('Wizard.Step', function ()
 			});
 
 			var self = this;
-			setTimeout(function(){
-				
-				
-				jQuery.when.apply(jQuery, promises).then(
-					// Success Callback
-					function ()
-					{
-						self.save().then(
-							// if everything goes well we go to the next step
-							function ()
-							{
-								self.wizard.goToNextStep();
-							}
-							// Other ways we re render showing errors
-						,	function (error)
-							{
-							//console.log("2222 "+error);
-								self.wizard.manageError(error,self);
-								e && self.enableNavButtons();
-							}
-						).always(function ()
+			jQuery.when.apply(jQuery, promises).then(
+				// Success Callback
+				function ()
+				{
+					self.save().then(
+						// if everything goes well we go to the next step
+						function ()
 						{
-							self.enableNavButtons();
-						});
-					}
-					// Error Callback
-				,	function (error)
+							self.wizard.goToNextStep();
+						}
+						// Other ways we re render showing errors
+					,	function (error)
+						{
+							self.wizard.manageError(error,self);
+							e && self.enableNavButtons();
+						}
+					).always(function ()
 					{
-					//if(error.errorMessage.indexOf('address is invalid')>-1 /**|| error.errorMessage.indexOf('address is incomplete')>-1*/){self.wizard.goToNextStep();}else{
-						console.log(error.errorMessage);
-						self.wizard.manageError(error,self);
-						e && self.enableNavButtons();}
-					//}
-				);
-			},2000);
+						self.enableNavButtons();
+					});
+				}
+				// Error Callback
+			,	function (error)
+				{
+					self.wizard.manageError(error,self);
+					e && self.enableNavButtons();
+				}
+			);
 		}
 
 		// Change the label of the 'continue' button
@@ -401,7 +395,7 @@ define('Wizard.Step', function ()
 		// If there is a model calls the save function of it.
 		// other ways it returns a resolved promise, to return something standard
 	,	_save: function ()
-		{console.log('wizard step save');
+		{
 			if (this.wizard.model && this.currentModelState !== JSON.stringify(this.wizard.model))
 			{
 				return this.wizard.model.save().error(function (jqXhr)

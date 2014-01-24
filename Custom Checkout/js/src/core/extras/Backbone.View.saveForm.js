@@ -127,14 +127,14 @@
 								console.log('save to form');
 								var result = self.saveFormToModel(e, model, props);
 								if(validation_promise!=undefined){
-									validation_promise.resolve(self.model);
+									validation_promise.resolve(result);
 								}
 							}
 						}
 				});
 			}
 			else{
-				self.saveFormToModel(e, model, props);
+				return self.saveFormToModel(e, model, props);
 			}
 		}
 	});

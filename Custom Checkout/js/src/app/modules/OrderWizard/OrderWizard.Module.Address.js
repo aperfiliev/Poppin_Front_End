@@ -437,21 +437,22 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 //				if(validation_promise!=void 0){
 //					
 //				}
-				validation_promise.done(function(model){
-					console.log('hooray');
-					console.log(model);
-					self.setAddress(model.id);
+				validation_promise.done(function(result){
+					return result.always(function (model)
+							{
 
-					// we only want to trigger an event on add() when the user has some address and is not guest because if not, 
-					// in OPC case (two instances of this module in the same page), the triggered re-render erase the module errors. 
-					var add_options = (self.isGuest || self.addresses.length === 0) ? {silent: true} : null; 
-					self.addresses.add(model, add_options);
-					
-					self.model.set('temp' + self.manage, null);
-					//self.manualSelectAddress(model.id);
-					//self.isValid();
-					
-					//self.render();
+								// Address id to the order model. This has to go after before the following model.add() as it triggers the render
+								self.setAddress(model.internalid);
+
+								// we only want to trigger an event on add() when the user has some address and is not guest because if not, 
+								// in OPC case (two instances of this module in the same page), the triggered re-render erase the module errors. 
+								var add_options = (self.isGuest || self.addresses.length === 0) ? {silent: true} : null; 
+								self.addresses.add(model, add_options);
+								
+								self.model.set('temp' + self.manage, null);
+								
+								self.render();
+							});
 				});
 				// Went well, so there is a promise we can return, before returning we will set the address in the model 
 				// and add the model to the profile collection
@@ -490,7 +491,8 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		}
 
 	,	isValid: function () 
-		{console.log('isvalid');
+		{console.log('isvalid111');
+			console.log(this.tempAddress);
 			if (this.tempAddress)
 			{
 				return jQuery.Deferred().resolve();

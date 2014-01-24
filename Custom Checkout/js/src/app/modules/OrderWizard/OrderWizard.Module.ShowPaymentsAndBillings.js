@@ -1,42 +1,17 @@
 // OrderWizard.Module.ShowPayments.js
 // --------------------------------
 // 
-define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.CardMessage'], function (WizardModule, OrderWizardModuleCardMessage)
+define('OrderWizard.Module.ShowPaymentsAndBillings', ['Wizard.Module'], function (WizardModule)
 {
 	'use strict';
 
 	return WizardModule.extend(
 	{
 		
-			template: 'order_wizard_showpayments_module'
+			template: 'order_wizard_showpaymentsandbillings_module'
 		
 		,	events: {
 				'click input[name="delivery-options"]': 'changeDeliveryOptions'
-			}
-		,	initialize: function(options)
-			{
-				WizardModule.prototype.initialize.apply(this, arguments);
-				var self = this;
-				this.cardMessageModule =        {
-				                   					classModule: 'OrderWizard.Module.CardMessage'
-				                   				,	options: {}
-				                   				};
-				var ModuleClass = require(this.cardMessageModule.classModule);
-
-				this.cardMessageModule.instance = new ModuleClass(_.extend({
-					wizard: self.wizard
-				,	step: self.step
-				,	stepGroup: self.stepGroup
-				}, this.cardMessageModule.options));
-
-				this.cardMessageModule.instance.on('ready', function(is_ready)
-				{	
-					self.moduleReady(is_ready);
-				});
-			}
-		,	moduleReady: function(is_ready)
-			{
-				this.trigger('ready', is_ready);
 			}
 		,	render: function()
 			{
@@ -44,10 +19,9 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 				this.profile = this.wizard.options.profile;
 				this.options.application = this.wizard.application;
 				this.eventHandlersOn();
+				console.log(this.model);
 				
 				this._render();
-				this.cardMessageModule.instance.render();
-				this.$('#cardmessage-container').empty().append(this.cardMessageModule.instance.$el);
 			}
 		,	eventHandlersOn: function(){
 				this.eventHandlersOff();
@@ -119,7 +93,6 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 				console.log(credit_card_pm);
 				
 				credit_card_pm[0].attributes.creditcard.ccsecuritycode =  this.$('#ccsecuritycode').val();
-				this.cardMessageModule.instance.submit();
 			}
 	});
 });

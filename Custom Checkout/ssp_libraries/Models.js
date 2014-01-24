@@ -436,6 +436,23 @@ Application.defineModel('Profile', {
 				profile.firstname =fullnamesplit[0];
 				profile.lastname = fullnamesplit[1];
 			}
+			//profile.creditAddressMapping
+			nlapiLogExecution('DEBUG','profile fields check',JSON.stringify(profile));
+			//nlapiLogExecution('DEBUG','mapping bpoint');
+			
+			var mappingRequest = {
+					"method": 'get',
+					"userid": profile.internalid
+			};
+			var creditAddressMapping = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=338&deploy=1&compid=3363929&h=d1c53efd881f2ff35647', mappingRequest);
+			
+			var creditAddressMappingObject = JSON.parse(creditAddressMapping.getBody());
+			nlapiLogExecution('DEBUG','mapping bpoint response',JSON.stringify(creditAddressMappingObject));
+			if(creditAddressMappingObject.length>0){
+				//set profile mapping
+				profile.creditaddressmapping = null;
+			}
+			
 		}
 
 		return profile;
@@ -964,7 +981,7 @@ Application.defineModel('LiveOrder', {
 			{	nlapiLogExecution('DEBUG', 'place 1',JSON.stringify(paymentmethod));
 				if (paymentmethod.type === 'creditcard' && paymentmethod.creditcard)
 				{
-					nlapiLogExecution('DEBUG', 'place 2', JSON.stringify(paymentmethod.creditcard));
+					nlapiLogExecution('DEBUG', 'place 2', JSON.stringify(paymentmethod.creditcard.ccdefault));
 					var credit_card = paymentmethod.creditcard
 					,	require_cc_security_code = session.getSiteSettings(['checkout']).checkout.requireccsecuritycode === 'T'
 					,	cc_obj = credit_card && {
@@ -974,6 +991,7 @@ Application.defineModel('LiveOrder', {
 								,	ccexpiredate: credit_card.ccexpiredate
 								,	expmonth: credit_card.expmonth
 								,	expyear:  credit_card.expyear
+								//,	savecard: "F"
 								,	paymentmethod: {
 										internalid: credit_card.paymentmethod.internalid
 									,	name: credit_card.paymentmethod.name
@@ -1452,6 +1470,7 @@ Application.defineModel('CreditCard', {
 	,	ccnumber: {required: true, msg: 'Card Number is required'}
 	,	expmonth: {required: true, msg: 'Expiration is required'}
 	,	expyear: {required: true, msg: 'Expiration is required'}
+	,	savecard: {required: true}
 	}
 	
 ,	get: function (id)
@@ -1643,4 +1662,32 @@ Application.defineModel('StoreItem', {
 	
 	
 });
+//CardMessage.js
+//CardMessage.js
+//----------
+//Handles the fetching and saving cardmessage from order
+Application.defineModel('CardMessage', {
+	getOccasionList: function(){
+		var occasionlist = [];
+		return occasionlist;
+	},
+	get: function(){
+		var cardmessagefields = order.getCustomFieldValues();
+		
+		var result = {};
+		for(var i = 0; i < cardmessagefields.length;i++){
+			if(cardmessagefields[i].name=='custbody_cardocation'){
+				result.ocation = cardmessagefields[i].value;
+			}
+			if(cardmessagefields[i].name=='custbody_cardmessage'){
+				result.message = cardmessagefields[i].value;
+			}
+		}
+		nlapiLogExecution('DEBUG','result model cardmessage', JSON.stringify(result));
+		return result;
+	},
+	update: function(data){
+		
+	}
 
+});
