@@ -138,8 +138,9 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 						]
 					}
 				]
-			}
-		,	{
+			},
+			
+			{
 				name: _('Billing & Payment').translate()
 			,	steps: [
 					{
@@ -152,7 +153,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					,	modules: [
 						['OrderWizard.Module.Address.Billing', {enable_same_as: true}], 
 						'OrderWizard.Module.PaymentMethod.Selector'
-						//'OrderWizard.Module.ShowPaymentsAndBillings'
+			
 						//,'OrderWizard.Module.PaymentMethod.GiftCertificates'
 					 	          /*
 							'OrderWizard.Module.PaymentMethod.GiftCertificates'
@@ -181,7 +182,29 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 //					}
 				]
 			}
-		,	{
+		
+		,
+		//maintenance------------------
+//		{
+//		name: _('Billing & Payment test').translate()
+//	,	steps: [
+//			{
+//			//	name: _('Choose Payment Method').translate(),
+//			url: 'paymentandbilling'
+//			,	hideBackButton: false
+//			,	hideSummary: screen_width < 768 //hide summary on phone
+//			,	bottomMessage: _('You will have an opportunity to review your order on the next step.').translate()
+//			,	continueButtonLabel: _('Next: REVIEW ORDER').translate()
+//			,	modules: [
+//				'OrderWizard.Module.PaymentAndBilling'
+//				]
+//			}
+//			
+//		]
+//	},
+	//--------------------maintenance
+	
+		{
 				name: _('Review Order').translate()
 			,	steps: [
 					{
@@ -193,16 +216,17 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					,	modules: [
 					    	['OrderWizard.Module.ShowPayments', {edit_url_billing: '/billing', edit_url_address: '/billing', shipping_change_url: '/addressbook'}]	
 						,	'OrderWizard.Module.TermsAndConditions'
-						,	['OrderWizard.Module.ShowShipments', {edit_url: '/shipping/address', show_edit_button: true}]
+						//,	['OrderWizard.Module.ShowShipments', {edit_url: '/shipping/address', show_edit_button: true}]
 //						,	['OrderWizard.Module.CardMessage',{title:_('IS THIS ORDER A GIFT?').translate()}]
 						
 						]
 					,	save: function()
-						{
+						{debugger
 							return this.wizard.model.submit();
 						}
 					}
 				,
+			
 				{
 					url: 'confirmation'
 				,	headerMacro: 'header'
@@ -212,7 +236,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 				,	modules: [
 						'OrderWizard.Module.Confirmation'
 					,	'OrderWizard.Module.RegisterGuest'
-					,	'OrderWizard.Module.ShowPayments'
+					//,	'OrderWizard.Module.ShowPayments'
 					,	'OrderWizard.Module.ShowShipments'
 					]
 				,	present: function ()
@@ -297,8 +321,8 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					,	modules: [
 							'OrderWizard.Module.Confirmation'
 						,	'OrderWizard.Module.RegisterGuest'
-						,	'OrderWizard.Module.ShowPayments'
-						,	'OrderWizard.Module.ShowShipments'
+						//,	'OrderWizard.Module.ShowPayments'
+						//,	'OrderWizard.Module.ShowShipments'
 						]
 					,	present: function ()
 						{

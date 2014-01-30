@@ -2,8 +2,8 @@
 // --------------------------------
 // 
 define('OrderWizard.Module.PaymentMethod.Creditcard'
-,	['OrderWizard.Module.PaymentMethod', 'CreditCard.Views', 'CreditCard.Model', 'OrderPaymentmethod.Model']
-,	function (OrderWizardModulePaymentMethod, CreditCardViews, CreditCardModel, OrderPaymentmethodModel)
+,	['OrderWizard.Module.PaymentMethod', 'CreditCard.Views', 'CreditCard.Model', 'OrderPaymentmethod.Model', 'Address.Model']
+,	function (OrderWizardModulePaymentMethod, CreditCardViews, CreditCardModel, OrderPaymentmethodModel, AddressModel)
 {
 	'use strict';
 
@@ -21,7 +21,6 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 		}
 
 	,	errors: ['ERR_CHK_INCOMPLETE_CREDITCARD', 'ERR_CHK_SELECT_CREDITCARD', 'ERR_CHK_INCOMPLETE_SECURITY_NUMBER', 'ERR_WS_INVALID_PAYMENT']
-
 	,	isActive: function ()
 		{
 			var a_credit_card = _.findWhere(this.wizard.application.getConfig('siteSettings.paymentmethods', []), {
@@ -33,6 +32,7 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 
 	,	render: function ()
 		{
+			console.log(this.model);
 			var self = this
 				// currently we only support 1 credit card as payment method
 			,	order_payment_method = this.model.get('paymentmethods').findWhere({
@@ -119,8 +119,7 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 				}
 			}
 			
-			this._render();
-
+			this._render();		
 			if (!this.creditcards.length)
 			{
 				this.creditcardView = new CreditCardViews.Details({

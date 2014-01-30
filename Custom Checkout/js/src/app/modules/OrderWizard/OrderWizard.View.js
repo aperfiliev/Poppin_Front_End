@@ -1,8 +1,8 @@
 // OrderWizzard.View.js
 // --------------------
 //
-define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndConditions','ErrorManagement', 'OrderPaymentmethod.Model', 'OrderWizard.Module.PaymentMethod'], 
-		function (WizardView, TermsAndConditions, ErrorManagement, OrderPaymentmethodModel, OrderWizardModulePaymentMethod)
+define('OrderWizard.View', ['Wizard.View','Wizard.Module', 'OrderWizard.Module.TermsAndConditions','ErrorManagement', 'OrderPaymentmethod.Model', 'OrderWizard.Module.PaymentMethod','OrderWizard.Module.CardMessage'], 
+		function (WizardView, WizardModule, TermsAndConditions, ErrorManagement, OrderPaymentmethodModel, OrderWizardModulePaymentMethod, OrderWizardModuleCardMessage)
 {
 	'use strict';
 
@@ -224,6 +224,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 //					$target.find('#promocode').on('focusin', function() { powerTip.hide('powerTipPromo'); });
 //					$target.find('#promocode').css('border', '2px solid red').css('padding', '1px 6px');
 					//end of promo powertip
+
 					self.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
 					$target.find('input[name=promocode]').val('').focus();
 				}
@@ -285,6 +286,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					,	summary: attributes.summary
 					,	touchpoints: attributes.touchpoints
 					});
+					self.render();
 				}
 
 			,	error: function (model, jqXhr)
@@ -292,13 +294,15 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 					jqXhr.preventDefault = true;
 					//self.wizard.manageError(JSON.parse(jqXhr.responseText));
 					var error =JSON.parse(jqXhr.responseText);
+
 					if(error.errorMessage.indexOf('Error: The gift card entered has no remaining value')>-1){
 						error.errorMessage = "The gift card entered has no remaining value";
 					}
 					if(error.errorMessage.indexOf("Gift certificate redemption amount exceeds available amount on the gift certificate")>-1){
 						error.errorMessage = "You've waited to long, this gift card has expired";
 					}
-					self.$('[data-type=-placeholder-gif-certificate]').html(SC.macros.message(error.errorMessage,'error',true));
+
+					self.$('[data-type=giftcertificate-error-placeholder]').html(SC.macros.message(error.errorMessage,'error',true));
 				}
 			}
 		).always(function(){
@@ -306,7 +310,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			self.wizard.getCurrentStep().enableNavButtons();
 			// enable inputs and buttons
 			self.$('input, button').prop('disabled', false);
-			self.render();
+//			self.render();
 		});
 	}
 
@@ -314,6 +318,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 	{
 		
 		e.preventDefault();
+		
 		
 		var code = jQuery.trim(jQuery(e.target).find('[name="code"]').val())
 		,	is_applied = _.find(this.giftCertificates, function (certificate)
@@ -378,8 +383,8 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 ,	showError: function ()
 	{
 //		this.$('.control-group').addClass('error');
-//		WizardModule.prototype.showError.apply(this, arguments);
-		self.showError(result.errorMessage, $line, result.errorDetails);
+		WizardModule.prototype.showError.apply(this, arguments);
+//		self.showError(result.errorMessage, $line, result.errorDetails);
 	}
 
 	// onShownGiftCertificateForm
@@ -455,7 +460,13 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			//console.log('lalala2');
 			//this.wizard.model.submit();
 			var step = this.currentStep;
+			
+			jQuery.Deferred().reject({
+			errorCode: 'ERR_CHK_INCOMPLETE_ADDRESS'
+		,	errorMessage: _('The address is incomplete').translate()
+		});
 			step.submit(e);
+
 		//}
 			//var step = this.currentStep;
 			//step.submit(e);

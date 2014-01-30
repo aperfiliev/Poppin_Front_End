@@ -440,18 +440,7 @@ Application.defineModel('Profile', {
 			nlapiLogExecution('DEBUG','profile fields check',JSON.stringify(profile));
 			//nlapiLogExecution('DEBUG','mapping bpoint');
 			
-			var mappingRequest = {
-					"method": 'get',
-					"userid": profile.internalid
-			};
-			var creditAddressMapping = nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=338&deploy=1&compid=3363929&h=d1c53efd881f2ff35647', mappingRequest);
 			
-			var creditAddressMappingObject = JSON.parse(creditAddressMapping.getBody());
-			nlapiLogExecution('DEBUG','mapping bpoint response',JSON.stringify(creditAddressMappingObject));
-			if(creditAddressMappingObject.length>0){
-				//set profile mapping
-				profile.creditaddressmapping = null;
-			}
 			
 		}
 
@@ -1470,15 +1459,14 @@ Application.defineModel('CreditCard', {
 	,	ccnumber: {required: true, msg: 'Card Number is required'}
 	,	expmonth: {required: true, msg: 'Expiration is required'}
 	,	expyear: {required: true, msg: 'Expiration is required'}
-	,	savecard: {required: true}
+	//,	savecard: {required: true}
 	}
 	
 ,	get: function (id)
 	{
 		'use strict';
-
-		//Return a specific credit card
-		return customer.getCreditCard(id);
+		var responseObject = customer.getCreditCard(id);
+		return responseObject;
 	}
 	
 ,	getDefault: function ()
@@ -1495,7 +1483,6 @@ Application.defineModel('CreditCard', {
 ,	list: function ()
 	{
 		'use strict';
-
 		//Return all the credit cards with paymentmethod
 		return _.filter(customer.getCreditCards(), function (credit_card)
 		{
@@ -1517,17 +1504,14 @@ Application.defineModel('CreditCard', {
 ,	create: function (data)
 	{
 		'use strict';
-
 		//Create a new credit card if the data is valid
 		this.validate(data);
-
 		return customer.addCreditCard(data);
 	}
 	
 ,	remove: function (id)
 	{
 		'use strict';
-
 		//Remove a specific credit card
 		return customer.removeCreditCard(id);
 	}

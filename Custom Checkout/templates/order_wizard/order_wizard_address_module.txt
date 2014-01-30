@@ -23,10 +23,10 @@
     	});
     }
     }
-    
-		//if(view.addressId==null && address_book.models.length > 0){
-			//view.manualSelectAddress(address_book.models[0].id);
-		//}
+//    console.log("MANUAL SELECT");
+//		if(view.addressId==null && address_book.models.length > 0){
+//			view.manualSelectAddress(address_book.models[0].id);
+//		}
 	
 	
 %>
@@ -83,7 +83,7 @@
 
 		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
 	</div>
-<% } else if((Backbone.history.fragment.indexOf('billing')>-1 && !default_billing_set && view.addressId==null && address_book.models.length==1)||(Backbone.history.fragment.indexOf('shipping')>-1 && !default_shipping_set && view.addressId==null && address_book.models.length==1)) { %>
+<% } else if((Backbone.history.fragment.indexOf('billing')>-1 && !default_billing_set && view.addressId==null && address_book.models.length==1)||(Backbone.history.fragment.indexOf('shipping')>-1 && !default_shipping_set && view.addressId==null && address_book.models.length==1)) {%>
 	<div id="address-module-form-placeholder" class="address-module-form-placeholder">
 		<form method="POST">
 		<%= addressFrom(selected_address, {

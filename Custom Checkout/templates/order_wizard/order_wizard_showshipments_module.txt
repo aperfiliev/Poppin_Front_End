@@ -1,79 +1,126 @@
-<section class="shipments-shipping-details" style="display:none;">
-
+<section class="shipments-shipping-details">
 	<div class="row-fluid shipments-shipping-details-body">
-		<div class="span6 shipments-shipping-method">
-			<h4 class="section-header">
-				<%= _('Shipping Method').translate() %>
-			</h4>
-			<% if (view.options.edit_url) { %>
-				<select id="delivery-options" class="input-xlarge" name="delivery-options">
-					<% 
-					var shipmethods = view.model.get('shipmethods')
-					,	selected_shipmethod = shipmethods.findWhere({internalid: view.model.get('shipmethod')});
-					%>
-					<% if(!selected_shipmethod){ %>
-						<option><%= _('Please select a shipping method').translate() %></option>
-					<% } %>
-					<% shipmethods.each(function(shipmethod) { %>
-						<option value="<%- shipmethod.get('internalid')%>"
-							<%= view.model.get('shipmethod') === shipmethod.get('internalid') ? 'selected' : '' %>>
-							<%= shipmethod.get('name') %>: <%= shipmethod.get('rate_formatted') %>
-						</option>
-					<% }); %>
-				</select>
-			<% } else { %>
-				<span class="shipmethod-name">
-					<%= view.model.get('shipmethods').get(view.model.get('shipmethod')).get('name') %>
+
+
+<div class="shipments-cart-details-header" style="width: 640px;">
+	<table cellspacing="0" cellpadding="0" border="0"  style="float: left; background: white; border: 10px solid white; font-size: 13px; font-weight: bold; width: 831px; margin-left: 25px;">
+	<tr style="height: 40px; font-weight: 500; font-size: 13px; color: #aaaaaa">
+	<th align="left" width="145px">ITEM</th>
+<th align="left" width="200px">DESCRIPTION</th>
+	<th align="center" width="100px">PRICE</th>
+	<th align="center" width="100px">QTY</th>
+	<th align="center" width="100px">TOTAL</th>
+	</tr>
+	
+	<% view.model.get('lines').each(function (lines, index) { %>
+				<%= shoppingCartItem(lines, view, {
+					showActions:false
+				}) %>
+			<% }) %>
+	</table>
+</div>
+
+
+
+<div class="order-summary-block" style="width: 304px; margin-left: 552px; background-color: white;">
+<%
+	var cart = view.application.getCart()
+	,	summary = cart.get('summary')
+	,	promocode = cart.get('promocode')
+	,	is_promocode_valid = promocode && promocode.isvalid
+	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || [];
+	var sum = 0;
+	var view = {};
+%>
+
+	<header class="checkout-cart-summary-header">
+		<h2 class="checkout-cart-summary-macro-title" style="color: rgb(243, 122, 49); margin-bottom: 7px;">
+			<%= _('Order Summary').translate() %>
+		</h2>
+	</header>
+
+	<div class="checkout-cart-summary-body" style="margin-left: -10px;">
+
+		<div class="cart-summary-subtotal">
+			<p class="strong">
+				<span class="pull-right cart-summary-subtotal-formatted">
+					<%= summary.subtotal_formatted %>
 				</span>
-				: 
-				<span class="shipmethod-rate">
-					<%= view.model.get('shipmethods').get(view.model.get('shipmethod')).get('rate_formatted') %>
-				</span>				
-			<% } %>
+				<span class="cart-summary-subtotal-label">
+					<%= _('Subtotal').translate() %>
+				</span>
+			</p>
 		</div>
-		
-		
-				<div class="span6 shipments-shipping-address">
-			<h4 class="section-header">
-				<%= _('Shipping Address').translate() %>
-			</h4>
-			<%= address(view.profile.get('addresses').get(view.model.get('shipaddress')), {
-				hideActions: true
-			,	hideDefaults: true
-			}) %>
+
+<div class="cart-summary-shipping-cost-applied">
+<p>
+				<span class="pull-right cart-summary-shipping-cost-formatted">
+					<%= summary.shippingcost_formatted == "$0.00" ? '-' : summary.shippingcost_formatted %>
+				</span>
+				<%= _('Shipping').translate() %>
+			</p>
+
+			<% if (summary.handlingcost) { %>
+			<p>
+				<span class="pull-right cart-summary-handling-cost-formatted">
+					<%= summary.handlingcost_formatted %>
+				</span>
+				<%= _('Handling').translate() %>
+			</p>
+			<% } %>
+			<p>
+				<span class="pull-right cart-summary-tax-total-formatted">
+					<%= summary.taxtotal_formatted=="$0.00" ? '-' : summary.taxtotal_formatted %>
+				</span>
+				<%= _('Tax').translate() %>
+			</p>
+</div>
+
+			<% if (is_promocode_valid || summary.giftcertapplied) { %>
+			<% if (is_promocode_valid && summary.discounttotal) { %>
+			<div class="checkout-cart-summary-body">
+				<p>
+				<span class="pull-right cart-summary-shipping-cost-formatted">
+					-<%=summary.discounttotal_formatted%>
+				</span>
+				</p>
+			</div>
+			<% } %>
 			
-
-			<% if (view.options.edit_url) { %>
-				<a href="<%- view.options.edit_url %>?force=true" class="btn-edit-address">
-					<%= _('Edit').translate() %>
-				</a>
+			<% if (summary.giftcertapplied) { %>
+			<div class="checkout-cart-summary-body">
+				<p>
+				<b>	<%= _('Gift Certificates Applied ($(0))').translate(giftcertificates.length) %></b>
+				</p>
+				<% _.each(giftcertificates, function (giftCertificate) { %>
+					<p>
+						<span class="pull-right">
+							<%= _('-$(0)').translate(giftCertificate.get('giftcertificate').amountapplied_formatted) %>
+						</span>
+						<span title="<%- giftCertificate.get('giftcertificate').code %>">
+							Gift Card: <%= SC.macros.formatPaymentMethod(giftCertificate) %>
+						</span>
+					</p>
+				<% }); %>
+				</div>
 			<% } %>
+		<% } %>
+</div>
+
+
+		<div class="checkout-cart-summary-macro-total" style="color: rgb(184, 180, 180); margin:0;">
+			<p class="strong">
+				<span class="pull-right cart-summary-total-formatted">
+					<%= summary.total_formatted %>
+				</span>
+				<%= _('Total').translate() %>
+			</p>
 		</div>
-	</div>
-</section>
-
-<section class="shipments-cart-details"  style="display:none;">
-	<div class="shipments-cart-details-header">
-<table cellspacing="0" cellpadding="0" border="0"  style="float: left;
-background: white; border: 10px solid white; font-size: 12px;
-font-weight: bold;">
-<tr style="height: 40px;
-font-weight: 500;">
-<th align="center" width="125px">Item</td>
-<th align="left" width="220px">Decsription</td>
-<th align="center" width="100px">Price</td>
-<th align="center" width="100px">Qty</td>
-<th align="center" width="100px">Total</td>
-</tr>
 
 
-<% view.model.get('lines').each(function (lines, index) { %>
-			<%= shoppingCartItem(lines, view, {
-				showActions:false
-			}) %>
-		<% }) %>
+</div>
 
 
-</table>
+
 </div>
 </section>

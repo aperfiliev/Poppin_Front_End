@@ -12,7 +12,40 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 		
 		,	events: {
 				'click input[name="delivery-options"]': 'changeDeliveryOptions'
+, 'click input[name="review-delivery-options"]': 'changeChecked'
+,'click [name="submit-shipping-method"]': 'submit_shipping_method'
 			}
+
+, changeChecked: function(e){
+console.log(e.target);
+var names = document.getElementsByName("review-delivery-options");
+console.log(names[0].getAttribute("checked"));
+_.each(names,function(name){
+if(name.getAttribute("checked")=="checked"){
+name.setAttribute("checked","");
+}
+e.target.setAttribute("checked","checked");
+});
+
+}
+
+, submit_shipping_method: function(){
+var names = document.getElementsByName("review-delivery-options");
+var value;
+self = this;
+_.each(names,function(name){
+if(name.getAttribute("checked")=="checked"){
+value = name.getAttribute("value");
+}
+});
+this.model.set('shipmethod', value);
+			this.step.disableNavButtons();
+			this.model.save().always(function()
+			{
+				self.render();
+				self.step.enableNavButtons();
+			});
+}
 		,	initialize: function(options)
 			{
 				WizardModule.prototype.initialize.apply(this, arguments);
@@ -113,8 +146,9 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 				self.step.enableNavButtons();
 			});
 		}
-		,	submit: function()
+		,	submit: function(e, additional_validation)
 			{
+if(additional_validation!=undefined){additional_validation.resolve();}
 				var credit_card_pm = this.model.get('paymentmethods').where({type: 'creditcard'});
 				console.log(credit_card_pm);
 				

@@ -31,6 +31,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 	,	errors: ['ERR_CHK_INCOMPLETE_ADDRESS', 'ERR_CHK_INVALID_ADDRESS']
 
 //	,	initialize: function(){
+//		var temp_addr;
 //		console.log(this.getAddressesToShow());
 //		if(this.addressId==null && this.getAddressesToShow().length>0){
 ////			this.manualSelectAddress(this.getAddressesToShow().models[0].id);
@@ -43,8 +44,10 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		{
 			var profile = this.wizard.options.profile;
 
-
 			this.addresses = profile.get('addresses');
+			var creditcards = profile.get('creditcards');
+			//if (!this.addresses.length && !creditcards.length) 
+			//{
 			this.isGuest = profile.get('isGuest') === 'T';
 			this.isSameAsEnabled = this.options.enable_same_as;
 
@@ -63,7 +66,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			this.address = this.getSelectedAddress();
 			
 			this.address.set("payPalUrl",profile.get("paypalUrl"));
-			if(this.address.isNew()){
+			if(this.address.isNew() && this.step.wizard.currentStep=="shipping/method"){
 				this.address.set("firstfullname",profile.get("firstname"));
 				this.address.set("lastfullname",profile.get("lastname"));
 				this.address.set("company",profile.get("companyname"));
@@ -91,6 +94,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			}
 			else*/ 
 			if(this.address.isNew()){
+				console.log("Afress new details");
 				this.addressView = new AddressViews.Details({
 					application: this.wizard.application
 				,	collection: this.addresses
@@ -176,6 +180,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			this.$('[data-toggle="tooltip"]').tooltip({
 				html: true
 			});
+			//}
 		}
 
 	,	evaluateSameAs: function ()
@@ -217,6 +222,10 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 					{
 						// we need to remove it, as it doesn't exists
 						self.model.set(other_address, null);
+					}
+					
+					if(this.addressId==deleted_address.id && this.getAddressesToShow().length>0){
+						this.manualSelectAddress(this.getAddressesToShow().models[0].id);
 					}
 				}, this);
 
@@ -364,9 +373,31 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 //			}
 			
 			var shipping_source = defaultshippingresult;
+			console.log("same as shipping");
+			
+			if(jQuery(e.target).prop('checked')){
+				this.temp_addr = {
+						"firstfullname": this.$('input[name="firstfullname"]').val(),
+						"lastfullname": this.$('input[name="lastfullname"]').val(),
+						"company": this.$('input[name="company"]').val(),
+						"addr1": this.$('input[name="addr1"]').val(),
+						"addr2": this.$('input[name="addr2"]').val(),
+						"namePrefix": this.$('select[name="namePrefix"]').val(),
+						"city": this.$('input[name="city"]').val(),
+						"state": this.$('select[name="state"]').val(), 
+						"zip": this.$('input[name="zip"]').val(),
+						"phone": this.$('input[name="phone"]').val(), 
+						"ext": this.$('input[name="ext"]').val()
+				};
+			}
+			
+			
 			if(jQuery(e.target).prop('checked')){
 				var formPhoneNumber = this.$('input[name="phone"]').val()+this.$('input[name="ext"]').val();
 				if(this.$('input[name="addr1"]').val()!=''
+				||	this.$('input[name="firstfullname"]').val!=''
+				||	this.$('input[name="lasttfullname"]').val!=''
+				||	this.$('input[name="company"]').val!=''
 				|| this.$('input[name="addr2"]').val()!=''
 				|| this.$('select[name="namePrefix"]').val()!=''
 				|| this.$('input[name="city"]').val()!=''
@@ -375,6 +406,9 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 				|| formPhoneNumber!=''
 				){
 					if(confirm('You have entered another address, by checking this box we will use your shipping address as your billing address')){
+						this.$('input[name="firstfullname"]').val(shipping_source.attributes.firstfullname);
+						this.$('input[name="lastfullname"]').val(shipping_source.attributes.lastfullname);
+						this.$('input[name="company"]').val(shipping_source.attributes.company);
 						this.$('input[name="addr1"]').val(shipping_source.attributes.addr1);
 						this.$('input[name="addr2"]').val(shipping_source.attributes.addr2);
 						this.$('select[name="namePrefix"]').val(shipping_source.attributes.namePrefix);
@@ -386,6 +420,9 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 					}
 			}
 			else{
+				this.$('input[name="firstfullname"]').val(shipping_source.attributes.firstfullname);
+				this.$('input[name="lastfullname"]').val(shipping_source.attributes.lastfullname);
+				this.$('input[name="company"]').val(shipping_source.attributes.company);
 				this.$('input[name="addr1"]').val(shipping_source.attributes.addr1);
 				this.$('input[name="addr2"]').val(shipping_source.attributes.addr2);
 				this.$('select[name="namePrefix"]').val(shipping_source.attributes.namePrefix);
@@ -398,14 +435,17 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			}
 			}
 			else{
-				this.$('input[name="addr1"]').val('');
-				this.$('input[name="addr2"]').val('');
-				this.$('select[name="namePrefix"]').val('');
-				this.$('input[name="city"]').val('');
-				this.$('select[name="state"]').val('');
-				this.$('input[name="phone"]').val('');
-				this.$('input[name="ext"]').val('');
-				this.$('input[name="zip"]').val('');
+				this.$('input[name="firstfullname"]').val(this.temp_addr.firstfullname);
+				this.$('input[name="lastfullname"]').val(this.temp_addr.lastfullname);
+				this.$('input[name="company"]').val(this.temp_addr.company);
+				this.$('input[name="addr1"]').val(this.temp_addr.addr1);
+				this.$('input[name="addr2"]').val(this.temp_addr.addr2);
+				this.$('select[name="namePrefix"]').val(this.temp_addr.namePrefix);
+				this.$('input[name="city"]').val(this.temp_addr.city);
+				this.$('select[name="state"]').val(this.temp_addr.state);
+				this.$('input[name="phone"]').val(this.temp_addr.phone);
+				this.$('input[name="ext"]').val(this.temp_addr.ext);
+				this.$('input[name="zip"]').val(this.temp_addr.zip);
 			}
 			
 		}
@@ -416,79 +456,57 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		// Will take care of saving the address if its a new one. Other way it will just 
 		// return a resolved promise to comply with the api
 	,	submit: function ()
+	{
+		console.log('submit form address');
+		var self = this;
+		// its a new address
+		if (this.addressView)
 		{
-			console.log('submit form address');
-			var self = this;
-			// its a new address
-			if (this.addressView && this.addressView !=null)
+			// The saveForm function expects the event to be in an element of the form or the form itself, 
+			// But in this case it may be in a button outside of the form (as the bav buttosn live in the step)
+			//  or tiggered by a module ready event, so we need to create a fake event which the target is the form itself
+			console.log('form0')
+			console.log(this.addressView.$('form').get(0));
+			var fake_event = jQuery.Event('submit', {
+					target: this.addressView.$('form').get(0)
+				})
+				// Calls the saveForm, this may kick the backbone.validation, and it may return false if there were errors, 
+				// other ways it will return an ajax promise
+			,	result = this.addressView.saveForm(fake_event);
+			// Went well, so there is a promise we can return, before returning we will set the address in the model 
+			// and add the model to the profile collection
+			if (result)
 			{
-				// The saveForm function expects the event to be in an element of the form or the form itself, 
-				// But in this case it may be in a button outside of the form (as the bav buttosn live in the step)
-				//  or tiggered by a module ready event, so we need to create a fake event which the target is the form itself
-				console.log('form0')
-				console.log(this.addressView.$('form').get(0));
-				var validation_promise = jQuery.Deferred();
-				var fake_event = jQuery.Event('submit', {
-						target: this.addressView.$('form').get(0)
-					})
-					// Calls the saveForm, this may kick the backbone.validation, and it may return false if there were errors, 
-					// other ways it will return an ajax promise
-				,	result = this.addressView.saveForm(fake_event, undefined, undefined, validation_promise);
-//				if(validation_promise!=void 0){
-//					
-//				}
-				validation_promise.done(function(result){
-					return result.always(function (model)
-							{
-
-								// Address id to the order model. This has to go after before the following model.add() as it triggers the render
-								self.setAddress(model.internalid);
-
-								// we only want to trigger an event on add() when the user has some address and is not guest because if not, 
-								// in OPC case (two instances of this module in the same page), the triggered re-render erase the module errors. 
-								var add_options = (self.isGuest || self.addresses.length === 0) ? {silent: true} : null; 
-								self.addresses.add(model, add_options);
-								
-								self.model.set('temp' + self.manage, null);
-								
-								self.render();
-							});
-				});
-				// Went well, so there is a promise we can return, before returning we will set the address in the model 
-				// and add the model to the profile collection
-				if (result)
+				result.done(function (model)
 				{
+					debugger
+					// Address id to the order model. This has to go after before the following model.add() as it triggers the render
+					self.setAddress(model.id);
+
+					// we only want to trigger an event on add() when the user has some address and is not guest because if not, 
+					// in OPC case (two instances of this module in the same page), the triggered re-render erase the module errors. 
+					var add_options = (self.isGuest || self.addresses.length === 0) ? {silent: true} : null; 
+					self.addresses.add(model, add_options);
 					
-					return result.always(function (model)
-					{
-
-						// Address id to the order model. This has to go after before the following model.add() as it triggers the render
-						self.setAddress(model.internalid);
-
-						// we only want to trigger an event on add() when the user has some address and is not guest because if not, 
-						// in OPC case (two instances of this module in the same page), the triggered re-render erase the module errors. 
-						var add_options = (self.isGuest || self.addresses.length === 0) ? {silent: true} : null; 
-						self.addresses.add(model, add_options);
-						
-						self.model.set('temp' + self.manage, null);
-						
-						self.render();
-					});
-				}
-				else if(!validation_promise)
-				{
-					// There were errors so we return a rejected promise
-					return jQuery.Deferred().reject({
-						errorCode: 'ERR_CHK_INCOMPLETE_ADDRESS'
-					,	errorMessage: _('The address is incomplete').translate()
-					});
-				}
+					self.model.set('temp' + self.manage, null);
+					
+					self.render();
+				});
+				return result;
 			}
-			else
+			else 
 			{
-				return this.isValid();              
+				// There were errors so we return a rejected promise
+				return jQuery.Deferred().reject({
+					errorCode: 'ERR_CHK_INCOMPLETE_ADDRESS'
+				,	errorMessage: _('The address is incomplete').translate()
+				});
 			}
 		}
+		else
+		{
+			return this.isValid();              
+		}		}
 
 	,	isValid: function () 
 		{console.log('isvalid111');
@@ -506,6 +524,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 				if (selected_address.get('isvalid') === 'T')
 				{
 					console.log(selected_address);
+//					additional_validation.resolve();
 					return jQuery.Deferred().resolve();
 				}
 

@@ -33,22 +33,23 @@
 			</h4>
 			<div>
 				<input type="radio" checked>
-				<span><b><%=shipping_methods.get(order_delivery_method).get("name")%></b> - <%=shipping_methods.get(order_delivery_method).get("rate_formatted") %></span>		
+				<span style="font-size: small;"><b><%=shipping_methods.get(order_delivery_method).get("name")%></b> - <%=shipping_methods.get(order_delivery_method).get("rate_formatted") %></span>		
 			</div>
 
 					<a href="#" class="btn-edit-address" onclick="jQuery('#edit-deliverymethod').show()" style="margin-left: 26px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
 			<%= _('edit').translate() %></a>
 		</div>
 		
-		<div class="review-layover" style="display:none; padding: 40px;margin-left: -270px; margin-top: -10px; width: 400px; height: 150px;" id="edit-deliverymethod">
-		<button type="button" class="close" onclick="jQuery('#edit-deliverymethod').hide()">×</button>
+		<div class="review-layover" style="display: none; overflow: hidden; padding: 0px 40px 52px 40px; margin-left: -100px; width: 200px; height: 120px; position: fixed; border: 1px solid rgba(0, 0, 0, 0.2); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px;" id="edit-deliverymethod">
+		<button type="button" class="close" onclick="jQuery('#edit-deliverymethod').hide()" style="
+    margin-bottom: 20px; margin-right: -30px;">×</button>
 		<% shipping_methods.each(function (shipmethod) { %>
 				<% is_active = order_delivery_method === shipmethod.get('internalid') %>
 
 				<label class="delivery-option <%= is_active ? 'active' : '' %>">
 					<input
 						type="radio"
-						name="delivery-options"
+						name="review-delivery-options"
 						id="delivery-options-<%= shipmethod.get('internalid')%>"
 						value="<%- shipmethod.get('internalid')%>" 
 						<%= is_active ? 'checked' : '' %>
@@ -61,10 +62,14 @@
 					</span>
 				</label>
 			<% }); %>
+<div style="margin-top: 70px; margin-left: 15px;">
+					<a href="#" name="submit-shipping-method" class="btn-edit-address" style="margin-left: 26px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('ok').translate() %></a>
+					<a href="#" class="btn-edit-address" onclick="jQuery('#edit-deliverymethod').hide()" style="margin-left: 26px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('cancel').translate() %></a>
+</div>
 		</div>
-		
-		<div>
-		</div>
+
 		
 				<div class="span6 shipments-shipping-address" style="padding-left: 22px; padding-bottom: 10px; width: 290px; height: 232px; float: left; margin-right: 16px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
 			<h4 class="section-header" style="color: #f87c00; font-size: 17px; margin-bottom: 10px;">
@@ -90,8 +95,10 @@
 		</div>
 	</div>
 	
-	<div class="review-layover" id="change-shipping" style="display:none; padding: 40px;">
-	<input type="button" class="close" value="X" onclick="jQuery('#change-shipping').hide()">
+	<div class="review-layover" id="change-shipping" style="overflow-x: hidden; overflow-y: overlay;display:none;padding: 10px 10px 0px 40px; position: fixed; margin-top: -480px;  border: 1px solid rgba(0, 0, 0, 0.2); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px;">
+	<button type="button" class="close" onclick="jQuery('#change-shipping').hide()" style="
+    margin-bottom: 20px;
+">×</button>
 		<p style="margin-top: 10px;">
 		<%
 			// Wrap the address address macro to pass options in
@@ -109,6 +116,8 @@
 		</p>
 
 		<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+<a href="#" class="btn-edit-address" onclick="jQuery('#change-shipping').hide()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('cancel').translate() %></a>
 	</div>
 	
 	
@@ -171,13 +180,16 @@
 			<% } %>
 			</div>
 		<% } %>
+				
+		
+
 	</div>
 		
-		<div style="margin-top: 25px;">
+<div style="margin-top: 25px;">
 		<img src="img/vertical_dottenline.png" />
 		</div>
 		
-	<div class="span6 wizard-showpayments-billing-address" style="height: 140px; width: 335px; margin-left: 40px; margin-top: 33px;">
+			<div class="span6 wizard-showpayments-billing-address" style="height: 140px; width: 335px; margin-left: 40px; margin-top: 33px;">
 		<%= address(view.profile.get('addresses').get(view.model.get('billaddress')), {
 			hideActions: true
 		,	hideDefaults: true
@@ -187,8 +199,8 @@
 	
 	</div>
 	
-	<div class="review-layover" id="change-payment" style="display:none; padding: 40px;">
-		<button type="button" class="close" onclick="jQuery('#change-payment').hide()">×</button>
+	<div class="review-layover" id="change-payment" style="display:none; margin-top: -695px; padding: 40px 10px 40px 40px; border: 1px solid rgba(0, 0, 0, 0.2); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; overflow-x: hidden; overflow-y: overlay; position: fixed;">
+		<button type="button" style="margin-top: -40px;" class="close" onclick="jQuery('#change-payment').hide()">×</button>
 		<!-- billing address here -->
 		<%
 			// Wrap the address address macro to pass options in

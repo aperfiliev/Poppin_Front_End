@@ -8,6 +8,8 @@
 	,	country = (country_object)? country_object.name : address.get('country')
 	,	state_object = (country_object && country_object.states)? _.findWhere(countries[address.get('country')].states, {code: address.get('state')}): null
 	,	state = (state_object)? state_object.name: address.get('state');
+console.log('addres template');
+console.log(address);
 	
 %>
 <article class="address" >
@@ -18,7 +20,7 @@
 		</span>
 		
 
-		<span class="address-line address-title summary-header">
+		<span class="address-line address-firstfullname">
 			<%= label || company %>
 		</span>
 

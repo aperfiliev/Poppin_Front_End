@@ -13,8 +13,26 @@ define('OrderWizard.Module.ShowPaymentsAndBillings', ['Wizard.Module'], function
 		,	events: {
 				'click input[name="delivery-options"]': 'changeDeliveryOptions'
 			}
+		, shouldBeRendered : function ()
+		{
+			debugger;
+			var profile     = this.wizard.options.profile,
+			creditcards = profile.get('creditcards'),
+			//creditcards = this.getPaymentmethods(),
+			addresses   = profile.get('addresses');
+			return addresses.length && creditcards.length;
+		}
+		
+		, getAddresses : function () 
+		{
+			debugger;
+			var profile     = this.wizard.options.profile;
+			return profile.get('addresses').models;
+		}
+
 		,	render: function()
 			{
+			    console.log("showPaymantAndBillings");
 				this.application = this.wizard.application;
 				this.profile = this.wizard.options.profile;
 				this.options.application = this.wizard.application;
@@ -22,6 +40,7 @@ define('OrderWizard.Module.ShowPaymentsAndBillings', ['Wizard.Module'], function
 				console.log(this.model);
 				
 				this._render();
+
 			}
 		,	eventHandlersOn: function(){
 				this.eventHandlersOff();

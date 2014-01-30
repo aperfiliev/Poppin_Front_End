@@ -28,7 +28,7 @@
 						name="delivery-options"
 						id="delivery-options-<%= shipmethod.get('internalid')%>"
 						value="<%- shipmethod.get('internalid')%>" 
-						<%= is_active ? 'checked' : '' %>
+						<%= is_active ? checked='checked' : '' %>
 					>
 					<span class="delivery-option-label">
 						<%= shipmethod.get('name') %>
@@ -39,7 +39,7 @@
 		<% } else if (!shipping_methods.length) { %>
 			<%= _('Warning: No Shipping Methods are available for this address').translate() %>
 		<% } else { %>
-			<% shipping_methods.each(function (shipmethod) { %>
+			<%shipping_methods.each(function (shipmethod) { %>
 				<% is_active = order_delivery_method === shipmethod.get('internalid') %>
 
 				<label class="delivery-option <%= is_active ? 'active' : '' %>">
@@ -48,7 +48,7 @@
 						name="delivery-options"
 						id="delivery-options-<%= shipmethod.get('internalid')%>"
 						value="<%- shipmethod.get('internalid')%>" 
-						<%= is_active ? 'checked' : '' %>
+						<%= is_active ? checked='checked' : '' %>
 					>
 					<span class="delivery-option-label">
 						<%= shipmethod.get('name') %>:

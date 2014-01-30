@@ -86,6 +86,7 @@ define('CreditCard.Model', function ()
 			]
 		,	expyear: { fn: validateExpirationDate }
 		,	expmonth: { fn: validateExpirationDate }
+		,	savecard: {required: true}
 		}
 	/**
 	 		validation: {

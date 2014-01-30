@@ -27,58 +27,43 @@ define('Address.Views', function ()
 		,	'blur input[name="lastfullname"]': 'verifyLastName'
 		,	'blur input[name="company"]': 'verifyCompany'
 		,	'blur input[name="addr1"]': 'verifyAddress'
+		,	'blur input[name="city"]': 'verifyCity'
+		,	'blur input[name="zip"]': 'verifyZip'	
 		
 		}
 	,	verifyFirstName: function (e){
 			var firstname = this.$("input[name='firstfullname']");
 			var result = firstname.val();
-			var first = firstname.val().split("")[0];
-			var last = firstname.val().split("")[firstname.val().length-1];
-			var begin = first ==" "? 1:0;
-			var end = result.length;
-			if(last == " "){
-				end = result.length-1;
-			}
-			firstname.val( result.slice(begin,end) );
+			firstname.val( result.trim() );
 		}
 	,	verifyLastName: function (e){
 		var name = this.$("input[name='lastfullname']");
 		var result = name.val();
-		var first = name.val().split("")[0];
-		var last = name.val().split("")[name.val().length-1];
-		var begin = first ==" "? 1:0;
-		var end = result.length;
-		if(last == " "){
-			end = result.length-1;
-		}
-		name.val( result.slice(begin,end) );
+		name.val( result.trim() );
 	}
 	,	verifyCompany: function (e){
 			var name = this.$("input[name='company']");
 			var result = name.val();
-			var first = name.val().split("")[0];
-			var last = name.val().split("")[name.val().length-1];
-			var begin = first ==" "? 1:0;
-			var end = result.length;
-			if(last == " "){
-				end = result.length-1;
-			}
-			name.val( result.slice(begin,end) );
+			name.val( result.trim() );
 	}
 	,	verifyAddress: function (e){
 		var name = this.$("input[name='addr1']");
 		var result = name.val();
-		var first = name.val().split("")[0];
-		var last = name.val().split("")[name.val().length-1];
-		var begin = first ==" "? 1:0;
-		var end = result.length;
-		if(last == " "){
-			end = result.length-1;
-		}
-		name.val( result.slice(begin,end) );
-}
+		name.val( result.trim() );
+	}
+	,	verifyCity: function(e){
+		var name = this.$("input[name='city']");
+		var result = name.val();
+		name.val( result.trim() );
+	}
+	,	verifyZip: function(e){
+		var name = this.$("input[name='zip']");
+		var result = name.val();
+		name.val( result.trim() );
+	}
 	,	initialize: function ()
 		{
+		console.log("Addres views init. Model = " + this.model);
 			var self = this;
 			this.title = this.model.isNew() ? _('Add New Address').translate() : _('Update Address').translate();
 			this.page_header = this.title;
@@ -148,10 +133,12 @@ define('Address.Views', function ()
 		
 	// remove address
 	,	remove: function(e) {
+		
 			e.preventDefault();
 			
 			if ( confirm( _('Are you sure you want to delete this address?').translate() ) )
 			{
+				console.log("REMOVE ADDRESSS");
 				this.collection.get( jQuery(e.target).data('id') ).destroy({ wait: true });
 			}
 		}

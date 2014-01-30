@@ -12,9 +12,9 @@
 %>
 <style>
 .cart-layover{
-	position:absolute;
-	margin-left: -650px;
-	margin-top: 40px;
+	position:fixed;
+	margin-left: -48%;
+	margin-top: -20%;
 	width: 900px;
 	height: 575px;
 	background: white;
@@ -22,7 +22,7 @@
     -moz-box-shadow:    10px 10px 10px #9E9E9E;
     box-shadow:         10px 10px 10px #9E9E9E;
     z-index:999;
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x: hidden;
 }
 .close{
@@ -247,7 +247,7 @@ text-align:center;
 	
 			<% if (is_promocode_valid && options.stepPosition.toLast > 0) { %>
 	<footer class="checkout-cart-summary-footer accordion">
-		<div class="promoCode">							
+		<div>							
 
 			<p class="checkout-cart-summary-macro-promo-title"><%= _('Have a Promo Code?').translate() %></p>
 
@@ -259,8 +259,6 @@ text-align:center;
 				class="input-medium promocode"
 				value="<%= promocode.code %>"
 				readonly
-style="width: 90px;"
-
 			>
 			<button data-action="remove-promocode" class="bgbutton-checkout-apply">
 				<%= _('Remove').translate() %>
@@ -308,7 +306,7 @@ style="width: 90px;"
 			<%= options.continueButtonLabel %>
 		</button>
 <% if (options.stepPosition.toLast == 1) { %>
-		<div style="margin-top: 15px; font-weight: bold; font-size: 12px;">Or check out with
+		<div style="margin-top: 15px; font-weight: bold; font-size: 12px; text-align: center;">Or check out with
 		<input type="image" src="img/paypal_summary.png" 
 		onclick="window.location='<%=options.payPalUrl%>'"
 		class="nlbutton" style="background: #FFF;border: 0px solid #fff;"></div>

@@ -128,7 +128,7 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 			}
 
 		}
-
+	
 	,	render: function()
 		{
 			if (this.wizard.hidePayment())

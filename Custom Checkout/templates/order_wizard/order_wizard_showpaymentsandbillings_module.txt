@@ -15,100 +15,47 @@
     height:
 }
 </style>
-<% console.log(view);
-	var is_active = false
-	,	shipping_methods = view.model.get('shipmethods')
-    ,   paymentmethods = view.getPaymentmethods();
-%>
+
 <div class="row-fluid">
 	<h3 class="section-header car-background">
 		<%= _('SELECT YOUR PAYMENT METHOD').translate() %>
 	</h3>
-	<a class="btn btn-link" href="creditcards/new" data-toggle="show-in-modal" style="margin-bottom:5px">
-			<%= _('Add new card').translate() %>
-	</a>
-	<% if (paymentmethods.length) {%>
-	<div style="width: 605px; height: 186px; margin-top: 15px; border-width:2px; border-color: #e2e2e2; border-style: solid; display: inline-flex;">
-		<div class="span6 wizard-showpayments-billing-payment-method" style="width: 220px; height: 140px; margin-left: 20px; font-size: 15px;">
-			<div class="payment-methods-summary">		
+	<div style="padding-top: 30px;">
+		<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal" style=" border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('Add New Card').translate() %>
+		</a>
+	</div>
+	<% var paymentmethods = view.getPaymentmethods();%>
+	<div class="span6 wizard-showpayments-billing-payment-method" style="width: 220px; height: 140px; margin-left: 20px; font-size: 15px;">
+		<div class="payment-methods-summary" style="margin-bottom: 7px;">		
 			<input type="radio" checked style="margin-right: 5px; color: #f97d00; background-color: #f97d00">
 				<% console.log(paymentmethods); _.each(paymentmethods, function (paymentmethod) { %>
 					<%= SC.macros.formatPaymentMethod(paymentmethod, view.wizard.application.getConfig('creditCardIcons')) %>
 				<% }); %>
-					
-				<% if (view.profile.get('isGuest') === 'T') { %>
-					<div>
-						<h5><%- view.profile.get('email') %></h5>
-					</div>
-				<% } %>
-			</div>
-			
-			<a href="/creditcards/<%=paymentmethods[0].get('creditcard').internalid%>" data-toggle="show-in-modal" style=" margin-left: 20px; text-decoration: none; border-bottom:1px dotted blue;">
+				<a href="/creditcards/<%=paymentmethods[0].get('creditcard').internalid%>" data-toggle="show-in-modal" style=" margin-left: 31px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
 				<%= _('edit').translate() %>
 			</a>
-
-			<% if (view.profile.get("creditcards").length > 1){ %>
-				<a href="#" onclick="jQuery('#change-payment').show()" style="margin-left: 20px; text-decoration: none; border-bottom:1px dotted blue;">
-					<%= _('change').translate() %>
-				</a>
-			<% } %>
-		
-		</div>
-		
-		<div style="margin-top: 25px;">
-			<img src="img/vertical_dottenline.png" />
-		</div>
-		
-		<div class="span6 wizard-showpayments-billing-address" style="height: 140px; width: 335px; margin-left: 40px; padding-top: 18px;">
-			<%= address(view.profile.get('addresses').get(view.model.get('billaddress')), {
-				hideActions: true
-			,	hideDefaults: true
-			,	verifyReview: "review"
-			}) %>
 		</div>
 	</div>
-	<div class="span6">
-			<%= SC.macros.creditcardSecurityNumberForm({
-				error: undefined
-            ,   value:  paymentmethods[0].get('creditcard').ccsecuritycode
-            ,	hidehelp: true
-			}) %>
+		
+	<div style="margin-top: 25px;">
+		<img src="img/vertical_dottenline.png" />
 	</div>
-	<% } %>
-	<div class="review-layover" id="change-payment" style="display:none; padding: 40px;">
-		<button type="button" class="close" onclick="jQuery('#change-payment').hide()">×</button>
-		<!-- billing address here -->
-		<%
-			// Wrap the address address macro to pass options in
-			var addressWrap = function (address) {
-				return SC.macros['address'](address, {
-					showSelect: true
-				,	selectMessage: view.selectMessage
-				,	hideDefaults: true
-				,	selectedAddress: view.model.get("billaddress")
-				,	verifyAddress: "billaddress"
-				});
-			}
-		%>
-		<div style="width:200px; float:right">
-		<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
-				<%
-			var creditcardWrap = function (creditcard) {
-				return SC.macros.creditcard(creditcard, {
-					showSelect: true
-				,	showActions: true
-				,	showDefaults: false
-				,	selectMessage: view.selectMessage
-				,	icons: view.wizard.application.getConfig('creditCardIcons')
-				,	selectedCreditcard: view.model.get("paymentmethods").models[0].get("creditcard").internalid
-				,	showSecurityCodeForm: true
-				,	step: "review"
-				});
-			} 
-		%>
-		</div>
-		<div  style="width:200px; float:left">
-		<%= displayInRows(view.profile.get("creditcards").models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
-		</div>
+		
+	<div class="span6 wizard-showpayments-billing-address" style="height: 140px; width: 335px; margin-left: 40px; margin-top: 33px;">
+	<% console.log("TEMPLATE" + view.profile.get('addresses').length); %>
+		<%= address(view.getAddresses(), {
+			hideActions: true
+		,	hideDefaults: true
+		,	verifyReview: "review"
+		}) %>
 	</div>
 </div>
+<div class="span6">
+			<%= SC.macros.creditcardSecurityNumberForm({
+				error: undefined
+            ,   value:  ""
+            ,	hidehelp: true
+            ,	step: "review"
+			}) %>
+		</div>

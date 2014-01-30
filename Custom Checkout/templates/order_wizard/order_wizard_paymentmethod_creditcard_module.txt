@@ -48,6 +48,7 @@
 	
 	</div>
 <% } else if (view.creditcards.length === 0) { %>
+	<div class="test" id="showpaymentsandbillings-billingaddress"></div>
 	<div id="creditcard-module-form-placeholder">
 		<form>
 			<% var date = new Date(); %>

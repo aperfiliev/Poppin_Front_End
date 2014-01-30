@@ -43,6 +43,16 @@ gift#main
 	display: inline-block;
 	zoom: 1;
 }
+	#main #change-shipping .span6{
+		width: 231px;
+		border-color: rgb(218, 218, 218);
+		border-style: solid;
+		border-width: 1px;
+		height: 168px;
+		padding: 5px;
+		margin-left: 10px;
+		margin-top: 29px;
+	}
 #main audio:not([controls])
 {
 	display: none;
@@ -8950,8 +8960,6 @@ display: block;
 width: 303px;
 overflow: visible;
 float: left;
-padding-bottom: 5500px;
-margin-bottom: -5500px;
 border-right: 1px dotted rgb(153, 153, 153);
 //padding-left: 35px;
 }
@@ -8980,8 +8988,6 @@ float: left;
 width: 303px;
 height: 100%;
 overflow: visible;
-padding-bottom: 5500px;
-margin-bottom: -5500px;
 border-right: 1px dotted rgb(153, 153, 153);
 }
 
@@ -9181,7 +9187,7 @@ position: relative;
 clear: both;
 float: left;
 width: 100%;
-overflow: hidden;
+
 }
 #main .colleft {
 float: left;
@@ -9260,4 +9266,34 @@ width: 25px;
 }
 #creditcard-module-form-placeholder .credit-card-security-number .control-label{
 width: 55px;
+}
+#cartitemstable{
+color: black;
+text-decoration: none;
+font-size: 12px;
+font-family: Arial;
+font-weight: bold;
+text-align:center;
+}
+#cartitemstable th{
+color: black;
+text-decoration: none;
+font-size: 14px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+}
+#cartitemstable a{
+color: black;
+text-decoration: none;
+font-size: 12px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+}
+#cardmessage_module{
+	border-top: dotted 1px;
+	margin-top: 20px;
+}
+#cardmessage-container #cardmessage_module{
+	border-top: 0;
+	margin-top: 0;
 }

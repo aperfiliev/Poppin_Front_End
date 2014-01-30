@@ -38,6 +38,10 @@ define('CreditCard.Views', function ()
 			this.options.months = _.range( 1, 13 );
 			this.options.years = range;
 			this.options.showDefaults = false;
+			console.log('credit card views initialize');
+			console.log(this);
+			//console.log(this.profile.get("creditcards").models);
+			
 		}
 	,	setPaymethodId: function(e)
 		{

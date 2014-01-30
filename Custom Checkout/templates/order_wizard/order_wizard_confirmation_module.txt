@@ -1,7 +1,7 @@
-<div class="" style="padding-top: 10px; padding-bottom:10px; height: 140px;">
+<div class="" style="padding-top: 10px; padding-bottom:10px; height: 111px; background-color: white; width: 859px; margin-left: 0px;">
 <!--alert alert-block alert-success fade in-->
 	
-	<div style="float: left;" >
+	<div style="float: left; margin-left: 35px;" >
 	<h4 class="thankyou-title" style="color: rgb(254, 107, 56);
 display: block;
 font-size: 36px;
@@ -13,7 +13,7 @@ font-family: OmnesRegularRegular,sans-serif;"><%= _('Thank you for your order!')
 <%= _('Keep your eyes peeled for an order confirmation email.').translate() %>
 	</div>
 <div style="float: right; margin-top: 20px;">
-<input onclick="location.href='<%= SC.ENVIRONMENT.siteSettings.touchpoints.home %>'" class="bgbutton-checkout" type="button" data-touchpoint="home" data-hashtag="#/" value="<%= _('Continue shopping').translate() %>" alt="<%= _('Poppin.com').translate() %>" style="display: block; font-weight: 400;"></input>
+<input onclick="location.href='<%= SC.ENVIRONMENT.siteSettings.touchpoints.home %>'" class="bgbutton-checkout" type="button" data-touchpoint="home" data-hashtag="#/" value="<%= _('Continue shopping').translate() %>" alt="<%= _('Poppin.com').translate() %>" style="display: block; font-weight: 400; border: 1px solid white;"></input>
 	<div class="social" style="padding-left: 50px;">
 	  	<p class="social-links">
 	  		<a class="facebook" href="https://www.facebook.com/poppin" title="Facebook" target="_blank">Facebook</a>

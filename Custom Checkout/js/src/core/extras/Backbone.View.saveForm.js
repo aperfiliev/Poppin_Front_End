@@ -6,7 +6,7 @@
 	'use strict';
 
 	_.extend(Backbone.View.prototype, {
-		
+		liveAddressValidated: null,
 		// view.saveForm
 		// Event halders added to all views
 		saveFormToModel: function (e, model, props){
@@ -38,6 +38,7 @@
 						self.$savingForm.find('[type="submit"], [type="reset"]').attr('disabled', false);
 						model.trigger('save', model, response);
 					}
+					Backbone.trigger('refresh');
 					
 				}
 
@@ -56,7 +57,7 @@
 			}
 		);
 		},
-		saveForm: function (e, model, props, validation_promise)
+		saveForm: function (e, model, props)
 		{
 		
 			e.preventDefault();
@@ -77,17 +78,6 @@
 			this.hideError();
 
 			var self = this;
-			
-			if(self.$savingForm.serializeObject().addr1!=undefined && self.$savingForm.serializeObject().addr1!=null){
-			//LiveView address validation
-			var addr = {
-					street: self.$savingForm.serializeObject().addr1,
-					city: self.$savingForm.serializeObject().city,
-					state:  self.$savingForm.serializeObject().state,
-					zipcode: self.$savingForm.serializeObject().zip
-				};
-				
-			
 		      // Do not persist invalid models.
 			var options = {
 					wait:true,
@@ -96,19 +86,34 @@
 					};
 			options = _.extend({validate: true}, options);
 			console.log('before');
-		    if (!self.model._validate(self.$savingForm.serializeObject(), options)) return false;
-			console.log('after');
-			// Returns the promise of the save acction of the model
-			LiveAddress.verify(addr, 
+			var validation_promise = jQuery.Deferred();
+		    if (!self.model._validate(self.$savingForm.serializeObject(), options)) {
+		    	validation_promise.reject();
+		    	return validation_promise;
+		    };
+                     if(self.$savingForm.serializeObject().addr1!=undefined && self.$savingForm.serializeObject().addr1!=null){
+		    	  //LiveView address validation
+				var addr = {
+						street: self.$savingForm.serializeObject().addr1,
+						city: self.$savingForm.serializeObject().city,
+						state:  self.$savingForm.serializeObject().state,
+						zipcode: self.$savingForm.serializeObject().zip
+					};
+		    
+		    LiveAddress.verify(addr, 
 					function(response){
+						console.log("after 1");
 						if(response.length==0){
+							console.log("after 2");
 							self.$savingForm.find('*[type=submit], *[type=reset]').attr('disabled', false);
 							self.model.trigger('error',{
 								errorCode: 'ERR_CHK_INVALID_ADDRESS'
 								,	errorMessage: _('The selected address is invalid').translate()
 								});
+							validation_promise.reject();
 						}
 						else{
+							console.log("after 3");
 							//check if address matches the one from liveaddress service
 							//if matches - submit to model, if not - show suggestion message
 							if(response[0].delivery_line_1 != self.$savingForm.serializeObject().addr1 
@@ -116,24 +121,27 @@
 									|| response[0].components.state_abbreviation != self.$savingForm.serializeObject().state
 									|| (response[0].components.zipcode + '-' + response[0].components.plus4_code) != self.$savingForm.serializeObject().zip
 							){
+								console.log("after 4");
 								self.model.trigger('error',{
 									errorCode: 'ERR_CHK_INVALID_ADDRESS'
 									,	errorMessage: _('<div style="display: table-cell;">You typed:<br/>' + self.$savingForm.serializeObject().addr1 + '<br/>'+
 											self.$savingForm.serializeObject().city + ' ' + self.$savingForm.serializeObject().state + ' ' + self.$savingForm.serializeObject().zip
 											+'</div><div style="display: table-cell;padding-left: 50px;">We found the following:<br/>' + response[0].delivery_line_1 + '<br/>' + response[0].last_line).translate() + '</div>'
 									});
+								validation_promise.reject();
 							}
 							else{
-								console.log('save to form');
+								console.log("after 5");
 								var result = self.saveFormToModel(e, model, props);
-								if(validation_promise!=undefined){
-									validation_promise.resolve(result);
-								}
+								result.done(function(){validation_promise.resolve(self.model);})
+								
 							}
 						}
 				});
-			}
-			else{
+			// Returns the promise of the save acction of the model
+			return validation_promise.promise();
+		    }
+		    else{
 				return self.saveFormToModel(e, model, props);
 			}
 		}

@@ -3,7 +3,7 @@
 <div style="width:100%;height: auto;"></div>
 	<fieldset>
 		<div class="control-group">
-			<div class="controls">
+			
 			<input type="text" name="code" id="code" class="input-medium" value="" placeholder="Gift card" style="width: 125px;">
 				<button type="submit" class="btn" style="background: #35c6f5;
 					border-color: #35c6f5;
@@ -16,7 +16,7 @@
 					text-transform: uppercase;">
 					<%= _('Apply').translate() %>
 				</button>
-			</div>
+			
 		</div>
 		<div data-type="giftcertificate-error-placeholder">
 			

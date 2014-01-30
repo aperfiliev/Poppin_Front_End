@@ -6,7 +6,7 @@ define('OrderWizard.Module.Address.Shipping', ['OrderWizard.Module.Address'],  f
 	'use strict';
 
 	return OrderWizardModuleAddress.extend({
-		
+
 		manage: 'shipaddress'
 	,	sameAsManage: 'billaddress'
 

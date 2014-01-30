@@ -17,7 +17,7 @@
 			<select id="cardmessage-options">
 				<option selected disabled></option>
 				<% view.cardmessages.forEach(function(cardmessage) { %>
-					<option value="<%- cardmessage.id %>">
+					<option value="<%- cardmessage.id %>" <%= cardmessage.occasion == view.wizard.options.model.get("options").custbody_cardocation ? "selected" : "" %> >
 						<%= cardmessage.occasion %>
 					</option>
 				<% }); %>

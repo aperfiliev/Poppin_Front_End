@@ -15,7 +15,7 @@ define('OrderWizard.Module.PaymentMethod.GiftCertificates', ['Wizard.Module'], f
 		,	'shown #gift-certificate-form' : 'onShownGiftCertificateForm' 
 		}
 
-	,	errors: ['ERR_WS_APPLIED_GIFTCERTIFICATE', 'ERR_WS_EMPTY_GIFTCERTIFICATE']
+	,	errors: ['ERR_WS_INVALID_GIFTCERTIFICATE', 'ERR_WS_APPLIED_GIFTCERTIFICATE', 'ERR_WS_EMPTY_GIFTCERTIFICATE']
 
 	,	render: function()
 		{

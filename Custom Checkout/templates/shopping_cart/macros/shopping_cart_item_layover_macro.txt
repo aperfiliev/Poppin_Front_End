@@ -64,9 +64,10 @@ else if (url)
 				</div>
 			</td>
 			<td>
-				<div >
-					<%= SC.macros.showItemPrice(item) %>
-				</div>
+								<% if( line.get('amount') > line.get('total') ) {%>
+					<small class="muted crossed"><%= SC.macros.showItemPrice(item) %></small><br/>
+					<span style="color:red"><%= newprice_formatted.toFixed(2) %></span>
+				<% } else {%> <%= SC.macros.showItemPrice(item) %> <%}%>
 			</td>
 				<div class="cart-item-options">
 					<%= item.renderAllOptionSelected() %>	
@@ -106,20 +107,7 @@ else if (url)
 				</div>
 				</td>
 			</div>			
-			<td>
-			<div class="span3 amount">
-				<%= line.get('total_formatted') %>
-				<% if( line.get('amount') > line.get('total') ) {%>
-					<small class="muted crossed"><%=  line.get('amount_formatted') %></small>
-				<% } %>
-			</div>
-			</td>
-			<td>
-			<div class="clearfix"></div>
-			<div class="text-right cart-item-stock-info">
-				<%= SC.macros.itemDetailsStock(item.getStockInfo()) %>
-			</div>
-			</td>
+<td align="center"><%= line.get('total_formatted') %></td>
 </tr>
 <%}%>
 <% if (!options.showActions) { %>
