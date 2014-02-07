@@ -20,6 +20,7 @@
 
 	,	invalid: function (view, attr, error, selector)
 		{
+		debugger;
 			//alert(error);
 			//console.log(error);
 			var $target
@@ -27,10 +28,10 @@
 			,	$group = $control.parents('.control-group').addClass('error');
 
 
-			view.$('[data-type="alert-placeholder"]').html(
+			//view.$('[data-type="alert-placeholder"]').html(
 				//SC.macros.message(_(' Sorry, the information below is either incomplete or needs to be corrected.').translate(), 'error', true )
-				SC.macros.message(_(error).translate(), 'error', true )
-			);
+				//SC.macros.message(_(error).translate(), 'error', true )
+			//);
 
 			view.$savingForm.find('*[type=submit], *[type=reset]').attr('disabled', false);
 

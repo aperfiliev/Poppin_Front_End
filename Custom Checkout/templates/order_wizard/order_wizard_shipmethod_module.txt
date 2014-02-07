@@ -3,8 +3,11 @@
 	var is_active = false
 	,	order_delivery_method = view.model.get('shipmethod')
 	,	shipping_methods = view.model.get('shipmethods');
+
 	shipping_methods.models.sort(function(obj1, obj2) {
  return obj1.get('rate') - obj2.get('rate');});	
+console.log(order_delivery_method);
+	if(!order_delivery_method){ order_delivery_method = shipping_methods[0].get('internalid'); }
 %>
 <% if (view.getTitle()) { %>
 	<h3 class="section-header">

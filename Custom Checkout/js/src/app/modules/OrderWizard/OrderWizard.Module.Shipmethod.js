@@ -17,6 +17,7 @@ define('OrderWizard.Module.Shipmethod', ['Wizard.Module'], function (WizardModul
 
 	,	initialize: function ()
 		{
+			console.log(SC.ENVIRONMENT.CART.shipmethod);
 			this.waitShipmethod = !SC.ENVIRONMENT.CART.shipmethod;
 			WizardModule.prototype.initialize.apply(this, arguments);
 			// So we allways have a the reload promise

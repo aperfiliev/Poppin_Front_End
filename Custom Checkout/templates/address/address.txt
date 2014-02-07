@@ -1,7 +1,7 @@
 <% var model = view.model || new Backbone.Model(); %>
 <% if (!view.inModal) { %>
 	<h1 class="">
-		<%= model.isNew() ? _('Add a new Address').translate() : _('Update Address').translate() %>
+		<%= model.isNew() ? _('Add a new Address').translate() : _('Save').translate() %>
 	</h1>
 
 	<a href="/" class="back-btn">
@@ -31,7 +31,7 @@
 <% } %>
 	<div class="<%- view.inModal ? 'modal-footer' : 'form-actions' %>">
 		<button type="submit" class="btn btn-link">
-			<%= model.isNew() ? _('Save Address').translate() : _('Update Address').translate() %>
+			<%= model.isNew() ? _('Save Address').translate() : _('Save').translate() %>
 		</button>
 
 		<% if (view.inModal || view.collection.length) { %>

@@ -1,4 +1,4 @@
-<div class="" style="padding-top: 10px; padding-bottom:10px; height: 111px; background-color: white; width: 859px; margin-left: 0px;">
+<div class="" style="display:none;">
 <!--alert alert-block alert-success fade in-->
 	
 	<div style="float: left; margin-left: 35px;" >
@@ -23,5 +23,15 @@ font-family: OmnesRegularRegular,sans-serif;"><%= _('Thank you for your order!')
 	  	</p>
 	</div>
 	</div>
+
+
+
+
+
+
+
+
+
+
     
 </div>

@@ -17,7 +17,8 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 
 	,	events: {
 			'click [data-action="select-creditcard"]': 'selectCreditCard'
-		,	'click [data-action="change-creditcard"]': 'changeCreditCard' 
+		,	'click [data-action="change-creditcard"]': 'changeCreditCard'
+		,	'click [data-action="setSelectedCreditcardId"]': 'setSelectedCreditcardId'
 		}
 
 	,	errors: ['ERR_CHK_INCOMPLETE_CREDITCARD', 'ERR_CHK_SELECT_CREDITCARD', 'ERR_CHK_INCOMPLETE_SECURITY_NUMBER', 'ERR_WS_INVALID_PAYMENT']
@@ -32,7 +33,7 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 
 	,	render: function ()
 		{
-			console.log(this.model);
+
 			var self = this
 				// currently we only support 1 credit card as payment method
 			,	order_payment_method = this.model.get('paymentmethods').findWhere({
@@ -86,7 +87,9 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 				this.creditcard = new CreditCardModel({}, {
 					paymentMethdos: this.wizard.application.getConfig('siteSettings.paymentmethods')
 				});
-
+debugger;
+			        var profile = this.wizard.options.profile;
+				this.creditcard.set("ccname",profile.get("firstname")+ ' ' + profile.get("lastname"));
 				if (this.requireccsecuritycode)
 				{
 					this.creditcard.validation.ccsecuritycode = {
@@ -185,13 +188,21 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 	,	selectCreditCard: function (e)
 		{	
 			console.log('select creditcard');
+		    var id = jQuery(e.target).data('id') || this.selectedCreditcardId;
+			console.log('select creditcard');
 			this.setCreditCard({
-				id: jQuery(e.target).data('id')
+				id: id
 			});
 			
 			// As we alreay already set the credit card, we let the step know that we are ready
 			this.trigger('ready', !this.requireccsecuritycode);
 			console.log(this.requireccsecuritycode);
+		}
+	
+	,   setSelectedCreditcardId : function (e)
+		{
+			console.log('selected creditcard' + jQuery(e.target).data('id'));
+			this.selectedCreditcardId = jQuery(e.target).data('id');
 		}
 
 	,	setSecurityNumber: function ()

@@ -8,6 +8,7 @@
 <% } %>
 <form class="delivery-options" action="">
 	<fieldset>
+		<%console.log("CARD MESSGE INIT"); console.log(jQuery('#cardmessagetoggle'))%>
 		<input id="cardmessagetoggle" type="checkbox" name="orderisgift" style="margin: 0 3px 2px 0;"><span style="font-size: 14px;">Yes, this order is a gift!</span>
 		<div id="cardmessageblock" style="display:none">
 			<p style="margin-top:9px;font-size: 14px;">

@@ -455,7 +455,13 @@ jQuery.extend({
 	},
 
 	isNumeric: function( obj ) {
+try{
 		return !isNaN( parseFloat(obj) ) && isFinite( obj );
+}
+catch(ex)
+{
+return false;
+}
 	},
 
 	type: function( obj ) {

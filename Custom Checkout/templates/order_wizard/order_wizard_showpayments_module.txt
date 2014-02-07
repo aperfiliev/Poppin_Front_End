@@ -12,7 +12,16 @@
     box-shadow:         10px 10px 10px #9E9E9E;
     z-index:999;
     overflow:scroll;
-    height:
+    overflow-x: hidden;
+    overflow-y: auto;
+    display:none;
+    position: fixed;
+    height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 #cardmessage_module{
 	border
@@ -25,9 +34,10 @@
 	shipping_methods.models.sort(function(obj1, obj2) {
  return obj1.get('rate') - obj2.get('rate');});	
 %>
+
 <div class="row-fluid">
-<div class="row-fluid shipments-shipping-details-body" style="width: 648px; height: 250px; display: inline-flex;">
-		<div class="span6 shipments-shipping-method" style="padding-left: 22px; width: 295px; height: 120px; margin-right: 24px; float: left; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+	<div class="row-fluid shipments-shipping-details-body" style="width: 648px; height: 240px; display: inline-flex;">
+		<div class="span6 shipments-shipping-method" style="padding-left: 22px; width: 295px; height: 232px; margin-right: 24px; float: left; border-width:2px; border-color: #e2e2e2; border-style: solid;">
 			<h4 class="section-header" style="color: #f87c00; font-size: 17px; margin-bottom: 10px;">
 				<%= _('DELIVERY DETAILS').translate() %>
 			</h4>
@@ -35,17 +45,120 @@
 				<input type="radio" checked>
 				<span style="font-size: small;"><b><%=shipping_methods.get(order_delivery_method).get("name")%></b> - <%=shipping_methods.get(order_delivery_method).get("rate_formatted") %></span>		
 			</div>
-
-					<a href="#" class="btn-edit-address" onclick="jQuery('#edit-deliverymethod').show()" style="margin-left: 26px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<a href="#" class="btn-edit-address" onclick="jQuery('#edit-deliverymethod').show()" style="margin-left: 26px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
 			<%= _('edit').translate() %></a>
 		</div>
 		
-		<div class="review-layover" style="display: none; overflow: hidden; padding: 0px 40px 52px 40px; margin-left: -100px; width: 200px; height: 120px; position: fixed; border: 1px solid rgba(0, 0, 0, 0.2); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px;" id="edit-deliverymethod">
-		<button type="button" class="close" onclick="jQuery('#edit-deliverymethod').hide()" style="
-    margin-bottom: 20px; margin-right: -30px;">×</button>
-		<% shipping_methods.each(function (shipmethod) { %>
-				<% is_active = order_delivery_method === shipmethod.get('internalid') %>
+		<div class="span6 shipments-shipping-address" style="padding-left: 22px; width: 290px; height: 232px; float: left; margin-right: 16px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+			<h4 class="section-header" style="color: #f87c00; font-size: 17px; margin-bottom: 10px;">
+				<%= _('SHIPPING ADDRESS').translate() %>
+			</h4>
+			
+			<%= address(view.profile.get('addresses').get(view.model.get('shipaddress')), {
+				hideActions: true
+			,	hideDefaults: true
+			,	verifyReview: "review"
+			}) %>
+			
+			<p style="margin: 3px 0px -1px -3px;">
+				<input type="radio" checked style="margin-bottom: 7px;">
+				<span><b>Ship to this address</b></span>
+			</p>
+			<a class="btn-edit-address" href="/addressbook/<%-view.model.get('shipaddress')%>" data-toggle="show-in-modal" style="border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('edit').translate() %>
+			</a>
+			<%if(view.profile.get("addresses").length > 1){%>
+				<a href="#" class="btn-edit-address" onclick="jQuery('#change-shipping').show()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('change').translate() %></a>
+			<%}%>
+		</div>
 
+	</div>
+	<div class="row-fluid showpayments-billing-payment-method" style="width: 648px; height: 240px; display: inline-flex;">
+		
+		
+	<% var paymentmethods = view.getPaymentmethods();%>
+	<div class="span6 wizard-showpayments-billing-payment-method" style="padding-left: 22px; width: 295px; height: 232px; margin-right: 24px; float: left; border-width:2px; border-color: #e2e2e2; border-style: solid;"">
+		<% if (paymentmethods.length || !view.wizard.hidePayment()) {%>
+			<h4 class="section-header"  style="color: #f87c00; font-size: 17px; margin-bottom: 10px; margin-left: 7px;">
+				<%= _('BILLING DETAILS').translate() %>
+			</h4>
+
+			<div class="payment-methods-summary" style="margin-bottom: 7px;">		
+			<input type="radio" checked style="margin-right: 5px; color: #f97d00; background-color: #f97d00">
+				<% console.log(paymentmethods); _.each(paymentmethods, function (paymentmethod) { %>
+					<%= SC.macros.formatPaymentMethod(paymentmethod, view.wizard.application.getConfig('creditCardIcons')) %>
+				<% }); %>
+				<% if (view.profile.get('isGuest') === 'T') { %>
+					<div>
+						<h5><%- view.profile.get('email') %></h5>
+					</div>
+				<% } %>
+			</div>
+			<% console.log(paymentmethods[0].get('creditcard').ccsecuritycode); if (paymentmethods.length > 0){ %>
+			
+			<% if (paymentmethods.length > 0){ %>
+			<div class="span6">
+			<%= SC.macros.creditcardSecurityNumberForm({
+				error    : undefined
+            ,   value    :  paymentmethods[0].get('creditcard').ccsecuritycode || jQuery('#ccsecuritycode').val()
+            ,	hidehelp : true
+            ,	step     : "review"
+            ,   hidden   : !!(paymentmethods[0].get('creditcard').ccsecuritycode)
+			}) %>
+			</div>
+			<% } %>
+			<div>
+			<a href="/creditcards/<%=paymentmethods[0].get('creditcard').internalid%>" data-toggle="show-in-modal" style=" margin-left: 31px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('edit').translate() %>
+			</a>
+			<% }else { %>
+				<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal" style=" border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+					<%= _('Add New Credit Card').translate() %>
+				</a>
+			<% } %>
+			<% if (view.profile.get("creditcards").length > 1 || view.profile.get("addresses").length > 1){ %>
+				<a href="#" onclick="jQuery('#change-payment').show()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+					<%= _('change').translate() %>
+				</a>
+			<% } %>
+			</div>
+		<% } %>
+	</div>
+	<div class="span6 shipments-shipping-address" style="padding-left: 22px; width: 290px; height: 232px; float: left; margin-right: 16px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+			<h4 class="section-header" style="color: #f87c00; font-size: 17px; margin-bottom: 10px;">
+				<%= _('BILING ADDRESS').translate() %>
+			</h4>
+			
+			<%= address(view.profile.get('addresses').get(view.model.get('billaddress')), {
+				hideActions: true
+			,	hideDefaults: true
+			,	verifyReview: "review"
+			}) %>
+			
+			<p style="margin: 3px 0px -1px -3px;">
+			<input type="radio" checked style="margin-bottom: 7px;">
+			<span><b>Use this address</b></span>
+			</p>
+					<a class="btn-edit-address" href="/addressbook/<%-view.model.get('billaddress')%>" data-toggle="show-in-modal" style="border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('edit').translate() %>
+		</a>
+		<%if(view.profile.get("addresses").length > 1){%>
+		<a href="#" class="btn-edit-address" onclick="jQuery('#change-billing').show()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('change').translate() %></a><%}%>
+		</div>
+	
+	</div>
+	
+	
+	<div class="review-layover" id="edit-deliverymethod" style="overflow: hidden; padding: 0px 0px 52px 0px; width: 260px; height: 160px; margin-top: -650px;  margin-left: 185px;">
+			<div id="modal-header" class="modal-header">
+				<button type="button" class="close" onclick="jQuery('#edit-deliverymethod').hide()">&times;</button>
+				<h3 class="modal-title"> Delivery Method </h3>
+			</div>
+			<div style="padding: 10px 20px 0px 20px;">
+			<% shipping_methods.each(function (shipmethod) { %>
+				<% is_active = order_delivery_method === shipmethod.get('internalid') %>
 				<label class="delivery-option <%= is_active ? 'active' : '' %>">
 					<input
 						type="radio"
@@ -62,160 +175,66 @@
 					</span>
 				</label>
 			<% }); %>
-<div style="margin-top: 70px; margin-left: 15px;">
-					<a href="#" name="submit-shipping-method" class="btn-edit-address" style="margin-left: 26px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-			<%= _('ok').translate() %></a>
+			</div>
+			<div style="margin-top: 70px; margin-left: 15px;">
+					<a href="#" name="submit-shipping-method" class="btn-edit-address" style="margin-left: 66px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+						<%= _('ok').translate() %></a>
 					<a href="#" class="btn-edit-address" onclick="jQuery('#edit-deliverymethod').hide()" style="margin-left: 26px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-			<%= _('cancel').translate() %></a>
-</div>
+						<%= _('cancel').translate() %></a>
+			</div>
 		</div>
-
-		
-				<div class="span6 shipments-shipping-address" style="padding-left: 22px; padding-bottom: 10px; width: 290px; height: 232px; float: left; margin-right: 16px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
-			<h4 class="section-header" style="color: #f87c00; font-size: 17px; margin-bottom: 10px;">
-				<%= _('SHIPPING DETAILS').translate() %>
-			</h4>
-			
-			<%= address(view.profile.get('addresses').get(view.model.get('shipaddress')), {
-				hideActions: true
-			,	hideDefaults: true
-			,	verifyReview: "review"
-			}) %>
-			
-			<p style="margin: 3px 0px -1px -3px;">
-			<input type="radio" checked style="margin-bottom: 7px;">
-			<span><b>Ship to this address</b></span>
+	
+		<div class="review-layover" id="change-shipping" style="width: 560px; padding: 10px 0px 0px 0px; margin-top: -710px; min-height: 338px; max-height: 338px;">
+			<div id="modal-header" class="modal-header">
+				<button type="button" class="close" data-action="canceladdressselection">&times;</button>
+				<h3 class="modal-title"> Change Shipping Address </h3>
+			</div>
+			<p style="margin-top: 10px;">
+			<%
+				// Wrap the address address macro to pass options in
+				var addressWrap = function (address) {
+					return SC.macros['address'](address, {
+						showSelect: true
+					,	selectMessage: view.selectMessage
+					,	hideDefaults: true
+					,	selectedAddress: view.model.get("shipaddress")
+					,	step: "review"
+					,	verifyAddress: "shipaddress"
+					,   stopSelect: true
+					});
+				}
+			%>
 			</p>
-					<a class="btn-edit-address" href="/addressbook/<%-view.model.get('shipaddress')%>" data-toggle="show-in-modal" style="border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-			<%= _('edit').translate() %>
-		</a>
-		<%if(view.profile.get("addresses").length > 1){%>
-		<a href="#" class="btn-edit-address" onclick="jQuery('#change-shipping').show()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-			<%= _('change').translate() %></a><%}%>
-		</div>
-	</div>
-	
-	<div class="review-layover" id="change-shipping" style="overflow-x: hidden; overflow-y: overlay;display:none;padding: 10px 10px 0px 40px; position: fixed; margin-top: -480px;  border: 1px solid rgba(0, 0, 0, 0.2); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px;">
-	<button type="button" class="close" onclick="jQuery('#change-shipping').hide()" style="
-    margin-bottom: 20px;
-">×</button>
-		<p style="margin-top: 10px;">
-		<%
-			// Wrap the address address macro to pass options in
-			var addressWrap = function (address) {
-				return SC.macros['address'](address, {
-					showSelect: true
-				,	selectMessage: view.selectMessage
-				,	hideDefaults: true
-				,	selectedAddress: view.model.get("shipaddress")
-				,	step: "review"
-				,	verifyAddress: "shipaddress"
-				});
-			}
-		%>
-		</p>
-
-		<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
-<a href="#" class="btn-edit-address" onclick="jQuery('#change-shipping').hide()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-			<%= _('cancel').translate() %></a>
-	</div>
-	
-	
-	<div style="width: 605px; height: 160px; border-width:2px; border-color: #e2e2e2; border-style: solid; display: inline-flex;">
-		
-		
-	<% var giftcertificates = view.getGiftCertificates() %>
-	<% var paymentmethods = view.getPaymentmethods();%>
-	<div class="span6 wizard-showpayments-billing-payment-method" style="width: 220px; height: 140px; margin-left: 20px; font-size: 15px;">
-		<% if (giftcertificates.length || paymentmethods.length || !view.wizard.hidePayment()) {%>
-			<h4 class="section-header"  style="color: #f87c00; font-size: 17px; margin-bottom: 10px; margin-left: 7px;">
-				<%= _('BILLING DETAILS').translate() %>
-			</h4>
-
-			<div class="payment-methods-summary" style="margin-bottom: 7px;">		
-			<input type="radio" checked style="margin-right: 5px; color: #f97d00; background-color: #f97d00">
-				<% console.log(paymentmethods); _.each(paymentmethods, function (paymentmethod) { %>
-					<%= SC.macros.formatPaymentMethod(paymentmethod, view.wizard.application.getConfig('creditCardIcons')) %>
-				<% }); %>
-					
-				<% if (giftcertificates.length) { %>
-					<br>
-					<b><%= _('Gift Certificates').translate() %></b><br>
-					<% _.each(giftcertificates, function (paymentmethod) { %>
-						<%= SC.macros.formatPaymentMethod(paymentmethod) %>
-						<br>
-					<% }); %>
-				<% } %>
-				<% if (view.profile.get('isGuest') === 'T') { %>
-					<div>
-						<h5><%- view.profile.get('email') %></h5>
-					</div>
-				<% } %>
-			</div>
-			<% if (paymentmethods.length > 0){ %>
 			
-			<% if (paymentmethods.length > 0){ %>
-			<div class="span6">
-			<%= SC.macros.creditcardSecurityNumberForm({
-				error: undefined
-            ,   value:  paymentmethods[0].get('creditcard').ccsecuritycode
-            ,	hidehelp: true
-            ,	step: "review"
-			}) %>
+			<div style="float:left; padding: 0px 0px 20px 10px;">
+				<p>
+					<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal" style=" border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+						<%= _('Add New Address').translate() %>
+					</a>
+				</p>
+				<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
 			</div>
-			<% } %>
-			<div style="padding-top: 30px;">
-			<a href="/creditcards/<%=paymentmethods[0].get('creditcard').internalid%>" data-toggle="show-in-modal" style=" margin-left: 31px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-				<%= _('edit').translate() %>
-			</a>
-			<% }else { %>
-				<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal" style=" border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-					<%= _('Add New Credit Card').translate() %>
-				</a>
-			<% } %>
-			<% if (view.profile.get("creditcards").length > 1 || view.profile.get("addresses").length > 1){ %>
-				<a href="#" onclick="jQuery('#change-payment').show()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-					<%= _('change').translate() %>
-				</a>
-			<% } %>
+			<div>
+		 		<a href="#" data-action="select" class="btn-edit-address" style="margin-left: 230px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+					<%= _('ok').translate() %></a>
+				<a href="#" class="btn-edit-address" data-action="canceladdressselection" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+					<%= _('cancel').translate() %></a>
 			</div>
-		<% } %>
-				
-		
-
-	</div>
-		
-<div style="margin-top: 25px;">
-		<img src="img/vertical_dottenline.png" />
+			<div style="height: 25px;">
+			</div>
 		</div>
+	
+	
+	
+	
+	
+	<div class="review-layover" id="change-payment" style="height: 220px; width: 400px; margin-left: 110px; margin-top: -650px; padding: 10px 0px 0px 0px;">
 		
-			<div class="span6 wizard-showpayments-billing-address" style="height: 140px; width: 335px; margin-left: 40px; margin-top: 33px;">
-		<%= address(view.profile.get('addresses').get(view.model.get('billaddress')), {
-			hideActions: true
-		,	hideDefaults: true
-		,	verifyReview: "review"
-		}) %>
-	</div>
-	
-	</div>
-	
-	<div class="review-layover" id="change-payment" style="display:none; margin-top: -695px; padding: 40px 10px 40px 40px; border: 1px solid rgba(0, 0, 0, 0.2); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; overflow-x: hidden; overflow-y: overlay; position: fixed;">
-		<button type="button" style="margin-top: -40px;" class="close" onclick="jQuery('#change-payment').hide()">×</button>
-		<!-- billing address here -->
-		<%
-			// Wrap the address address macro to pass options in
-			var addressWrap = function (address) {
-				return SC.macros['address'](address, {
-					showSelect: true
-				,	selectMessage: view.selectMessage
-				,	hideDefaults: true
-				,	selectedAddress: view.model.get("billaddress")
-				,	verifyAddress: "billaddress"
-				});
-			}
-		%>
+		<div id="modal-header" class="modal-header">
+			<button type="button" class="close" onclick="jQuery('#change-payment').hide()">&times;</button>
+			<h3 class="modal-title"> Change Credit Card </h3>
+		</div>
 		<div style="width:200px; float:right">
-		<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
 				<%
 			var creditcardWrap = function (creditcard) {
 				return SC.macros.creditcard(creditcard, {
@@ -227,12 +246,68 @@
 				,	selectedCreditcard: view.model.get("paymentmethods").models[0].get("creditcard").internalid
 				,	showSecurityCodeForm: true
 				,	step: "review"
+				,   stopSelect: true
 				});
 			} 
 		%>
-		</div>
-		<div  style="width:200px; float:left">
+		</div>		
+		<div style="width:400px; float:left; padding: 20px 0px 15px 20px;">
+		<p>
+			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal" style=" border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('Add New Credit Card').translate() %>
+			</a>
+		</p>
 		<%= displayInRows(view.profile.get("creditcards").models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
+		</div>
+
+		<div>
+			<a href="#" data-action="select-creditcard" class="btn-edit-address" style="margin-left: 150px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('ok').translate() %></a>
+		
+			<a href="#" id="changecreditcard"class="btn-edit-address" onclick="jQuery('#change-payment').hide()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('cancel').translate() %></a>
+		</div>
+		<div style="height: 25px;">
+		</div>
+	</div>
+	
+	<div class="review-layover" id="change-billing" style="width: 560px; padding: 10px 0px 0px 0px; margin-top: -710px; min-height: 338px; max-height: 338px;">
+	<div id="modal-header" class="modal-header">
+			<button type="button" class="close" data-action="canceladdressselection">&times;</button>
+			<h3 class="modal-title"> Change Billing Address </h3>
+		</div>
+		<p style="margin-top: 10px;">
+		<%
+			// Wrap the address address macro to pass options in
+			var addressWrap = function (address) {
+				return SC.macros['address'](address, {
+					showSelect: true
+				,	selectMessage: view.selectMessage
+				,	hideDefaults: true
+				,	selectedAddress: view.model.get("billaddress")
+				,	verifyAddress: "billaddress"
+				,	step: "review"
+				,   stopSelect: true
+				});
+			}
+		%>
+		</p>
+		<div style="float:left; padding: 0px 0px 20px 10px;">
+		<p>
+			<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal" style=" border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('Add New Address').translate() %>
+			</a>
+		</p>
+		<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+		</div>
+		<div>
+			<a href="#" data-action="select" class="btn-edit-address" style="margin-left: 230px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('ok').translate() %></a>
+		
+			<a href="#" class="btn-edit-address" data-action="canceladdressselection" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('cancel').translate() %></a>
+		</div>
+		<div style="height: 25px;">
 		</div>
 	</div>
 	

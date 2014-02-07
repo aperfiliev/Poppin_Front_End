@@ -1,8 +1,8 @@
 // OrderWizzard.View.js
 // --------------------
 //
-define('OrderWizard.View', ['Wizard.View','Wizard.Module', 'OrderWizard.Module.TermsAndConditions','ErrorManagement', 'OrderPaymentmethod.Model', 'OrderWizard.Module.PaymentMethod','OrderWizard.Module.CardMessage'], 
-		function (WizardView, WizardModule, TermsAndConditions, ErrorManagement, OrderPaymentmethodModel, OrderWizardModulePaymentMethod, OrderWizardModuleCardMessage)
+define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndConditions','ErrorManagement', 'OrderPaymentmethod.Model', 'OrderWizard.Module.PaymentMethod','OrderWizard.Module.CardMessage'], 
+		function (WizardView, TermsAndConditions, ErrorManagement, OrderPaymentmethodModel, OrderWizardModulePaymentMethod, OrderWizardModuleCardMessage)
 {
 	'use strict';
 
@@ -30,7 +30,10 @@ define('OrderWizard.View', ['Wizard.View','Wizard.Module', 'OrderWizard.Module.T
 		,	'shown #gift-certificate-form' : 'onShownGiftCertificateForm'	
 		,	'click .keep-in-touch-checkbox':'optin'
 		,	'click [data-action="select"]': 'selectAddress'
+		,	'click [data-action="setselectedaddressid"]': 'setSelectedAddressId'
+		,	'click [data-action="canceladdressselection"]': 'cancelAddressSelection'
 		,	'click [data-action="select-creditcard"]': 'selectCreditCard'
+		,	'click [data-action="setSelectedCreditcardId"]': 'setSelectedCreditcardId'
 		,	'change #cccheckbox'  : 'ccFuturePurchases'
 		}
 	,	ccFuturePurchases: function(e){
@@ -41,15 +44,53 @@ define('OrderWizard.View', ['Wizard.View','Wizard.Module', 'OrderWizard.Module.T
 	
 	,	selectCreditCard: function (e)
 	{	
-		this.setCreditCard({
-			id: jQuery(e.target).data('id')
-		});
+		var selcardid = jQuery(e.target).data('id') || this.selectedCreditcardId;
+		if (selcardid) {
+			this.setCreditCard({
+				id: selcardid
+			});
+		} else {
+			this.render();
+		}
 		
 		// As we alreay already set the credit card, we let the step know that we are ready
 		this.trigger('ready', !this.requireccsecuritycode);
 		console.log(this.requireccsecuritycode);
 	}
+	
+	,   setSelectedCreditcardId : function (e)
+	{
+		console.log('selected creditcard' + jQuery(e.target).data('id'));
+		this.selectedCreditcardId = jQuery(e.target).data('id');
+		
+	}
+	,	setSelectedAddressId : function (e)
+	{
+		console.log('selected address id');
+		var addressType = e.target.getAttribute("id");
+		if (addressType == "shipaddress") {
+			this.selectedShippingAddressId = jQuery(e.target).data('id').toString();
+			this.selectedShippingAddressOptions = e.target.getAttribute("id");
+		} else {
+			this.selectedBillingAddressId = jQuery(e.target).data('id').toString();
+			this.selectedBillingAddressOptions = e.target.getAttribute("id");
+		}
+	}
 
+	,	cancelAddressSelection : function (e)
+	{
+		console.log('Cancel address selection');
+		this.selectedShippingAddressId = undefined;
+		this.selectedBillingAddressId = undefined;
+		this.selectedShippingAddressOptions = undefined;
+		this.selectedBillingAddressOptions = undefined;
+		// re render so if there is changes to be shown they are represented in the view
+		this.render();              
+
+		// As we already set the address, we let the step know that we are ready
+		this.trigger('ready', true);
+	}
+	
 ,	setSecurityNumber: function ()
 	{
 		if (this.requireccsecuritycode)
@@ -84,12 +125,21 @@ define('OrderWizard.View', ['Wizard.View','Wizard.Module', 'OrderWizard.Module.T
 	
 	,	selectAddress: function (e)
 	{
+		debugger;
 		jQuery('.wizard-content .alert-error').hide(); 
+		
+		var seladdrid  = jQuery(e.target).data('id') || this.selectedShippingAddressId || this.selectedBillingAddressId,
+			seladdropt = e.target.getAttribute("id") || this.selectedShippingAddressOptions || this.selectedBillingAddressOptions;
 		
 		// Grabs the address id and sets it to the model
 		// on the position in which our sub class is manageing (billaddress or shipaddress)
-		this.setAddress(jQuery(e.target).data('id').toString(),e.target.getAttribute("id"));
-
+		if (seladdrid) {
+			this.selectedShippingAddressId = undefined;
+			this.selectedBillingAddressId = undefined;
+			this.selectedShippingAddressOptions = undefined;
+			this.selectedBillingAddressOptions = undefined;
+			this.setAddress(seladdrid,seladdropt);
+		}
 		// re render so if there is changes to be shown they are represented in the view
 		this.render();              
 
@@ -108,6 +158,9 @@ define('OrderWizard.View', ['Wizard.View','Wizard.Module', 'OrderWizard.Module.T
 		{	
 			if(Backbone.history.fragment.indexOf('review')>-1){
 				jQuery("#sipmethod-div").append(jQuery("#shipmethod-content"));
+				jQuery("#paypal_button").hide();
+			} else {
+				jQuery("#paypal_button").show();
 			}
 
 			console.log('crC');
@@ -144,6 +197,7 @@ define('OrderWizard.View', ['Wizard.View','Wizard.Module', 'OrderWizard.Module.T
 
 	,	render: function()
 		{
+			console.log("Render of the step: " + Backbone.history.fragment);
 			var self = this
 			// currently we only support 1 credit card as payment method
 		,	order_payment_method = this.model.get('paymentmethods').findWhere({
@@ -234,6 +288,7 @@ define('OrderWizard.View', ['Wizard.View','Wizard.Module', 'OrderWizard.Module.T
 					self.currentStep.enableNavButtons();
 					// enable inputs and buttons
 					$target.find('input, button').prop('disabled', false);
+self.render();
 				}
 			);
 		}
@@ -253,6 +308,7 @@ define('OrderWizard.View', ['Wizard.View','Wizard.Module', 'OrderWizard.Module.T
 			this.model.save({ promocode: null }).always(function(){
 				// enable navigation buttons
 				self.currentStep.enableNavButtons();
+self.render();
 			});
 		}
 
@@ -431,15 +487,18 @@ define('OrderWizard.View', ['Wizard.View','Wizard.Module', 'OrderWizard.Module.T
 			.success(_.bind(this.showContent, this));
 	}
 	,optin:function(e){
-		console.log("optin");
+		
+
+var profile = this.profile = this.wizard.options.profile;
 		var self=this,
 		d=jQuery(e.target);
 		if(d.prop("checked")){
-			self.wizard.options.profile.attributes.emailsubscribe="T";
+				profile.set({emailsubscribe:'T'});
 		}
 		else{
-			self.wizard.options.profile.attributes.emailsubscribe="F";
+				profile.set({emailsubscribe:'F'});
 		}
+		profile.save();
 	}
 
 	,	destroy: function ()

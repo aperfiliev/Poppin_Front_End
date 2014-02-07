@@ -234,9 +234,8 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 				,	hideContinueButton: true
 				,	hideBackButton: true
 				,	modules: [
-						'OrderWizard.Module.Confirmation'
-					,	'OrderWizard.Module.RegisterGuest'
-					//,	'OrderWizard.Module.ShowPayments'
+					/*	'OrderWizard.Module.Confirmation'
+					,*/	'OrderWizard.Module.RegisterGuest'
 					,	'OrderWizard.Module.ShowShipments'
 					]
 				,	present: function ()

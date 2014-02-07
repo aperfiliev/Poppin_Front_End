@@ -33,9 +33,7 @@
 			<select id="<%= manage %>namePrefix" name="namePrefix" class="input-small">
 				<option></option>
 				<option value="Mr." <%= address.get('namePrefix')==='Mr.' ? 'selected' : '' %>>Mr.</option>
-				<option value="Ms." <%= address.get('namePrefix')==='Ms.' ? 'selected' : '' %>>Ms.</option>
-				<option value="Mss."<%= address.get('namePrefix')==='Mss.' ? 'selected' : '' %>>Mss.</option>
-				<option value="Dr."<%= address.get('namePrefix')==='Dr.' ? 'selected' : '' %>>Dr.</option>
+<option value="Mrs/Ms." <%= address.get('namePrefix')==='Mrs/Ms.' ? 'selected' : '' %>>Mrs./Ms.</option>
 			</select>
 		</div>
 	</div>
@@ -113,9 +111,6 @@
 		<div class="controls">
 			<input type="text" class="input-large" id="<%= manage %>addr1" maxlength="30" name="addr1" value="<%- address.get('addr1') %>">
 		</div>
-		<span class="help-block">
-			<%= _('Example: 1234 Main Street').translate() %>
-		</span>
 	</div>
 
 	<div class="control-group control-group-big">
@@ -161,11 +156,9 @@
 		<div class="controls">
 			<input type="text" class="input-small" id="<%= manage %>zip" maxlength="10" name="zip" value="<%- address.get('zip') %>" data-type="zip" style="width: 80px;">
 		</div>
-		<span class="help-block">
-			<%= _('Example: 94117').translate() %>
-		</span>
+		
 	</div>
-
+<input id="ignoresuggestion" type="hidden" hiddenname="ignoresuggestion" value="false" />
  <!-- <%= quantity_countries <= 1 ? 'hide' : '' %> -->
 	<div class="control-group">
 		<label class="control-label" for="<%= manage %>country">
@@ -192,11 +185,9 @@
 				<input type="tel" style="width: 45px;margin-bottom:0;" placeholder="EXT" maxlength="4" id="ext" name="ext" onfocus="this.placeholder = ''" onblur="this.placeholder = 'EXT'"  value="<%- address.get('ext') %>">			
 		</div>
 		<div style="float:left;">
-				<span style="font-size:10px;color: #c5c5c5;">FOR SHIPPING PURPOSES</span>
+				<span style="font-size:10px;color: #c5c5c5;">We will only use this for shipping purposes</span>
 			</div>
-		<span class="help-block">
-			<%= _('Example: 555-123-1234').translate() %>
-		</span>
+		
 	</div>
 <%//}%>
 

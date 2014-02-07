@@ -1,5 +1,9 @@
 <% registerMacro('creditcardForm', function (creditcard, options) { %>
-<% var application = options.application; 
+<% var application = options.application;
+var cvc = jQuery('#ccsecuritycode').val(); 
+console.log("creditcardForm");console.log(creditcard);
+creditcard.attributes.ccsecuritycode = cvc;
+console.log(creditcard);
 if(creditcard.isNew()){
 	creditcard.set('cccheckbox',true);
 }
@@ -28,7 +32,7 @@ if(creditcard.isNew()){
    </small>
   </label>
   <div class="controls">
-   <input type="text" class="input-xmedium" id="ccnumber" name="ccnumber" value="<%- creditcard.get('ccnumber') %>" <%= !creditcard.isNew() ? 'disabled':'' %> >
+   <input type="text" class="input-xmedium" maxlength="16" id="ccnumber" name="ccnumber" value="<%- creditcard.get('ccnumber') %>" <%= !creditcard.isNew() ? 'disabled':'' %> >
   </div>
  </div>
 
@@ -56,8 +60,8 @@ if(creditcard.isNew()){
  </div>
  
  <div class="control-group">
-  <label class="control-label" for="expmonth">
-   <%= _('Exp. Date').translate() %>
+  <label class="control-label" for="expmonth" style="margin-right: 10px; margin-left: 5px;">
+   <%= _('Exp.').translate() %>
    <small>
     <%= _('(required)').translate() %>
    </small>

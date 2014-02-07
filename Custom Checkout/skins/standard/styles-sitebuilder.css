@@ -48,11 +48,23 @@ gift#main
 		border-color: rgb(218, 218, 218);
 		border-style: solid;
 		border-width: 1px;
-		height: 168px;
+		height: 135px;
 		padding: 5px;
 		margin-left: 10px;
-		margin-top: 29px;
+		margin-top: 10px;
 	}
+
+#main #change-billing .span6{
+		width: 231px;
+		border-color: rgb(218, 218, 218);
+		border-style: solid;
+		border-width: 1px;
+		height: 135px;
+		padding: 5px;
+		margin-left: 10px;
+		margin-top: 10px;
+	}
+
 #main audio:not([controls])
 {
 	display: none;
@@ -8456,6 +8468,7 @@ font-weight: bold;
 	display: inline;
 	display: inline-block;
 	zoom: 1;
+vertical-align:middle;
 
 }
 #main .wizard-step-groups .divider{
@@ -9204,12 +9217,12 @@ overflow: visible;
 overflow:visible
 }
 #main .rightmenu .col1 {
-width: 610px;
+width: 630px;
 padding: 0 20px;
 }
 #main .rightmenu .col2 {
 width: 244px;
-padding: 0 15px;
+padding: 0 9px;
 border-left: 1px solid #e5e5e5;
 }
 #main .dottedLine {

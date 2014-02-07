@@ -96,6 +96,11 @@
 			</table>
 		</div>
 	<% } %>
+	
+				<div id="shop_by_color" style="display: none;">
+				<PP_NAV_MENU>
+			</div>
+	
 <div class="promo-banner" style="text-align: center;">
 							<%=getRecordAttribute('199',4,'custrecord_bannerhtml')%>
 			</div>
@@ -119,8 +124,8 @@
 	<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 	<% } %>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0143e40200eb.js') %>"></script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0143e3f274e7.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-01440c1f5aa6.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-01440c170716.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
 	<PP_CHECKOUT_TAG_CONTAINER>
 </body>

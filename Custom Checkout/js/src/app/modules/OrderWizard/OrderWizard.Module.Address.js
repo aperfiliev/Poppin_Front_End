@@ -18,10 +18,13 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			errorCode: 'ERR_CHK_INVALID_ADDRESS'
 		,	errorMessage: _('The selected address is invalid').translate()
 		}
-
 	,	events: {
 			'click [data-action="submit"]': 'submit'
+		,       'click .setsuggestion': 'useSuggestedAddress'
+		,       'click #usethisaddress':'useSuggestedAddress'
 		,	'click [data-action="select"]': 'selectAddress'
+		//,	'click [data-action="setselectedaddressid"]': 'setSelectedAddressId'
+		,	'click [data-action="canceladdreesselection"]': 'cancelAddreesSelection'
 		,	'click [data-action="change-address"]': 'changeAddress'
 		,	'change [data-action="same-as"]': 'markSameAs'
 		,	'change form': 'changeForm'
@@ -29,7 +32,15 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		}
 
 	,	errors: ['ERR_CHK_INCOMPLETE_ADDRESS', 'ERR_CHK_INVALID_ADDRESS']
-
+	,	initialize: function(options)
+		{
+			WizardModule.prototype.initialize.apply(this, arguments);
+			Backbone.on('usethisaddress', function ()
+						{
+							
+							console.log('rendered');
+						}, this);
+		}
 //	,	initialize: function(){
 //		var temp_addr;
 //		console.log(this.getAddressesToShow());
@@ -182,7 +193,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			});
 			//}
 		}
-
+, useSuggestedAddress: function () { console.log('used this'); }
 	,	evaluateSameAs: function ()
 		{
 			var manage_address_id = this.addressId
@@ -393,11 +404,11 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			
 			
 			if(jQuery(e.target).prop('checked')){
-				var formPhoneNumber = this.$('input[name="phone"]').val()+this.$('input[name="ext"]').val();
+			/*	var formPhoneNumber = this.$('input[name="phone"]').val()+this.$('input[name="ext"]').val();
 				if(this.$('input[name="addr1"]').val()!=''
-				||	this.$('input[name="firstfullname"]').val!=''
-				||	this.$('input[name="lasttfullname"]').val!=''
-				||	this.$('input[name="company"]').val!=''
+				||	this.$('input[name="firstfullname"]').val()!=''
+				||	this.$('input[name="lastfullname"]').val()!=''
+				||	this.$('input[name="company"]').val()!=''
 				|| this.$('input[name="addr2"]').val()!=''
 				|| this.$('select[name="namePrefix"]').val()!=''
 				|| this.$('input[name="city"]').val()!=''
@@ -419,7 +430,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 						this.$('input[name="ext"]').val(shipping_source.attributes.ext);
 					}
 			}
-			else{
+			else{*/
 				this.$('input[name="firstfullname"]').val(shipping_source.attributes.firstfullname);
 				this.$('input[name="lastfullname"]').val(shipping_source.attributes.lastfullname);
 				this.$('input[name="company"]').val(shipping_source.attributes.company);
@@ -432,7 +443,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 				this.$('input[name="ext"]').val(shipping_source.attributes.ext);
 				this.$('input[name="zip"]').val(shipping_source.attributes.zip);
 				
-			}
+		//	}
 			}
 			else{
 				this.$('input[name="firstfullname"]').val(this.temp_addr.firstfullname);

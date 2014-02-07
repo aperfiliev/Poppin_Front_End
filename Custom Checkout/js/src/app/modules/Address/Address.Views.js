@@ -13,13 +13,13 @@ define('Address.Views', function ()
 		template: 'address'
 		
 	,	attributes: {'class': 'AddressDetailsView'}
-		
 	,	events: {
 			'submit form': 'saveForm'
 
 		,	'change form:has([data-action="reset"])': 'toggleReset'
 		,	'click [data-action="reset"]': 'resetForm'
-
+,       'click #ignorethisaddress': 'ignoreSuggestedAddress'
+		,       'click #usethisaddress':'useSuggestedAddress'
 		,	'change select[data-type="country"]': 'updateStates'
 		,	'blur input[data-type="phone"]': 'formatPhone'
 //		,	'blur #ext': 'formatPhone'
@@ -31,15 +31,30 @@ define('Address.Views', function ()
 		,	'blur input[name="zip"]': 'verifyZip'	
 		
 		}
+, useSuggestedAddress: function () {
+				var self = this;
+debugger;
+console.log(this);
+				
+				this.$("input[name='addr1']").val(self.suggestedAddress.delivery_line_1);
+				this.$("input[name='city']").val(self.suggestedAddress.components.city_name);
+				this.$('[data-type="state"]').val(self.suggestedAddress.components.state_abbreviation);
+				this.$("input[name='zip']").val(self.suggestedAddress.components.zipcode + '-' + self.suggestedAddress.components.plus4_code);
+self.hideError();
+ }
+, ignoreSuggestedAddress: function() {
+this.$("input[hiddenname='ignoresuggestion']").val('true');
+this.hideError();
+}
 	,	verifyFirstName: function (e){
 			var firstname = this.$("input[name='firstfullname']");
 			var result = firstname.val();
 			firstname.val( result.trim() );
 		}
 	,	verifyLastName: function (e){
-		var name = this.$("input[name='lastfullname']");
-		var result = name.val();
-		name.val( result.trim() );
+			var name = this.$("input[name='lastfullname']");
+			var result = name.val();
+			name.val( result.trim() );
 	}
 	,	verifyCompany: function (e){
 			var name = this.$("input[name='company']");
@@ -63,13 +78,17 @@ define('Address.Views', function ()
 	}
 	,	initialize: function ()
 		{
-		console.log("Addres views init. Model = " + this.model);
+		
 			var self = this;
 			this.title = this.model.isNew() ? _('Add New Address').translate() : _('Update Address').translate();
+			this.suggestedAddress = null;
 			this.page_header = this.title;
 			this.model.on('error',function(err){self.showError(err.errorMessage);});
+			Backbone.on('setSuggestedAddress', function(suggestedAddress){ self.suggestedAddress = suggestedAddress;  });
 		}
-
+	,	setSuggestedAddress: function(suggestedAddress){
+			
+		}
 	,	showContent: function ( path, label )
 		{
 			label = label || path;
@@ -130,13 +149,41 @@ define('Address.Views', function ()
 			label = label || path;
 			this.options.application.getLayout().showContent(this, label, { text: this.title, href: '/' + path });
 		}
+	
+	,	askYesOrNo: function(btn1, btn2, element){
+		alert("askYesOrNo");
+		
+		  var btns = {};
+		  btns[btn1] = function(){ 
+		      element.destroy({ wait: true });
+		      jQuery(this).dialog("close");
+		  };
+		  btns[btn2] = function(){
+			  jQuery(this).dialog("close");
+		  };
+		  jQuery("<div></div>").dialog({
+			    autoOpen: true,
+			    title: 'Condition',
+			    modal:true,
+			    buttons:btns
+			  });
+//		 var myDialog = jQuery('<div id="removeconfirm"><p>Yes or No?</p><input type="button" id="yes" value="Yes"/><input type="button" id="no" value="No"/></div>');
+//		 myDialog.css("width","700px").css("height","400px");
+//console.log("conf_promt");
+//console.log(myDialog);
+//		  jQuery("#yes").click(function(){return true;});
+//		  jQuery("#no").click(function(){return false;});
+//		  myDialog.modal(); 
+		}
 		
 	// remove address
 	,	remove: function(e) {
 		
 			e.preventDefault();
-			
+		
+//		this.askYesOrNo("Yes", "No", this.collection.get( jQuery(e.target).data('id') ));
 			if ( confirm( _('Are you sure you want to delete this address?').translate() ) )
+//			if ( this.askYesOrNo() )
 			{
 				console.log("REMOVE ADDRESSS");
 				this.collection.get( jQuery(e.target).data('id') ).destroy({ wait: true });

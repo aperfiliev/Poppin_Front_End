@@ -77,18 +77,45 @@ this.model.set('shipmethod', value);
 				this.profile = this.wizard.options.profile;
 				this.options.application = this.wizard.application;
 				this.eventHandlersOn();
-				
+				var wasChecked = false;
+				if (this.$('#cardmessageblock').length != 0) {
+					     wasChecked = this.$('#cardmessagetoggle')[0].checked;
+					 var selIndex   = this.$('#cardmessage-options')[0].selectedIndex,
+						 text       = this.$('#cardmessagetext')[0].value,
+						 remChars   = this.$('#textcounter')[0].innerHTML;
+				}
 				this._render();
 				this.cardMessageModule.instance.render();
 				this.$('#cardmessage-container').empty().append(this.cardMessageModule.instance.$el);
+				if (wasChecked) {
+					this.$('#cardmessagetoggle')[0].checked = true;
+					this.$('#cardmessageblock').show();
+					this.$('#cardmessagetext')[0].value = text;
+					if (selIndex) {this.$('#cardmessage-options')[0].selectedIndex = selIndex;}
+					this.$('#textcounter')[0].innerHTML = remChars;
+				}
 			}
 		,	eventHandlersOn: function(){
 				this.eventHandlersOff();
 				var self = this;
 				Backbone.on('refresh', function ()
 						{
+							var wasChecked = this.$('#cardmessagetoggle')[0].checked,
+								selIndex   = this.$('#cardmessage-options')[0].selectedIndex,
+								text       = this.$('#cardmessagetext')[0].value,
+								remChars   = this.$('#textcounter')[0].innerHTML;
 							self._render();
-							console.log('rendered');
+							this.cardMessageModule.instance.render();
+							this.$('#cardmessage-container').empty().append(this.cardMessageModule.instance.$el);
+							if (wasChecked) {
+								this.$('#cardmessagetoggle')[0].checked = true;
+								this.$('#cardmessageblock').show();
+								this.$('#cardmessagetext')[0].value = text;
+								if (selIndex) {this.$('#cardmessage-options')[0].selectedIndex = selIndex;}
+								this.$('#textcounter')[0].innerHTML = remChars;
+							}
+							
+							console.log('refreshed');
 						}, this);
 		}
 		,	eventHandlersOff: function(){
@@ -148,10 +175,17 @@ this.model.set('shipmethod', value);
 		}
 		,	submit: function(e, additional_validation)
 			{
-if(additional_validation!=undefined){additional_validation.resolve();}
+				if(additional_validation!=undefined){additional_validation.resolve();}
+				if (!this.$('#ccsecuritycode').val()) {
+					debugger;
+					var $group = this.$('#ccsecuritycode').parents('.control-group').addClass('error');
+					$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+					$group.find('.help-block').text(_('Security Number is required').translate());
+					return jQuery.Deferred().reject(_('Security Number is required').translate());
+				}
 				var credit_card_pm = this.model.get('paymentmethods').where({type: 'creditcard'});
 				console.log(credit_card_pm);
-				
+			
 				credit_card_pm[0].attributes.creditcard.ccsecuritycode =  this.$('#ccsecuritycode').val();
 				this.cardMessageModule.instance.submit();
 			}

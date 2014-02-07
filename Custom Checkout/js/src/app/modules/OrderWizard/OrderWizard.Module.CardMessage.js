@@ -8,35 +8,29 @@ define('OrderWizard.Module.CardMessage', ['Wizard.Module', 'CardMessage.Model'],
 	return WizardModule.extend(
 	{
 		template: 'order_wizard_cardmessage_module',
-		initialize: function() {
+				initialize: function() {
 			WizardModule.prototype.initialize.apply(this, arguments);
 			var profile = this.wizard.options.profile;
-			//this.mappings = profile.get('creditaddressmapping');
-			
-			//this.wizard.options.profile
-			//console.log(profile.get('isGuest'));
-			//this.application.getUser()
 			
 			this.model = new CardMessageModel();
-			//console.log('cardmessagemodel');
-			//console.log(this.model);
-			console.log(profile.get("firstname"));
 			this.enabled = false;
 			this.cardmessages = [];
 
 			var self = this;
-			$j.getJSON('https://checkout.sandbox.netsuite.com/c.3363929/CardMessage/cardmessage.ss' + '?action=get', function(data) {
-				$j.each(data, function(entryIndex, entry) {
-					
+			$j.ajax({
+				type : 'GET',
+				url : 'https://checkout.sandbox.netsuite.com/c.3363929/CardMessage/cardmessage.ss' + '?action=get',
+				cache : false
+			}).done(function(data){ 
+				_.each(data, function(entry){
 					if (entry.columns.custrecord_cardmessage_occasion !== undefined) {
-						self.cardmessages.push({
-							id		 : entry.columns.custrecord_cardmessage_occasion.internalid,
-							occasion : entry.columns.custrecord_cardmessage_occasion.name,
-							message	 : entry.columns.custrecord_cardmessage_message
-							});
-					}
+							self.cardmessages.push({
+								id		 : entry.columns.custrecord_cardmessage_occasion.name,
+								occasion : entry.columns.custrecord_cardmessage_occasion.name,
+								message	 : entry.columns.custrecord_cardmessage_message
+								});
+								}
 				});
-				
 				self.render();
 			});
 		},
@@ -46,27 +40,28 @@ define('OrderWizard.Module.CardMessage', ['Wizard.Module', 'CardMessage.Model'],
 			'keyup #cardmessagetext': 'countmessage'
 		},
 		render: function(){
-			
+			var self = this;
 			this._render();
+
 			$j.ajax({
 				type : 'GET',
 				url : 'https://checkout.sandbox.netsuite.com/c.3363929/CardMessage/cardmessage.ss' + '?action=getordermessage',
 				cache : false
 			}).always(function(data){
-				console.log(data);
+				
+				console.log("Card message data = " + data);
 				if(data.ocation != '' || data.message != ''){
 					jQuery('#cardmessagetoggle').prop('checked',true);
-					jQuery('#cardmessageocation').val(data.ocation);
+					jQuery('#cardmessage-options').val(data.ocation);
 					jQuery('#cardmessagetext').val(data.message);
 					jQuery('#cardmessageblock').show();
-					this.enabled = true;
+					self.enabled = true;
 					
 					//self.render();
 				}
 			});
 		},
 		submit: function(){
-			
 			if(this.enabled){
 				var messagelink = {
 						msg: jQuery('#cardmessagetext').val(),

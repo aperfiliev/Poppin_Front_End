@@ -63,7 +63,7 @@
 		</form>
 	</div>
 <% } %>
-<% if(view.paymentMethod.get('creditcard')!=undefined){ %>
+<%if(view.paymentMethod.get('creditcard')!=undefined){ console.log("3");console.log(view);%>
 	<div class="span6">
 			<%= SC.macros.creditcardSecurityNumberForm({
 				error: undefined

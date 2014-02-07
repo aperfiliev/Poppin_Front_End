@@ -15,6 +15,12 @@ define('OrderWizard.Module.ShowShipments', ['Wizard.Module'], function (WizardMo
 
 	,	render: function ()
 		{
+jQuery('#content').css('background','#e5e5e5').css('width','936px');
+jQuery('#shop_by_color').show();
+jQuery('#nav').css('margin','0px auto');
+jQuery('#confirmation_search').show();
+jQuery('#confirmation_search_button').show();
+jQuery('#help_info_checkout').css('margin-top','-7px');
 			this.application = this.wizard.application;
 			this.profile = this.wizard.options.profile;
 			this.options.application = this.wizard.application;

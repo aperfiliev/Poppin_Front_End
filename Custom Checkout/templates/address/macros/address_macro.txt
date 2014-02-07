@@ -8,8 +8,6 @@
 	,	country = (country_object)? country_object.name : address.get('country')
 	,	state_object = (country_object && country_object.states)? _.findWhere(countries[address.get('country')].states, {code: address.get('state')}): null
 	,	state = (state_object)? state_object.name: address.get('state');
-console.log('addres template');
-console.log(address);
 	
 %>
 <article class="address" >
@@ -62,7 +60,7 @@ console.log(address);
 		</span>
 		<% if(options.verifyReview != "review"){%>
 		<div style="margin-top:10px;">
-			<input type="radio" style="float:left; margin-right:5px;" data-action="select" data-id="<%- address.get('internalid') %>" <%=address.get('internalid') == options.selectedAddress ? 'checked="checked"' : ''%> id="<%- options.verifyAddress %>"/>
+			<input type="radio" name="<%=options.verifyAddress%>" style="float:left; margin-right:5px;" <%=options.stopSelect ? 'data-action="setselectedaddressid"' : 'data-action="select"'%> data-id="<%- address.get('internalid') %>" <%=address.get('internalid') == options.selectedAddress ? 'checked="checked"' : ''%> id="<%- options.verifyAddress %>"/>
 			<span><%=Backbone.history.fragment.indexOf('shipping')>-1?'Ship to this address':'Use this address'%></span>
 			</div>
 		<%}%>

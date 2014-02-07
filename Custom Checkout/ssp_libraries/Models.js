@@ -235,19 +235,28 @@ Application.defineModel('Address', {
 	{
 		'use strict';
 		
-		var s = address.addressee;
-		var res = s.split(",");
-		var res1 =  res[0].split(".");
-		if(res1.length == 2){
-			address.namePrefix = res1[0]+'.';
-			address.firstfullname = res1[1];
-		}else{
-			address.firstfullname = res[0];
+		var s; address.addressee==null?s='':s=address.addressee;
+
+		if(s.indexOf(',')==-1){
+			var customerNameFields = ['firstname', 'lastname'];
+			var profile = customer.getFieldValues(customerNameFields );
+			s = profile.firstname + ',' + profile.lastname;
+
 		}
+		
+			var res = s.split(",");
+			var res1 =  res[0].split(".");
+			if(res1.length == 2){
+				address.namePrefix = res1[0]+'.';
+				address.firstfullname = res1[1];
+			}else{
+				address.firstfullname = res[0];
+			}
+			address.lastfullname = res[1];
 		
 //		nlapiLogExecution('DEBUG', 'after', address.label);
 		address.company = address.attention;
-		address.lastfullname = res[1];
+		
 		var phonenumber = (""+address.phone).replace(/\D/g, '');
 		if(phonenumber.length>10){
 			var m = phonenumber.match(/^(\d{3})(\d{3})(\d{4})(\d{1,4})$/);
@@ -584,9 +593,11 @@ Application.defineModel('LiveOrder', {
 		{
 			order_field_keys.items.push('shipaddress', 'shipmethod');
 		}
-
 		var order_fields = order.getFieldValues(order_field_keys)
 		,	result = {};
+//		order.setFieldValue('department',1);
+//		nlapiLogExecution('DEBUG','order fields',JSON.stringify(order.getFieldValues(["total"])));
+
 
 		// Temporal Address Collection so lines can point to its own address
 		var tmp_addresses = {};
@@ -1169,7 +1180,10 @@ Application.defineModel('LiveOrder', {
 		,	shipping_address_id = shipping_address && shipping_address.internalid
 		,	billing_address_id = billing_address && billing_address.internalid
 		,	confirmation = order.submit();
-		
+//		order.set('department',1);
+		var data = {'id': confirmation.internalid};
+		nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=339&deploy=1&compid=3363929&h=691dd3ebdec1f00b8620 ', data);
+
 		// checks if necessary delete addresses after submit the order.
 		this.removePaypalAddress(shipping_address_id, billing_address_id);
 		

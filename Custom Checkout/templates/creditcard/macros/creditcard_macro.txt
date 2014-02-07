@@ -13,7 +13,7 @@
 	<div class="row-fluid">
 		<div class="span6">
 	<% } %>
-			<input type="radio" style="float:left; margin-right:5px;" data-action="select-creditcard" data-id="<%- creditcard.get('internalid') %>" <%=creditcard.get('internalid') == options.selectedCreditcard ? 'checked="checked"' : ''%>/>
+			<input type="radio" name="creditcardradio" style="float:left; margin-right:5px;" <%=options.stopSelect ? 'data-action="setSelectedCreditcardId"' : 'data-action="select-creditcard"'%> data-id="<%- creditcard.get('internalid') %>" <%=creditcard.get('internalid') == options.selectedCreditcard ? 'checked="checked"' : ''%>/>
 			<span>
 			<div style="float:left;">
 			<% if (payment_name in icons) { %>
@@ -55,9 +55,6 @@
 			<btn class="btn btn-link" data-action="remove" data-id="<%- creditcard.get('internalid') %>">
 				<%= _('Delete').translate() %>
 			</btn>
-			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">
-				<%= _('Add New Credit Card').translate() %>
-			</a>
 			<%}%>
 		</p>
 	<% } %>

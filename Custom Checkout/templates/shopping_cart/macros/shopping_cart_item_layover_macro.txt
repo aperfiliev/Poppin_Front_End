@@ -78,7 +78,7 @@ else if (url)
 					<form action="#" data-action="update-quantity" style="margin:0;padding:0;">
 						<input type="hidden" name="internalid" id="update-internalid-<%= line.get('internalid') %>" class="update-internalid-<%= line.get('internalid') %>" value="<%- line.get('internalid') %>">
 						<% if(item.get('_itemType') !== 'GiftCert') { %>
-							<input type="number" name="quantity" id="quantity-<%= line.get('internalid') %>" class="input-mini quantity-<%= line.get('internalid') %>" value="<%- line.get('quantity') %>" min="0">
+							<input type="text" style="text-align:center;" name="quantity" id="quantity-<%= line.get('internalid') %>" class="input-mini quantity-<%= line.get('internalid') %>" value="<%- line.get('quantity') %>" min="0">
 						<% } else { %>
 							<input type="hidden" name="quantity" id="quantity-<%= line.get('internalid') %>" value="1">
 						<% } %>

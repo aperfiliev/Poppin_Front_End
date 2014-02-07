@@ -9,7 +9,7 @@
 		<small><%= _('(required)').translate() %></small>
 	</label>
 	<div class="controls">
-		<select class="input-small" id="<%= options.manage ? options.manage : ''%>state" name="state" data-type="state">
+		<select class="input-small"  style="height:30px;" id="<%= options.manage ? options.manage : ''%>state" name="state" data-type="state">
 			<option value="">
 				<%= _(' ').translate() %>
 			</option>

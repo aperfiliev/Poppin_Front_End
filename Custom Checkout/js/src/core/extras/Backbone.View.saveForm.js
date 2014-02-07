@@ -6,7 +6,9 @@
 	'use strict';
 
 	_.extend(Backbone.View.prototype, {
+
 		liveAddressValidated: null,
+
 		// view.saveForm
 		// Event halders added to all views
 		saveFormToModel: function (e, model, props){
@@ -16,11 +18,7 @@
 			return self.model.save(props || self.$savingForm.serializeObject(), {
 
 				wait: true
-			//,	events: { 'click #setsuggestion': 'setSuggestedAddress' }
-//			,	setSuggestedAddress: function (e){
-//					this.$savingForm = jQuery(e.target).closest('form');
-//					console.log(this.$savingForm.find('input[name="city"]').val());
-//			}
+			
 				// Hides error messages, re enables buttons and triggers the save event 
 				// if we are in a modal this also closes it 
 			,	success: function (model, response)
@@ -63,7 +61,7 @@
 			e.preventDefault();
 
 			model = model || this.model;
-			
+
 			
 			this.$savingForm = jQuery(e.target).closest('form');
 			
@@ -91,7 +89,9 @@
 		    	validation_promise.reject();
 		    	return validation_promise;
 		    };
-                     if(self.$savingForm.serializeObject().addr1!=undefined && self.$savingForm.serializeObject().addr1!=null){
+debugger;
+                     if(self.$savingForm.serializeObject().addr1!=undefined && self.$savingForm.serializeObject().addr1!=null && self.$("input[hiddenname='ignoresuggestion']").val()!='true'){
+			
 		    	  //LiveView address validation
 				var addr = {
 						street: self.$savingForm.serializeObject().addr1,
@@ -122,11 +122,14 @@
 									|| (response[0].components.zipcode + '-' + response[0].components.plus4_code) != self.$savingForm.serializeObject().zip
 							){
 								console.log("after 4");
+								Backbone.trigger('setSuggestedAddress',response[0]);
+debugger;
+console.log(self.$savingForm);
 								self.model.trigger('error',{
 									errorCode: 'ERR_CHK_INVALID_ADDRESS'
 									,	errorMessage: _('<div style="display: table-cell;">You typed:<br/>' + self.$savingForm.serializeObject().addr1 + '<br/>'+
 											self.$savingForm.serializeObject().city + ' ' + self.$savingForm.serializeObject().state + ' ' + self.$savingForm.serializeObject().zip
-											+'</div><div style="display: table-cell;padding-left: 50px;">We found the following:<br/>' + response[0].delivery_line_1 + '<br/>' + response[0].last_line).translate() + '</div>'
+											+'<input id="ignorethisaddress" type="button" value="ignore"></input></div><div style="display: table-cell;padding-left: 50px;">We found the following:<br/>' + response[0].delivery_line_1 + '<br/>' + response[0].last_line).translate() + '<input id="usethisaddress" type="button" value="use this"></input></div>'
 									});
 								validation_promise.reject();
 							}

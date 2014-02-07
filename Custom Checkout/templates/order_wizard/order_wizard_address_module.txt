@@ -4,6 +4,7 @@
 	,	address_book = view.getAddressesToShow()
 	,	default_shipping_set = false
 	,	default_billing_set = false;
+console.log('update script');
 	_.each(address_book.models,function(addr){
     		if(addr.get('defaultshipping') =='T'){default_shipping_set = true;}
     		if(addr.get('defaultbilling') =='T'){default_billing_set = true;}
@@ -24,9 +25,9 @@
     }
     }
 //    console.log("MANUAL SELECT");
-//		if(view.addressId==null && address_book.models.length > 0){
-//			view.manualSelectAddress(address_book.models[0].id);
-//		}
+		if(view.addressId==null && address_book.models.length > 0 && view.manage == 'shipaddress'){
+			view.manualSelectAddress(address_book.models[0].id);
+		}
 	
 	
 %>
@@ -59,8 +60,26 @@
 	</label>
 <% } %>-->
 
+<% if(view.manage == 'billaddress' && view.addressId==null && address_book.models.length==1) {%>
+	<div id="address-module-form-placeholder" class="address-module-form-placeholder">
+		<form method="POST">
+		<%= addressFrom(selected_address, {
+				countries: view.wizard.application.getConfig('siteSettings.countries')	
+			,	manage: view.manage
+			,	currentSt: view.wizard.currentStep
+			,	hideDefaults: true
+		}) %>
+		</form>
 
-<% if ((is_same_as_enabled && view.sameAs) || view.addressId && !selected_address.isNew()) { %>
+		<% if (view.showSaveButton) { %>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary" data-action="submit">
+					<%= _('Save Address').translate() %>
+				</button>
+			</div>
+		<% } %>	
+	</div>
+<%} else if (view.addressId && !selected_address.isNew()) { %>
 
 	<div id="address-module-list-placeholder" class="address-module-list-placeholder">
 <!--		<p>
@@ -83,25 +102,7 @@
 
 		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
 	</div>
-<% } else if((Backbone.history.fragment.indexOf('billing')>-1 && !default_billing_set && view.addressId==null && address_book.models.length==1)||(Backbone.history.fragment.indexOf('shipping')>-1 && !default_shipping_set && view.addressId==null && address_book.models.length==1)) {%>
-	<div id="address-module-form-placeholder" class="address-module-form-placeholder">
-		<form method="POST">
-		<%= addressFrom(selected_address, {
-				countries: view.wizard.application.getConfig('siteSettings.countries')	
-			,	manage: view.manage
-			,	currentSt: view.wizard.currentStep
-			,	hideDefaults: true
-		}) %>
-		</form>
 
-		<% if (view.showSaveButton) { %>
-			<div class="form-actions">
-				<button type="submit" class="btn btn-primary" data-action="submit">
-					<%= _('Save Address').translate() %>
-				</button>
-			</div>
-		<% } %>	
-	</div>
 <% } else if (address_book.length && !view.isGuest) { %>
 	<div id="address-module-list-placeholder" class="address-module-list-placeholder">
 <!--		<p>
