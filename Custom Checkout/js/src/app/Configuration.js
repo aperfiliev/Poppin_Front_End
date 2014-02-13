@@ -221,7 +221,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 						
 						]
 					,	save: function()
-						{debugger
+						{
 							return this.wizard.model.submit();
 						}
 					}

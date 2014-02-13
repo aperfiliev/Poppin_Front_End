@@ -86,7 +86,6 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 				this.creditcard = new CreditCardModel({}, {
 					paymentMethdos: this.wizard.application.getConfig('siteSettings.paymentmethods')
 				});
-debugger;
 			        var profile = this.wizard.options.profile;
 				this.creditcard.set("ccname",profile.get("firstname")+ ' ' + profile.get("lastname"));
 				if (this.requireccsecuritycode)

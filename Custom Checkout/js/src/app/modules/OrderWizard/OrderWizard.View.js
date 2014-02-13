@@ -94,7 +94,6 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 ,	setSecurityNumber: function ()
 
 	{
-	debugger;
 		if (this.requireccsecuritycode)
 		{	console.log("setSecurityNumber");
 			var credit_card = this.paymentMethod.get('creditcard');
@@ -127,7 +126,6 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 	
 	,	selectAddress: function (e)
 	{
-		debugger;
 		jQuery('.wizard-content .alert-error').hide(); 
 		
 		var seladdrid  = jQuery(e.target).data('id') || this.selectedShippingAddressId || this.selectedBillingAddressId,

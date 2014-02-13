@@ -89,7 +89,6 @@
 		    	validation_promise.reject();
 		    	return validation_promise;
 		    };
-debugger;
                      if(self.$savingForm.serializeObject().addr1!=undefined && self.$savingForm.serializeObject().addr1!=null){
 			if(self.$("input[hiddenname='ignoresuggestion']").val()!='true'){
 		    	  //LiveView address validation
@@ -127,7 +126,6 @@ debugger;
 							){
 								console.log("after 4");
 								Backbone.trigger('setSuggestedAddress',response[0]);
-debugger;
 console.log(self.$savingForm);
 								self.model.trigger('error',{
 									errorCode: 'ERR_CHK_INVALID_ADDRESS'

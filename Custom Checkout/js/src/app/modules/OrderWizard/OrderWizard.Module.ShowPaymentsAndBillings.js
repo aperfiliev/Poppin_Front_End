@@ -15,7 +15,6 @@ define('OrderWizard.Module.ShowPaymentsAndBillings', ['Wizard.Module'], function
 			}
 		, shouldBeRendered : function ()
 		{
-			debugger;
 			var profile     = this.wizard.options.profile,
 			creditcards = profile.get('creditcards'),
 			//creditcards = this.getPaymentmethods(),
@@ -25,7 +24,6 @@ define('OrderWizard.Module.ShowPaymentsAndBillings', ['Wizard.Module'], function
 		
 		, getAddresses : function () 
 		{
-			debugger;
 			var profile     = this.wizard.options.profile;
 			return profile.get('addresses').models;
 		}

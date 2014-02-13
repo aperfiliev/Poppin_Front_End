@@ -161,7 +161,6 @@ define('OrderWizard.Module.Shipmethod', ['Wizard.Module'], function (WizardModul
 
 	,	submit: function ()
 		{
-			debugger;
 			var self = this;
 			this.model.set('shipmethod', this.$('input[name=delivery-options]:checked').val());
 			this.step.disableNavButtons();

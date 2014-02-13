@@ -20,7 +20,6 @@
 
 	,	invalid: function (view, attr, error, selector)
 		{
-		debugger;
 			//alert(error);
 			//console.log(error);
 			var $target

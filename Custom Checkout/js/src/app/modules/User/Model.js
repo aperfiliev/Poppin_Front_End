@@ -36,7 +36,6 @@ define('User.Model',['Address.Collection','CreditCard.Collection'], function (Ad
 
 	,	initialize: function (attributes)
 		{
-		debugger;
 			this.on('change:addresses', function (model, addresses)
 			{
 				model.set('addresses', new AddressCollection(addresses), {silent: true});
