@@ -6,6 +6,10 @@ var powerTip = {
 			.css("top", top)
 			.css("left", left)
 			.css("display", "block");
+			if(inputId == 'company'){
+				tipElement.css("border-color", "rgb(151, 151, 151)");
+				tipElement.attr("class", "n_company");
+			}
 		jQuery("#"+inputId).parent().append(tipElement);
 	},
 	hide : function(popupId) {

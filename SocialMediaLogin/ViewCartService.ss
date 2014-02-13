@@ -44,7 +44,17 @@ function service(request,response)
 			}
 			else if (method == 'update')
 			{
-				orderObj.updateItemQuantity({'orderitemid' : params.orderitemid, 'quantity' : params.quantity});
+				var items = LoginLib.getOrder().items;
+				var item;
+				for(var i = 0; i<items.length;i++){
+					if(items[i].orderitemid == params.orderitemid){
+						item = items[i];
+					}
+				}
+//				nlapiLogExecution( 'DEBUG','item',item);
+				if(params.quantity <= item.quantityavailable){
+					orderObj.updateItemQuantity({'orderitemid' : params.orderitemid, 'quantity' : params.quantity});
+				}else{retobj.header.status.message = "Alotofproducts "+params.orderitemid}
 			}
 			else if (method == 'applyPromo')
 			{

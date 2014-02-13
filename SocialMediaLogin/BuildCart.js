@@ -58,13 +58,15 @@
 	 * Dynamically build out the cart
 	 */
 	function buildCartItems(order) {
+		console.log("order");
+		console.log(order);
 
 		jQuery("li.mini-cart > a").html(order.totalfound);
 		if(order!=0 && order.totalfound!=0)
 		{
 			// Insert table rows and cells into body
 			for ( var i = 0; i < order['items'].length; i++) {
-				buildItemRow(cartBody, i, order['items'][i]);
+				buildItemRow(cartBody, i, order['items'][i], order.message);
 			}
 			addEmptyRow(cartBody);
 			
@@ -90,7 +92,7 @@
 	/*
 	 * Dynamically build out the item row
 	 */
-	function buildItemRow(table, num, order)
+	function buildItemRow(table, num, order, message)
 	{
 		var row, cell;
 		var error_msg = '';
@@ -159,6 +161,9 @@
 			ctnt.setAttribute("style", "border:0;");
 			
 		}
+		var res = [];
+		if(message)
+			res = message.split(" ");
 
 		if(order.isdropshipitem)
 		{
@@ -168,7 +173,7 @@
 				error_msg = '<p>Your quantity must be</p><p> less or equal 250</p>';
 			}
 		}
-		else if(order.itemtype !=='giftcert' && order.quantityavailable < order.quantity)
+		else if(order.itemtype !=='giftcert' && res[0] == "Alotofproducts" && res[1] == order.orderitemid)
 		{
 			var plus_one = order.quantityavailable +1;
 			ctnt.setAttribute("class", "input-red");
@@ -329,6 +334,7 @@
 		var code = '';
 		var description = '';
 		var isvalid = 'N';
+		console.log(promocode);
 		if(promocode.isvalid != null)
 		{
 			isvalid = promocode.isvalid;
@@ -374,6 +380,7 @@
 		if(isvalid === 'F' || isvalid === 'N')
 		{
 			var ctnt = document.createElement("input");
+//			ctnt.setAttribute("style", "background: #35c6f5;");
 			ctnt.setAttribute("class", "promoApply");
 			ctnt.setAttribute("type", "submit");
 			ctnt.setAttribute("value", "Apply");

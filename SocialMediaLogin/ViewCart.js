@@ -145,6 +145,7 @@
 				var resp = JSON.parse(xmlhttp.responseText);
 				var code = resp.header.status.code;
 				var items = resp.result;
+				items.message = resp.header.status.message;
 				
 				if(code == "SUCCESS" || code == "ERR_WS_INVALID_COUPON")
 				{

@@ -4,9 +4,10 @@
 <head>
 <%= getPageFullHead() %>
 <!-- <script src="js/jquery-1.10.2.min.js"></script>
-<script src="<%=poppinservres.url.jsjqueryui%>"></script>
-<link href="<%=poppinservres.url.cssjqueryui%>" rel="stylesheet" type="text/css" />
+<script src="/SSP Applications/Poppin/SocialMediaLogin2/js/jquery-ui-1.10.3.custom.min.js"></script>
+<link href="/SSP Applications/Poppin/SocialMediaLogin2/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
  -->
+<script src="js/jquery.powertip.js"></script>
 <script type="text/javascript" src="BuildCart.js"></script>
 <script type="text/javascript" src="ViewCart.js"></script>
 
@@ -201,9 +202,10 @@ border: 2px solid red;
 width:110px;
 }
 .promoApply{
-font-family: 'OmnesMediumRegular';
-background: rgb(40, 185, 240);
-border: 1px solid rgb(40, 185, 240);
+		font-family: 'OmnesMediumRegular';
+background: -webkit-linear-gradient( -90deg, #35c6f5, #35c6f5);
+background: linear-gradient( -90deg, #35c6f5, #35c6f5);
+border: 1px solid #35c6f5;
 border-radius: 15px;
 color: #fff;
 cursor: pointer;
@@ -278,6 +280,13 @@ div[id^="powerTip"].n:before {
 	font-size: 14px;
 }
 
+.phoneDiv span a {
+color: #969696;
+}
+.free-shipping-container{
+display: none;
+}
+
 #div__help {
 	display: none;
 	top: 100px;
@@ -349,7 +358,7 @@ color: grey;
 			</div>
 
 			<div id="div__help_bg"></div>
-			<input type='hidden' name='redirect' value=''>
+
 			<div id='div__body'>
 				<table border="0" cellspacing="0" cellpadding="0" width="100%">
 					<tbody>
@@ -377,10 +386,10 @@ color: grey;
 													<%=getRecordAttribute('199',3,'custrecord_bannerhtml')%>
 												</div>
 											</td>
-											<td valign="top" style="padding: 5px 5px 5px 20px; border-left: 1px solid gray;width: 197px;" align="right">
+											<td valign="top" style="padding: 5px 5px 5px 20px; border-left: 1px solid gray;width:197px;" align="right">
 											<div id="floatingTotal" style="position:relative;">
 											<div class="checkoutDiv">
-											<input type="submit" class="bgbutton" value="checkout" onclick="if(checkout()){setGARedirectUrl(checkoutUrl.value);};"/>
+											<input type="submit" class="bgbutton" value="checkout" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); background: linear-gradient( -90deg, #c9dd1a, #b6d00d); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); background: -webkit-linear-gradient( -90deg, #c9dd1a, #b6d00d); width: 205px; height: 35px; border-color: white; font-size: 17px; font-family: 'arial'; border-radius: 12px;" onclick="if(checkout()){setGARedirectUrl(checkoutUrl.value);};"/>
 											</div>
 												<table class="orderSummary" border="0" cellspacing="0" cellpadding="0">
 												<col class="summaryLabels" />
@@ -391,8 +400,8 @@ color: grey;
 												<div class="promoCode" id="promoCodeDiv">
 												</div>
 												<div class="checkoutDiv">
-												<input type="submit" class="bgbutton" value="checkout" onclick="if(checkout()){setGARedirectUrl(checkoutUrl.value);}"/>
-												<span class="span-or-use">- Or use -</span>
+												<input type="submit" class="bgbutton" value="checkout" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); background: linear-gradient( -90deg, #c9dd1a, #b6d00d); background: -webkit-linear-gradient( -90deg, #c9dd1a, #b6d00d); width: 205px; height: 35px; border-color: white; font-size: 17px; font-family: 'arial'; border-radius: 12px;" onclick="if(checkout()){setGARedirectUrl(checkoutUrl.value);};"/>
+
 													<%
 														var checkoutSettings = nlapiGetWebContainer().getShoppingSession().getSiteSettings(['checkout']); 
 														var paypalUrl = nlapiGetWebContainer().getShoppingSession().getAbsoluteUrl("checkout", "PaypalCheckout.ss");
@@ -400,7 +409,7 @@ color: grey;
 														paypalImageUrl = (paypalImageUrl != undefined) ? paypalImageUrl : 'http://www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif';
 													%>
 												
-													<input type='image' src='<%=paypalImageUrl%>' onclick='if(checkout()){setGARedirectUrl("<%=paypalUrl%>");}' class="nlbutton" style="background: #FFF;border: 0px solid #fff;"/>
+													<input type='image' src='<%=paypalImageUrl%>' onclick='if(checkout()){setGARedirectUrl("<%=paypalUrl%>");}' class="nlbutton" style="margin-left: 35px; background: #FFF;border: 0px solid #fff; margin-top: 40px;"/>
 												
 												</div>
 											</div>

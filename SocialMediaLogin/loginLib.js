@@ -16,6 +16,8 @@ var LoginLib = {
 		var order = nlapiGetWebContainer().getShoppingSession().getOrder().getFieldValues();
 		if (order != null)
 		{
+			nlapiLogExecution('DEBUG', 'order',JSON.stringify(order));
+			nlapiLogExecution('DEBUG', 'items summary',JSON.stringify(order.summary));
 			var items = order.items;
 			var cartsummary = order.summary;
 			var promocodes = order.promocodes;
