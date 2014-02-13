@@ -1,6 +1,6 @@
 <% registerMacro('checkoutCartSummary', function (options) { %>
 
-<%
+<% console.log("Shopping cart summary m"); console.log(options.cart);
 	var cart = options.cart
 	,	summary = cart.get('summary')
 	,	promocode = cart.get('promocode')
@@ -178,14 +178,7 @@ domainSum += line.get('item').attributes._comparePriceAgainst * line.get('item')
 			</p>
 			<% } %>
 
-			<% if(sum>0){ %>
-			<p>
-				<span class="pull-right cart-summary-shipping-cost-formatted">
-					-$<%= sum.toFixed(2) %>
-				</span>
-				<%= promocode.code %>
-			</p>
-			<% } %>
+
 			<p>
 				<span class="pull-right cart-summary-shipping-cost-formatted">
 					<%= summary.shippingcost_formatted == "$0.00" ? '-' : summary.shippingcost_formatted %>
@@ -207,6 +200,15 @@ domainSum += line.get('item').attributes._comparePriceAgainst * line.get('item')
 				</span>
 				<%= _('Tax').translate() %>
 			</p>
+			
+						<% if(sum>0){ %>
+			<p>
+				<span class="pull-right cart-summary-shipping-cost-formatted">
+					-$<%= sum.toFixed(2) %>
+				</span>
+				<%= _('Promo').translate() %> #<%= promocode.code %>
+			</p>
+			<% } %>
 		</div></div>
 
 		<% if (is_promocode_valid || summary.giftcertapplied) { %>
@@ -295,6 +297,7 @@ domainSum += line.get('item').attributes._comparePriceAgainst * line.get('item')
 				class="input-medium promocode"
 				value="<%= promocode.code %>"
 				readonly
+				style="vertical-align: sub;"
 			>
 			<button data-action="remove-promocode" class="bgbutton-checkout-apply">
 				<%= _('Remove').translate() %>

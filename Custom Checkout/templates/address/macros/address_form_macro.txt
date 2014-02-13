@@ -31,7 +31,7 @@
 		</label>
 		<div class="controls">
 			<select id="<%= manage %>namePrefix" name="namePrefix" class="input-small">
-				<option></option>
+				<option>-Select-</option>
 				<option value="Mr." <%= address.get('namePrefix')==='Mr.' ? 'selected' : '' %>>Mr.</option>
 <option value="Mrs/Ms." <%= address.get('namePrefix')==='Mrs/Ms.' ? 'selected' : '' %>>Mrs./Ms.</option>
 			</select>

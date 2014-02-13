@@ -276,7 +276,11 @@ Application.defineModel('Address', {
 	{
 		'use strict';
 		var res;
-		var prefix = address.namePrefix;
+		var prefix = address.namePrefix ? address.namePrefix : "";
+//		prefix = address.namePrefix;
+		nlapiLogExecution("DEBUG", "Prefix", prefix);
+		if(prefix == "-Select-")
+			prefix = "";
 		var firstName = address.firstfullname+",";
 		var lastName = address.lastfullname;
 		var phone;
@@ -883,10 +887,14 @@ Application.defineModel('LiveOrder', {
 ,	update: function (data)
 	{
 		'use strict';
-		console.log(JSON.stringify(data));
+		//console.log(JSON.stringify(data));
+		
+		
 		var current_order = this.get()
 		,	is_secure = request.getURL().indexOf('https') === 0;
-
+		
+		nlapiLogExecution('DEBUG', 'data',JSON.stringify(data));
+		nlapiLogExecution('DEBUG', 'datacurrent order',JSON.stringify(current_order));
 		// Promo code
 		if (data.promocode && (!current_order.promocode || data.promocode.code !== current_order.promocode.code))
 		{
@@ -983,6 +991,7 @@ Application.defineModel('LiveOrder', {
 				{
 					nlapiLogExecution('DEBUG', 'place 2', JSON.stringify(paymentmethod.creditcard.ccdefault));
 					var credit_card = paymentmethod.creditcard
+					//,   ignore_cc_security_code = credit_card.ignoreCVC
 					,	require_cc_security_code = session.getSiteSettings(['checkout']).checkout.requireccsecuritycode === 'T'
 					,	cc_obj = credit_card && {
 									internalid: credit_card.internalid
@@ -999,12 +1008,15 @@ Application.defineModel('LiveOrder', {
 									,	ispaypal:  credit_card.paymentmethod.ispaypal ? 'T' : 'F'
 									}
 								};
-
+					
 					if (credit_card.ccsecuritycode)
 					{
 						cc_obj.ccsecuritycode = credit_card.ccsecuritycode;
 					}				
-
+					
+					nlapiLogExecution('DEBUG', 'place 2.1.  require_cc_security_code = ', require_cc_security_code);
+					nlapiLogExecution('DEBUG', 'place 2.2.  credit_card.ccsecuritycode = ', credit_card.ccsecuritycode);
+					//nlapiLogExecution('DEBUG', 'place 2.3.  ignore_cc_security_code = ', ignore_cc_security_code);
 					if (!require_cc_security_code || require_cc_security_code && credit_card.ccsecuritycode)
 					{						
 						// the user's default credit card may be expired so we detect this using try&catch and if it is we remove the payment methods. 
@@ -1054,14 +1066,18 @@ Application.defineModel('LiveOrder', {
 		}
 
 		// Shipping Method
-		if (is_secure && data.shipmethod !== current_order.shipmethod)
-		{
+		nlapiLogExecution('DEBUG', 'shipmethods',JSON.stringify(current_order.shipmethods));
+		//if (is_secure && data.shipmethod !== current_order.shipmethod)
+		//{
+		nlapiLogExecution('DEBUG', 'cur order ship[method',current_order.shipmethod);
 			var shipmethod = _.where(current_order.shipmethods, {internalid: data.shipmethod})[0];
 			shipmethod && order.setShippingMethod({
 				shipmethod: shipmethod.internalid
 			,	shipcarrier: shipmethod.shipcarrier
 			});
-		}
+			
+			nlapiLogExecution('DEBUG', 'ship[method',JSON.stringify(shipmethod));
+		//}
 
 		// Terms and conditions
 		var require_terms_and_conditions = session.getSiteSettings(['checkout']).checkout.requiretermsandconditions;
@@ -1507,7 +1523,8 @@ Application.defineModel('CreditCard', {
 ,	update: function (id, data)
 	{
 		'use strict';
-
+		nlapiLogExecution('DEBUG','UPDATE CREDIT CART data', JSON.stringify(data));
+		nlapiLogExecution('DEBUG','UPDATE CREDIT CART id', id);
 		//Update the credit card if the data is valid
 		this.validate(data);
 		data.internalid = id;

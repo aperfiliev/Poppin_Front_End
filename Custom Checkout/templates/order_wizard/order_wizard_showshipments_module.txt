@@ -97,14 +97,6 @@ domainSum += line.get('item').attributes._comparePriceAgainst * line.get('item')
 				<%= _('Discount').translate() %>
 			</p>
 			<% } %>
-			<% if(sum>0){ %>
-			<p>
-				<span class="pull-right cart-summary-shipping-cost-formatted">
-					-$<%= sum.toFixed(2) %>
-				</span>
-				<%= promocode.code %>
-			</p>
-			<% } %>
 <p>
 				<span class="pull-right cart-summary-shipping-cost-formatted">
 					<%= summary.shippingcost_formatted == "$0.00" ? '-' : summary.shippingcost_formatted %>
@@ -126,15 +118,24 @@ domainSum += line.get('item').attributes._comparePriceAgainst * line.get('item')
 				</span>
 				<%= _('Tax').translate() %>
 			</p>
+						<% if(sum>0){ %>
+			<p>
+				<span class="pull-right cart-summary-shipping-cost-formatted">
+					-$<%= sum.toFixed(2) %>
+				</span>
+				<%= _('Promo').translate() %> #<%= promocode.code %>
+			</p>
+			<% } %>
 </div>
 
 			<% if (is_promocode_valid || summary.giftcertapplied) { %>
 			<% if (is_promocode_valid && summary.discounttotal) { %>
 			<div class="checkout-cart-summary-body">
-				<p>
+				<p style="margin-left: -9px; width: 238px;">
 				<span class="pull-right cart-summary-shipping-cost-formatted">
 					-<%=summary.discounttotal_formatted%>
 				</span>
+					<%= _('Promo').translate() %> #<%= promocode.code %>
 				</p>
 			</div>
 			<% } %>
@@ -145,7 +146,7 @@ domainSum += line.get('item').attributes._comparePriceAgainst * line.get('item')
 				<b>	<%= _('Gift Certificates Applied ($(0))').translate(giftcertificates.length) %></b>
 				</p>
 				<% _.each(giftcertificates, function (giftCertificate) { %>
-					<p>
+					<p style="width: 240px;">
 						<span class="pull-right">
 							<%= _('-$(0)').translate(giftCertificate.get('giftcertificate').amountapplied_formatted) %>
 						</span>

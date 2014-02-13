@@ -245,7 +245,10 @@ define('Wizard.Router', ['Wizard.View', 'Wizard.Step', 'Wizard.StepGroup'], func
 			}
 			else if (!_.isObject(error))
 			{
-				error = {errorCode:'ERR_WS_UNHANDLED_ERROR', errorMessage:_('An error has ocurred').translate()};
+				return;
+				//hide generic error, if no object. Try not to throw eerors without objects.
+				//error = {errorCode:'ERR_WS_UNHANDLED_ERROR', errorMessage:_('An error has ocurred').translate()};
+				//error = {errorCode:'ERR_WS_UNHANDLED_ERROR'};
 			}
 			
 			if (~_.indexOf(this.handledErrors, error.errorCode))

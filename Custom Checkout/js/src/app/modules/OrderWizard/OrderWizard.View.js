@@ -92,7 +92,9 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 	}
 	
 ,	setSecurityNumber: function ()
+
 	{
+	debugger;
 		if (this.requireccsecuritycode)
 		{	console.log("setSecurityNumber");
 			var credit_card = this.paymentMethod.get('creditcard');
@@ -107,16 +109,16 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 ,	setCreditCard: function (options)
 	{	
 		var ccattributes;
-		if(this.creditcards.get(options.id)!=undefined){
+		if (this.creditcards.get (options.id) != undefined) {
 			ccattributes = this.creditcards.get(options.id).attributes;
 		}
-		
+		ccattributes.ccdafault = "T";
+		console.log("setCreditCard. ccattributes = "+ ccattributes);
 		this.paymentMethod = new OrderPaymentmethodModel({
 			type: 'creditcard'
 		,	creditcard: options.model || ccattributes
 		});
 		this.setSecurityNumber();
-
 		OrderWizardModulePaymentMethod.prototype.submit.apply(this, arguments);
 
 		// We re render so if there is changes to be shown they are represented in the view
@@ -221,6 +223,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 
 	,	updateCartSummary: function()
 		{
+			console.log("Update cart summary. this.wizard.model = " + this.wizard.model);
 			var current_step = this.wizard.getCurrentStep()
 			,	was_confirmation = this.wizard.model.previous('confirmation');
 			
@@ -263,34 +266,65 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			// disable inputs and buttons
 			$target.find('input, button').prop('disabled', true);
 
-			this.model.save({ promocode: { code: options.promocode.trim() } }).error(
-				function (jqXhr) 
-				{
-					self.model.unset('promocode');
-					jqXhr.preventDefault = true;
-					var message = ErrorManagement.parseErrorMessage(jqXhr, self.options.application.getLayout().errorMessageKeys);
-					if(message.indexOf("Coupon code is invalid or unrecognized")>-1)
-						message = "Gone are the days of humdrum office products and that promo code";
-					if(message.indexOf("This coupon code has expired or is invalid")>-1)
-						message = "This promo code has expired or is invalid";
-					//powertip error for promocode
-//					powerTip.create('promocode', message, 'powerTipPromo', -49, -10);
-//					$target.find('#promocode').on('focusin', function() { powerTip.hide('powerTipPromo'); });
-//					$target.find('#promocode').css('border', '2px solid red').css('padding', '1px 6px');
-					//end of promo powertip
-
-					self.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
-					$target.find('input[name=promocode]').val('').focus();
-				}
+//			this.model.save({ promocode: { code: options.promocode.trim() } }).error(
+//				function (jqXhr) 
+//				{
+//					self.model.unset('promocode');
+//					jqXhr.preventDefault = true;
+//					var message = ErrorManagement.parseErrorMessage(jqXhr, self.options.application.getLayout().errorMessageKeys);
+//					if(message.indexOf("Coupon code is invalid or unrecognized")>-1)
+//						message = "Gone are the days of humdrum office products and that promo code";
+//					if(message.indexOf("This coupon code has expired or is invalid")>-1)
+//						message = "This promo code has expired or is invalid";
+//					//powertip error for promocode
+////					powerTip.create('promocode', message, 'powerTipPromo', -49, -10);
+////					$target.find('#promocode').on('focusin', function() { powerTip.hide('powerTipPromo'); });
+////					$target.find('#promocode').css('border', '2px solid red').css('padding', '1px 6px');
+//					//end of promo powertip
+//
+//					self.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
+//					$target.find('input[name=promocode]').val('').focus();
+//				}
+//			).always(
+//				function(){
+//					// enable navigation buttons
+//					self.currentStep.enableNavButtons();
+//					// enable inputs and buttons
+//					$target.find('input, button').prop('disabled', false);
+////self.render();
+//				}
+//			);
+			
+			
+			this.model.save(
+					{
+						 promocode: { code: options.promocode.trim() }
+					}
+					,{
+						success: function(){
+							self.render();
+						}
+					,	error: function(model, jqXhr){
+							self.model.unset('promocode');
+							jqXhr.preventDefault = true;
+							var message = ErrorManagement.parseErrorMessage(jqXhr, self.options.application.getLayout().errorMessageKeys);
+							if(message.indexOf("Coupon code is invalid or unrecognized")>-1)
+								message = "Gone are the days of humdrum office products and that promo code";
+							if(message.indexOf("This coupon code has expired or is invalid")>-1)
+								message = "This promo code has expired or is invalid";
+							self.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
+//							$target.find('input[name=promocode]').focus();
+						}
+					}
 			).always(
 				function(){
 					// enable navigation buttons
 					self.currentStep.enableNavButtons();
 					// enable inputs and buttons
 					$target.find('input, button').prop('disabled', false);
-self.render();
-				}
-			);
+				});
+			
+			
 		}
 
 
@@ -436,13 +470,14 @@ self.render();
 		});
 	}
 
-,	showError: function ()
+
+,	showError: function (message)
 	{
+		this.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
 //		this.$('.control-group').addClass('error');
-		WizardModule.prototype.showError.apply(this, arguments);
+		//WizardModule.prototype.showError.apply(this, arguments);
 //		self.showError(result.errorMessage, $line, result.errorDetails);
 	}
-
 	// onShownGiftCertificateForm
 	// Handles the shown of promocode form
 ,	onShownGiftCertificateForm: function (e)
@@ -454,51 +489,70 @@ self.render();
 	// Finds the item in the cart model, updates its quantity and saves the cart model
 	,	updateItemQuantity: function (e)
 	{
+		console.log("OrederWizard. updateItemQuantity");
 		e.preventDefault();
-		console.log('check tghsiu');
 		var self = this
 		,	$line = null
 		,	options = jQuery(e.target).closest('form').serializeObject()
-		,	line = this.model.get('lines').get(options.internalid);
+		,	line = this.model.get('lines').get(options.internalid),
+			quantityavailable = line.get("item").get("quantityavailable");
 
 		if (parseInt(line.get('quantity'),10) !==  parseInt(options.quantity,10))
 		{
-			line.set('quantity', options.quantity);
+			if (options.quantity > quantityavailable){
+				var error_msg = '<p>Your quantity must be</p><p> less than ' + (quantityavailable+1)  + '</p>';
+				jQuery('#' + 'quantity-' + options.internalid).addClass("input-red");
+				powerTip.create('quantity-'+options.internalid, error_msg, 'powerTip' + options.internalid, 142, 450);
+				jQuery('#powerTip' + options.internalid ).css('font-weight', 'normal');
+				jQuery('#powerTip' + options.internalid ).css('line-height', '0.5')
+				jQuery('#' + 'quantity-' + options.internalid).on('focusin', function() { powerTip.hide('powerTip' + options.internalid); }) ;
+			} else {		
+				jQuery('#' + 'quantity-' + options.internalid).removeClass("input-red");
+				line.set('quantity', options.quantity);
 
-			$line = this.$('#' + options.internalid);
+				$line = this.$('#' + options.internalid);
 
-			this.model.updateLine(line)
-				.success(_.bind(this.showContent, this))
-				.error(
-					function (jqXhr)
-					{
-						jqXhr.preventDefault = true;
-						var result = JSON.parse(jqXhr.responseText);
+				this.model.updateLine(line)
+					.success(_.bind(this.showContent, this))
+					.error(
+							function (jqXhr)
+							{
+								jqXhr.preventDefault = true;
+								var result = JSON.parse(jqXhr.responseText);
 
-						self.showError(result.errorMessage, $line, result.errorDetails);
-					}
-				);
+								self.showError(result.errorMessage, $line, result.errorDetails);
+							}
+					)
+.					always(
+							function()
+							{
+								if (self.model.get('lines').length==0) {
+									window.location=self.model.get('touchpoints').viewcart 
+								} 
+							}
+					);
+			}
 		}
 	}
 	//minicart actions
 	,	removeItem: function (e)
 	{
+var self = this;
 		this.model.removeLine(this.model.get('lines').get(jQuery(e.target).data('internalid')))
-			.success(_.bind(this.showContent, this));
+		.success(_.bind(this.showContent, this))
+.always(function(){if(self.model.get('lines').length==0){window.location=self.model.get('touchpoints').viewcart } });
+		
 	}
 	,optin:function(e){
-		
-
-var profile = this.profile = this.wizard.options.profile;
+		console.log("optin");
 		var self=this,
 		d=jQuery(e.target);
 		if(d.prop("checked")){
-				profile.set({emailsubscribe:'T'});
+			self.wizard.options.profile.attributes.emailsubscribe="T";
 		}
 		else{
-				profile.set({emailsubscribe:'F'});
+			self.wizard.options.profile.attributes.emailsubscribe="F";
 		}
-		profile.save();
 	}
 
 	,	destroy: function ()

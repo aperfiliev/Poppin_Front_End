@@ -28,24 +28,31 @@ define('Address.Views', function ()
 		,	'blur input[name="company"]': 'verifyCompany'
 		,	'blur input[name="addr1"]': 'verifyAddress'
 		,	'blur input[name="city"]': 'verifyCity'
-		,	'blur input[name="zip"]': 'verifyZip'	
+		,	'blur input[name="zip"]': 'verifyZip'
+		,	'click .input-large': 'hidePowerTip'
+		,	'click .input-medium': 'hidePowerTip'
+		,	'click .input-small': 'hidePowerTip'
 		
 		}
-, useSuggestedAddress: function () {
+	, useSuggestedAddress: function () {
 				var self = this;
-debugger;
-console.log(this);
 				
 				this.$("input[name='addr1']").val(self.suggestedAddress.delivery_line_1);
 				this.$("input[name='city']").val(self.suggestedAddress.components.city_name);
 				this.$('[data-type="state"]').val(self.suggestedAddress.components.state_abbreviation);
 				this.$("input[name='zip']").val(self.suggestedAddress.components.zipcode + '-' + self.suggestedAddress.components.plus4_code);
-self.hideError();
- }
-, ignoreSuggestedAddress: function() {
-this.$("input[hiddenname='ignoresuggestion']").val('true');
-this.hideError();
-}
+				self.hideError();
+		}
+	,	hidePowerTip: function(e){
+			var controlContainer = jQuery(e.target).parent().parent();
+			controlContainer.attr('class','control-group');
+			controlContainer.find('div').find('div').empty();
+			console.log(controlContainer);
+		}
+	, ignoreSuggestedAddress: function() {
+		this.$("input[hiddenname='ignoresuggestion']").val('true');
+		this.hideError();
+		}
 	,	verifyFirstName: function (e){
 			var firstname = this.$("input[name='firstfullname']");
 			var result = firstname.val();

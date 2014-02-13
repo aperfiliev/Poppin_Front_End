@@ -28,7 +28,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		,	'click [data-action="change-address"]': 'changeAddress'
 		,	'change [data-action="same-as"]': 'markSameAs'
 		,	'change form': 'changeForm'
-		,	'click #copyshipping' : 'setSameAsShipping'	
+		,	'click #copyshipping' : 'setSameAsShipping'
 		}
 
 	,	errors: ['ERR_CHK_INCOMPLETE_ADDRESS', 'ERR_CHK_INVALID_ADDRESS']
@@ -41,6 +41,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 							console.log('rendered');
 						}, this);
 		}
+	
 //	,	initialize: function(){
 //		var temp_addr;
 //		console.log(this.getAddressesToShow());
@@ -490,7 +491,6 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			{
 				result.done(function (model)
 				{
-					debugger
 					// Address id to the order model. This has to go after before the following model.add() as it triggers the render
 					self.setAddress(model.id);
 

@@ -94,8 +94,9 @@
 
 	function validatePhone (phone)
 	{
-		var minLength = 6;
-
+		console.log(phone);
+		var minLength = 10;
+		var maxLength = 10;
 		if (_.isNumber(phone))
 		{
 			// phone is a number so we can't ask for .length
@@ -116,11 +117,12 @@
 			// to make sure all of the characters are numeric
 
 			//first remove leading zeros for number comparison
-			while(value.length && value.substring(0,1) === '0') 
-			{
-				value = value.substring(1, value.length); 
-			}
-			if (parseInt(value, 10).toString() !== value || value.length < minLength)
+//			while(value.length && value.substring(0,1) === '0') 
+//			{
+//				value = value.substring(1, value.length); 
+//			}
+			//parseInt(value, 10).toString() !== value ||
+			if ( value.length < minLength || value.length > maxLength)
 			{
 				return _('Phone Number is invalid').translate();
 			}

@@ -90,8 +90,8 @@
 		    	return validation_promise;
 		    };
 debugger;
-                     if(self.$savingForm.serializeObject().addr1!=undefined && self.$savingForm.serializeObject().addr1!=null && self.$("input[hiddenname='ignoresuggestion']").val()!='true'){
-			
+                     if(self.$savingForm.serializeObject().addr1!=undefined && self.$savingForm.serializeObject().addr1!=null){
+			if(self.$("input[hiddenname='ignoresuggestion']").val()!='true'){
 		    	  //LiveView address validation
 				var addr = {
 						street: self.$savingForm.serializeObject().addr1,
@@ -102,7 +102,8 @@ debugger;
 		    
 		    LiveAddress.verify(addr, 
 					function(response){
-						console.log("after 1");
+						console.log("after 1----------------");
+						console.log(response);
 						if(response.length==0){
 							console.log("after 2");
 							self.$savingForm.find('*[type=submit], *[type=reset]').attr('disabled', false);
@@ -114,12 +115,15 @@ debugger;
 						}
 						else{
 							console.log("after 3");
+							var zipcode = response[0].components.zipcode;
+							if(self.$savingForm.serializeObject().zip.length == 10)
+								zipcode += '-' + response[0].components.plus4_code;
 							//check if address matches the one from liveaddress service
 							//if matches - submit to model, if not - show suggestion message
 							if(response[0].delivery_line_1 != self.$savingForm.serializeObject().addr1 
 									|| response[0].components.city_name != self.$savingForm.serializeObject().city
 									|| response[0].components.state_abbreviation != self.$savingForm.serializeObject().state
-									|| (response[0].components.zipcode + '-' + response[0].components.plus4_code) != self.$savingForm.serializeObject().zip
+									|| zipcode != self.$savingForm.serializeObject().zip
 							){
 								console.log("after 4");
 								Backbone.trigger('setSuggestedAddress',response[0]);
@@ -136,15 +140,25 @@ console.log(self.$savingForm);
 							else{
 								console.log("after 5");
 								var result = self.saveFormToModel(e, model, props);
-								result.done(function(){validation_promise.resolve(self.model);})
+								result.done(function(){validation_promise.resolve(self.model);});
 								
 							}
 						}
 				});
 			// Returns the promise of the save acction of the model
 			return validation_promise.promise();
+		    }else{
+				var result = self.saveFormToModel(e, model, props);
+				result.done(function(){validation_promise.resolve(self.model);});
+				return validation_promise.promise();
 		    }
+		}
 		    else{
+		    	
+//				var result = self.saveFormToModel(e, model, props);
+//				result.done(function(){validation_promise.resolve(self.model);});
+//				return validation_promise.promise();
+//				return result;
 				return self.saveFormToModel(e, model, props);
 			}
 		}

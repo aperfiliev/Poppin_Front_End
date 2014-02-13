@@ -1,7 +1,7 @@
 <% registerMacro('shoppingCartSummary', function (cart, siteSettings, options) { %>
 <%
 	options = _.extend({ showShipto: true, showLabelsAsEstimated: true}, options || {});
-
+	console.log("Shopping cart summary sm"); console.log(cart);
 	var summary = cart.get('summary')
 	,	promocode = cart.get('promocode')
 	,	item_count = _.reduce(cart.get('lines').pluck('quantity'), function (memo, quantity) { return memo + (parseFloat(quantity) || 1); }, 0)

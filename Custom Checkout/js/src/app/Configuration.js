@@ -129,7 +129,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					//	name: _('Select your delivery method').translate(),	
 					url: 'shipping/method'
 					,	hideBackButton: true
-					,	hideSummary: screen_width < 768 //hide summary on phone
+					//,	hideSummary: screen_width < 768 //hide summary on phone
 ,	continueButtonLabel: _('Next: BILLING & PAYMENT').translate()
 					,	modules: [
 							['OrderWizard.Module.Address.Shipping', {title: _('SELECT YOUR SHIPPING ADDRESS').translate()}]
@@ -147,7 +147,7 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					//	name: _('Choose Payment Method').translate(),
 					url: 'billing'
 					,	hideBackButton: false
-					,	hideSummary: screen_width < 768 //hide summary on phone
+					//,	hideSummary: screen_width < 768 //hide summary on phone
 					,	bottomMessage: _('You will have an opportunity to review your order on the next step.').translate()
 					,	continueButtonLabel: _('Next: REVIEW ORDER').translate()
 					,	modules: [

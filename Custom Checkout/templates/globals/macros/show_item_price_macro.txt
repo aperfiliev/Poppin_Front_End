@@ -19,7 +19,7 @@
 	<meta itemprop="price" content="<%- _.formatCurrency(price.price)%>" /> 
 	<meta itemprop="priceCurrency" content="<%- SC.ENVIRONMENT.currentCurrency.code %>" /> 
 	<% if (price.price < price.compare_price) { %>
-		<small class="muted crossed"><%= _.formatCurrency(price.compare_price) %></small>
+		
 	<% } %>
 <% } %>
 <% }) %>

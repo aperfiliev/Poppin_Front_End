@@ -1,5 +1,8 @@
 <% registerMacro('creditcard', function (creditcard, options) { %>
 <%
+console.log("MACRO");
+console.log(creditcard.get('paymentmethod').name);
+
 	var payment_name = creditcard.get('paymentmethod').name
 	,	expiration_month = creditcard.get('expmonth')
 	,	icons = options.icons;
@@ -22,6 +25,7 @@
 			</div>
 			<div style="float:left; padding-left: 10px;">
 			<h4 class="summary-header">
+			<% console.log("CC NUMBER"); console.log(creditcard.get('ccnumber'));%>
 				<%= payment_name %> ************<%= creditcard.get('ccnumber').replace(/\*/g, '')%>
 			</h4>
 			<p style="margin:0;"> 
