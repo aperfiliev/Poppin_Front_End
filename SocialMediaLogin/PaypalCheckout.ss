@@ -20,6 +20,10 @@ function service(request, response) {
 		var siteSetting = shoppingSession.getSiteSettings([ 'touchpoints' ]);
 		var viewcart = siteSetting.touchpoints.viewcart;
 		var homeurl = siteSetting.touchpoints.checkout;
+		
+		nlapiLogExecution('AUDIT', 'paypal checkout viewcart', viewcart);
+		nlapiLogExecution('AUDIT', 'paypal checkout homeurl', homeurl);
+		
 
 		var checkoutSetting = {
 			type : 'paypalexpress',

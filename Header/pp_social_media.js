@@ -234,7 +234,8 @@ jQuery(document).ready(function() {
 		MINILOGINSOCKET = new easyXDM.Socket({
 			remote : poppinres.url.miniloginpage + miniloginqs,
 			onMessage : function(message, origin) {
-				document.body.style.cursor = 'default';
+//				document.body.style.cursor = 'default';
+jQuery('div#waitmask').hide();
 				if (message == null) {
 					jQuery("#dialogresponse").html(poppinres.text.responseobjectnull);
 					jQuery("#dialogresponse").dialog({
@@ -377,11 +378,13 @@ function sendForgotPasswordRequestOld() {
 		success : forgotPasswordResponseOld,
 		error : forgotPasswordResponseOld
 	});
-	document.body.style.cursor = 'wait';
+//	document.body.style.cursor = 'wait';
+jQuery('div#waitmask').show();
 }
 function forgotPasswordResponseOld(data) {
 	var message = '';
-	document.body.style.cursor = 'default';
+//	document.body.style.cursor = 'default';
+jQuery('div#waitmask').hide();
 	if (data.responseText == null) {
 		message = poppinres.text.responseobjectnull;
 	}
@@ -448,7 +451,8 @@ function miniloginSubmit(loginUser)
 	}
 	var userstr = JSON.stringify(loginUser);
 	MINILOGINSOCKET.postMessage(userstr);
-	document.body.style.cursor = 'wait';
+//	document.body.style.cursor = 'wait';
+jQuery('div#waitmask').show();
 }
 
 function minitwitterSubmit()
@@ -482,7 +486,8 @@ function minitwitterSubmit()
 	}
 	var userstr = JSON.stringify(loginUser);
 	MINILOGINSOCKET.postMessage(userstr);
-	document.body.style.cursor = 'wait';
+//	document.body.style.cursor = 'wait';
+jQuery('div#waitmask').show();
 }
 /*
  * PP_SOCIAL_MEDIA_LOGIN_GIGYA
@@ -521,7 +526,8 @@ jQuery(function() {
 			};
 			var userstr = JSON.stringify(socialloginobject);
 			MINILOGINSOCKET.postMessage(userstr);
-			document.body.style.cursor = 'wait';
+			//document.body.style.cursor = 'wait';
+jQuery('div#waitmask').show();
 		}
 	}
 	gigya.socialize.showLoginUI(login_params);

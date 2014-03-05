@@ -13,6 +13,7 @@
  */
 function suitelet(request, response){
 	var email = request.getParameter('email');
+	var jsoncallback = request.getParameter('jsoncallback');
 	nlapiLogExecution('DEBUG','email: ',email);
 	var columns = new Array();
 	columns[0]= new nlobjSearchColumn('Email');
@@ -38,5 +39,13 @@ function suitelet(request, response){
 		};
 	}
 	nlapiLogExecution('DEBUG','resultstring: ',JSON.stringify(responseObject));
-	response.writeLine(JSON.stringify(responseObject));
+	var jsonString = JSON.stringify(responseObject);
+	if(jsoncallback){
+		response.writeLine('responseJson('+jsonString+')');
+	}
+	else{
+		response.writeLine(jsonString);
+	}
+	
+	
 }

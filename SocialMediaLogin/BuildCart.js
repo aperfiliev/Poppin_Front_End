@@ -60,6 +60,18 @@
 	function buildCartItems(order) {
 		console.log("order");
 		console.log(order);
+		debugger;
+		var myaccount_attr = document.getElementById("myaccount").getAttribute("href");
+		
+		var sign_up = jQuery(".singUpBtn").attr("onclick");
+		
+//		myaccount_attr = myaccount_attr.replace('dontcookiepromocode=T','dontcookiepromocode=F');
+		if(jQuery("#promoInput").val()){
+			myaccount_attr = myaccount_attr.replace('promocode=','promocode='+jQuery("#promoInput").val());
+			sign_up = sign_up.replace('promocode=','promocode='+jQuery("#promoInput").val());
+		}
+		document.getElementById("myaccount").setAttribute("href",myaccount_attr);
+		jQuery(".singUpBtn").attr("onclick", sign_up);
 
 		jQuery("li.mini-cart > a").html(order.totalfound);
 		if(order!=0 && order.totalfound!=0)
@@ -75,6 +87,7 @@
 			
 			var checkoutUrl = document.getElementById('checkoutUrl');
 			checkoutUrl.value = order.checkouturl;
+			checkoutUrl.value = checkoutUrl.value.replace('dontcookiepromocode=T','dontcookiepromocode=F');
 			
 			var continueUrl = document.getElementById('continueUrl');
 			continueUrl.value = order.continueshoppingurl;
@@ -278,6 +291,7 @@
 	 */
 	function buildOrderSummary(subtotal, tax, shipping, discount, total)
 	{
+		debugger;
 		jQuery("#actionbar").html("");
 		tbody = document.getElementById('actionbar');
 		
@@ -365,6 +379,7 @@
 		ctnt.setAttribute("id", "promoInput");
 		ctnt.setAttribute("type", "text");
 		ctnt.setAttribute("value", code);
+		ctnt.setAttribute("style", "text-transform: uppercase;");
 		//ctnt.setAttribute("title", description);
 		if(isvalid === 'F')
 		{
@@ -399,8 +414,10 @@
 		promoCodeDiv.appendChild(div);
 		if(isvalid === 'F')
 		{
+			var alignTipTop = 0;
+			promocode.message.indexOf('<br/>')>-1 ? alignTipTop= -35 : alignTipTop = 50;
 			powerTip.create('promoInput', promocode.message,
-					'powerTipPromo', -50, 40);
+					'powerTipPromo', alignTipTop, 40);
 			jQuery('#promoInput').on('focusin', function() { powerTip.hide('powerTipPromo'); }) ;
 		}
 		if(description != '')

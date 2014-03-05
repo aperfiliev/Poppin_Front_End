@@ -23,8 +23,8 @@
 			var error_msg = "<p>Wait, how many do you want?</p><p>Better double-check that.</p>";
 			
 			powerTip.create('_'+orderitemid, error_msg, 'powerTip' + orderitemid, -52, 10);
-			$('#' + '_' + orderitemid).on('focusin', function() { powerTip.hide('powerTip' + orderitemid); }) ;
-			$('#' + '_' + orderitemid).attr('class','input-red');
+			$j('#' + '_' + orderitemid).on('focusin', function() { powerTip.hide('powerTip' + orderitemid); }) ;
+			$j('#' + '_' + orderitemid).attr('class','input-red');
 		};
 	}
 	/*
@@ -74,14 +74,14 @@
 	 */
 	function checkout()
 	{
-		if($("input.promoInput-red").size() > 0)
+		if($j("input.promoInput-red").size() > 0)
 		{
 			removePromo();
 		}
-		if($("input.input-red").size() > 0)
+		if($j("input.input-red").size() > 0)
 		{
-			$("#dialogresponse").html("Some fields are filled incorrectly");
-			$("#dialogresponse").dialog({ title: "Info" });
+			$j("#dialogresponse").html("Some fields are filled incorrectly");
+			$j("#dialogresponse").dialog({ title: "Info" });
 			return false;
 		}
 		else
@@ -157,7 +157,7 @@
 						items.promocode.description = resp.header.status.description;
 						_gaq.push(['_trackEvent', 'Shopping Cart', 'Promocode error', resp.header.status.event]);
 					}
-					$("#cartBody").html("");
+					$j("#cartBody").html("");
 					buildCartItems(items);
 				}
 			}

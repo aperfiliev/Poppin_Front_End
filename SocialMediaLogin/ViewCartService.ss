@@ -29,9 +29,10 @@ function service(request,response)
 								 "giftcertificate": {}, 
 								 "summary": {}} };
 		var params = request.getAllParameters();
+		
 		var method = params.method;
 		var orderObj = nlapiGetWebContainer().getShoppingSession().getOrder();
-
+		
 		try
 		{
 			if (method == 'add')
@@ -113,12 +114,12 @@ function service(request,response)
 				case "This coupon code has expired or is invalid":
 					retobj.header.status.message = "<p>Hmm, that didn't seem to work, please </p><p>check the date on your promo code.</p>";
 					retobj.header.status.event = "Expired promo code";
-					retobj.header.status.description = LoginLib.getPromoDescription(params.promocode);
+					retobj.header.status.description = LoginLib.getPromoDescription(orderObj.getFieldValues().promocodes[0]);
 					break;
 				case "Coupon code is invalid or unrecognized":
-					retobj.header.status.message = "<p>Unfortunately we don't recognize that </p><p>promo code. Please try again.</p>";
-					retobj.header.status.event = "Promo not recognized";
-					retobj.header.status.description = "";
+						retobj.header.status.message = "<p>Code cannot be used or has already be used<br/></p>";
+						retobj.header.status.event = "Promo not applied";
+						retobj.header.status.description = LoginLib.getPromoDescription(orderObj.getFieldValues().promocodes[0]);
 					break;
 				case "This coupon does not apply to items in cart.":
 					retobj.header.status.message = "<p>Coupon code is invalid or unrecognized</p>";
@@ -130,7 +131,7 @@ function service(request,response)
 					{
 						retobj.header.status.message = "<p>In order for your code to work, you need </p><p>to add more Poppin products to your cart.</p>";
 						retobj.header.status.event = "Promo rules not met";
-						retobj.header.status.description = LoginLib.getPromoDescription(params.promocode);
+						retobj.header.status.description = LoginLib.getPromoDescription(orderObj.getFieldValues().promocodes[0]);
 					}
 					break;
 				}

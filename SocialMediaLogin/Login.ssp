@@ -78,11 +78,58 @@ padding: 0 0 11px 0;
 }
 </style>
 <script language="javascript">
+
+/* get Lead Source functions */
+function getCommentsFromEl(el, asArray) {
+	var result,
+	$el = $(el).contents();
+	result = $el.filter(function () {
+			return this.nodeType == 8;
+		});
+	if (asArray) {
+		result = $.makeArray(result.map(function () {
+			return this.nodeValue;
+		}));
+	}
+	return result;
+};
+$.fn.getComments = function (asArray) {
+	return getCommentsFromEl(this, asArray);
+};
+function getLeadSource() {
+	
+	var comments = $("head").getComments(),
+		i = comments.length,
+		g = '', comment, ls = {};
+	
+	while(i !== 0) {
+		i--;
+		comment = comments[i].data;
+		if(comment.search("leadsource") !== -1) {
+			g = comment;
+			break;
+		}
+	}
+	
+	var f = g.indexOf("leadsource=")+11;
+	var s = g.substring(f, g.indexOf("=", f)).lastIndexOf(" ");
+	var result = g.substring(f, f+s).trim();
+	
+	if(g != '') {
+		return result;
+	} else {
+		return '';
+	}
+};
+
+/* end of get Lead Source functions */
+
 jQuery(document).ready(function(){
 	jQuery('#companyhelp').on('mouseenter', function(){
 		powerTip.create('company', $('#whatthisfortext').html(), 'powerTipFName', 250, 655);
 	});
 	jQuery('#companyhelp').on('mouseleave',function(){powerTip.hide('powerTipFName');});
+	jQuery('#leadsource').val(getLeadSource());
 })
 
 function getQuerystring(key, default_)
@@ -225,6 +272,7 @@ function registerformSubmitUser()
 	
 	var newUser = {
 			"requesttype":"manualregister",
+			"lead":document.forms['new-customer-register'].elements['leadsource'].value,
 			"remember":true,
 			"email":document.forms['new-customer-register'].elements['emailregnew'].value,
 			"name":document.forms['new-customer-register'].elements['fname'].value + " " +document.forms['new-customer-register'].elements['lname'].value,
@@ -278,12 +326,9 @@ function validateRegisterForm()
 		pass.attr( "class", "input-red");
 	}
 	
-	if($("input.input-red").size() > 0)
-	{
+	if($("form#new-customer-register input.input-red").size() > 0) {
 		return false;
-	}
-	else
-	{
+	} else {
 		return true;
 	}
 }
@@ -525,6 +570,9 @@ function forgotPasswordSocialLink()
 						<fieldset>
 							<label for="lname">Last Name</label>
 							<div style="position: relative;"><input id="lname" name="lname" type="text"/></div>
+						</fieldset>
+						<fieldset style="display: none;">
+							<input id="leadsource" name="leadsource" type="text"/>
 						</fieldset>
 						<fieldset>
 							<label for="email">Email</label>

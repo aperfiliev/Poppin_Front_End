@@ -25,6 +25,8 @@ function suitelet(request, response){
 		bannerselect.addSelectOption(1, 'Login Banner');
 		bannerselect.addSelectOption(2, 'Cart Banner');
 		bannerselect.addSelectOption(3, 'Upsell Options');
+		bannerselect.addSelectOption(4, 'Checkout Banner');
+		bannerselect.addSelectOption(5, 'Checkout Upsell Options');
 		bannerselect.setDefaultValue(selectedbanner);
 		// onclick="addItem(3188)"
 		form.addField('bansettings_enabled', 'checkbox','Enabled').setDefaultValue(bannerinfoitem.getFieldValue('custrecord_enabled'));//TODO:load enabled state from record

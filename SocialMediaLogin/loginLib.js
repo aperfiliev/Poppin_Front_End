@@ -14,6 +14,11 @@ var LoginLib = {
 						 "summary": {} };
 
 		var order = nlapiGetWebContainer().getShoppingSession().getOrder().getFieldValues();
+		nlapiLogExecution("DEBUG","LOGIN LIB", JSON.stringify(order.summary));
+		if(order.summary.taxtotal ==0 && /*order.summary.shippingcost == 0 &&*/ order.summary.giftcertapplied == 0){
+			order.summary.total = order.summary.subtotal - order.summary.discounttotal + order.summary.shippingcost;
+			order.summary.total_formatted = "$"+order.summary.total.toFixed(2);
+		}
 		if (order != null)
 		{
 			nlapiLogExecution('DEBUG', 'order',JSON.stringify(order));
@@ -54,10 +59,12 @@ var LoginLib = {
 
 			if (promocodes && promocodes.length > 0)
 			{
+				nlapiLogExecution( 'DEBUG', 'promocode',  JSON.stringify(promocodes[0]));
 				retobj.promocode = promocodes[0];
+				
 				//if(retobj.promocode.isvalid == 'T')
 				//{
-					retobj.promocode.description = LoginLib.getPromoDescription(retobj.promocode.promocode);
+					retobj.promocode.description = LoginLib.getPromoDescription(retobj.promocode);
 				//}
 			}
 
@@ -99,11 +106,14 @@ var LoginLib = {
 		var helpresponse = nlapiRequestURL(poppinservres.url.placingorderhelpsuitlet);
 		return helpresponse.getBody();
 	},
-	getPromoDescription : function(code) {
+	getPromoDescription : function(promocode) {
 		var description = "";
+		var code = promocode.promocode ? '&code='+promocode.promocode : '';
+		var internalid = promocode.internalid ? '&internalid='+promocode.internalid : '';
+		nlapiLogExecution('DEBUG','suitelet request promo', poppinservres.url.promodescriptionsuitlet+code+internalid);
 		try
 		{
-			response = nlapiRequestURL(poppinservres.url.promodescriptionsuitlet+'&code='+code);
+			response = nlapiRequestURL(poppinservres.url.promodescriptionsuitlet+code+internalid);
 			description = response.getBody();
 		}
 		catch (e)

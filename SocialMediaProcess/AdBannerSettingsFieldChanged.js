@@ -19,6 +19,6 @@ function clientFieldChanged(type, name, linenum){
 	if (name == 'bansettings_bannerid'){
 		var bannerid = nlapiGetFieldValue('bansettings_bannerid');
 		window.onbeforeunload = null;
-		window.location = 'https://system.netsuite.com/app/site/hosting/scriptlet.nl?script=278&deploy=1&selectedbanner='+bannerid;
+		window.location = 'https://system.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=278&deploy=1&selectedbanner='+bannerid;
 	}
 }

@@ -1,6 +1,8 @@
 var EXITSURVEYSOCKET;
 
-jQuery(document).ready(function(){
+//jQuery(document).ready(function(){
+jQuery(document ).on( "show_exit_survey", function( event ) {
+console.log('here1111111111');
 	//exit survey socket
 	if(window.location.href.indexOf("checkout.sandbox.netsuite.com")!=-1){
 		if( jQuery(".breadcrumbs").html().indexOf('Thanks')>-1){

@@ -160,6 +160,7 @@ function loginUser(request, sociallink)
 			orderObjNew.addItems(items);
 			if(promocodes && promocodes.length > 0)
 			{
+				nlapiLogExecution('DEBUG','promo');
 				orderObj.applyPromotionCode(promocodes[0]);
 			}
 		}
@@ -196,10 +197,34 @@ function registerUser(request)
 	custObj.password2 = password2;
 	custObj.emailsubscribe = emailsubscribe;
 	
-	nlapiLogExecution('DEBUG','custObj for reg: ',JSON.stringify(custObj));
+	// saving promocode
+//	try{
+		nlapiLogExecution('DEBUG','reg3');	
+	var orderObj = nlapiGetWebContainer().getShoppingSession().getOrder();
+	var promocodes = orderObj.promocodes;
+//	nlapiLogExecution('DEBUG','orderObj: ',JSON.stringify(orderObj.getAllFields()));
+//	}catch(e){nlapiLogExecution('DEBUG','try catch section ',JSON.stringify(e));}
+	
+//	nlapiLogExecution('DEBUG','custObj for reg: ',JSON.stringify(custObj));
 	var result = session.registerCustomer(custObj);
-	nlapiLogExecution('DEBUG','registered: ', result.customerid);
+	setCustomersLeadSource(result.customerid, request.getParameter("lead"));
+	
+	var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
+	nlapiLogExecution('DEBUG','promocodes ',JSON.stringify(promocodes));
+	if(promocodes && promocodes.length > 0)
+	{
+//		nlapiLogExecution('DEBUG','PROMO: ');
+		orderObjNew.applyPromotionCode(promocodes[0]);
+	}
+//	nlapiLogExecution('DEBUG','orderObjNew: ',JSON.stringify(orderObjNew));
 	return password;
+}
+function setCustomersLeadSource(customerid, leadsource)
+{
+	if(leadsource != '')
+	{
+		nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=344&deploy=1&compid=3363929&h=a22c46a81161e2e84ad5&customerid='+customerid+'&leadsource='+leadsource);
+	}
 }
 function generatedstring()
 {

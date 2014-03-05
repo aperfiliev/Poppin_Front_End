@@ -1,0 +1,255 @@
+#office-supplies .main-image{
+    background: url(/site/pp-sources/office-supplies/office.supplies.header.animation.gif) top left no-repeat;
+    width: 968px;
+    height: 349px;
+    padding: 35px 0 0 25px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#office-supplies .main-image p{
+    font-size: 36px;
+    font-family: OmnesLightRegular;
+    margin: 0;
+}
+#office-supplies .main-image p strong{
+    font-size: 44px;
+    font-family: OmnesBoldRegular;
+    line-height: 44px;
+}
+#office-supplies .main-image p strong span{
+    margin-bottom: 15px;
+    font-size: 44px;
+    font-family: OmnesBoldRegular;
+    display: inline-block;
+}
+#office-supplies .main-image p span.thin{
+    font-family: OmnesLightRegular;
+    margin-bottom: 0;
+}
+#office-supplies .join{
+    width: 967px;
+    margin: 15px 0 0 0;
+}
+#office-supplies .join p{
+    text-align: center;
+    color: #00afe6;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-family: OmnesBoldRegular;
+    margin: 10px 0;
+}
+#office-supplies .item-cell{
+	width: 322px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 35px 0;
+}
+#office-supplies .item-cell p.item-cell-heading a{
+    font-family: OmnesLightRegular;
+    font-size: 24px;
+    background: url(/site/pp-sources/office-supplies/tick.jpg) bottom center no-repeat;
+    text-align: center;
+    padding-bottom: 30px;
+    width: 240px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    color: #000000;
+}
+#office-supplies .item-cell-image a.image-link,
+#office-supplies .item-cell-image a.image-link:hover
+{
+    display: block;
+    width: 308px;
+    height: 251px;
+    position: relative;
+    margin: 0 auto;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+/*product images  */
+#office-supplies .item-cell-image a.image-link.pic1{background: url(/site/pp-sources/office-supplies/pic_1.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic2{background: url(/site/pp-sources/office-supplies/pic_2.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic3{background: url(/site/pp-sources/office-supplies/pic_3.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic4{background: url(/site/pp-sources/office-supplies/pic_4.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic5{background: url(/site/pp-sources/office-supplies/pic_5.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic6{background: url(/site/pp-sources/office-supplies/pic_6.jpg) center center no-repeat;}
+
+
+/*product images  hover*/
+#office-supplies .item-cell-image a.image-link.pic1:hover{background: url(/site/pp-sources/office-supplies/pic_1a.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic2:hover{background: url(/site/pp-sources/office-supplies/pic_2a.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic3:hover{background: url(/site/pp-sources/office-supplies/pic_3a.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic4:hover{background: url(/site/pp-sources/office-supplies/pic_4a.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic5:hover{background: url(/site/pp-sources/office-supplies/pic_5a.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic6:hover{background: url(/site/pp-sources/office-supplies/pic_6a.jpg) center center no-repeat;}
+
+#office-supplies .item-cell ul.item-cell-itemlist{
+    list-style: none;
+    width: 260px;
+    margin: 15px auto 0;
+    padding: 0;
+}
+#office-supplies .item-cell ul.item-cell-itemlist li{
+    border-bottom: 1px dashed #b7b7b7;
+}
+#office-supplies .item-cell ul.item-cell-itemlist li.last{
+    border-bottom: none;
+}
+#office-supplies .item-cell ul.item-cell-itemlist li a{
+    color: #f4662a;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: Helvetica;
+    margin: 20px 0 15px;
+    display: inline-block;
+    font-weight: bolder;
+}
+#office-supplies .item-cell ul.item-cell-itemlist li a:hover{
+    text-decoration: underline;
+}
+#office-supplies hr.item-cell-underline{
+    color: #d3d3d3;
+    background-color:#d3d3d3;
+    border:0px none;
+    height:1px;
+    clear:both;
+}
+#office-supplies .design-block{
+    float: left;
+    width: 453px;
+    margin-right: 62px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+#office-supplies  .design-block.last{
+    margin-right: 0;
+}
+#office-supplies  .design-description{
+    background: url(/site/pp-sources/office-supplies/tick.jpg) bottom center no-repeat;
+    padding-bottom: 22px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+#office-supplies .design-description a{
+    font-family: OmnesLightRegular;
+    font-size: 24px;
+    color: #000000;
+    text-decoration: none;
+}
+#office-supplies .design-description a:hover{
+    color: #9e9e9e;
+    text-decoration: none;
+}
+#office-supplies .design-description p{
+    font-size: 19px;
+    color: #9e9e9e;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+#office-supplies a.design-block-image,
+#office-supplies a.design-block-image0{
+    background: url(/site/pp-sources/office-supplies/design.desk.animation2.jpg) right center no-repeat;
+    display: inline-block;
+    width: 453px;
+    height: 260px;
+}
+#office-supplies a.design-block-image0{
+    background: url(/site/pp-sources/office-supplies/design.desk.animationp.jpg) right center no-repeat;
+}
+#office-supplies a.design-block-image:hover,
+#office-supplies a.design-block-image0:hover{
+    background: url(/site/pp-sources/office-supplies/design.desk.animation2a.jpg) right center no-repeat;
+}
+#office-supplies a.design-block-image0:hover{
+    background: url(/site/pp-sources/office-supplies/design.desk.animation.gif) right center no-repeat;
+}
+#office-supplies .call-us{
+    background: url(/site/pp-sources/office-supplies/call.jpg) right center no-repeat;
+    width: 968px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+#office-supplies .call-us p.number{
+    font-family: OmnesBoldRegular;
+    font-size: 28px;
+    color: #69c0f4;
+    margin: 0;
+}
+#office-supplies .call-us p.number span{
+    font-family: OmnesLightRegular;
+}
+#office-supplies .call-us p.number a{
+    text-decoration: underline;
+    font-weight: normal;
+    font-family: OmnesBoldRegular;
+    color: #69c0f4;
+}
+#office-supplies .call-us p.help{
+    font-family: OmnesLightRegular;
+    font-size: 44px;
+    margin: 0;
+}
+#office-supplies .call-us ul.bonuses{
+    padding-left: 20px;
+    font-family: OmnesRegularRegular;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#office-supplies  .prefooter {
+    width: 968px;
+    height: 270px;
+    background: url(/site/pp-sources/office-supplies/prefooter.jpg) center no-repeat;
+}
+/*image preloader*/
+#image-preloader{
+    position: absolute;
+    top: -100500px;
+    background-image: url(/site/pp-sources/office-supplies/pic_1a.jpg),
+    url(/site/pp-sources/office-supplies/pic_2a.jpg),
+    url(/site/pp-sources/office-supplies/pic_3a.jpg),
+    url(/site/pp-sources/office-supplies/pic_4a.jpg),
+    url(/site/pp-sources/office-supplies/pic_5a.jpg),
+    url(/site/pp-sources/office-supplies/pic_6a.jpg),
+    url(/site/pp-sources/office-supplies/design.desk.animation2a.jpg),
+    url(/site/pp-sources/office-supplies/design.desk.animation.gif);
+    background-position: center bottom, left top;
+    background-repeat: no-repeat;
+}
+/*leadform*/
+#leadform-overlay{
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba( 0, 0, 0, 0.5);
+}
+#leadform-overlay{
+    display: none;
+}
+#leadform-overlay .leadform{
+    position: relative;
+    width: 785px;
+    height: 612px;
+    top: 50%;
+    left: 50%;
+    margin: -306px 0 0 -392px;
+    cursor: default;
+}
+#leadform-overlay .leadform .close-button{
+    position: relative;
+    width: 133px;
+    height: 75px;
+    top: -648px;
+    left: 710px;
+    cursor: pointer;
+    background: url(/site/pp-sources/workhappy/close-button.gif) center no-repeat;
+}
+#industry{
+    background: url(http://sandbox.poppin.com/site/pp-sources/customization/bg_select.png) no-repeat -12px;
+}
