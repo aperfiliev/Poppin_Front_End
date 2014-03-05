@@ -1,12 +1,11 @@
 <% registerMacro('creditcardSecurityNumberForm', function (options) { %>
 <% options = options || {}; console.log("ccoptions");console.log(options);%>
 <div class="credit-card-security-number">
-	<div class="control-group <%= options.error ? 'error' : '' %>" style="display:<%= (options.hidden) ? 'none':''%>">
-		
-		<label class="control-label" for="ccsecuritycode" style="width: 20px; margin-left: 30px;">
+	<div class="control-group <%= options.error ? 'error' : '' %>" style="display:<%= (options.hidden) ? 'none':''%>; margin-top: -10px;">
+		<label class="control-label" for="ccsecuritycode" style="width: 20px; margin-left: 8px;">
 			<%= _('CVC').translate() %>
 		</label>
-		<div class="controls">
+		<div class="controls" style="margin-left: 25px;">
 			<input
 				type="password"
 				class="input-mini"
@@ -14,7 +13,7 @@
 				name="ccsecuritycode"
 				value="<%- options.value %>"
 				maxlength="4"
-				style="font-size: 15px;"
+				style="font-size: 15px;<%= options.step == "review" ? 'border: 1px solid rgb(31, 216, 31);' : '' %>"
 			>
 			<% if (options.error) { %>
 				<p class="help-block">

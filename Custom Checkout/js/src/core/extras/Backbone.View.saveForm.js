@@ -77,19 +77,20 @@
 
 			var self = this;
 		      // Do not persist invalid models.
-			var options = {
+		var validation_promise = jQuery.Deferred();
+                     if(self.$savingForm.serializeObject().addr1!=undefined && self.$savingForm.serializeObject().addr1!=null){
+	var options = {
 					wait:true,
 					success:function(){console.log('success');},
 					error:function(){console.log('error');}
 					};
 			options = _.extend({validate: true}, options);
 			console.log('before');
-			var validation_promise = jQuery.Deferred();
+			
 		    if (!self.model._validate(self.$savingForm.serializeObject(), options)) {
 		    	validation_promise.reject();
 		    	return validation_promise;
 		    };
-                     if(self.$savingForm.serializeObject().addr1!=undefined && self.$savingForm.serializeObject().addr1!=null){
 			if(self.$("input[hiddenname='ignoresuggestion']").val()!='true'){
 		    	  //LiveView address validation
 				var addr = {
@@ -138,7 +139,9 @@ console.log(self.$savingForm);
 							else{
 								console.log("after 5");
 								var result = self.saveFormToModel(e, model, props);
-								result.done(function(){validation_promise.resolve(self.model);});
+								result.done(function(){
+								validation_promise.resolve(self.model);
+								});
 								
 							}
 						}

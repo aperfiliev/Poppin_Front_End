@@ -5,6 +5,8 @@
 	,	default_shipping_set = false
 	,	default_billing_set = false;
 console.log('update script');
+debugger;
+console.log(view);
 	_.each(address_book.models,function(addr){
     		if(addr.get('defaultshipping') =='T'){default_shipping_set = true;}
     		if(addr.get('defaultbilling') =='T'){default_billing_set = true;}
@@ -13,7 +15,11 @@ console.log('update script');
    
     //select default address if none selected
     //shipping
-    console.log("address book");
+    
+    //if(view.step.wizard.currentStep === "billing"){
+    	//address_book.models =  _.filter(address_book.models,function(addr){ return addr.get('defaultshipping') != 'T';});
+    //}
+    
     if(address_book.models.length>0){
     if(address_book.models[0].get('defaultshipping') =='F'){
 		var count = 0;
@@ -25,15 +31,15 @@ console.log('update script');
     }
     }
 //    console.log("MANUAL SELECT");
-		if(view.addressId==null && address_book.models.length > 0 && view.manage == 'shipaddress'){
-			view.manualSelectAddress(address_book.models[0].id);
-		}
 	
 	
 %>
 <% var page_name; %>
 <% if(Backbone.history.fragment.indexOf('shipping')>-1) { page_name = 'SHIPPING'} %>
 <% if(Backbone.history.fragment.indexOf('billing')>-1) { page_name = 'BILLING'} %> 
+
+
+
 <% if (view.addressId && !selected_address.isNew() && Backbone.history.fragment.indexOf('shipping')>-1) { %>
 	<h3 class="section-header car-background">
 		<%= _('SELECT YOUR ' + page_name + ' ADDRESS').translate() %>
@@ -60,7 +66,7 @@ console.log('update script');
 	</label>
 <% } %>-->
 
-<% if(view.manage == 'billaddress' && view.addressId==null && address_book.models.length==1) {%>
+<% if(view.manage == 'billaddress' /*&& view.addressId==null*/ && address_book.models.length==1) {%>
 	<div id="address-module-form-placeholder" class="address-module-form-placeholder">
 		<form method="POST">
 		<%= addressFrom(selected_address, {

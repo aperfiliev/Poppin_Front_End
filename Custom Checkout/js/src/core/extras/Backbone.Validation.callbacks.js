@@ -20,8 +20,7 @@
 
 	,	invalid: function (view, attr, error, selector)
 		{
-			//alert(error);
-			//console.log(error);
+			debugger;
 			var $target
 			,	$control = view.$el.find('['+ selector +'="'+ attr +'"]')
 			,	$group = $control.parents('.control-group').addClass('error');
@@ -53,8 +52,18 @@
 				// we need to add it. $target will be the placeholder
 				if (!$group.find('.help-block').length)
 				{
-					
-					$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+					if(attr == "phone"){
+						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: -10px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+					}else if(attr == "zip") {
+						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 214%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+					}else if(attr == "state"){
+						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 220%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+					}else if(attr == "expyear"){
+						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 200px;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+					}
+					else{
+						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+					}
 				}
 
 				$target = $group.find('.help-block');

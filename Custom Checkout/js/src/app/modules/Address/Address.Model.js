@@ -14,6 +14,7 @@ define('Address.Model', function ()
 	,	validation: {
 			lastfullname: { /*required: true, msg: _('Last Name is required').translate()*/ 
 				fn: function(value){
+
 					var reg = /^[a-zA-Z- ]{2,}$/;
 					if(value.length == 0 || !reg.test(value)){
 						return _('Hey, Professor Imistypedmyname, want to try again?').translate();
@@ -22,10 +23,12 @@ define('Address.Model', function ()
 //					if(value.indexOf(',')>-1||value.indexOf('.')>-1){
 //						return 'Last name can not contain comma or period symbols';
 //					}
+					
 				}
 			}
 		,	firstfullname: { /*required: true, msg: _('First Name is required').translate(),*/
 				fn: function(value){
+
 					var reg = /^[a-zA-Z- ]{2,}$/;
 					if(value.length == 0 || !reg.test(value)){
 						return _('Is that really your firstname? Try again').translate();
@@ -35,6 +38,7 @@ define('Address.Model', function ()
 //						return 'First name can not contain space, comma or period symbols';
 //					}
 				}
+
 			}
 		,	addr1: { required: true, msg: _('Address is required').translate() }
 		,	company: { required: SC.ENVIRONMENT.siteSettings.registration.companyfieldmandatory === 'T', msg: _('Company is required').translate() }

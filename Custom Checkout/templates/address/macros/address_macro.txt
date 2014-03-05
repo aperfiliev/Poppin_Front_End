@@ -7,9 +7,10 @@
 	,	country_object = countries[address.get('country')]
 	,	country = (country_object)? country_object.name : address.get('country')
 	,	state_object = (country_object && country_object.states)? _.findWhere(countries[address.get('country')].states, {code: address.get('state')}): null
-	,	state = (state_object)? state_object.name: address.get('state');
-	
+	,	state = (state_object)? state_object.code: address.get('state');
+
 %>
+
 <article class="address" >
 	
 	<address class=""">	

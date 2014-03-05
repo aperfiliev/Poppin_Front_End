@@ -11,15 +11,16 @@ define('OrderWizard.Module.PaymentMethod.PayPal', ['OrderWizard.Module.PaymentMe
 
 	,	isActive: function()
 		{
+		    debugger;
 			var paypal = _.findWhere(this.wizard.application.getConfig('siteSettings.paymentmethods', []), {ispaypal: 'T'});
 			return (paypal && paypal.internalid);
 		}
 
 	,	past: function()
 		{
-			if (this.isActive() && !this.wizard.isPaypalComplete() && !this.wizard.hidePayment())
+			if (this.isActive() && this.wizard.isPaypal() && !this.wizard.isPaypalComplete() && !this.wizard.hidePayment())
 			{
-
+				debugger;
 				var checkout_url = this.wizard.application.getConfig('siteSettings.touchpoints.checkout')
 				,	joint = ~checkout_url.indexOf('?') ? '&' : '?'
 				,	previous_step_url = this.wizard.getPreviousStepUrl();

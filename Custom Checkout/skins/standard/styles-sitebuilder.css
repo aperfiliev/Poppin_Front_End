@@ -5741,7 +5741,7 @@ display: block;
 	#main .row-fluid .span6
 	{
 		//width: 48.664757228587014%;
-		width: 677px;
+		width: 609px;
 	}
 	#main .row-fluid .span5
 	{
@@ -8923,7 +8923,7 @@ color: gray;
 .module-rendered, .orderwizard-module {
 //width: 300px;
 //float: left;
-        display: table-cell;
+        //display: table-cell;
 }
 
 .wizard-step-content {

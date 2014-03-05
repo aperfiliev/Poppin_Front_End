@@ -53,11 +53,11 @@ console.log(creditcard.get('paymentmethod').name);
 	<% if (options.showSelect) { %>
 
 	<% } %><%if(options.step != "review"){%>
-			<a class="btn btn-link" href="/creditcards/<%= creditcard.get('internalid') %>" data-toggle="show-in-modal">
+				<a class="btn btn-link" href="/creditcards/<%= creditcard.get('internalid') %>" data-toggle="show-in-modal" style="display: none;">
 				<%= _('Edit').translate() %>
 			</a>
 			<btn class="btn btn-link" data-action="remove" data-id="<%- creditcard.get('internalid') %>">
-				<%= _('Delete').translate() %>
+				<%= _('Delete Card').translate() %>
 			</btn>
 			<%}%>
 		</p>

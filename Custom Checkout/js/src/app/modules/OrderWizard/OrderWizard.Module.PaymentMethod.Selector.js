@@ -131,6 +131,7 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 	
 	,	render: function()
 		{
+		debugger;
 			if (this.wizard.hidePayment())
 			{
 				this.$el.empty();

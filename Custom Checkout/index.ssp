@@ -71,7 +71,7 @@
 		$j.ajax({
 			type : 'POST',
 			data : {netsuiteid: itemid, quantity: 1},
-			url : 'https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/ViewCartService.ss' + '?method=add',
+			url : 'https://checkout.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/ViewCartService.ss' + '?method=add',
 			cache : false
 		});
 	}
@@ -124,8 +124,8 @@
 	<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 	<% } %>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0144270275e7.js') %>"></script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-014426e929c5.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0144927f6b3c.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-014491a42336.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
 	<PP_CHECKOUT_TAG_CONTAINER>
 </body>

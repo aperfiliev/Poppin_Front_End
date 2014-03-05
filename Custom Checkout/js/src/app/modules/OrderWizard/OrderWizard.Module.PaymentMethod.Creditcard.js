@@ -33,6 +33,7 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 
 	,	render: function ()
 		{
+		debugger;
 			var self = this
 				// currently we only support 1 credit card as payment method
 			,	order_payment_method = this.model.get('paymentmethods').findWhere({

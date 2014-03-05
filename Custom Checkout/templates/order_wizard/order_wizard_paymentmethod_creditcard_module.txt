@@ -2,11 +2,7 @@
 
 <% if (view_credit_card && !view_credit_card.isNew()) { %>
 	<div id="creditcard-module-list-placeholder" class="creditcard-module-list-placeholder">
-		<p>
-			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">
-				<%= _('Add New Credit Card').translate() %>
-			</a>
-		</p>
+
 		<%
 			var creditcardWrap = function (creditcard) {
 				return SC.macros.creditcard(creditcard, {
@@ -21,16 +17,13 @@
 			} 
 		%>
 		<%= displayInRows(view.creditcards.models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
+
 	</div>
 <% } %>
 
 <% if (view.creditcards.length >= 1 && !view_credit_card) { %>
 	<div id="creditcard-module-list-placeholder" class="creditcard-module-list-placeholder">
-		<p>
-			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">
-				<%= _('Add New Credit Card').translate() %>
-			</a>
-		</p>
+
 		<%
 			var creditcardWrap = function (creditcard) {
 				return SC.macros.creditcard(creditcard, {
@@ -72,6 +65,14 @@
 			}) %>
 	</div>
 	<% } %>
+	<div id="cvc-error" style="margin-top: 33px; margin-left: 7px;"></div>
+	<% if (view.creditcards.length > 0) { %>
+			<p>
+			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">
+				<%= _('Add a New Card').translate() %>
+			</a>
+		</p>
+		<% } %>
 					<div style="width:290px; font-size:14px; font-weight:normal; display: none;" id="whatisthisinfo">
 				<img src="img/explain_cvc.png" alt="explain"><br/>
 				For security purposes, we require the Card Security Code on your credit card. 

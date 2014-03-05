@@ -107,6 +107,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 
 ,	setCreditCard: function (options)
 	{	
+	debugger;
 		var ccattributes;
 		if (this.creditcards.get (options.id) != undefined) {
 			ccattributes = this.creditcards.get(options.id).attributes;
@@ -114,9 +115,12 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		ccattributes.ccdafault = "T";
 		console.log("setCreditCard. ccattributes = "+ ccattributes);
 		this.paymentMethod = new OrderPaymentmethodModel({
-			type: 'creditcard'
-		,	creditcard: options.model || ccattributes
+			type       : 'creditcard'
+		,	creditcard : options.model || ccattributes
+		,	primary    : true
 		});
+		this.model.get('paymentmethods')[0] = this.paymentMethod;
+		
 		this.setSecurityNumber();
 		OrderWizardModulePaymentMethod.prototype.submit.apply(this, arguments);
 
@@ -188,6 +192,9 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 				{				
 					self.updateCartSummary();	
 				}
+			});
+			Backbone.on('updateSummary', function(){
+				self.updateCartSummary();	
 			});
 			this.model.on('refresh', function(){
 				console.log('refreshing');
@@ -311,6 +318,8 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 							if(message.indexOf("This coupon code has expired or is invalid")>-1)
 								message = "This promo code has expired or is invalid";
 							self.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
+							//self.$('[data-type=alert-placeholder-module]').html(SC.macros.message(message,'error',true));
+							//throw new Error(message);
 //							$target.find('input[name=promocode]').focus();
 						}
 					}
@@ -471,7 +480,7 @@ self.render();
 
 ,	showError: function (message)
 	{
-		this.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
+		//this.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
 //		this.$('.control-group').addClass('error');
 		//WizardModule.prototype.showError.apply(this, arguments);
 //		self.showError(result.errorMessage, $line, result.errorDetails);

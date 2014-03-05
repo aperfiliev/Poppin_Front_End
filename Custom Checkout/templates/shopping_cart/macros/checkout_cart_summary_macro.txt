@@ -10,6 +10,8 @@
 	var sum = 0;
 	var view = {};
 var domainSum = 0;
+console.log("-------PROMOCODE");
+console.log(promocode);
 %>
 <style>
 .cart-layover{

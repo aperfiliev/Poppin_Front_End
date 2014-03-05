@@ -8,7 +8,7 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 	return WizardModule.extend(
 	{
 			template: 'order_wizard_showpayments_module'
-		
+		,	errors: ['ERR_WS_CC_AUTH']
 		,	events: {
 				'click input[name="delivery-options"]': 'changeDeliveryOptions'
 			, 	'click input[name="review-delivery-options"]': 'changeChecked'
@@ -93,6 +93,7 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 			}
 		,	render: function()
 			{
+			debugger;
 				console.log("Render Show Payments Module");
 				this.application = this.wizard.application;
 				this.profile = this.wizard.options.profile;
@@ -100,6 +101,7 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 				this.eventHandlersOn();
 				var wasChecked = false,
 			    	cvcBeforeRender;
+				if (this.getPaymentmethods().length > 0 && this.getPaymentmethods()[0].attributes.creditcard) {
 				if (!this.currentCardId && this.getPaymentmethods().length > 0) {
 					this.currentCardId = this.getPaymentmethods()[0].attributes.creditcard.internalid;
 				} else if (this.getPaymentmethods().length > 0 && (this.currentCardId != this.getPaymentmethods()[0].attributes.creditcard.internalid)) {
@@ -110,7 +112,7 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 						cvcBeforeRender = this.$('#ccsecuritycode')[0].value;
 					}
 				}
-				
+				}
 				if (this.$('#cardmessageblock').length != 0) {
 					     wasChecked = this.$('#cardmessagetoggle')[0].checked;
 					 var selIndex   = this.$('#cardmessage-options')[0].selectedIndex,
@@ -161,6 +163,7 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 		}	
 		,	getPaymentmethods: function()
 			{
+			debugger;
 				return _.reject(this.model.get('paymentmethods').models, function (paymentmethod)
 				{
 					return paymentmethod.get('type') === 'giftcertificate';
@@ -222,6 +225,9 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 			}
 		
 		, 	validateAndSetCVC: function () {
+			 if(this.model.get('paymentmethods').where({type: 'paypal'}).length>0 ){
+				 return null;
+				 }
 				var val = this.$('#ccsecuritycode').val(),
 					errorMsg;
 				if (!val || (val && (/[^0-9]/.test(val) || val.length < 3))) {
@@ -237,6 +243,16 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 					credit_card_pm[0].attributes.creditcard.ccsecuritycode =  this.$('#ccsecuritycode').val();
 					return null;
 				}
+		}
+		,	showError: function ()
+		{
+			if (this.error && this.error.errorCode === 'ERR_WS_CC_AUTH')
+			{
+				this.error.errorMessage = "Unfortunately we were unable to authorize this purchase with the credit card information given. Please review and update your payment details below.";
+				this.$('.wizard-showpayments-billing-payment-method').css('border','2px solid red');
+			}
+			
+			WizardModule.prototype.showError.apply(this, arguments);
 		}
 	});
 });

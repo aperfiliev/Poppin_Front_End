@@ -254,9 +254,8 @@ Application.defineModel('Address', {
 			}
 			address.lastfullname = res[1];
 		
-//		nlapiLogExecution('DEBUG', 'after', address.label);
+			nlapiLogExecution('DEBUG', 'after', JSON.stringify(address));
 		address.company = address.attention;
-		
 		var phonenumber = (""+address.phone).replace(/\D/g, '');
 		if(phonenumber.length>10){
 			var m = phonenumber.match(/^(\d{3})(\d{3})(\d{4})(\d{1,4})$/);
@@ -291,7 +290,7 @@ Application.defineModel('Address', {
 			phone = "("+phoneresult[0]+")" + " "+ phoneresult[1] + "-" + phoneresult[2];
 		}
 		if(address.ext){
-			phone = phone + ' ext:' + address.ext;
+			phone = phone + ' ext.' + address.ext;
 		}
 		var firstAndLast = firstName.concat(lastName);
 		if(prefix != ""){
@@ -300,7 +299,7 @@ Application.defineModel('Address', {
 		address.phone = phone;
 		address.attention = address.company;
 		address.addressee = res;
-//		nlapiLogExecution('DEBUG', 'before', JSON.stringify(address));
+		nlapiLogExecution('DEBUG', 'before', JSON.stringify(address));
 		
 		delete address.company;
 		delete address.firstfullname;
@@ -820,11 +819,18 @@ Application.defineModel('LiveOrder', {
 
 		// Terms And Conditions
 		result.agreetermcondition = order_fields.agreetermcondition === 'T';
-
+		
+		nlapiLogExecution('AUDIT','order FIELDS', JSON.stringify(order_fields));
 		// General Addresses
 		result.shipaddress = order_fields.shipaddress ? this.addAddress(order_fields.shipaddress, result) : null;
-
-		result.billaddress = order_fields.billaddress ? this.addAddress(order_fields.billaddress, result) : null;
+		nlapiLogExecution('AUDIT','order_fields.billaddress == order_fields.shipaddress', JSON.stringify(order_fields.billaddress == order_fields.shipaddress));
+		nlapiLogExecution('AUDIT','result.shipaddress', JSON.stringify(result.shipaddress));
+		if (paypal && order_fields.billaddress) {
+			result.billaddress = result.shipaddress;
+			nlapiLogExecution('AUDIT','result.billaddress', JSON.stringify(result.billaddress));
+		} else {
+			result.billaddress = order_fields.billaddress ? this.addAddress(order_fields.billaddress, result) : null;
+		}
 
 		result.addresses = _.values(result.addresses);
 
@@ -913,7 +919,7 @@ Application.defineModel('LiveOrder', {
 		{
 			order.removePromotionCode(current_order.promocode.code);
 		}
-
+		
 		// Billing Address
 		if (data.billaddress !== current_order.billaddress)
 		{
@@ -922,6 +928,7 @@ Application.defineModel('LiveOrder', {
 				if (data.billaddress && !~data.billaddress.indexOf('null'))
 				{
 					// Heads Up!: This "new String" is to fix a nasty bug
+					//nlapiLogExecution('DEBUG', 'Billing Address order',JSON.stringify(data.billaddress));
 					order.setBillingAddress(new String(data.billaddress).toString());
 				}
 			}
@@ -1101,9 +1108,11 @@ Application.defineModel('LiveOrder', {
 		var touchpoints = session.getSiteSettings( ['touchpoints'] ).touchpoints
 		,	continue_url = 'https://' + request.getHeader('Host') + touchpoints.checkout
 		,	joint = ~continue_url.indexOf('?') ? '&' : '?';
-		
-		continue_url = continue_url + joint + 'paypal=DONE&fragment=' + request.getParameter('next_step');
-		
+		nlapiLogExecution('AUDIT', 'redirectToPayPal',continue_url );
+		continue_url = continue_url + joint + 'paypal=DONE&fragment=review';
+		//continue_url = continue_url + joint + 'paypal=DONE&fragment=' + request.getParameter('next_step');
+
+		//nlapiLogExecution('DEBUG', 'redirectToPayPal', continue_url);
 		session.proceedToCheckout({
 			cancelurl: touchpoints.viewcart
 		,	continueurl: continue_url
@@ -1121,9 +1130,9 @@ Application.defineModel('LiveOrder', {
 		var touchpoints = session.getSiteSettings( ['touchpoints'] ).touchpoints
 		,	continue_url = 'https://' + request.getHeader('Host') + touchpoints.checkout
 		,	joint = ~continue_url.indexOf('?') ? '&' : '?';
-		
+		nlapiLogExecution('AUDIT', 'redirectToPayPalExpress',joint );
 		continue_url = continue_url + joint + 'paypal=DONE';
-		
+		//nlapiLogExecution('DEBUG', 'redirectToPayPalExpress',JSON.stringify(continue_url));
 		session.proceedToCheckout({
 			cancelurl: touchpoints.viewcart
 		,	continueurl: continue_url
@@ -1141,17 +1150,22 @@ Application.defineModel('LiveOrder', {
 		,	bill_address = order.getBillingAddress()
 		,	ship_address = order.getShippingAddress();
 
+		nlapiLogExecution('AUDIT', 'backFromPayPal',"backFromPayPal");
+                nlapiLogExecution('AUDIT',  'ship_address', JSON.stringify(ship_address));
+		//nlapiLogExecution('DEBUG', 'backFromPayPal',"BACK");
+		
 		if (customer_values.isGuest === 'T' && session.getSiteSettings(['registration']).registration.companyfieldmandatory === 'T')
 		{
 			customer_values.companyname = 'Guest Shopper';
 			customer.updateProfile(customer_values);
 		}
-		
+		 
+                 nlapiLogExecution('AUDIT',  'bill_address', JSON.stringify(bill_address));
 		if (ship_address.internalid && ship_address.isvalid === 'T' && !bill_address.internalid)
 		{	
 			order.setBillingAddress(ship_address.internalid);
 		}
-
+		//nlapiLogExecution('AUDIT',  'ORDER', JSON.stringify(order));
 		context.setSessionObject('paypal_complete', 'T');
 	}
 	

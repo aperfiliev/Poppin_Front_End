@@ -137,6 +137,7 @@ define('OrderWizard.Module.Shipmethod', ['Wizard.Module'], function (WizardModul
 	,	reloadMethods: function ()
 		{
 			// to reload the shipping methods we just save the order
+		debugger;
 			var self = this
 			,	$container = this.$el;
 
@@ -151,6 +152,10 @@ define('OrderWizard.Module.Shipmethod', ['Wizard.Module'], function (WizardModul
 						,	summary: attributes.summary
 					});
 				}
+			,	error: function(model, attributes){
+				debugger;
+				console.log(model);
+			}
 			}).always(function ()
 			{
 				$container.removeClass('loading');

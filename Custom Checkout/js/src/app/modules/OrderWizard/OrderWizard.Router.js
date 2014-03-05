@@ -23,13 +23,26 @@ define('OrderWizard.Router', ['Wizard.Router', 'OrderWizard.View', 'OrderWizard.
 
 	,	startWizard: function()
 		{
-			if(this.model.attributes.shipaddress.indexOf('null') == -1 && this.model.attributes.billaddress.indexOf('null') == -1 ){
-				Backbone.history.navigate(this.stepsOrder[2], {trigger: true});
+		debugger;
+		console.log('owizard model'); console.log(this.model);
+		
+		if(this.model.attributes.shipaddress.indexOf('null') == -1 && this.model.attributes.billaddress.indexOf('null') == -1 ){
+			var current_creditcards = this.model.get('paymentmethods').findWhere({
+				type: 'creditcard'
+			});
+			var paypal = this.model.get('paymentmethods').findWhere({type: 'paypal'});
+			console.log(current_creditcards);
+			if(!current_creditcards && !paypal){
+				Backbone.history.navigate(this.stepsOrder[1], {trigger: true});
 			}
 			else{
-				Backbone.history.navigate(this.stepsOrder[0], {trigger: true});
+				Backbone.history.navigate(this.stepsOrder[2], {trigger: true});
 			}
 			
+		}
+		else{
+			Backbone.history.navigate(this.stepsOrder[0], {trigger: true});
+		}
 		}
 
 	,	hidePayment: function()

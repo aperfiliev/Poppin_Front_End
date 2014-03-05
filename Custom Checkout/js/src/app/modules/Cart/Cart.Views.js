@@ -154,6 +154,7 @@ define('Cart.Views', ['ErrorManagement'], function (ErrorManagement)
 		// Handles the submit of the apply promo code form
 	,	applyPromocode: function (e)
 		{
+		debugger;
 			e.preventDefault();
 			
 			this.$('[data-type=promocode-error-placeholder]').empty();
