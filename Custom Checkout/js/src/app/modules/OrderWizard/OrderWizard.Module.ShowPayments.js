@@ -56,7 +56,7 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 					value = name.getAttribute("value");
 				}
 			});
-
+debugger;
 			this.model.set('shipmethod', value);
 				this.step.disableNavButtons();
 				this.model.save().always ( function()
@@ -139,6 +139,7 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 				var self = this;
 				Backbone.on('refresh', function ()
 						{
+					debugger;
 							var wasChecked = this.$('#cardmessagetoggle')[0].checked,
 								selIndex   = this.$('#cardmessage-options')[0].selectedIndex,
 								text       = this.$('#cardmessagetext')[0].value,
@@ -163,12 +164,19 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 		}	
 		,	getPaymentmethods: function()
 			{
-			debugger;
 				return _.reject(this.model.get('paymentmethods').models, function (paymentmethod)
 				{
 					return paymentmethod.get('type') === 'giftcertificate';
 				});
 			}
+		
+		,   getPrimaryPaymentmethods: function()
+		{
+			debugger;
+			
+				return this.model.get('paymentmethods').where({primary: true});
+			
+		}
 		,	getGiftCertificates: function()
 			{
 				return this.model.get('paymentmethods').where({type: 'giftcertificate'});
@@ -202,6 +210,12 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 			}
 		,	changeDeliveryOptions: function(e) 
 		{
+			var cvsError = this.validateAndSetCVC();
+			if (cvsError) {
+				this.render();
+				this.validateAndSetCVC();
+				return jQuery.Deferred().reject(cvsError);
+			}
 			var value = this.$(e.target).val()
 			,	self = this;
 

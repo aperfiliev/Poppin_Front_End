@@ -825,7 +825,8 @@ Application.defineModel('LiveOrder', {
 		result.shipaddress = order_fields.shipaddress ? this.addAddress(order_fields.shipaddress, result) : null;
 		nlapiLogExecution('AUDIT','order_fields.billaddress == order_fields.shipaddress', JSON.stringify(order_fields.billaddress == order_fields.shipaddress));
 		nlapiLogExecution('AUDIT','result.shipaddress', JSON.stringify(result.shipaddress));
-		if (paypal && order_fields.billaddress) {
+		nlapiLogExecution('AUDIT','paypal', JSON.stringify(paypal));
+		if (order_fields.payment && paypal && paypal.internalid === order_fields.payment.paymentmethod && !order_fields.billaddress) {
 			result.billaddress = result.shipaddress;
 			nlapiLogExecution('AUDIT','result.billaddress', JSON.stringify(result.billaddress));
 		} else {
@@ -852,7 +853,9 @@ Application.defineModel('LiveOrder', {
 			result.options = options;
 			console.log(JSON.stringify(options));
 		}
-
+		
+		nlapiLogExecution('AUDIT','result.paymentmethods', JSON.stringify(result.paymentmethods));
+		nlapiLogExecution('AUDIT','RESULT', JSON.stringify(result));
 		return result;
 	}
 

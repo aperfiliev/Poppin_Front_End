@@ -1,7 +1,8 @@
 <% registerMacro('creditcard', function (creditcard, options) { %>
 <%
 console.log("MACRO");
-console.log(creditcard.get('paymentmethod').name);
+debugger;
+console.log(window.location.hash);
 
 	var payment_name = creditcard.get('paymentmethod').name
 	,	expiration_month = creditcard.get('expmonth')
@@ -25,7 +26,6 @@ console.log(creditcard.get('paymentmethod').name);
 			</div>
 			<div style="float:left; padding-left: 10px;">
 			<h4 class="summary-header">
-			<% console.log("CC NUMBER"); console.log(creditcard.get('ccnumber'));%>
 				<%= payment_name %> ************<%= creditcard.get('ccnumber').replace(/\*/g, '')%>
 			</h4>
 			<p style="margin:0;"> 
@@ -45,8 +45,29 @@ console.log(creditcard.get('paymentmethod').name);
 		</div>
 	</div>
 	<% } %>
-
-
+		<!------------------------- --------------
+		<div class="credit-card-security-number" style="display:none">
+			<div class="control-group " style="display:; margin-top: -10px;">
+				<label class="control-label" for="ccsecuritycode" style="width: 20px; margin-left: 8px;">
+					CVC
+				</label>
+				<div class="controls" style="margin-left: 25px;">
+					<input type="password" class="input-mini" id="ccsecuritycode" name="ccsecuritycode" value="" maxlength="4" style="font-size: 15px;">
+					
+					
+					<a href="#" name="whatisthis" class="whatisthis" style="text-decoration:underline">what is this?</a> <br>
+					
+		<script>
+		jQuery('.whatisthis').hover(function(){
+		        jQuery('#whatisthisinfo').show("slow");
+		},function(){
+		        jQuery('#whatisthisinfo').hide("slow");
+		});
+		</script>
+				</div>
+			</div>
+		</div>
+		------------------------------------------->
 	<% if (options.showActions) { %>
 		<div style="clear: both;"></div>
 		<p class="actions" style="margin:0" >
@@ -62,11 +83,12 @@ console.log(creditcard.get('paymentmethod').name);
 			<%}%>
 		</p>
 	<% } %>
+<% if(creditcard.get('internalid') == options.selectedCreditcard && window.location.hash.indexOf("billing")>-1){ %>
+ 		<%= SC.macros.creditcardSecurityNumberForm({
+			error: undefined
+           ,   value:  options.cvcvalue
+           ,	hidehelp: false
+		}) %>
+<% } %>
 </article>
-			<!--	<div style="width:100%; font-size:14px; font-weight:normal; display: none;" id="whatisthisinfo">
-				<img src="img/explain_cvc.png" alt="explain"><br/>
-				For security purposes, we require the Card Security Code on your credit card. 
-				For most credit cards, enter the three-digit number that follows your account number on the back of your card. 
-				If you have an American Express card, enter the four-digit number printed above your account number on the front of your card.
-			</div>-->
 <% }) %>

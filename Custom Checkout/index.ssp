@@ -124,8 +124,8 @@
 	<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 	<% } %>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0144927f6b3c.js') %>"></script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-014491a42336.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-01449d39dfa4.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0144b0d9584a.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
 	<PP_CHECKOUT_TAG_CONTAINER>
 </body>

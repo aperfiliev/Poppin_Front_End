@@ -31,6 +31,7 @@ jQuery('.whatisthis').hover(function(){
 });
 </script>
 		<% } %>
+		<div id="cvc-error" style="margin-left: -61px; margin-top: -10px;"></div>
 		</div>
 	</div>
 </div>

@@ -90,6 +90,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			}
 
 			console.log("RENDERRRRRR");
+			debugger;
 			if(this.addressId==null && this.getAddressesToShow().length > 0 && this.manage == 'shipaddress'){
 				console.log(this.getAddressesToShow());
 				   this.manualSelectAddress(this.getAddressesToShow().models[0].id);

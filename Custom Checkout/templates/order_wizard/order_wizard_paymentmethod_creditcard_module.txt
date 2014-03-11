@@ -1,5 +1,5 @@
 <% var view_credit_card = view.creditcard %>
-
+<%debugger; console.log("-=-=-=-=-=-=");%>
 <% if (view_credit_card && !view_credit_card.isNew()) { %>
 	<div id="creditcard-module-list-placeholder" class="creditcard-module-list-placeholder">
 
@@ -8,6 +8,7 @@
 				return SC.macros.creditcard(creditcard, {
 					showSelect: true
 				,	showActions: true
+				,	cvcvalue: view.paymentMethod.get('creditcard') ? view.paymentMethod.get('creditcard').ccsecuritycode : ''
 				,	showDefaults: false
 				,	selectMessage: view.selectMessage
 				,	icons: view.wizard.application.getConfig('creditCardIcons')
@@ -29,6 +30,7 @@
 				return SC.macros.creditcard(creditcard, {
 					showSelect: true
 				,	showActions: true
+				,	cvcvalue: view.paymentMethod.get('creditcard') ? view.paymentMethod.get('creditcard').ccsecuritycode : ''
 				,	showDefaults: false
 				,	selectMessage: view.selectMessage
 				,	icons: view.wizard.application.getConfig('creditCardIcons')
@@ -56,16 +58,12 @@
 		</form>
 	</div>
 <% } %>
-<%if(view.paymentMethod.get('creditcard')!=undefined){ console.log("3");console.log(view);%>
+<%if(view.paymentMethod.get('creditcard')!=undefined){ console.log("777");console.log(view);%>
 	<div class="span6">
-			<%= SC.macros.creditcardSecurityNumberForm({
-				error: undefined
-            ,   value:  view.paymentMethod.get('creditcard').ccsecuritycode
-            ,	hidehelp: false
-			}) %>
+<!-- cvc form was here -->
 	</div>
 	<% } %>
-	<div id="cvc-error" style="margin-top: 33px; margin-left: 7px;"></div>
+	<!--<div id="cvc-error" style="margin-top: 33px; margin-left: 7px;"></div>-->
 	<% if (view.creditcards.length > 0) { %>
 			<p>
 			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal">

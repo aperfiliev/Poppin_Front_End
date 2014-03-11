@@ -1,9 +1,10 @@
 <% registerMacro('creditcardForm', function (creditcard, options) { %>
 <% var application = options.application;
 var cvc = jQuery('#ccsecuritycode').val(); 
-console.log("creditcardForm");console.log(creditcard);
 creditcard.attributes.ccsecuritycode = cvc;
+
 console.log(creditcard);
+console.log(options);
 if(creditcard.isNew()){
 	//creditcard.set('cccheckbox',true);
 }

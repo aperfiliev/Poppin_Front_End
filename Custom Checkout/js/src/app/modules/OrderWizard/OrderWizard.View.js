@@ -117,13 +117,9 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		this.paymentMethod = new OrderPaymentmethodModel({
 			type       : 'creditcard'
 		,	creditcard : options.model || ccattributes
-		,	primary    : true
 		});
-		this.model.get('paymentmethods')[0] = this.paymentMethod;
-		
 		this.setSecurityNumber();
 		OrderWizardModulePaymentMethod.prototype.submit.apply(this, arguments);
-
 		// We re render so if there is changes to be shown they are represented in the view
 		this.render();
 	}

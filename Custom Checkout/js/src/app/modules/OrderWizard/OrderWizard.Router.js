@@ -30,7 +30,15 @@ define('OrderWizard.Router', ['Wizard.Router', 'OrderWizard.View', 'OrderWizard.
 			var current_creditcards = this.model.get('paymentmethods').findWhere({
 				type: 'creditcard'
 			});
-			var paypal = this.model.get('paymentmethods').findWhere({type: 'paypal'});
+			var paypal = this.model.get('paymentmethods').findWhere({type: 'paypal'}),
+			    shipaddress = this.model.attributes.addresses.get(this.model.attributes.shipaddress);
+			
+			if (!paypal && shipaddress && !shipaddress.phone) {
+				Backbone.history.navigate(this.stepsOrder[0], {trigger: true});
+			}
+				
+				
+				
 			console.log(current_creditcards);
 			if(!current_creditcards && !paypal){
 				Backbone.history.navigate(this.stepsOrder[1], {trigger: true});

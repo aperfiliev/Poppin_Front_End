@@ -37,6 +37,7 @@ define('OrderWizard.Module.PaymentMethod.PayPal', ['OrderWizard.Module.PaymentMe
 
 	,	render: function()
 		{
+		debugger;
 			if (this.isActive())
 			{
 				this.paymentMethod = new OrderPaymentmethodModel({ type: 'paypal' });
