@@ -58,9 +58,9 @@
 	 * Dynamically build out the cart
 	 */
 	function buildCartItems(order) {
-		console.log("order");
-		console.log(order);
-		debugger;
+		//console.log("order");
+		//console.log(order);
+		//debugger;
 		var myaccount_attr = document.getElementById("myaccount").getAttribute("href");
 		
 		var sign_up = jQuery(".singUpBtn").attr("onclick");
@@ -291,7 +291,7 @@
 	 */
 	function buildOrderSummary(subtotal, tax, shipping, discount, total)
 	{
-		debugger;
+		//debugger;
 		jQuery("#actionbar").html("");
 		tbody = document.getElementById('actionbar');
 		
@@ -348,7 +348,7 @@
 		var code = '';
 		var description = '';
 		var isvalid = 'N';
-		console.log(promocode);
+		//console.log(promocode);
 		if(promocode.isvalid != null)
 		{
 			isvalid = promocode.isvalid;
@@ -415,7 +415,7 @@
 		if(isvalid === 'F')
 		{
 			var alignTipTop = 0;
-			promocode.message.indexOf('<br/>')>-1 ? alignTipTop= -35 : alignTipTop = 50;
+			promocode.message.indexOf('<br/>')>-1 ? alignTipTop= -35 : alignTipTop = -50;
 			powerTip.create('promoInput', promocode.message,
 					'powerTipPromo', alignTipTop, 40);
 			jQuery('#promoInput').on('focusin', function() { powerTip.hide('powerTipPromo'); }) ;
