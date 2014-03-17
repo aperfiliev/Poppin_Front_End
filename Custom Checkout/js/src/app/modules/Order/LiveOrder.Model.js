@@ -182,6 +182,7 @@ define('LiveOrder.Model', ['Order.Model', 'OrderLine.Model', 'OrderLine.Collecti
 
 	,	submit: function ()
 		{
+		debugger;
 			var self = this;
 			
 			this.set('internalid', null);
@@ -193,17 +194,20 @@ define('LiveOrder.Model', ['Order.Model', 'OrderLine.Model', 'OrderLine.Collecti
 			var paypal = this.get('paymentmethods').findWhere({type: 'paypal'});
 			if (paypal && !paypal.get('complete'))
 			{
-				this.set(this.get('paymentmethods').remove(paypal));
+				//this.set(this.get('paymentmethods').remove(paypal));
+paypal .set('complete',  true);
 			}
 			return this.save().fail(function ()
 			{
 				self.set('internalid', 'cart');
 			});
+			//.success(_.bind(this.showContent, this))
 		}
 
 
 	,	save: function ()
-		{console.log('save liveorder');
+		{debugger;
+ console.log('save liveorder');
 			if (this.get('confirmation'))
 			{
 				return jQuery.Deferred().resolve();

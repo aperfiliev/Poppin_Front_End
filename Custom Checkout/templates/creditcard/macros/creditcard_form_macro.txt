@@ -2,7 +2,7 @@
 <% var application = options.application;
 var cvc = jQuery('#ccsecuritycode').val(); 
 creditcard.attributes.ccsecuritycode = cvc;
-
+console.log("-=--=-=-==");
 console.log(creditcard);
 console.log(options);
 if(creditcard.isNew()){
@@ -86,10 +86,11 @@ if(creditcard.isNew()){
   </div>
  </div>
  
- <% if (options.showSecurityCodeForm) { %>
+ <% if (options.showSecurityCodeForm && false) { %>
   <%= SC.macros.creditcardSecurityNumberForm() %>
  <% } %>
 <%if(creditcard.isNew()){%>
+  <%= SC.macros.creditcardSecurityNumberForm({verifyModal: options.collection ? true : false}) %>
 <div class="control-group">
 			<div class="controls" style="margin-left:70px">
 				<label class="checkbox" style="width:100%">

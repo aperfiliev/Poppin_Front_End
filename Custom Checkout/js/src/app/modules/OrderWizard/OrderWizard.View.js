@@ -148,6 +148,18 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 	}
 	,	setAddress: function (address_id, options)
 	{
+		//debugger;
+		
+
+		var billing_address = this.model.attributes.addresses.find(function (model)
+				{
+					return model.get('defaultbilling') === 'T';
+				});
+		
+		if (!billing_address) {
+			var billaddress = this.wizard.options.profile.get('addresses').get(address_id);
+this.model.attributes.addresses.add(billaddress);
+		}
 		this.model.set(options, address_id, options);
 
 		this.addressId = address_id;

@@ -93,6 +93,7 @@ define('Wizard.Module', function ()
 		{	
 			if(this.error.errorMessage == "Security Number is required"){
 				jQuery("#cvc-error").html(SC.macros.message(this.error.errorMessage, 'error', true));
+$('.credit-card-security-number').parent().parent().css("border","red 1px solid").css("width","300px");
 			}else{
 			//Note: in special situations (like in payment-selector), there are modules inside modules, so we have several place holders, so we only want to show the error in the first place holder. 
 			this.$('[data-type="alert-placeholder-module"]:first').html( 

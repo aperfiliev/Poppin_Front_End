@@ -41,10 +41,10 @@ function campaignCheck() {
 	
 	// choke for getting leadsource from cookies
 	if(true) {
-		_leadsource = 'testb2b';
+		_leadsource = '15 B2B Direct Mail Lead Generation';
 	}
 	
-	_form_url = 'https://forms.sandbox.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&formid=27&h=8f94514af19cd507a905&leadsource='+_leadsource;
+	_form_url = 'http://sandbox.poppin.com/app/site/crm/externalleadpage.nl?compid=3363929&formid=27&h=8f94514af19cd507a905&leadsource='+_leadsource;
 	
 	switch (params.campaign_id) {
 	case '2':

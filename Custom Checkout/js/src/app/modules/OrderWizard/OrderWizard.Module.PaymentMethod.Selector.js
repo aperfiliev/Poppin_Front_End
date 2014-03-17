@@ -71,15 +71,17 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 
 	,	past: function()
 		{
-		debugger;
-		console.log("PAST = " + this.wizard.isPaypalComplete());
 			var primary_paymentmethod = this.model.get('paymentmethods').findWhere({primary: true});
+			if (!primary_paymentmethod) {
+				this.selectedModule = null;
+			}
 			if (!this.selectedModule)
 			{	
 				this.setModuleByType(primary_paymentmethod && primary_paymentmethod.get('type'));
 			}
 			if (this.selectedModule.type === 'paypal') {
 				primary_paymentmethod.set('complete',  true);
+//this.model.attributes.isPaypalComplete = true;
 			}
 			
 			//this.selectedModule && (this.selectedModule.type != 'paypal' || this.wizard.isPaypalComplete()) && this.selectedModule.instance.past && this.selectedModule.instance.past();
@@ -116,6 +118,7 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 
 	,	setModuleByType: function(type)
 		{
+		console.log("setModuleByType = " + type);
 			this.selectedModule = _.findWhere(this.modules, {type: type});
 			
 			if (!this.selectedModule)
@@ -136,8 +139,7 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 		}
 	
 	,	render: function()
-		{
-		debugger;
+		{	
 			if (this.wizard.hidePayment())
 			{
 				this.$el.empty();
@@ -146,16 +148,12 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 			}
 			var selected_payment = this.model.get('paymentmethods').findWhere({primary: true}),
 				moduleType = selected_payment && selected_payment.get('type');
-			
+			console.log("selected_payment = " + selected_payment);
+			console.log("paymentmethods = " + this.model.get('paymentmethods'));
 			if (!this.selectedModule || this.selectedModule.type != moduleType)
 			{
 				this.setModuleByType(moduleType);
-			}
-			else if (this.selectedModule.type === 'paypal' && !this.model.get('isPaypalComplete'))
-			{
-				this.trigger('change_label_continue', _('Continue to Paypal').translate());
-			}
-			else
+			} else
 			{
 				this.trigger('change_label_continue');
 			}

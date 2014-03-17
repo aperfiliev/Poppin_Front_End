@@ -61,6 +61,9 @@
 					}else if(attr == "expyear"){
 						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 200px;" id="powerTipError" class="help-block backbone-validation"></div></div>');
 					}
+					else if(attr == "ccsecuritycode"){
+						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: -9px; left: 200px;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+					}
 					else{
 						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
 					}

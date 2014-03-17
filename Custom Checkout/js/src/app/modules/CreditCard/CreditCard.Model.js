@@ -87,6 +87,16 @@ define('CreditCard.Model', function ()
 		,	expyear: { fn: validateExpirationDate }
 		,	expmonth: { fn: validateExpirationDate }
 		,	savecard: {required: true}
+		,	ccsecuritycode: {
+fn: function(value){
+debugger;
+if(value !== null){
+if(value.length == 0){
+return _('Security Number is required').translate();
+}
+}
+}
+}
 		}
 	/**
 	 		validation: {

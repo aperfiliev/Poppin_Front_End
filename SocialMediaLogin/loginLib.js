@@ -13,8 +13,38 @@ var LoginLib = {
 						 "giftcertificate": {},
 						 "summary": {} };
 
+		
 		var order = nlapiGetWebContainer().getShoppingSession().getOrder().getFieldValues();
+		var customorder = nlapiGetWebContainer().getShoppingSession().getOrder();
+		var	order_field_keys = {
+				'items': [
+					'amount'
+				,	'promotionamount'
+				,	'promotiondiscount'
+				,	'orderitemid'
+				,	'quantity'
+				,	'onlinecustomerprice_detail'
+				,	'internalid'
+				,	'options'
+				,	'itemtype'
+				]
+			,	'giftcertificates': []
+			,	'shipaddress': []
+			,	'billaddress': []
+			,	'payment': []
+			,	'summary': []
+			,	'promocodes': []
+			,	'shipmethod': []
+			,	'shipmethods': []
+			,	'agreetermcondition': []
+			,	'purchasenumber': []
+			};
+		
+		
+		var order_fields = customorder.getFieldValues(order_field_keys);
+		nlapiLogExecution("DEBUG","LOGIN LIB order fields from checkout", JSON.stringify(order_fields));
 		nlapiLogExecution("DEBUG","LOGIN LIB", JSON.stringify(order.summary));
+		nlapiLogExecution("DEBUG","LOGIN LIB", JSON.stringify(order.summary.subtotal - order.summary.discounttotal + order.summary.shippingcost+order.summary.taxtotal-order.summary.giftcertapplied));
 		if(order.summary.taxtotal ==0 && /*order.summary.shippingcost == 0 &&*/ order.summary.giftcertapplied == 0){
 			order.summary.total = order.summary.subtotal - order.summary.discounttotal + order.summary.shippingcost;
 			order.summary.total_formatted = "$"+order.summary.total.toFixed(2);

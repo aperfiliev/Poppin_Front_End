@@ -210,6 +210,9 @@ debugger;
 			}
 		,	changeDeliveryOptions: function(e) 
 		{
+			debugger;
+			console.log("changeDeliveryOptions");
+			var currentBillAddress = this.model.attributes.billaddress;
 			var cvsError = this.validateAndSetCVC();
 			if (cvsError) {
 				this.render();
@@ -223,6 +226,13 @@ debugger;
 			this.step.disableNavButtons();
 			this.model.save().always(function()
 			{
+				if (currentBillAddress && self.model.attributes.billaddress !=currentBillAddress ) {
+					self.model.set('billaddress', currentBillAddress  ,'billaddress')
+				}
+				var primary_paymentmethod = self.model.get('paymentmethods').findWhere({primary: true});
+				if (  primary_paymentmethod && primary_paymentmethod.get('type') === 'paypal') {
+					primary_paymentmethod.set('complete',  true);
+				}
 				self.render();
 				self.step.enableNavButtons();
 			});

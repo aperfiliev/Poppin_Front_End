@@ -15,6 +15,7 @@
 			var self = this;
 			console.log('object');
 			console.log(self.$savingForm.serializeObject());
+debugger;
 			return self.model.save(props || self.$savingForm.serializeObject(), {
 
 				wait: true
@@ -43,7 +44,7 @@
 				// Re enables all button and shows an error message
 			,	error: function (model, response)
 				{
-				
+				debugger;
 					self.$savingForm.find('*[type=submit], *[type=reset]').attr('disabled', false);
 
 					if (response.responseText)

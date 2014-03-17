@@ -437,6 +437,5 @@ color: grey;
 	buildCartItems(order);
 	buildHelp(help);
 </script>
-
 </body>
 </html>

@@ -1,6 +1,8 @@
 <% var active_modules = _.filter(view.modules,function(module){ return module.isActive;});  %>
 <h3 class="section-header">
-	<%=   _('CREDIT CARD').translate() %>
+		<% if (view.selectedModule.type != 'paypal') { %> 
+                     <%= _('CREDIT CARD').translate() %>
+                 <% }  %>
 <!--
 	<% if (active_modules.length < 1) { %>
 		<%= _('CREDIT CARD').translate() %>

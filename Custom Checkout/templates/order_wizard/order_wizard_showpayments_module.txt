@@ -26,6 +26,59 @@
 
 
 </style>
+<script type="text/javascript" id="checkoutTagScript">
+var itemsCollection = [];
+<% for( var i=0;i< view.model.get('lines').models.length;i++) {%>
+itemsCollection.push({productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=view.model.get('lines').models[i].get('total') %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+<% }%>
+window.forPixeldata = {
+userId:'<%= view.wizard.options.profile.id %>'
+,total:'<%= view.model.get('summary').total %>'
+,transactionId:''
+,email:'<%= view.wizard.options.profile.get('email') %>'
+,name:'<%= view.wizard.options.profile.get('firstname') + ' ' + view.wizard.options.profile.get('lastname') %>'
+,items:itemsCollection
+};
+</script>
+<script>
+var orderID = "";
+	var orderTotal = "<%=view.model.get('summary').total%>";
+	var orderTax = "<%=view.model.get('summary').taxtotal%>";
+	var orderShipping = "<%=view.model.get('summary').shippingcost%>";
+	var orderPromoCode ="<%=view.model.get('promocode') ==null ? '':view.model.get('promocode').code%>";
+	var orderSubtotal = "<%=view.model.get('summary').subtotal%>";
+	var customerId ='<%= view.wizard.options.profile.id %>';
+	<% var shipaddress = _.filter(view.model.get('addresses').models,function(model){ return model.id==view.model.get('shipaddress');})[0] %>
+	<% var billaddress = _.filter(view.model.get('addresses').models,function(model){ return model.id==view.model.get('billaddress');})[0] %>
+	var customerCity = "<%=billaddress ? billaddress.get('city') : ''%>" || "<%=shipaddress ? shipaddress.get('city') : ''%>";
+	var customerState = "<%=billaddress ? billaddress.get('state') : ''%>" || "<%=shipaddress ? shipaddress.get('state') : ''%>";
+	var customerPostal = "<%=billaddress ? billaddress.get('zip') : ''%>" || "<%=shipaddress ? shipaddress.get('zip') : ''%>";
+	var customerCountry = "<%=billaddress ? billaddress.get('country') : ''%>" || "<%=shipaddress ? shipaddress.get('country') : ''%>";
+
+	var strpageDataVarURL = "/app/site/hosting/scriptlet.nl?script=250&deploy=1&orderitems=" + escape(itemsCollection) + "&subtotal=" + escape(orderSubtotal);
+
+	var pageData = {
+		"order" : {
+			"id" : orderID,
+			"total" : orderTotal,
+			"tax" : orderTax,
+			"shipping" : orderShipping,
+			"discount" : 0,
+			"promoCode" : orderPromoCode,
+			"currencyCode" : "USD"
+		},
+		"customer" : {
+			"id" : customerId,
+			"city" : customerCity,
+			"state" : customerState,
+			"postal" : customerPostal,
+			"country" : customerCountry
+		},
+		"navigation" : {  pageName: "Review" },
+		"items" : itemsCollection
+	};
+$j(window).trigger('updateCheckoutJsonData',pageData);
+	</script>
 <% console.log("view"); console.log(view);
 	var is_active = false
 	,	order_delivery_method = view.model.get('shipmethod')

@@ -54,8 +54,8 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		// -------------
 	,	render: function (not_trigger_ready)
 		{
-		
-			
+		debugger;
+			console.log("BEFIR RENDER = " + this.model.attributes.billaddress);
 			var profile = this.wizard.options.profile;
 
 			this.addresses = profile.get('addresses');
@@ -105,8 +105,8 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 			this.eventHandlersOn();
 
 			// Calls the render function
-			this._render();
-
+			this._render(); 
+console.log("AFTER RENDER = " + this.model.attributes.billaddress);
 			this.addressView = null;
 			this.addressListView = null;
 
@@ -147,7 +147,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 					});
 				}
 			}
-			else if (this.getAddressesToShow().length && !this.isGuest)
+			else if (this.getAddressesToShow().length)
 			{
 				this.addressListView = new AddressViews.List({
 					application: this.wizard.application
@@ -634,20 +634,20 @@ console.log(model);
 		// returns the list of addresses available for this module, if the module has enable_same_as then it removes the sameAsManage address
 	,	getAddressesToShow: function ()
 		{
-			if(this.isGuest)
-			{
-				var is_same_as_enabled = this.isSameAsEnabled
-				,	same_as_address_id = this.model.get(this.sameAsManage);
+		//	if(this.isGuest)
+		//	{
+		//		var is_same_as_enabled = this.isSameAsEnabled
+		//		,	same_as_address_id = this.model.get(this.sameAsManage);
 
-				return new Backbone.Collection(this.addresses.reject(function (address)
-				{
-					return is_same_as_enabled && address.id === same_as_address_id;
-				}));
-			}
-			else 
-			{				
+		//		return new Backbone.Collection(this.addresses.reject(function (address)
+		//		{
+		//			return is_same_as_enabled && address.id === same_as_address_id;
+		//		}));
+		//	}
+		//	else 
+		//	{				
 				return new Backbone.Collection(this.addresses.models);
-			}
+		//	}
 		}
 
 		// return the fixed address for this module. This is used only when user=guest

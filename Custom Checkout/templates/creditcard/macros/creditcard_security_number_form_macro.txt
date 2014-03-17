@@ -2,7 +2,7 @@
 <% options = options || {}; console.log("ccoptions");console.log(options);%>
 <div class="credit-card-security-number">
 	<div class="control-group <%= options.error ? 'error' : '' %>" style="display:<%= (options.hidden) ? 'none':''%>; margin-top: -10px;">
-		<label class="control-label" for="ccsecuritycode" style="width: 20px; margin-left: 8px;">
+		<label class="control-label" for="ccsecuritycode" <%= options.verifyModal ?  'style="width: 90px; margin-left: 4px;"':'style="width: 26px; margin-left: 4px;"'%>>
 			<%= _('CVC').translate() %>
 		</label>
 		<div class="controls" style="margin-left: 25px;">
@@ -13,7 +13,7 @@
 				name="ccsecuritycode"
 				value="<%- options.value %>"
 				maxlength="4"
-				style="font-size: 15px;<%= options.step == "review" ? 'border: 1px solid rgb(31, 216, 31);' : '' %>"
+				style="font-size: 15px;border: 1px solid rgb(31, 216, 31); <%= options.step == "review" ? 'border: 1px solid rgb(31, 216, 31);' : '' %>"
 			>
 			<% if (options.error) { %>
 				<p class="help-block">
@@ -31,7 +31,7 @@ jQuery('.whatisthis').hover(function(){
 });
 </script>
 		<% } %>
-		<div id="cvc-error" style="margin-left: -61px; margin-top: -10px;"></div>
+		<div id="cvc-error" style="margin-left: -66px; margin-top: -10px;"></div>
 		</div>
 	</div>
 </div>

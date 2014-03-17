@@ -68,6 +68,13 @@ console.log(window.location.hash);
 			</div>
 		</div>
 		------------------------------------------->
+<% if(creditcard.get('internalid') == options.selectedCreditcard && window.location.hash.indexOf("billing")>-1){ %>
+ 		<%= SC.macros.creditcardSecurityNumberForm({
+			error: undefined
+           ,   value:  options.cvcvalue
+           ,	hidehelp: false
+		}) %>
+<% } %>
 	<% if (options.showActions) { %>
 		<div style="clear: both;"></div>
 		<p class="actions" style="margin:0" >
@@ -83,12 +90,6 @@ console.log(window.location.hash);
 			<%}%>
 		</p>
 	<% } %>
-<% if(creditcard.get('internalid') == options.selectedCreditcard && window.location.hash.indexOf("billing")>-1){ %>
- 		<%= SC.macros.creditcardSecurityNumberForm({
-			error: undefined
-           ,   value:  options.cvcvalue
-           ,	hidehelp: false
-		}) %>
-<% } %>
+
 </article>
 <% }) %>

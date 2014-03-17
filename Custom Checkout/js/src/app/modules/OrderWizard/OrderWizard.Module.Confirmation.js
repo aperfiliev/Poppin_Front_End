@@ -11,7 +11,6 @@ define('OrderWizard.Module.Confirmation', ['Wizard.Module'], function (WizardMod
 	
 	,	render: function()
 		{
-			
 			var confirmation = this.model.get('confirmation')
 				// store current order id in the hash so it is available even when the checkout proccess ends. 
 			,	newHash = SC.Utils.addParamsToUrl(Backbone.history.fragment, {

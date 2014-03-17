@@ -234,16 +234,23 @@ Application.defineModel('Address', {
 ,	wrapAddressee: function (address)
 	{
 		'use strict';
-		
+		//nlapiLogExecution('Emergency', 'before wrapAddressee', JSON.stringify(address));
 		var s; address.addressee==null?s='':s=address.addressee;
 
+		//check if we have separated first and last name in addressee
 		if(s.indexOf(',')==-1){
-			var customerNameFields = ['firstname', 'lastname'];
-			var profile = customer.getFieldValues(customerNameFields );
-			s = profile.firstname + ',' + profile.lastname;
+			//if no comma separated name but not empty - set it to the last name
+			if(s!=''){
+				s.indexOf(' ')>-1 ? s = s.replace(' ',',') : s = ','+s;
+			}
+			else{
+				var customerNameFields = ['firstname', 'lastname'];
+				var profile = customer.getFieldValues(customerNameFields );
+				s = profile.firstname + ',' + profile.lastname;
+			}
+			
 
 		}
-		
 			var res = s.split(",");
 			var res1 =  res[0].split(".");
 			if(res1.length == 2){
@@ -266,13 +273,14 @@ Application.defineModel('Address', {
 		}
 		delete address.attention;
 		delete address.addressee;
-		
+		//nlapiLogExecution('Emergency', 'after wrapAddressee', JSON.stringify(address));
 		return address;
 	}
 	
 // this function prepare the address object for sending it to the frontend
 ,	unwrapAddressee: function (address)
 	{
+//	nlapiLogExecution('Emergency', 'before unwrapAddressee', JSON.stringify(address));
 		'use strict';
 		var res;
 		var prefix = address.namePrefix ? address.namePrefix : "";
@@ -306,7 +314,7 @@ Application.defineModel('Address', {
 		delete address.lastfullname;
 		delete address.namePrefix;
 		delete address.ext;
-		
+		//nlapiLogExecution('Emergency', 'after unwrapAddressee', JSON.stringify(address));
 		return address;
 	}
 	
@@ -600,7 +608,7 @@ Application.defineModel('LiveOrder', {
 		,	result = {};
 //		order.setFieldValue('department',1);
 //		nlapiLogExecution('DEBUG','order fields',JSON.stringify(order.getFieldValues(["total"])));
-
+	//	nlapiLogExecution('Emergency', 'get order payment',JSON.stringify(order.getPayment()));
 
 		// Temporal Address Collection so lines can point to its own address
 		var tmp_addresses = {};
@@ -733,7 +741,8 @@ Application.defineModel('LiveOrder', {
 
 		// Payment
 		result.paymentmethods = [];
-
+		//nlapiLogExecution('Emergency', 'order_fields',JSON.stringify(order_fields));
+		//nlapiLogExecution('Emergency', 'PAYMET',JSON.stringify(order_fields.payment));
 		var paypal = _.findWhere(session.getPaymentMethods(), {ispaypal: 'T'});
 		if (order_fields.payment && order_fields.payment.creditcard && order_fields.payment.creditcard.paymentmethod && order_fields.payment.creditcard.paymentmethod.creditcard === 'T' && order_fields.payment.creditcard.paymentmethod.ispaypal !== 'T')
 		{
@@ -820,15 +829,20 @@ Application.defineModel('LiveOrder', {
 		// Terms And Conditions
 		result.agreetermcondition = order_fields.agreetermcondition === 'T';
 		
-		nlapiLogExecution('AUDIT','order FIELDS', JSON.stringify(order_fields));
+		//nlapiLogExecution('AUDIT','order FIELDS', JSON.stringify(order_fields));
 		// General Addresses
 		result.shipaddress = order_fields.shipaddress ? this.addAddress(order_fields.shipaddress, result) : null;
-		nlapiLogExecution('AUDIT','order_fields.billaddress == order_fields.shipaddress', JSON.stringify(order_fields.billaddress == order_fields.shipaddress));
-		nlapiLogExecution('AUDIT','result.shipaddress', JSON.stringify(result.shipaddress));
-		nlapiLogExecution('AUDIT','paypal', JSON.stringify(paypal));
-		if (order_fields.payment && paypal && paypal.internalid === order_fields.payment.paymentmethod && !order_fields.billaddress) {
+		//nlapiLogExecution('AUDIT','order_fields.billaddress == order_fields.shipaddress', JSON.stringify(order_fields.billaddress == order_fields.shipaddress));
+		//nlapiLogExecution('AUDIT','result.shipaddress', JSON.stringify(result.shipaddress));
+		//nlapiLogExecution('AUDIT','paypal', JSON.stringify(paypal));
+               // nlapiLogExecution('EMERGENCY','after_paypal ', JSON.stringify(paypal));
+		//nlapiLogExecution('EMERGENCY','after_paypal 1', context.getSessionObject('after_paypal'));
+		//nlapiLogExecution('EMERGENCY','after_paypal payment', order_fields.payment.paymentmethod);
+		if (order_fields.payment && paypal && paypal.internalid === order_fields.payment.paymentmethod && context.getSessionObject('after_paypal') != 'T') {
 			result.billaddress = result.shipaddress;
-			nlapiLogExecution('AUDIT','result.billaddress', JSON.stringify(result.billaddress));
+			context.setSessionObject('after_paypal', 'T');
+			//nlapiLogExecution('EMERGENCY','after_paypal 3', context.getSessionObject('after_paypal'));
+			//nlapiLogExecution('AUDIT','result.billaddress', JSON.stringify(result.billaddress));
 		} else {
 			result.billaddress = order_fields.billaddress ? this.addAddress(order_fields.billaddress, result) : null;
 		}
@@ -896,9 +910,10 @@ Application.defineModel('LiveOrder', {
 ,	update: function (data)
 	{
 		'use strict';
+		//nlapiLogExecution('Emergency', 'update order payment',JSON.stringify(order.getPayment()));
 		//console.log(JSON.stringify(data));
 		
-		
+		//nlapiLogExecution('Emergency', 'UPDATE',JSON.stringify(data));
 		var current_order = this.get()
 		,	is_secure = request.getURL().indexOf('https') === 0;
 		
@@ -1056,6 +1071,8 @@ Application.defineModel('LiveOrder', {
 				{
 					var paypal = _.findWhere(session.getPaymentMethods(), {ispaypal: 'T'});
 					order.setPayment({paymentterms: '', paymentmethod: paypal.internalid});
+					order.isPaypal
+					
 				}
 			});
 			
@@ -1129,7 +1146,7 @@ Application.defineModel('LiveOrder', {
 ,	redirectToPayPalExpress: function ()
 	{
 		'use strict';
-
+		//nlapiLogExecution('Emergency', 'redirectToPayPalExpress payment',JSON.stringify(order.getPayment()));
 		var touchpoints = session.getSiteSettings( ['touchpoints'] ).touchpoints
 		,	continue_url = 'https://' + request.getHeader('Host') + touchpoints.checkout
 		,	joint = ~continue_url.indexOf('?') ? '&' : '?';
@@ -1147,7 +1164,7 @@ Application.defineModel('LiveOrder', {
 ,	backFromPayPal: function ()
 	{
 		'use strict';
-
+		//nlapiLogExecution('Emergency', 'backFromPayPal payment',JSON.stringify(order.getPayment()));
 		var Profile = Application.getModel('Profile')
 		,	customer_values = Profile.get()
 		,	bill_address = order.getBillingAddress()
@@ -1207,20 +1224,32 @@ Application.defineModel('LiveOrder', {
 ,	submit: function ()
 	{
 		'use strict';
-		
 		var shipping_address = order.getShippingAddress()
 		,	billing_address = order.getBillingAddress()
 		,	shipping_address_id = shipping_address && shipping_address.internalid
 		,	billing_address_id = billing_address && billing_address.internalid
-		,	confirmation = order.submit();
+		,   currentPayment = order.getPayment()
+		,   paypal = _.findWhere(session.getPaymentMethods(), {ispaypal: 'T'});
+		if (order.getOrderSummary(['total']).total == 0 && currentPayment.paymentmethod == paypal.internalid) {
+			throw "This transaction cannot be processed. The amount to be charged is zero.";
+		} else {
+			var	confirmation = order.submit();	
+		}
+		
 //		order.set('department',1);
 		var data = {'id': confirmation.internalid};
 		nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=339&deploy=1&compid=3363929&h=691dd3ebdec1f00b8620 ', data);
 
 		// checks if necessary delete addresses after submit the order.
 		this.removePaypalAddress(shipping_address_id, billing_address_id);
+		//clear paypal method after submit
+		if (currentPayment.paymentmethod == paypal.internalid) {
+			nlapiLogExecution('DEBUG','REMOVE PAYMENT', JSON.stringify(currentPayment));
+			order.removePayment(); 
+		}
 		
 		context.setSessionObject('paypal_complete', 'F');
+		context.setSessionObject('after_paypal', 'F');
 		return confirmation;
 	}
 
@@ -1722,4 +1751,4 @@ Application.defineModel('CardMessage', {
 		
 	}
 
-});
+});;

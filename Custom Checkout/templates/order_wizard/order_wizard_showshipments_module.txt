@@ -7,10 +7,10 @@
 	
 	<%  console.log(view) %>
 <!-- Photorank advanced checkout code -->
-<script type="text/javascript">
+<script type="text/javascript" id="checkoutTagScript">
 var itemsCollection = [];
 <% for( var i=0;i< view.model.get('lines').models.length;i++) {%>
-itemsCollection.push({productId:'<%=view.model.get('lines').models[0].id%>',price:'<%=view.model.get('lines').models[0].get('total') %>'});
+itemsCollection.push({productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=view.model.get('lines').models[i].get('total') %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
 <% }%>
 window.forPixeldata = {
 userId:'<%= view.profile.id %>'
@@ -55,21 +55,11 @@ var orderID = "<%= view.model.get('confirmation').confirmationnumber %>".replace
 			"postal" : customerPostal,
 			"country" : customerCountry
 		},
-		"items" : []
+		"navigation" : {  pageName: "Confirmation" },
+		"items" : itemsCollection
 	};
 
-	(function($) {
-		$.ajax({
-			"url" : strpageDataVarURL,
-			"async" : false,
-			"dataType" : "json",
-			"success" : function(objOrderData) {
-				pageData.order.discount = objOrderData.discount;
-				pageData.order.promoCode = objOrderData.promocode
-				pageData.items = objOrderData.items;
-			}
-		})
-	})(jQuery); 
+$j(window).trigger('updateCheckoutJsonData',pageData);
 	</script>
 	<div style="float: left;" >
 	<h4 class="thankyou-title" style="color: rgb(254, 107, 56);

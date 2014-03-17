@@ -51,6 +51,7 @@ define('OrderWizard.Module.PaymentMethod.GiftCertificates', ['Wizard.Module'], f
 
 	,	updateGiftCertificates: function (codes)
 		{
+debugger;
 			var self = this;
 
 			// disable navigation buttons
@@ -67,11 +68,17 @@ define('OrderWizard.Module.PaymentMethod.GiftCertificates', ['Wizard.Module'], f
 
 				,	success: function (model, attributes)
 					{
+						debugger;
+
 						self.model.set({
 							paymentmethods: attributes.paymentmethods
 						,	summary: attributes.summary
 						,	touchpoints: attributes.touchpoints
 						});
+						var primary_paymentmethod = self.model.get('paymentmethods').findWhere({primary: true});
+						if ( primary_paymentmethod.get('type') === 'paypal') {
+							primary_paymentmethod.set('complete',  true);
+						}
 					}
 
 				,	error: function (model, jqXhr)
@@ -91,7 +98,7 @@ define('OrderWizard.Module.PaymentMethod.GiftCertificates', ['Wizard.Module'], f
 	,	applyGiftCertificate: function (e)
 		{
 			e.preventDefault();
-
+debugger;
 
 			var code = jQuery.trim(jQuery(e.target).find('[name="code"]').val())
 			,	is_applied = _.find(this.giftCertificates, function (certificate)

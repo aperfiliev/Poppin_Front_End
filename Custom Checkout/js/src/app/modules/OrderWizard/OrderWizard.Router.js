@@ -72,6 +72,8 @@ define('OrderWizard.Router', ['Wizard.Router', 'OrderWizard.View', 'OrderWizard.
 		
 	,	runStep: function(options)
 		{
+debugger;
+console.log("RUN STEP");
 			// Computes the position of the user in the flow
 			var url = (options) ? Backbone.history.fragment.replace('?' + options, '') : Backbone.history.fragment
 			,	position = this.getStepPosition(url)
@@ -103,6 +105,7 @@ define('OrderWizard.Router', ['Wizard.Router', 'OrderWizard.View', 'OrderWizard.
 			// if you have already placed the order you can not be in any other step than the last
 			if (this.model && this.model.get('confirmation') && this.model.get('confirmation').confirmationnumber && position.toLast !== 0)
 			{
+                                debugger;
 				window.location = this.application.getConfig('siteSettings.touchpoints.home');
 				return;
 			}

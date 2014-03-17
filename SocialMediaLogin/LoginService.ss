@@ -19,6 +19,7 @@ function service(request, response){
 				nlapiLogExecution('DEBUG','forgotpassword case',poppinservres.text.forgotpasswordsent);
 				result = forgotPassword(request);
 				nlapiLogExecution('DEBUG','exit store link request2');
+				nlapiLogExecution('DEBUG','forgotpassword case',JSON.strigify(result));
 				response.write(buildResponseObjectStringified("success",poppinservres.text.forgotpasswordsent));
 				break
 			case 'resetpassword':
@@ -101,6 +102,7 @@ function writeResponse(result, gigyanotifier)
 }
 function loginUser(request, sociallink)
 {
+       nlapiGetContext().setSessionObject('after_paypal', 'F');
 	var email = request.getParameter('email');
 	var pwd = '';
 	var checkout = request.getParameter('checkout');

@@ -20,10 +20,16 @@
 function userEventAfterSubmit(type){
 	nlapiLogExecution('DEBUG', 'type' , type); 
 	try{
-		if(type=='edit'){
+			if(type=='xedit' ){
+			var record= nlapiGetNewRecord();
+			var tranId = record.getId();
+			nlapiLogExecution('DEBUG', 'xedit record id', tranId );
+			}
+		if(type=='edit' ){
 			var record= nlapiGetNewRecord();
 			var tranId = record.getId();
 			var oldRecord = nlapiGetOldRecord();
+			nlapiLogExecution('DEBUG', 'edit record id', tranId );
 			var oldlineItemCount = oldRecord.getLineItemCount('item');
 			var lineItemCount = record.getLineItemCount('item');
 			nlapiLogExecution('DEBUG', 'record line item length', record.getLineItemCount('item'));

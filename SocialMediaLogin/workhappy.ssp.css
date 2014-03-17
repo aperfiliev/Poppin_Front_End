@@ -3,11 +3,13 @@
 }
 #workhappy .call-us{
     width: 967px;
-    background: url(/site/pp-sources/workhappy/fifty.jpg) top left no-repeat;
+    background: url(/site/pp-sources/workhappy/fifty.jpg) 26px 26px no-repeat;
     font-size: 30px;
     padding: 15px 0 40px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    /*border: 8px solid #00c2f4;*/
+    /*margin-bottom: 30px;*/
 }
 #workhappy .call-us p{
 	margin: 0;
@@ -94,7 +96,7 @@
 #workhappy .item-cell-image a.image-link:hover
 {
     display: block;
-    width: 290px;
+    width: 322px;
     height: 251px;
     position: relative;
     margin: 0 auto;
@@ -234,4 +236,8 @@
     url(/site/pp-sources/workhappy/gift_1a.jpg),url(/site/pp-sources/workhappy/gift_2a.jpg),url(/site/pp-sources/workhappy/gift_3a.jpg);
     background-position: center bottom, left top;
     background-repeat: no-repeat;
+}
+#workhappy .slide-wrap{
+    height: 373px;
+    margin: 0;
 }
