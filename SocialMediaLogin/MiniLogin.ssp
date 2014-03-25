@@ -32,6 +32,8 @@ body {
 				sendLoginRequest(messageObject);
 			} else if (messageObject.requesttype == 'twitterlogin') {
 				twitterLogin(messageObject);
+			} else if (messageObject.requesttype == 'manualregister') {
+				sendLoginRequest(messageObject);
 			}
 		}
 	});

@@ -132,7 +132,7 @@ function loginUser(request, sociallink)
 				}
 		nlapiLogExecution('DEBUG','origin checkout',JSON.stringify(params));
 		result = session.login(params);
-
+		nlapiLogExecution('DEBUG','login result',JSON.stringify(result));
 		// restoring session items
 		var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
 		orderObjNew.removeAllItems();
@@ -155,6 +155,7 @@ function loginUser(request, sociallink)
 				}
 		nlapiLogExecution('DEBUG','no origin',JSON.stringify(params));
 		result = session.login(params);
+		nlapiLogExecution('DEBUG','login result',JSON.stringify(result));
 		if(items !=null){
 			// restoring session items
 			var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
@@ -166,7 +167,8 @@ function loginUser(request, sociallink)
 				orderObj.applyPromotionCode(promocodes[0]);
 			}
 		}
-		result.redirecturl = nlapiGetWebContainer().getStandardTagLibrary().getCartUrl();
+		//result.redirecturl = nlapiGetWebContainer().getStandardTagLibrary().getCartUrl();
+		nlapiLogExecution('DEBUG','login result 2',JSON.stringify(result));
 	}
 	return result;
 }

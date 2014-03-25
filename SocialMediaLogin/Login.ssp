@@ -17,7 +17,6 @@ visibility:hidden;
 }
 #loginregisterbody #div__body{
 position:relative;
-left:80px;
 padding-top: 30px;
 }
 iframe{
@@ -126,7 +125,7 @@ function getLeadSource() {
 
 jQuery(document).ready(function(){
 	jQuery('#companyhelp').on('mouseenter', function(){
-		powerTip.create('company', $('#whatthisfortext').html(), 'powerTipFName', 250, 655);
+		powerTip.create('company', $('#whatthisfortext').html(), 'powerTipFName', 250, 455);
 	});
 	jQuery('#companyhelp').on('mouseleave',function(){powerTip.hide('powerTipFName');});
 	jQuery('#leadsource').val(getLeadSource());
@@ -519,18 +518,18 @@ function forgotPasswordSocialLink()
 							<a href="#" onclick="switchview('login');">Go back</a>	
 				</fieldset>
 			</form>
-			<div class="login-case-block">
-				<div class="social" style="width: 190px;">
+			<div class="login-case-block" >
+				<div class="social" style="width: 190px;display:none;">
 					<h3>LOGIN WITH SOCIAL</h3>
 					<div id="iframecontainer"></div>
 					<div class="required" style="position: absolute; padding-left: 13px;">**All fields are required</div>
 				</div>
-				<div class="verticalHr">
+				<div class="verticalHr" style="display:none;">
 					<div class="hr"></div>
 					or
 					<div class="hrlong"></div>
 				</div>
-				<div class="returning">
+				<div class="returning" >
 					<h3>RETURNING CUSTOMERS</h3>
 					<form id="loginform" action="LoginService.ss">
 						<fieldset style="display:none;">
@@ -585,7 +584,7 @@ function forgotPasswordSocialLink()
 						<fieldset id="fs_company" style="width: 300px;">
 							<label for="company">Company Name</label>
 							 <input id="company" name="company" placeholder="(Optional)" type="text" style="width: 197px;"/>
-							 <span title="Enter company name here" style="cursor: pointer; font-size: 13px;" id="companyhelp">What's this?</span>
+							 <span title="Enter company name here" style="cursor: pointer; font-size: 13px;" id="companyhelp"><img style="margin-bottom:-10px" src="/site/social-login/css/images/whatsthis.jpg"/></span>
 							 <div name="whatthisfortext" id="whatthisfortext" style="display: none;"><p> <PP_LOGIN_WHATTHISFOR_TEXT> </p></div>
 						</fieldset>
 						<fieldset>

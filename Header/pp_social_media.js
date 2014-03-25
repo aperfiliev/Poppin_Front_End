@@ -117,43 +117,60 @@ function validateEmail($email) {
 		return true;
 	}
 }
+
+
 jQuery(document).ready(function() {
 	var offset1 = jQuery('.top-links').offset();
-	jQuery('#loginpositionhelper').offset({
-		top : offset1.top + 26,
-		left : offset1.left + jQuery('.top-links').width() - jQuery('#loginpositionhelper').width()
-	});
-	jQuery('.loginli').mouseenter(function() {
-		if (jQuery(".login.hidden").length == 1 || window.location.href.indexOf(poppinres.url.poppincheckout) != -1) {
-			jQuery('#loginpositionhelper').css('display', 'none');
-		} else {
-			jQuery('#loginpositionhelper').css('display', 'block');
-		}
-	});
-	jQuery('#loginpositionhelper').mouseenter(function() {
-		if (jQuery(".login.hidden").length == 1 || window.location.href.indexOf(poppinres.url.poppincheckout) != -1) {
-			jQuery('#loginpositionhelper').css('display', 'none');
-		} else {
-			jQuery('#loginpositionhelper').css('display', 'block');
-		}
-	});
-	jQuery('#miniemail, #minipassword').on('focusin', function() {
-		jQuery('#loginpositionhelper').addClass("noblur");
-	});
-	jQuery('#miniemail, #minipassword').on('focusout', function() {
-		jQuery('#loginpositionhelper').removeClass("noblur");
-	});
-	jQuery('.loginli').mouseleave(function() {
-		if(!jQuery('#loginpositionhelper').hasClass("noblur")) {
-			jQuery('#loginpositionhelper').css('display', 'none');
-		}
-	});
-	jQuery('#loginpositionhelper').mouseleave(function() {
-		if(!jQuery('#loginpositionhelper').hasClass("noblur")) {
-			jQuery('#loginpositionhelper').css('display', 'none');
-		}
+//	jQuery('#loginpositionhelper').offset({
+//		top : offset1.top + 26,
+//		left : offset1.left + jQuery('.top-links').width() - jQuery('#loginpositionhelper').width()
+//	});
+//	jQuery('.loginli').mouseenter(function() {
+//		if (jQuery(".login.hidden").length == 1 || window.location.href.indexOf(poppinres.url.poppincheckout) != -1) {
+//			jQuery('#loginpositionhelper').css('display', 'none');
+//		} else {
+//			jQuery('#loginpositionhelper').css('display', 'block');
+//		}
+//	});
+//	jQuery('#loginpositionhelper').mouseenter(function() {
+//		if (jQuery(".login.hidden").length == 1 || window.location.href.indexOf(poppinres.url.poppincheckout) != -1) {
+//			jQuery('#loginpositionhelper').css('display', 'none');
+//		} else {
+//			jQuery('#loginpositionhelper').css('display', 'block');
+//		}
+//	});
+//	jQuery('#miniemail, #minipassword').on('focusin', function() {
+//		jQuery('#loginpositionhelper').addClass("noblur");
+//	});
+//	jQuery('#miniemail, #minipassword').on('focusout', function() {
+//		jQuery('#loginpositionhelper').removeClass("noblur");
+//	});
+//	jQuery('.loginli').mouseleave(function() {
+//		if(!jQuery('#loginpositionhelper').hasClass("noblur")) {
+//			jQuery('#loginpositionhelper').css('display', 'none');
+//		}
+//	});
+//	jQuery('#loginpositionhelper').mouseleave(function() {
+//		if(!jQuery('#loginpositionhelper').hasClass("noblur")) {
+//			jQuery('#loginpositionhelper').css('display', 'none');
+//		}
+//	});
+	jQuery('#coverdiv').click(function(){
+		if(jQuery('#loginpositionhelper').css('display') != 'none') {
+				jQuery('#loginpositionhelper').hide();jQuery('#coverdiv').hide();
+			}
 	});
 	jQuery('.login a').attr('href', '#');
+	jQuery('.login a').click(function(){
+		if(jQuery('#loginpositionhelper').is(':visible')){
+			jQuery('#coverdiv').hide();
+			jQuery('#loginpositionhelper').hide();
+		}
+		else{
+			jQuery('#coverdiv').show();
+			jQuery('#loginpositionhelper').show();
+		}
+		});
 	
 	if (window.location.href.indexOf(poppinres.url.poppincheckout) != -1) {
 		jQuery('#loginpositionhelper').attr('style', 'display:none');
@@ -413,6 +430,10 @@ jQuery(function() {
 		e.preventDefault();
 		miniloginSubmit();
 	});
+	jQuery('#mini-new-customer-register').on('submit', function(e) {
+		e.preventDefault();
+		registerformSubmitUser();
+	});
 	jQuery('#minitwitter-email').on('submit', function(e) {
 		e.preventDefault();
 		minitwitterSubmit();
@@ -454,41 +475,140 @@ function miniloginSubmit(loginUser)
 //	document.body.style.cursor = 'wait';
 jQuery('div#waitmask').show();
 }
-
-function minitwitterSubmit()
+//Register functionality
+function registerformSubmitUser()
 {
-	var loginUser = {
-			"requesttype" : "twitterlogin",
-			"remember" : true,
-			"email" : document.forms['minitwitter-email'].elements['emailtwitter'].value,
-			"name" : document.forms['minitwitter-email'].elements['customername'].value,
-			"password" : '',
-			"password2" : '',
-			"checkout" : false,
-			"signatureTimestamp" : document.forms['minitwitter-email'].elements['timestamp'].value,
-			"UID" : document.forms['minitwitter-email'].elements['UID'].value,
-			"UIDSignature" : document.forms['minitwitter-email'].elements['signature'].value
-		};
-
-	if (loginUser.email === '') {
-		jQuery("#dialogresponse").html(loginUser.email + ' Please input email address.');
-		jQuery("#dialogresponse").dialog({
-			title : "Info"
-		});
-		return false;
+	if(!validateRegisterForm()){return false;};
+	
+	var company = '';
+	//if($('form#new-customer-register > fieldset > input#business').is(':checked')) {
+		company = document.forms['mini-new-customer-register'].elements['company'].value;
+	//}
+	var emailsubscribe = 'F';
+	if($('form#mini-new-customer-register > fieldset > input#subscribe').is(':checked')) {
+		emailsubscribe = 'T';
 	}
-	if (!validateEmail(loginUser.email)) {
-		jQuery("#dialogresponse").html(loginUser.email + ' Please enter a valid email address.');
-		jQuery("#dialogresponse").dialog({
-			title : "Info"
-		});
-		return false;
-	}
-	var userstr = JSON.stringify(loginUser);
+	
+	var newUser = {
+			"requesttype":"manualregister",
+			"lead":document.forms['mini-new-customer-register'].elements['leadsource'].value,
+			"remember":true,
+			"email":document.forms['mini-new-customer-register'].elements['emailregnew'].value,
+			"name":document.forms['mini-new-customer-register'].elements['fname'].value + " " +document.forms['mini-new-customer-register'].elements['lname'].value,
+			"password":document.forms['mini-new-customer-register'].elements['passwordnew'].value,
+			"password2":document.forms['mini-new-customer-register'].elements['passwordnew'].value,
+			"company":company,
+			"emailsubscribe":emailsubscribe,
+			"checkout":false
+			};
+	var userstr = JSON.stringify(newUser);
 	MINILOGINSOCKET.postMessage(userstr);
 //	document.body.style.cursor = 'wait';
 jQuery('div#waitmask').show();
 }
+function validateRegisterForm()
+{
+	var regEmail	= /^([0-9a-zA-Z_\.-]+)@([\da-zA-Z\.-]+)\.([a-zA-Z\.]{2,6})$/;
+	var regText		= /^[0-9a-zA-Z- ]{2,}$/;
+	var regPass		= /^[0-9a-zA-Z]{6,}$/;
+	
+	var email		= $('form#mini-new-customer-register > fieldset > div > input#emailregnew').first();
+	var fname		= $('form#mini-new-customer-register > fieldset > div > input#fname').first();
+	var lname		= $('form#mini-new-customer-register > fieldset > div > input#lname').first();
+	var pass		= $('form#mini-new-customer-register > fieldset > div > input#passwordnew').first();
+	
+	//remove unnecessary spaces before and after name values 
+	$('form#mini-new-customer-register > fieldset > div > input#fname').val($('form#mini-new-customer-register > fieldset > div > input#fname').val().trim());
+	$('form#mini-new-customer-register > fieldset > div > input#lname').val($('form#mini-new-customer-register > fieldset > div > input#lname').val().trim());
+	
+	$("#mini-new-customer-register .input-red").removeClass("input-red");
+	
+	if(!regEmail.test(email.val()))
+	{
+		powerTip.create('emailregnew', poppinres.text.emailvalidation, 'powerTipEmail', -52, 123);
+		$('#emailregnew').on('focusin', function() { powerTip.hide('powerTipEmail'); }) ;
+		email.attr( "class", "input-red");
+	}
+	if(!regText.test(fname.val()))
+	{
+		powerTip.create('fname', poppinres.text.firstnamevalidation, 'powerTipFName', -52, 123);
+		$('#fname').on('focusin', function() { powerTip.hide('powerTipFName'); }) ;
+		fname.attr( "class", "input-red");
+	}
+	if(!regText.test(lname.val()))
+	{
+		powerTip.create('lname', poppinres.text.lastnamevalidation, 'powerTipLName', -52, 123);
+		$('#lname').on('focusin', function() { powerTip.hide('powerTipLName'); }) ;
+		lname.attr( "class", "input-red");
+	}
+	if(!regPass.test(pass.val()))
+	{
+		powerTip.create('passwordnew', poppinres.text.passwordvalidation, 'powerTipPass', -65, 123);
+		$('#passwordnew').on('focusin', function() { powerTip.hide('powerTipPass'); }) ;
+		pass.attr( "class", "input-red");
+	}
+	
+	if($("form#mini-new-customer-register input.input-red").size() > 0) {
+		return false;
+	} else {
+		return true;
+	}
+	
+}
+//----------------------
+//function miniregisterSubmit(loginUser)
+//{
+//	var regEmail	= /^([0-9a-zA-Z_\\.-]+)@([\\da-zA-Z\\.-]+)\\.([a-zA-Z\\.]{2,6})$/;
+//	var regText		= /^[0-9a-zA-Z- ]{2,}$/;
+//	var regPass		= /^[0-9a-zA-Z]{6,}$/;
+//	
+//	var email		= $('form#mini-new-customer-register > fieldset > div > input#emailregnew').first();
+//	var fname		= $('form#mini-new-customer-register > fieldset > div > input#fname').first();
+//	var lname		= $('form#mini-new-customer-register > fieldset > div > input#lname').first();
+//	var pass		= $('form#mini-new-customer-register > fieldset > div > input#passwordnew').first();
+//	
+//	//remove unnecessary spaces before and after name values 
+//	$('form#mini-new-customer-register > fieldset > div > input#fname').val($('form#mini-new-customer-register > fieldset > div > input#fname').val().trim());
+//	$('form#mini-new-customer-register > fieldset > div > input#lname').val($('form#mini-new-customer-register > fieldset > div > input#lname').val().trim());
+//	
+//	$("#mini-new-customer-register .input-red").removeClass("input-red");
+//	
+//	if(!regEmail.test(email.val()))
+//	{
+//		powerTip.create('emailregnew', poppinres.text.emailvalidation, 'powerTipEmail', -52, 123);
+//		$('#emailregnew').on('focusin', function() { powerTip.hide('powerTipEmail'); }) ;
+//		email.attr( "class", "input-red");
+//	}
+//	if(!regText.test(fname.val()))
+//	{
+//		powerTip.create('fname', poppinres.text.firstnamevalidation, 'powerTipFName', -52, 123);
+//		$('#fname').on('focusin', function() { powerTip.hide('powerTipFName'); }) ;
+//		fname.attr( "class", "input-red");
+//	}
+//	if(!regText.test(lname.val()))
+//	{
+//		powerTip.create('lname', poppinres.text.lastnamevalidation, 'powerTipLName', -52, 123);
+//		$('#lname').on('focusin', function() { powerTip.hide('powerTipLName'); }) ;
+//		lname.attr( "class", "input-red");
+//	}
+//	if(!regPass.test(pass.val()))
+//	{
+//		powerTip.create('passwordnew', poppinres.text.passwordvalidation, 'powerTipPass', -65, 123);
+//		$('#passwordnew').on('focusin', function() { powerTip.hide('powerTipPass'); }) ;
+//		pass.attr( "class", "input-red");
+//	}
+//	
+//	if($("form#mini-new-customer-register input.input-red").size() > 0) {
+//		return false;
+//	} else {
+//		return true;
+//	}
+//	var userstr = JSON.stringify(loginUser);
+//	MINILOGINSOCKET.postMessage(userstr);
+////	document.body.style.cursor = 'wait';
+//jQuery('div#waitmask').show();
+//}
+
 /*
  * PP_SOCIAL_MEDIA_LOGIN_GIGYA
  */
