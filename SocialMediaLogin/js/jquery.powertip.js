@@ -6,7 +6,7 @@ var powerTip = {
 			.css("top", top)
 			.css("left", left)
 			.css("display", "block");
-			if(inputId == 'company'){
+			if(inputId == 'company' || inputId == 'minicompany'){
 				tipElement.css("border-color", "rgb(151, 151, 151)");
 				tipElement.attr("class", "n_company");
 			}

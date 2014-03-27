@@ -16,16 +16,16 @@ function service(request, response){
 		switch(request.getParameter('requesttype'))
 		{
 			case 'forgotpassword':
-				nlapiLogExecution('DEBUG','forgotpassword case',poppinservres.text.forgotpasswordsent);
+				//nlapiLogExecution('DEBUG','forgotpassword case',poppinservres.text.forgotpasswordsent);
 				result = forgotPassword(request);
-				nlapiLogExecution('DEBUG','exit store link request2');
-				nlapiLogExecution('DEBUG','forgotpassword case',JSON.strigify(result));
+				//nlapiLogExecution('DEBUG','exit store link request2');
+				//nlapiLogExecution('DEBUG','forgotpassword case',JSON.strigify(result));
 				response.write(buildResponseObjectStringified("success",poppinservres.text.forgotpasswordsent));
 				break
 			case 'resetpassword':
 				nlapiLogExecution('DEBUG','resetpassword case');
-				result = forgotPassword(request);
-				response.write(buildResponseObjectStringified("resetpasswordsuccess",poppinservres.text.forgotpasswordsent));
+				result = resetPassword(request);
+				response.write(buildResponseObjectStringified("success",poppinservres.text.resetpasswordsuccess));
 				break
 			case 'login':
 				nlapiLogExecution('DEBUG', 'login start', new Date().toTimeString());
@@ -57,7 +57,7 @@ function service(request, response){
 		var errormessage;
 		if(request.getParameter('requesttype') == 'resetpassword')
 		{
-			code = "resetpassworderror";
+			code = "error";
 			errormessage = e.getDetails();
 		}
 		else if(e instanceof nlobjError)
@@ -356,18 +356,29 @@ function forgotPassword(request)
 	var EmailAddr = request.getParameter("email");
 	EmailAddr = EmailAddr.toLowerCase();
 	nlapiLogExecution('DEBUG','forgotpassword:','email:'+EmailAddr);
-	var userexist = checkExistingEmail(EmailAddr);
+	//var userexist = checkExistingEmail(EmailAddr);
 	
-	if(userexist.length>0){
-		nlapiLogExecution('DEBUG','user exists:',JSON.stringify(userexist));
-		var params = {
-				email:EmailAddr,
-				pwd:''
-		};
-		var cleanSocialLink = storeSocialLink(params);
-		nlapiLogExecution('DEBUG','cleanSocialLink:','email:'+cleanSocialLink);
-	}
+//	if(userexist.length>0){
+//		nlapiLogExecution('DEBUG','user exists:',JSON.stringify(userexist));
+//		var params = {
+//				email:EmailAddr,
+//				pwd:''
+//		};
+//		var cleanSocialLink = storeSocialLink(params);
+//		nlapiLogExecution('DEBUG','cleanSocialLink:','email:'+cleanSocialLink);
+//	}
 	nlapiGetWebContainer().getShoppingSession().sendPasswordRetrievalEmail(EmailAddr);
+}
+function resetPassword(request)
+{
+	var newPassword = request.getParameter("password");
+	var e = decodeURIComponent(request.getParameter("e"));
+	var dt = decodeURIComponent(request.getParameter("dt"));
+	var cb = decodeURIComponent(request.getParameter("cb"));
+	var Params = {'e':e, 'dt':dt, 'cb':cb};
+	nlapiLogExecution('DEBUG', 'params: ', 'e:'+e+'dt:'+dt+ 'cb:'+cb);
+	var result = nlapiGetWebContainer().getShoppingSession().doChangePassword(Params, newPassword );
+	nlapiLogExecution('DEBUG', 'result reset is: ', result);
 }
 function buildResponseObjectStringified(responsetype,message,newuser)
 {

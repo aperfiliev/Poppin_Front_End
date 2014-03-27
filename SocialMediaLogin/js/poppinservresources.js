@@ -20,7 +20,8 @@ var poppinservres = {
 	forgotpasswordsent:"Ok. We've sent you instructions on how to update your password, aka Your Personal Key to Work Happiness. Please check your email.",
 	forgotpasswordunrecognized:'The email that you entered is not recognized, please try again or <a href="'+ '/Login.ssp' +'" >create a new account</a>',
 	useralreadyexist:"<p>A user already exists with </p><p>this email address</p>",
-	cantlinkaccount: "Cant link account, please contact system administrator."
+	cantlinkaccount: "Cant link account, please contact system administrator.",
+	resetpasswordsuccess: "Password changed succesfully"
 	},
 	id : {
 	banner:'199'

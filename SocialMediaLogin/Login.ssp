@@ -78,6 +78,19 @@ padding: 0 0 11px 0;
 </style>
 <script language="javascript">
 
+
+function getQuerystring(key, default_)
+{
+	if (default_==null) default_=""; 
+	key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
+	var qs = regex.exec(window.location.href);
+	if(qs == null)
+	return default_;
+	else
+	return qs[1];
+}
+
 /* get Lead Source functions */
 function getCommentsFromEl(el, asArray) {
 	var result,
@@ -125,23 +138,12 @@ function getLeadSource() {
 
 jQuery(document).ready(function(){
 	jQuery('#companyhelp').on('mouseenter', function(){
-		powerTip.create('company', $('#whatthisfortext').html(), 'powerTipFName', 250, 455);
+		powerTip.create('company', jQuery('#whatthisfortext').html(), 'powerTipCompany', -15, 176);
 	});
-	jQuery('#companyhelp').on('mouseleave',function(){powerTip.hide('powerTipFName');});
+	jQuery('#companyhelp').on('mouseleave',function(){powerTip.hide('powerTipCompany');});
 	jQuery('#leadsource').val(getLeadSource());
-})
+});
 
-function getQuerystring(key, default_)
-{
-	if (default_==null) default_=""; 
-	key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-	var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
-	var qs = regex.exec(window.location.href);
-	if(qs == null)
-	return default_;
-	else
-	return qs[1];
-}
 var checkout = false;
 if(window.location.href.indexOf('checkout=T')>-1)
 {
@@ -487,7 +489,7 @@ function forgotPasswordSocialLink()
 </div>
 <div id='div__body_outer'>
 <div id='div__body_inner'>
-<div id='div__body' style="left: 100px;">
+<div style="left: 100px;padding-bottom:0;padding-top: 30px;">
 		<div class="login-login" >
 			<form id="link-social" style="display:none; text-align:center;width:430px;margin:0 auto;">
 				<input type="hidden" name="emaillink" value=""/>
@@ -581,10 +583,10 @@ function forgotPasswordSocialLink()
 							<label for="password">Create Password</label>
 							<div style="position: relative;"><input id="passwordnew" name="password" type="password"/></div>
 						</fieldset>
-						<fieldset id="fs_company" style="width: 300px;">
+						<fieldset id="fs_company" style="width: 300px;position:relative;">
 							<label for="company">Company Name</label>
 							 <input id="company" name="company" placeholder="(Optional)" type="text" style="width: 197px;"/>
-							 <span title="Enter company name here" style="cursor: pointer; font-size: 13px;" id="companyhelp"><img style="margin-bottom:-10px" src="/site/social-login/css/images/whatsthis.jpg"/></span>
+							 <span title="Enter company name here" style="cursor: pointer; font-size: 13px;" id="companyhelp"><img style="margin-bottom:-10px; margin-left:5px;" src="/site/social-login/css/images/whatsthis.jpg"/></span>
 							 <div name="whatthisfortext" id="whatthisfortext" style="display: none;"><p> <PP_LOGIN_WHATTHISFOR_TEXT> </p></div>
 						</fieldset>
 						<fieldset>

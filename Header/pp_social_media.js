@@ -89,6 +89,7 @@ cookietime.setMinutes(cookietime.getMinutes() + 30);
 setCookie('MobileOptOut',1,cookietime);
 return;
 }
+//on load code
 if( qsMobile == '0'){ deleteCookie('MobileOptOut');}
 //check if executed on mobile device
 if(isMobile.any()){
@@ -106,6 +107,8 @@ window.location.href = "http://poppin.uat.bbhosted.com" + paypalurl + mobilequer
 }
 }
 checkMobileAndTablet();
+
+
 /*
  * PP_SOCIAL_MEDIA_UI_ADJUSTMENTS
  */
@@ -121,6 +124,10 @@ function validateEmail($email) {
 
 jQuery(document).ready(function() {
 	var offset1 = jQuery('.top-links').offset();
+	//check qs for reset password
+	if(getQuerystring('e') && getQuerystring('dt') && getQuerystring('cb')){
+		resetPasswordOld();
+	}
 //	jQuery('#loginpositionhelper').offset({
 //		top : offset1.top + 26,
 //		left : offset1.left + jQuery('.top-links').width() - jQuery('#loginpositionhelper').width()
@@ -155,13 +162,17 @@ jQuery(document).ready(function() {
 //			jQuery('#loginpositionhelper').css('display', 'none');
 //		}
 //	});
-	jQuery('#coverdiv').click(function(){
-		if(jQuery('#loginpositionhelper').css('display') != 'none') {
-				jQuery('#loginpositionhelper').hide();jQuery('#coverdiv').hide();
+	
+	$j('#coverdiv').click(function(){
+		if($j('#loginpositionhelper').css('display') != 'none') {
+			$j('#loginpositionhelper').hide();$j('#coverdiv').hide();
 			}
 	});
 	jQuery('.login a').attr('href', '#');
-	jQuery('.login a').click(function(){
+	jQuery('.login button').click(function(){
+		if(window.location.href.indexOf('https') > -1){
+			return false;
+		}
 		if(jQuery('#loginpositionhelper').is(':visible')){
 			jQuery('#coverdiv').hide();
 			jQuery('#loginpositionhelper').hide();
@@ -377,6 +388,80 @@ function forgotPasswordOld() {
 		}
 	});
 }
+function resetPasswordOld(){
+	var formHtml = '<div class="new-customer"><form id="reset-pass-form" action="sendResetPasswordRequest()">'
+		+ '<fieldset style="border: 0px none;">' 
+		+ '<label for="resetpass">New Password*</label>' 
+			+ '<input id="resetpass" name="resetpass" type="password" style="font-size:16px;font-family:Arial,Helvetica,sans-serif">' 
+		+ '</fieldset>' 
+		+ '<fieldset style="border: 0px none;">' 
+			+ '<input type="submit" value="Continue" class="orangeBtn" name="submit" id="submit" ' 
+			+ 'style="margin: 0px;font-size:10pt;font-family:OmnesMediumRegular,sans-serif">' 
+		+ '</fieldset>'
+		+ '<fieldset style="border: 0px none;"><p class="message"></p></fieldset>'
+		+ '</form></div>';
+
+	jQuery("#dialogresponse").html(formHtml);
+	jQuery("#dialogresponse").dialog({
+		title : poppinres.text.passwordresettitle
+	});
+
+	$('#reset-pass-form').on('submit', function(e) {
+		e.preventDefault();
+		if ($("form#reset-pass-form > fieldset > input#submit.orangeBtn").val() == 'Continue') {
+			sendResetPasswordRequestOld();
+		} else {
+			jQuery("#dialogresponse").dialog('close');
+		}
+	});
+}
+function sendResetPasswordRequestOld() {
+	var loginserviceurl = poppinres.url.loginservice;
+	if (location.protocol == 'http:') {
+		loginserviceurl = poppinres.url.loginservice1;
+	}
+	var userresetpassword = {
+		"requesttype" : "resetpassword",
+		"password" : document.forms['reset-pass-form'].elements['resetpass'].value,
+		"e":getQuerystring('e'),
+		"dt":getQuerystring('dt'),
+		"cb":getQuerystring('cb')
+	};
+	jQuery.ajax({
+		url : loginserviceurl,
+		data : userresetpassword,
+		dataType : 'jsonp',
+		jsonp : 'json.wrf',
+		success : resetPasswordResponseOld,
+		error : resetPasswordResponseOld
+	});
+//	document.body.style.cursor = 'wait';
+jQuery('div#waitmask').show();
+}
+function resetPasswordResponseOld(data) {
+	var message = '';
+//	document.body.style.cursor = 'default';
+jQuery('div#waitmask').hide();
+	if (data.responseText == null) {
+		message = poppinres.text.responseobjectnull;
+	}
+	var responseObject = JSON.parse(data.responseText);
+	switch (responseObject.responsetype) {
+	case null:
+		message = poppinres.text.responsetypenull;
+		break;
+	case 'success':
+		message = poppinres.text.resetpasswordsuccess;
+		break;
+	case 'error':
+		message = data.responseText;
+		break;
+	default:
+		message = poppinres.text.responsetypeunknown;
+	}
+	$("form#reset-pass-form > fieldset > input#submit.orangeBtn").val("Close");
+	$("form#reset-pass-form > fieldset > p.message").html(message);
+}
 function sendForgotPasswordRequestOld() {
 	var loginserviceurl = poppinres.url.loginservice;
 	if (location.protocol == 'http:') {
@@ -425,6 +510,13 @@ jQuery('div#waitmask').hide();
 /*
  * PP_SOCIAL_MEDIA_LOGIN_SUBMIT
  */
+jQuery(document).ready(function(){
+	jQuery('#minicompanyhelp').on('mouseenter', function(){
+		powerTip.create('minicompany', jQuery('#miniwhatthisfortext').html(), 'powerTipCompany', 286, 481);
+	});
+	jQuery('#minicompanyhelp').on('mouseleave',function(){powerTip.hide('powerTipCompany');});
+	//jQuery('input[name="leadsource"]').val(getLeadSource());
+});
 jQuery(function() {
 	jQuery('#miniloginform').on('submit', function(e) {
 		e.preventDefault();
@@ -453,17 +545,17 @@ function miniloginSubmit(loginUser)
 	powerTip.hide('powerTipminipassword');
 	
 	if (loginUser.email === '') {
-		powerTip.create('miniemail', poppinres.text.emailempty, 'powerTipminiemail', -37, -5);
+		powerTip.create('miniemail', poppinres.text.emailempty, 'powerTipminiemail', -37, 121);
 		$('#miniemail').on('focusin', function() { powerTip.hide('powerTipminiemail'); });
 		$('#miniemail').attr('class', 'input-red');
 	}
 	if (!validateEmail(loginUser.email)) {
-		powerTip.create('miniemail', poppinres.text.emailinvalid, 'powerTipminiemail', -37, -48);
+		powerTip.create('miniemail', poppinres.text.emailinvalid, 'powerTipminiemail', -37, 121);
 		$('#miniemail').on('focusin', function() { powerTip.hide('powerTipminiemail'); });
 		$('#miniemail').attr('class', 'input-red');
 	}
 	if (loginUser.password === '') {
-		powerTip.create('minipassword', poppinres.text.passwordempty, 'powerTipminipassword', -37, -55);
+		powerTip.create('minipassword', poppinres.text.passwordempty, 'powerTipminipassword', -37, 100);
 		$('#minipassword').on('focusin', function() { powerTip.hide('powerTipminipassword'); });
 		$('#minipassword').attr('class', 'input-red');
 	}
@@ -482,21 +574,21 @@ function registerformSubmitUser()
 	
 	var company = '';
 	//if($('form#new-customer-register > fieldset > input#business').is(':checked')) {
-		company = document.forms['mini-new-customer-register'].elements['company'].value;
+		company = document.forms['mini-new-customer-register'].elements['minicompany'].value;
 	//}
 	var emailsubscribe = 'F';
-	if($('form#mini-new-customer-register > fieldset > input#subscribe').is(':checked')) {
+	if($('form#mini-new-customer-register > fieldset > input#minisubscribe').is(':checked')) {
 		emailsubscribe = 'T';
 	}
 	
 	var newUser = {
 			"requesttype":"manualregister",
-			"lead":document.forms['mini-new-customer-register'].elements['leadsource'].value,
+			"lead":document.forms['mini-new-customer-register'].elements['minileadsource'].value,
 			"remember":true,
-			"email":document.forms['mini-new-customer-register'].elements['emailregnew'].value,
-			"name":document.forms['mini-new-customer-register'].elements['fname'].value + " " +document.forms['mini-new-customer-register'].elements['lname'].value,
-			"password":document.forms['mini-new-customer-register'].elements['passwordnew'].value,
-			"password2":document.forms['mini-new-customer-register'].elements['passwordnew'].value,
+			"email":document.forms['mini-new-customer-register'].elements['miniemailregnew'].value,
+			"name":document.forms['mini-new-customer-register'].elements['minifname'].value + " " +document.forms['mini-new-customer-register'].elements['minilname'].value,
+			"password":document.forms['mini-new-customer-register'].elements['minipasswordnew'].value,
+			"password2":document.forms['mini-new-customer-register'].elements['minipasswordnew'].value,
 			"company":company,
 			"emailsubscribe":emailsubscribe,
 			"checkout":false
@@ -512,39 +604,39 @@ function validateRegisterForm()
 	var regText		= /^[0-9a-zA-Z- ]{2,}$/;
 	var regPass		= /^[0-9a-zA-Z]{6,}$/;
 	
-	var email		= $('form#mini-new-customer-register > fieldset > div > input#emailregnew').first();
-	var fname		= $('form#mini-new-customer-register > fieldset > div > input#fname').first();
-	var lname		= $('form#mini-new-customer-register > fieldset > div > input#lname').first();
-	var pass		= $('form#mini-new-customer-register > fieldset > div > input#passwordnew').first();
+	var email		= $('form#mini-new-customer-register > fieldset > div > input#miniemailregnew').first();
+	var fname		= $('form#mini-new-customer-register > fieldset > div > input#minifname').first();
+	var lname		= $('form#mini-new-customer-register > fieldset > div > input#minilname').first();
+	var pass		= $('form#mini-new-customer-register > fieldset > div > input#minipasswordnew').first();
 	
 	//remove unnecessary spaces before and after name values 
-	$('form#mini-new-customer-register > fieldset > div > input#fname').val($('form#mini-new-customer-register > fieldset > div > input#fname').val().trim());
-	$('form#mini-new-customer-register > fieldset > div > input#lname').val($('form#mini-new-customer-register > fieldset > div > input#lname').val().trim());
+	$('form#mini-new-customer-register > fieldset > div > input#minifname').val($('form#mini-new-customer-register > fieldset > div > input#minifname').val().trim());
+	$('form#mini-new-customer-register > fieldset > div > input#minilname').val($('form#mini-new-customer-register > fieldset > div > input#minilname').val().trim());
 	
 	$("#mini-new-customer-register .input-red").removeClass("input-red");
 	
 	if(!regEmail.test(email.val()))
 	{
-		powerTip.create('emailregnew', poppinres.text.emailvalidation, 'powerTipEmail', -52, 123);
-		$('#emailregnew').on('focusin', function() { powerTip.hide('powerTipEmail'); }) ;
+		powerTip.create('miniemailregnew', poppinres.text.emailvalidation, 'powerTipEmail', -52, 124);
+		$('#miniemailregnew').on('focusin', function() { powerTip.hide('powerTipEmail'); }) ;
 		email.attr( "class", "input-red");
 	}
 	if(!regText.test(fname.val()))
 	{
-		powerTip.create('fname', poppinres.text.firstnamevalidation, 'powerTipFName', -52, 123);
-		$('#fname').on('focusin', function() { powerTip.hide('powerTipFName'); }) ;
+		powerTip.create('minifname', poppinres.text.firstnamevalidation, 'powerTipFName', -52, 128);
+		$('#minifname').on('focusin', function() { powerTip.hide('powerTipFName'); }) ;
 		fname.attr( "class", "input-red");
 	}
 	if(!regText.test(lname.val()))
 	{
-		powerTip.create('lname', poppinres.text.lastnamevalidation, 'powerTipLName', -52, 123);
-		$('#lname').on('focusin', function() { powerTip.hide('powerTipLName'); }) ;
+		powerTip.create('minilname', poppinres.text.lastnamevalidation, 'powerTipLName', -52, 97);
+		$('#minilname').on('focusin', function() { powerTip.hide('powerTipLName'); }) ;
 		lname.attr( "class", "input-red");
 	}
 	if(!regPass.test(pass.val()))
 	{
-		powerTip.create('passwordnew', poppinres.text.passwordvalidation, 'powerTipPass', -65, 123);
-		$('#passwordnew').on('focusin', function() { powerTip.hide('powerTipPass'); }) ;
+		powerTip.create('minipasswordnew', poppinres.text.passwordvalidation, 'powerTipPass', -65, 75);
+		$('#minipasswordnew').on('focusin', function() { powerTip.hide('powerTipPass'); }) ;
 		pass.attr( "class", "input-red");
 	}
 	
