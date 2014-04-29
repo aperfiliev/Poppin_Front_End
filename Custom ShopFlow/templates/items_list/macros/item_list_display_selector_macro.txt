@@ -1,0 +1,12 @@
+<% registerMacro('itemListDisplaySelector', function(config) {  %>
+<div class="item-listing-display <%= config.classes || '' %>">
+	<!-- hidden-phone -->
+	<span class="hidden-phone display-selector-label"><%= _('View by:').translate() %></span>
+	<!-- /hidden-phone -->
+	<span class="btn-group">
+		<% _.each(config.options, function(option) { %>
+			<a href="<%= config.translator.cloneForOption("display", option.id).getUrl() %>" class="btn <%= config.translator.getOptionValue("display") === option.id ? 'active' : '' %> " title="<%= option.name %>"><i class="<%= option.icon  %>"></i></a>
+		<% }) %> 
+	</span>
+</div>
+<%})%>

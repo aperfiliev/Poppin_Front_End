@@ -1,0 +1,159 @@
+<% 
+	var	Environment
+	,	SiteSettings
+	,	siteId
+	,	Content
+	,	DefaultPage
+	,	Merchandising
+	,	Error;
+
+	try {
+
+		Environment = Application.getEnvironment(session, request);
+		SiteSettings = Application.getModel('SiteSettings').get();
+		siteId = SiteSettings.siteid;
+
+		// Content depends on the instalation and inclusion of the 
+		// ContentDeliverService provided as a separated boundle 
+		// If you need to add more tags to the listURL function please consider
+		// moving this to the sc.user.environment.ssp (the current file is cached)
+		try 
+		{	
+			var locale = Environment && Environment.currentLanguage && Environment.currentLanguage.locale
+			,	content_tag = '';
+
+			if (locale) 
+			{
+				content_tag = 'locale:' + locale;
+			}
+
+			var content_model = Application.getModel('Content');
+
+			Content = content_model.listURL(siteId, content_tag);
+			DefaultPage = content_model.getDefault();
+		} 
+		catch (e) 
+		{
+			console.warn('Content Module not present in ShopFlow SSP');
+		}
+
+		if (typeof psg_dm !== 'undefined')
+		{
+			Merchandising = psg_dm.getMerchRule();
+		}
+		else
+		{
+			console.warn('Merchandising Module not present in ShopFlow SSP');
+		}
+
+	}
+	catch (e)
+	{
+		Error = Application.processError(e); 
+	}
+
+	var query_string = ''
+	,	params = request.getAllParameters();
+
+	for (param in params)
+	{
+		if (param && param !== 'sitepath')
+		{
+			query_string = query_string + param + '=' + params[param] + '&'
+		}
+	}
+
+	response.setCDNCacheable(response.CACHE_DURATION_MEDIUM);
+	response.setContentType('JAVASCRIPT');
+%>
+var SC = window.SC = { ENVIRONMENT: {} };
+
+<% if (Environment) { %>
+	// Server Environment Info	
+	SC.ENVIRONMENT = <%= JSON.stringify(Environment) %>;
+<% } %>
+
+<% if (SiteSettings) { %>
+	// Site Settings Info
+	SC.ENVIRONMENT.siteSettings = <%= JSON.stringify(SiteSettings) %>;
+<% } %>
+
+// Local Environment info
+SC.ENVIRONMENT.jsEnvironment = typeof nsglobal === 'undefined' ? 'browser' : 'server';
+
+// Do we have SEO Support
+SC.ENVIRONMENT.seoSupport = false;
+
+if (SC.ENVIRONMENT.jsEnvironment === 'server')
+{
+	loadScript({
+		code: 'SC.ENVIRONMENT.seoSupport = true'
+	,	seo_remove: false
+	});
+}
+
+SC.ENVIRONMENT.CART = {};
+SC.ENVIRONMENT.PROFILE = {};
+SC.ENVIRONMENT.CATEGORIES = <%=JSON.stringify(session.getSiteCategoryContents(true)) %>;
+<% console.log(JSON.stringify(session.getSiteCategoryContents())) %>
+
+<% if (Content) { %>
+	// The Content
+	SC.ENVIRONMENT.CONTENT = <%= JSON.stringify(Content) %>;
+
+	<% if (DefaultPage) { %>
+		// The Default Page
+		SC.ENVIRONMENT.DEFAULT_PAGE = <%= JSON.stringify(DefaultPage) %>;
+	<% } %>
+<% } %>
+
+<% if (Merchandising) { %>
+	// Merchandising
+	SC.ENVIRONMENT.MERCHANDISING = <%= JSON.stringify(Merchandising, {}) %>;
+<% } %>
+
+// Touch Support
+// Checks if this is a touch enalbed device
+SC.ENVIRONMENT.isTouchEnabled = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
+// Sets the class property of the html element 
+// It is not checking if it was already set (be aware if the SEO engine)
+document.documentElement.className = SC.ENVIRONMENT.isTouchEnabled ? 'touch' : 'no-touch';
+
+// Include Language Files
+loadScript({
+	url: '<%= session.getAbsoluteUrl("shopping", "languages/en.js") %>'
+,	seo_remove: true
+});
+
+if (SC.ENVIRONMENT.jsEnvironment === 'browser')
+{
+	var t = new Date()
+	,	url = '<%= session.getAbsoluteUrl("shopping", "sc.user.environment.ssp") + '?' + query_string %>t=' + t.getTime();
+	
+	loadScript({ url: url });
+}
+
+<% if (Environment && Environment.currentLanguage && Environment.currentLanguage.locale !== 'en') { %>
+	if (SC.ENVIRONMENT.jsEnvironment === 'server')
+	{
+		loadScript({
+			url: '<%= session.getAbsoluteUrl("shopping", "languages/" + Environment.currentLanguage.locale + ".js") %>'
+		,	seo_remove: true
+		});
+	}
+<% } %>
+
+<% if (Error) { %>
+	SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;
+	
+	if (!SC.ENVIRONMENT.baseUrl)
+	{
+		SC.ENVIRONMENT.baseUrl = '<%=  session.getAbsoluteUrl(request.getURL().indexOf('https:') === 0 ? 'checkout' : 'shopping', '/{{file}}') %>';
+	}
+<% } %>
+
+SC.LOAD_FILES = [
+	'js/libs/Libraries-014573ef75de.js'
+,	'js/Application-0145a79adec6.js'
+,	'templates/Templates-014597fd4137.js'
+];

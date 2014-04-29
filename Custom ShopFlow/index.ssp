@@ -1,0 +1,55 @@
+<% 
+	response.setCDNCacheable(response.CACHE_DURATION_LONG); 
+
+	var Environment = Application.getEnvironment(session, request)
+	,	locale = Environment && Environment.currentLanguage && Environment.currentLanguage.locale && Environment.currentLanguage.locale
+	,	html_lang = locale ? locale.replace('_', '-') : null; 
+ %>
+<!DOCTYPE html>
+<html <%= html_lang ? 'lang="'+html_lang+'"' : '' %>>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>Shopping</title>
+		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('shopping', 'skins/standard/Styles-014573ef890e.css') %>">
+		<script src="<%= session.getAbsoluteUrl('shopping', 'js/utils/BootUtilities-014573ef85f5.js') %>"></script>
+	</head>
+	<body>
+		
+		<script>
+			document.write('<div class="seo-remove">');
+			loadScript({
+				url: '<%= session.getAbsoluteUrl("shopping", "sc.environment.ssp?lang="+ (request.getParameter("lang") || '') +"&cur="+ (request.getParameter("cur") || '')) %>'
+			,	seo_remove: true
+			});
+			document.write('<\\/div>');
+		</script>
+		<script>
+			document.write('<div class="seo-remove">');
+			for (var i = 0; i < SC.LOAD_FILES.length; i++)
+			{
+				loadScript({
+					url: SC.ENVIRONMENT.baseUrl.replace('{{file}}', SC.LOAD_FILES[i])
+				,	seo_remove: true
+				});
+			}
+			document.write('<\\/div>');
+		</script>
+
+		<noscript>
+			<div class="container">
+				<div class="alert alert-error alert-noscript">
+					<strong>Javascript is disabled on your browser.</strong><br>
+					To view this site, you must enable JavaScript or upgrade to a JavaScript-capable browser.
+				</div>
+			</div>
+		</noscript>
+		
+		<div id="main" class="main"></div>
+
+		<script>
+			// This minimizes flickery of the 1st page load!
+			jQuery && jQuery('#main').empty();
+		</script>
+	</body>
+</html>

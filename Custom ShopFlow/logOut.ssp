@@ -1,0 +1,11 @@
+<%
+	// Very simple file that just logs you out and then redirects you to the home touchpoint
+	// We created this file becaus the Advance Store Front does not provide a default logout functionality
+
+	var settingsAfterLogout = session.logout();
+	
+
+	// The redirecturl propertie point to the home touchpoint if you want to redirect to another url after logout 
+	// please add this parameter (logoff=T) to your custom url
+	return nlapiSetRedirectURL('EXTERNAL', settingsAfterLogout.redirecturl);
+%>

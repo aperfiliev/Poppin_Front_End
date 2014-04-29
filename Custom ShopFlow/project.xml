@@ -1,0 +1,127 @@
+<project info="SuiteCloud IDE generated file, do not edit." setAttributesOnUpdate="false">
+  <folder name="Custom ShopFlow" bundleable="true">
+    <folder name="js" bundleable="false">
+      <folder name="libs" bundleable="false">
+        <file name="Libraries-014573ef75de.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="combiner.config" bundleable="false" hideInBundle="false" isOnline="false"/>
+        <file name="current.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      </folder>
+      <folder name="src" bundleable="false">
+        <folder name="app" bundleable="false">
+          <folder name="modules" bundleable="false">
+            <folder name="Categories" bundleable="false">
+              <file name="Categories.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+            </folder>
+            <folder name="Facets" bundleable="false">
+              <file name="Facets.Helper.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="Facets.Model.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="Facets.Router.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="Facets.Translator.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="Facets.Views.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="Facets.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+            </folder>
+          </folder>
+          <file name="Configuration.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+          <file name="ItemsKeyMapping.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        </folder>
+      </folder>
+      <folder name="utils" bundleable="false">
+        <file name="BootUtilities-014573ef85f5.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="combiner.config" bundleable="false" hideInBundle="false" isOnline="false"/>
+        <file name="current.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      </folder>
+      <file name="Application-01458ed448bc.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="Application-014598a71e6a.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="Application-0145a79adec6.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="combiner.config" bundleable="false" hideInBundle="false" isOnline="false"/>
+      <file name="current.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+    </folder>
+    <folder name="skins" bundleable="false">
+      <folder name="standard" bundleable="false">
+        <file name="Styles-014573ef890e.css" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="combiner.config" bundleable="false" hideInBundle="false" isOnline="false"/>
+        <file name="current-css.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      </folder>
+    </folder>
+    <folder name="ssp_libraries" bundleable="false">
+      <file name=".jshintrc" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="Models.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="backbone.validation.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="backend.configuration.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="commons.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="hosts.config.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="underscore.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+    </folder>
+    <folder name="templates" bundleable="false">
+      <folder name="items_list" bundleable="false">
+        <folder name="macros" bundleable="false">
+          <file name="category_cell_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="facet_categories_list_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="facet_categories_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="facet_color_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="facet_list_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="facet_range_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="faceted_navigation_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="facets_display_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="item_cell_grid_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="item_cell_list_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="item_cell_option_color_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="item_cell_table_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="item_list_display_selector_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="item_list_show_selector_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="item_list_sort_selector_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="item_list_summary_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+        </folder>
+        <file name="category_browse.txt" bundleable="false" hideInBundle="false" isOnline="true">
+          <altTagCaption>category_browse_tmpl</altTagCaption>
+        </file>
+        <file name="facet_browse.txt" bundleable="false" hideInBundle="false" isOnline="true">
+          <altTagCaption>facet_browse_tmpl</altTagCaption>
+        </file>
+      </folder>
+      <file name="Templates-014573ef6b61.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="Templates-014597fd4137.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="current.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="templates.config" bundleable="false" hideInBundle="false" isOnline="false"/>
+    </folder>
+    <file name="README.txt" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="SpecRunner.html" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="goToCart.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="index.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="logOut.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="robots.txt" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="sc.environment.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+  </folder>
+</project>
