@@ -254,7 +254,7 @@ define('Facets.Translator'
 		// Gets the configuration for a given facet by id,
 		// You can also get it by name or url component if you pass the second parameter
 	,	getFacetConfig: function (name, by)
-		{
+		{debugger;
 			var result =  _.find(this.configuration.facets, function (facet) { return facet[by || 'id'] === name; });
 			return result || _.extend({ id: name, name: name, url: name }, this.defaultFacetConfig);
 		}

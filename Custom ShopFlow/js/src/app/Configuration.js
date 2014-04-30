@@ -23,7 +23,6 @@
 			['ItemDetails',  {startRouter: true}]
 		,	'Profile'
 		,	'NavigationHelper'
-		,	'Categories'
 		,	'BackToTop'
 		,	['Cart',  {startRouter: true}]
 		,	'Content'
@@ -45,6 +44,7 @@
 		,	'ErrorManagement'
 		,	'Merchandising'
 		,	'Merchandising.Context.DefaultHandlers'
+		,	'Categories'
 		]
 
 		// Default url for the item list
@@ -167,11 +167,22 @@
 		}
 		,	{
 			text: _('Decor').translate()
-		,	href: '/decor'
+		,	href: '/Decor_2'
 		,	data: {
 				touchpoint: 'home'
-			,	hashtag: '#decor'
+			,	hashtag: '#Decor_2'
+			,	'keep-options': 'display'
 			}
+		, categories: [
+						{
+								text: _('Decor Sub-menu 1').translate()
+							, 	href: '/Decor_2/Wall-Art'
+							, 	data: {
+										touchpoint: 'home'
+									, 	hashtag: '#Decor_2/Wall-Art'
+								}
+						}
+						]
 		}
 		,	{
 			text: _('For Business').translate()
@@ -292,13 +303,14 @@
 			,	behavior: 'multi'
 			,	uncollapsible: false
 			}
-//			, {
-//				id: 'category'
-//			,	name: _('Category').translate()
-//			,	url: 'category'
-//			,	behavior: 'single'
-//			,	uncollapsible: false
-//			}
+			, {
+				id: 'category'
+			,	name: _('Category').translate()
+			,	url: 'category'
+			,	behavior: 'single'
+			,	uncollapsible: false
+			,	macro: 'facetCategories'
+			}
 		]
 		// This options set the title for the facet browse view.
 	,	defaultSearchTitle: _('Products').translate()

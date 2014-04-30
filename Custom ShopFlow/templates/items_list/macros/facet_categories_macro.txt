@@ -1,5 +1,5 @@
 <% registerMacro('facetCategories', function (translator, config, facet) { %>
-<%
+<%debugger;
 	var selected = translator.getFacetValue(facet.id)
 	,	tree = translator.getMergedCategoryTree(facet.values)
 	,	tab = selected ? tree[selected.split('/')[0]] : {}

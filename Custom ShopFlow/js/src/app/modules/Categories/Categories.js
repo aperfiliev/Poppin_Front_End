@@ -48,14 +48,13 @@ define('Categories', function ()
 			for (var i = 0; i < array.length; i++)
 			{
 				var current_token = array[i];
-				
 				var result = slice.categories.filter(function( obj ) {
-					  return obj.urlcomponent === current_token;
+					  return obj.urlcomponent == current_token;
 					});
-				if (slice.categories && result)
+				if (slice.categories && result.length>0)
 				{
-					branch.push(result);
-					slice = result;
+					branch.push(result[0]);
+					slice = result[0];
 				}
 				else
 				{
@@ -104,7 +103,7 @@ define('Categories', function ()
 		}
 
 	,	addToNavigationTabs: function (application)
-		{
+		{debugger;
 			var tabs = this.makeNavigationTab(this.getTree());
 
 			application.Configuration.navigationTabs = _.union(application.Configuration.navigationTabs, tabs);
@@ -114,10 +113,10 @@ define('Categories', function ()
 
 	,	mountToApp: function (application, options)
 		{
-		//	if (options && options.addToNavigationTabs)
-			//{
+			if (options && options.addToNavigationTabs)
+			{
 				this.addToNavigationTabs(application);
-			//}
+			}
 		}
 	};
 });
