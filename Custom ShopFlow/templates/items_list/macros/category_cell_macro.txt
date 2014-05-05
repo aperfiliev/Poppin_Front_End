@@ -2,7 +2,7 @@
 <div class="category-cell">
 	<div class="category-cell-thumbnail thumbnail">
 		<a href="<%= item.url %>">
-			<img src="<%= item.image %>" alt="<%= item.label %>">
+			<img src="<%= item.image || application.Configuration.imageNotAvailable %>" alt="<%= item.label %>">
 		</a>
 	</div>
 	<div class="category-cell-name">
