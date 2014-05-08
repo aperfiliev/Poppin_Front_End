@@ -73,11 +73,9 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 
 	,	search: function (keywords)
 		{
-		debugger;
 			var currentView = this.currentView;
 			
 			keywords = SiteSearch.formatKeywords(this.getApplication(), keywords); 
-console.log("+++KEYWOERDS=" + keywords);
 
 			if (this.getApplication().getConfig('isSearchGlobal') || !(currentView && currentView.options.translator instanceof Translator))
 			{
@@ -87,7 +85,7 @@ console.log("+++KEYWOERDS=" + keywords);
 				//If we are not in Shopping we have to redirect to it
 				if (this.getApplication().getConfig('currentTouchpoint') !== 'home')
 				{
-					window.location.href = this.application.getConfig('siteSettings.touchpoints.home') + '#' + search_url + '?keywords=' + keywords;
+					window.location.href = this.application.getConfig('siteSettings.touchpoints.home') + '#' + search_url + keywordsDelimited + keywords;
 				}
 				//Else we stay in the same app
 				else
@@ -109,7 +107,6 @@ console.log("+++KEYWOERDS=" + keywords);
 
 	,	processAnchorTags: function (e, typeahead)
 		{
-debugger;
 			var $anchor, value, item, path, self = this
 			,	search_url = this.getApplication().getConfig('defaultSearchUrl');
 
