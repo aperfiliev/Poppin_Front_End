@@ -33,7 +33,9 @@ define('Facets.Model', ['ItemDetails.Collection'], function (ItemDetailsCollecti
 			options = options || {};
 
 			options.cache = true;
-
+			if (options.data && options.data.q) {
+				options.data.q = decodeURIComponent(options.data.q);
+			}
 			return original_fetch.apply(this, arguments);
 		}
 
