@@ -1,0 +1,116 @@
+<% //TODO: use the formatted values from the backend instead of formatCurrency (eg.: total_formatted)
+registerMacro('itemDetails', function (line) { %>
+<%
+	line.format_options = _.map(line.options, function ( option )
+	{
+		return option.id +'='+ option.value;
+	}).join(',');
+
+
+	var link_attributes = false
+	,	url = line.item.get('_isPurchasable') ? line.item.get('_url') : null;
+
+	if (url && SC.ENVIRONMENT.siteType === 'ADVANCED')
+	{
+		link_attributes = SC.Utils.objectToAtrributes({
+			href: url
+		,	data: {
+				touchpoint: 'home'
+			,	hashtag: '#'+url
+			}
+		});
+	}
+	else if (url)
+	{
+		link_attributes = SC.Utils.objectToAtrributes({
+			href: url
+		});
+	}
+%>
+	<tr class="product-details">
+		<td class="product-image td-product-image">
+ 		<% var item_image = line.application.resizeImage(line.item.get('_thumbnail').url, 'thumbnail') %>
+ 		<% if ( line.type !== 'Discount' ) { %>
+	 		<% if ( link_attributes ) { %>
+	 			<a <%= link_attributes %>>
+	 				<img src="<%= item_image %>" alt="<%= line.item.get('_thumbnail').altimagetext %>">
+	 			</a>
+	 		<% } else { %>
+				<img src="<%= item_image %>" alt="<%= line.item.get('_thumbnail').altimagetext %>">
+	 		<% } %>
+		<% } %>
+ 		</td> 
+		<td class="product-name">
+			<% if (link_attributes) { %>
+				<a <%= link_attributes %>>
+					<b><%= line.item.get('_name') %></b>
+				</a>
+			<% } else { %>
+				<b><%= line.item.get('_name') %></b>
+			<% } %>
+			<% if (line.type === 'Discount') { %>
+				<p> <%= _('Discount').translate() %></p>
+			<% } %>		
+			<% if ( line.options && line.options.length ) { %>
+				<p><%= SC.macros.showItemOptions(line.options) %></p>
+			<% } %>
+			<% if ( line.trandate ) { %>
+				<p><%= _('Last purchased on $(0)').translate(line.trandate)%></p>
+			<% } %>
+			<% if( ! line.reorder && ! line.reorder_checkbox && line.type !== 'Discount' ) {  %>
+				<p class="alert alert-warning"><%= _('This item is no longer available').translate() %></p>
+			<% } %>
+
+		</td>
+		<% if ( !line.reorder_checkbox) { %><td class="product-quantity">
+		<% if ( line.type !== 'Discount') { %>
+			<%= line.quantity || '0' %></td><% } %>
+		<% } %>
+		
+		<td class="product-price">
+			<%= line.price ? _.formatCurrency( line.item.getPrice().price_formatted ) : '&nbsp;' %>
+		</td>
+		<td class="right-aligned product-amount">
+			<% //TODO: here use total as default instead of amount
+			if (line.discount) {%>
+				<small class="muted crossed">
+					<%= line.amount ? _.formatCurrency( line.amount ) : '&nbsp;' %>
+				</small>
+				<%= line.amount ? _.formatCurrency( line.total ) : '&nbsp;' %>
+
+			<% } else { %>
+				<%= line.amount ? _.formatCurrency( line.amount ) : '&nbsp;' %>
+			<% } %>
+		</td>
+		<% if ( line.reorder_checkbox ) { %>
+			<td class="right-aligned product-reorder">
+				<form action="" class="product-reorder-form">
+					<div class="pull-right">
+						<input type="hidden" name="item_id" data-item-id="<%= line.item.get('_id') %>" data-parent-id="<%= line.item.get('parent_internalid') %>" data-item-options="<%= line.format_options %>">
+						<input type="number" name="item_quantity" id="" data-toggle="quantity" data-line-id="<%= line.id %>" class="input-mini pull-right" value="<%= line.item.get('quantity') || 1 %>" min="1" max="999">
+						<br><br>
+						<div style="clear:both">
+							<button class="btn btn-primary pull-right"><%= _('Add to Cart').translate() %></button>
+						</div>						
+					</div>
+				</form>
+			</td>
+			<!-- could not find a way to draw a line in the mobile, adding this helper -->
+			<td class="product-reorder-mobile-helper">&nbsp;</td>
+		<% } %>
+	</tr>
+	<% if ( line.reorder ) { %>
+	<tr class="re-order-item">
+		<td colspan="5">
+		<% if(line.item.get("itemtype") != 'GiftCert') { %>
+			<button class="btn-link" data-re-order-item-link="<%= line.item.get('_id') %>" data-item-id="<%= line.item.get('_id') %>" data-item-quantity="<%= line.quantity %>" data-parent-id="<%=line.item.get('parent_internalid') %>" data-item-options="<%= line.format_options %>">
+				<%= line.quantity > 1 ? _('Reorder these Items').translate() : _('Reorder this Item').translate() %>
+			</button>
+		<% } else { %>
+			<a data-giftcard-item-link="<%= line.item.get('_url') %>" data-giftcard-item-name="<%= line.item.get('_sku') %>" data-parent-id="<%=line.item.get('parent_internalid') %>" data-item-options="<%= line.format_options %>" href="#">
+			</a>
+		<% } %>
+		</td>
+	</tr>
+	<% } %>   
+<% }) %>

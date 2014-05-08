@@ -1,0 +1,104 @@
+<h3><%= view.page_header %></h3>
+<a href="/" class="back-btn">
+	<%= _('&lt; Back to Account').translate() %>
+</a>
+<div class="header-links pull-right">
+	<%= transactionsNavigation('ordershistory') %>
+</div>
+<hr class="divider-small">
+<% if (view.collection.models.length) { %>
+ <div class="showing-current pull-left">
+ <p>Total Found: <%= view.collection.totalRecordsFound %></p>
+ </div>
+	<% /*= showingCurrent({
+			current_page: view.options.page
+		,	items_per_page: view.collection.recordsPerPage
+		,	total_items: view.collection.totalRecordsFound
+		,	total_pages: Math.ceil(view.collection.totalRecordsFound / view.collection.recordsPerPage)
+		,	extraClass: 'pull-left'
+	}) */%>
+	<%
+		var pagination_result = pagination(_.extend({}, 
+			view.options.application.getConfig('defaultPaginationSettings'), 
+			{
+				currentPage: view.options.page
+			,	totalPages: Math.ceil(view.collection.totalRecordsFound / view.collection.recordsPerPage)
+			,	extraClass: 'pagination-small pull-right'
+			,	pager: function (page) {
+					return (page === 1) ? '/ordershistory' : '/ordershistory?page='+page;
+				}
+			}
+		))
+	%>
+	<%//= pagination_result %>
+	<table class="table">
+	<% _.each(view.collection.models, function (order_item) { %>
+		<tr>
+			<td>
+				<p>
+					<%= _('Order Date').translate() %><br>
+					<b><%= order_item.get('date') %></b>
+				</p>
+				<p>
+					<%= _('Order Number').translate() %><br>
+					<b><%= order_item.get('order_number') %></b>
+				</p>
+			</td>
+			<td>
+				<p>
+					<%= _('Order Total').translate() %><br>
+					<b><%= order_item.get('summary').total_formatted %></b>
+				</p>
+				<p>
+					<%= _('Status').translate() %><br>
+					<b><%= order_item.get('status') %></b>
+				</p>
+			</td>
+			<td class="summary">
+				<ul class="nav-list unstyled">
+					<li>
+						<a href="/ordershistory/view/<%= order_item.get('internalid') %>">
+							<%= _('View Order Details').translate() %>
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="/reorderItems?order_id=<%= order_item.get('internalid') %>">
+							<%= _('Reorder Items').translate() %>
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<% var trackingnumbers = order_item.get('trackingnumbers') || [] %>
+						<% if (!trackingnumbers.length) { %>
+							<span>
+								<%= _('Track Items').translate() %>
+							</span>
+						<% } else if (trackingnumbers.length == 1) { %>
+							<a target="_blank" href="<%= view.getTrackingServiceUrl(trackingnumbers[0]) %>">
+								<%= _('Track Items').translate() %>
+							</a>
+						<% } else { %>
+							<a href="#" rel="clickover" data-placement="left"
+								data-html="true"
+								data-content-selector="#traking-numbers-<%= order_item.get('internalid') %>"
+								data-original-title="<%= _('Shipments').translate() %>">
+								<%= _('Track Items').translate() %>
+							</a>
+							<span id="traking-numbers-<%= order_item.get('internalid') %>" style="display: none">
+								<%= trackingNumbers(view, trackingnumbers) %>
+							</span>
+						<% } %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+	<% }) %>
+	</table>
+
+		<%= pagination_result %>
+
+	<% } else { %>
+	<p><%= _('We have no orders on file for this account.').translate() %></p>
+	<p><a class="btn" href="#" data-touchpoint="home"><%= _('Shop Now').translate() %></a></p>
+<% } %>

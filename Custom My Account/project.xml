@@ -1,0 +1,73 @@
+<project info="SuiteCloud IDE generated file, do not edit." setAttributesOnUpdate="false">
+  <folder name="Custom My Account" bundleable="false">
+    <folder name="js" bundleable="false">
+      <folder name="libs" bundleable="false">
+        <file name="backbone.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="backbone.validation.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="bootstrap.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="jquery.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="require.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="underscore.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      </folder>
+      <folder name="src" bundleable="false">
+        <folder name="app" bundleable="false">
+          <folder name="modules" bundleable="false">
+            <folder name="OrderHistory" bundleable="false">
+              <file name="OrderHistory.Router.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+              <file name="OrderHistory.Views.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+            </folder>
+            <folder name="SiteSearch" bundleable="false">
+              <file name="SiteSearch.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+            </folder>
+          </folder>
+          <file name="ItemsKeyMapping.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        </folder>
+      </folder>
+      <folder name="utils" bundleable="false">
+        <file name="BootUtilities-0145b2d07a43.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+        <file name="combiner.config" bundleable="false" hideInBundle="false" isOnline="false"/>
+        <file name="current.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      </folder>
+      <file name="Application-0145d5cf6a77.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="combiner.config" bundleable="false" hideInBundle="false" isOnline="false"/>
+      <file name="current.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+    </folder>
+    <folder name="ssp_libraries" bundleable="false">
+      <file name="Models.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="backbone.validation.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="backend.configuration.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="commons.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="underscore.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+    </folder>
+    <folder name="templates" bundleable="false">
+      <folder name="header" bundleable="false">
+        <folder name="macros" bundleable="false">
+          <file name="header_profile_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+        </folder>
+      </folder>
+      <folder name="home" bundleable="false">
+        <file name="home.txt" bundleable="false" hideInBundle="false" isOnline="true">
+          <altTagCaption>home_tmpl</altTagCaption>
+        </file>
+      </folder>
+      <folder name="order" bundleable="false">
+        <folder name="macros" bundleable="false">
+          <file name="item_details_macro.txt" bundleable="false" hideInBundle="false" isOnline="true">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+        </folder>
+        <file name="order_history.txt" bundleable="false" hideInBundle="false" isOnline="true">
+          <altTagCaption>order_history_tmpl</altTagCaption>
+        </file>
+      </folder>
+      <file name="Templates-0145d6221b5c.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="Templates-0145d62293c0.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="current.js" bundleable="false" hideInBundle="false" isOnline="true"/>
+      <file name="templates.config" bundleable="false" hideInBundle="false" isOnline="false"/>
+    </folder>
+    <file name="index.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+    <file name="sc.environment.ssp" bundleable="false" hideInBundle="false" isOnline="true"/>
+  </folder>
+</project>

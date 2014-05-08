@@ -1,0 +1,76 @@
+﻿<%	
+	var Error
+	,	SiteSettings
+	,	Environment
+	,	siteType
+	,	html_lang;
+
+	try {
+		SiteSettings = Application.getModel('SiteSettings').get();
+		Environment = Application.getEnvironment(session, request); 
+		siteType = SiteSettings.sitetype;
+
+		var locale = Environment && Environment.currentLanguage && Environment.currentLanguage.locale && Environment.currentLanguage.locale; 
+		html_lang = locale ? locale.replace('_', '-') : null; 
+
+		// Access control, if you are not loged this will send you to the log in page
+		if (!session.isLoggedIn() || session.getCustomer().isGuest())
+		{
+			var parameters = request.getAllParameters();
+
+			delete parameters.sitepath;
+			parameters.origin = 'customercenter';
+			
+			if (parameters.fragment)
+			{
+				parameters.origin_hash = parameters.fragment;
+				delete parameters.fragment;
+			}
+
+			return nlapiSetRedirectURL('EXTERNAL', SiteSettings.touchpoints.login, null, false, parameters);
+		}
+	} catch (e) {
+		Error = Application.processError(e);
+	}
+%>
+<!DOCTYPE html>
+<html <%= html_lang ? 'lang="'+html_lang+'"' : '' %>>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>My Account</title>
+		<% if (siteType && siteType === 'ADVANCED') { %>
+		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/styles.css') %>">
+		<% } 
+		   else { %>
+		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/styles-sitebuilder.css') %>">
+		<% } %>
+		<%= (siteType && siteType === 'STANDARD') ? getPageFullHead() : '' %>
+		<script src="<%= session.getAbsoluteUrl('checkout', 'js/utils/BootUtilities-0145b2d07a43.js') %>"></script>
+		<script src="<%= session.getAbsoluteUrl('checkout', 'sc.environment.ssp?lang=' + (request.getParameter('lang') || '') + '&cur=' + (request.getParameter('cur') || '') ) %>"></script>
+		<% if (Error) { %>
+		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
+		<% } %>
+		<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0145d5cf6a77.js') %>"></script>
+		<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0145d62293c0.js') %>"></script>
+	</head>
+	<body>
+		
+	<% if (siteType && siteType === 'STANDARD'){ %>
+		<div id='div__header' style="overflow: hidden;" class='noprint' leftmargin='0' topmargin='0' marginwidth='1' >
+			<table border='0' cellspacing='0' cellpadding='0' width='100%'>
+				<%= getPageTop() %>
+			</table>
+		</div>
+	<% } %>
+		<noscript>
+			<div class="alert alert-error alert-noscript">
+				<strong>Javascript is disabled on your browser.</strong><br>
+				To view this site, you must enable JavaScript or upgrade to a JavaScript-capable browser.
+			</div>
+		</noscript>
+
+		<div id="main"></div>
+
+	</body>
+</html>

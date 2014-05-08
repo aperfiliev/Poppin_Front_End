@@ -1,0 +1,21 @@
+<% if ( view.customerSupportURL ) { %>
+	<div class="header-links pull-right">
+		<%= _('Need Help? Contact <a href="$(0)">Customer Service</a>').translate( view.customerSupportURL ) %>
+	</div>
+<% } %>
+<h3 class="no-margin-top"><%= _('Welcome $(0)!').translate(view.application.getUser().get('firstname') || view.application.getUser().get('companyname')) %></h3>
+<hr class="divider-small">
+<section>
+	<%= recentOrdersWidget( view.recentOrders ) %>
+</section>
+<section>
+	<h4><%= _('My Settings').translate() %></h4>
+	<hr>
+	<% var homeItems = []; 
+		homeItems.push(SC.macros.homeProfile(view));
+		homeItems.push(SC.macros.homeShipping(view));
+		homeItems.push(SC.macros.homePayment(view));
+	%>
+	<%= displayInRows(homeItems, null, view.application.getConfig('itemsPerRow')) %>
+</section>
+<%= homeBanner(view.application.getConfig('homeBanners')) %>
