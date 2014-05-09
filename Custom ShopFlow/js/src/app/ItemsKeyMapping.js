@@ -161,10 +161,12 @@
 				{
 					return images[0];
 				}
-				if( item.get('custitem_display_thumbnail')) {
+				
+				var thumbnailImage = item.get('custitem_display_thumbnail'); 
+				if (thumbnailImage) {
 					return {
-						url: item.get('custitem_display_thumbnail')
-					,	altimagetext: item.get('_name')
+						url			 : thumbnailImage
+					,	altimagetext : item.get('_name')
 					};
 				}
 				// still nothing? image the not available
