@@ -63,7 +63,7 @@ var HOSTS = [
 				title:'Spanish'
 			,	host:'sa.site.dev'
 			,	locale:'es_ES'
-			}    
+			}
 		,	{
 				title:'Portuguese'
 			,	host:'pt.sa.site.dev'
