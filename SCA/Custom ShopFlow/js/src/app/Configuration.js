@@ -378,8 +378,8 @@
 		// available sorting options for the Sort By dropdown
 	,	sortOptions: [
 			{id: 'relevance:asc', name: _('Relevance').translate(), isDefault: true}
-		,	{id: 'onlinecustomerprice:asc', name: _('Price, Low to High').translate()}
-		,	{id: 'onlinecustomerprice:desc', name: _('Price, High to Low ').translate()}
+		,	{id: 'pricelevel5:asc', name: _('Price, Low to High').translate()}
+		,	{id: 'pricelevel5:desc', name: _('Price, High to Low ').translate()}
 		]
 
 	,	recentlyViewedItems: {
