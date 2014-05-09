@@ -1,0 +1,63 @@
+<% registerMacro('headerProfile', function (Profile) { %>
+<% if (Profile.get('isLoggedIn') === 'T' &&  Profile.get('isGuest') === 'F') { %>
+	<li class="welcome"><a><%= _('Welcome $(0)').translate(Profile.get('firstname') || Profile.get('companyname'))  %></a></li>
+	<li id="my-account-container" class="dropdown my-account-container">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-touchpoint="customercenter">
+			<span class="my-account-title"><%= _('Your Account').translate() %></span>
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li class="my-account-item-cell">
+				<a href="#" data-touchpoint="customercenter" data-hashtag="#">
+					<%= _('Overview').translate() %>
+				</a>
+			</li>
+			<li class="my-account-item-cell">
+				<a href="#" data-touchpoint="customercenter" data-hashtag="#profileinformation">
+					<%= _('Profile Information').translate() %>
+				</a>
+			</li>
+			<li class="my-account-item-cell">
+				<a href="#" data-touchpoint="customercenter" data-hashtag="#addressbook">
+					<%= _('Address Book').translate() %>
+				</a>
+			</li>
+			<li class="my-account-item-cell">
+				<a href="#" data-touchpoint="customercenter" data-hashtag="#creditcards">
+					<%= _('Credit Cards').translate() %>
+				</a>
+			</li>
+			<li class="my-account-item-cell" data-permissions="transactions.tranFind.1,transactions.tranSalesOrd.1">
+				<a href="#" data-touchpoint="customercenter" data-hashtag="#ordershistory">
+					<%= _('Order History & Returns').translate() %>
+				</a>
+			</li>
+			<li class="my-account-item-cell">
+				<a href="#" data-touchpoint="customercenter" data-hashtag="#emailpreferences">
+					<%= _('Email Preferences').translate() %>
+				</a>
+			</li>
+			<li class="my-account-item-cell" data-permissions="transactions.tranFind.1,transactions.tranSalesOrd.1">
+				<a href="#" data-touchpoint="customercenter" data-hashtag="#reorderItems">
+					<%= _('Reorder Items').translate() %>
+				</a>
+			</li>
+			<li class="my-account-item-cell">
+				<a href="#" data-touchpoint="customercenter" data-hashtag="#updateyourpassword">
+					<%= _('Update Your Password').translate() %>
+				</a>
+			</li>
+			<li class="divider"></li>
+			<li class="my-account-item-cell">
+				<a href="#" data-touchpoint="logout">
+					<%= _('Sign Out').translate() %>
+				</a>
+			</li>	
+		</ul>
+	</li>	
+<% } else { %>
+	<li><a href="#" data-touchpoint="login"><%= _('Login').translate() %></a></li>
+	<li class="divider-vertical"></li>
+	<li><a href="#" data-touchpoint="register"><%= _('Register').translate() %></a></li>
+<% } %>
+<% }) %>
