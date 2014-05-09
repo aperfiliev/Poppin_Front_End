@@ -101,7 +101,7 @@
 		// array of links to be added to the header
 		// this can also contain subcategories
 	,	navigationTabs: [
-			{
+/*			{
 				text: _('Home').translate()
 			,	href: '/'
 			,	data: {
@@ -109,7 +109,7 @@
 				,	hashtag: ''
 				}
 			}
-		,	{
+		,	*/{
 				text: _('Shop').translate()
 			,	href: '/search'
 			,	data: {
@@ -119,70 +119,70 @@
 			}
 		,	{
 			text: _('Writing').translate()
-		,	href: '/writing'
+		,	href: '/Writing_3'
 		,	data: {
 				touchpoint: 'home'
-			,	hashtag: '#writing'
+			,	hashtag: '#Writing_3'
 			}
 		}
 		,	{
 			text: _('Notebooks+').translate()
-		,	href: '/notebooks'
+		,	href: '/Notebooks-_3'
 		,	data: {
 				touchpoint: 'home'
-			,	hashtag: '#notebooks'
+			,	hashtag: '#Notebooks-_3'
 			}
 		}
 		,	{
 			text: _('Desktop').translate()
-		,	href: '/desktop'
+		,	href: '/Desktop_3'
 		,	data: {
 				touchpoint: 'home'
-			,	hashtag: '#desktop'
+			,	hashtag: '#Desktop_3'
 			}
 		}
 		,	{
 			text: _('Organization').translate()
-		,	href: '/organization'
+		,	href: '/Organization_3'
 		,	data: {
 				touchpoint: 'home'
-			,	hashtag: '#organization'
+			,	hashtag: '#Organization_3'
 			}
 		}
 		,	{
 			text: _('Furniture').translate()
-		,	href: '/furniture'
+		,	href: '/Furniture_5'
 		,	data: {
 				touchpoint: 'home'
-			,	hashtag: '#furniture'
+			,	hashtag: '#Furniture_5'
 			}
 		}
 		,	{
 			text: _('Tech').translate()
-		,	href: '/tech'
+		,	href: '/Tech_3'
 		,	data: {
 				touchpoint: 'home'
-			,	hashtag: '#tech'
+			,	hashtag: '#Tech_3'
 			}
 		}
 		,	{
 			text: _('Decor').translate()
-		,	href: '/Decor_2'
+		,	href: '/Decor_3'
 		,	data: {
 				touchpoint: 'home'
-			,	hashtag: '#Decor_2'
+			,	hashtag: '#Decor_3'
 			,	'keep-options': 'display'
 			}
-		, categories: [
-						{
-								text: _('Decor Sub-menu 1').translate()
-							, 	href: '/Decor_2/Wall-Art'
-							, 	data: {
-										touchpoint: 'home'
-									, 	hashtag: '#Decor_2/Wall-Art'
-								}
-						}
-						]
+//		, categories: [
+//						{
+//								text: _('Decor Sub-menu 1').translate()
+//							, 	href: '/Decor_2/Wall-Art'
+//							, 	data: {
+//										touchpoint: 'home'
+//									, 	hashtag: '#Decor_2/Wall-Art'
+//								}
+//						}
+//						]
 		}
 		,	{
 			text: _('For Business').translate()
@@ -194,10 +194,10 @@
 		}
 		,	{
 			text: _('Gifts+More').translate()
-		,	href: '/Gifts-More'
+		,	href: '/Gifts-More_3'
 		,	data: {
 				touchpoint: 'home'
-			,	hashtag: '#Gifts-More'
+			,	hashtag: '#Gifts-More_3'
 			}
 		}
 		]

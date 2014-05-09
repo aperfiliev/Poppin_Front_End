@@ -103,20 +103,30 @@ define('Categories', function ()
 		}
 
 	,	addToNavigationTabs: function (application)
-		{debugger;
-			var tabs = this.makeNavigationTab(this.getTree());
+		{
+//			var tabs = this.makeNavigationTab(this.getTree());
+			var tabs = this.getTree();
+			var filtered_tabs =[];
+			_.each(tabs, function(tab){
+				_.each(application.Configuration.navigationTabs, function(navTab){
+					if(navTab.href == ("/"+tab.urlcomponent)){
+						filtered_tabs.push(tab);
+					}
+				});
+			});
 
-			application.Configuration.navigationTabs = _.union(application.Configuration.navigationTabs, tabs);
+//			application.Configuration.navigationTabs = _.union(application.Configuration.navigationTabs, tabs);
+			application.Configuration.navigationTabs = this.makeNavigationTab(filtered_tabs);
 
 			return;
 		}
 
 	,	mountToApp: function (application, options)
 		{
-			if (options && options.addToNavigationTabs)
-			{
+//			if (options && options.addToNavigationTabs)
+//			{
 				this.addToNavigationTabs(application);
-			}
+//			}
 		}
 	};
 });
