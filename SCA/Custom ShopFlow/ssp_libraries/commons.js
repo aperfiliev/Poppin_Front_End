@@ -220,6 +220,8 @@ var Application = _.extend({
 	{
 		'use strict';
 		// Sets Default environment variables
+		
+		var context = nlapiGetContext();
 		var siteSettings = session.getSiteSettings(['currencies', 'languages'])
 		,	result = {
 				baseUrl: session.getAbsoluteUrl(request.getURL().indexOf('https:') === 0 ? 'checkout' : 'shopping', '/{{file}}')
@@ -357,7 +359,42 @@ var Application = _.extend({
 
 		// Shopper Price Level
 		result.currentPriceLevel = session.getShopperPriceLevel().internalid ? session.getShopperPriceLevel().internalid : session.getSiteSettings(['defaultpricelevel']).defaultpricelevel;
-
+		//////////////////////////////////////
+		// Sets the Permissions of the user //
+		/////////////////////////////////////
+		result.permissions = 
+		{
+			transactions:
+			{
+					tranCashSale : context.getPermission('TRAN_CASHSALE')
+				,	tranCustCred : context.getPermission('TRAN_CUSTCRED')
+				,	tranCustDep : context.getPermission('TRAN_CUSTDEP')
+				,	tranCustPymt : context.getPermission('TRAN_CUSTPYMT')
+				,	tranStatement : context.getPermission('TRAN_STATEMENT')
+				,	tranCustInvc : context.getPermission('TRAN_CUSTINVC')
+				,	tranItemShip : context.getPermission('TRAN_ITEMSHIP')
+				,	tranSalesOrd : context.getPermission('TRAN_SALESORD')
+				,	tranEstimate : context.getPermission('TRAN_ESTIMATE')
+				,	tranRtnAuth : context.getPermission('TRAN_RTNAUTH')
+				,	tranDepAppl : context.getPermission('TRAN_DEPAPPL')
+				,	tranSalesOrdFulfill : context.getPermission('TRAN_SALESORDFULFILL')
+				,	tranFind: context.getPermission('TRAN_FIND')
+			}
+		,	lists:
+			{
+					regtAcctRec: context.getPermission('REGT_ACCTREC')
+				,	regtNonPosting: context.getPermission('REGT_NONPOSTING')
+				,	listCase: context.getPermission('LIST_CASE')
+                ,	listContact: context.getPermission('LIST_CONTACT')
+                ,	listCustJob: context.getPermission('LIST_CUSTJOB')
+                ,	listCompany: context.getPermission('LIST_COMPANY')
+                ,	listIssue: context.getPermission('LIST_ISSUE')
+                ,	listCustProfile: context.getPermission('LIST_CUSTPROFILE')
+                ,	listExport: context.getPermission('LIST_EXPORT')
+                ,	listFind: context.getPermission('LIST_FIND')
+                ,	listCrmMessage: context.getPermission('LIST_CRMMESSAGE')
+			}
+		};
 		return result;
 	}
 
