@@ -1,0 +1,20 @@
+<% registerMacro('siteLogo', function (application, remove_home_link) { %>
+<div id="site-logo" class="site-logo content-banner">
+	<% if (remove_home_link){ %>
+		<a >
+	<% } else { %>
+		<!--<a href="/" data-touchpoint="home" data-hashtag="#/">-->
+<a href="http://sca-sandbox.poppin.com">
+	<% } %>	
+	<%
+		var logoUrl = application.getConfig('logoUrl')
+		,	siteName = application.getConfig('siteSettings.displayname');
+	%>
+	<% if (logoUrl) { %>
+		<img itemprop="image" src="<%- logoUrl %>" alt="<%- siteName %>">
+	<% } else { %>
+		<h4 itemprop="name"><%= siteName %></h4>
+	<% } %>
+	</a>
+</div>
+<% }) %>

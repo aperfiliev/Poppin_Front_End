@@ -1,0 +1,25 @@
+<% registerMacro('simplifiedHeader', function (view) { %>
+<!-- Bar just for style -->
+<nav class="navbar navbar-inverse navbar-static-top site-header-top-nav">
+	<div class="navbar-inner">
+		<div class="container"></div>
+	</div>
+</nav>
+<!-- /Bar just for style -->
+<div class="container">
+	<div class="row-fluid site-branding">
+		<div class="span3 site-logo">
+			<%= SC.macros.siteLogo(view.application, false) %>
+		</div>
+		<div class="span6 header-banner">
+			<div id="banner-header-top" class="content-banner banner-header-top"></div>
+			&nbsp;
+		</div>
+		<div class="span3 back-to-shopping">
+			<a class="btn btn-link pull-right" href="/" data-touchpoint="home" data-hashtag="#/">
+				<%= _('continue shopping >').translate() %>
+			</a>
+		</div>
+	</div>
+</div>
+<% }) %>
