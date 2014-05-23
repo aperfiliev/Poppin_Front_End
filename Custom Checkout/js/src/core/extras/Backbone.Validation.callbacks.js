@@ -20,7 +20,6 @@
 
 	,	invalid: function (view, attr, error, selector)
 		{
-			debugger;
 			var $target
 			,	$control = view.$el.find('['+ selector +'="'+ attr +'"]')
 			,	$group = $control.parents('.control-group').addClass('error');
@@ -68,11 +67,19 @@
 						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
 					}
 				}
-
+				if (attr == "ccnumber") {
+					if (error.length > 50) {
+						$group.find('.help-block')[0].style.bottom = '-16px';
+						$group.find('.help-block')[0].style.height = '34px';
+					} else {
+						$group.find('.help-block')[0].style.bottom = '0px';
+						$group.find('.help-block')[0].style.height = '';
+					}
+				}
 				$target = $group.find('.help-block');
 			}
-			
-			return $target.text(error);
+			$target.text(error);
+			return $target.html(error);
 		}
 	});
 	 // --------------------------------

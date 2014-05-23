@@ -48,7 +48,7 @@ define('CreditCard.Model', function ()
 					{
 						console.log(cc_number.length);
 						if(cc_number.length>16){
-							return "We only accept credit cards number that are up to 16 digits - might want to check that number again";
+							return "<p>We only accept credit cards number that are up </p><p><br></p><p> to 16 digits - might want to check that number again<p>";
 //							jQuery('[data-type="alert-placeholder"]').html(
 //									SC.macros.message(_('We only accept credit cards number that are up to 16 digits - might want to check that number again').translate(), 'error', true )
 //								);

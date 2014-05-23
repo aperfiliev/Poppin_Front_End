@@ -45,10 +45,12 @@ define('CreditCard.Views', function ()
 		}
 	,	setPaymethodId: function(e)
 		{
-			var cc_number = jQuery(e.target).val()
+			var cc_number = jQuery(e.target).val().replace(/\s/g, '')
 			,	form = jQuery(e.target).closest('form')
 			,	paymenthod_id = _.paymenthodIdCreditCart(cc_number);
-
+			
+			jQuery(e.target)[0].value = cc_number;
+			
 			if (paymenthod_id)
 			{	
 				form.find('[name="paymentmethod"]').val(paymenthod_id);

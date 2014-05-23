@@ -33,7 +33,7 @@ if(creditcard.isNew()){
    </small>
   </label>
   <div class="controls">
-   <input type="text" class="input-xmedium" maxlength="16" id="ccnumber" name="ccnumber" value="<%- creditcard.get('ccnumber') %>" <%= !creditcard.isNew() ? 'disabled':'' %> >
+   <input type="text" class="input-xmedium" maxlength="19" id="ccnumber" name="ccnumber" value="<%- creditcard.get('ccnumber') %>" <%= !creditcard.isNew() ? 'disabled':'' %> >
   </div>
  </div>
 
