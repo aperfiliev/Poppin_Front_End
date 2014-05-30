@@ -1,0 +1,152 @@
+.facet-header {
+	border-bottom: 1px solid @grayLighter;
+	margin-bottom: @baseLineHeight;
+
+	> h1 {
+		border-bottom: 1px solid @grayLighter;
+		margin-top: 0;
+		padding-bottom: @baseLineHeight;
+
+		> b {
+			color: @lightOrange;
+		}
+	}
+
+	@media (max-width: 767px) {
+		background: @facetedNavigationBg;
+		border-color: @mainBorderColor;
+		border-style: solid;
+		border-width: 1px 0;
+		margin-bottom: @baseLineHeight;
+		padding-top: @baseLineHeight;
+		position: relative;
+
+		/* mobile facets header */
+		.row-fluid {
+			padding: 0;
+		}
+		
+		.item-listing-sorting {
+			border: none;
+			padding: 0;
+
+			select {
+				height: 25px;
+				left: 5px;
+				top: -6px;
+			}
+		}
+
+		.sort-selector-label, .display-selector-label {
+			display: none;
+		}
+
+		.row-fluid div.span6 {
+			margin-left: 0;
+		}
+
+		.pagination {
+			bottom: 7px;
+		}
+	}
+}
+
+.item-listing-display {
+
+	@media (max-width: 767px) {
+		display: none;
+	}
+
+	.btn {
+		background: none;
+		border: none;
+		.box-shadow(none);
+		padding: 0 5px;
+
+		i {
+			background: url(@siteSpritePath) no-repeat;
+			height: 21px;
+			width: 21px;
+		}
+
+		.icon-th-list {
+			background-position: -60px -51px;
+		}
+
+		.icon-th-large {
+			background-position: -30px -51px;
+		}
+
+		.icon-th {
+			background-position: 0 -51px;
+		}
+
+		&.active, &:active, &:hover, &:focus {
+
+			.icon-th-list {
+				background-position: -60px -79px;
+			}
+
+			.icon-th-large {
+				background-position: -30px -79px;
+			}
+
+			.icon-th {
+				background-position: 0 -79px;
+			}
+		}
+	}
+}
+
+.narrow-by-btn {
+	display: none;
+	margin-right: 10px;
+
+	@media (max-width: 979px) {
+		display: block;
+	}
+
+	@media (max-width: 767px) {
+		margin-left: 15px;
+	}
+}
+
+.narrow-by .narrow-by-btn .icon-minus-sign {
+	display: inline-block;
+}
+
+.narrow-by-btn .icon-minus-sign, .narrow-by .narrow-by-btn .icon-plus-sign {
+	display: none;
+}
+
+.item-listing-sorting label {
+	float: left;
+}
+
+.facet-selections {
+	margin-bottom: @baseLineHeight;
+
+	@media (max-width: 767px) {
+		margin: 0;
+		padding: 0 12px 12px;
+	}
+}
+
+.facet-selections-label {
+	padding: 8px 8px 8px 0;
+
+	@media (max-width: 767px) {
+		display: none;
+	}
+}
+
+.item-list-container {
+
+	.pagination {
+		margin: 0;
+	}
+
+	.facets-display {
+		margin-bottom: 0;
+	}
+}

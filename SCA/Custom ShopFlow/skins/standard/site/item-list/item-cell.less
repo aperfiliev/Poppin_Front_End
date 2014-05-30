@@ -1,0 +1,81 @@
+.item-cell {
+	border-bottom: 1px solid @grayLighter;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+
+	.thumbnail {
+		position: relative;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.options-container {
+		clear: both;
+		margin-bottom: 5px;
+		word-wrap: break-word;
+
+		.tiles {
+			margin: 0;
+
+			li {
+				border: none;
+				padding: 0;
+			}
+
+			&.color-tiles .tile {
+				min-height: 10px;
+				width: 10px;
+			}
+
+			&.color-tiles img.tile {
+				height: 12px;
+				width: 12px;
+			}
+		}
+	}
+
+	.option-label {
+		display: none
+	}
+}
+	
+.item-cell-grid, .item-cell-table {
+	border-bottom: none;
+	border-top: 1px solid @grayLighter;
+	margin: 10px 0 0;
+	padding: 10px 0 0;
+}
+
+.item-cell-name {
+	text-transform: none;
+	font-size: @baseFontSize;
+	line-height: @baseLineHeight;
+}
+
+.btn-quick-view {
+	display: none;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 45%;
+}
+/* If we aren't on a touch enabled device we show the quick-view */
+.no-touch .item-cell:hover .btn-quick-view {
+	display: block;
+}
+
+.color-filters, .color-tiles {
+	li {
+		padding: 1px;
+		.border-radius(0);
+
+		.tile {
+			border-color: #ccc;
+			min-height: 29px;
+			width: 29px;
+		}
+	}
+}
