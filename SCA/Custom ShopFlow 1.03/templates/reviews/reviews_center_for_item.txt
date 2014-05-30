@@ -1,0 +1,95 @@
+<%= breadcrumb(view.getBreadcrumb()) %>
+<% var paginationConfig = _.extend({}, view.options.application.getConfig('defaultPaginationSettings'), {
+		currentPage: view.collection.page
+	,	totalPages: view.collection.totalPages
+	,	pager: function (page)
+		{
+			return '/'+ (page > 1 ? _.setUrlParameter(Backbone.history.fragment, 'page', page) : _.removeUrlParameter(Backbone.history.fragment, 'page'));
+		}
+	,	extraClass: 'pull-right no-margin-top'
+
+	}); %>
+<% if ( !view.item.get('_ratingsCount') ) { %>
+<section class='reviews-list'>
+	<h3><%= _('No reviews available').translate(0) %></h3>
+	<p><%= _('Be the first to').translate() %> <a href="<%= view.baseUrl %>/new"><%= _('Write a Review').translate() %></a></p>
+</section>
+<% } else { %>
+<header class="reviews-header">
+	<div class="row">
+		<div class="span3">
+			<div class="review-summary">
+				<h3 class="no-margin-top no-margin-bottom">
+					<%= view.item.get('_ratingsCount') === 1 ?  _('1 review').translate() : _('$(0) reviews').translate( view.item.get('_ratingsCount') ) %>
+				</h3>
+				<div>
+					<%= starRating({
+						max: view.options.application.getConfig('productReviews.maxRate')
+					,	value: view.item.get('_rating')
+					,	className: 'star'
+					,	fillRounded: true
+					,	showValue: true
+					}) %>
+				</div>
+				<div>
+					<%= ratingByStar({
+						view: view
+					,	ratingsCountsByRate: view.item.get("_ratingsCountsByRate") || {}
+					,	totalReviews: view.item.get("_ratingsCount")
+					,	maxRate: view.options.application.getConfig('productReviews.maxRate')
+					,	showPercentage: true
+					,	showCount: true
+					}) %>
+				</div>
+				<br>
+				<a href="<%= view.baseUrl %>/new" class="btn btn-primary"><%= _('Write a Review').translate() %></a>
+			</div>
+		</div>
+		<div class="span9">
+			<%= itemCellList(view.item, view) %>
+		</div>
+	</div>
+	<div class="review-header">
+	<div class="pull-right">
+		<%= pagination(paginationConfig) %>
+		<div class="clearfix"></div>
+		<form class="form-inline pull-right">
+			<label><%= _('Show').translate() %></label>
+			<select name="" data-type="navigator">
+				<% _.each(view.options.application.getConfig('productReviews.filterOptions'), function ( filter_option ) { %>
+					<option <%= ( ( view.options.queryOptions.filter && view.options.queryOptions.filter == filter_option.id ) || ( !view.options.queryOptions.filter && filter_option.isDefault ) ) ? 'selected' : '' %> value="<%= view.getUrlForOption({ filter: filter_option.id }) %>">
+						<%= filter_option.name %>
+					</option>
+				<% }) %>
+			</select>
+			
+			<label><%= _('Sort By').translate() %></label>
+			<select name="" data-type="navigator">
+				<% _.each(view.options.application.getConfig('productReviews.sortOptions'), function ( sort_option ) { %>
+					<option <%= ( ( view.options.queryOptions.sort && view.options.queryOptions.sort == sort_option.id ) || ( !view.options.queryOptions.sort && sort_option.isDefault ) ) ? 'selected' : '' %> value="<%= view.getUrlForOption({ sort: sort_option.id }) %>">
+						<%= sort_option.name %>
+					</option>
+				<% }) %>
+			</select>
+		</form>
+	</div>
+	<h1><%= view.page_header %></h1>
+	</div>
+</header>
+<section class='reviews-list'>
+<% if (view.collection.totalRecordsFound < 1) { %>
+	<%= _('There are no reviews available for your selection').translate() %>
+<% } else { %>
+<% view.collection.each(function (review) { %>
+	<div class="review-container">
+		<%= SC.macros[ view.options.application.getConfig('productReviews.reviewMacro') ] (review, _.extend({ showActionButtons: true }, view.options.application.getConfig('productReviews') ) ) %>
+	</div>
+<% }) %>
+<% } %>
+</section>
+<footer>
+	<%= pagination(_.extend(paginationConfig, {extraClass: paginationConfig.extraClass +' no-margin-bottom'})) %>
+	<a href="<%= view.baseUrl %>/new" class="btn btn-primary"><%= _('Write a Review').translate() %></a>
+	<div class="clearfix"></div>
+</footer>
+<% } %>

@@ -1,0 +1,151 @@
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+	line-height: normal;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	margin: 2px 0 0;
+}
+
+.input-prepend, .input-append {
+
+	.add-on {
+		padding: 6px 5px 7px;
+	}
+
+	.navbar-form & {
+
+		input, select, .btn {
+			margin-top: 0;
+		}
+	}
+}
+
+// label {
+// 	font-weight: bold;
+
+// 	small {
+// 		font-weight: normal;
+// 	}
+// }
+
+.form-actions {
+	background-color: transparent;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.form-actions a, .form-actions button{
+	float: right;
+	margin-left: 5px
+}
+
+.modal form {
+	margin-bottom: 0;
+}
+
+
+.btn-expanded-class() {
+	width: 100%;
+	margin-bottom: @thumbHeight/2;
+	.box-sizing(border-box);
+}
+
+// Buttons and inputs for mobile - all the following is for mobile:
+@media (max-width: 767px) {
+
+	.btn {
+		height: @thumbHeight;
+		line-height: @thumbHeight - 10px; //paddings
+		.caret {
+			margin-top: 18px;
+		}
+	}
+	.btn-large {
+		padding: 4px 12px;
+	}
+	a.btn {
+		.box-sizing(border-box);
+	}
+	.button-group {
+		line-height: @thumbHeight;
+	}
+	// .btn-horizontal-expand is a mobile button that expands 100% horizontally.
+	// for now we will only set height=100% in specific places, but this should be applyed to all buttons.
+	.form-actions,
+	.modal-content,
+	.well-body {
+		.btn {
+			.btn-expanded-class()
+		}
+	}
+	.btn-expanded {
+		.btn-expanded-class()
+	}
+	.control-group {
+		margin-bottom: @thumbHeight/2;
+	}
+
+	//override bootstrap's input height
+	select,
+	textarea,
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"],
+	input[type="submit"],
+	input[type="button"],
+	input[type="reset"],
+	.uneditable-input {
+		height: @thumbHeight;
+		margin: 0;
+		min-height: @thumbHeight;
+		.box-sizing(border-box);
+		/*line-height: @thumbHeight; */
+
+		&.btn-expanded {
+			.btn-expanded-class()
+		}
+	}
+
+	//make small inputs to behave the same as large inputs
+	.input-mini,
+	.input-small,
+	.input-medium {
+		.box-sizing(border-box);
+	}
+
+	//fix the input-append input-preppend to fit the new height.
+	.input-append .add-on, .input-prepend .add-on {
+		height: @thumbHeight - 15px; //counting paddings
+		padding: 12px 8px 1px 8px;
+	}
+	/*
+	.alert-error {
+		position: fixed;
+	}
+	*/
+}

@@ -1,0 +1,22 @@
+<% registerMacro('itemImageGallery', function (images, view) { %>
+
+<div class="item-image-gallery">
+<% if (images.length) { %>
+	<% if (images.length > 1) { %>
+		<% var resizeImage = view.application.resizeImage; %>
+		<ul class="bxslider">
+		<% _.each(images, function (image) { %>
+			<li class="pinterest-image" data-share-hover-pint-it-button="true">
+				<img src="<%= resizeImage(image.url, 'main') %>" alt="<% image.altimagetext %>" itemprop="image">
+			</li>
+		<% }) %>
+		</ul>
+	<% } else { %>
+		<% var image = images[0]; %>
+		<div class="item-detailed-image pinterest-image" data-share-hover-pint-it-button="true">
+			<img src="<%= view.application.resizeImage(image.url, 'main') %>" alt="<% image.altimagetext %>" itemprop="image">
+		</div>
+	<% } %>
+<% } %>
+</div>
+<% }) %>

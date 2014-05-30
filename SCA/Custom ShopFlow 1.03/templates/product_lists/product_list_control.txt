@@ -1,0 +1,37 @@
+<% if(view.mode !== 'move') { %>
+<div data-confirm-message=""></div>
+<% } %>
+
+<div class="show-wishlist-link">
+	<% if (view.mode !== 'move') { %>
+	<button class="btn dropdown-toggle show-wishlist" data-toggle="dropdown" data-action="show-productlist-control">
+		<%= view.collection.length === 1 ? _('Add to my product list').translate() : _('Add to my product lists').translate() %>
+	</button>
+	<% } else { %>
+	<button class="btn btn-link dropdown-toggle show-wishlist" data-toggle="dropdown" data-action="show-productlist-control">
+		<%= _('Move').translate() %>
+	</button>
+	<% } %>
+</div>
+
+<div class="dropdown-menu sub-menu productlist-control <%= view.mode === 'move' ? 'productlist-control-move' : '' %>" data-type="productlist-control" <%= view.is_visible ? 'style="display: block"' : ''%>>
+
+	<h4 class="product-list-control-title">
+		<%
+			var header_text = '';
+			if (view.collection.length > 0) {
+				header_text = ' (' + view.collection.length + ' ' + (view.collection.length === 1 ? _('list').translate() : _('lists').translate()) + ')';
+			}
+		%>
+		<%= (view.mode !== 'move' ? _('Select from').translate() : _('Move item to').translate()) + header_text + ':' %>
+	</h4>
+	<ul class="ul-product-lists">
+		<% if (0 === view.collection.length) { %>
+		<li class="nolists-msg">
+			<%= view.mode !== 'move' ? _('There are no lists').translate() : _('There are no other lists').translate() %>
+		</li>
+		<% } %>
+	</ul>
+	<h4 class="product-list-control-title"><%= _('Or: ').translate() %></h4>
+	<div class="new-product-list-container" data-type="new-item-container"></div>		
+</div>

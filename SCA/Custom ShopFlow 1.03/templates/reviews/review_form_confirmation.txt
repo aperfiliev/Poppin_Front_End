@@ -1,0 +1,13 @@
+<%= breadcrumb(view.getBreadcrumb()) %>
+<%= itemCellList(view.item, view) %>
+<div class="row">
+	<div class="span9">
+		<div class="alert alert-success">
+			<%= view.page_header %>
+		</div>
+		<a href="<%= view.item.get('_url') %>/reviews" class="btn btn-link">
+			<i class="icon-arrow-left"></i>
+			<%= _('Back to reviews').translate() %>
+		</a>
+	</div>
+</div>

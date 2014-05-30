@@ -1,0 +1,5 @@
+<% registerMacro('shoppingCartOptionDefault', function (option, value, model) { %>
+<div>
+	<span class="option-label"><%= option.label || option.name.replace(':', '') %></span>: <span class="option-value"><%= value.label %></span>
+</div>
+<% }) %>

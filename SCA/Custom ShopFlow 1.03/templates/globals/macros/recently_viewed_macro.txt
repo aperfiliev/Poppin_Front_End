@@ -1,0 +1,13 @@
+<% registerMacro('recentlyViewed', function (items, application) { %>
+	<% if(items.length){ %>
+	<aside class="shopping-cart-recent-items">
+		<h3><%= _('Recently viewed').translate() %></h3>
+		<%
+			var relatedWrap = function relatedWrap (item) {
+				return SC.macros.relatedItem(item, application);
+			};
+		%>
+		<%= SC.macros.displayInRows(items, relatedWrap, 6) %>
+	</aside>
+	<% } %>
+<% }) %>	

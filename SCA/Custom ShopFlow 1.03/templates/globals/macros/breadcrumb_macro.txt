@@ -1,0 +1,21 @@
+<% registerMacro('breadcrumb', function(pages) { %>
+<% pages = _.isUndefined(pages) || _.isArray(pages) ? pages : [pages]; %>
+<div id="banner-breadcrumb-top" class="content-banner banner-breadcrumb-top"></div>
+<ul class="breadcrumb hidden-phone" itemprop="breadcrumb">
+<% _.each(pages, function(link, index) { %>
+	<% if (link) { %>
+		<% if (index < pages.length - 1) { %>
+			<li>
+				<a <%= _.objectToAtrributes(link) %>><%= link.text %></a>
+				<span class="divider">/</span>
+			</li>
+		<% } else { %>
+			<li class="active">
+				<%= link.text %>
+			</li>
+		<% } %>
+	<% } %>
+<% }) %>
+</ul>
+<div id="banner-breadcrumb-bottom" class="content-banner banner-breadcrumb-bottom"></div>
+<% }) %>

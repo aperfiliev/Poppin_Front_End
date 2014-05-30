@@ -1,0 +1,16 @@
+<% registerMacro('currencySelector', function (currencies, selected_code) { %>
+<% if (currencies && currencies.length > 1) { %>
+<div class="input-prepend">
+	<span class="add-on">
+		<%= SC.ENVIRONMENT.siteSettings.shopperCurrency.symbol %>
+	</span>
+	<select data-toggle="currency-selector" class="input-medium">
+	<% _.each(currencies, function (currency) { %>
+		<option value="<%- currency.code %>" <%= selected_code === currency.code ? 'selected' : '' %>>
+			<%= currency.title || currency.name %>
+		</option>
+	<% }) %>
+	</select>
+</div>
+<% } %>
+<% }) %>

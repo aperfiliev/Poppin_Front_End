@@ -1,0 +1,36 @@
+.navbar-fixed-top,
+.navbar-fixed-bottom,
+.navbar-static-top {
+	
+	@media (max-width: 767px) {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+.navbar-inner {
+	.box-shadow(none);
+
+	.navbar-fixed-top &,
+	.navbar-static-top & {
+		.box-shadow(none);
+	}
+}
+
+.navbar-inverse {
+	
+	.navbar-inner {
+		border-bottom: none;
+	}
+
+	.nav > li > a {
+		text-shadow: 1px 1px 1px @black;
+	}
+}
+
+/* override bootstrap styles because the minicart title is not visible in ie8 */
+.navbar-inverse .nav li.dropdown.open>.dropdown-toggle, 
+.navbar-inverse .nav li.dropdown.active>.dropdown-toggle, 
+.navbar-inverse .nav li.dropdown.open.active>.dropdown-toggle {
+	color: @white;
+}

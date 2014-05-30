@@ -1,0 +1,53 @@
+{
+	"globals": {
+		"container": true
+	,	"session": true
+	,	"settings": true
+	,	"customer": true
+	,	"context": true
+	,	"order": true
+	,	"console": true
+	}
+,	"predef": [
+		"_"
+	,	"Backbone"
+	,	"Application"
+	,	"nlapiGetUser"
+	,	"nlapiGetLogin"
+	,	"notFoundError"
+	,	"nlapiGetContext"
+	,	"nlapiLoadRecord"
+	,	"unauthorizedError"
+	,	"nlapiSubmitRecord"
+	,	"nlapiCreateRecord"
+	,	"nlobjSearchFilter"
+	,	"nlobjSearchColumn"
+	,	"nlapiGetWebContainer"
+	,	"nlapiLogExecution"
+	,	"nlapiCreateError"
+	,	"nlapiCreateSearch"
+	,	"nlapiTransformRecord"
+	,	"getItemOptionsObject"
+	,	"response"
+	,	"request"
+	,	"Validation"
+	,	"HOSTS"
+	,	"nlobjError"
+	,	"toCurrency"
+	,	"formatCurrency"
+	]
+,	"forin": true
+,	"noarg": true
+,	"noempty": true
+,	"eqeqeq": true
+,	"bitwise": false
+,	"strict": true
+,	"undef": true
+,	"unused": true
+,	"curly": true
+,	"browser": true
+,	"quotmark": "single"
+,	"maxerr": 50
+,	"laxcomma": true
+,	"expr": true
+}

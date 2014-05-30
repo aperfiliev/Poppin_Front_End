@@ -1,0 +1,42 @@
+<% if (view.page_header){ %>
+<h1><%= _(view.page_header).translate() %></h1>
+<% } %>
+<div id="main_banner"></div>
+<% if (view.page && view.page.get('content')){ %>
+	<!-- It's the index so we should just show the list of links -->
+	<% if (view.page.get('content') === '__index__'){ %>
+		<% _.each(SC.FAQ, function(question){ %>
+			<% if (question.query !== '/FAQ'){ %>
+				<h3>
+					<a href="<%= question.query %>">
+						<%= question.pageheader %>
+					</a>
+				</h3>
+			<% } %>
+		<% }) %>
+	<% } else { %>
+	<div class="row-fluid">
+		<div class="span8">
+			<div id="landing_page_content">
+				<%= view.page.get('content') %>
+			</div>
+		</div>
+		<div class="span4">
+			<div class="well" style="padding: 8px 0;">
+				<ul class="nav nav-list">
+  					<li class="nav-header">Other Frecuently Asked Questions:</li>
+					<% _.each(SC.FAQ, function(question){ %>
+						<% if (question.query !== '/FAQ'){ %>
+							<li<% if (question.query === "/"+Backbone.history.fragment){ %> class="active"<% } %>>
+								<a href="<%= question.query %>">
+									<%= question.pageheader %>
+								</a>
+							</li>
+						<% } %>
+					<% }) %>					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<% } %>
+<% } %>

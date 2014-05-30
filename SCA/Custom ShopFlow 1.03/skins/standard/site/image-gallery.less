@@ -1,0 +1,71 @@
+.bxslider {
+	list-style: none;
+	margin: 0;
+}
+
+.bxslider li {
+	display: inline-block;
+}
+
+// Wrapped in HTML tag to add the smallest hevier selector
+// to fix bug on IE
+html {
+
+	.bx-wrapper {
+		margin-bottom: 0;
+
+		.bx-viewport {
+			border: none;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;
+			left: 0;
+		}
+
+		.bx-pager {
+			margin-bottom: @baseLineHeight;
+			position: static;			
+
+			.touch & {
+				overflow-x: scroll;
+				-webkit-overflow-scrolling: touch;
+				white-space: nowrap;	
+			}
+
+			a {
+				border: solid #ccc 1px;
+				display: block;
+				margin: 0 4px;
+				padding: 3px;
+
+				&:hover, &.active {
+					border: solid #5280DD 1px;
+				}
+			}
+		}
+
+		img {
+			margin: 0 auto;
+		}
+	}
+
+	.bx-pager-item img {
+		max-width: 50px;		
+	}	
+
+}
+
+/* 271491 IE8 styles for carousel */
+.bx-wrapper .bx-pager .bx-pager-item {
+  display: inline\9;
+}
+.bx-wrapper .bx-pager .bx-pager-item .bx-pager-link {
+  float: left\9;
+  max-width: 64px\9;
+}
+
+/* decrement the z-index of some of the bx image gallery widget because they hide our modals and dropdowns */
+.bx-wrapper .bx-controls-direction a, 
+.bx-wrapper .bx-loading {
+	z-index: 999;
+}

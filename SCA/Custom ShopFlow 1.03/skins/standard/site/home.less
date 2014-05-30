@@ -1,0 +1,41 @@
+.home-page h1 {
+	display: none;
+}
+
+.pinterest-image {
+	position: relative;
+}
+.pin-it-link {
+	position: absolute;
+	z-index: 1000;
+	top: 10px;
+	left: 10px;
+	height: 45px;
+	width: 45px;
+	background-image: url('@{imgRoot}pinterest-hover.png');
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	display: none;
+}
+.pin-it-link-socials {
+	position: absolute;
+	height: 20px;
+	width: 40px;
+	background-image: url('@{imgRoot}pinterest.png');
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	display: block;
+	margin-right: 25px;
+}
+.pin-it-link-socials + .social-share-icons {
+	margin-left: 43px;
+}
+.pin-it-link-socials:hover {
+	background-position: 0 -20px;
+}
+.item-image-gallery:hover .pin-it-link {
+	display: block;
+}
+.bx-controls:hover  .pin-it-link {
+	display: none !important;
+}

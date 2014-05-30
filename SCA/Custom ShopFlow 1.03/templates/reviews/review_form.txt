@@ -1,0 +1,76 @@
+<%= breadcrumb(view.getBreadcrumb()) %>
+<%= itemCellList(view.item, view) %>
+<% if ( view.options.application.getConfig('productReviews.loginRequired') && !view.isLoggedIn ) { %>
+<p><%= _('You need to be logged in to write a review, <a href="#" data-touchpoint="login">click here</a> to log in.').translate() %></p>
+<% } else { %>
+<form id="new-product-review" class="new-product-review">
+	<h1><%= view.page_header %></h1>
+	<div class="rating form-horizontal">
+	<% _.each(view.item.get('_attributesToRateOn'), function (attribute) { %>
+		<% if (attribute) { %>
+			<div class="control-group">
+				<label class="control-label" for="<%= attribute %>"><%= attribute %></label>
+				<div class="controls">
+					<%= starRating({
+						max: view.options.application.getConfig('productReviews.maxRate')
+					,	value: view.model.get('rating_per_attribute')[attribute] || 0
+					,	name: attribute
+					,	className: 'pegs'
+					,	writeMode: true
+					}) %>
+				</div>
+			</div>
+		<% } %>
+	<%})%>
+		
+		<div class="control-group">
+			<label class="control-label" for="Overall"><%= _('Overall').translate() %></label>
+			<div class="controls" name="rating">
+				<%= starRating({
+					max: view.options.application.getConfig('productReviews.maxRate')
+				,	value: view.model.get('rating') || 0
+				,	name: '__overall__'
+				,	className: 'star'
+				,	writeMode: true
+				}) %>
+			</div>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="writer"><%= _('Your Nickname').translate() %></label>
+		<div class="controls">
+			<input type="text" id="writer" class="writer" name="writer.name" value="<%- view.model.get('writer') && view.model.get('writer').name || '' %>" placeholder="">
+			<span class="help-inline"><%= _('For privacy reasons, please do not use your full name or email address.').translate() %></span>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span9">
+			<div class="control-group">
+				<label class="control-label" for="title"><%= _('Review Title').translate() %></label>
+				<div class="controls">
+					<input type="text" id="title" class="span9 title" name="title" value="<%- view.model.get('title') || '' %>" placeholder="">
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="text"><%= _('Your Review').translate() %></label>
+				<div class="controls">
+					<textarea rows="9" id="text" class="span9 resize-vertical text" name="text"><%= view.model.get('text') || '' %></textarea>
+				</div>
+			</div>
+		</div>
+		
+		<div class="span3">
+			<h4 class="no-margin-top"><%= _('Writing Suggestions').translate() %></h4>
+			<p><%= _('Explain why you like or dislike the product, focusing your comments on the product\'s features & functionality and your own experience using the product').translate() %></p>
+			<p><%= _('Avoid single-word reviews, bad language, contact information (email addresses, phone numbers, etc.), URLs, time-sensitive material or alternative ordering information').translate() %></p>
+		</div>
+	</div>
+	<div class="form-actions">
+  		<button type="submit" class="btn btn-primary btn-large"><%= _('Preview').translate() %></button>
+  		<button href="<%= view.item.get('_url') %>" class="btn btn-large"><%= _('Cancel').translate() %></button>
+	</div>
+</form>
+<% } %>

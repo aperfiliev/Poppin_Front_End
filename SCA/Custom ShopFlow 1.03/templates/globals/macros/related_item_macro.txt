@@ -1,0 +1,16 @@
+<% registerMacro('relatedItem', function (item, application) { %>
+<div class="item-cell item-cell-grid">
+	<a class="thumbnail" href="<%= item.get('_url') %>">
+		<% var thumbnail = item.get('_thumbnail'); %>
+		<img src="<%= application.resizeImage(thumbnail.url, 'thumbnail') %>" alt="<%= thumbnail.altimagetext %>">
+	</a>
+	<h5>
+		<a href="<%= item.get('_url') %>">
+			<%= item.get('_name') %>
+		</a>
+	</h5>
+	<a class="btn btn-small btn-primary btn-expanded" href="<%= item.get('_url') %>">
+		<%= _('See more').translate() %>
+	</a>
+</div>
+<% }) %>

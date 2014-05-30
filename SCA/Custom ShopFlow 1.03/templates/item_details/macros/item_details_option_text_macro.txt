@@ -1,0 +1,15 @@
+<% registerMacro('itemDetailsOptionText', function (option, selected_value, item_model) { %>
+<% if(option.label == "From"|| option.label == "Recipient Name" || option.label == "Recipient Email" || option.label == "Gift Message"){ %>
+<% var htmlid = 'option-'+ option.cartOptionId; debugger %>
+<div id="<%= htmlid %>-container" class="<%= htmlid %>-container" data-type="option" data-cart-option-id="<%= option.cartOptionId %>">
+	<label class="option-label strong" for="<%= htmlid %>">
+		<%= option.label %>
+	</label>
+	<% if (option.type === 'textarea') { %>
+		<textarea name="<%= htmlid %>" id="<%= htmlid %>" class="input-medium <%= htmlid %>" data-toggle="text-option" data-available="true"><%= selected_value && selected_value.internalid || '' %></textarea>
+	<% } else { %>
+		<input type="<%= option.type === 'email' ? 'email' : 'text' %>" name="<%= htmlid %>" id="<%= htmlid %>" class="input-medium <%= htmlid %>" value="<%- selected_value && selected_value.internalid || '' %>" data-toggle="text-option" data-available="true">
+	<% } %>
+</div>
+<% } %>
+<% }) %>

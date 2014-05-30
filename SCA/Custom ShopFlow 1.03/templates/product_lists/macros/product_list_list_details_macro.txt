@@ -1,0 +1,66 @@
+<% registerMacro('productListListDetails', function(list) {	%>
+	<%	
+		var items = list.get('items')
+		, 	out_of_stock_items = items.filter(function(product_list_item) { return !product_list_item.get('item').ispurchasable; }); 
+	%>
+<article class="row-fluid" data-product-list-id="<%= list.get('internalid') %>">
+	<span class="span8 info-box">
+		<h4 class="product-list-name">
+			<a href="/productlist/<%= list.get('internalid') ? list.get('internalid') : 'tmpl_' + list.get('templateid') %>">
+				<%= list.get('type').name === 'predefined' ? _(list.get('name')).translate() : list.get('name') %>
+			</a>
+		</h4>
+		<p class="date-modified"><%= _('Last updated:').translate() %>&nbsp; <%= list.get('lastmodified') %></p>
+		<p>
+			<% if(items.length && items.length > 0) { %>
+
+			<span class="item-count"><%= items.length %></span>&nbsp;<%= items.length === 1 ? _('item').translate() : _('items').translate() %>
+			<% if(items.length) {
+				var last_product_item = _.sortBy(items.models, function(it){ return new Date(it.get('created')); }).reverse()[0]
+				,	item;
+				if(last_product_item)
+				{
+					item = last_product_item.get('item');
+				}
+
+				if(item)
+				{
+			%>
+
+			(<%= _('last added').translate()%>  <a href="#" data-touchpoint="home" data-hashtag="#<%= _(last_product_item.get('itemDetails').get('_url')).fixUrl() %>"><%= item.displayname %></a>)
+				<% } %>
+			<% } %>
+			<% } else { %>
+				<span> <%= _('No items yet').translate() %></span>
+			<% } %>
+
+		</p>
+		<% 
+			var list_description = list.get('description');
+			if(list_description && list_description.length > 0) {
+		%>
+		<p class="list-description"><%= _('Notes').translate() %>:&nbsp;<%= list.get('description')%></p>
+		<% if (out_of_stock_items.length > 0) { %>
+			<p class="list-stock">
+				<span class="label label-important products-not-purchasable-message">
+					<%= _('Some products from this list are not available for purchase').translate() %>
+				</span>				
+			</p>
+		<% } %>
+		<% } %>
+	</span>
+
+	<span class="span4 pull-right text-right action-box">
+		<button data-action="add-to-cart" class="btn btn-primary btn-expanded add-item-to-cart <%= !items.length || out_of_stock_items.length === items.length ? 'disabled' : ''%>" <%= !items.length || out_of_stock_items.length === items.length ? 'disabled' : ''%>><%= _('Add list to cart').translate() %></button>
+		<div class="list-commands-crud">
+			<% if (list.get('type').name !== 'predefined') { %>
+			<button class="btn btn-link" data-action="delete-list"><%= _('Delete list').translate() %></button><span class="separator"></span>
+			<button class="btn btn-link" data-action="edit-list"><%= _('Edit list').translate() %></button><span class="separator"></span>
+			<% } %>
+			<% if (list.get('scope').name !== 'private') { %>
+			<button class="btn 	btn-link" data-action="share-list"><%= _('Email/Share list').translate() %></button><span class="separator"></span>
+			<% } %>	
+		</div>
+	</span>
+</article>
+<% }) %>

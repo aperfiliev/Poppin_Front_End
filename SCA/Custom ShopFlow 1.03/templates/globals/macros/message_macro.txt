@@ -1,0 +1,16 @@
+<% registerMacro('message', function ( message, type, closable ) { %>
+<div class="alert <%= type ? 'alert-'+ type : '' %>">
+	<% if ( closable ) { %>
+		<button class="close" data-dismiss="alert">&times;</button>
+	<% } %>
+	<% if ( _.isObject( message ) ) { %>
+		<ul>
+		<% _.each(message, function(item, index) { %>
+			<li><%= item %></li>
+		<% }) %>
+		<ul>
+	<% } else { %>
+		<%= message %>
+	<% } %>
+</div>
+<% }) %>

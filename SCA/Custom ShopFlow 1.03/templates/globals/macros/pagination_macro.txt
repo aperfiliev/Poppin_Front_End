@@ -1,0 +1,120 @@
+<% registerMacro('pagination', function (configuration) { %>
+<%
+	// Pagination Macro
+	// ================
+	// Displays a pagination component based on the configuration object.
+	// The configuration object understands the following keys: 
+	// * currentPage: (Required) The page you are currently showing.
+	// * totalPages: (Required) The total amount of pages you can show (This is not items, you need to do the math of items/items_per_page outside this macro).
+	// * pager: (Required) a function that recives a page number as parameter and returns the url that the mentioned page number should point to.
+	// * showPageList: a boolean to show or hide the pages list portion of this component, defauts to true.
+	// * pagesToShow: The amount of pages you want to be displayed in the pages list, defaults to 4.
+	// * showPageIndicator: a boolean to show or hide a note on which page you have selected and how many pages are there, defaults to false
+	// * extraClass: a string that will be added to the class attribute to the component
+
+
+	var current_page = parseInt(configuration.currentPage, 10)
+	,	total_pages = parseInt(configuration.totalPages, 10)
+	,	pager = configuration.pager
+	,	pages_to_show = parseInt(configuration.pagesToShow, 10) || 4
+	,	range_start = 1
+	,	range_end = total_pages + 1
+	,	padding_left = (pages_to_show % 2 === 0) ? (pages_to_show / 2) - 1 : parseInt(pages_to_show / 2, 10) // ;)
+	,	show_page_list = (_.isBoolean(configuration.showPageList)) ? configuration.showPageList : true
+	,	show_page_indicator = configuration.showPageIndicator || false; 
+
+
+	
+	if (show_page_list && pages_to_show < total_pages)
+	{
+		// if we are getting closer to the end we need to compute from the end to the begingn 
+		if (pages_to_show - padding_left > total_pages - current_page)
+		{
+			range_start = total_pages + 1 - pages_to_show;
+		}
+		else
+		{
+			range_start = current_page - padding_left < 1 ? 1 : current_page - padding_left;
+			range_end = range_start + pages_to_show > total_pages ? total_pages : range_start + pages_to_show;
+		}
+	}
+	
+	var pages = _.range(range_start, range_end);
+%>
+
+<% if (total_pages >= current_page && current_page > 0 && pages.length > 1) { %>
+<div class="pagination <%= configuration.extraClass || '' %>">
+
+	<% if (show_page_indicator) { %>
+		<ul class="pagination-page-indicator">
+			<li>
+				<span class="">
+					<%= _('$(0) of $(1)').translate(current_page, total_pages) %>
+				</span>
+			</li>
+		</ul>
+		
+	<% } %>
+
+	<ul class="pagination-links <% if (!show_page_list) { %>pagination-links-compact<% } %>">
+	<% if (current_page !== 1) { %>
+		<li>
+			<a rel="prev" href="<%- _(pager(current_page-1)).fixUrl() %>">
+				&laquo;
+				<span class="hidden"><%= _('Previous').translate() %></span>
+			</a>
+		</li>
+	<% } else { %>
+		<li class="disabled">
+			<a href="<%- _(pager(current_page)).fixUrl() %>">
+				&laquo;
+				<span class="hidden"><%= _('Previous').translate() %></span>
+			</a>
+		</li>
+	<% } %>
+	
+	<% if (show_page_list) { %>
+		<% if (range_start > 1) { %>
+			<li class="disabled">
+				<a href="<%- _(pager(current_page)).fixUrl() %>">
+					<span>...</span>
+				</a>
+			</li>	
+		<% } %>
+
+		<% _.each(pages, function (page) { %>
+			<% if (current_page !== page) { %>
+				<li><a href="<%- pager(page) %>"><%= page %></a></li>
+			<% } else { %>
+				<li class="active"><a href="<%- _(pager(page)).fixUrl() %>"><%= page %></a></li>
+			<% } %>
+		<% }) %>
+
+		<% if (range_end < total_pages) { %>
+			<li class="disabled">
+				<a href="<%- _(pager(current_page)).fixUrl() %>">
+					<span>...</span>
+				</a>
+			</li>	
+		<% } %>
+	<% } %>
+
+	<% if (current_page !== total_pages){ %>
+		<li>
+			<a rel="next" href="<%- _(pager(current_page+1)).fixUrl() %>">
+				<span class="hidden"><%= _('Next').translate() %></span>
+				&raquo;
+			</a>
+		</li>
+	<% } else { %>
+		<li class="disabled">
+			<a href="<%- _(pager(current_page)).fixUrl() %>">
+				<span class="hidden"><%= _('Next').translate() %></span>
+				&raquo;
+			</a>
+		</li>
+	<% } %>
+	</ul>
+</div>
+<% } %>
+<% }) %>

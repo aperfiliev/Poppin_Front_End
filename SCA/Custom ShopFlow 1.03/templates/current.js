@@ -1,0 +1,1 @@
+BDQ.currentTemplatesUrl = '/Web Site Hosting Files/Live Hosting Files/shopflow-1-03-0/templates/Templates-014647fad916.js';

@@ -1,0 +1,65 @@
+﻿<% registerMacro('itemCellList', function (item, view) { %>
+<%
+	var min_qty = parseInt(item.get('_minimumQuantity'), 10)
+	,	thumbnail = item.get('_thumbnail')
+	,	macros = SC.macros;
+%>
+<div class="row-fluid item-cell item-cell-list" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+	<div class="span3">
+		<div class="item-cell-thumbnail thumbnail">
+			<a href="<%= item.get('_url') %>">
+				<img src="<%= view.options.application.resizeImage(thumbnail.url, 'thumbnail') %>" alt="<%= thumbnail.altimagetext %>" itemprop="image">
+			</a>
+			<% if (SC.ENVIRONMENT.jsEnvironment === 'browser') { %>
+				<div class="btn-quick-view">
+					<a href="<%= item.get('_url') %>" class="btn btn-primary" data-toggle="show-in-modal" data-modal-class-name="modal-big">
+						<i class="icon-search icon-white"></i>
+						<%= _('Quick View').translate() %>
+					</a>
+				</div>
+			<% } %>
+		</div>
+	</div>
+	<div class="span9">
+		<meta itemprop="url" content="<%= item.get('_url') %>">
+		<h2 class="item-cell-name">
+			<a href="<%= item.get('_url') %>">
+				<span itemprop="name">
+					<%= item.get('_name') %>
+				</span>
+			</a>
+		</h2>
+		<div class="item-cell-price">
+			<%= macros.showItemPrice(item) %>
+		</div>
+		<div class="item-cell-rating item-cell-rating item-rating rating-<%= item.get('_rating') %>" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+			<%= macros.starRating({
+				max: view.options.application.getConfig('productReviews.maxRate')
+			,	value: item.get('_rating')
+			,	className: 'star pull-left'
+			,	fillRounded: true
+			}) %>
+			<span class="review-total">
+				<%= _('($(0))').translate(
+					'<span>' + item.get('_ratingsCount') + '</span>'
+				) %>
+			</span>
+		</div>
+		<div class="options-container">
+			<%= item && item.renderAllOptionSelector(
+				_.where(item.getPosibleOptions(), {showSelectorInList: true})
+			) %>
+		</div>
+		<% if (view.options.application.getConfig('addToCartFromFacetsView') && item.isReadyForCart()) { %>
+			<form class="form-inline" data-toggle="add-to-cart">
+				<input type="hidden" value="<%= item.get('_id') %>" name="item_id">
+				<input name="quantity" class="input-mini" type="number" min="1" value="<%- min_qty %>">
+				<input type="submit" class="btn btn-primary" value="Add to Cart">
+			</form>
+		<% } %>
+		<div class="item-cell-stock">
+			<%= macros.itemDetailsStock(item.getStockInfo()) %>
+		</div>
+	</div>
+</div>
+<% }) %>

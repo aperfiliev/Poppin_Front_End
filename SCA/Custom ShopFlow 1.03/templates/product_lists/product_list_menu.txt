@@ -1,0 +1,34 @@
+<div class="product-list-menu">
+	<% if ( ! view.is_single_list) { %> 
+	<a href="/productlists/?" data-action="my-lists">My lists</a>
+	<ul class="nav nav-tabs nav-stacked">
+		<!-- <li>
+			<span class="title">Public lists</span>
+			<ul>
+			<% view.collection.each(function(model) { %>
+				<% if ('public' === model.get('scope').name) { %>
+				<li><a href="/productlist/<%= model.get('internalid') %>" data-product-list="<%= model.get('internalid') %>"><%= model.get('name') %> (<%= model.get('items').length %>)</a></li>
+				<% } %>
+			<% }) %>
+			</ul>
+		</li> -->
+		<li> 
+			<span class="title"><%= _('Private lists').translate() %></span>
+			<ul>
+			<% view.collection.each(function(model) { 
+				var id = model.get('internalid') || 'tmpl_' + model.get('templateid'); %>
+				<% if ('private' === model.get('scope').name) { %>
+				<li><a href="/productlist/<%= id %>" data-product-list="<%= id %>"><%= model.get('name') %> (<%= model.get('items').length %>)</a></li>
+				<% } %>
+			<% }) %>    
+			</ul>
+		</li>
+	</ul>
+	<% } else { // we are in single list mode 
+		// contemplate predefined lists that may be has not been created yet. 
+		// For those urls will be /productlist/_tmpl_1
+		var id = view.model.get('internalid') || 'tmpl_' + view.model.get('templateid'); 
+		%>
+	<a href="/productlist/<%= id %>" data-action="my-lists">My list</a>
+	<%} %>
+</div>

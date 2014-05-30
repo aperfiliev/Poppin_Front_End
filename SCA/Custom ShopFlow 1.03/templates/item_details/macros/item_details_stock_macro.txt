@@ -1,0 +1,16 @@
+<% registerMacro('itemDetailsStock', function (stock_info) { %>
+	<% if (!stock_info.isInStock && stock_info.showOutOfStockMessage) { %>
+		<span class="label label-important stock-status out-of-stock">
+			<%= stock_info.outOfStockMessage %>
+		</span>
+	<% } else if (stock_info.showInStockMessage) { %>
+		<span class="label label-success stock-status in-stock">
+			<%= stock_info.inStockMessage %>
+		</span>
+	<% } %>
+	<% if (stock_info.showStockDescription && stock_info.stockDescription) { %>
+		<span class="stock-description <%= stock_info.stockDescriptionClass %>">
+			<%= stock_info.stockDescription %>
+		</span>
+	<% } %>
+<% }) %>

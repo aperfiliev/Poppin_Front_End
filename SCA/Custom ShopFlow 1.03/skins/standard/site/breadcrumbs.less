@@ -1,0 +1,24 @@
+.breadcrumb {
+	background-color: @white;
+	.border-radius(@baseBorderRadius);
+	font-size: @fontSizeSmall;
+	list-style: none;
+	margin: 0 0 @baseLineHeight;
+	padding: 0;
+	text-transform: uppercase;
+
+	> li {
+		display: inline-block;
+		.ie7-inline-block();
+		text-shadow: 0 1px 0 @white;
+
+		> .divider {
+			padding: 0 5px;
+			color: #ccc;
+		}
+	}
+
+	> .active {
+		color: @lightOrange;
+	}
+}

@@ -1,0 +1,4 @@
+<section>
+	<h1><%= view.page_header %></h1>
+	<div id="home-page-content" class="home-page-content"></div>
+</section>

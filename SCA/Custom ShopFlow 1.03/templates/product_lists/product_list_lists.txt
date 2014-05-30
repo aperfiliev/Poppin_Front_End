@@ -1,0 +1,42 @@
+<header>
+	<h3><%= _('My Product Lists').translate()%></h3>
+	
+	<a href="/" class="back-btn">
+		<%= _('&lt; Back to Account').translate() %>
+	</a>
+	<hr class="divider-small">
+
+	<div data-confirm-message class="confirm-message"></div>
+	<div class="row-fluid">
+		<div class="product-list-header product-list-lists-header clearfix">
+			<% if(view.collection.length) { %>
+			<button class="btn pull-right add-list" data-action="add-list"><%= _('Create new list').translate()%></button>
+			<% } %>			
+			<% if(view.collection.length > 1) { %>
+			<span class="actions-container" style="display: none">
+				<%= _('Sort By').translate()%>
+				<select class="sort-by" data-action="sort-by">
+					<option value="modified-date">Modified Date</option>
+					<option value="list-name">List name</option>
+					<option value="amount-of-items">Amount of Items</option>
+				</select>
+			</span>
+			<% } else if(view.collection.length === 0){ %>
+			<span><%= _('You have not product lists yet. You can create one now. ').translate()%></span>
+			<% } %>			
+		</div>
+	</div>
+</header>
+
+<% 
+// if the customer as no lists then we show a Create New List form (rendered in view.render())
+if(!view.collection.length) { %>
+<br/>
+<h4><%=_('Create a product list').translate()%></h4><br/>
+<div data-type="new-product-list"></div>
+<% } else { %>
+<div class="product-list-lists">
+<% view.collection.each(function(model){ %>
+<%= productListListDetails(model) %>
+<% }); } %>
+</div>

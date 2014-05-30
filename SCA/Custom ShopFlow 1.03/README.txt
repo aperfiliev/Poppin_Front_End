@@ -1,0 +1,1 @@
+Move robots.txt to Hosting Root.

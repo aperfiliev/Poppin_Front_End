@@ -1,0 +1,74 @@
+<% 
+var	Environment
+,	SiteSettings
+,	LiveOrder
+,	Profile
+,	Error
+,	ProductList
+,	productlist_bundle_present = false
+,	customerId;
+try 
+{
+	Environment = Application.getEnvironment(session, request);
+	SiteSettings = session.getSiteSettings(['entrypoints', 'touchpoints']);
+	LiveOrder = Application.getModel('LiveOrder').get();
+	Profile = Application.getModel('Profile').get();
+}
+catch (e)
+{
+	Error = Application.processError(e); 
+}
+
+// load Product Lists. Note that if no exception then we assume the bundle is present, no matter if there is an identificable customerId
+try
+{
+	customerId = nlapiGetUser() + '';
+	if (!isNaN(parseInt(customerId, 10)))
+	{		
+		ProductList = Application.getModel('ProductList').search(customerId);
+	}
+	productlist_bundle_present = true;
+}
+catch (e)
+{
+	productlist_bundle_present = false; 
+	console.warn('Product Lists Data not present in Shopping SSP');
+}
+
+response.setContentType('JAVASCRIPT');
+%>
+
+// The Cart
+SC.ENVIRONMENT.CART = <%= JSON.stringify(LiveOrder) %>;
+
+// The Profile
+SC.ENVIRONMENT.PROFILE = <%= JSON.stringify(Profile) %>;
+SC.ENVIRONMENT.permissions = <%= JSON.stringify(Application.getPermissions()) %>;
+
+SC.ENVIRONMENT.currentHostString = <%= JSON.stringify(Environment.currentHostString) %>;
+SC.ENVIRONMENT.currentCurrency = <%= JSON.stringify(Environment.currentCurrency) %>;
+SC.ENVIRONMENT.currentLanguage = <%= JSON.stringify(Environment.currentLanguage) %>;
+SC.ENVIRONMENT.currentPriceLevel = <%= JSON.stringify(Environment.currentPriceLevel) %>;
+
+SC.ENVIRONMENT.siteSettings.entrypoints = <%= JSON.stringify(SiteSettings.entrypoints) %>;
+SC.ENVIRONMENT.siteSettings.touchpoints = <%= JSON.stringify(SiteSettings.touchpoints) %>;
+SC.ENVIRONMENT.siteSettings.shopperCurrency = <%= JSON.stringify(session.getShopperCurrency()) %>;
+
+<% if (productlist_bundle_present) { %>
+// The Product Lists and its configuration. 
+SC.ENVIRONMENT.PRODUCTLISTS = <%= JSON.stringify(ProductList) %>;
+SC.ENVIRONMENT.PRODUCTLISTS_CONFIG = <%= JSON.stringify(SC.Configuration.product_lists) %>;
+<% } %>
+
+<% if (Environment && Environment.currentLanguage && Environment.currentLanguage.locale !== 'en') { %>
+loadScript({
+	url: '<%= session.getAbsoluteUrl("shopping", "languages/" + Environment.currentLanguage.locale + ".js") %>'
+,	seo_remove: true
+});
+<% } %>
+
+SC.LOAD_FILES = [
+	'js/libs/Libraries-01462963dc88.js'
+,	'js/Application-014629886fac.js'
+,	'templates/Templates-014647fad916.js'
+];

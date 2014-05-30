@@ -1,0 +1,38 @@
+<% registerMacro('showItemPrice', function (item) { %>
+<%
+	var price = item.getPrice()
+	,	is_in_stock = item.getStockInfo().isInStock;
+%>
+<% if (price.min && price.max) { %>
+<span itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+	<meta itemprop="priceCurrency" content="<%= SC.ENVIRONMENT.siteSettings.shopperCurrency.code %>">
+	<!-- Price Range -->
+	<strong class="lead-price">
+		<%= _('$(0) to $(1)').translate(
+			'<span itemprop="lowPrice">' + price.min.price_formatted + '</span>'
+		,	'<span itemprop="highPrice">' + price.max.price_formatted + '</span>'
+		) %>
+	</strong>
+	<% if (price.max.price < price.compare_price) { %>
+		<small class="muted crossed">
+			<%= price.compare_price_formatted %>
+		</small>
+	<% } %>
+	<link itemprop="availability" href="<%= is_in_stock ? 'http://schema.org/InStock' : 'http://schema.org/OutOfStock' %>">
+</span>
+<% } else { %>
+<span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+	<meta itemprop="priceCurrency" content="<%= SC.ENVIRONMENT.siteSettings.shopperCurrency.code %>">
+	<!-- Single -->
+	<strong class="lead-price" itemprop="price">
+		<%= price.price_formatted %>
+	</strong>
+	<% if (price.price < price.compare_price) { %>
+		<small class="muted crossed">
+			<%= price.compare_price_formatted %>
+		</small>
+	<% } %>
+	<link itemprop="availability" href="<%= is_in_stock ? 'http://schema.org/InStock' : 'http://schema.org/OutOfStock' %>">
+<% } %>
+</span>
+<% }) %>

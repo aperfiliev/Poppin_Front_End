@@ -1,0 +1,26 @@
+<% registerMacro('itemDetailsOptionDropdown', function (option, selected_value, item_model) { %>
+<% var htmlid = 'option-'+ option.cartOptionId; %>
+<div id="<%= htmlid %>-container" data-type="option" data-cart-option-id="<%= option.cartOptionId %>">
+	<label class="option-label strong" for="<%= htmlid %>">
+		<%= option.label %><% if (selected_value) { %>: <span><%= selected_value.label %></span><% } %>
+	</label>
+	<select name="<%= htmlid %>" id="<%= htmlid %>" class="input-medium" data-toggle="select-option">
+	<% _.each(option.values, function (item) { %>
+		<% if (item.internalid) { %>
+			<% 
+				var is_active = selected_value && item.internalid == selected_value.internalid
+				,	is_available = item.isAvailable;
+			%>
+			<option
+				class="<%= (is_active ? 'active' : '') +' '+ (is_available ? '' : 'muted') %>"
+				value="<%= item.internalid %>"
+				<%= is_active ? 'selected' : '' %>
+				data-active="<%= is_active %>"
+				data-available="<%= is_available %>">
+					<%= item.label %>
+			</option>
+			<% } %>
+		<% }) %>
+	</select>
+</div>
+<% }) %>

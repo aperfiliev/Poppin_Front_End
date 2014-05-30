@@ -1,0 +1,34 @@
+<% registerMacro('footer', function (view) {
+	var environment = SC.ENVIRONMENT
+
+	,	show_currency_selector = !view.application.getConfig('notShowCurrencySelector')
+	,	hosts = environment.availableHosts
+	,	languages = environment.availableLanguages
+	,	currencies = environment.availableCurrencies
+
+	,	nav_links = view.application.getConfig('footerNavigation', [])
+	,	macros = SC.macros;
+%>
+
+<div class="container">
+	<div class="customer-site-settings">
+		<form class="form-inline">
+			<% if (hosts.length) { %>
+				<%= macros.hostSelector(hosts, environment.currentHostString) %>
+			<% } else if (languages.length) { %>
+				<%= macros.languageSelector(languages, environment.currentLanguage.locale) %>
+			<% } %>
+			<% if (currencies.length && show_currency_selector) { %>
+				<%= macros.currencySelector(currencies, environment.currentCurrency.code) %>
+			<% } %>
+		</form>
+	</div>
+	
+	<% if (nav_links.length) { %>
+		<%= macros.footerNavigation(nav_links) %>
+	<% } %>
+
+	<%= macros.backToTop() %>
+	<div id="banner-footer" class="content-banner banner-footer"></div>
+</div>
+<% }) %>

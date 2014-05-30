@@ -1,0 +1,71 @@
+<% registerMacro('itemDetailsReviews', function ( options ) { %>
+<% if (options.item.get('_ratingsCount')) { %>
+	<div class="item-detailed-reviews">
+		<h2>
+			<%= options.title || _('Reviews Summary').translate() %>
+		</h2>
+		<header class="reviews-header" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+			<div class="row-fluid">
+				<div class="span3 reviews-star-filters">
+					<div class="star-rating">
+						<%= SC.macros.starRating({
+							max: options.application.getConfig('productReviews.maxRate')
+						,	value: options.item.get('_rating')
+						,	fillRounded: true
+						,	className: 'star'
+						,	showValue: true
+						}) %>
+					</div>
+					<div class="rating-by-star">
+						<%= SC.macros.ratingByStar({
+							ratingsCountsByRate: options.item.get('_ratingsCountsByRate') || {}
+						,	maxRate: options.application.getConfig('productReviews.maxRate')
+						,	totalReviews: options.item.get('_ratingsCount')
+						,	baseUrl: options.item.get('_url')
+						,	showPercentage: true
+						,	showCount: true
+						}) %>
+					</div>
+				</div>
+				<div class="span3 based-on strong">
+					<%
+						var label = options.item.get('_ratingsCount') === 1 ? _('Review').translate() : _('Reviews').translate()
+						,	count = options.item.get('_ratingsCount');
+					%>
+					<%= _('Based on $(0) $(1)').translate('<span class="reviews-count" itemprop="reviewCount">'+ count +'</span>', label) %>
+				</div>
+				<div class="span6 right-aligned write-review-container">
+					<a href="<%= options.item.get('_url') %>/reviews/new" class="btn btn-primary btn-large"><%= _('Write a Review').translate() %></a>
+				</div>
+			</div>
+		</header>
+		<section class='reviews-list'>
+			<h4><%= options.subtitle || 'Reviews List' %></h4>
+			<% if (options.collection.totalRecordsFound) { %>
+				<% options.collection.each(function (review) { %>
+					<div class="review-container">
+						<%= SC.macros[options.application.getConfig('productReviews.reviewMacro')](review, _.extend({showActionButtons: true}, options.application.getConfig('productReviews'))) %>
+					</div>
+				<% }) %>
+			<% } %>
+		</section>
+		<% if (options.collection.length < options.collection.totalRecordsFound) { %>
+		<footer>
+			<a href="<%= options.item.get('_url') %>" class="btn btn-large">
+				<%= _('View more reviews ($(0))').translate(options.collection.totalRecordsFound) %>
+				<i class="icon-chevron-right"></i>
+			</a>
+		</footer>
+	<% } %>
+	</div>
+<% } else { %>
+	<% if (jQuery('#first-review').length == 0) { %>
+		<div class="item-detailed-reviews">
+			<h2><%= options.title || _('Reviews Summary').translate() %></h2>
+			<p id="first-review" class="first-review">
+				<%= _('Be the first to <a href="$(0)">write a review</a>').translate( options.item.get('_url') + '/reviews/new' ) %>
+			</p>
+		</div>
+	<% } %>
+<% } %>
+<% }) %>

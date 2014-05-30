@@ -1,0 +1,13 @@
+<%= breadcrumb(view.getBreadcrumb()) %>
+<%= itemCellList(view.item, view) %>
+<form>
+	<h1><%= view.page_header %></h1>
+	<div class="product-review-preview">
+		<%= showReview(view.model, view.options.application.getConfig('productReviews')) %>
+	</div>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary"><%= _('Submit Review').translate() %></button>
+		<button type="reset" class="btn" data-action="edit-review"><%= _('Edit Review').translate() %></button>
+		<a href="<%= view.item.get('_url') %>" class="btn"><%= _('Cancel').translate() %></a>
+	</div>
+</form>

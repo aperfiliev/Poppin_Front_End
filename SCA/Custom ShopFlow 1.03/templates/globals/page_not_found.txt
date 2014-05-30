@@ -1,0 +1,9 @@
+<div class="view-header">
+	<% if (view.page_header) { %>
+	<h1><%= view.page_header %></h1>
+	<% } %>
+	<div id="main-banner" class="main-banner"></div>
+</div>
+<div id="page-not-found-content" class="view-body page-not-found-content">
+	<%= _('Sorry, we could not load the content you requested.').translate() %>
+</div>

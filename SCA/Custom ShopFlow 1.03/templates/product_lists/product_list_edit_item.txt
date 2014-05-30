@@ -1,0 +1,81 @@
+<%
+	var item = view.model;	
+
+	var product = item.get('item')
+	,	quantity = item.get('quantity')
+	,	priority = item.get('priority')
+	,	description = item.get('description')
+	,	item_details = item.get('itemDetails')
+	,	thumbnail = item_details.get('_thumbnail')
+	,	price = item_details.getPrice()
+	,	rating = item_details.get('_rating');
+%>
+<div class="row-fluid modal-body">
+	<div class="span10 info-box">
+		<div class="row-fluid">
+			<div class="span4 item-image" data-type="product-list-item">
+				<img src="<%= view.application.resizeImage(thumbnail.url, 'thumbnail') %>" alt="<%=thumbnail.altimagetext %>">
+			</div>
+			<div class="span8 item-details" data-type="item-details">
+				<h5 class="item-details-name">
+					<a href="#" data-touchpoint="home" data-hashtag="#<%= _(item.get('itemDetails').get('_url')).fixUrl() %>"> <%=  item.getProductName() || item.get('name') %></a>
+				</h5>
+
+				<div class="item-details-date-added">
+					<span><%=_('Added on').translate() %>: <%= item.get('created') %></span>
+				</div>
+				<div class="item-rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+					<%= SC.macros.starRating({
+						max: view.options.application.getConfig('productReviews.maxRate')
+					,	value: rating
+					,	className: 'star pull-left'
+					,	fillRounded: true
+					}) %>
+					<span class="review-total">
+						<%= _('($(0))').translate(
+							'<span itemprop="reviewCount">' + item_details.get('_ratingsCount') + '</span>'
+						) %>
+					</span>
+				</div>
+				
+				<br/> 
+				
+				<p class="item-details-price">
+					<%= SC.macros.showItemPrice(item_details) %>
+				</p>
+
+				<div class="item-details-options">						
+					<div class="options-container">
+						<%= item_details && item_details.renderAllOptionSelector() %>
+					</div>
+					
+					<div class="item-details-quantity control-group">
+						<label for="quantity"><%= _('Desired Quantity').translate() %></label>
+						<input type="number" name="quantity" id="quantity" class="input-mini quantity" placeholder="<%=_('Desired Quantity').translate() %>" value="<%= quantity %>">			
+					</div>
+					
+					<div class="item-details-priority control-group">							
+						<label for="priority"><%= _('Priority').translate() %></label>
+						<select name="priority" id="priority" class="input-medium">
+							<option value="1" <%= priority.id === '1' ? 'selected' : '' %>><%= _('High').translate() %></option>
+							<option value="2" <%= priority.id === '2' ? 'selected' : '' %>><%= _('Medium').translate() %></option>
+							<option value="3" <%= priority.id === '3' ? 'selected' : '' %>><%= _('Low').translate() %></option>
+						</select>
+					</div>
+
+					<div class="item-details-notes">
+						<label for="description"><%= _('Notes for this item (optional)').translate() %>: </label>
+						<textarea name="description" id="description" placeholder="Add a note or description for your item"><%- description %></textarea>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="modal-footer">
+		<button href="#" class="btn btn-primary pull-right" data-action="edit" <%= !item_details.isSelectionComplete() ? 'disabled' : '' %> ><%= _('Save').translate() %></button>
+		<button href="#" class="btn" data-dismiss="modal" data-action="cancel" aria-hidden="true"><%= _('Cancel').translate() %></button>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+<div id="layout" class="layout">
+	<header id="site-header" class="site-header">
+		<%= header(view) %>
+	</header>
+	<!-- Main Content Area -->
+	<div id="content" class="container content"></div>
+	<!-- / Main Content Area -->
+	<footer id="site-footer" class="site-footer">
+		<%= footer(view) %>
+	</footer>
+</div>

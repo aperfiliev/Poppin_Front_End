@@ -1,0 +1,16 @@
+<% 
+var model = view.single_list; 
+%>
+<div class="show-wishlist-link">
+	<div data-confirm-message class="confirm-message"></div>
+
+	<% if (view.getProductsInternalid().indexOf(view.getProductId(view.product) + '') === -1) { %>
+	
+	<button class="btn" data-type="add-product-to-single-list"><%= _('Add to <i>$(0)</i>').translate(model.get('name')) %></button>
+
+	<% } else { %>
+
+	<a href="#" data-type="added-product-to-single-list" data-touchpoint="customercenter" data-hashtag="#productlist/<%= model.get('internalid')%>"><%= _('Saved to <i>$(0)</i>').translate(model.get('name')) %></a>
+
+	<% } %>
+</div>

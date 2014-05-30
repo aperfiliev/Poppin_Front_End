@@ -1,0 +1,75 @@
+<%
+	var lines = view.model.get('lines')
+	,	related_items = view.model.getRelatedItems()
+	,	has_related_items = related_items && related_items.length
+	,	application = view.options.application
+	,	continueURL = application.getConfig('siteSettings.sitetype') === 'ADVANCED' ?  _(application.getConfig('defaultSearchUrl')).fixUrl() : ''
+	,	crumbTrail = [
+			{href: '/', text: _('Home').translate(), 'data-touchpoint': 'home'}
+		,	{href: '/cart', text: _('Shopping Cart').translate()}
+		];
+%>
+
+<% if (lines && lines.length) { %>
+	<div class="view-header">
+		<%= breadcrumb(crumbTrail) %>
+		<header class="shopping-cart-header">
+			<a class="pull-right btn continue-shopping" href="<%= continueURL %>" data-touchpoint="home" data-hashtag="#<%= continueURL %>">
+				<%= _('Continue Shopping').translate() %>
+			</a>
+			<h1 class="no-margin-top"><%= view.page_header %></h1>
+		</header>
+	</div>
+	<div class="row-fluid view-body">
+		<section class="span8">
+			<div class="shopping-cart">
+				<header class="shopping-cart-heading">
+					<div class="row-fluid">
+						<div class="span3 strong"><%= _('Items').translate() %></div>
+						<div class="span9">
+							<div class="span3 offset6 strong"><%= _('Qty').translate() %></div>
+							<div class="span3 strong"><%= _('Subtotal').translate() %></div>
+						</div>
+					</div>
+				</header>
+				<% lines.each(function (lines, index) { %>
+					<%= shoppingCartItem(lines, view) %>
+				<% }) %>
+			</div>
+		</section>
+		<section class="span4">
+			<%= shoppingCartSummary(view.model, application.getConfig('siteSettings'), {
+				checkout: application.getConfig('siteSettings.checkout')
+			,	continueURL: continueURL
+			,	showActions: true
+			}) %>
+		</section>
+	</div>
+	<div class="view-footer">
+		<%
+			var relatedWrap = function relatedWrap (item) {
+				return SC.macros.relatedItem(item, application);
+			};
+		%>
+		<% if (has_related_items) { %>
+		<aside class="shopping-cart-related-items">
+			<h3><%= _('You may also like').translate() %></h3>
+			<div class="row-fluid">
+				<%= displayInRows(_.first(related_items, 6), relatedWrap, 6) %>
+			</div>
+		</aside>
+		<% } %>
+		<div class="row-fluid" data-type="recently-viewed-placeholder" data-macro="recentlyViewed"></div>
+	</div>
+
+<% } else { %>
+	<div class="view-header">
+		<%= breadcrumb(crumbTrail) %>
+	</div>
+	<section class="view-body empty-cart">
+		<h2 class="no-margin-top"><%= _('Your Shopping Cart is empty').translate() %></h2>
+		<p class="no-margin-bottom">
+			<%= _('Continue Shopping on our $(0)').translate('<a href="/" data-touchpoint="home">' + _('Home Page').translate() + '</a>') %>
+		</p>
+	</section>
+<% } %>

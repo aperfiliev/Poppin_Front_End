@@ -1,0 +1,8 @@
+<div class="control-group">
+	<label <%= view.parentView.mode === 'move' ? 'data-action="product-list-item"' : '' %>>
+		<% if(view.parentView.mode !== 'move') { %>
+		<input class="product-list-checkbox" type="checkbox" data-action="product-list-item" <%= view.checked() ? 'checked' : '' %>>
+		<% } %>
+		&nbsp;<span class="product-list-name"><%= view.model.get('type').name === 'predefined' ? _(view.model.get('name')).translate() : view.model.get('name')%></span>
+	</label>
+</div>

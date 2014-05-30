@@ -1,0 +1,111 @@
+<%
+	var config = view.application.Configuration.product_lists
+	,	items = view.model.get('items')
+	, 	out_of_stock_items = items.filter(function(product_list_item) { return !product_list_item.get('item').ispurchasable; });
+%>
+<header>
+	<h3 class="list-header-title">
+		<%= view.model.get('type').name === 'predefined' ? _(view.model.get('name')).translate() : view.model.get('name') %> 
+		<% if(items.length > 0) { %>
+		<span class="product-list-details-count">(<%= items.length %> <%= items.length===1 ? _('Item').translate() : _('Items').translate() %>)
+		</span>
+		<% } %>
+	</h3> 
+
+	<a href="/" class="back-btn">
+		<%= _('&lt; Back to Account').translate() %>
+	</a>
+	<hr class="divider-small">
+	
+	<div data-confirm-message class="confirm-message"></div>
+
+<% if(view.model) { 
+	var items = view.model.get('items');
+	if(items.length > 0) {				
+		var displayOption = view.getDisplayOption();	
+		var productListDisplay = function (row) {
+			return SC.macros[displayOption.macro](row, view);
+		}		
+	%>
+	
+	<div data-type="product-list-commands" class="product-list-header">
+		<div class="item-listing-display pull-left">
+			<span class="btn-group">					
+				<% _(config.itemsDisplayOptions).each(function(option){ %>
+				<a data-nav="<%=option.id%>" data-action="display-option" class="btn <%= view.getCurrentDisplayOpt() === option.id ? 'active' : '' %>"  title="<%= option.name %>"><i class="<%= option.icon  %>"></i></a>
+				<%	}); %>
+			</span>
+		</div>
+		<div style="display: none">
+			<span>Show</span> 
+			<select data-action="show">
+				<option>All</option>
+			</select>
+			<span>Sort by</span>
+			<select data-action="sort-by">
+				<option value="creation-date" <%= view.options.sortBy == 'creation-date' ? 'selected="selected"' : '' %>><%= _('Creation Date').translate() %></option>
+				<option value="name" <%= view.options.sortBy == 'name' ? 'selected="selected"' : '' %> ><%= _('Name').translate() %></option>
+			</select>
+		</div>
+		<div class="list-details-actions text-right pull-right">
+			
+			<% /* TODO: the following block has repeated markup for mobile and desktop. */ %>
+			<div class="hidden-phone btn-group pull-left text-left list-actions">
+				<% if (view.model.get('type').name !== 'predefined') { %>
+				<a href="#" data-action="edit-list" class="btn"><%= _('Edit list').translate()%></a>
+				<a href="#" class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#" data-action="delete-list"><%= _('Delete this list').translate()%></a></li>
+				</ul>
+				<% } %>
+				<button class="btn <%= !items.length || out_of_stock_items.length === items.length ? 'disabled' : ''%> list-details-add-list-to-cart btn-expanded" data-action="add-list-to-cart" <%= !items.length || out_of_stock_items.length === items.length ? 'disabled' : ''%>><%= _('Add list to cart').translate()%></button>	
+			</div>
+			<div class="visible-phone">
+				<button class="btn <%= !items.length || out_of_stock_items.length === items.length ? 'disabled' : ''%> list-details-add-list-to-cart btn-expanded" data-action="add-list-to-cart" <%= !items.length || out_of_stock_items.length === items.length ? 'disabled' : ''%>><%= _('Add list to cart').translate()%></button>	
+				<% if (view.model.get('type').name !== 'predefined') { %>
+				<button class="btn btn-link pull-right" data-action="edit-list"><%= _('Edit list').translate()%></button>
+				<button class="btn btn-link pull-right" data-action="delete-list"><%= _('Delete this list').translate()%></button>
+				<% } %>
+			</div>
+		</div>		
+	</div>	
+</header>
+
+<% /* TODO: pagination and sub title - commented!
+<div class="product-list-sub-header">
+	<div class="pull-right" data-type="product-list-actions">	
+		<!-- PAGINATION -->
+	</div>
+</div>
+*/ %>
+
+
+<div class="product-list-items" data-type="product-list-items">	
+
+	<%= displayInRows(items.models, productListDisplay, displayOption.columns) %>
+
+ 
+</div>
+
+	<% } else { %>
+	<div class="product-list-header">
+		<div class="product-list-header-no-items span9">
+			<%= _('You don\'t have items in this list yet. Explore the store or search for an item you would like to add.').translate() %>	
+		</div>
+		<div class="span3">
+			<% if (view.model.get('type').name !== 'predefined') { %>
+			<div class="btn-group pull-right list-actions">
+				<a href="#" data-action="edit-list" class="btn"><%= _('Edit list').translate()%></a>
+				<a href="#" class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#" data-action="delete-list"><%= _('Delete this list').translate()%></a></li>
+				</ul>
+			</div>
+		</div>
+			<% } %>
+		
+	</div>
+
+
+	<% } %>	
+<% } %>

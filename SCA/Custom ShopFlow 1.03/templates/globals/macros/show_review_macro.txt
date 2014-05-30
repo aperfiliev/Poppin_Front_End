@@ -1,0 +1,87 @@
+<% registerMacro('showReview', function (review, configuration) { %>
+<%
+	var rated = review.get('rated') || {};
+	rated.voted = rated['mark-as-useful'] || rated['mark-as-not-useful'];
+%>
+<article class="product-review" itemprop="review" itemscope itemtype="http://schema.org/Review">
+	<header>
+		<div class="product-review-info">
+			<span class="pull-left" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+				<%= SC.macros.starRating({
+					max: configuration.maxRate
+				,	value: review.get('rating')
+				,	className: 'star'
+				,	fillRounded: true
+				}) %>
+			</span>
+			 | 
+			<span class="product-review-date" itemprop="datePublished">
+				<%= review.get('created_on') || (new Date()).toDateString() %>
+			</span>
+		</div>
+		<blockquote class="unstyled">
+			<h4 class="product-review-title" itemprop="name">
+				<%= review.get('title') %>
+			</h4>
+			<cite class="prouct-review-author">
+				<span>
+				<%= _('by $(0)').translate(
+					'<span itemprop="author">' + (review.get('writer').name || _('anonymous').translate()) + '</span>'
+				) %>
+				</span>
+				<% if (review.get('isVerified')) { %>
+					- <i class="icon-ok-sign"></i> <%= _('verified purchaser').translate() %>
+				<% } %>
+			</cite>
+		</blockquote>
+	</header>
+	<div class="row-fluid">
+		<div class="span9">
+			<blockquote class="product-review-content" itemprop="description">
+				<%= review.get('text') %>
+			</blockquote>
+		</div>
+		<div class="span3">
+		<% if (_.values(review.get('rating_per_attribute')).length) { %>
+			<div class="product-review-rating-per-attribute">
+				<% _.each(review.get('rating_per_attribute'), function(attr_rating, attr_name) { %>
+					<%= SC.macros.starRating({
+						max: configuration.maxRate
+					,	value: attr_rating
+					,	label: attr_name
+					,	className: 'pegs text-center'
+					,	fillRounded: true
+					}) %>
+				<% }) %>
+			</div>
+		<% } %>
+		</div>
+	</div>
+	<% if (configuration.showActionButtons) { %>
+		<footer>
+			<p class="strong"><%= _('Was this review helpful?').translate() %></p>
+			<p class="product-review-actions">
+				<button
+					class="btn useful-review <%= rated.voted ? 'disabled'+ (rated['mark-as-useful'] ? ' btn-success' : '') : '' %>"
+					type="button"
+					data-type="vote"
+					data-action="mark-as-useful"
+					data-review-id="<%= review.get('internalid') %>">
+
+					<%= (review.get('useful_count') > 0) ? _('Yes ($(0))').translate(review.get('useful_count')) : _('Yes').translate() %>
+				</button>
+				<button
+					class="btn not-useful-review <%= rated.voted ? 'disabled'+ (rated['mark-as-not-useful'] ? ' btn-success' : '') : '' %>"
+					type="button"
+					data-type="vote"
+					data-action="mark-as-not-useful"
+					data-review-id="<%= review.get('internalid') %>">
+
+					<%= (review.get('not_useful_count') > 0) ? _('No ($(0))').translate(review.get('not_useful_count')) : _('No').translate() %>
+				</button>
+			</p>
+		</footer>
+		<div data-type="alert-placeholder"></div>
+	<% } %>
+</article>
+<% }) %>

@@ -1,0 +1,40 @@
+//
+// Wells
+// --------------------------------------------------
+
+@wellLinkColor: #68635D;
+@wellBodyBg: #eeeeee;
+@wellBorderColor: #d9d9d9;
+@facetedNavigationBg: #eee;
+@facetedNavigationSecondBg: #e1e1e1;
+
+.well {
+	color: @wellLinkColor;
+	background-color: @wellBodyBg;
+	border: 1px solid @wellBorderColor;	
+}
+.well-section {
+	border-bottom: 1px solid @wellBorderColor;
+	border-top: 1px solid white;
+	padding: 6px 12px;
+
+	p {
+		margin-bottom: 0;
+	}
+}
+
+.well-footer {
+	padding: 6px 4px 8px 12px;
+	border-top: 1px solid white;
+}
+.well-header {
+
+	#gradient > .vertical(@facetedNavigationBg, @facetedNavigationSecondBg);
+	border-bottom: 1px solid @wellBorderColor;
+
+	font-size: 18px;
+	padding: 12px; 
+	font-weight: normal; 
+	h3 {  
+	}
+}

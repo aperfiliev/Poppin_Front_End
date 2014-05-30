@@ -1,0 +1,12 @@
+<button class="btn pull-left btn-expanded" data-type="show-add-new-list-form"><%= _('Create a new list').translate() %></button>
+<form action="#" data-type="add-new-list-form">
+	<div class="control-group control-group-name">
+		<span class="controls">
+			<input class="add-new-list-input" name="name" type="text" data-type="new-product-list-name" placeholder="<%= _('Your new list name').translate() %>" >
+		</span>
+	</div>
+	
+	<div class="add-new-list-buttons">
+		<button type="submit" class="btn new-product-list-btn pull-right btn-expanded"><%= view.parentView.mode === 'move' ? _('Create and move Item').translate() : _('Create and Add Item').translate() %></button>
+	</div>
+</form>

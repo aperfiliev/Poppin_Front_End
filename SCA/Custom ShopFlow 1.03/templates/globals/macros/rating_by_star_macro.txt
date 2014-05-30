@@ -1,0 +1,40 @@
+<% registerMacro('ratingByStar', function (options) { %>
+<%
+	var count, percentage, i;
+	for ( i = options.maxRate; i > 0; i-- )
+	{
+		count = options.ratingsCountsByRate[i] ? options.ratingsCountsByRate[i] : 0;
+		percentage = count * 100 / options.totalReviews;
+%>
+<div class="rating-by-star">
+<% if (count) { %>
+	<a href="<%= options.view ? options.view.getUrlForOption({ filter: i +'star' }) : options.baseUrl +'/reviews?filter='+ i +'star' %>" class="rating-by-star-link">
+<% } %>
+	<span class="rating-by-star-label">
+		<%= (i === 1) ? _('1 star').translate() : _('$(0) stars').translate(i) %>
+	</span>
+	
+	<div class="rating-by-star-percentage-area">
+		<div class="progress progress-small">
+			<div class="bar bar-rating" style="width: <%= percentage %>%;"></div>
+		</div>
+	</div>
+	
+	<% if (options.showPercentage) { %>
+		<span class="rating-by-star-percentage">
+			<%= _('$(0)%').translate(Math.round(percentage)) %>
+		</span>
+	<% } %>
+	
+	<% if (options.showCount) { %>
+		<span class="rating-by-star-count">
+			<%= count === 1 ? _('1 review').translate() : _('$(0) reviews').translate(count) %>
+		</span>
+	<% } %>
+<% if (count) { %>
+	</a>
+<% } %>
+	<div class="clearfix"></div>
+</div>
+<% } %>
+<% }) %>

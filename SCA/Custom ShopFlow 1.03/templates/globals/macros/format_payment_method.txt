@@ -1,0 +1,64 @@
+<% registerMacro('formatPaymentMethod', function (payment, creditCardIcons, normalNameInCard) {
+	%><span class="payment-method-formatted payment-method-formatted-<%=payment.get('type')%>"><%
+	switch (payment.get('type')){
+		case 'creditcard':
+			var creditcard = payment.get('creditcard');
+			if(creditcard && creditcard.ccnumber){
+				var ccpname = creditcard.paymentmethod ? creditcard.paymentmethod.name : ''; %>
+				<b class="credit-card-icon">
+					<% if(creditCardIcons && ccpname in creditCardIcons){ %>
+						<img class="credit-card-icon" src="<%= creditCardIcons[ccpname] %>" alt="<%= ccpname %>">
+					<% }else{ %>
+						<%= ccpname %>
+					<% } %>
+					<span>&nbsp;-&nbsp;</span>
+					<%= _('Ending in $(0)').translate(creditcard.ccnumber.replace(/\*/g, '')) %>
+				</b>
+				<br>
+				<b class="credit-card-name<%= normalNameInCard ? ' normal-weight' : '' %>">
+					<%= creditcard.ccname %>
+				</b>
+				<br>
+				<span class="credit-card-expiredate">
+					<%= _('Expires ').translate() + creditcard.ccexpiredate %>
+				</span>
+			<% } else { %>
+				<%= _('N/A').translate() %>
+			<%}
+			break;
+		case 'giftcertificate':
+			var code_length = payment.get('giftcertificate').code.length; %>
+			<%= _('Ending in: $(0)').translate(payment.get('giftcertificate').code.substring(code_length - 4, code_length)) %>
+			<% break;
+		case 'invoice': %>
+			<b class="payment-method-formatted-invoice-terms">
+				<%= _('Invoice: Terms $(0)').translate(payment.get('paymentterms').name) %>
+			</b>
+			<% if(payment.get('purchasenumber')) { %>
+				<br/>
+				<span class="payment-method-formatted-invoice-purchasenumber">
+					<%= _('Purchase Number: $(0)').translate(payment.get('purchasenumber')) %>
+				</span>
+			<% }
+			break;
+		case 'paypal': %>
+			<b>
+				<%= _('Payment via Paypal').translate() %>
+			</b>
+			<%
+			break;
+		default: %>
+		<%= payment.get('type') %><%
+	}
+	%></span><%
+	if (payment.get('ccstreet'))
+	{ %>
+		<br />
+		<%= _('Card Street: <span class="CardStreet">$(0)</span>').translate(payment.get('ccstreet')) %>
+	<% }
+	if (payment.get('cczipcode'))
+	{ %>
+		<br />
+		<%= _('Card Zip Code: <span class="CardZipCode">$(0)</span>').translate(payment.get('cczipcode')) %>
+	<% }
+}) %>

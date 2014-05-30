@@ -1,0 +1,46 @@
+<%
+//TODO: rename this file to product_list_edit
+var model = view.model;
+%>
+
+<form action="#">
+
+	<% if (view.inModal) { %>
+	<div class="modal-body">
+	<% } %>
+
+	<div class="row-fluid product-list-new-name">
+		<div class="pull-left control-group control-group-name product-list-new-name-input">
+			<label><%= view.isEdit ? _('Your list name').translate() : _('Name your new list').translate() %>:</label>
+			<span class="controls">
+				<input type="text" name="name" class="list-name" placeholder="<%= view.isEdit ? _('List name').translate() : _('New list name').translate() %>" value="<%- view.isEdit ? model.get('name') : '' %>">
+			</span>
+		</div>
+	</div>
+	<div class="row-fluid product-list-new-privacy">
+		<!-- TODO -->
+	</div>
+	<div class="row-fluid product-list-new-notes">
+		<div class="pull-left control-group product-list-new-notes-input">
+			<label><%= _('Notes for the list (optional)').translate() %>: </label>
+			<textarea class="list-description" name="description" placeholder="<%- _('Add a note or description for your list').translate() %>"><%= view.isEdit ? model.get('description') : '' %></textarea>
+		</div>
+	</div>
+
+	<% if (view.inModal) { %>
+	</div>
+	<% } %>
+
+	<div class="<%= view.inModal ? 'modal-footer' : '' %> product-list-new-commands">
+		
+		<button type="submit" class="btn btn-primary new-product-list-btn pull-right">
+			<%= view.isEdit ? _('Save').translate() : _('Create list').translate() %>
+		</button>
+
+		<% if (view.inModal) { %>
+		<button class="btn new-product-list-cancel" data-dismiss="modal"><%= _('Cancel').translate() %></button>
+		<% } %>
+		
+	</div>
+
+</form>

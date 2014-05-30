@@ -1,0 +1,153 @@
+.product-lists, 
+.product-lists-single {
+
+	display: inline-block;
+
+	@media (max-width: 767px) {
+		width: 100%;
+	}
+
+	.control-group-name {
+		display:inline-block;
+		@media (max-width: 767px) {
+			width: 100%;
+		}
+	}
+
+	hr {
+		margin: 0 10px;
+	}
+
+	.sub-menu {
+		width: 260px;
+		margin-top: 12px;
+		text-overflow: ellipsis;
+
+		@media (max-width: 767px) {
+			width: 100%;
+		}
+
+		h4 {
+			padding-left: 10px;
+			padding-right: 10px;
+			display: inline-block;
+		}
+
+		li {
+			padding: 5px 2px;
+		}
+		
+	}
+
+	form {
+		padding-top: 5px;
+		margin: 0;
+	}
+
+	.new-product-list-btn {
+		vertical-align: top;
+	}
+
+	.nolists-msg {
+		text-align: center;
+	}
+
+	.new-product-list-container {
+		overflow: hidden;
+		border-top: 1px solid #eee;
+		padding: 10px 0;
+		margin: 0 10px;
+
+		.add-new-list-input {
+			width:225px;
+			@media (max-width: 767px) {
+				width: 100%;
+			}
+		}
+
+		span.controls {
+			width: 100%;
+		}  
+
+		.add-new-list-buttons {
+			padding: 0 0 10px 0;
+		}
+
+		.new-product-list-btn, 
+		.new-product-list-cancel {
+			display: inline-block;
+		}
+	}
+}
+
+.ul-product-lists {
+	list-style: none;
+	padding: 0;
+
+	word-wrap: break-word;
+
+	margin: 0 10px;
+	border-top: 1px solid #eee; 
+
+	max-height: 130px;
+	overflow-y: auto; 
+
+	@media (max-width: 767px) {
+		max-height: 200px;
+	}
+
+}
+
+
+
+.product-lists [data-type="show-new-list"] {
+	display: inline-block;
+}
+
+.modal-body {
+	.productlist-control {
+		position: static;
+	}
+}
+.productlist-control {
+	@media (max-width: 767px) {
+		position: static;
+	}
+}
+.product-list-checkbox {
+	margin: 0;
+}
+
+div[data-type="product-lists-control"] {
+	form[data-type="add-new-list-form"] {
+		display: none;
+	}
+}
+
+.product-list-control-title {
+	font-color: #afafaf;
+}
+
+div[data-type^="productlist-control"] {
+	li {
+		transition: 0.5s;
+	}
+	li:hover{
+		background-color: @rowBackground;
+	}
+	li:first-child {
+		@media (max-width: 767px) {
+			margin-top: 12px;
+		}
+	}	
+}
+
+
+.productlist-control-move {
+	@media (max-width: 767px) {
+		width: 100%;
+		margin-top: 0px;
+		position: relative;
+		top: -44px;
+	}
+}

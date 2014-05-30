@@ -1,0 +1,10 @@
+<%
+	// Very simple file that just redirects you to the cart route of the home touchpoint
+	// We created this file becaus if you try to configure your "View Cart" touchpoint 
+	// pointing to the index.ssp passing a parameter it will endup in 
+	// domain.com/ShopFlow/index.ssp and not in the domain.com and this basically turns 
+	// off the SEO engine, that causes that pushState is also being turned off and hash
+	// navigation starts to happen
+	
+	return nlapiSetRedirectURL('EXTERNAL', session.getSiteSettings(['touchpoints']).touchpoints.home + "#cart");
+%>
