@@ -27,7 +27,8 @@
 	<% if (nav_links.length) { %>
 		<%= macros.footerNavigation(nav_links) %>
 	<% } %>
-
+	
+	<%= macros.poppinFooter() %>
 	<%= macros.backToTop() %>
 	<div id="banner-footer" class="content-banner banner-footer"></div>
 </div>

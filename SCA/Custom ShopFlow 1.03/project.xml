@@ -339,8 +339,6 @@
           <file name="variables.less" bundleable="false" hideInBundle="false" isOnline="true" textFileEncoding="_utf8"/>
           <file name="wells.less" bundleable="false" hideInBundle="false" isOnline="true" textFileEncoding="_utf8"/>
         </folder>
-        <file name="Styles-0145ccb19ffc.css" bundleable="false" hideInBundle="false" isOnline="true" textFileEncoding="_utf8"/>
-        <file name="Styles-014623cbf447.css" bundleable="false" hideInBundle="false" isOnline="true" textFileEncoding="_utf8"/>
         <file name="combiner.config" bundleable="false" hideInBundle="false" isOnline="false" textFileEncoding="_utf8"/>
         <file name="current-css.js" bundleable="false" hideInBundle="false" isOnline="true" textFileEncoding="_utf8"/>
         <file name="styles.css" bundleable="false" hideInBundle="false" isOnline="true" textFileEncoding="_utf8"/>
@@ -375,6 +373,10 @@
             <altTagCaption>macro</altTagCaption>
           </file>
           <file name="footer_navigation.txt" bundleable="false" hideInBundle="false" isOnline="true" textFileEncoding="_utf8">
+            <altTagCaption>macro</altTagCaption>
+          </file>
+          <file name="poppin_footer_macro.txt" bundleable="false" hideInBundle="false" isOnline="true" textFileEncoding="_utf8">
+            <description></description>
             <altTagCaption>macro</altTagCaption>
           </file>
         </folder>

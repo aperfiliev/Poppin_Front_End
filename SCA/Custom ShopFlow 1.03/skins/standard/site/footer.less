@@ -1,68 +1,61 @@
-.site-footer {
-	border-bottom: @lightOrange 4px solid;
-	padding-bottom: 10px;
+@margin-top: 5px;
 
-	@media (max-width: 767px) {
-		background: @lightBlack;
-		padding-bottom: 0;
-	}
-
-	> .container {
-		border-top: @grayLighter 1px solid;	
-
-		@media (max-width: 767px) {
-			border-top: none;
-		}
-	}
-
-	.customer-site-settings {
-		display: none;
-
-		@media (max-width: 767px) {
-			background: @grayDarker;
-			border-bottom: #151515 1px solid;
-			border-top: 1px solid #434343;
-			display: block;
-			padding-top: 15px;
-			text-align: center;
-		}
-	}
+hr{
+	clear: both;
+	border: 2px solid #fff;
+	border-style: none none dotted;	
+}
+ 
+.site-footer{
+  background-color: @backgroundOrange;
+  color: @white;
+  padding-top: 25px;
 }
 
-.site-footer-main-nav {
-	list-style: none;
-	margin: 0;
-	padding: @baseLineHeight 0;
-	text-align: center;
-	text-transform: uppercase;
+.container {
+  min-width: 900px;
+  font-family: @font-family;
+}
+.row-fluid-15{
+  list-style: none;
+  float: left;
+  margin: 5px;
+  padding-right: 30px;
+  display: inline-block;
+  overflow: hidden;
 
-	@media (max-width: 767px) {
-		border-bottom: #151515 1px solid;
-		border-top: 1px solid #434343;
-	}
+    li{
+      font-size: @font-size;
+      a {
+        color: @white;
+        font-size: @font-size;
 
-	> li {
-		display: inline-block;
-		.ie7-inline-block();
-	}
+        &:hover{
+          color: #ffca36;
+          text-decoration: none;
+        }
+      }
+    }
 
-	a {
-		border-bottom: @linkColor 1px solid;
+}
 
-		&:hover, &:focus {
-			border-bottom: @linkColorHover 1px solid;
-			text-decoration: none;
-		}
+.span6{
+  margin: 10px 0;
+  p{
+    font-size: 10px;
+    span{
+      font-weight:bold;
+      font-size: 25px;
+    }
+  }
 
-		@media (max-width: 767px) {
+}
 
-			border-bottom: @navbarInverseLinkColor 1px solid;
-			color: @navbarInverseLinkColor;
-
-			&:hover, &:focus {
-				border-bottom: @navbarInverseLinkColorHover 1px solid;
-				color: @navbarInverseLinkColorHover;
-			}
-		}
-	}
+.title{
+	margin-top: @margin-top;
+	margin-bottom: @margin-top;
+	font-weight: bold;
+}
+.text-right{
+	text-align: right;
 }

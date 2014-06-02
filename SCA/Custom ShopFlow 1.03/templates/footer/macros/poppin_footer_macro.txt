@@ -1,0 +1,113 @@
+<% registerMacro('poppinFooter', function () { %>
+<div class="row-fluid-15">
+	<ul class="span3">
+		<li class="title">HOW CAN WE HELP?</li>
+		<li><a href="#" data-touchpoint="customercenter" title="My Account">My Account</a></li>
+		<li><a href="/Help/" title="Help">Help</a></li>
+		<li><a href="/Shipping/" title="Shipping Rates + Policies">Shipping Rates + Policies</a></li>
+		<li><a href="/Returns/" title="Returns are Easy">Returns are Easy</a></li>
+		<li><a href="/Business/" title="For Business">For Business</a></li>
+    </ul>
+	<ul class="span2">
+		<li class="title"> MEET POPPIN </li>
+		<li><a href="/About-Us/" title="About Us"> About us </a></li>
+		<li><a href="/Poppin-People/" title="Poppin People">Poppin People </a></li>
+		<li><a href="/Press/" title="The Press">The Press</a></li>
+		<li><a href="/Work-Here/" title="Work Here">Work Here </a></li>
+		<li><a href="/Newsletter/" title="Newsletter">Newsletter</a></li>
+		<li><a href="/Core-values/" title="Newsletter">Core Values</a></li>
+	</ul>
+	<ul class="span1">
+		<li class="title">GIFTING </li>
+		<li><a href="/Gifts/" title="Gifts"> Gifts </a></li>
+		<li><a href="/Gift-Cards/" title="Gift Cards">Gift Cards</a></li>
+	</ul>
+	<ul class="span2">
+		<li class="title">FUN STUFF</li>
+		<li><a href="/Design-a-Desk/" title="Design a Desk">Design a Desk</a></li>
+		<li><a href="/Free-Stuff/" title="Free Stuff">Free Stuff</a></li>
+		<li><a href="/Whats-New/" title="What's New">What's New</a></li>
+		<li><a href="/Work-Happy-Pinboard/" title="Work Happy Pinboard">Work Happy Pinboard</a></li>
+	</ul>
+	<ul class="span2">
+		<li class="title">THE FINE PRINT</li>
+		<li><a href="/Terms-and-Conditions/" title="Terms + Conditions">Terms + Conditions</a></li>
+		<li><a href="/Your-Rights/" title="Your Privacy Rights">Your Privacy Rights</a></li>
+		<li><a href="/Sitemap/" title="Site Map">Site Map</a></li>
+	</ul>
+	<ul class="span2">
+		<li class="title"><a href="/Contact-Us" title="Contact Us">CONTACT US</a></li>
+		<li>888-6-POPPIN</li>
+		<li><a href="mailto:hi@poppin.com">hi@poppin.com</a></li>
+		<li><a href="mailto:2cents@poppin.com" title="2cents@poppin.com">Feedback</a></li>
+		<li><a href="/Take-it-or-leave-it/" title="Un/Subscribe">Un/Subscribe</a></li>
+		<li><a href="/Affiliates/" title="Affiliate Program">Affiliate Program</a></li>
+	</ul>
+	<ul class="span3">
+		<li class="title">LETS STICK TOGETHER</li>
+		<li>
+			<a class="btn btn-small btn-facebook" target="_blank" title="Facebook" href="https://www.facebook.com/poppin">
+				<i class="fa fa-facebook"></i>
+			</a>
+            
+            <a class="btn btn-small btn-twitter" target="_blank" title="Twitter" href="http://twitter.com/poppin">
+                <i class="fa fa-twitter"> </i>
+            </a>
+            
+            <a class="btn btn-small btn-pinterest" target="_blank" title="Pinterest" href="http://pinterest.com/poppin">
+            	<i class="fa fa-pinterest"> </i>
+            </a>
+            
+            <a class="btn btn-small btn-instagram" target="_blank" title="Instagram" href="http://instagram.com/poppin">
+                <i class="fa fa-instagram"> </i>
+            </a>
+            <a class="btn btn-small btn-youtube" target="_blank" title="YouTube" href="http://www.youtube.com/channel/UChaP1s36-RbkjceFZ-R9bHQ">
+                <i class="fa fa-youtube"> </i>
+            </a>
+            <a class="btn btn-small btn-linkedin" target="_blank" title="LinkedIn" href="http://www.linkedin.com/company/1052876?trk=tyah&trkInfo=tas%3Apoppin">
+                <i class="fa fa-linkedin"> </i>
+            </a>
+
+		</li>
+        <li class="title"> CANADIAN CUSTOMERS </li>
+        <li>
+            <img src="/site/canadapopup/images/canada3020.png" alt=""  data-toggle="modal" href="#canada" />
+        </li>
+    </ul>
+</div>    
+	<hr>
+		<!-- M O D A L  -->
+		<div id="canada" class="modal hide fade in" style="display: none; ">
+			<div class="modal-body">
+				<input type="button" class="close" value="X" data-dismiss="modal">
+		            <span>O Canada ! </span>
+		            <hr>
+
+		        <div class="modal-body">
+		            <p>Happy to say that Poppin now has a BFF in Canada,
+		             and that all of your colorful dreams up North can now become a reality.</p>
+		        </div>
+		        <div class="modal-footer">
+		            <a href="#" class="btn btn-success">Call to action</a>
+		            <a href="#" class="btn" data-dismiss="modal">Close</a>
+		        </div>
+		       
+	        </div>
+	        <div class="tail">
+		        	
+		   	</div>
+	         
+    	</div> <!--E N D   M O D A L  -->
+    	
+        <!--Footer -->
+
+            <div class="row-fluid">
+                <div class="span6">
+                    <p><span>poppin. </span> @2014 Poppin. All Rights Reserved  </p>
+                </div>
+
+                <div class="span6 text-right">
+                    <p>Talk our ear off Mon-Fri 9am to 7pm at 888.676.7746</p>
+                </div>
+            </div>       
+<% }) %>    
