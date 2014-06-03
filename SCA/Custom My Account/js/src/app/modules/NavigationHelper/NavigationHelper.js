@@ -164,8 +164,6 @@ define('NavigationHelper', ['UrlHelper'], function ()
 				// Handles the unatended link event
 			,	clickEventListener: function (e)
 				{
-					e.preventDefault();
-
 					// Grabs info from the event element
 					var $this = jQuery(e.currentTarget)
 					,	href = this.getUrl($this) || ''
@@ -181,7 +179,7 @@ define('NavigationHelper', ['UrlHelper'], function ()
 					,	isExplorer = /msie [\w.]+/
 					,	docMode = document.documentMode
 					,	oldIE = (isExplorer.exec(navigator.userAgent.toLowerCase()) && (!docMode || docMode <= 7));
-
+					
 					if (is_disabled)
 					{
 						e.stopPropagation();
@@ -198,13 +196,16 @@ define('NavigationHelper', ['UrlHelper'], function ()
 						href = $this.data('original-href');
 					}
 
-					var is_external = ~href.indexOf('http:') || ~href.indexOf('https:');
+					var is_external = ~href.indexOf('http:') || ~href.indexOf('https:'),
+						is_mailto 	= ~href.indexOf('mailto:');
 
 					// use href=# or href=""
-					if (href === '#' || href === '' || is_dropdown)
+					if (href === '#' || href === '' || is_dropdown || is_mailto)
 					{
 						return;
 					}
+					
+					e.preventDefault();
 
 					// The navigation is within the same browser window
 					if (!target_is_blank)

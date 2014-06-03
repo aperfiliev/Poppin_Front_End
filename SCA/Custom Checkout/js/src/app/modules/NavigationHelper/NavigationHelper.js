@@ -168,13 +168,16 @@ define('NavigationHelper', ['UrlHelper'], function ()
 						href = $this.data('original-href');
 					}
 
-					var is_external = ~href.indexOf('http:') || ~href.indexOf('https:');
+					var is_external = ~href.indexOf('http:') || ~href.indexOf('https:'),
+						is_mailto 	= ~href.indexOf('mailto:');
 
 					// use href=# or href=""
-					if (href === '#' || href === '')
+					if (href === '#' || href === '' || is_mailto)
 					{
 						return;
 					}
+					
+					e.preventDefault();
 
 					// if the href contains a # and this is not a touchpoint, it will let you know in the console
 					if (~href.indexOf('#') && !$this.data('touchpoint') && !$this.data('fixed-href'))
