@@ -14,9 +14,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>Sign In</title>
+	<title>Shopping Cart</title>
 	<% if (siteType && siteType === 'ADVANCED') { %>
-		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/Styles-014666d20d6c.css') %>">
+		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/Styles-014666d5b278.css') %>">
 	<% } else { %>
 		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/styles-sitebuilder.css') %>">
 	<% } %>
@@ -47,13 +47,32 @@
 	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-014662531819.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0146666f769c.js') %>"></script>
 	<script>
-		if (!_.parseUrlOptions(location.search).fragment)
+
+		var Checkout = SC.Application('Checkout')
+
+		if (!window.location.hash && !_.parseUrlOptions(location.search).fragment)
 		{
-			window.location.hash = 'login-register';
+			window.location.hash = 'cart';
 		}
 
-		SC.Application('Checkout').Configuration.currentTouchpoint = 'login';
-		SC.Application('Checkout').Configuration.startCheckoutWizard = false;
+		_.each(Checkout.Configuration.modules, function(module, index)
+		{
+			if (module === 'Cart' || module[0] === 'Cart')
+			{
+				if (_.isObject(module[1]))
+				{
+					module[1].startRouter = true;
+				}
+				else
+				{
+					Checkout.Configuration.modules[index] = ['Cart', {startRouter: true}];
+				}
+			}
+		});
+
+		Checkout.Configuration.currentTouchpoint = 'viewcart';
+		Checkout.Configuration.startCheckoutWizard = false;
+
 	</script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
 </body>

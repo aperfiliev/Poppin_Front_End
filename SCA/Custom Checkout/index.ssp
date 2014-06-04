@@ -1,11 +1,54 @@
 <%
 	var SiteSettings
+	,	parameters
 	,	siteType
 	,	Error;
+
 	try {
-		SiteSettings = Application.getModel('SiteSettings').get()
+		SiteSettings = Application.getModel('SiteSettings').get();
 		siteType = SiteSettings.sitetype
-	} catch(e) {
+		parameters = request.getAllParameters();
+
+		if (session.isChangePasswordRequest())
+		{
+			parameters.fragment = 'reset-password';
+			return nlapiSetRedirectURL('EXTERNAL', SiteSettings.touchpoints.login , null, false, parameters);			
+		}
+		else if (!session.isLoggedIn() && request.getParameter('checkout_as_guest') === 'T')
+		{
+			var user = {};
+			if (SiteSettings.registration.companyfieldmandatory === 'T')
+			{
+				user.company = 'Guest Shopper';
+			}
+			session.registerGuest(user);
+		}
+		// PaypalExpress checkout 
+		else if (request.getParameter('paypalexpress') === 'T')
+		{
+			Application.getModel('LiveOrder').redirectToPayPalExpress();
+			return;
+		}
+		// Access control, if you are not loged this will send you to the log in page
+		else if (!session.isLoggedIn())
+		{
+			delete parameters.sitepath;
+			parameters.origin = 'checkout';
+			parameters.fragment = 'login-register';
+
+			return nlapiSetRedirectURL('EXTERNAL', SiteSettings.touchpoints.login, null, false, parameters);
+		}
+
+		if (request.getParameter('paypal') === 'T')
+		{
+			Application.getModel('LiveOrder').redirectToPayPal();
+			return;
+		}
+		else if (request.getParameter('paypal') === 'DONE')
+		{
+			Application.getModel('LiveOrder').backFromPayPal();
+		}
+	} catch (e) {
 		Error = Application.processError(e);
 	}
 %>
@@ -14,9 +57,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>Sign In</title>
+	<title>Checkout</title>
 	<% if (siteType && siteType === 'ADVANCED') { %>
-		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/Styles-014666d20d6c.css') %>">
+		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/Styles-014666d5b278.css') %>">
 	<% } else { %>
 		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/styles-sitebuilder.css') %>">
 	<% } %>
@@ -26,11 +69,14 @@
 </head>
 <body>
 	<noscript>
-		<div class="alert alert-error alert-noscript">
-			<strong>Javascript is disabled on your browser.</strong><br>
-			To view this site, you must enable JavaScript or upgrade to a JavaScript-capable browser.
+		<div class="container">
+			<div class="alert alert-error alert-noscript">
+				<strong>Javascript is disabled on your browser.</strong><br>
+				To view this site, you must enable JavaScript or upgrade to a JavaScript-capable browser.
+			</div>
 		</div>
 	</noscript>
+	
 	<% if (siteType && siteType === 'STANDARD') { %>
 		<div id='div__header' style="overflow: hidden;" class='noprint' leftmargin='0' topmargin='0' marginwidth='1' >
 			<table border='0' cellspacing='0' cellpadding='0' width='100%'>
@@ -38,7 +84,9 @@
 			</table>
 		</div>
 	<% } %>
+	
 	<div id="main"></div>
+
 	<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'sc.environment.ssp?lang=' + (request.getParameter('lang') || '') + '&cur=' + (request.getParameter('cur') || '') ) %>"></script>
 	<% if (Error) { %>
@@ -46,15 +94,6 @@
 	<% } %>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-014662531819.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0146666f769c.js') %>"></script>
-	<script>
-		if (!_.parseUrlOptions(location.search).fragment)
-		{
-			window.location.hash = 'login-register';
-		}
-
-		SC.Application('Checkout').Configuration.currentTouchpoint = 'login';
-		SC.Application('Checkout').Configuration.startCheckoutWizard = false;
-	</script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
 </body>
 </html>
