@@ -1,0 +1,187 @@
+/* Reviews on Product Details Page
+   ========================================================================== */
+ 
+.item-detailed-reviews {
+	border: 1px solid #E5E5E5;
+	margin-top: 28px;
+	padding: 25px;
+
+	h2, h3, h4 {
+		font-family: @secondFont;
+		font-size: 25px;
+		font-weight: normal;
+		text-transform: uppercase;
+	}
+
+	h4 {
+		font-size: 18px;
+	}
+
+	.product-review {
+		p.lead {
+			font-family: @secondFont;
+			font-size: 16px;
+		}
+	}
+}
+.reviews-header {
+	margin-bottom: 30px;
+}
+
+.reviews-star-rating {
+	a:hover {
+		color: #000;
+	}
+}
+.reviews-star-filters.span3 {
+	width: 28.5%;
+}
+.rating-by-star-percentage {
+	width: 42px;
+}
+.rating-by-star-link {
+	.rating-by-star-label {
+		text-decoration: underline;
+	}
+	&:hover {
+		.rating-by-star-label {
+			text-decoration: none;
+		}	
+	}
+}
+.write-review-container.span6 {
+	float: right;
+}
+
+/* Write a review page
+   ========================================================================== */
+.product-review-form, #product-review-form-preview {
+	@media (max-width: 767px) {
+		padding: 10px;
+	}
+	.item-cell {
+		border-bottom: 1px solid @grayLighter;
+		margin-bottom: 18px;
+		padding: 18px 0 25px;
+
+		h3 {
+			font-size: 24px;
+		}
+	}
+	hr {
+		display: none;
+	}
+	label {
+		font-size: 14px;
+	}
+	.form-actions {
+		background: none;
+		margin-top: 0;
+		padding: 12px 20px 19px 0px;
+		@media (max-width: 767px) {
+			padding: 12px 0px 19px 0px;
+		}
+	}
+	.text {
+		@media (max-width: 767px) {
+			height: @thumbHeight * 2px;
+		}
+	}
+}
+.new-product-review {
+	h1 {
+		font-family: @secondFont;
+		font-size: 25px;
+		font-weight: normal;
+		text-transform: uppercase;
+	}
+	.rating {
+		.control-label {
+			padding-top: 0;
+		}
+	}
+	input.span9 {
+		min-height: 31px;
+	}
+}
+
+.product-review-preview  .rating {
+	margin-top: -1px;
+}
+
+/* Reviews browser
+   ========================================================================== */
+.item-product-reviews {
+
+	.reviews-header {
+		> .row-fluid {
+			.span3 {
+				width: 29%;
+			}
+			.span9 {
+				width: 68%;
+			}
+		}
+		h1 {
+			font-size: 28px;
+		}
+	}
+}
+
+
+
+
+
+.review-summary {
+	border-right: #ccc 1px solid;
+}
+
+
+.product-review .rating.star {
+	margin: 0;
+}
+
+.rating-by-star-percentage-area {
+	float: left;
+	margin-right: 8px;
+	width: 90px;
+
+	.progress {
+		margin: 5px 0 0;
+	}
+}
+
+.review-container .alert {
+	margin-top: 15px;
+}
+
+
+
+.rating-by-star {
+	margin-bottom: 2px;
+
+	.rating-by-star-label, 
+	.rating-by-star-count,
+	.rating-by-star-percentage {
+		display: block;
+		float: left;
+		margin-right: 5px;
+	}
+
+	.rating-by-star-label {
+		width: 50px;
+	}
+}
+
+
+
+// This is the Star rating component
+.product-review header {
+	margin-bottom: 20px;
+}
+
+.product-review-content {
+	&:before, &:after {
+		display: none;
+	}
+}

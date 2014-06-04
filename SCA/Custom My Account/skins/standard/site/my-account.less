@@ -1,0 +1,127 @@
+#content {
+	@media (max-width: 767px) {
+		padding: 10px;
+	}
+}
+
+.main-container > #breadcrumb {
+	@media (max-width: 767px) {
+		padding: 10px;
+
+		.breadcrumb {
+			margin-bottom: 0;
+		}
+	}	
+}
+
+// .main-container {
+// 	padding: @paddingMini;
+// }
+.home-profile,
+.home-shipping, 
+.home-payment  {
+	margin-bottom: 14px;
+
+	.well-body, 
+	.well-footer{		
+		padding: 6px 0px 6px 12px;
+	}
+	.address-line {
+		display: block;
+		margin-bottom: 2px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	.address-title {
+		font-weight: bold;
+	}
+	h4 {
+		margin: 0;
+	}
+}
+.header-links{
+	padding-top: 14px;
+}
+
+.back-btn {
+	display: none;
+	@media (max-width: 767px) {
+		display: block;
+	}
+}
+
+.tracking-numbers{
+	margin: 0;
+}
+.tracking-number {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block; 
+}
+
+/* needed for bootstrap close button in popovers */
+.popover .close {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+}
+
+#side-nav [data-label] a {
+	overflow: hidden; 
+	text-overflow: ellipsis;
+}
+
+.force-hide-side-nav {
+
+    #side-nav {
+        display: none;
+    }
+
+    #content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.force-hide-side-nav {
+
+    #side-nav {
+        display: none;
+    }
+
+    #content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+
+	.hide-side-nav {
+
+		#side-nav {
+			display: none;
+		}
+
+		#content {
+			margin-left: 0;
+			width: 100%;
+		}
+	}
+
+	.show-side-nav {
+
+		#side-nav {
+			display: block;
+
+			li[data-label=home] {
+				display: none;
+			}
+		}
+
+		#content {
+			display: none;
+		}
+	}
+}

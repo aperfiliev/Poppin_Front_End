@@ -1,0 +1,442 @@
+.ProductListDetailsView {
+	header {
+		margin-bottom: 14px;		
+	}
+
+	.inline {
+		display: inline-block;
+	}
+
+	.item-options ul {
+		list-style: none;
+		margin: 0;
+	}
+
+	.my-lists-selector {
+		font-size: 16px;
+	}
+
+	&.display-condensed {
+		.item-details {		
+			line-height: 15px;
+		}
+
+		article {
+			display: table;
+			width: 100%;
+		}	
+	}
+
+	h3.list-header-title{
+		margin-bottom: 18px;
+	}
+}
+
+.list-commands-crud {	
+	margin-top: 5px;
+	@media (max-width: 767px) {
+		display: inline;
+		float: right;
+		margin-top: 0;
+	}
+	.separator {
+		display: block;
+		@media (max-width: 767px) {
+			display: none;
+		}
+	}
+}
+
+.product-list-items, 
+.product-list-lists,
+.product-list-added-to-cart {
+	color: #6b6b6b;
+	margin-top: 14px;
+	padding: 8px 0px 0px 0px;
+
+	article {
+		border-top: 1px solid #eee;
+		padding: 12px 0px 12px 0px;
+		transition: 1.0s;
+		&.active,
+		&:active,
+		&:hover,
+		&:focus {
+			background-color: @rowBackground;
+		}
+		&.new-list {
+			background-color: @rowBackground;
+			transition: 1.5s;
+		}
+		.info-box {
+			padding-left: 15px;
+		}
+		.action-box {
+			padding-right: 11px;
+		}
+
+		.add-item-to-cart {
+			margin-top: 9px;
+			margin-bottom: 10px;
+		}
+
+		.item-rating {
+			margin-top: 6px;
+		}
+	}
+}
+
+.product-list-details-count {
+	color: #AFAFAF;
+}
+
+.product-list-items {
+
+	.item-details {
+		.item-details-options {
+			font-size: 11px;
+			margin-top: 10px;
+			ul{
+				margin: 0;
+			}
+			div, li{
+				display: inline-block;				
+			}
+			.options-container {
+				>div {
+					margin-right: 8px;
+				}
+				.option-value {
+					font-weight: bold;
+				}
+			}
+			.item-details-quantity,
+			.item-details-priority {
+				margin-right: 8px;
+			}
+		}		
+		.item-details-value {
+			font-weight: bold;
+		}
+
+		.item-details-name {
+			color: #0059b2;
+		}
+
+		.item-details-pricing {
+			margin-top: 10px;			
+		}
+
+		.item-details-price {
+			color: #454545;	
+			display: inline-block;		
+		}
+
+		.item-details-date-added {
+			font-size: 11px;
+			margin-top: 2px;
+			color: #AFAFAF;
+		}
+
+		.item-details-stock {
+			color: #454545;
+			display: inline-block;
+		}
+	}
+
+	.item-image img {
+		@media (max-width: 767px) {
+			width: 94%;
+		}
+	}
+
+	.item-commands {
+		.item-commands-crud {
+			font-size: 12px;
+			margin-top: 10px;
+			> div {
+				margin-bottom: 3px;
+			}
+		}
+		.add-to-cart {
+			@media (max-width: 767px) {
+				margin-bottom: 8px; 
+				margin-left: 5px;
+			}
+			margin-bottom: 2px; 			
+		}
+
+		div.row-fluid {
+			margin-top: 15px;
+		}
+
+		input[type="text"] {
+			// margin-bottom: 0;
+		}
+
+		p.success-message {
+			margin-top: 10px;
+		}
+
+		// Move item control fixes (same as Shop control)
+		.product-lists {
+			width: 260px;
+
+			@media (max-width: 767px) {
+				width: 100%;
+			}
+
+			.productlist-control-move {
+				@media (max-width: 767px) {
+					width: 100%;
+				}
+			}
+
+			.show-wishlist-link {
+				text-align: right;
+				//dirty fix for mobile :(
+				@media (max-width: 767px) {
+					display: inline;
+					float: right; 
+					position: relative;
+					top: -44px;
+				}
+			}
+
+			form[data-type="add-new-list-form"] {
+				display: none;
+			}
+		}		
+	}
+}
+.item-commands-crud {
+	font-size: 12px;
+	margin-top: 10px;
+	>div {
+		@media (max-width: 767px) {
+			display: inline;
+		}
+		margin-bottom: 3px;
+	}
+	@media (max-width: 767px) {
+		display: inline;
+		float: right;
+		margin-top: 0;
+		.move {
+			width: 100%;
+		}
+	}
+
+}
+.item-listing-display {	
+	@media (max-width: 767px) {
+		display: none;
+	}
+
+	.btn {
+		background: none;
+		border: none;
+		.box-shadow(none);
+		padding: 0 5px;
+		i {
+			background: url(@siteSpritePath) no-repeat;
+			height: 22px;
+			width: 21px;
+		}
+
+		.icon-th-condensed {
+			background-position: -90px -51px;
+		}
+
+		.icon-th-list {
+			background-position: -60px -51px;
+		}
+
+		.icon-th-large {
+			background-position: -30px -51px;
+		}
+
+		.icon-th {
+			background-position: 0 -51px;
+		}
+
+		&.active,
+		&:active,
+		&:hover,
+		&:focus {
+			.icon-th-condensed {
+				background-position: -90px -79px;
+			}
+			.icon-th-list {
+				background-position: -60px -79px;
+			}
+			.icon-th-large {
+				background-position: -30px -79px;
+			}
+			.icon-th {
+				background-position: 0 -79px;
+			}
+		}
+	}
+}
+
+.product-list-item-count {
+	font-size: 20px;
+}
+
+.item-details-notes { 
+	margin-top: 10px;
+	font-size: 11px;
+}
+
+.product-list-new {
+	width: auto;
+	div.row-fluid>div {
+		width: 100%;
+	}
+
+	>div {
+		margin-bottom: 5px;
+		div {
+			margin-bottom: 5px;
+		}
+	}
+
+	span,
+	input,
+	textarea {
+		width: 98%;
+	}
+
+	textarea {
+		min-height: 120px;
+	}
+}
+.product-list-new-notes a {
+	padding: 0;	
+}
+
+.product-list-new-commands {
+	margin-top: 10px;
+}
+.product-list-header-no-items {
+	margin-bottom: 15px;
+	margin-top: 4px;
+}
+.product-list-header {
+	background-color: @headerBackground;
+	padding: 16px 10px 44px 10px;
+	margin-top: 0;
+	select {
+		margin: 0;
+		width: 160px;
+	}
+	> p {
+		margin: 0;
+		color: #6b6b6b;
+		position: relative;
+		top: 12px;
+	}
+	@media (max-width: 767px) {
+		padding-bottom: 62px;
+	}
+	.add-list {
+		@media (max-width: 767px) {
+			display: block;
+			float: none;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+	}
+	.sort-by {
+		@media (max-width: 767px) {
+			margin-left: 12px;
+			width: 100%;
+			float: right;
+		}
+	}
+}
+.products-not-purchasable-message {
+	@media (max-width: 767px) {
+		white-space: normal;
+	}
+}
+.product-list-lists-header {
+	padding-bottom: 16px;
+	.actions-container {
+		@media (max-width: 767px) {
+			margin-left: 0;
+		}
+	}
+	[data-action="sort-by"] {
+		@media (max-width: 767px) {
+			margin-top: 5px;
+		}
+	}
+}
+.list-details-actions {
+	@media (max-width: 767px) {
+		float: none;
+	}	
+}
+.product-list-sub-header {
+	padding: 0 15px;
+}
+
+.list-details-add-list-to-cart {
+	margin-left: 30px;
+	@media (max-width: 767px) {
+		margin-left: 0px;
+	}
+}
+
+//TODO : should this be more generic and affect all alerts ? 
+.ProductListListsView .confirm-message .alert, 
+.ProductListDetailsView .confirm-message .alert {
+	margin-bottom: 0;
+	padding-left: 13px;
+}
+
+.ProductListListsView {
+	h3 {
+		margin-bottom: 18px;
+	}
+	h4 {
+		font-weight: bold;
+	}	
+}
+.actions-container {
+	margin-left: 8px;
+}
+
+.product-list-lists {
+	.date-modified {
+		font-size: 11px;
+		margin-top: 2px;
+		color: #AFAFAF;
+	}
+}
+
+.product-list-added-to-cart {
+	margin: 0;
+	padding: 0;
+}
+
+.product-list-name {
+	font-weight: bold;
+}
+
+.added-to-cart-item-list {
+	max-height: 330px;
+	overflow-y: auto;
+	.item-image {
+		@media (max-width: 767px) {
+			display: none;
+		}
+	}
+}
+
+.added-to-cart-item-warning-message {
+	font-style: italic;
+	color: #f66330;
+}

@@ -1,0 +1,53 @@
+.accordion {
+	margin-top: -1px;
+	margin-bottom: 0;
+
+	.icon-plus-sign {
+		display: none;
+	}
+
+	.icon-minus-sign {
+		display: block;
+	}
+
+	.collapsed {
+
+		.icon-minus-sign {
+			display: none;
+		}
+
+		.icon-plus-sign {
+			display: block;
+		}
+	}
+}
+
+.accordion-group {
+	width: 100%;
+}
+
+.collapsible { 
+
+	.icon-minus-sign {
+		display: block;
+	}
+
+	.icon-plus-sign {
+		display: none;
+	}
+
+	&.collapsed {
+
+		.icon-minus-sign {
+			display: none;
+		}
+
+		.icon-plus-sign {
+			display: block;
+		}
+	}
+}
+
+.collapser {
+	cursor: pointer;
+}

@@ -1,0 +1,287 @@
+﻿.site-header {
+	@media (max-width: 767px) {
+		padding: 10px;
+	}
+}
+.site-header-top-nav {
+	margin-bottom: @baseLineHeight;
+
+	@media (max-width: 767px) {
+		display: none;
+	}
+
+	.divider-vertical {
+		margin: 0;
+
+		&::before {
+			color: @white;
+			content: '|';
+			display: block;
+			margin-top: 12px;
+			text-shadow: 1px 1px 1px @black;
+		}
+	}
+}
+
+.site-logo {
+	span {
+		line-height: @baseLineHeight;
+		font-size: @baseFontSize * 1.25;
+	}
+
+	@media (max-width: 767px) {
+		float: left;
+	}
+}
+
+.alert-cookie-banner {
+
+	@media (max-width: 767px) {
+		margin: @baseLineHeight;
+	}
+}
+
+.mobile-nav {
+	display: none;
+
+	@media (max-width: 767px) {
+		display: block;
+		float: right;
+		margin-top: 20px;
+
+		.navbar-inner {
+			padding: 0;
+		}
+		.btn-navbar {
+			/*height: @baseLineHeight;*/
+			margin-bottom: 5px;
+			padding-top: 12px;
+		}
+		.mini-cart-summary {
+			margin: 5px;
+		}
+	}
+}
+
+.site-search {
+	float: right;
+
+	.icon-search {
+		.scale(~'-1, 1');
+	}
+
+	@media (max-width: 767px) {
+		background: @lightBlack;
+		float: none;
+		margin: 0;
+		padding: 4px;
+		}
+
+	.input-append {
+
+		@media (max-width: 767px) {
+			display: block;
+			position: relative;
+		}
+
+		.search-query {
+			width: 195px;
+			-webkit-appearance: none;
+
+			@media (max-width: 767px) {
+				display: block;
+				.border-radius(0);
+				.box-sizing(border-box);
+				width: 100%;
+			}
+		}
+
+		.btn {
+			.border-radius(0 6px 6px 0);
+
+			@media (max-width: 767px) {
+				.border-radius(0);
+				position: absolute;
+				right: 0;
+				top: 0;
+				z-index: 2;
+
+			}
+		}
+	}
+}
+
+.site-header-main-nav {
+	border-top: @grayLighter 1px solid;
+
+	.navbar-inner {
+		background: url('@{imgRoot}main-nav-bg.png') no-repeat center bottom;
+
+		@media (max-width: 767px) {
+			padding: 0;
+		}
+	}
+
+	.dropdown:hover > .dropdown-menu {
+		display: block;
+		margin-top: 0;
+	}
+
+	&.in {
+		@media (max-width: 767px) {
+
+			.dropdown-menu {
+				display: block;
+				margin-top: 0;
+				padding: 0;
+
+				a {
+					padding: 6px 20px;
+				}
+			}
+
+			.dropdown-submenu {
+
+				> a:after {
+					display: none;
+				}
+
+				.dropdown-menu {
+					padding: 0 0 0 20px;
+				}
+			}
+		}
+	}
+
+	.nav > li > a {
+		font-size: 15px;
+		text-transform: uppercase;
+	}
+
+	@media (min-width: 768px) {
+		// the site-header-main-nav is used on all screen sizes
+		// the plugin to collapse the nav in small screens changes de height to 0
+		// we use !important to override that on large screens
+		height: auto !important;
+	}
+
+	@media (max-width: 767px) {
+		border: none;
+		clear: both;
+		overflow: hidden;
+
+		.nav {
+			float: none;
+
+			> li {
+				float: none;
+
+				.dropdown-menu {
+
+					&::before, &::after {
+						display: none;
+					}
+				}
+			}
+		}
+
+		.divider-vertical {
+			display: none;
+		}
+	}
+}
+
+.typeahead {
+	max-width: 260px;
+	width: 100%;
+
+	@media (max-width: 767px) {
+		max-width: none;
+		padding: 0;
+	}
+
+	> li > a {
+		padding: 3px 8px 3px 14px;
+		white-space: normal;
+	}
+}
+.typeahead-title {
+  padding-top: 30px;
+}
+.typeahead-image {
+	width: 100px;
+  	float: left;
+  	margin-right: 10px;
+}
+
+.typeahead-item-head {
+	overflow: hidden;
+}
+
+.site-header .dropdown-menu {
+
+	min-width:185px;
+
+	@media (max-width: 767px) {
+		border: none;
+		.box-shadow(none);
+		float: none;
+		position: static;
+
+		.open & {
+			display: block;
+		}
+
+		> li > a {
+
+			&:hover, &:focus {
+				background: none;
+				color: @linkColorHover;
+			}
+		}
+	}
+}
+
+.dropdown-submenu {
+
+	@media (max-width: 767px) {
+
+		&:hover, &:focus {
+
+			> a {
+				background: none;
+				color: @linkColorHover;
+			}
+		}
+	}
+}
+
+.site-branding {
+
+	border-bottom: 1px solid @mainBorderColor;
+	padding-bottom: 10px;
+	position: relative;
+
+	.back-to-shopping {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		padding-right: 16px;
+	}
+}
+
+.currency-selector-container,
+.language-selector-container {
+	.add-on {
+		padding: 4px;
+	}
+
+	select{
+		margin-top: 0;
+	}
+}
+
+// override default bootstrap style so the header profile submenues appear to the left on desktop
+.navbar .pull-right > li > .dropdown-menu .dropdown-menu {
+	left: 100%;
+}

@@ -1,0 +1,32 @@
+.header-information {
+	margin-top: 4px;
+}
+
+.header-information-element {
+	text-align: center;
+	padding-bottom: 5px;
+
+	@media (max-width: 767px) {
+		text-align: left;
+	}
+
+	&:last-child {
+		text-align: right;
+
+		@media (max-width: 767px) {
+			text-align: left;
+		}
+	}
+
+	&:first-child {
+		text-align: left;
+
+		@media (max-width: 767px) {
+			text-align: left;
+		}
+	}
+
+	.btn-expanded {
+		margin: 12px 0;
+	}
+}

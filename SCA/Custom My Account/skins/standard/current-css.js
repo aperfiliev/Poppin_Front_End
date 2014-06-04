@@ -1,0 +1,1 @@
+BDQ.currentTemplatesUrl = '/Web Site Hosting Files/Live Hosting Files/myaccount-1-03-0/skins/standard/Styles-014647238de5.css';

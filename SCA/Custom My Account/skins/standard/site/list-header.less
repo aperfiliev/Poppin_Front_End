@@ -1,0 +1,66 @@
+.list-header {
+	border: 1px solid lightgray;
+	padding: 9px;
+
+	input, select {
+		margin: 0;
+	}
+
+	label {
+		margin-bottom: 0;
+		margin-right: 5px;
+
+		&.v-center {
+			margin-top: 5px;
+		}
+
+		@media (max-width: 767px) {
+			margin-bottom: 10px;
+			margin-right: 0;
+			text-align: left;
+
+			input[type="date"] {
+				display: block;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.btn {
+		padding: 5px;
+	}
+
+	@media (max-width: 767px) {
+
+		.list-header-filter {
+			display: block;
+			width: 100%;
+		}
+
+		.list-header-sort {
+			display: block;
+			float: left;
+			margin: 10px 2% 5px 0;
+			width: 80%;
+		}
+
+		.list-header-sort-btn {
+			display: block;
+			float: left;
+			margin: 10px 0 5px;
+			text-align: center;
+			width: 18%;
+
+			i {
+				float: none;
+			}
+		}
+	}
+}
+
+.input-date {
+	width: 140px;
+}

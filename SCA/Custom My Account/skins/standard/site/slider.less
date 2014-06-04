@@ -1,0 +1,40 @@
+.slider {
+	border: 1px solid #aaa;
+	overflow: visible;
+	margin: 10px;
+	position: relative;
+
+	.bar {
+		position: absolute;
+		-webkit-transition: none;
+		-moz-transition: none;
+		-o-transition: none;
+		transition: none;
+	}
+
+	.slider-control, .slider-control:active {
+		background:  url('@{siteSpritePath}') -3px -151px no-repeat;
+		border: none;
+		.box-shadow(none);
+		height: 20px;
+		top: -7px;
+		width: 18px;
+	}
+
+	.btn-small {
+		margin-left: -11px;
+	}
+}
+
+.slider-control {
+	margin-left: -13px;
+	padding: 2px 9px;
+	position: absolute;
+	top: -6px;
+	z-index: 2;
+}
+
+.slider-small {
+	height: 16px;
+	margin: 0 11px;
+}

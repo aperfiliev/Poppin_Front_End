@@ -1,0 +1,3 @@
+<% registerMacro('simplifiedFooter', function (view) { %>
+	<%= SC.macros.backToTop() %>
+<% }) %>
