@@ -1,17 +1,19 @@
 ﻿<%	
-	var Error
-	,	SiteSettings
-	,	Environment
-	,	siteType
-	,	html_lang;
 
+	var SiteSettings
+	,	siteType
+	,	Environment
+	,	Language
+	,	Currency
+	,	Error;
+	
 	try {
 		SiteSettings = Application.getModel('SiteSettings').get();
-		Environment = Application.getEnvironment(session, request); 
 		siteType = SiteSettings.sitetype;
 
-		var locale = Environment && Environment.currentLanguage && Environment.currentLanguage.locale && Environment.currentLanguage.locale; 
-		html_lang = locale ? locale.replace('_', '-') : null; 
+		Environment = Application.getEnvironment(session, request); 
+		Language = Environment.currentLanguage && Environment.currentLanguage.locale || '';
+		Currency = Environment.currentCurrency && Environment.currentCurrency.code || '';
 
 		// Access control, if you are not loged this will send you to the log in page
 		if (!session.isLoggedIn() || session.getCustomer().isGuest())
@@ -34,7 +36,7 @@
 	}
 %>
 <!DOCTYPE html>
-<html <%= html_lang ? 'lang="'+html_lang+'"' : '' %>>
+<html <%= Language ? 'lang="' + Language.replace('_', '-') + '"' : '' %>>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -46,13 +48,13 @@
 		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/styles-sitebuilder.css') %>">
 		<% } %>
 		<%= (siteType && siteType === 'STANDARD') ? getPageFullHead() : '' %>
-		<script src="<%= session.getAbsoluteUrl('checkout', 'js/utils/BootUtilities-0145b2d07a43.js') %>"></script>
-		<script src="<%= session.getAbsoluteUrl('checkout', 'sc.environment.ssp?lang=' + (request.getParameter('lang') || '') + '&cur=' + (request.getParameter('cur') || '') ) %>"></script>
+		<script src="<%= session.getAbsoluteUrl('checkout', 'js/utils/BootUtilities-0146472387f4.js') %>"></script>
+		<script src="<%= session.getAbsoluteUrl('checkout', 'sc.environment.ssp?lang=' + Language + '&cur=' + Currency) %>"></script>
 		<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 		<% } %>
-		<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0145d5cf6a77.js') %>"></script>
-		<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0145d62293c0.js') %>"></script>
+		<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0146674dfd06.js') %>"></script>
+		<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-014666548b88.js') %>"></script>
 	</head>
 	<body>
 		
@@ -70,7 +72,7 @@
 			</div>
 		</noscript>
 
-		<div id="main"></div>
+		<div id="main" class="main"></div>
 
 	</body>
 </html>
