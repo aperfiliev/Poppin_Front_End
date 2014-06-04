@@ -146,9 +146,7 @@ Application.defineModel('Account', {
 ,	register: function (user_data)
 	{
 		'use strict';
-		if (checkExistingEmail(user_data.email).length > 0) {
-			throw poppinservres.text.useralreadyexist;
-		}
+		
 		// var check_object = {
 		// email: user_data.email
 		// };
@@ -1572,13 +1570,4 @@ Application.defineModel('StoreItem', {
 	
 });
 
-function checkExistingEmail(email)
-{
-	var checkemail = {
-			"email" : email
-		},
-		checkexistinguserresponse = nlapiRequestURL(poppinservres.url.checkexistinguser, checkemail),
-		checkexistinguser 		  = JSON.parse(checkexistinguserresponse.getBody());
-	
-	return checkexistinguser;
-}
+
