@@ -90,6 +90,13 @@ var SC = window.SC = { ENVIRONMENT: {} };
 	SC.ENVIRONMENT.CART = <%= JSON.stringify(Cart) %>;
 <% } %>
 
+<% var headerRecord = nlapiLoadRecord("customrecord_cd_behaviour", 1)%>
+SC.ENVIRONMENT.HEADER = {
+				toggle: "F"<%//=JSON.stringify(headerRecord.getFieldValue("custrecord_toggle"))%>,
+				fixed: <%=JSON.stringify(headerRecord.getFieldValue("custrecord_display"))%>,
+				isinactive: <%=JSON.stringify(headerRecord.getFieldValue("custrecord_isinactive"))%>	
+		};
+
 <% if (Content) { %>
 	// The Content
 	SC.ENVIRONMENT.CONTENT = <%= JSON.stringify(Content) %>;
@@ -106,6 +113,7 @@ SC.ENVIRONMENT.jsEnvironment = 'browser';
 <% if (Profile) { %>
 	// The Profile
 	SC.ENVIRONMENT.PROFILE = <%= JSON.stringify(_.extend(Profile, { isLoggedIn: 'T'})) %>;
+	SC.ENVIRONMENT.permissions = <%= JSON.stringify(Application.getPermissions()) %>;
 <% } %>
 
 <% if (Address) { %>

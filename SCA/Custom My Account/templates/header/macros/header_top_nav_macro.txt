@@ -1,0 +1,75 @@
+<% registerMacro('headerTopNav', function (view) { %>
+<%
+	var application = view.application
+	,	environment = SC.ENVIRONMENT
+	,	show_currency_selector = !application.getConfig('notShowCurrencySelector')
+	,	macros = SC.macros
+	,	header_settings = SC.ENVIRONMENT.HEADER
+
+	,	hosts = environment.availableHosts
+	,	has_multiple_hosts = hosts.length > 1
+
+	,	languages = environment.availableLanguages
+	,	has_multiple_languages = languages.length > 1
+
+	,	has_hosts_or_languages = has_multiple_hosts || has_multiple_languages
+
+	,	currencies = environment.availableCurrencies
+	,	has_multiple_currencies = currencies.length > 1;
+%>
+
+<div style="display:<%-header_settings.isinactive == 'T'?'none':'' %>">
+<%if(header_settings.fixed == "T"){%>
+	<div class="navbar-fixed-top tabletheader" style="margin-bottom: -4.5%;">
+<%}%>	
+<div id="promo_header_section" class="panel-collapse collapse in hidden-phone"></div>
+<div class="clearfix"></div>
+<%if(header_settings.toggle == "T"){%>
+	<a href="#" class="btn" data-toggle="collapse" id="header_toggle" data-target="#promo_header_section">hide promo header banner</a>
+<%}%>
+<%if(header_settings.fixed == "T"){%>
+	</div>
+<%}%>
+</div>
+
+<nav class="navbar navbar-inverse navbar-static-top site-header-top-nav" id="navbar_header" style="margin-top:<%-(header_settings.fixed=='T')&&(header_settings.isinactive == 'F')?'4.5%':'0px' %>">
+	<div class="navbar-inner" style="height: 0px;">
+		<div class="container">
+			<% if (has_hosts_or_languages || has_multiple_currencies) { %>
+				<ul class="nav customer-site-settings">
+				<% if (has_hosts_or_languages) { %>
+					<li id="language-selector-container" class="language-selector-container">
+						<form action="" class="navbar-form">
+							<% if (has_multiple_hosts) { %>
+								<%= macros.hostSelector(hosts, environment.currentHostString) %>
+							<% } else if (has_multiple_languages) { %>
+								<%= macros.languageSelector(languages, environment.currentLanguage.locale) %>
+							<% } %>
+						</form>
+					</li>
+				<% } %>
+				<% if (has_hosts_or_languages && has_multiple_currencies) { %>
+					<li class="divider-vertical"></li>
+				<% } %>
+				<% if (has_multiple_currencies) { %>
+					<li id="currency-selector-container" class="currency-selector-container">
+						<form action="" class="navbar-form">
+							<% if (show_currency_selector) { %>
+								<%= macros.currencySelector(currencies, environment.currentCurrency.code) %>
+							<% } %>
+						</form>
+					</li>
+				<% } %>
+				</ul>
+			<% } %>
+			<!-- TODO: should the following be inside a macro? -->
+			<ul class="nav pull-right">
+				<%= macros[application.getConfig('profileMacro')](application) %>
+				<li id="mini-cart-container" class="dropdown mini-cart-container">
+					<%= macros.miniCart(application.getCart(), application) %>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<% }) %>
