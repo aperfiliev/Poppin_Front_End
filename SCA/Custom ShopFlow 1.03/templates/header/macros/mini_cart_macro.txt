@@ -7,7 +7,7 @@
 			return memo + (parseFloat(quantity) || 1);
 		}, 0);
 %>
-<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"  style="height: 18px;">
 	<%= SC.macros.miniCartSummary(total_items) %>
 	<b class="caret"></b>
 </a>

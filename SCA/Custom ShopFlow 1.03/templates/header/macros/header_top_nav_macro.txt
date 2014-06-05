@@ -4,6 +4,7 @@
 	,	environment = SC.ENVIRONMENT
 	,	show_currency_selector = !application.getConfig('notShowCurrencySelector')
 	,	macros = SC.macros
+	,	header_settings = SC.ENVIRONMENT.HEADER
 
 	,	hosts = environment.availableHosts
 	,	has_multiple_hosts = hosts.length > 1
@@ -16,9 +17,22 @@
 	,	currencies = environment.availableCurrencies
 	,	has_multiple_currencies = currencies.length > 1;
 %>
-<div id="promo_header_section"></div>
-<nav class="navbar navbar-inverse navbar-static-top site-header-top-nav">
-	<div class="navbar-inner">
+<div style="display:<%-header_settings.isinactive == 'T'?'none':'' %>">
+<%if(header_settings.fixed == "T"){%>
+	<div class="navbar-fixed-top fixed-promo-header" style="margin-bottom: -4.5%; position: fixed;">
+<%}%>	
+<div id="promo_header_section" class="panel-collapse collapse in hidden-phone"></div>
+<div class="clearfix"></div>
+<%if(header_settings.toggle == "T"){%>
+	<a href="#" class="btn" data-toggle="collapse" id="header_toggle" data-target="#promo_header_section">hide promo header banner</a>
+<%}%>
+<%if(header_settings.fixed == "T"){%>
+	</div>
+<%}%>
+</div>
+
+<nav class="navbar navbar-inverse navbar-static-top site-header-top-nav" id="navbar_header" style="margin-top:<%-(header_settings.fixed=='T')&&(header_settings.isinactive == 'F')?'4.5%':'0px' %>">
+	<div class="navbar-inner" style="height: 0px;">
 		<div class="container">
 			<% if (has_hosts_or_languages || has_multiple_currencies) { %>
 				<ul class="nav customer-site-settings">

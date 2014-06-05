@@ -4,7 +4,7 @@
 	<div class="input-append">
 		<input class="input-medium search-query" placeholder="<%- _('Search').translate() %>" type="search" name="<%- name %>" autocomplete="off"
 			<%= maxLength > 0 ? 'maxlength="'+maxLength+'"' : '' %>	>
-		<button type="submit" class="btn">
+		<button type="submit" class="btn" style="margin-top: 1px;">
 			<i class="icon-search"></i>
 		</button>
 	</div>

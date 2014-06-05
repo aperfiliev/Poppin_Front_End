@@ -36,10 +36,25 @@
 
 	,	events: {}
 		
+	,	toggleHeaderSection: function(e){
+			if((jQuery('#header_toggle').html() == "hide promo header banner")&&(SC.ENVIRONMENT.HEADER.fixed == "T")){
+				jQuery("#navbar_header").css("margin-top","0px");
+				jQuery('#header_toggle').html("show promo header banner");
+			}else
+			
+			if(jQuery('#header_toggle').html() == "show promo header banner"&&(SC.ENVIRONMENT.HEADER.fixed == "T")){
+				jQuery("#navbar_header").css("margin-top",SC.ENVIRONMENT.HEADER.height+"px");
+				jQuery('#header_toggle').html("hide promo header banner");
+			}
+			
+	}
+		
 	,	initialize: function (Application)
 		{
 			this.events = {};
 			this.application = Application;
+			
+			this.delegateEvents(_.extend(this.events, {'click #header_toggle': 'toggleHeaderSection'}));
 		}
 		
 	,	render: function ()
