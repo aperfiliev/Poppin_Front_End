@@ -22,7 +22,7 @@
   min-height: @navbarHeight;
   padding-left:  20px;
   padding-right: 20px;
-  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+  #gradient > .vertical(@backgroundOrange, @backgroundOrange);
   border: 1px solid @navbarBorder;
   .border-radius(@baseBorderRadius);
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
@@ -85,8 +85,8 @@
 .navbar .divider-vertical {
   height: @navbarHeight;
   margin: 0 9px;
-  border-left: 1px solid @navbarBackground;
-  border-right: 1px solid @navbarBackgroundHighlight;
+  //border-left: 1px solid @navbarBackground;
+  //border-right: 1px solid @navbarBackgroundHighlight;
 }
 
 // Buttons in navbar
@@ -254,8 +254,8 @@
 // Hover/focus
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover/:focus from .active
-  color: @navbarLinkColorHover;
+  background-color: @orange; // "transparent" is default to differentiate :hover/:focus from .active
+  color: #fff;
   text-decoration: none;
 }
 
@@ -298,29 +298,29 @@
 // --------------
 
 // Menu position and menu carets
-.navbar .nav > li > .dropdown-menu {
-  &:before {
-    content: '';
-    display: inline-block;
-    border-left:   7px solid transparent;
-    border-right:  7px solid transparent;
-    border-bottom: 7px solid #ccc;
-    border-bottom-color: @dropdownBorder;
-    position: absolute;
-    top: -7px;
-    left: 9px;
-  }
-  &:after {
-    content: '';
-    display: inline-block;
-    border-left:   6px solid transparent;
-    border-right:  6px solid transparent;
-    border-bottom: 6px solid @dropdownBackground;
-    position: absolute;
-    top: -6px;
-    left: 10px;
-  }
-}
+//.navbar .nav > li > .dropdown-menu {
+//  &:before {
+//    content: '';
+//    display: inline-block;
+//    border-left:   7px solid transparent;
+//    border-right:  7px solid transparent;
+//    border-bottom: 7px solid #ccc;
+//    border-bottom-color: @dropdownBorder;
+//    position: absolute;
+//    top: -7px;
+//    left: 9px;
+//  }
+//  &:after {
+//    content: '';
+//    display: inline-block;
+//    border-left:   6px solid transparent;
+//    border-right:  6px solid transparent;
+//    border-bottom: 6px solid @dropdownBackground;
+//    position: absolute;
+//    top: -6px;
+//    left: 10px;
+//  }
+//}
 // Menu position and menu caret support for dropups via extra dropup class
 .navbar-fixed-bottom .nav > li > .dropdown-menu {
   &:before {
@@ -392,8 +392,8 @@
 .navbar-inverse {
 
   .navbar-inner {
-    #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
-    border-color: @navbarInverseBorder;
+    #gradient > .vertical(@backgroundOrange, @backgroundOrange);
+    border-color: @backgroundOrange;
   }
 
   .brand,
@@ -416,8 +416,8 @@
 
   .nav > li > a:focus,
   .nav > li > a:hover {
-    background-color: @navbarInverseLinkBackgroundHover;
-    color: @navbarInverseLinkColorHover;
+    background-color: #f68b48;
+	height: 18px;
   }
 
   .nav .active > a,
