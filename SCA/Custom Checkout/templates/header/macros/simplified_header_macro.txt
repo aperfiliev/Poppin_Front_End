@@ -1,6 +1,24 @@
 <% registerMacro('simplifiedHeader', function (view) { %>
+<%var header_settings = SC.ENVIRONMENT.HEADER;%>
+<%debugger;%>
+
+<div class="tabletheader" style="display:<%-header_settings.isinactive == 'T'?'none':'' %>">
+<%if(header_settings.fixed == "T"){%>
+	<div class="navbar-fixed-top">
+<%}%>	
+<div id="promo_header_section" class="panel-collapse collapse in"></div>
+<div class="clearfix"></div>
+<%if(header_settings.toggle == "T"){%>
+	<a href="#" class="btn" data-toggle="collapse" id="header_toggle" data-target="#promo_header_section">hide promo header banner</a>
+<%}%>
+<%if(header_settings.fixed == "T"){%>
+	</div>
+<%}%>
+</div>
+
+
 <!-- Bar just for style -->
-<nav class="navbar navbar-inverse navbar-static-top site-header-top-nav">
+<nav class="navbar navbar-inverse navbar-static-top site-header-top-nav" id="navbar_header" style="margin-top:<%-(header_settings.fixed=='T')&&(header_settings.isinactive == 'F')?'4%':'0px' %>">
 	<div class="navbar-inner">
 		<div class="container"></div>
 	</div>
