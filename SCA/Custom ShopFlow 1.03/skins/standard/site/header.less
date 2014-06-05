@@ -121,7 +121,7 @@
 }
 
 .site-header-main-nav {
-	border-top: @grayLighter 1px solid;
+	border-top: #f47b20 2px solid;
 
 	.navbar-inner {
 		background: url('@{imgRoot}main-nav-bg.png') no-repeat center bottom;
@@ -135,6 +135,14 @@
 		display: block;
 		margin-top: 0;
 	}
+
+	.dropdown {
+		border-left: 1px solid #dadada;
+	}
+	.dropdown:nth-of-type(1){
+		border-left: 0;
+	}
+
 
 	&.in {
 		@media (max-width: 767px) {
