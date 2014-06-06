@@ -1,0 +1,13 @@
+<div class="view-header">
+	<%= breadcrumb(view.getBreadcrumb()) %>
+	
+	<% if (view.page_header && !view.inModal) { %>
+		<h1><%= view.page_header %></h1>
+	<% } %>
+	<div id="main-banner" class="main-banner"></div>
+</div>
+<% if (view.page && view.page.get('content')) { %>
+<div id="landing-page-content" class="view-body landing-page-content">
+	<%= view.page.get('content') %>
+</div>
+<% } %>

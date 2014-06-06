@@ -2,11 +2,13 @@
 	var SiteSettings
 	,	Cart
 	,	Profile
-	,	Content
+	,	Content	
+	,	DefaultPage	
 	,	Address
 	,	CreditCard
 	,	Environment
 	,	Merchandising
+	,	siteId	
 	,	Error;
 	
 	try {
@@ -15,11 +17,22 @@
 		SiteSettings = Application.getModel('SiteSettings').get();
 		Cart = Application.getModel('LiveOrder').get();
 		Profile = Application.getModel('Profile').get();
+		siteId = SiteSettings.siteid;
 
 		// Content depends on the instalation and inclusion of the 
 		// ContentDeliverService provided as a separated boundle 
 		try {
-			Content = Application.getModel('Content');
+			var locale = Environment && Environment.currentLanguage && Environment.currentLanguage.locale
+			,	content_tag = 'app:checkout';
+
+			if (locale) 
+			{
+				content_tag += ',locale:' + locale.toLowerCase();			
+			}
+			
+			var content_model = Application.getModel('Content');
+			Content = content_model.listURL(siteId, content_tag);			
+			DefaultPage = content_model.getDefault();
 		} catch (e) {
 			console.warn('Content Module not present in ShopFlow SSP');
 		}
@@ -88,6 +101,16 @@ SC.ENVIRONMENT.HEADER = {
 				fixed: <%=JSON.stringify(headerRecord.getFieldValue("custrecord_display"))%>,
 				isinactive: <%=JSON.stringify(headerRecord.getFieldValue("custrecord_isinactive"))%>	
 		};
+		
+<% if (Content) { %>
+	// The Content
+	SC.ENVIRONMENT.CONTENT = <%= JSON.stringify(Content) %>;
+
+	<% if (DefaultPage) { %>
+		// The Default Page
+		SC.ENVIRONMENT.DEFAULT_PAGE = <%= JSON.stringify(DefaultPage) %>;
+	<% } %>
+<% } %>
 
 <% if (Merchandising) { %>
 	// Merchandising
