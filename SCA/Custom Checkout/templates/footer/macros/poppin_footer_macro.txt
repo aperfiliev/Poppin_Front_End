@@ -1,6 +1,6 @@
 <% registerMacro('poppinFooter', function () { %>
 <div class="row-fluid-15">
-	<ul class="span3">
+	<ul class="span2">
 		<li class="title">HOW CAN WE HELP?</li>
 		<li><a href="#" data-touchpoint="customercenter" title="My Account">My Account</a></li>
 		<li><a href="/Help/" title="Help">Help</a></li>
@@ -17,7 +17,7 @@
 		<li><a href="/Newsletter/" title="Newsletter">Newsletter</a></li>
 		<li><a href="/Core-values/" title="Core Values">Core Values</a></li>
 	</ul>
-	<ul class="span1">
+	<ul class="span2">
 		<li class="title">GIFTING </li>
 		<li><a href="/Gifts/" title="Gifts"> Gifts </a></li>
 		<li><a href="/Gift-Cards/" title="Gift Cards">Gift Cards</a></li>
