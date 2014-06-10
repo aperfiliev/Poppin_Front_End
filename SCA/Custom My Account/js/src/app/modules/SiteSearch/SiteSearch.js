@@ -8,12 +8,13 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 	'use strict';
 
 	// SiteSearch.currentSearchOptions() - Returns current search options formatted as query params.
-	var currentSearchOptions = function()
+	var currentSearchOptions = function ()
 	{			
-		var currentOptions = SC.Utils.parseUrlOptions(window.location.href);
-		var newOptions = [];
+		var newOptions = []
+		,	currentOptions = SC.Utils.parseUrlOptions(window.location.href);
 
-		_.each(currentOptions, function(value, key) {
+		_.each(currentOptions, function (value, key)
+		{
 			var lowerCaseKey = key.toLowerCase();
 
 			if (lowerCaseKey === 'order' || lowerCaseKey === 'show' ||  lowerCaseKey === 'display')
@@ -40,9 +41,8 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 		{
 			e.preventDefault();
 			
-			//var inputSearchVal = jQuery(e.target).find('input').val();
-			//window.location.href = jQuery('.site-search-container li[data-value="see-all-' + inputSearchVal + '"] a').attr('href');
-			this.search(jQuery(e.target).find('input').val());
+			var inputSearchVal = jQuery(e.target).find('input').val();
+			window.location.href = jQuery('.site-search-container li[data-value="see-all-' + inputSearchVal + '"] a').attr('href');
 		}
 
 	,	seeAllEventHandler: function (e, typeahead)
@@ -56,9 +56,10 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 		}
 		 
 		//SiteSearch.formatKeywords() - format a search query string according to configuration.js (searchPrefs)
-	,	formatKeywords: function(app, keywords)
+	,	formatKeywords: function (app, keywords)
 		{
-			var keywordFormatter = app.getConfig('searchPrefs.keywordsFormatter'); 
+			var keywordFormatter = app.getConfig('searchPrefs.keywordsFormatter');
+
 			if (keywordFormatter && _.isFunction(keywordFormatter))
 			{
 				keywords = keywordFormatter(keywords); 
@@ -68,6 +69,7 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 					keywords = keywords.substring(0, maxLength); 
 				}
 			}
+
 			return keywords; 
 		}
 
@@ -79,15 +81,16 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 
 			if (this.getApplication().getConfig('isSearchGlobal') || !(currentView && currentView.options.translator instanceof Translator))
 			{
-				var search_url = this.getApplication().getConfig('defaultSearchUrl');
-				var delimiters = this.typeaheadConfg.application.Configuration.facetDelimiters;
-				var keywordsDelimited = delimiters.betweenFacetsAndOptions + 'keywords' + delimiters.betweenOptionNameAndValue;
-				//If we are not in Shopping we have to redirect to it
+				var search_url = this.getApplication().getConfig('defaultSearchUrl')
+				,	delimiters = this.typeaheadConfg.application.Configuration.facetDelimiters
+				,	keywordsDelimited = delimiters.betweenFacetsAndOptions + 'keywords' + delimiters.betweenOptionNameAndValue;
+
+				// If we are not in Shopping we have to redirect to it
 				if (this.getApplication().getConfig('currentTouchpoint') !== 'home')
 				{
 					window.location.href = this.application.getConfig('siteSettings.touchpoints.home') + '#' + search_url + keywordsDelimited + keywords;
 				}
-				//Else we stay in the same app
+				// Else we stay in the same app
 				else
 				{
 					// We navigate to the default search url passing the keywords
@@ -115,22 +118,25 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 				$anchor = jQuery(anchor);
 				value = $anchor.parent().data('value');
 				item = typeahead.results[value];
-				path = item ? item.get('_url') : search_url + '?keywords=' + value.replace('see-all-', '') + currentSearchOptions();
+				path = item ? item.get('_url') : escape(search_url + '?keywords=' + value.replace('see-all-', '') + currentSearchOptions());
 
 				$anchor
 					.attr({'href': path})
 					.data({
 						touchpoint: 'home'
 					,	hashtag: '#' + path
-					}).click(function(){
+					}).click(function ()
+					{
 						typeahead.$menu.hide();
 					});
-				//and manually fix the link because it is a touchpoint
+
+				// and manually fix the link because it is a touchpoint
 				self.getApplication().getLayout().touchpointMousedown({currentTarget: $anchor}); 
 			});
 
 			typeahead.$menu.off('click');
 		}
+
 		// typeaheadConfg:
 		// methods to customize the user experience of the typeahead
 		// http://twitter.github.com/bootstrap/javascript.html#typeahead
@@ -156,7 +162,7 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 				// if the character length from the query is over the min length
 				if (query.length >= this.options.minLength)
 				{
-					this.labels = ['see-all-'+ query];
+					this.labels = ['see-all-' + query];
 					process(this.labels);
 				}
 
@@ -166,7 +172,12 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 				// http://api.jquery.com/deferred.done/
 				this.model.fetch(
 					{
-						data: {q: query}
+						data: {
+							q: query
+						,	sort: this.options.sort
+						,	limit: this.options.limit
+						,	offset: 0
+						}
 					,	killerId: _.uniqueId('ajax_killer_')
 					}
 				,	{
@@ -176,7 +187,7 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 				{
 					self.ajaxDone = true;
 					self.results = {};
-					self.labels = ['see-all-'+ query];
+					self.labels = ['see-all-' + query];
 
 					self.model.get('items').each(function (item)
 					{
@@ -219,15 +230,15 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 					if (_.size(this.results))
 					{
 						// 'See All Results' label
-						template = '<strong>'+ this.options.seeAllLabel +'<span class="hide">'+ this.query +'</span></strong>';
+						template = '<strong>' + this.options.seeAllLabel + '<span class="hide">' + this.query + '</span></strong>';
 					}
-					else if(this.ajaxDone)
+					else if (this.ajaxDone)
 					{
-						template = '<strong>'+ this.options.noResultsLabel +'<span class="hide">'+ this.query +'</span></strong>';	
+						template = '<strong>' + this.options.noResultsLabel + '<span class="hide">' + this.query + '</span></strong>';	
 					}
 					else
 					{							
-						template = '<strong>'+ this.options.searchingLabel +'<span class="hide">'+ this.query +'</span></strong>';	
+						template = '<strong>' + this.options.searchingLabel + '<span class="hide">' + this.query + '</span></strong>';	
 					}
 				}
 
@@ -237,8 +248,9 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 			// its supposed to return the selected item
 		,	updater: function (itemid)
 			{
-				var a = this.$menu.find('li[data-value="' + itemid + '"] a');
-				var href = a.attr('href');
+				var a = this.$menu.find('li[data-value="' + itemid + '"] a')
+				,	href = a.attr('href');
+
 				if (href && href !== '#')
 				{
 					a.trigger('click');
@@ -261,11 +273,16 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 
 	,	mountToApp: function (application)
 		{
-			var Layout = application.getLayout();
+			var Layout = application.getLayout()
+			,	config = application.getConfig('typeahead');
+			
 			// we add the methods to the layout
 			_.extend(Layout, SiteSearch);
+
 			// then we extend the key elements
 			_.extend(Layout.key_elements, {search: '#site-search-container'});
+			Layout.updateUI();
+
 			// and then the event listeners
 			_.extend(Layout.events, {
 				'submit #site-search-container form': 'searchEventHandler'
@@ -278,9 +295,11 @@ define('SiteSearch', ['Facets.Translator', 'Facets.Model'], function (Translator
 			// with options from the configuration file
 			SiteSearch.typeaheadConfg = _.extend(SiteSearch.typeaheadConfg, {
 				application: application
-			,	minLength: application.getConfig('typeahead.minLength')
-			,	items: application.getConfig('typeahead.maxResults') + 1
-			,	macro: application.getConfig('typeahead.macro')
+			,	minLength: config.minLength
+			,	items: config.maxResults + 1
+			,	macro: config.macro
+			,	limit: config.maxResults
+			,	sort: config.sort
 			});
 			
 			Layout.on('afterRender', function ()

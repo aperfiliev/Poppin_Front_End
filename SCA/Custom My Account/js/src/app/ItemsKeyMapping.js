@@ -5,7 +5,7 @@
 // The main reason behind this file is that you may eventually want to change were an attribute of the item is comming from,
 // for example you may want to set that the name of the items are store in a custom item field instead of the display name field,
 // then you just change the mapping here instead of looking for that attribute in all templates and js files
-(function () 
+(function ()
 {
 	'use strict';
 
@@ -30,28 +30,15 @@
 		}));
 	}
 
-	// This file can be used for multiple applications, so we avoided making it application specific 
-	// by iterating the collection of defined applications.
-	_.each(SC._applications, function (application)
+	function getKeyMapping (application)
 	{
-		// Makes double sure that the Configuration is there
-		application.Configuration = application.Configuration || {};
-
-		// Extends the itemKeyMapping configuration
-		// The key mapping object is simple object were object keys define how the application is going to call it 
-		// and values define from which key to read in the result of the search api
-		// There are three posible ways to define a key mapping:
-		//   - _key: "search_api_key" -- This means, Whenever I ask you for the _key returned anythig that you have in the search_api_key key of the item object
-		//   - _key: ["search_api_key", "second_options"] -- similar as avobe, but if the 1st key in the array is falsy go and try the next one, it will retun the 1st truthful value
-		//   - _key: function(item) { return "something you want"; } -- you can also set up a function that will recive the item model as argument and you can set what to return.
-		application.Configuration.itemKeyMapping = _.extend(application.Configuration.itemKeyMapping || {}, {
-
+		return {
 			// Item Internal Id: used as a fallback to the url and to add to cart
 			// You should not need to change this tho
 			_id: 'internalid'
 
 			// Item SKU number
-		,   _sku: function(item)
+		,   _sku: function (item)
 			{
 				return item.get('itemid') || '';
 			}
@@ -60,7 +47,7 @@
 		,   _name: function (item)
 			{
 				// If its a matrix child it will use the name of the parent
-				if (item.get('_matrixParent').get('internalid') ) 
+				if (item.get('_matrixParent').get('internalid')) 
 				{
 					return item.get('_matrixParent').get('storedisplayname2') || item.get('_matrixParent').get('displayname');
 				}
@@ -89,7 +76,7 @@
 
 				// defaultcategory_detail attribute of the item is not consistent with the facets values, 
 				// so we are going to use the facet values instead
-				var categories = _.findWhere(item.get('facets'), {id: 'category'})
+				/*var categories = _.findWhere(item.get('facets'), {id: 'category'})
 				,	walkCategories = function walkCategories(category)
 					{
 						breadcrumb.push({
@@ -103,7 +90,7 @@
 				if (categories)
 				{
 					categories.values && categories.values.length && walkCategories(categories.values[0]);
-				}
+				}*/
 				
 				breadcrumb.push({
 					href: item.get('_url')
@@ -182,7 +169,7 @@
 				{
 					return images[0];
 				}
-				
+
 				if( item.get('custitem_display_thumbnail')) {
 					return {
 						url: item.get('custitem_display_thumbnail')
@@ -244,8 +231,12 @@
 		,   _priceDetails: 'onlinecustomerprice_detail'
 		,	_price: function (item)
 			{
-
 				return (item.get('onlinecustomerprice_detail') && item.get('onlinecustomerprice_detail').onlinecustomerprice) || '';
+			}
+
+		,	_price_formatted: function (item)
+			{
+				return (item.get('onlinecustomerprice_detail') && item.get('onlinecustomerprice_detail').onlinecustomerprice_formatted) || '';
 			}
 
 		,   _comparePriceAgainst: 'pricelevel1'
@@ -257,7 +248,7 @@
 			// Stock, the number of items you have available
 		,   _stock: 'quantityavailable'
 
-		,	_minimumQuantity: function(item)
+		,	_minimumQuantity: function (item)
 			{
 				return item.get('minimumquantity') || 1;
 			}
@@ -338,6 +329,39 @@
 			{
 				return item.get('custitem_ns_pr_rating_by_rate') && JSON.parse(item.get('custitem_ns_pr_rating_by_rate')) || {};
 			}
+		};
+	}
+
+	function mapAllApplications()
+	{
+		// This file can be used for multiple applications, so we avoided making it application specific 
+		// by iterating the collection of defined applications.
+		_.each(SC._applications, function (application)
+		{
+			// Makes double sure that the Configuration is there
+			application.Configuration = application.Configuration || {};
+
+			// Extends the itemKeyMapping configuration
+			// The key mapping object is simple object were object keys define how the application is going to call it 
+			// and values define from which key to read in the result of the search api
+			// There are three posible ways to define a key mapping:
+			//   - _key: "search_api_key" -- This means, Whenever I ask you for the _key returned anythig that you have in the search_api_key key of the item object
+			//   - _key: ["search_api_key", "second_options"] -- similar as avobe, but if the 1st key in the array is falsy go and try the next one, it will retun the 1st truthful value
+			//   - _key: function (item){ return "something you want"; } -- you can also set up a function that will recive the item model as argument and you can set what to return.
+			application.Configuration.itemKeyMapping = _.extend(application.Configuration.itemKeyMapping || {}, getKeyMapping(application));
 		});
-	});
+	}
+
+	if (typeof require !== 'undefined')
+	{
+		define('ItemsKeyMapping', [], function () 
+		{
+			return {
+				getKeyMapping: getKeyMapping
+			,	mapAllApplications: mapAllApplications
+			};
+		});
+	} 
+
+	mapAllApplications();
 })();

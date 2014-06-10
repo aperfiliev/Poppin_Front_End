@@ -27,7 +27,7 @@ registerMacro('itemDetails', function (line) { %>
 		});
 	}
 %>
-	<tr class="product-details">
+	<tr class="product-details" data-item="<%= line.item.get('internalid') || ''%>" >
 		<td class="product-image td-product-image">
  		<% var item_image = line.application.resizeImage(line.item.get('_thumbnail').url, 'thumbnail') %>
  		<% if ( line.type !== 'Discount' ) { %>
@@ -50,14 +50,16 @@ registerMacro('itemDetails', function (line) { %>
 			<% } %>
 			<% if (line.type === 'Discount') { %>
 				<p> <%= _('Discount').translate() %></p>
-			<% } %>		
+			<% } else { %>
+				<p><%= _('SKU : #$(0)').translate(line.item.get('_sku')) %></p>
+			<% } %>			
 			<% if ( line.options && line.options.length ) { %>
 				<p><%= SC.macros.showItemOptions(line.options) %></p>
 			<% } %>
 			<% if ( line.trandate ) { %>
 				<p><%= _('Last purchased on $(0)').translate(line.trandate)%></p>
 			<% } %>
-			<% if( ! line.reorder && ! line.reorder_checkbox && line.type !== 'Discount' ) {  %>
+			<% if( ! line.reorder && ! line.reorder_checkbox && line.type !== 'Discount' && !line.disableReOrder ) {  %>
 				<p class="alert alert-warning"><%= _('This item is no longer available').translate() %></p>
 			<% } %>
 
@@ -68,7 +70,7 @@ registerMacro('itemDetails', function (line) { %>
 		<% } %>
 		
 		<td class="product-price">
-			<%= line.price ? _.formatCurrency( line.item.getPrice().price_formatted ) : '&nbsp;' %>
+			 <%= line.price ? line.price : '' %>
 		</td>
 		<td class="right-aligned product-amount">
 			<% //TODO: here use total as default instead of amount
@@ -89,7 +91,7 @@ registerMacro('itemDetails', function (line) { %>
 						<input type="hidden" name="item_id" data-item-id="<%= line.item.get('_id') %>" data-parent-id="<%= line.item.get('parent_internalid') %>" data-item-options="<%= line.format_options %>">
 						<input type="number" name="item_quantity" id="" data-toggle="quantity" data-line-id="<%= line.id %>" class="input-mini pull-right" value="<%= line.item.get('quantity') || 1 %>" min="1" max="999">
 						<br><br>
-						<div style="clear:both">
+						<div class="add-to-cart-button-container">
 							<button class="btn btn-primary pull-right"><%= _('Add to Cart').translate() %></button>
 						</div>						
 					</div>
@@ -99,7 +101,7 @@ registerMacro('itemDetails', function (line) { %>
 			<td class="product-reorder-mobile-helper">&nbsp;</td>
 		<% } %>
 	</tr>
-	<% if ( line.reorder ) { %>
+	<% if ( line.reorder && !line.disableReOrder ) { %>
 	<tr class="re-order-item">
 		<td colspan="5">
 		<% if(line.item.get("itemtype") != 'GiftCert') { %>

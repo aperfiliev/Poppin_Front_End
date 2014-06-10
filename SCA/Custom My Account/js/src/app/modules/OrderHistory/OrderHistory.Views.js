@@ -22,7 +22,8 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 		,	html: true
 		}).popover('toggle');
 
-		jQuery(document.body).one('click', '.popover .close', function (e) {
+		jQuery(document.body).one('click', '.popover .close', function (e)
+		{
 			e.preventDefault();
 			$link.popover('hide');
 		});
@@ -69,7 +70,7 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 						};
 						self.shipgroups[shipgroup_id] = shipgroup;
 					}
-					shipgroup.unfulfilled_lines.push({line_id: line.get('internalid'),quantity:line.get('quantity'), rate: line.get('total') });
+					shipgroup.unfulfilled_lines.push({line_id: line.get('internalid'),quantity:line.get('quantity'), rate: line.get('amount') });
 				}
 			});
 
@@ -103,7 +104,7 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 						}
 
 						unfulfilled_line.quantity -= +line.quantity;
-						unfulfilled_line.rate -= + line.rate; 
+						unfulfilled_line.rate -= + line.rate;
 					}
 				});
 			});
@@ -151,24 +152,27 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 				var $item_link = jQuery(item_link);
 				add_items.push(new ItemDetailsModel(
 				{
-						internalid: $item_link.data('item-id')
-					,	options: $item_link.data('item-options')
-					,	quantity: $item_link.data('item-quantity') || '1'
+					internalid: $item_link.data('item-id')
+				,	options: $item_link.data('item-options')
+				,	quantity: $item_link.data('item-quantity') || '1'
 				}));
 			});
 			
 			application.getCart().addItems(add_items, {
-				success: function()
+				success: function ()
 				{
 					var non_gift_count = self.$('[data-re-order-item-link]').size()
 					,	gift_count = self.$('[data-giftcard-item-link]').size()
+					,	total_no_gift_items_to_add = _.reduce(add_items, function(acc, n) {
+							return acc + n.get('quantity');
+						}, 0)
 					,	msg_str = '';
 
 					if (gift_count > 0)
 					{
-						msg_str += '<p>' + _('$(0) of $(1) Items successfully added to <a href="#" data-touchpoint="viewcart">your cart</a></br>').translate(non_gift_count, non_gift_count + gift_count) + '</p>'; 
+						msg_str += '<p>' + _('$(0) of $(1) Items successfully added to <a href="#" data-touchpoint="viewcart">your cart</a></br>').translate(non_gift_count, non_gift_count + gift_count) + '</p>';
 
-						self.$('[data-giftcard-item-link]').each(function()
+						self.$('[data-giftcard-item-link]').each(function ()
 						{
 							var	gifcard_item_link = jQuery(this).data('giftcard-item-link')
 							,	giftcard_item_name = jQuery(this).data('giftcard-item-name');
@@ -176,16 +180,15 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 							msg_str += '<p>';
 							msg_str += _('Your Gift Card "$(0)" was not added to your cart because it must be personalized.').translate(giftcard_item_name);
 							msg_str += '<a data-hashtag="#' + gifcard_item_link + '" href="' + gifcard_item_link + '" data-touchpoint="home">' + _('Personalize a new Gift Card now.').translate() + '</a>';
-							msg_str += '</p>'; 
+							msg_str += '</p>';
 						});
-
 					}
-					else 
+					else
 					{
 						if (non_gift_count > 1)
 						{
-							msg_str += _('$(0) Items successfully added to <a href="#" data-touchpoint="viewcart">your cart</a><br/>').translate(non_gift_count);
-						}	
+							msg_str += _('$(0) Items successfully added to <a href="#" data-touchpoint="viewcart">your cart</a><br/>').translate(total_no_gift_items_to_add);
+						}
 						else
 						{
 							msg_str += _('Item successfully added to <a href="#" data-touchpoint="viewcart">your cart</a><br/>').translate();
@@ -197,9 +200,9 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 					self.$('[data-type=alert-placeholder]').append($msg_el);
 
 					// amount of time the link is shown
-					setTimeout(function()
+					setTimeout(function ()
 					{
-						$msg_el.fadeOut(function()
+						$msg_el.fadeOut(function ()
 						{
 							$msg_el.remove();
 						});
@@ -229,7 +232,7 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 				});
 
 			application.getCart().addItem(item_to_cart, {
-				success: function()
+				success: function ()
 				{
 					jQuery('p.success-message').remove();
 					var $success = jQuery('<p/>').addClass('success-message');
@@ -245,9 +248,9 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 					}
 
 					// amount of time the link is shown
-					setTimeout(function()
+					setTimeout(function ()
 					{
-						$success.fadeOut(function()
+						$success.fadeOut(function ()
 						{
 							$success.remove();
 						});
@@ -264,7 +267,7 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 			if (_.isString(how))
 			{
 				body[how === 'show' ? 'show' : 'hide']();
-			} 
+			}
 			else
 			{
 				body.toggle();
@@ -286,7 +289,7 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 
 	,   initialize: function (options)
 		{
-			this.application = options.application; 
+			this.application = options.application;
 		}
 
 	,	getTrackingServiceUrl: function (number)
@@ -298,31 +301,24 @@ define('OrderHistory.Views', ['ItemDetails.Model', 'TrackingServices'], function
 	// view list of orders
 	Views.List = Backbone.View.extend({
 		template: 'order_history',
-		title: _('Order History & Returns').translate(),
-		page_header: _('Order History & Returns').translate(),
+		title: _('Order History').translate(),
+		page_header: _('Order History').translate(),
 		attributes: {
 			'class': 'OrderListView'
 		}
 
 	,	events: {
-			'click [rel=clickover]': 'showTrakingNumbers',
-			'change #transaction_navigation': 'transactionNavigation'
+			'click [rel=clickover]': 'showTrakingNumbers'
 		}
 
 	,	showContent: function ()
-		{debugger;
+		{
 			this.options.application.getLayout().showContent(this, 'ordershistory', [{
-				text: this.title,
-				href: '/ordershistory'
+				text: this.title
+			,	href: '/ordershistory'
 			}]);
 		}
 
-		// toggle betwen receipts and orders history
-	,	transactionNavigation: function (e) 
-		{
-			Backbone.history.navigate(this.$(e.target).val(), {trigger: true});
-		}
-		
 	,	showTrakingNumbers: showTrakingNumbers
 
 	,	getTrackingServiceUrl: function (number)

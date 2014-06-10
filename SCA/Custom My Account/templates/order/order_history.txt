@@ -33,37 +33,37 @@
 	<%//= pagination_result %>
 	<table class="table">
 	<% _.each(view.collection.models, function (order_item) { %>
-		<tr>
+		<tr data-order="<%= order_item.get('order_number') %>">
 			<td>
 				<p>
 					<%= _('Order Date').translate() %><br>
-					<b><%= order_item.get('date') %></b>
+					<b class="order-date"><%= order_item.get('date') %></b>
 				</p>
 				<p>
 					<%= _('Order Number').translate() %><br>
-					<b><%= order_item.get('order_number') %></b>
+					<b class="order-number"><%= order_item.get('order_number') %></b>
 				</p>
 			</td>
 			<td>
 				<p>
 					<%= _('Order Total').translate() %><br>
-					<b><%= order_item.get('summary').total_formatted %></b>
+					<b class="order-total"><%= order_item.get('summary').total_formatted %></b>
 				</p>
 				<p>
 					<%= _('Status').translate() %><br>
-					<b><%= order_item.get('status') %></b>
+					<b class="order-status"><%= order_item.get('status') %></b>
 				</p>
 			</td>
 			<td class="summary">
 				<ul class="nav-list unstyled">
 					<li>
-						<a href="/ordershistory/view/<%= order_item.get('internalid') %>">
+						<a class="view-order-details" href="/ordershistory/view/<%= order_item.get('internalid') %>">
 							<%= _('View Order Details').translate() %>
 						</a>
 					</li>
 					<li class="divider"></li>
 					<li>
-						<a href="/reorderItems?order_id=<%= order_item.get('internalid') %>">
+						<a class="reorder-items" href="/reorderItems?order_id=<%= order_item.get('internalid') %>">
 							<%= _('Reorder Items').translate() %>
 						</a>
 					</li>
@@ -75,11 +75,11 @@
 								<%= _('Track Items').translate() %>
 							</span>
 						<% } else if (trackingnumbers.length == 1) { %>
-							<a target="_blank" href="<%= view.getTrackingServiceUrl(trackingnumbers[0]) %>">
+							<a class="track-items" target="_blank" href="<%= view.getTrackingServiceUrl(trackingnumbers[0]) %>">
 								<%= _('Track Items').translate() %>
 							</a>
 						<% } else { %>
-							<a href="#" rel="clickover" data-placement="left"
+							<a class="track-items" href="#" rel="clickover" data-placement="left"
 								data-html="true"
 								data-content-selector="#traking-numbers-<%= order_item.get('internalid') %>"
 								data-original-title="<%= _('Shipments').translate() %>">

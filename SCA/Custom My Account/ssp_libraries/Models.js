@@ -17,7 +17,7 @@ var container = nlapiGetWebContainer()
 // ---------------
 // Pre-processes the SiteSettings to be used on the site
 Application.defineModel('SiteSettings', {
-	
+
 	get: function ()
 	{
 		'use strict';
@@ -66,7 +66,7 @@ Application.defineModel('SiteSettings', {
 				countries[allCountries[i].code] = allCountries[i];
 			}
 		}
-		
+
 		// Get all the states for countries.
 		var allStates = session.getStates();
 
@@ -80,7 +80,7 @@ Application.defineModel('SiteSettings', {
 				}
 			}
 		}
-		
+
 		// Adds extra information to the site settings
 		settings.countries = countries;
 		settings.is_loged_in = session.isLoggedIn();
@@ -89,7 +89,14 @@ Application.defineModel('SiteSettings', {
 		settings.campaignsubscriptions = context.getFeature('CAMPAIGNSUBSCRIPTIONS');
 		settings.analytics.confpagetrackinghtml = _.escape(settings.analytics.confpagetrackinghtml);
 		settings.shopperCurrency = session.getShopperCurrency();
-		
+
+		//Other settings that come in window object
+		settings.groupseparator = window.groupseparator;
+		settings.decimalseparator = window.decimalseparator;
+		settings.negativeprefix = window.negativeprefix;
+		settings.negativesuffix = window.negativesuffix;
+		settings.dateformat = window.dateformat;
+		settings.longdateformat = window.longdateformat;
 		return settings;
 	}
 });
@@ -139,7 +146,7 @@ Application.defineModel('Address', {
 		}
 		
 		delete address.attention;
-		delete address.addressee;	
+		delete address.addressee;
 		
 		return address;
 	}
@@ -161,7 +168,7 @@ Application.defineModel('Address', {
 		}
 		
 		delete address.fullname;
-		delete address.company;	
+		delete address.company;
 		
 		return address;
 	}
@@ -254,7 +261,6 @@ Application.defineModel('Profile', {
 		firstname: {required: true, msg: 'First Name is required'}
 	,	lastname: {required: true, msg: 'Last Name is required'}
 	,	email: {required: true, pattern: 'email', msg: 'Email is required'}
-	,	confirm_email: {equalTo: 'email', msg: 'Emails must match'}
 	}
 	
 ,	get: function ()
@@ -264,10 +270,11 @@ Application.defineModel('Profile', {
 		var profile = {};
 		
 		//Only can you get the profile information if you are logged in.
-		if (session.isLoggedIn()) {
+		if (session.isLoggedIn())
+		{
 
 			//Define the fields to be returned
-			this.fields = this.fields || ['isperson', 'email', 'internalid', 'name', 'phoneinfo', 'companyname', 'firstname', 'lastname', 'middlename', 'emailsubscribe', 'campaignsubscriptions', 'paymentterms','creditlimit','balance','creditholdoverride'];
+			this.fields = this.fields || ['isperson', 'email', 'internalid', 'name', 'overduebalance', 'phoneinfo', 'companyname', 'firstname', 'lastname', 'middlename', 'emailsubscribe', 'campaignsubscriptions', 'paymentterms', 'creditlimit', 'balance', 'creditholdoverride'];
 
 			profile = customer.getFieldValues(this.fields);
 
@@ -278,12 +285,15 @@ Application.defineModel('Profile', {
 			profile.priceLevel = (session.getShopperPriceLevel().internalid) ? session.getShopperPriceLevel().internalid : session.getSiteSettings(['defaultpricelevel']).defaultpricelevel;
 			profile.type = profile.isperson ? 'INDIVIDUAL' : 'COMPANY';
 			profile.isGuest = session.getCustomer().isGuest() ? 'T' : 'F';
+			
 			profile.creditlimit = parseFloat(profile.creditlimit || 0);
 			profile.creditlimit_formatted = formatCurrency(profile.creditlimit);
+
 			profile.balance = parseFloat(profile.balance || 0);
 			profile.balance_formatted = formatCurrency(profile.balance);
-			profile.creditholdoverride = profile.creditholdoverride;
-			profile.paymentterms = profile.paymentterms;
+
+			profile.balance_available = profile.creditlimit - profile.balance;
+			profile.balance_available_formatted = formatCurrency(profile.balance_available);
 		}
 
 		return profile;
@@ -315,16 +325,17 @@ Application.defineModel('Profile', {
 		
 		if (data.lastname)
 		{
-			customerUpdate.lastname = data.lastname;	
+			customerUpdate.lastname = data.lastname;
 		}
 
 		if (this.currentSettings.lastname === data.lastname)
 		{
 			delete this.validation.lastname;
-		}	
+		}
 	
 		customerUpdate.companyname = data.companyname;
 		
+
 		customerUpdate.phoneinfo = {
 				altphone: data.altphone
 			,	phone: data.phone
@@ -344,9 +355,6 @@ Application.defineModel('Profile', {
 			delete this.validation.lastname;
 		}
 		
-		// Patch to make the updateProfile call work when the user is not updating the email
-		data.confirm_email = data.email;
-		
 		this.validate(data);
 		// check if this throws error
 		customer.updateProfile(customerUpdate);
@@ -354,7 +362,7 @@ Application.defineModel('Profile', {
 		if (data.campaignsubscriptions)
 		{
 			customer.updateCampaignSubscriptions(data.campaignsubscriptions);
-		}	
+		}
 		
 		return this.get();
 		
@@ -369,9 +377,9 @@ Application.defineModel('Profile', {
 Application.defineModel('PlacedOrder', {
 
 	list: function (page)
-	{ 
+	{
 		'use strict';
-		
+
 		var filters = [
 				new nlobjSearchFilter('entity', null, 'is', nlapiGetUser())
 			,	new nlobjSearchFilter('mainline', null, 'is', 'T')
@@ -384,10 +392,10 @@ Application.defineModel('PlacedOrder', {
 			,	new nlobjSearchColumn('status')
 			,	new nlobjSearchColumn('total')
 			]
-		
+
 		// if the store has multiple currencies we add the currency column to the query
 		,	isMultiCurrency = context.getFeature('MULTICURRENCY');
-		
+
 		if (isMultiCurrency)
 		{
 			columns.push( new nlobjSearchColumn('currency'));
@@ -400,10 +408,7 @@ Application.defineModel('PlacedOrder', {
 //		}
 
 		var result = Application.getPaginatedSearchResults('salesorder', filters, columns, page, 20);
-//		nlapiLogExecution("DEBUG","result",JSON.stringify(result));
-//		var result2 = Application.getPaginatedSearchResults('salesorder', filters, columns, 2, 20);
-//		nlapiLogExecution("DEBUG","result",JSON.stringify(result.records.length));
-		
+
 		result.records = _.map(result.records || [], function (record)
 		{
 			return {
@@ -422,7 +427,7 @@ Application.defineModel('PlacedOrder', {
 			,	type: record.getRecordType()
 			};
 		});
-	
+
 		return result;
 	}
 
@@ -432,12 +437,12 @@ Application.defineModel('PlacedOrder', {
 
 		var placed_order = nlapiLoadRecord('salesorder', id)
 		,	result = this.createResult(placed_order);
-		
-		this.setAddresses(result, placed_order);
-		this.setShippingMethods(result,placed_order);
-		this.setLines(result, placed_order);
+
+		this.setAddresses(placed_order, result);
+		this.setShippingMethods(placed_order, result);
+		this.setLines(placed_order, result);
 		this.setFulfillments(result);
-		this.setPaymentMethod(result,placed_order);
+		this.setPaymentMethod(placed_order, result);
 		this.setReceipts(result, placed_order);
 		this.setReturnAuthorizations(result, placed_order);
 
@@ -459,56 +464,31 @@ Application.defineModel('PlacedOrder', {
 	}
 
 
-,	setPaymentMethod: function (result, placed_order) 
+,	setPaymentMethod: function (placed_order, result)
 	{
 		'use strict';
-		var paymentmethod = {
-			type: placed_order.getFieldValue('paymethtype')
-		,	primary: true
-		};
-
-		if (paymentmethod.type === 'creditcard')
-		{
-			paymentmethod.creditcard = {
-				ccnumber: placed_order.getFieldValue('ccnumber')
-			,	ccexpiredate: placed_order.getFieldValue('ccexpiredate')
-			,	ccname: placed_order.getFieldValue('ccname')
-			,	paymentmethod: {
-					ispaypal: 'F'
-				,	name: placed_order.getFieldText('paymentmethod')
-				,	creditcard: 'T'
-				,	internalid: placed_order.getFieldValue('paymentmethod')
-				}
-			};
-		}	
 		
-		if (placed_order.getFieldValue('terms'))
-		{
-			paymentmethod.type = 'invoice';
-
-			paymentmethod.purchasenumber = placed_order.getFieldValue('otherrefnum');
-			
-			paymentmethod.paymentterms = {
-					internalid: placed_order.getFieldValue('terms')
-				,	name: placed_order.getFieldText('terms')
-			};
-		}
-
-		result.paymentmethods = [paymentmethod];
+		return setPaymentMethodToResult(placed_order, result);
 	}
 
 ,	createResult: function (placed_order)
 	{
 		'use strict';
+
 		return {
 			internalid: placed_order.getId()
 		,	type: placed_order.getRecordType()
 		,	trantype: placed_order.getFieldValue('type')
 		,	order_number: placed_order.getFieldValue('tranid')
+		,	purchasenumber: placed_order.getFieldValue('otherrefnum')
+		,	dueDate: placed_order.getFieldValue('duedate')
+		,	amountDue: toCurrency(placed_order.getFieldValue('amountremainingtotalbox'))
+		,	amountDue_formatted: formatCurrency(placed_order.getFieldValue('amountremainingtotalbox'))
+		,	memo: placed_order.getFieldValue('memo')
 		,	summary: {
 				subtotal: toCurrency(placed_order.getFieldValue('subtotal'))
 			,	subtotal_formatted: formatCurrency(placed_order.getFieldValue('subtotal'))
-			
+
 			,	taxtotal: toCurrency(placed_order.getFieldValue('taxtotal'))
 			,	taxtotal_formatted: formatCurrency(placed_order.getFieldValue('taxtotal'))
 
@@ -546,17 +526,17 @@ Application.defineModel('PlacedOrder', {
 			,	total_formatted: formatCurrency(placed_order.getFieldValue('total'))
 
 			}
-		
-		,	currency: context.getFeature('MULTICURRENCY') ? 
+
+		,	currency: context.getFeature('MULTICURRENCY') ?
 			{
 				internalid: placed_order.getFieldValue('currency')
 			,	name: placed_order.getFieldValue('currencyname')
 			} : null
-		
+
 		,   date: placed_order.getFieldValue('trandate')
 
-		,   status: placed_order.getFieldValue('status')		
-		};	
+		,   status: placed_order.getFieldValue('status')
+		};
 	}
 
 ,	setFulfillments: function(result)
@@ -572,7 +552,7 @@ Application.defineModel('PlacedOrder', {
 			,	new nlobjSearchFilter('shipping', null, 'is', 'F')
 			,	new nlobjSearchFilter('shiprecvstatusline', null, 'is', 'F')
 			]
-		
+
 		,	columns = [
 				new nlobjSearchColumn('quantity')
 			,	new nlobjSearchColumn('item')
@@ -602,7 +582,7 @@ Application.defineModel('PlacedOrder', {
 		fulfillments.forEach(function (ffline){
 
 			if(ffline.getValue('status') === 'shipped'){
-			
+
 				var shipaddress = self.addAddress({
 					internalid: ffline.getValue('shipaddress')
 				,	country: ffline.getValue('shipcountry')
@@ -634,7 +614,7 @@ Application.defineModel('PlacedOrder', {
 				fulfillment_id.push(ffline.getId());
 
 			}
-		
+
 		});
 
 
@@ -645,7 +625,7 @@ Application.defineModel('PlacedOrder', {
 				,	new nlobjSearchFilter('fulfillingtransaction', null, 'anyof', fulfillment_id)
 				];
 
-			
+
 			columns = [
 					new nlobjSearchColumn('line')
 				,	new nlobjSearchColumn('item')
@@ -669,24 +649,24 @@ Application.defineModel('PlacedOrder', {
 				foundline.rate_formatted = formatCurrency(foundline.rate);
 				delete foundline.item_id;
 			});
-		}	
+		}
 
 	}
 
-,	setLines: function(result, placed_order)
+,	setLines: function(placed_order, result)
 	{
 		'use strict';
 
 		result.lines = {};
 		var items_to_preload = []
 		,	amount;
-		
+
 		for (var i = 1; i <= placed_order.getLineItemCount('item'); i++) {
 
 			if (placed_order.getLineItemValue('item', 'itemtype', i) === 'Discount' && placed_order.getLineItemValue('item', 'discline', i))
 			{
 				var discline = placed_order.getLineItemValue('item', 'discline', i);
-				
+
 				amount = Math.abs(parseFloat(placed_order.getLineItemValue('item', 'amount', i)));
 
 				result.lines[discline].discount = (result.lines[discline].discount) ? result.lines[discline].discount + amount : amount;
@@ -697,12 +677,12 @@ Application.defineModel('PlacedOrder', {
 				var rate = toCurrency(placed_order.getLineItemValue('item', 'rate', i))
 				,	item_id = placed_order.getLineItemValue('item', 'item', i)
 				,	item_type = placed_order.getLineItemValue('item', 'itemtype', i);
-				
+
 				amount = toCurrency(placed_order.getLineItemValue('item', 'amount', i));
-				
+
 				var	tax_amount = toCurrency(placed_order.getLineItemValue('item', 'tax1amt', i)) || 0
 				,	total = amount + tax_amount;
-				
+
 				result.lines[placed_order.getLineItemValue('item', 'line', i)] = {
 					internalid: placed_order.getLineItemValue('item', 'id', i)
 				,   quantity: parseInt(placed_order.getLineItemValue('item', 'quantity', i), 10)
@@ -715,38 +695,36 @@ Application.defineModel('PlacedOrder', {
 				,	tax_rate: placed_order.getLineItemValue('item', 'taxrate1', i)
 				,	tax_code: placed_order.getLineItemValue('item', 'taxcode_display', i)
 
-				,   discount: 0
+				,	discount: 0
 
-				,   total: total
+				,	total: total
 
-				,   item: item_id
+				,	item: item_id
 				,	type: item_type
 				,   options: getItemOptionsObject(placed_order.getLineItemValue('item', 'options', i))
 				,   shipaddress: placed_order.getLineItemValue('item', 'shipaddress', i) ? result.listAddresseByIdTmp[placed_order.getLineItemValue('item', 'shipaddress', i)] : null
 				,   shipmethod:  placed_order.getLineItemValue('item', 'shipmethod', i) || null
 				};
 
-
 				items_to_preload[item_id] = {
 					id: item_id
 				,	type: item_type
 				};
-
 			}
-			
+
 		}
-		
-		// Preloads info about the item		
+
+		// Preloads info about the item
 		this.store_item = Application.getModel('StoreItem');
 
 		items_to_preload = _.values(items_to_preload);
-		
+
 		this.store_item.preloadItems(items_to_preload);
 
 		// The api wont bring disabled items so we need to query them directly
 		var items_to_query = []
 		,	self = this;
-		
+
 		_.each(result.lines, function(line)
 		{
 			if (line.item)
@@ -766,7 +744,7 @@ Application.defineModel('PlacedOrder', {
 				,	new nlobjSearchFilter('internalid', null, 'is', result.internalid)
 				,	new nlobjSearchFilter('internalid', 'item', 'anyof', items_to_query)
 				]
-			
+
 			,	columns = [
 					new nlobjSearchColumn('internalid', 'item')
 				,	new nlobjSearchColumn('type', 'item')
@@ -775,7 +753,7 @@ Application.defineModel('PlacedOrder', {
 				,	new nlobjSearchColumn('storedisplayname', 'item')
 				,	new nlobjSearchColumn('itemid', 'item')
 				]
-			
+
 			,	inactive_items_search = Application.getAllSearchResults('transaction', filters, columns);
 
 			inactive_items_search.forEach(function(item)
@@ -787,12 +765,12 @@ Application.defineModel('PlacedOrder', {
 				,	storedisplayname: item.getValue('storedisplayname', 'item')
 				,	itemid: item.getValue('itemid', 'item')
 				};
-			
+
 				self.store_item.set(inactive_item);
-			}); 
+			});
 
 
-		}		
+		}
 
 		result.lines = _.values(result.lines);
 
@@ -805,12 +783,12 @@ Application.defineModel('PlacedOrder', {
 			line.total_formatted = formatCurrency(line.total);
 			line.item = self.store_item.get(line.item, line.type);
 		});
-		
+
 		// remove the temporary address list by id
 		delete result.listAddresseByIdTmp;
 	}
 
-,	setShippingMethods: function(result, placed_order)
+,	setShippingMethods: function(placed_order, result)
 	{
 		'use strict';
 		result.shipmethods = {};
@@ -848,7 +826,7 @@ Application.defineModel('PlacedOrder', {
 
 		address.fullname = (address.attention) ? address.attention : address.addressee;
 		address.company = (address.attention) ? address.addressee : null;
-		
+
 		delete address.attention;
 		delete address.addressee;
 
@@ -862,7 +840,7 @@ Application.defineModel('PlacedOrder', {
 								(address.company || '');
 
 		address.internalid = address.internalid.replace(/\s/g, '-');
-		
+
 		if (!result.addresses[address.internalid])
 		{
 			result.addresses[address.internalid] = address;
@@ -871,7 +849,7 @@ Application.defineModel('PlacedOrder', {
 		return address.internalid;
 	}
 
-,	setAddresses: function(result, placed_order)
+,	setAddresses: function(placed_order, result)
 	{
 		// TODO: normalize addresses, remove <br> and \r\n
 		'use strict';
@@ -923,8 +901,9 @@ Application.defineModel('PlacedOrder', {
 ,	setReceipts: function (result)
 	{
 		'use strict';
-		result.receipts = Application.getModel('Receipts').list(null, result.internalid);
-
+		result.receipts = Application.getModel('Receipts').list({
+			orderid: result.internalid
+		});
 	}
 
 ,	setReturnAuthorizations: function (result)
@@ -934,7 +913,7 @@ Application.defineModel('PlacedOrder', {
 		var filters = [
 				new nlobjSearchFilter('createdfrom', null, 'anyof', result.internalid)
 			]
-		
+
 		,	columns = [
 				new nlobjSearchColumn('internalid', 'item')
 			,	new nlobjSearchColumn('type', 'item')
@@ -948,7 +927,7 @@ Application.defineModel('PlacedOrder', {
 			,	new nlobjSearchColumn('mainline')
 			,	new nlobjSearchColumn('trandate')
 			,	new nlobjSearchColumn('tranid')
-			,	new nlobjSearchColumn('status')	
+			,	new nlobjSearchColumn('status')
 			,	new nlobjSearchColumn('options')
 			,	new nlobjSearchColumn('linesequencenumber').setSort()
 			,	new nlobjSearchColumn('amount')
@@ -956,19 +935,19 @@ Application.defineModel('PlacedOrder', {
 			]
 
 		,	isMultiCurrency = context.getFeature('MULTICURRENCY');
-		
+
 		this.store_item = this.store_item || Application.getModel('StoreItem');
 
 		if (isMultiCurrency)
 		{
-			columns.push( new nlobjSearchColumn('currency'));	
+			columns.push( new nlobjSearchColumn('currency'));
 		}
-		
+
 		var	return_authorizations = Application.getAllSearchResults('returnauthorization', filters, columns)
 		,	return_address = context.getPreference('returnaddresstext')
 		,	grouped_result = {}
 		,	self = this;
-		
+
 		// the query returns the transaction headers mixed with the lines so we have to group the returns authorization
 		_.each(return_authorizations, function (returnauthorization)
 		{
@@ -977,7 +956,7 @@ Application.defineModel('PlacedOrder', {
 			{
 				grouped_result[returnauthorization.getId()] = {lines: []};
 			}
-			
+
 			var current_return = grouped_result[returnauthorization.getId()];
 
 			// asterisk means true
@@ -993,7 +972,7 @@ Application.defineModel('PlacedOrder', {
 					,	total_formatted: formatCurrency(returnauthorization.getValue('total'))
 					}
 				,	type: 'returnauthorization'
-				,	currency:  context.getFeature('MULTICURRENCY') ? 
+				,	currency:  context.getFeature('MULTICURRENCY') ?
 					{
 							internalid: returnauthorization.getValue('currency')
 						,	name: returnauthorization.getText('currency')
@@ -1028,7 +1007,7 @@ Application.defineModel('PlacedOrder', {
 				});
 			}
 		});
-		
+
 		result.returnauthorizations = grouped_result;
 	}
 
@@ -1155,7 +1134,7 @@ Application.defineModel('LiveOrder', {
 					return _.indexOf(lines_sort, line.internalid);
 				});
 			}
-			else 
+			else
 			{
 				this.setLinesSort(_.pluck(result.lines, 'internalid'));
 			}
@@ -1204,7 +1183,7 @@ Application.defineModel('LiveOrder', {
 				,	ccname: cc.ccname
 				,	ccexpiredate: cc.expmonth + '/' + cc.expyear
 				,	ccsecuritycode: cc.ccsecuritycode
-				,	expmonth: cc.expmonth 
+				,	expmonth: cc.expmonth
 				,	expyear: cc.expyear
 				,	paymentmethod: {
 						internalid: cc.paymentmethod.internalid
@@ -1455,12 +1434,12 @@ Application.defineModel('LiveOrder', {
 					if (credit_card.ccsecuritycode)
 					{
 						cc_obj.ccsecuritycode = credit_card.ccsecuritycode;
-					}				
+					}
 
 					if (!require_cc_security_code || require_cc_security_code && credit_card.ccsecuritycode)
-					{						
+					{
 						// the user's default credit card may be expired so we detect this using try&catch and if it is we remove the payment methods. 
-						try 
+						try
 						{
 							order.setPayment({
 								paymentterms: 'CreditCard'
@@ -1488,7 +1467,7 @@ Application.defineModel('LiveOrder', {
 				else if (paymentmethod.type === 'invoice')
 				{
 					order.setPayment({ paymentterms: 'Invoice' });
-					paymentmethod.purchasenumber && order.setPurchaseNumber(paymentmethod.purchasenumber); 
+					paymentmethod.purchasenumber && order.setPurchaseNumber(paymentmethod.purchasenumber);
 
 					context.setSessionObject('paypal_complete', 'F');
 				}
@@ -1596,7 +1575,7 @@ Application.defineModel('LiveOrder', {
 		}
 		
 		if (ship_address.internalid && ship_address.isvalid === 'T' && !bill_address.internalid)
-		{	
+		{
 			order.setBillingAddress(ship_address.internalid);
 		}
 
@@ -1623,7 +1602,7 @@ Application.defineModel('LiveOrder', {
 			{
 				Address.remove(billing_address.internalid);
 			}
-		} 
+		}
 		catch (e)
 		{
 			// ignore this exception, it is only for the cases that we can't remove shipping or billing address.
@@ -1804,7 +1783,7 @@ Application.defineModel('LiveOrder', {
 
 
 //OrderItem.js
-// Address.js
+// OrderItem.js
 // ----------
 // Handles fetching of ordered items
 Application.defineModel('OrderItem', {
@@ -1812,8 +1791,6 @@ Application.defineModel('OrderItem', {
 	search: function (item_id, order_id, query, sort, page)
 	{
 		'use strict';
-
-		item_id; // TODO: this is to validate jshint, but we shouldnt have to
 
 		var filters = [
 				new nlobjSearchFilter('entity', null, 'is', nlapiGetUser())
@@ -1864,14 +1841,14 @@ Application.defineModel('OrderItem', {
 
 		if (query)
 		{
-			filters.push( 
+			filters.push(
 				new nlobjSearchFilter('itemid', 'item', 'contains', query).setLeftParens(true).setOr(true)
 			,	new nlobjSearchFilter('displayname', 'item', 'contains', query).setRightParens(true)
 			);
 		}
 
 		// select field to sort by
-		switch(sort)
+		switch (sort)
 		{
 			// sort by name
 			case 'name-desc':
@@ -1905,7 +1882,7 @@ Application.defineModel('OrderItem', {
 				columns[6].setSort(false);
 			break;
 
-			default: 
+			default:
 				columns[6].setSort(true);
 			break;
 		}
@@ -1945,122 +1922,384 @@ Application.defineModel('OrderItem', {
 	}
 });
 
-
 //Receipts.js
 // Receipts.js
 // ----------
 // Handles fetching receipts
 var PlacedOrder = Application.getModel('PlacedOrder');
 
-
 Application.defineModel('Receipts', _.extend({}, PlacedOrder, {
 
-	// gets all the user's receipts
-	list: function (page,orderid)
+	_getReceiptType: function (type)
 	{
 		'use strict';
 
-		var filters = [
+		var receipt_type = ['CustInvc', 'CashSale'];
+
+		if (type === 'invoice')
+		{
+			receipt_type = ['CustInvc'];
+		}
+		else if (type === 'cashsale')
+		{
+			receipt_type = ['CashSale'];
+		}
+
+		return receipt_type;
+	}
+
+,	_getReceiptStatus: function (type, status)
+	{
+		'use strict';
+
+		if (type === 'CustInvc')
+		{
+			status = this._getInvoiceStatus(status);
+		}
+		else if (type === 'CashSale')
+		{
+			status = this._getCashSaleStatus(status);
+		}
+
+		return type + ':' + status;
+	}
+
+,	_getCashSaleStatus: function (status)
+	{
+		'use strict';
+
+		var response = null;
+
+		switch (status)
+		{
+			case 'unapproved':
+				response = 'A';
+			break;
+
+			case 'notdeposited':
+				response = 'B';
+			break;
+
+			case 'deposited':
+				response = 'C';
+			break;
+		}
+
+		return response;
+	}
+
+,	_getInvoiceStatus: function (status)
+	{
+		'use strict';
+
+		var response = null;
+
+		switch (status)
+		{
+			case 'open':
+				response = 'A';
+			break;
+
+			case 'paid':
+				response = 'B';
+			break;
+		}
+
+		return response;
+	}
+
+	// gets all the user's receipts
+,	list: function (options)
+	{
+		'use strict';
+
+		options = options || {};
+
+		var reciept_type = this._getReceiptType(options.type)
+		,	isMultiCurrency = context.getFeature('MULTICURRENCY')
+		,	settings_site_id = session.getSiteSettings(['siteid'])
+		,	site_id = settings_site_id && settings_site_id.siteid
+		,	amount_field = isMultiCurrency ? 'fxamount' : 'amount'
+		,	filters = [
 				new nlobjSearchFilter('entity', null, 'is', nlapiGetUser())
 			,	new nlobjSearchFilter('mainline', null, 'is', 'T')
-			,	new nlobjSearchFilter('type', null, 'anyof', ['CustInvc', 'CashSale'])
+			,	new nlobjSearchFilter('type', null, 'anyof', reciept_type)
 			]
-		,	columns = [
-				new nlobjSearchColumn('internalid').setSort(true)
-			,	new nlobjSearchColumn('trackingnumbers')
-			,	new nlobjSearchColumn('trandate')
-			,	new nlobjSearchColumn('tranid')
-			,	new nlobjSearchColumn('status')
-			,	new nlobjSearchColumn('total')
-			]
-	
-		// if the store has multiple currencies we add the currency column to the query
-		,	isMultiCurrency = context.getFeature('MULTICURRENCY');
 
+		,	columns = [
+				new nlobjSearchColumn('internalid')
+			,	new nlobjSearchColumn('tranid')
+			,	new nlobjSearchColumn('trandate')
+			,	new nlobjSearchColumn('status')
+			,	new nlobjSearchColumn('type')
+			,	new nlobjSearchColumn('closedate')
+			,	new nlobjSearchColumn('mainline')
+			,	new nlobjSearchColumn('duedate').setSort()
+			,	new nlobjSearchColumn(amount_field)
+			]
+		,	amount_remaining;
 
 		if (isMultiCurrency)
 		{
-			columns.push( new nlobjSearchColumn('currency'));	
-		}
-
-		//if the site is multisite we add the siteid to the search filter
-		if (context.getFeature('MULTISITE') && session.getSiteSettings(['siteid']))
-		{
-			filters.push(new nlobjSearchFilter('website', null, 'anyof', [session.getSiteSettings(['siteid']).siteid,'@NONE@']));
-		}
-
-		var result = {};
-		if (orderid)
-		{
-			filters.push(new nlobjSearchFilter('createdfrom', null, 'anyof', orderid));
-			result.records = Application.getAllSearchResults('transaction', filters, columns);
+			amount_remaining = new nlobjSearchColumn('formulanumeric').setFormula('{amountremaining} / {exchangerate}');
 		}
 		else
 		{
-			result = Application.getPaginatedSearchResults('transaction', filters, columns, page, 20);
+			amount_remaining = new nlobjSearchColumn('amountremaining');
 		}
 
+		columns.push(amount_remaining);
 
-		result.records = _.map(result.records || [], function (record)
+		// if the store has multiple currencies we add the currency column to the query
+		if (isMultiCurrency)
 		{
+			columns.push(new nlobjSearchColumn('currency'));
+		}
+
+		// if the site is multisite we add the siteid to the search filter
+		if (context.getFeature('MULTISITE') && site_id)
+		{
+			filters.push(new nlobjSearchFilter('website', null, 'anyof', [site_id, '@NONE@']));
+		}
+
+		if (options.status)
+		{
+			var self = this;
+
+			filters.push(
+				new nlobjSearchFilter('status', null, 'anyof', _.map(reciept_type, function (type)
+				{
+					return self._getReceiptStatus(type, options.status);
+				}))
+			);
+		}
+
+		if (options.orderid)
+		{
+			filters.push(new nlobjSearchFilter('createdfrom', null, 'anyof', options.orderid));
+		}
+
+		if (options.internalid)
+		{
+			filters.push(new nlobjSearchFilter('internalid', null, 'anyof', options.internalid));
+		}
+
+		var results = Application.getAllSearchResults(options.type === 'invoice' ? 'invoice' : 'transaction', filters, columns)
+		,	now = new Date().getTime();
+
+
+		return _.map(results || [], function (record)
+		{
+
+			var due_date = record.getValue('duedate')
+			,	close_date = record.getValue('closedate')
+			,	tran_date = record.getValue('trandate')
+			,	due_in_milliseconds = new Date(due_date).getTime() - now
+			,	total = toCurrency(record.getValue(amount_field))
+			,	total_formatted = formatCurrency(record.getValue(amount_field));
+
 			return {
-				internalid: record.getValue('internalid')
-			,	date: record.getValue('trandate')
-			,	order_number: record.getValue('tranid')
-			,	status: record.getText('status')
-			,	summary: {
-					total: toCurrency(record.getValue('total'))
-				,	total_formatted: formatCurrency(record.getValue('total'))
+				internalid: record.getId()
+			,	tranid: record.getValue('tranid')
+			,	order_number: record.getValue('tranid') // Legacy attribute
+			,	date: tran_date // Legacy attribute
+			,	summary: { // Legacy attribute
+					total: total
+				,	total_formatted: total_formatted
 				}
-				// we might need to change that to the default currency
-			,	currency: isMultiCurrency ? {internalid: record.getValue('currency'), name: record.getText('currency')} : null
-			,	type: record.getRecordType()
+			,	total: total
+			,	total_formatted: total_formatted
+			,	recordtype: record.getValue('type')
+			,	mainline: record.getValue('mainline')
+			,	amountremaining: toCurrency(record.getValue(amount_remaining))
+			,	amountremaining_formatted: formatCurrency(record.getValue(amount_remaining))
+			,	closedate: close_date
+			,	closedateInMilliseconds: new Date(close_date).getTime()
+			,	trandate: tran_date
+			,	tranDateInMilliseconds: new Date(tran_date).getTime()
+			,	duedate: due_date
+			,	dueinmilliseconds: due_in_milliseconds
+			,	isOverdue: due_in_milliseconds <= 0 && ((-1 * due_in_milliseconds) / 1000 / 60 / 60 / 24) >= 1
+			,	status: {
+					internalid: record.getValue('status')
+				,	name: record.getText('status')
+				}
+			,	currency: {
+					internalid: record.getValue('currency')
+				,	name: record.getText('currency')
+				}
 			};
 		});
-	
-		return orderid ? result.records : result;
+
 	}
-	
-,	get: function (id)
+
+,	setAdjustments: function (receipt, result)
+	{
+		'use strict';
+
+		result.payments = [];
+		result.credit_memos = [];
+		result.deposit_applications = [];
+
+		var filters = [
+			new nlobjSearchFilter('appliedtotransaction', null, 'is', receipt.getId())
+		,	new nlobjSearchFilter('type', null, 'anyof', ['CustCred', 'DepAppl', 'CustPymt'])
+		]
+		,	columns = [
+				new nlobjSearchColumn('total')
+			,	new nlobjSearchColumn('tranid')
+			,	new nlobjSearchColumn('status')
+			,	new nlobjSearchColumn('trandate')
+			,	new nlobjSearchColumn('appliedtotransaction')
+			,	new nlobjSearchColumn('amountremaining')
+			,	new nlobjSearchColumn('amountpaid')
+			,	new nlobjSearchColumn('amount')
+			,	new nlobjSearchColumn('type')
+			,	new nlobjSearchColumn('appliedtoforeignamount')
+		]
+		,	searchresults = nlapiSearchRecord('transaction', null, filters, columns);
+
+		if (searchresults)
+		{
+			_.each(searchresults, function (payout)
+			{
+				var array = (payout.getValue('type') === 'CustPymt') ? result.payments :
+							(payout.getValue('type') === 'CustCred') ? result.credit_memos :
+							(payout.getValue('type') === 'DepAppl') ? result.deposit_applications : null;
+
+				if (array)
+				{
+					var internal_id = payout.getId()
+					,	duplicated_item = _.findWhere(array, {internalid: internal_id});
+
+					if (!duplicated_item)
+					{
+						array.push({
+							internalid: internal_id
+						,	tranid: payout.getValue('tranid')
+						,	appliedtoforeignamount : toCurrency(payout.getValue('appliedtoforeignamount'))
+						,	appliedtoforeignamount_formatted : formatCurrency(payout.getValue('appliedtoforeignamount'))
+						});
+					}
+					else
+					{
+						duplicated_item.appliedtoforeignamount += toCurrency(payout.getValue('appliedtoforeignamount'));
+						duplicated_item.appliedtoforeignamount_formatted = formatCurrency(duplicated_item.appliedtoforeignamount);
+					}
+				}
+			});
+		}
+	}
+
+,	setSalesRep: function (receipt, result)
+	{
+		'use strict';
+
+		var salesrep_id = receipt.getFieldValue('salesrep')
+		,	salesrep_name = receipt.getFieldText('salesrep');
+
+		if (salesrep_id)
+		{
+			result.salesrep = {
+				name: salesrep_name
+			,	internalid: salesrep_id
+			};
+
+			var filters = [
+				new nlobjSearchFilter('internalid', null, 'is', receipt.getId())
+			,	new nlobjSearchFilter('internalid', 'salesrep', 'is', 'salesrep')
+			]
+
+			,	columns = [
+					new nlobjSearchColumn('duedate')
+				,	new nlobjSearchColumn('salesrep')
+				,	new nlobjSearchColumn('email','salesrep')
+				,	new nlobjSearchColumn('entityid','salesrep')
+				,	new nlobjSearchColumn('mobilephone','salesrep')
+				,	new nlobjSearchColumn('fax','salesrep')
+			];
+
+			var search_results = nlapiSearchRecord('invoice', null, filters, columns);
+
+			if (search_results)
+			{
+				var invoice = search_results[0];
+				result.salesrep.phone = invoice.getValue('phone','salesrep');
+				result.salesrep.email = invoice.getValue('email','salesrep');
+				result.salesrep.fullname = invoice.getValue('entityid','salesrep');
+				result.salesrep.mobilephone = invoice.getText('mobilephone','salesrep');
+				result.salesrep.fax = invoice.getValue('fax','salesrep');
+			}
+		}
+	}
+
+,	get: function (id, type)
 	{
 		'use strict';
 		// get the transaction header
 		var filters = [
 				new nlobjSearchFilter('mainline', null, 'is', 'T')
-			,	new nlobjSearchFilter('type', null, 'anyof', ['CustInvc', 'CashSale'])
+			,	new nlobjSearchFilter('type', null, 'anyof', this._getReceiptType(type))
 			,	new nlobjSearchFilter('entity', null, 'is', nlapiGetUser())
 			,	new nlobjSearchFilter('internalid', null, 'is', id)
 			]
-		//TODO: review this code. 	
+			// TODO: review this code.
 		,	columns = [
 				new nlobjSearchColumn('status')
+			,	new nlobjSearchColumn('createdfrom')
+			,	new nlobjSearchColumn('total')
+			,	new nlobjSearchColumn('taxtotal')
 			]
-		//
-		,	mainline = Application.getAllSearchResults('transaction', filters, columns)
-		,	receipt = nlapiLoadRecord(mainline[0].getRecordType(),id)
+
+		,	mainline = Application.getAllSearchResults('transaction', filters, columns);
+
+		if (!mainline[0])
+		{
+			throw forbiddenError;
+		}
+
+		var	receipt = nlapiLoadRecord(mainline[0].getRecordType(), id)
 		,	result = this.createResult(receipt);
 
-		this.setAddresses(result, receipt);
-		this.setLines(result, receipt);
-		this.setPaymentMethod(result,receipt);
+		this.setAddresses(receipt, result);
+		this.setLines(receipt, result);
+		this.setPaymentMethod(receipt, result);
 
-		result.promocode = (receipt.getFieldValue('promocode')) ? {
+		if (type === 'invoice')
+		{
+			this.setAdjustments(receipt, result);
+			this.setSalesRep(receipt, result);
+		}
+
+		result.promocode = receipt.getFieldValue('promocode') ? {
 			internalid: receipt.getFieldValue('promocode')
 		,	name: receipt.getFieldText('promocode')
 		,	code: receipt.getFieldText('couponcode')
 		} : null;
 
-		result.lines = _.reject(result.lines, function (line){
+		result.lines = _.reject(result.lines, function (line)
+		{
 			return line.quantity === 0;
 		});
 
-		//TODO: review this code. 
+		// TODO: review this code.
 		result.status = mainline[0].getText(columns[0]);
-		//
+		result.internal_status = mainline[0].getValue(columns[0]);
 
-		//convert the obejcts to arrays
+		result.createdfrom = {
+			id: mainline[0].getValue(columns[1])
+		,	name: mainline[0].getText(columns[1])
+		};
+
+		result.summary.total = toCurrency(mainline[0].getValue('total'));
+		result.summary.total_formatted = formatCurrency(mainline[0].getValue('total'));
+		result.summary.taxtotal = toCurrency(mainline[0].getValue('taxtotal'));
+		result.summary.taxtotal_formatted = formatCurrency(mainline[0].getValue('taxtotal'));
+
+		// convert the obejcts to arrays
 		result.addresses = _.values(result.addresses);
 		result.lines = _.values(result.lines);
+
 		return result;
 	}
 }));
@@ -2140,6 +2379,241 @@ Application.defineModel('CreditCard', {
 	}
 });
 
+//CreditMemo.js
+Application.defineModel('CreditMemo', {
+
+	get: function (id)
+	{
+		'use strict';
+
+		var creditmemo = nlapiLoadRecord('creditmemo', id)
+		,	result = {};
+
+		this.createRecord(creditmemo, result);
+		this.setInvoices(creditmemo, result);
+		this.setItems(creditmemo, result);
+		this.loadItems(creditmemo, result);
+
+		return result;
+	}
+
+,	createRecord: function(record, result)
+	{
+		'use strict';
+
+		result.internalid = record.getId();
+		result.tranid = record.getFieldValue('tranid');
+
+		result.subtotal = toCurrency(record.getFieldValue('subtotal'));
+		result.subtotal_formatted = formatCurrency(record.getFieldValue('subtotal'));
+		result.discount = toCurrency(record.getFieldValue('discounttotal'));
+		result.discount_formatted = formatCurrency(record.getFieldValue('discounttotal'));
+		result.taxtotal = toCurrency(record.getFieldValue('taxtotal'));
+		result.taxtotal_formatted = formatCurrency(record.getFieldValue('taxtotal'));
+		result.shippingcost = toCurrency(record.getFieldValue('shippingcost'));
+		result.shippingcost_formatted = formatCurrency(record.getFieldValue('shippingcost'));
+		result.total = toCurrency(record.getFieldValue('total'));
+		result.total_formatted = formatCurrency(record.getFieldValue('total'));
+		result.amountpaid = toCurrency(record.getFieldValue('amountpaid'));
+		result.amountpaid_formatted = formatCurrency(record.getFieldValue('amountpaid'));
+		result.amountremaining = toCurrency(record.getFieldValue('amountremaining'));
+		result.amountremaining_formatted = formatCurrency(record.getFieldValue('amountremaining'));
+
+		result.trandate = record.getFieldValue('trandate');
+		result.status = record.getFieldValue('status');
+		result.memo = record.getFieldValue('memo');
+	}
+
+,	setInvoices: function(record, result)
+	{
+		'use strict';
+		
+		result.invoices = [];
+		
+		for (var i = 1; i <= record.getLineItemCount('apply'); i++)
+		{
+			var invoice = {
+					line: i
+				,	internalid: record.getLineItemValue('apply', 'internalid', i)
+				,	type: record.getLineItemValue('apply', 'type', i)
+				,	total: toCurrency(record.getLineItemValue('apply', 'total', i))
+				,	total_formatted: formatCurrency(record.getLineItemValue('apply', 'total', i))
+				,	apply: record.getLineItemValue('apply', 'apply', i) === 'T'
+				,	applydate: record.getLineItemValue('apply', 'applydate', i)
+				,	currency: record.getLineItemValue('apply', 'currency', i)
+
+				,	amount: toCurrency(record.getLineItemValue('apply', 'amount', i))
+				,	amount_formatted: formatCurrency(record.getLineItemValue('apply', 'amount', i))
+				,	due: toCurrency(record.getLineItemValue('apply', 'due', i))
+				,	due_formatted: formatCurrency(record.getLineItemValue('apply', 'due', i))
+				,	refnum: record.getLineItemValue('apply', 'refnum', i)
+			};
+			
+			result.invoices.push(invoice);
+		}
+	}
+
+,	setItems: function(record, result)
+	{
+		'use strict';
+		
+		result.items = [];
+
+		for (var i = 1; i <= record.getLineItemCount('item'); i++)
+		{
+			var item = {
+					internalid: record.getLineItemValue('item', 'item', i)
+				,	id: record.getLineItemValue('item', 'item', i)
+				,	type: record.getLineItemValue('item', 'itemtype', i)
+				,	quantity: record.getLineItemValue('item', 'quantity', i)
+				,	unitprice: toCurrency(record.getLineItemValue('item', 'rate', i))
+				,	unitprice_formatted: formatCurrency(record.getLineItemValue('item', 'rate', i))
+				,	total:  toCurrency(record.getLineItemValue('item', 'amount', i))
+				,	total_formatted: formatCurrency(record.getLineItemValue('item', 'amount', i))
+
+			};
+			
+			result.items.push(item);
+		}
+	}
+
+,	loadItems: function(record, result)
+	{
+		'use strict';
+
+		if (result.items.length)
+		{
+			// Preloads info about the item		
+			var storeItem = Application.getModel('StoreItem');
+
+			storeItem.preloadItems(result.items);
+
+			// The api wont bring disabled items so we need to query them directly
+			var itemsToQuery = [];
+			
+			_.each(result.items, function(item)
+			{
+				var itemStored = storeItem.get(item.internalid, item.type);
+				if (!itemStored || typeof itemStored.itemid === 'undefined')
+				{
+					itemsToQuery.push(item);
+				}
+				else
+				{
+					var preItem = _.findWhere(result.items, { internalid: itemStored.internalid + '' });
+					if (preItem)
+					{
+						_.extend(preItem, itemStored);
+					}
+				}
+			});
+
+			if (itemsToQuery.length > 0)
+			{
+				var filters = [
+						new nlobjSearchFilter('entity', null, 'is', nlapiGetUser())
+					,	new nlobjSearchFilter('internalid', null, 'is', result.internalid)
+					,	new nlobjSearchFilter('internalid', 'item', 'anyof', _.pluck(itemsToQuery, 'internalid'))
+					]
+				
+				,	columns = [
+						new nlobjSearchColumn('internalid', 'item')
+					,	new nlobjSearchColumn('type', 'item')
+					,	new nlobjSearchColumn('parent', 'item')
+					,	new nlobjSearchColumn('displayname', 'item')
+					,	new nlobjSearchColumn('storedisplayname', 'item')
+					,	new nlobjSearchColumn('itemid', 'item')
+					]
+				
+				,	inactive_items_search = Application.getAllSearchResults('transaction', filters, columns);
+
+				inactive_items_search.forEach(function(item)
+				{
+					var inactive_item = {
+						internalid: item.getValue('internalid', 'item')
+					,	type: item.getValue('type', 'item')
+					,	displayname: item.getValue('displayname', 'item')
+					,	storedisplayname: item.getValue('storedisplayname', 'item')
+					,	itemid: item.getValue('itemid', 'item')
+					};
+				
+					storeItem.set(inactive_item);
+
+					var preItem = _.findWhere(result.items, { internalid: inactive_item.internalid + '' });
+					if (preItem)
+					{
+						_.extend(preItem, inactive_item);
+					}
+				});
+			}
+		}
+	}
+
+,	list: function ()
+	{
+		'use strict';
+
+		var filters = [
+				new nlobjSearchFilter('mainline', null, 'is', 'T')
+			,	new nlobjSearchFilter('amountremaining', null, 'greaterthan', 0)
+			]
+
+		,	columns = [
+					new nlobjSearchColumn('tranid')
+				,	new nlobjSearchColumn('trandate')
+				,	new nlobjSearchColumn('amountremaining')
+				,	new nlobjSearchColumn('amountpaid')
+				,	new nlobjSearchColumn('amount')
+			]
+
+			// if the store has multiple currencies we add the currency column to the query
+		,	isMultiCurrency = context.getFeature('MULTICURRENCY');
+
+		if (isMultiCurrency)
+		{
+			columns.push(new nlobjSearchColumn('currency'));
+		}
+
+		var settings_site_id = session.getSiteSettings(['siteid'])
+		,	site_id = settings_site_id && settings_site_id.siteid;
+
+		// if the site is multisite we add the siteid to the search filter
+		if (context.getFeature('MULTISITE') && site_id)
+		{
+			filters.push(new nlobjSearchFilter('website', null, 'anyof', [site_id, '@NONE@']));
+		}
+
+		var result = Application.getAllSearchResults('creditmemo', filters, columns)
+
+		,	records = _.map(JSON.parse(JSON.stringify(result)), function (record)
+			{
+				_.extend(record, record.columns);
+				delete record.columns;
+
+				record.amountremaining_formatted = formatCurrency(record.amountremaining);
+				record.internalid = record.id;
+				
+				delete record.id;
+			
+				// Legacy attributes
+				record.date = record.trandate;
+				record.order_number = record.tranid;
+				record.summary = {
+					total: toCurrency(record.total)
+				,	total_formatted: formatCurrency(record.total)
+				};
+				
+				delete record.total;
+				
+				return record;
+			});
+
+		result = records;
+
+		return result;
+	}
+});
+
 //StoreItem.js
 // StoreItem.js
 // ----------
@@ -2158,7 +2632,7 @@ Application.defineModel('StoreItem', {
 
 		items = items || [];
 
-		this.preloadedItems = this.preloadedItem || {};
+		this.preloadedItems = this.preloadedItems || {};
 
 		items.forEach(function (item)
 		{
@@ -2189,13 +2663,14 @@ Application.defineModel('StoreItem', {
 		{
 			if (item && typeof item.itemid !== 'undefined')
 			{
-				if (!is_advanced)
+				//TODO: Remove support for Releted and Correlated items by default because of performance issues
+				/*if (!is_advanced)
 				{
 					// Load related & correlated items if the site type is standard. 
 					// If the site type is advanced will be loaded by getItemFieldValues function
 					item.relateditems_detail = session.getRelatedItems(items_by_id[item.internalid]);
 					item.correlateditems_detail = session.getCorrelatedItems(items_by_id[item.internalid]);
-				}
+				}*/
 
 				if (item.itemoptions_detail && item.itemoptions_detail.matrixtype === 'child')
 				{
@@ -2204,7 +2679,7 @@ Application.defineModel('StoreItem', {
 						,	itemtype: item.itemtype
 						,	itemfields: SC.Configuration.items_fields_standard_keys
 					};
-				}	
+				}
 				
 				self.preloadedItems[item.internalid] = item;
 			}
@@ -2251,12 +2726,12 @@ Application.defineModel('StoreItem', {
 				//SuiteCommerce Advanced website have fieldsets
 				return session.getItemFieldValues(SC.Configuration.items_fields_advanced_name, _.pluck(item_ids, 'internalid')).items;
 			}
-			catch (e) 
+			catch (e)
 			{
 				throw invalidItemsFieldsAdvancedName;
 			}
 		}
-		else 
+		else
 		{
 			//Sitebuilder website version doesn't have fieldsets
 			return session.getItemFieldValues(item_ids);
@@ -2294,4 +2769,1313 @@ Application.defineModel('StoreItem', {
 
 });
 
+
+//Payment.js
+// Payment.js
+// -------
+// Defines the model used by the payment.ss service
+Application.defineModel('Payment', {
+
+	get: function (id)
+	{
+		'use strict';
+
+		var customer_payment = nlapiLoadRecord('customerpayment', id);
+		
+		return this.createResult(customer_payment);
+	}
+
+,	setPaymentMethod: function (customer_payment, result)
+	{
+		'use strict';
+		
+		result.paymentmethods = [];
+		return setPaymentMethodToResult(customer_payment, result);
+	}
+
+,	createResult: function (customer_payment)
+	{
+		'use strict';
+
+		var result = {};
+
+		result.internalid = customer_payment.getId();
+		result.type =  customer_payment.getRecordType();
+		result.tranid = customer_payment.getFieldValue('tranid');
+		result.autoapply = customer_payment.getFieldValue('autoapply');
+		result.trandate = customer_payment.getFieldValue('trandate');
+		result.status = customer_payment.getFieldValue('status');
+		result.payment = toCurrency(customer_payment.getFieldValue('payment'));
+		result.payment_formatted = formatCurrency(customer_payment.getFieldValue('payment'));
+		result.lastmodifieddate = customer_payment.getFieldValue('lastmodifieddate');
+		result.balance = toCurrency(customer_payment.getFieldValue('balance'));
+		result.balance_formatted = formatCurrency(customer_payment.getFieldValue('balance'));
+		
+		this.setPaymentMethod(customer_payment, result);
+		this.setInvoices(customer_payment, result);
+
+		return result;
+	}
+,	setInvoices: function(customer_payment, result)
+	{
+		'use strict';
+		
+		result.invoices = [];
+
+		for (var i = 1; i <= customer_payment.getLineItemCount('apply') ; i++)
+		{
+			var apply = customer_payment.getLineItemValue('apply', 'apply', i) === 'T';
+			
+			if (apply)
+			{
+				var invoice = {
+		
+					internalid: customer_payment.getLineItemValue('apply', 'internalid', i)
+				,	type: customer_payment.getLineItemValue('apply', 'type', i)
+				,	total: toCurrency(customer_payment.getLineItemValue('apply', 'total', i))
+				,	total_formatted: formatCurrency(customer_payment.getLineItemValue('apply', 'total', i))
+				,	apply: apply
+				,	applydate: customer_payment.getLineItemValue('apply', 'applydate', i)
+				,	currency: customer_payment.getLineItemValue('apply', 'currency', i)
+				,	disc: toCurrency(customer_payment.getLineItemValue('apply', 'disc', i))
+				,	disc_formatted: formatCurrency(customer_payment.getLineItemValue('apply', 'disc', i))
+				,	amount: toCurrency(customer_payment.getLineItemValue('apply', 'amount', i))
+				,	amount_formatted: formatCurrency(customer_payment.getLineItemValue('apply', 'amount', i))
+				,	due: toCurrency(customer_payment.getLineItemValue('apply', 'due', i))
+				,	due_formatted: formatCurrency(customer_payment.getLineItemValue('apply', 'due', i))
+				,	refnum: customer_payment.getLineItemValue('apply', 'refnum', i)
+				};
+
+				result.invoices.push(invoice);
+
+			}
+		}
+
+		return result;
+	}
+,	list: function (page)
+	{
+		'use strict';
+
+		var filters = [
+				new nlobjSearchFilter('mainline', null, 'is', 'T')
+			]
+
+		,	columns = [
+				new nlobjSearchColumn('amount')
+			,	new nlobjSearchColumn('statusref')
+			,	new nlobjSearchColumn('trandate')
+			]
+
+		,	result = Application.getPaginatedSearchResults('customerpayment', filters, columns, page, 20);
+
+		return result;
+	}
+});
+
+
+//LivePayment.js
+// LivePayment.js
+// -------
+// Defines the model used by the live-payment.ss service
+Application.defineModel('LivePayment', {
+	
+	create: function()
+	{
+		'use strict';
+		var payment_record = nlapiCreateRecord('customerpayment');
+
+		payment_record.setFieldValue('customer', nlapiGetUser());
+		payment_record.setFieldValue('autoapply', 'F');
+
+		return payment_record;
+	}
+
+,	get: function()
+	{
+		'use strict';
+
+		try
+		{
+			var customer_payment = this.create();
+			return this.createResult(customer_payment);
+		}
+		catch (e)
+		{
+			return {};
+		}
+	}
+,	setPaymentMethod: function (customer_payment, result)
+	{
+		'use strict';
+
+		result.paymentmethods = [];
+		return setPaymentMethodToResult(customer_payment, result);
+	}
+
+,	createResult: function (customer_payment)
+	{
+		'use strict';
+
+		var result = {};
+
+		result.internalid = customer_payment.getId();
+		result.type =  customer_payment.getRecordType();
+		result.tranid = customer_payment.getFieldValue('tranid');
+		result.autoapply = customer_payment.getFieldValue('autoapply');
+		result.trandate = customer_payment.getFieldValue('trandate');
+		result.status = customer_payment.getFieldValue('status');
+		result.payment = toCurrency(customer_payment.getFieldValue('payment'));
+		result.payment_formatted = formatCurrency(customer_payment.getFieldValue('payment'));
+		result.lastmodifieddate = customer_payment.getFieldValue('lastmodifieddate');
+		result.balance = toCurrency(customer_payment.getFieldValue('balance'));
+		result.balance_formatted = formatCurrency(customer_payment.getFieldValue('balance'));
+		
+		this.setPaymentMethod(customer_payment, result);
+		this.setInvoices(customer_payment, result);
+		this.setCreditMemos(customer_payment, result);
+		this.setDeposits(customer_payment, result);
+
+		return result;
+	}
+
+,	setInvoices: function(customer_payment, result)
+	{
+		'use strict';
+
+		result.invoices = [];
+
+		for (var i = 1; i <= customer_payment.getLineItemCount('apply') ; i++)
+		{
+			var invoice = {
+		
+					internalid: customer_payment.getLineItemValue('apply', 'internalid', i)
+				,	total: toCurrency(customer_payment.getLineItemValue('apply', 'total', i))
+				,	total_formatted: formatCurrency(customer_payment.getLineItemValue('apply', 'total', i))
+				,	apply: customer_payment.getLineItemValue('apply', 'apply', i) === 'T'
+				,	applydate: customer_payment.getLineItemValue('apply', 'applydate', i)
+				,	currency: customer_payment.getLineItemValue('apply', 'currency', i)
+				,	discamt: toCurrency(customer_payment.getLineItemValue('apply', 'discamt', i))
+				,	discamt_formatted: formatCurrency(customer_payment.getLineItemValue('apply', 'discamt', i))
+				,	disc: toCurrency(customer_payment.getLineItemValue('apply', 'disc', i))
+				,	disc_formatted: formatCurrency(customer_payment.getLineItemValue('apply', 'disc', i))
+				,	discdate: customer_payment.getLineItemValue('apply', 'discdate', i)
+				,	amount: toCurrency(customer_payment.getLineItemValue('apply', 'amount', i))
+				,	amount_formatted: formatCurrency(customer_payment.getLineItemValue('apply', 'amount', i))
+				,	due: toCurrency(customer_payment.getLineItemValue('apply', 'due', i))
+				,	due_formatted: formatCurrency(customer_payment.getLineItemValue('apply', 'due', i))
+				,	refnum: customer_payment.getLineItemValue('apply', 'refnum', i)
+			};
+
+			result.invoices.push(invoice);
+		}
+
+		if (result.invoices.length)
+		{
+			var invoices_info = Application.getModel('Receipts').list({
+					type: 'invoice'
+				,	internalid: _.pluck(result.invoices, 'internalid')
+			});
+
+			_.each(result.invoices, function(invoice)
+			{
+				invoice = _.extend(invoice, _.findWhere(invoices_info, {internalid: invoice.internalid}));
+				
+				invoice.discountapplies = (invoice.due === invoice.total) && (invoice.discdate && stringtodate(invoice.discdate) >= new Date());
+				invoice.discount = invoice.discamt ? Math.round(invoice.discamt / invoice.total * 100) : 0;
+				invoice.discount_formatted = invoice.discount + '%';
+
+				var amount = invoice.due - (invoice.discountapplies ? invoice.discamt : 0);
+				invoice.amount = amount;
+				invoice.amount_formatted = formatCurrency(amount);
+				invoice.duewithdiscount = invoice.amount;
+				invoice.duewithdiscount_formatted = invoice.amount_formatted;
+
+			});
+		}
+
+
+		return result;
+	}
+
+,	setCreditMemos: function(customer_payment, result)
+	{
+		'use strict';
+		
+		result.creditmemos = [];
+		result.creditmemosremaining = 0;
+
+		for (var i = 1; i <= customer_payment.getLineItemCount('credit') ; i++)
+		{
+			var creditmemo = {
+					internalid: customer_payment.getLineItemValue('credit', 'internalid', i)
+				,	type: customer_payment.getLineItemValue('credit', 'type', i)
+				,	total: toCurrency(customer_payment.getLineItemValue('credit', 'total', i))
+				,	total_formatted: formatCurrency(customer_payment.getLineItemValue('credit', 'total', i))
+				,	apply: customer_payment.getLineItemValue('credit', 'apply', i) === 'T'
+				,	currency: customer_payment.getLineItemValue('apply', 'currency', i)
+				,	amount: customer_payment.getLineItemValue('apply', 'amount', i)
+				,	due: toCurrency(customer_payment.getLineItemValue('credit', 'due', i))
+				,	due_formatted: formatCurrency(customer_payment.getLineItemValue('credit', 'due', i))
+				,	refnum: customer_payment.getLineItemValue('credit', 'refnum', i)
+			};
+			result.creditmemosremaining += creditmemo.due;
+		//	result.creditmemos.push(creditmemo);
+		}
+
+		result.creditmemosremaining_formatted = formatCurrency(result.creditmemosremaining);
+
+		return result;
+	}
+
+
+,	setDeposits: function(customer_payment, result)
+	{
+		'use strict';
+		
+		result.deposits = [];
+		result.depositsremaining = 0;
+
+		for (var i = 1; i <= customer_payment.getLineItemCount('deposit') ; i++)
+		{
+			var deposit = {
+					internalid: customer_payment.getLineItemValue('deposit', 'internalid', i)
+				,	total: toCurrency(customer_payment.getLineItemValue('deposit', 'total', i))
+				,	total_formatted: formatCurrency(customer_payment.getLineItemValue('deposit', 'total', i))
+				,	apply: customer_payment.getLineItemValue('deposit', 'apply', i) === 'T'
+				,	currency: customer_payment.getLineItemValue('deposit', 'currency', i)
+				,	depositdate: customer_payment.getLineItemValue('deposit', 'depositdate', i)
+				,	remaining: toCurrency(customer_payment.getLineItemValue('deposit', 'remaining', i))
+				,	remaining_formatted: formatCurrency(customer_payment.getLineItemValue('deposit', 'remaining', i))
+				,	refnum: customer_payment.getLineItemValue('deposit', 'refnum', i)
+			};
+
+			result.depositsremaining += deposit.remaining;
+		//	result.deposits.push(deposit);
+		}
+
+		result.depositsremaining_formatted = formatCurrency(result.depositsremaining);
+
+		return result;
+	}
+
+,	update: function(payment_record, data)
+	{
+		'use strict';
+
+		var self = this
+		,	invoices = data.invoices
+		,	Address = Application.getModel('Address')
+		,	selected_address = Address.get(data.billaddress)
+		,	credit_card = data.paymentmethods[0].creditcard;
+
+		customer.updateCreditCard({
+			internalid: credit_card.internalid
+		,	ccdefault: 'T'
+		});
+
+		payment_record.setFieldValue('payment', data.payment);
+		payment_record.setFieldValue('ccstreet', selected_address.addr1);
+		payment_record.setFieldValue('cczipcode', selected_address.zip);
+
+		for (var i = 1; i <= payment_record.getLineItemCount('apply'); i++)
+		{
+			var invoice = _.findWhere(invoices, {
+				internalid: payment_record.getLineItemValue('apply', 'internalid', i)
+			});
+
+			if (invoice && invoice.apply)
+			{
+				payment_record.setLineItemValue('apply', 'apply', i, 'T');
+				payment_record.setLineItemValue('apply', 'amount', i, invoice.amount);
+
+				invoice.due = payment_record.getLineItemValue('apply', 'due', i);
+				invoice.total = payment_record.getLineItemValue('apply', 'total', i);
+				invoice.discdate = payment_record.getLineItemValue('apply', 'discdate', i);
+				invoice.discamt = payment_record.getLineItemValue('apply', 'discamt', i);
+				invoice.discountapplies = (invoice.due === invoice.total) && (invoice.discdate && stringtodate(invoice.discdate) >= new Date());
+				invoice.duewithdiscount = invoice.due - (invoice.discountapplies ? invoice.discamt : 0);
+				
+				if (self._isPayFull(invoice) && invoice.discountapplies && invoice.discamt)
+				{
+					payment_record.setLineItemValue('apply', 'disc', i, invoice.discamt);
+				}
+			}
+		}
+
+		payment_record.setFieldValue('paymentmethod', credit_card.paymentmethod.internalid);
+
+		if (credit_card.ccsecuritycode)
+		{
+			payment_record.setFieldValue('ccsecuritycode', credit_card.ccsecuritycode);
+		}
+
+		return payment_record;
+
+	}
+
+,	_isPayFull: function(invoice)
+	{
+		'use strict';
+		
+		if (invoice.discountapplies)
+		{
+			return invoice.amount === invoice.duewithdiscount;
+		}
+		else
+		{
+			return invoice.amount === invoice.due;
+		}
+	}
+,	submit: function (data)
+	{
+		'use strict';
+		
+		// update record
+		var payment_record = this.update(this.create(), data)
+		// save record.
+		,	payment_record_id = nlapiSubmitRecord(payment_record)
+		// create new record to next payment.
+		,	new_payment_record = this.get();
+
+		// send confirmation 
+		new_payment_record.confirmation = Application.getModel('Payment').get(payment_record_id);
+
+		return new_payment_record;
+	}
+
+});
+
+
+//Deposit.js
+
+Application.defineModel('Deposit', {
+
+	get: function (id)
+	{
+		'use strict';
+
+		var deposit = nlapiLoadRecord('customerdeposit', id)
+		,	result = {};
+
+		this.createRecord(deposit, result);
+		this.setInvoices(deposit, result);
+		this.setPaymentMethod(deposit, result);
+
+		return result;
+	}
+
+,	createRecord: function(record, result)
+	{
+		'use strict';
+
+		result.internalid = record.getId();
+		result.tranid = record.getFieldValue('tranid');
+		result.payment = toCurrency(record.getFieldValue('payment'));
+		result.payment_formatted = formatCurrency(record.getFieldValue('payment'));
+		result.trandate = record.getFieldValue('trandate');
+		result.status = record.getFieldValue('status');
+		result.memo = record.getFieldValue('memo');
+	}
+
+,	setInvoices: function(record, result)
+	{
+		'use strict';
+		
+		result.invoices = [];
+		var invoicesTotal = 0;
+		
+		for (var i = 1; i <= record.getLineItemCount('apply'); i++)
+		{
+			var invoice = {
+					line: i
+				,	invoice_id: record.getLineItemValue('apply', 'id2', i)
+				,	deposit_id: record.getLineItemValue('apply', 'id', i)
+
+				,	type: record.getLineItemValue('apply', 'type', i)
+				,	total: toCurrency(record.getLineItemValue('apply', 'total', i))
+				,	total_formatted: formatCurrency(record.getLineItemValue('apply', 'total', i))
+
+				,	invoicedate: record.getLineItemValue('apply', 'applydate', i)
+				,	depositdate: record.getLineItemValue('apply', 'depositdate', i)
+
+				,	currency: record.getLineItemValue('apply', 'currency', i)
+				,	amount: toCurrency(record.getLineItemValue('apply', 'amount', i))
+				,	amount_formatted: formatCurrency(record.getLineItemValue('apply', 'amount', i))
+				,	due: toCurrency(record.getLineItemValue('apply', 'due', i))
+				,	due_formatted: formatCurrency(record.getLineItemValue('apply', 'due', i))
+				,	refnum: record.getLineItemValue('apply', 'refnum', i)
+			};
+			
+			invoicesTotal += invoice.amount;
+			result.invoices.push(invoice);
+		}
+
+		result.paid = toCurrency(invoicesTotal);
+		result.paid_formatted = formatCurrency(invoicesTotal);
+		result.remaining = toCurrency(result.payment - result.paid);
+		result.remaining_formatted = formatCurrency(result.remaining);
+	}
+
+,	setPaymentMethod: function (record, result)
+	{
+		'use strict';
+
+		var paymentmethod = {
+			type: record.getFieldValue('paymethtype')
+		,	primary: true
+		};
+
+		if (paymentmethod.type === 'creditcard')
+		{
+			paymentmethod.creditcard = {
+				ccnumber: record.getFieldValue('ccnumber')
+			,	ccexpiredate: record.getFieldValue('ccexpiredate')
+			,	ccname: record.getFieldValue('ccname')
+			,	paymentmethod: {
+					ispaypal: 'F'
+				,	name: record.getFieldText('paymentmethod')
+				,	creditcard: 'T'
+				,	internalid: record.getFieldValue('paymentmethod')
+				}
+			};
+		}
+
+		if (record.getFieldValue('ccstreet'))
+		{
+			paymentmethod.ccstreet = record.getFieldValue('ccstreet');
+		}
+
+		if (record.getFieldValue('cczipcode'))
+		{
+			paymentmethod.cczipcode = record.getFieldValue('cczipcode');
+		}
+
+		if (record.getFieldValue('terms'))
+		{
+			paymentmethod.type = 'invoice';
+
+			paymentmethod.purchasenumber = record.getFieldValue('otherrefnum');
+
+			paymentmethod.paymentterms = {
+					internalid: record.getFieldValue('terms')
+				,	name: record.getFieldText('terms')
+			};
+		}
+
+		result.paymentmethods = [paymentmethod];
+	}
+
+,	list: function ()
+	{
+		'use strict';
+
+		var filters = [
+				//new nlobjSearchFilter('mainline', null, 'is', 'F')
+				new nlobjSearchFilter('status', null, 'is', ['CustDep:A', 'CustDep:B'])
+			,	new nlobjSearchFilter('salesorder', null, 'is', '@NONE@')
+			// ,	new nlobjSearchFilter('customer', null, 'is', nlapiGetUser())
+			]
+
+		,	columns = [
+				new nlobjSearchColumn('tranid')
+			,	new nlobjSearchColumn('internalid')
+			,	new nlobjSearchColumn('amount')
+			,	new nlobjSearchColumn('amountpaid')
+			,	new nlobjSearchColumn('statusref')
+			,	new nlobjSearchColumn('datecreated')
+			,	new nlobjSearchColumn('salesorder')
+
+			,	new nlobjSearchColumn('salesorder')
+			,	new nlobjSearchColumn('mainline')
+			]
+
+		,	isMultiCurrency = context.getFeature('MULTICURRENCY');
+
+		if (isMultiCurrency)
+		{
+			columns.push(new nlobjSearchColumn('currency'));
+		}
+
+		var settings_site_id = session.getSiteSettings(['siteid'])
+		,	site_id = settings_site_id && settings_site_id.siteid;
+
+		// if the site is multisite we add the siteid to the search filter
+		if (context.getFeature('MULTISITE') && site_id)
+		{
+			filters.push(new nlobjSearchFilter('website', null, 'anyof', [site_id, '@NONE@']));
+		}
+
+		var result = Application.getAllSearchResults('customerdeposit', filters, columns)
+
+		// TODO: I don't like this 
+		// TODO: Me neither
+		,	records = _.map(JSON.parse(JSON.stringify(result)), function (record)
+			{
+				_.extend(record, record.columns);
+				delete record.columns;
+
+				record.internalid = record.id;
+				delete record.id;
+
+				// Legacy attributes
+				record.date = record.datecreated;
+				record.order_number = record.tranid;
+				record.summary = {
+					total: toCurrency(record.amount)
+				,	total_formatted: formatCurrency(record.amount)
+				};
+				
+				return record;
+			})
+
+		,	split = _.groupBy(records, function(deposit)
+			{
+				return deposit.mainline === '*' || deposit.mainline === 'T';
+			})
+
+		,	mainlines = split.true || []
+
+		,	amountpaid = split.false || [];
+
+		amountpaid.forEach(function (deposit)
+		{
+			var mainline = _.findWhere(mainlines, { internalid: deposit.internalid });
+			if (mainline)
+			{
+				mainline.amountpaid = deposit.amountpaid;
+				mainline.amountremaining = deposit.amount - deposit.amountpaid;
+				mainline.amounttopaid = mainline.amountremaining;
+				mainline.amountremaining_formatted = formatCurrency(mainline.amountremaining);
+			}
+		});
+
+		result = mainlines;
+
+		return result;
+	}
+});
+
+//DepositApplication.js
+Application.defineModel('DepositApplication', {
+
+	get: function (id)
+	{
+		'use strict';
+
+		var record = nlapiLoadRecord('depositapplication', id)
+		,	result = {};
+
+		this.createResult(record, result);
+		this.setInvoices(record, result);
+
+		return result;
+	}
+
+,	createResult: function(record, result)
+	{
+		'use strict';
+
+		result.internalid = record.getId();
+		result.tranid = record.getFieldValue('tranid');
+		result.total = toCurrency(record.getFieldValue('total'));
+		result.total_formatted = formatCurrency(record.getFieldValue('total'));
+
+		result.deposit =
+		{
+			internalid: record.getFieldValue('deposit')
+		,	name: record.getFieldText('deposit')
+		};
+
+		result.depositdate = record.getFieldValue('depositdate');
+		result.trandate = record.getFieldValue('trandate');
+		result.memo = record.getFieldValue('memo');
+	}
+
+,	setInvoices: function(record, result)
+	{
+		'use strict';
+		
+		result.invoices = [];
+		
+		for (var i = 1; i <= record.getLineItemCount('apply'); i++)
+		{
+			var invoice = {
+					line: i
+				,	internalid: record.getLineItemValue('apply', 'internalid', i)
+				,	type: record.getLineItemValue('apply', 'type', i)
+				,	total: toCurrency(record.getLineItemValue('apply', 'total', i))
+				,	total_formatted: formatCurrency(record.getLineItemValue('apply', 'total', i))
+				,	apply: record.getLineItemValue('apply', 'apply', i) === 'T'
+				,	applydate: record.getLineItemValue('apply', 'applydate', i)
+				,	currency: record.getLineItemValue('apply', 'currency', i)
+				,	amount: toCurrency(record.getLineItemValue('apply', 'amount', i))
+				,	amount_formatted: formatCurrency(record.getLineItemValue('apply', 'amount', i))
+				,	due: toCurrency(record.getLineItemValue('apply', 'due', i))
+				,	due_formatted: formatCurrency(record.getLineItemValue('apply', 'due', i))
+				,	refnum: record.getLineItemValue('apply', 'refnum', i)
+			};
+			
+			result.invoices.push(invoice);
+		}
+	}
+});
+
+//ProductList.js
+// ProductList.js
+// ----------------
+// Handles creating, fetching and updating Product Lists
+
+Application.defineModel('ProductList', {
+	// ## General settings
+	loginRequired: SC.Configuration.product_lists.loginRequired
+
+,	configuration: SC.Configuration.product_lists
+
+,	verifySession: function()
+	{
+		'use strict';
+
+		var is_secure = request.getURL().indexOf('https') === 0;
+		
+		// MyAccount (We need to make the following difference because isLoggedIn is always false in Shopping)
+		if (is_secure)
+		{
+			if (this.loginRequired && !session.isLoggedIn())
+			{
+				throw unauthorizedError;	
+			}			
+		}
+		else // Shopping
+		{
+			if (this.loginRequired && session.getCustomer().isGuest())
+			{
+				throw unauthorizedError;
+			}
+		}
+	}
+
+	// Returns a product list based on a given id
+,	get: function (id)
+	{
+		'use strict';
+
+		this.verifySession();
+
+		var productList = nlapiLoadRecord('customrecord_ns_pl_productlist', id);
+
+		if (productList && productList.getFieldValue('isinactive') === 'F')
+		{
+			var ProductListItem = Application.getModel('ProductListItem');
+
+			/// Loads Product List main data
+			var result = {
+				internalid: productList.getId()
+			,	templateid: productList.getFieldValue('custrecord_ns_pl_pl_templateid')
+			,	name: productList.getFieldValue('name')
+			,	description: productList.getFieldValue('custrecord_ns_pl_pl_description')
+			,	created: productList.getFieldValue('created')
+			,	lastmodified: productList.getFieldValue('lastmodified')
+			,	owner:  {
+					id: productList.getFieldValue('custrecord_ns_pl_pl_owner')
+				,	name: productList.getFieldText('custrecord_ns_pl_pl_owner')
+				}
+			,   scope: {
+					id: productList.getFieldValue('custrecord_ns_pl_pl_scope')
+				,	name: productList.getFieldText('custrecord_ns_pl_pl_scope')
+				}
+			,   type: {
+					id: productList.getFieldValue('custrecord_ns_pl_pl_type')
+				,	name: productList.getFieldText('custrecord_ns_pl_pl_type')
+				}
+			,	items: ProductListItem.search(id, 'created:ASC', true)
+			};
+				
+			return result;
+		}
+		else
+		{
+			throw notFoundError;
+		}
+	}
+
+	// Sanitize html input
+,	sanitize: function (text)
+	{
+		'use strict';
+
+		return text ? text.replace(/<br>/g, '\n').replace(/</g, '&lt;').replace(/\>/g, '&gt;') : '';
+	}
+
+	// Retrieves all Product Lists for a given user
+,	search: function(userId, order)
+	{
+		'use strict';
+
+		this.verifySession();
+
+		if (!userId || isNaN(parseInt(userId, 10)))
+		{
+			throw unauthorizedError;
+		}
+		
+		var filters = [new nlobjSearchFilter('custrecord_ns_pl_pl_owner', null, 'is', userId)
+		,	new nlobjSearchFilter('isinactive', null, 'is', 'F')];
+
+		// Selects the columns
+		var productListColumns = {
+			internalid: new nlobjSearchColumn('internalid')
+		,	templateid: new nlobjSearchColumn('custrecord_ns_pl_pl_templateid')
+		,	name: new nlobjSearchColumn('name')
+		,	description: new nlobjSearchColumn('custrecord_ns_pl_pl_description')
+		,	owner: new nlobjSearchColumn('custrecord_ns_pl_pl_owner')
+		,	scope: new nlobjSearchColumn('custrecord_ns_pl_pl_scope')
+		,	type: new nlobjSearchColumn('custrecord_ns_pl_pl_type')
+		,	created: new nlobjSearchColumn('created')
+		,	lastmodified: new nlobjSearchColumn('lastmodified')
+		};
+		
+		// Sets the sort order
+		var order_tokens = order && order.split(':') || []
+		,	sort_column = order_tokens[0] || 'name'
+		,	sort_direction = order_tokens[1] || 'ASC';
+		
+		productListColumns[sort_column] && productListColumns[sort_column].setSort(sort_direction === 'DESC');
+
+		var productLists = [];
+
+		// Makes the request and format the response
+		var records = Application.getAllSearchResults('customrecord_ns_pl_productlist', filters, _.values(productListColumns));
+
+		var ProductListItem = Application.getModel('ProductListItem')
+		,	template_ids = [];
+
+		_.each(records, function (productListSearchRecord)
+		{
+			var productList = {
+				internalid: productListSearchRecord.getId()
+			,	templateid: productListSearchRecord.getValue('custrecord_ns_pl_pl_templateid')
+			,	name: productListSearchRecord.getValue('name')
+			,	description: productListSearchRecord.getValue('custrecord_ns_pl_pl_description') ? productListSearchRecord.getValue('custrecord_ns_pl_pl_description').replace(/\n/g, '<br>') : ''
+			,	owner: {
+					id: productListSearchRecord.getValue('custrecord_ns_pl_pl_owner')
+				,	name: productListSearchRecord.getText('custrecord_ns_pl_pl_owner')
+				}
+			,	scope: {
+					id: productListSearchRecord.getValue('custrecord_ns_pl_pl_scope')
+				,	name: productListSearchRecord.getText('custrecord_ns_pl_pl_scope')
+				}
+			,	type: {
+					id: productListSearchRecord.getValue('custrecord_ns_pl_pl_type')
+				,	name: productListSearchRecord.getText('custrecord_ns_pl_pl_type')
+				}
+			,	created: productListSearchRecord.getValue('created')
+			,	lastmodified: productListSearchRecord.getValue('lastmodified')
+			,	items: ProductListItem.search(productListSearchRecord.getId(), 'created:ASC', false)
+			};
+
+			if (productList.templateid)
+			{
+				template_ids.push(productList.templateid);
+			}
+
+			productLists.push(productList);
+		});
+		
+		// Add possible missing predefined list templates
+		_(SC.Configuration.product_lists.list_templates).each(function(template) {
+			if (!_(template_ids).contains(template.templateid))
+			{
+				if (!template.templateid || !template.name)
+				{
+					console.log('Error: Wrong predefined Product List. Please check backend configuration.');
+				}
+				else
+				{
+					if (!template.scope)
+					{
+						template.scope = { id: '2', name: 'private' };
+					}
+
+					if (!template.description)
+					{
+						template.description = '';
+					}
+				
+					template.type = { id: '3', name: 'predefined' };
+
+					productLists.push(template);
+				}
+			}
+		});
+		
+		if (this.isSingleList())
+		{
+			return _.filter(productLists, function(pl)
+			{
+				return pl.type.id === '3';
+			});
+		}
+
+		return productLists;
+	}
+
+,	isSingleList: function ()
+	{
+		'use strict';
+
+		return !this.configuration.additionEnabled && this.configuration.list_templates && this.configuration.list_templates.length === 1;
+	}
+
+	// Creates a new Product List record
+,	create: function (customerId, data)
+	{
+		'use strict';
+
+		customerId = customerId || nlapiGetUser() + '';
+		
+		this.verifySession();
+
+		var productList = nlapiCreateRecord('customrecord_ns_pl_productlist');
+		
+		data.templateid && productList.setFieldValue('custrecord_ns_pl_pl_templateid', data.templateid);
+		customerId && productList.setFieldValue('custrecord_ns_pl_pl_owner', customerId);
+		data.scope && data.scope.id && productList.setFieldValue('custrecord_ns_pl_pl_scope', data.scope.id);
+		data.type && data.type.id && productList.setFieldValue('custrecord_ns_pl_pl_type', data.type.id);
+		data.name && productList.setFieldValue('name', this.sanitize(data.name));
+		data.description && productList.setFieldValue('custrecord_ns_pl_pl_description', this.sanitize(data.description));
+		
+		var internalid = nlapiSubmitRecord(productList);
+
+		return internalid;
+	}
+
+	// Updates a given Product List given its id
+,	update: function (id, data)
+	{
+		'use strict';
+
+		this.verifySession();
+
+		var productList = nlapiLoadRecord('customrecord_ns_pl_productlist', id);
+
+		data.templateid && productList.setFieldValue('custrecord_ns_pl_pl_templateid', data.templateid);
+		data.owner && data.owner.id && productList.setFieldValue('custrecord_ns_pl_pl_owner', data.owner.id);
+		data.scope && data.scope.id && productList.setFieldValue('custrecord_ns_pl_pl_scope', data.scope.id);
+		data.type && data.type.id && productList.setFieldValue('custrecord_ns_pl_pl_type', data.type.id);
+		data.name && productList.setFieldValue('name', this.sanitize(data.name));
+		productList.setFieldValue('custrecord_ns_pl_pl_description', data.description ? this.sanitize(data.description) : '');
+
+		nlapiSubmitRecord(productList);
+	}
+
+	// Deletes a Product List given its id
+,	delete: function(id)
+	{
+		'use strict';
+
+		this.verifySession();
+
+		var productListToDelete = nlapiLoadRecord('customrecord_ns_pl_productlist',id);
+		
+		productListToDelete.setFieldValue('isinactive','T');
+
+		var internalid = nlapiSubmitRecord(productListToDelete);
+
+		return internalid;
+	}
+});
+
+
+//ProductListItem.js
+// ProductListItem.js
+// ----------------
+// Handles creating, fetching and updating Product List Items
+
+Application.defineModel('ProductListItem', {
+
+	// General settings
+	loginRequired: SC.Configuration.product_lists.loginRequired
+
+,	verifySession: function()
+	{
+		'use strict';
+
+		var is_secure = request.getURL().indexOf('https') === 0;
+		
+		// MyAccount (We need to make the following difference because isLoggedIn is always false in Shopping)
+		if (is_secure)
+		{
+			if (this.loginRequired && !session.isLoggedIn())
+			{
+				throw unauthorizedError;	
+			}			
+		}
+		else // Shopping
+		{
+			if (this.loginRequired && session.getCustomer().isGuest())
+			{
+				throw unauthorizedError;
+			}
+		}
+	}
+
+	// Returns a product list item based on a given id
+,	get: function (id)
+	{
+		'use strict';
+		
+		this.verifySession();
+
+		var filters = [new nlobjSearchFilter('internalid', null, 'is', id),	new nlobjSearchFilter('isinactive', null, 'is', 'F')];
+		
+		// Sets the sort order
+		var sort_column = 'custrecord_ns_pl_pli_item'
+		,	sort_direction = 'ASC';
+
+		var productlist_items = this.searchHelper(filters, sort_column, sort_direction, true);
+
+		if (productlist_items.length >= 1)
+		{
+			return productlist_items[0];
+		}
+		else
+		{
+			throw notFoundError;
+		}
+	}
+
+,	delete: function (id)
+	{
+		'use strict';
+		
+		this.verifySession();
+
+		var productListItemToDelete = nlapiLoadRecord('customrecord_ns_pl_productlistitem', id);
+		
+		productListItemToDelete.setFieldValue('isinactive','T');
+
+		return nlapiSubmitRecord(productListItemToDelete);
+	}
+
+,	getProductName: function (item)
+	{
+		'use strict';
+
+		if (!item)
+		{
+			return '';
+		}
+
+		// If its a matrix child it will use the name of the parent
+		if (item && item.matrix_parent && item.matrix_parent.internalid)
+		{
+			return item.matrix_parent.storedisplayname2 || item.matrix_parent.displayname;
+		}
+
+		// Otherways return its own name
+		return item.storedisplayname2 || item.displayname;
+	}
+
+	// Sanitize html input
+,	sanitize: function (text)
+	{
+		'use strict';
+
+		return text ? text.replace(/<br>/g, '\n').replace(/</g, '&lt;').replace(/\>/g, '&gt;') : '';
+	}
+
+	// Creates a new Product List Item record
+,	create: function (data)
+	{
+		'use strict';
+
+		this.verifySession();
+
+		var productListItem = nlapiCreateRecord('customrecord_ns_pl_productlistitem');
+		
+		data.description && productListItem.setFieldValue('custrecord_ns_pl_pli_description', this.sanitize(data.description));
+
+		if (data.options)
+		{
+			data.options && productListItem.setFieldValue('custrecord_ns_pl_pli_options', JSON.stringify(data.options || {}));
+		}
+
+		data.quantity && productListItem.setFieldValue('custrecord_ns_pl_pli_quantity', data.quantity);
+		
+		data.item && data.item.internalid && productListItem.setFieldValue('custrecord_ns_pl_pli_item', data.item.internalid);
+		data.priority && data.priority.id && productListItem.setFieldValue('custrecord_ns_pl_pli_priority', data.priority.id);
+		data.productList && data.productList.id && productListItem.setFieldValue('custrecord_ns_pl_pli_productlist', data.productList.id);
+
+		data.internalid = nlapiSubmitRecord(productListItem);
+		
+		return data;
+	}
+
+	// Updates a given Product List Item given its id
+,	update: function (id, data)
+	{
+		'use strict';
+
+		this.verifySession();
+
+		var productListItem = nlapiLoadRecord('customrecord_ns_pl_productlistitem', id);
+
+		productListItem.setFieldValue('custrecord_ns_pl_pli_description', this.sanitize(data.description));
+		data.options && productListItem.setFieldValue('custrecord_ns_pl_pli_options', JSON.stringify(data.options || {}));
+		data.quantity && productListItem.setFieldValue('custrecord_ns_pl_pli_quantity', data.quantity);
+		data.isinactive && productListItem.setFieldValue('isinactive', data.isinactive);
+
+		data.item && data.item.id && productListItem.setFieldValue('custrecord_ns_pl_pli_item', data.item.id);
+		data.priority && data.priority.id && productListItem.setFieldValue('custrecord_ns_pl_pli_priority', data.priority.id);
+		data.productList && data.productList.id && productListItem.setFieldValue('custrecord_ns_pl_pli_productlist', data.productList.id);
+		
+		nlapiSubmitRecord(productListItem);
+	}
+
+	// Retrieves all Product List Items related to the given Product List Id
+,	search: function (product_list_id, order, include_store_item)
+	{
+		'use strict';
+		
+		this.verifySession();
+
+		var filters = [new nlobjSearchFilter('custrecord_ns_pl_pli_productlist', null, 'is', product_list_id)
+		,	new nlobjSearchFilter('isinactive', null, 'is', 'F')];
+		
+		// Sets the sort order
+		var order_tokens = order && order.split(':') || []
+		,	sort_column = order_tokens[0] || 'custrecord_ns_pl_pli_item'
+		,	sort_direction = order_tokens[1] || 'ASC';
+
+		return this.searchHelper(filters, sort_column, sort_direction, include_store_item);
+	}
+
+,	searchHelper: function (filters, sort_column, sort_direction, include_store_item)
+	{
+		'use strict';
+
+		// Selects the columns
+		var productListItemColumns = {
+			internalid: new nlobjSearchColumn('internalid')
+		,	description: new nlobjSearchColumn('custrecord_ns_pl_pli_description')
+		,	options: new nlobjSearchColumn('custrecord_ns_pl_pli_options')
+		,	quantity: new nlobjSearchColumn('custrecord_ns_pl_pli_quantity')
+		,	created: new nlobjSearchColumn('created')
+		,	item_id: new nlobjSearchColumn('custrecord_ns_pl_pli_item')
+		,	item_type: new nlobjSearchColumn('type', 'custrecord_ns_pl_pli_item')
+		,	priority: new nlobjSearchColumn('custrecord_ns_pl_pli_priority')
+		,	lastmodified: new nlobjSearchColumn('lastmodified')
+		};
+		
+		productListItemColumns[sort_column] && productListItemColumns[sort_column].setSort(sort_direction === 'DESC');
+		
+		// Makes the request and format the response
+		var records = Application.getAllSearchResults('customrecord_ns_pl_productlistitem', filters, _.values(productListItemColumns))
+		,	productlist_items = []
+		,	StoreItem = Application.getModel('StoreItem')
+		,	self = this;
+
+		_(records).each(function (productListItemSearchRecord)
+		{
+			var itemInternalId = productListItemSearchRecord.getValue('custrecord_ns_pl_pli_item')
+			,	itemType = productListItemSearchRecord.getValue('type', 'custrecord_ns_pl_pli_item')
+			,	productListItem = {
+					internalid: productListItemSearchRecord.getId()
+				,	description: productListItemSearchRecord.getValue('custrecord_ns_pl_pli_description')
+				,	options: JSON.parse(productListItemSearchRecord.getValue('custrecord_ns_pl_pli_options') || '{}')
+				,	quantity: parseInt(productListItemSearchRecord.getValue('custrecord_ns_pl_pli_quantity'), 10)
+				,	created: productListItemSearchRecord.getValue('created')
+				,	lastmodified: productListItemSearchRecord.getValue('lastmodified')
+					// we temporary store the item reference, after this loop we use StoreItem.preloadItems instead doing multiple StoreItem.get()
+				,	store_item_reference: {id: itemInternalId, type: itemType}
+				,	priority: {
+						id: productListItemSearchRecord.getValue('custrecord_ns_pl_pli_priority')
+					,	name: productListItemSearchRecord.getText('custrecord_ns_pl_pli_priority')
+					}
+				};
+			productlist_items.push(productListItem);
+		});
+
+		var store_item_references = _(productlist_items).pluck('store_item_reference')
+			// preload all the store items at once for performance
+		,	store_items = StoreItem.preloadItems(store_item_references)
+		,	results = [];
+
+		_(productlist_items).each(function (productlist_item)
+		{
+			var store_item_reference = productlist_item.store_item_reference
+			// get the item - fast because it was preloaded before. Can be null!
+			,	store_item = StoreItem.get(store_item_reference.id, store_item_reference.type);
+
+			delete productlist_item.store_item_reference; 
+
+			if (!store_item)
+			{
+				return;
+			}
+			
+			if (include_store_item)
+			{
+				productlist_item.item = store_item; 
+			}
+			else
+			{
+				// only include basic store item data - fix the name to support matrix item names.
+				productlist_item.item = { 
+					internalid: store_item_reference.id
+				,	displayname: self.getProductName(store_item)
+				,	ispurchasable: store_item.ispurchasable
+				}; 
+			}
+
+			if (!include_store_item && store_item && store_item.matrix_parent)
+			{
+				productlist_item.item.matrix_parent = store_item.matrix_parent;
+			}
+
+			results.push(productlist_item);
+
+		});
+
+		return results;
+	}
+
+
+});
+
+
+
+//TransactionHistory.js
+Application.defineModel('TransactionHistory', {
+
+	search: function (data)
+	{
+		'use strict';
+
+		var types = ['CustCred', 'CustDep', 'DepAppl', 'CustPymt', 'CustInvc']
+
+		,	amount_field = context.getFeature('MULTICURRENCY') ? 'fxamount' : 'amount'
+
+		,	filters = [
+				new nlobjSearchFilter('mainline', null, 'is', 'T')
+			]
+
+		,	columns = [
+				new nlobjSearchColumn('trandate')
+			,	new nlobjSearchColumn('internalid')
+			,	new nlobjSearchColumn('tranid')
+			,	new nlobjSearchColumn('status')
+			,	new nlobjSearchColumn('total')
+			,	new nlobjSearchColumn(amount_field)
+			];
+
+		switch (data.filter)
+		{
+			case 'creditmemo':
+				types = ['CustCred'];
+			break;
+
+			case 'customerpayment':
+				types = ['CustPymt'];
+			break;
+
+			case 'customerdeposit':
+				types = ['CustDep'];
+			break;
+
+			case 'depositapplication':
+				types = ['DepAppl'];
+			break;
+
+			case 'invoice':
+				types = ['CustInvc'];
+			break;
+		}
+
+		filters.push(new nlobjSearchFilter('type', null, 'anyof', types));
+
+		if (data.from && data.to)
+		{
+			var offset = new Date().getTimezoneOffset() * 60 * 1000;
+
+			filters.push(new nlobjSearchFilter('trandate', null, 'within', new Date(parseInt(data.from, 10) + offset), new Date(parseInt(data.to, 10) + offset)));
+		}
+
+		switch (data.sort)
+		{
+			case 'number':
+				columns[2].setSort(data.order >= 0);
+			break;
+
+			case 'amount':
+				columns[5].setSort(data.order >= 0);
+			break;
+
+			default:
+				columns[0].setSort(data.order > 0);
+				columns[1].setSort(data.order > 0);
+		}
+
+		var result = Application.getPaginatedSearchResults('transaction', filters, columns, data.page || 1, 200);
+
+		result.records = _.map(result.records, function (record)
+		{
+			return {
+				recordtype: record.getRecordType()
+			,	internalid: record.getValue('internalid')
+			,	tranid: record.getValue('tranid')
+			,	trandate: record.getValue('trandate')
+			,	status: record.getText('status')
+			,	amount: toCurrency(record.getValue(amount_field))
+			,	amount_formatted: formatCurrency(record.getValue(amount_field))
+			};
+		});
+
+		return result;
+	}
+});
+
+
+//PrintStatement.js
+Application.defineModel('PrintStatement', {
+
+	getUrl: function(data)
+	{
+		'use strict';
+		var customerId = customer.getFieldValues(['internalid']).internalid
+		,	offset = new Date().getTimezoneOffset() * 60 * 1000
+		,	statementDate = null
+		,	startDate = null
+		,	openOnly = data.openOnly ? 'T' : 'F'
+		,	inCustomerLocale = data.inCustomerLocale ? 'T' : 'F'
+		,	consolidatedStatement = data.consolidatedStatement ? 'T' : 'F'
+		,	statementTimestamp = parseInt(data.statementDate,10)
+		,	startDateParam = data.startDate
+		,	startTimestamp = parseInt(startDateParam,10)
+		,	email = data.email
+		,	baseUrl = email ? '/app/accounting/transactions/email.nl' : '/app/accounting/print/NLSPrintForm.nl'
+		,	url = baseUrl + '?submitted=T&printtype=statement&currencyprecision=2&formdisplayview=NONE&type=statement';
+
+		if(isNaN(statementTimestamp) || (startDateParam && isNaN(startTimestamp))){
+			throw {
+				status: 500
+			,	code: 'ERR_INVALID_DATE_FORMAT'
+			,	message: 'Invalid date format'
+			};
+		}
+
+		statementDate = nlapiDateToString(new Date(statementTimestamp + offset));
+		startDate = startDateParam ? nlapiDateToString(new Date(startTimestamp + offset)) : null;
+
+		url += '&customer=' + customerId;
+		url += startDate ? ('&start_date=' + startDate) : '';
+		url += '&statement_date=' +  statementDate;
+		url += '&consolstatement=' + consolidatedStatement;
+		url += '&openonly=' + openOnly;
+		url += '&incustlocale=' + inCustomerLocale;
+
+		return url;
+	}
+});
 

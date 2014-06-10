@@ -1,7 +1,8 @@
 // OrderHistory.Router.js
 // -----------------------
 // Router for handling orders
-define('OrderHistory.Router',  ['OrderHistory.Views', 'PlacedOrder.Model','PlacedOrder.Collection'], function (Views, Model, Collection) {
+define('OrderHistory.Router',  ['OrderHistory.Views', 'PlacedOrder.Model','PlacedOrder.Collection'], function (Views, Model, Collection)
+{
 
 	'use strict';
 
@@ -13,14 +14,14 @@ define('OrderHistory.Router',  ['OrderHistory.Views', 'PlacedOrder.Model','Place
 		,	'ordershistory/view/:id': 'orderDetails'
 		}
 		
-	,	initialize: function(application)
+	,	initialize: function (application)
 		{
 			this.application = application;
 		}
 		
 	// list orders
-	,	ordersHistory: function(options) 
-		{debugger;
+	,	ordersHistory: function (options) 
+		{
 			options = (options) ? SC.Utils.parseUrlOptions(options) : {page: 1};
 			
 			options.page = options.page || 1;
@@ -42,7 +43,7 @@ define('OrderHistory.Router',  ['OrderHistory.Views', 'PlacedOrder.Model','Place
 		}
 		
 	// view order's detail
-	,	orderDetails: function(id)
+	,	orderDetails: function (id)
 		{
 			var model = new Model({internalid: id})
 			,	view = new Views.Details({

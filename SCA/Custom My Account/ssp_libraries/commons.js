@@ -22,7 +22,7 @@ if (typeof console === 'undefined') {
 
 		if (typeof console[method] === 'undefined')
 		{
-			console[method] = noop; 
+			console[method] = noop;
 		}
 	}
 
@@ -96,7 +96,7 @@ var Events = {
 
 		var calls, event, node, tail, list;
 
-		if (!callback) 
+		if (!callback)
 		{
 			return this;
 		}
@@ -127,7 +127,7 @@ var Events = {
 		var event, calls, node, tail, cb, ctx;
 
 		// No events, or removing *all* events.
-		if (!(calls = this._callbacks)) 
+		if (!(calls = this._callbacks))
 		{
 			return;
 		}
@@ -148,7 +148,7 @@ var Events = {
 			{
 				continue;
 			}
-			
+
 			// Create a new list, omitting the indicated callbacks.
 			tail = node.tail;
 			while ((node = node.next) !== tail) {
@@ -169,10 +169,10 @@ var Events = {
 	// receive the true name of the event as the first argument).
 	trigger: function(events) {
 		'use strict';
-		
+
 		var event, node, calls, tail, args, all, rest;
 		if (!(calls = this._callbacks))
-		{ 
+		{
 			return this;
 		}
 		all = calls.all;
@@ -209,13 +209,13 @@ Events.unbind = Events.off;
 var SC = {};
 
 var Application = _.extend({
-	
+
 	originalModels: {}
 
 ,	extendedModels: {}
-	
+
 ,	init: function () {}
-	
+
 ,	getEnvironment: function (session, request)
 	{
 		'use strict';
@@ -231,7 +231,7 @@ var Application = _.extend({
 			,	companyId: context.getCompany()
 			};
 
-		// If there are hosts asociated in the site we iterate them to check which we are in 
+		// If there are hosts asociated in the site we iterate them to check which we are in
 		// and which languga and currency we are in
 		if (result.availableHosts.length)
 		{
@@ -247,7 +247,7 @@ var Application = _.extend({
 
 						if (language.host === result.currentHostString)
 						{
-							// if we found the language we mark the host and the language and we brake 
+							// if we found the language we mark the host and the language and we brake
 							result = _.extend(result, {
 								currentHost: host
 							,	currentLanguage: language
@@ -284,13 +284,13 @@ var Application = _.extend({
 				}
 			}
 		}
-		
+
 		//////////////////////////////////////
 		// Sets the Currency of the shopper //
 		//////////////////////////////////////
 		var currency_codes = _.pluck(result.availableCurrencies, 'code');
-		
-		// there is a code passed in and it's on the list lets use it 
+
+		// there is a code passed in and it's on the list lets use it
 		if (request.getParameter('cur') && ~currency_codes.indexOf(request.getParameter('cur')))
 		{
 			result.currentCurrency = _.find(result.availableCurrencies, function (currency)
@@ -315,7 +315,7 @@ var Application = _.extend({
 		}
 		// We should have result.currentCurrency setted by now
 		result.currentCurrency && session.setShopperCurrency(result.currentCurrency.internalid);
-		
+
 		result.currentCurrency = _.find(result.availableCurrencies, function (currency)
 		{
 			return currency.code === session.getShopperCurrency().code;
@@ -359,11 +359,14 @@ var Application = _.extend({
 		// Shopper Price Level
 		result.currentPriceLevel = session.getShopperPriceLevel().internalid ? session.getShopperPriceLevel().internalid : session.getSiteSettings(['defaultpricelevel']).defaultpricelevel;
 
-		//////////////////////////////////////
-		// Sets the Permissions of the user //
-		//////////////////////////////////////
-		result.permissions = 
-		{
+		return result;
+	}
+
+,	getPermissions: function ()
+	{
+		'use strict';
+		var context = nlapiGetContext();
+		return	{
 			transactions:
 			{
 					tranCashSale : context.getPermission('TRAN_CASHSALE')
@@ -395,8 +398,6 @@ var Application = _.extend({
                 ,	listCrmMessage: context.getPermission('LIST_CRMMESSAGE')
 			}
 		};
-
-		return result;
 	}
 
 ,	wrapFunctionWithEvents: function (methodName, thisObj, fn)
@@ -410,22 +411,22 @@ var Application = _.extend({
 
 			// Fires the 'before:ObjectName.MethodName' event most common 'before:Model.method'
 			Application.trigger.apply(Application, ['before:' + methodName, thisObj].concat(args));
-			
+
 			// Executes the real code of the method
 			var result = func.apply(thisObj, args);
-			
+
 			// Fires the 'before:ObjectName.MethodName' event adding result as 1st parameter
 			Application.trigger.apply(Application, ['after:' + methodName, thisObj, result].concat(args));
-			
+
 			// Returns the result from the execution of the real code, modifications may happend in the after event
 			return result;
 		});
 	}
-	
+
 ,	defineModel: function (name, definition)
 	{
 		'use strict';
-		
+
 		Application.originalModels[name] = definition;
 	}
 
@@ -434,7 +435,7 @@ var Application = _.extend({
 		'use strict';
 
 		var model = {};
-		
+
 		_.each(Application.originalModels[name], function (value, key)
 		{
 			if (typeof value === 'function')
@@ -446,7 +447,7 @@ var Application = _.extend({
 				model[key] = value;
 			}
 		});
-		
+
 		if (!model.validate)
 		{
 			model.validate = Application.wrapFunctionWithEvents(name + '.validate', model, function (data)
@@ -474,7 +475,7 @@ var Application = _.extend({
 
 		Application.extendedModels[name] = model;
 	}
-	
+
 ,	extendModel: function (name, extensions)
 	{
 		'use strict';
@@ -486,9 +487,18 @@ var Application = _.extend({
 				Application.pushToExtendedModels(name);
 			}
 
+			var model = Application.extendedModels[name];
+
 			_.each(extensions, function (value, key)
 			{
-				Application.extendedModels[name][key] = value;
+			    if (typeof value === 'function')
+			    {
+			        model[key] = Application.wrapFunctionWithEvents(name + '.' + key, model, value);
+			    }
+			    else
+			    {
+			        model[key] = value;
+			    }
 			});
 		}
 		else
@@ -496,7 +506,7 @@ var Application = _.extend({
 			throw nlapiCreateError('APP_ERR_UNKNOWN_MODEL', 'The model ' + name + ' is not defined');
 		}
 	}
-	
+
 ,	getModel: function (name)
 	{
 		'use strict';
@@ -514,14 +524,14 @@ var Application = _.extend({
 		{
 			throw nlapiCreateError('APP_ERR_UNKNOWN_MODEL', 'The model ' + name + ' is not defined');
 		}
-			
+
 	}
-	
+
 ,	sendContent: function (content, options)
 	{
 		'use strict';
 
-		// Default options 
+		// Default options
 		options = _.extend({status: 200, cache: false}, options || {});
 
 		// Triggers an event for you to know that there is content being sent
@@ -534,7 +544,7 @@ var Application = _.extend({
 		var content_type = false;
 
 		// If its a complex object we transform it into an string
-		if (_.isArray(content) || _.isObject(content)) 
+		if (_.isArray(content) || _.isObject(content))
 		{
 			content_type = 'JSON';
 			content = JSON.stringify( content );
@@ -549,18 +559,18 @@ var Application = _.extend({
 
 		//Set the response chache option
 		if (options.cache)
-		{			
+		{
 			response.setCDNCacheable(options.cache);
 		}
-		
-		// Content type was set so we send it 
+
+		// Content type was set so we send it
 		content_type && response.setContentType(content_type);
 
 		response.write(content);
 
 		Application.trigger('after:Application.sendContent', content, options);
 	}
-	
+
 ,	processError: function (e)
 	{
 		'use strict';
@@ -568,7 +578,7 @@ var Application = _.extend({
 		var status = 500
 		,	code = 'ERR_UNEXPECTED'
 		,	message = 'error';
-		
+
 		if (e instanceof nlobjError)
 		{
 			code = e.getCode();
@@ -581,7 +591,7 @@ var Application = _.extend({
 			message = e.message;
 		}
 		else
-		{		
+		{
 			var error = nlapiCreateError(e);
 			code = error.getCode();
 			message = (error.getDetails() !== '') ? error.getDetails() : error.getCode();
@@ -603,21 +613,21 @@ var Application = _.extend({
 		{
 			content.errorDetails = e.errorDetails;
 		}
-		
+
 		return content;
 	}
-	
+
 ,	sendError: function (e)
 	{
 		'use strict';
 
 		Application.trigger('before:Application.sendError', e);
-		
+
 		var content = Application.processError(e)
 		,	content_type = 'JSON';
 
 		response.setHeader('Custom-Header-Status', content.errorStatusCode);
-		
+
 		if (request.getParameter('jsonp_callback'))
 		{
 			content_type = 'JAVASCRIPT';
@@ -627,11 +637,11 @@ var Application = _.extend({
 		{
 			content = JSON.stringify(content);
 		}
-		
+
 		response.setContentType(content_type);
 
 		response.write(content);
-		
+
 		Application.trigger('after:Application.sendError', e);
 	}
 
@@ -649,7 +659,7 @@ var Application = _.extend({
 				page: page,
 				recordsPerPage: results_per_page
 			};
-		
+
 		/// Performs a count search by the internal id
 		if (!doRealCount)
 		{
@@ -657,15 +667,15 @@ var Application = _.extend({
 			,	cuontSearchRan = cuontSearch.runSearch();
 
 			result.totalRecordsFound = parseInt(cuontSearchRan.getResults(0, 1)[0].getValue('internalid', null, 'count'), 10);
-		}	
-		
+		}
+
 		result.records = [];
-		
+
 		if (doRealCount || (result.totalRecordsFound > 0 && result.totalRecordsFound > range_start))
 		{
 			var search = nlapiCreateSearch(record_type, filters, columns)
 			,	searchRan = search.runSearch();
-			
+
 			if (doRealCount)
 			{
 				result.totalRecordsFound = searchRan.getResults(0, 1000).length;
@@ -673,13 +683,14 @@ var Application = _.extend({
 
 			result.records = searchRan.getResults(0, result.totalRecordsFound);
 		}
+
 		return result;
 	}
-	
+
 ,	getAllSearchResults: function (record_type, filters, columns)
 	{
 		'use strict';
-		
+
 		var search = nlapiCreateSearch(record_type, filters, columns);
 		search.setIsPublic(true);
 
@@ -688,7 +699,7 @@ var Application = _.extend({
 		,	intMaxReg = 1000
 		,	intMinReg = 0
 		,	result = [];
-		
+
 		while (!bolStop && nlapiGetContext().getRemainingUsage() > 10)
 		{
 			// First loop get 1000 rows (from 0 to 1000), the second loop starts at 1001 to 2000 gets another 1000 rows and the same for the next loops
@@ -697,13 +708,13 @@ var Application = _.extend({
 			result = Application.searchUnion(result, extras);
 			intMinReg = intMaxReg;
 			intMaxReg += 1000;
-			// If the execution reach the the last result set stop the execution 
+			// If the execution reach the the last result set stop the execution
 			if (extras.length < 1000)
 			{
 				bolStop = true;
-			}			
+			}
 		}
-		
+
 		return result;
 	}
 
@@ -713,7 +724,7 @@ var Application = _.extend({
 
 		return target.concat(array);
 	}
-	
+
 }, Events);
 
 // Utilities
@@ -722,12 +733,12 @@ function getItemOptionsObject (options_string)
 	'use strict';
 
 	var options_object = [];
-	
+
 	if (options_string && options_string !== '- None -')
 	{
 		var split_char_3 = String.fromCharCode(3)
 		,	split_char_4 = String.fromCharCode(4);
-		
+
 		_.each(options_string.split(split_char_4), function (option_line)
 		{
 			option_line = option_line.split(split_char_3);
@@ -744,16 +755,112 @@ function getItemOptionsObject (options_string)
 	return options_object;
 }
 
-function formatCurrency (amount)
+function formatCurrency (value, symbol)
 {
 	'use strict';
-	var shopper_currency = session.getShopperCurrency()
-	,	formatted_amount = parseFloat(amount);
+	var value_float = parseFloat(value);
 
-	formatted_amount = isNaN(formatted_amount) ? 0 : formatted_amount;
+	if (isNaN(value_float))
+	{
+		value_float = parseFloat(0); //return value;
+	}
 
-	return (formatted_amount < 0 ? '-' : '') + shopper_currency.symbol + Math.abs(formatted_amount).toFixed(shopper_currency.precision);
+	var negative = value_float < 0;
+	value_float = Math.abs(value_float);
+	value_float = parseInt((value_float + 0.005) * 100, 10) / 100;
+
+	var value_string = value_float.toString()
+
+	,	groupseparator = ','
+	,	decimalseparator = '.'
+	,	negativeprefix = '('
+	,	negativesuffix = ')'
+	,	settings = SC && SC.ENVIRONMENT && SC.ENVIRONMENT.siteSettings ? SC.ENVIRONMENT.siteSettings : {};
+
+	if (window.hasOwnProperty('groupseparator'))
+	{
+		groupseparator = window.groupseparator;
+	}
+	else if (settings.hasOwnProperty('groupseparator'))
+	{
+		groupseparator = settings.groupseparator;
+	}
+
+	if (window.hasOwnProperty('decimalseparator'))
+	{
+		decimalseparator = window.decimalseparator;
+	}
+	else if (settings.hasOwnProperty('decimalseparator'))
+	{
+		decimalseparator = settings.decimalseparator;
+	}
+
+	if (window.hasOwnProperty('negativeprefix'))
+	{
+		negativeprefix = window.negativeprefix;
+	}
+	else if (settings.hasOwnProperty('negativeprefix'))
+	{
+		negativeprefix = settings.negativeprefix;
+	}
+
+	if (window.hasOwnProperty('negativesuffix'))
+	{
+		negativesuffix = window.negativesuffix;
+	}
+	else if (settings.hasOwnProperty('negativesuffix'))
+	{
+		negativesuffix = settings.negativesuffix;
+	}
+
+	value_string = value_string.replace('.',decimalseparator);
+	var decimal_position = value_string.indexOf(decimalseparator);
+
+	// if the string doesn't contains a .
+	if (!~decimal_position)
+	{
+		value_string += decimalseparator + '00';
+		decimal_position = value_string.indexOf(decimalseparator);
+	}
+	// if it only contains one number after the .
+	else if (value_string.indexOf(decimalseparator) === (value_string.length - 2))
+	{
+		value_string += '0';
+	}
+
+	var thousand_string = '';
+	for (var i = value_string.length - 1; i >= 0; i--)
+	{
+							//If the distance to the left of the decimal separator is a multiple of 3 you need to add the group separator
+		thousand_string =	(i > 0 && i < decimal_position && (((decimal_position-i) % 3) === 0) ? groupseparator : '') +
+							value_string[i] + thousand_string;
+	}
+
+	if (!symbol)
+	{
+		if (typeof session !== 'undefined' && session.getShopperCurrency){
+			symbol = session.getShopperCurrency().symbol;
+		}
+		else if (settings.shopperCurrency)
+		{
+			symbol = settings.shopperCurrency.symbol;
+		}
+		else if (SC && SC.ENVIRONMENT && SC.ENVIRONMENT.currentCurrency)
+		{
+			symbol = SC.ENVIRONMENT.currentCurrency.symbol;
+		}
+
+		if(!symbol)
+		{
+			symbol = '$';
+		}
+	}
+
+	value_string  = symbol + thousand_string;
+
+	return negative ? (negativeprefix + value_string + negativesuffix) : value_string;
 }
+
 
 function toCurrency (amount)
 {
@@ -761,7 +868,103 @@ function toCurrency (amount)
 
 	var r = parseFloat(amount);
 
-	return isNaN(r) ? 0 : r; 
+	return isNaN(r) ? 0 : r;
+}
+
+function addAddressToResult (address, result)
+{
+	'use strict';
+
+	result.addresses = result.addresses || {};
+
+	address.fullname = address.attention ? address.attention : address.addressee;
+	address.company = address.attention ? address.addressee : null;
+
+	delete address.attention;
+	delete address.addressee;
+
+	if (!address.internalid)
+	{
+		address.internalid =	(address.country || '') + '-' +
+								(address.state || '') + '-' +
+								(address.city || '') + '-' +
+								(address.zip || '') + '-' +
+								(address.addr1 || '') + '-' +
+								(address.addr2 || '') + '-' +
+								(address.fullname || '') + '-' +
+								address.company;
+
+		address.internalid = address.internalid.replace(/\s/g, '-');
+	}
+
+	if (!result.addresses[address.internalid])
+	{
+		result.addresses[address.internalid] = address;
+	}
+
+	return address.internalid;
+}
+
+function setPaymentMethodToResult (record, result)
+{
+	'use strict';
+	var paymentmethod = {
+		type: record.getFieldValue('paymethtype')
+	,	primary: true
+	};
+
+	if (paymentmethod.type === 'creditcard')
+	{
+		paymentmethod.creditcard = {
+			ccnumber: record.getFieldValue('ccnumber')
+		,	ccexpiredate: record.getFieldValue('ccexpiredate')
+		,	ccname: record.getFieldValue('ccname')
+		,	internalid: record.getFieldValue('creditcard')
+		,	paymentmethod: {
+				ispaypal: 'F'
+			,	name: record.getFieldText('paymentmethod')
+			,	creditcard: 'T'
+			,	internalid: record.getFieldValue('paymentmethod')
+			}
+		};
+	}
+
+	if (record.getFieldValue('ccstreet'))
+	{
+		paymentmethod.ccstreet = record.getFieldValue('ccstreet');
+	}
+
+	if (record.getFieldValue('cczipcode'))
+	{
+		paymentmethod.cczipcode = record.getFieldValue('cczipcode');
+	}
+
+	if (record.getFieldValue('terms'))
+	{
+		paymentmethod.type = 'invoice';
+
+		paymentmethod.purchasenumber = record.getFieldValue('otherrefnum');
+
+		paymentmethod.paymentterms = {
+				internalid: record.getFieldValue('terms')
+			,	name: record.getFieldText('terms')
+		};
+	}
+
+	result.paymentmethods = [paymentmethod];
+}
+
+function isLoggedIn ()
+{
+     // MyAccount (We need to make the following difference because isLoggedIn is always false in Shopping)
+     if (request.getURL().indexOf('https') === 0)
+     {
+         return session.isLoggedIn();
+     }
+     else // Shopping
+     {
+         return parseInt(nlapiGetUser() + '', 10) > 0 && !session.getCustomer().isGuest();
+     }
 }
 
 /// Default error objetcs
