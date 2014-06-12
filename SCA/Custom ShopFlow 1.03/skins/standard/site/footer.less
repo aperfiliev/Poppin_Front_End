@@ -16,46 +16,181 @@ hr{
   //min-width: 900px;
   font-family: @font-family;
 }
-.row-fluid-15{
-  list-style: none;
+.clr{
+  clear: both;
+}
+.footer-row{
+  width: 100%;
+}
+.footer-row ul.block{
   float: left;
-  margin: 5px;
-  padding-right: 30px;
-  display: inline-block;
-  overflow: hidden;
-
-    li{
-      font-size: @font-size;
-      a {
-        color: @white;
-        font-size: @font-size;
-
-        &:hover{
-          color: #ffca36;
-          text-decoration: none;
-        }
-      }
-    }
-
+  padding: 0;
+  margin: 0 0 25px 0;
+  list-style: none;
+}
+.footer-row .block.first{
+  width: 14.35897436%;
+}
+.footer-row .block.second{
+  width: 11.62393162%;
+}
+.footer-row .block.third{
+  width: 10.08547009%;
+}
+.footer-row .block.forth{
+  width: 12.64957265%;
+}
+.footer-row .block.fifth{
+  width: 14.18803419%;
+}
+.footer-row .block.sixth{
+  width: 16.32478632%;
+}
+.footer-row .block.seventh{
+  width: 20.76923077%;
+  padding-left: 4.6%;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.footer-row li, .footer-row li a{
+  font-family: OmnesMediumRegular;
+  font-size: 12px;
+  color: #ffffff;
+}
+.footer-row li a:hover{
+  font-family: OmnesMediumRegular;
+  font-size: 12px;
+  color: rgba(255,255,255,.6);
+  text-decoration: none;
+}
+.footer-row li.title, .footer-row li.title a{
+  font-family: OmnesBoldRegular;
+  color: #ffffff;
+  font-size: 12px;
+}
+.footer-row li.title a:hover{
+  color: rgba(255,255,255,.6);
 }
 
-.span6{
-  margin: 10px 0;
-  p{
-    font-size: 10px;
-    span{
-      font-weight:bold;
-      font-size: 25px;
-    }
+.footer-row a.social{
+  display: inline-block;
+  height: 22px;
+  width: 22px;
+  margin: 7px 7px 15px 0;
+}
+
+.footer-row a.social.btn-facebook{
+  background: url(../../img/fb.jpg);
+}
+.footer-row a.social.btn-twitter{
+  background: url(../../img/twt.jpg);
+}
+.footer-row a.social.btn-pinterest{
+  background: url(../../img/pint.jpg);
+}
+.footer-row a.social.btn-instagram{
+  background: url(../../img/instagram.png);
+}
+.footer-row a.social.btn-youtube{
+  background: url(../../img/youtube.png);
+}
+.footer-row a.social.btn-linkedin{
+  background: url(../../img/linkedin.png);
+}
+.footer-row  .can-pop{
+  margin-top: 7px;
+  cursor: pointer;
+}
+.dot-bg{
+  width: 100%;
+  background: url(../../img/dot-bg.png);
+  height: 1px;
+}
+.footer-end{
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 45px;
+}
+.footer-end .footer-end-left{
+  float: left;
+}
+.footer-end .footer-end-left p{
+  color: #ffffff;
+  font-size: 12px;
+  margin: 0;
+}
+.footer-end .footer-end-left p span, .footer-end .footer-end-right p span{
+  color: #ffffff;
+  font-family: OmnesBoldRegular;
+  font-size: 38px;
+}
+.footer-end .footer-end-right{
+  float: right;
+}
+.footer-end .footer-end-right p{
+  color: #ffffff;
+  font-size: 12px;
+  margin: 0;
+}
+
+
+/*=====================================================
+=            Bootstrap 2.3.2 Media Queries            =
+=====================================================*/
+@media only screen and (max-width : 1200px) {
+  .footer-row .block.seventh{
+    padding-left: 0.6%;
+
   }
 
 }
 
-.title{
-	margin-top: @margin-top;
-	margin-bottom: @margin-top;
-	font-weight: bold;
+@media only screen and (max-width : 979px) {
+  .footer-row .block.first,
+  .footer-row .block.second,
+  .footer-row .block.third,
+  .footer-row .block.forth,
+  .footer-row .block.fifth,
+  .footer-row .block.sixth{
+    width: 33.333333%;
+  }
+  .footer-row .block.seventh{
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+  .footer-row .block.forth{
+    clear: both;
+  }
+
+  .footer-row .block.second,
+  .footer-row .block.fifth{
+    text-align: center;
+  }
+
+  .footer-row .block.third,
+  .footer-row .block.sixth{
+    text-align: right;
+  }
+  .footer-row .title.padded, .footer-row .block.seventh img{
+    padding: 0;
+  }
 }
-.text-right{
-	text-align: right;
+
+@media only screen and (max-width : 767px) {
+  .footer-end .footer-end-right, .footer-end .footer-end-left{
+    width: 100%;
+    text-align: center;
+  }
 }
+
+@media only screen and (max-width : 480px) {
+
+}
+
+@media only screen and (max-width : 320px) {
+
+}
+
+
