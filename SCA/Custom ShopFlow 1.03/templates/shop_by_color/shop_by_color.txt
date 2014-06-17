@@ -1,0 +1,4 @@
+<section>
+	<h1><%= view.page_header %></h1>
+	<div id="shop-by-color-content" class="shop-by-color-content">shop-by-color</div>
+</section>

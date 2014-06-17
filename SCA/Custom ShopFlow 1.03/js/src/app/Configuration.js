@@ -34,6 +34,7 @@
 		,	'MultiCurrencySupport'
 		,	'MultiHostSupport'
 		,	'PromocodeSupport'
+			'ShopByColor' 
 		,	'SiteSearch'
 		,	'SocialSharing'
 		,	'ProductReviews'
@@ -151,7 +152,7 @@
 			}
 		}
 		,	{
-			text: _('Furniture + Décor').translate()
+			text: _('Furniture + Decor').translate()
 		,	href: '/Furniture_10'
 		,	data: {
 				touchpoint: 'home'
