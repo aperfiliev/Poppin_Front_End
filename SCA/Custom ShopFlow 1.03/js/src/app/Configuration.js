@@ -34,7 +34,7 @@
 		,	'MultiCurrencySupport'
 		,	'MultiHostSupport'
 		,	'PromocodeSupport'
-			'ShopByColor' 
+		,	'ShopByColor'
 		,	'SiteSearch'
 		,	'SocialSharing'
 		,	'ProductReviews'
