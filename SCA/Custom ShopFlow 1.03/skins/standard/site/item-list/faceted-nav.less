@@ -51,9 +51,9 @@
 	padding: 4px 8px;
 
 	> .heading {
-		font-size: @baseFontSize;
+		font-size: 13px;
 		font-weight: bold;
-		line-height: @baseLineHeight;
+		line-height: 21px;
 		margin: 0;
 		overflow: hidden;
 		padding: 6px 0 4px 0;		
@@ -136,7 +136,7 @@
 		}
 
 		&.icon-chevron-down {
-			background-position: 1px -14px;
+			background-position: 0 -333px;
 		}
 
 		&.icon-chevron-right {
@@ -147,7 +147,8 @@
 	.nav-list {
 		h4 {
 			margin: 0;
-			font-size: @baseFontSize
+			font-size: 14px;
+            color: @wellLinkColor ;
 		}
 	}
 }
@@ -196,4 +197,29 @@
 	.bar {
 		background: #cbcbcb;
 	}
+}
+
+
+.facet-well .heading.collapsed i.icon-chevron-down{
+  background: transparent url(@siteSpritePath) no-repeat;
+  background-position: 0 -333px;
+  width: 7px;
+  position: relative;
+  margin-left: 5px;
+  top: 8px;
+
+}
+
+.facet-well .heading i.icon-chevron-down{
+  background: transparent url(@siteSpritePath) no-repeat;
+  background-position: -7px -333px;
+  width: 7px;
+  position: relative;
+  margin-left: 5px;
+  top: 8px;
+}
+
+.filters.collapse ul.nav.nav-list{
+  padding-left: 0;
+  margin-left: 0;
 }
