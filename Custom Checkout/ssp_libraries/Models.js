@@ -1237,8 +1237,8 @@ Application.defineModel('LiveOrder', {
 		}
 		
 //		order.set('department',1);
-		var data = {'id': confirmation.internalid};
-		nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=339&deploy=1&compid=3363929&h=691dd3ebdec1f00b8620 ', data);
+		//var data = {'id': confirmation.internalid};
+		//nlapiRequestURL('https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=339&deploy=1&compid=3363929&h=691dd3ebdec1f00b8620 ', data);
 
 		// checks if necessary delete addresses after submit the order.
 		this.removePaypalAddress(shipping_address_id, billing_address_id);
