@@ -33,7 +33,8 @@ define('Facets.Views', ['Cart', 'Facets.Helper', 'Categories'], function (Cart, 
 			this.statuses = statuses;
 			this.translator = options.translator;
 			this.application = options.application;
-			this.category = Categories.getBranchLineFromPath(this.translator.getFacetValue('category'))[0];
+			//this.category = Categories.getBranchLineFromPath(this.translator.getFacetValue('category'))[0];
+			this.category = Categories.getFilteredPoppinTree();
 		}
 
 	,	getPath: function ()
@@ -78,7 +79,7 @@ define('Facets.Views', ['Cart', 'Facets.Helper', 'Categories'], function (Cart, 
 
 			return null;
 		}
-
+	
 	,	getRelNext: function ()
 		{
 			var next_page_url = this.getPath()
@@ -111,8 +112,14 @@ define('Facets.Views', ['Cart', 'Facets.Helper', 'Categories'], function (Cart, 
 				,	facet = _.find(facets, function (facet) {
 						return facet.id === facet_id;
 					});
-
-				$nav.append( SC.macros[ facet_macro ](translator, facet_config, facet) );
+				if (facet_id == "category") {
+					var options = {
+							categoryTree : Categories.getFilteredPoppinTree()
+						};
+					$nav.append( SC.macros[ facet_macro ](translator, facet_config, facet, options) );
+				} else {
+					$nav.append( SC.macros[ facet_macro ](translator, facet_config, facet) );					
+				}
 			});
 			
 			this.$('div[data-type="all-facets"]').each(function (i, nav)
@@ -240,6 +247,17 @@ define('Facets.Views', ['Cart', 'Facets.Helper', 'Categories'], function (Cart, 
 		}
 
 		// overrides Backbone.Views.getTitle
+	
+	,   getSubcategoryImage: function () {
+		var categories = Categories.getBranchLineFromPath(this.options.translator.getFacetValue('category')); 
+		if(categories && categories.length > 0)
+		{
+			var category = categories[categories.length - 1]; 
+			return category.storedisplayimage; 
+		}
+		return null;
+	}
+	
 	,	getTitle: function ()
 		{
 			if (this.title)
@@ -595,7 +613,8 @@ define('Facets.Views', ['Cart', 'Facets.Helper', 'Categories'], function (Cart, 
 							behavior: 'single'
 						,	id: 'category'
 						,	name: sub_category.itemid
-						,	uncollapsible: true
+						,	uncollapsible: false
+						,	collapsed : true
 						,	url: self.category.urlcomponent + '/' + sub_category.urlcomponent			
 						}
 					,	values: {

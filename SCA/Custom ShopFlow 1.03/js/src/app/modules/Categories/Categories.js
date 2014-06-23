@@ -7,13 +7,19 @@ define('Categories', function ()
 	
 	return {
 		
+		//@deprecated
 		tree: {}
+	
+	,	filteredPoppinTree: {}
 		
 		// Categories.reset: 
 		// Refreshes the tree
 	,	reset: function (tree)
 		{
 			this.tree = tree;
+			this.filteredPoppinTree = _.filter(this.tree, function(obj) {
+				return obj.itemid == "Categories";
+			})[0];			
 		}
 	
 		// Categories.getTree: 
@@ -22,6 +28,13 @@ define('Categories', function ()
 		{
 			return jQuery.extend(true, {}, this.tree);
 		}
+	
+		// Categories.getTree: 
+		// Returns a deep copy of the category tree
+	,	getFilteredPoppinTree: function ()
+		{
+			return jQuery.extend(true, {}, this.filteredPoppinTree);
+		}	
 		
 		// Categories.getBranchLineFromPath:
 		// given a path retuns the branch that fullfil that path,
@@ -48,9 +61,11 @@ define('Categories', function ()
 			for (var i = 0; i < array.length; i++)
 			{
 				var current_token = array[i];
+				if (slice.categories) {
 				var result = slice.categories.filter(function( obj ) {
 					  return obj.urlcomponent == current_token;
 					});
+				}
 				if (slice.categories && result.length>0)
 				{
 					branch.push(result[0]);
@@ -94,7 +109,7 @@ define('Categories', function ()
 				if (category.categories)
 				{
 					tab.categories = self.makeNavigationTab(category.categories, href);
-				}
+				}	
 
 				result.push(tab);
 			});
@@ -103,30 +118,36 @@ define('Categories', function ()
 		}
 
 	,	addToNavigationTabs: function (application)
-		{
-//			var tabs = this.makeNavigationTab(this.getTree());
-			var tabs = this.getTree();
-			var filtered_tabs =[];
-			_.each(tabs, function(tab){
-				_.each(application.Configuration.navigationTabs, function(navTab){
-					if(navTab.href == ("/"+tab.urlcomponent)){
-						filtered_tabs.push(tab);
-					}
-				});
+	{
+	//	var tabs = this.makeNavigationTab(this.getTree());
+		var tabs = this.getTree();
+		var filtered_tabs =[];
+		_.each(tabs, function(tab){
+			_.each(application.Configuration.navigationTabs, function(navTab){
+				if(navTab.href == ("/"+tab.urlcomponent)){
+					if(navTab.data.color){ tab.color = navTab.data.color; } 
+					filtered_tabs.push(tab);
+//					_.each(tab.categories, function(subtab){
+//						
+//						filtered_tabs.push(subtab);
+//					});
+					//filtered_tabs.push(tab.categories[0]);
+				}
 			});
+		});
+		
+//		application.Configuration.navigationTabs = _.union(application.Configuration.navigationTabs, tabs);
+		application.Configuration.navigationTabs = this.makeNavigationTab(filtered_tabs);
 
-//			application.Configuration.navigationTabs = _.union(application.Configuration.navigationTabs, tabs);
-			application.Configuration.navigationTabs = this.makeNavigationTab(filtered_tabs);
-
-			return;
-		}
+		return;
+	}
 
 	,	mountToApp: function (application, options)
 		{
-//			if (options && options.addToNavigationTabs)
-//			{
+			if (options && options.addToNavigationTabs)
+			{
 				this.addToNavigationTabs(application);
-//			}
+			}
 		}
 	};
 });

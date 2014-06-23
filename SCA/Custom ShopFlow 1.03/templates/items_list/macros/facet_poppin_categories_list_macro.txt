@@ -1,0 +1,46 @@
+<% registerMacro('facetPoppinCategoriesList', function (options) { %>
+<%  
+    var translator = options.translator,
+        facet = options.facet,
+        config = translator.getFacetConfig('category'),
+        categoryTree = options.categoryTree,
+        rootUrlCcomponent = categoryTree.urlcomponent;
+%>      
+    <% _.each(categoryTree.categories, function(category) { %>         
+        <%
+            var facet_html_id = _.uniqueId('facetList_'),
+                facetValue = translator.getFacetValue(facet.id),
+                selected = facetValue ? facetValue.split("/") : []  
+        %>                
+        <div id="<%= facet_html_id %>" class="well-section facet-well" data-type="rendered-facet" data-facet-id="<%= facet.id %>">
+            <h3 class="heading" data-toggle="collapse" data-target="#<%= facet_html_id %> .filters" data-type="collapse" title="<%= category.itemid %>">
+                <%= category.itemid %>
+                <i class="icon-chevron-down" data-collapsed="true"></i>
+            </h3>
+            <div class="filters <%= !config.uncollapsible && config.collapsed ? 'collapse' : 'in' %>">
+                <ul class="nav nav-list">
+                <%  var firstLevelUrlComponent  = category.urlcomponent %> 
+                    <% _.each(category.categories, function(category) { %>                                 
+                        <% is_active = _.contains(selected, category.urlcomponent); %>
+                        <li class="<%= is_active ? 'active' : '' %>">
+                            <h4>
+                                <%
+                                    var url = rootUrlCcomponent + "/" + firstLevelUrlComponent + "/" +category.urlcomponent;
+                                    url = translator.cloneForFacetId(facet.id, url).getUrl(); 
+                                %>
+                                <a href="<%=url  %>" title="<%= category.itemid %>">
+                                    <span>
+                                        <%= category.itemid %>
+                                    </span>
+                                    <span class="hidden">
+                                        (<%= category.count %>)
+                                    </span>
+                                </a>
+                            </h4>  
+                        </li>                                        
+                    <% }) %>
+               </ul>
+            </div>            
+        </div>
+    <% }) %>
+<% }) %>

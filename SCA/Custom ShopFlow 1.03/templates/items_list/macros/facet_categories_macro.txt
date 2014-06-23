@@ -1,4 +1,4 @@
-<% registerMacro('facetCategories', function (translator, config, facet) { %>
+<% registerMacro('facetCategories', function (translator, config, facet, options) { %>
 <%
 	var selected = translator.getFacetValue(facet.id)
 	,	tree = translator.getMergedCategoryTree(facet.values)
@@ -13,19 +13,14 @@
 				tab = treeItem;
 			}
 		});
-	}
-	
+    }		
 %>
-<div id="<%= facet_html_id %>" class="well-section facet-well" data-type="rendered-facet" data-facet-id="<%= facet.id %>">
-	<h3 class="heading uncollapsible"></h3>
-	<div class="filters <%= !config.uncollapsible && config.collapsed ? 'collapse' : 'in' %>">
-		<%= SC.macros.facetCategoriesList({
+		<%= SC.macros.facetPoppinCategoriesList({
 			list: translator.getMergedCategoryTree(facet.values, tab.categories)
 		,	facet: facet
 		,	translator: translator
 		,	selected: translator.getFacetValue(facet.id)
 		,	url_memo: tab.urlcomponent
+		,   categoryTree : options.categoryTree
 		}) %>
-	</div>
-</div>
 <% }) %>

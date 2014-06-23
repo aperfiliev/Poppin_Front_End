@@ -63,7 +63,9 @@ define('Facets.Router', ['Facets.Views', 'Facets.Helper', 'Facets.Model', 'Categ
 			var current_facets = translator.getAllFacets()
 			,	categories = Categories.getBranchLineFromPath(translator.getFacetValue('category'));
 
-			return (current_facets.length === 1 && current_facets[0].id === 'category' && categories.length === 1 && _.size(categories[0].categories));
+			//return (current_facets.length === 1 && current_facets[0].id === 'category' && categories.length === 1 && _.size(categories[0].categories));
+			//return !categories[categories.length-1].isLastLeaf;
+			return (current_facets.length === 1 && current_facets[0].id === 'category' && categories.length<=2 &&_.size(categories[categories.length-1].categories));
 		}
 
 	,	showCategoryPage: function(translator)

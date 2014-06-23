@@ -172,7 +172,7 @@ define('Facets.Translator'
 				}
 				break;
 			default: 
-				parsed_value = value;
+					parsed_value = value;
 			}
 			return parsed_value;
 		}
@@ -272,6 +272,17 @@ define('Facets.Translator'
 
 		// facetsTranslator.getUrl:
 		// Gets the url for current stae of the object
+	
+	,   isMainCategories : function ()
+	{
+		var categories = Categories.getBranchLineFromPath(this.getFacetValue('category'));
+		if (categories.length == 1) {
+			return false;
+		} else {
+			return categories[categories.length-1];
+		}
+	}
+	
 	,	getUrl: function ()
 		{
 			var url = ''
@@ -443,7 +454,7 @@ define('Facets.Translator'
 				}
 				else
 				{
-					if (!_.isEqual(current_facet.value, facet_value))
+					if (!_.isEqual(current_facet.value, facet_value) || current_facet.id == "category")
 					{
 						current_facet.value = facet_value;
 					}
