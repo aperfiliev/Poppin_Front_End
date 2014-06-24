@@ -1,0 +1,109 @@
+<style type="text/css">
+
+.review-layover{
+	position:absolute;
+	margin-left: 50px;
+	margin-top: -170px;
+	width: 500px;
+	height: 400px;
+	background: white;
+	-webkit-box-shadow: 10px 10px 10px #9E9E9E;
+    -moz-box-shadow:    10px 10px 10px #9E9E9E;
+    box-shadow:         10px 10px 10px #9E9E9E;
+    z-index:999;
+    overflow:scroll;
+    height:
+}
+#cardmessage_module{
+	border
+}
+</style>
+
+<% console.log('tuta'); console.log(view.profile.get("creditcards")); var paymentmethods = view.profile.get("creditcards").models;  %>
+<% _.each(paymentmethods, function (paymentmethod) { console.log(paymentmethod); %>
+<div class="row-fluid">
+	<div style="width: 605px; height: 160px; border-width:2px; border-color: #e2e2e2; border-style: solid; display: inline-flex;">
+	<div class="span6 wizard-showpayments-billing-payment-method" style="width: 220px; height: 140px; margin-left: 20px; font-size: 15px;">
+		<% if (paymentmethods.length || !view.wizard.hidePayment()) {%>
+			<h4 class="section-header"  style="color: #f87c00; font-size: 17px; margin-bottom: 10px; margin-left: 7px;">
+				<%= _('BILLING DETAILS').translate() %>
+			</h4>
+
+			<div class="payment-methods-summary" style="margin-bottom: 7px;">		
+			<input type="radio" checked style="margin-right: 5px; color: #f97d00; background-color: #f97d00">
+					<%= SC.macros.formatPaymentMethod(paymentmethod, view.wizard.application.getConfig('creditCardIcons')) %>
+				<% if (view.profile.get('isGuest') === 'T') { %>
+					<div>
+						<h5><%- view.profile.get('email') %></h5>
+					</div>
+				<% } %>
+			</div>
+			<% if (paymentmethods.length > 0){ %>
+			<div style="padding-top: 30px;">
+			<a href="/creditcards/<%=paymentmethod.get('internalid') %>" data-toggle="show-in-modal" style=" margin-left: 31px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('edit').translate() %>
+			</a>
+			<% }%>
+				<a class="btn btn-link" href="/creditcards/newc" data-toggle="show-in-modal" style=" border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+					<%= _('Add New Credit Card / Address').translate() %>
+				</a>
+			</div>
+		<% } %>
+	</div>
+		
+		<div style="margin-top: 25px;">
+		<img src="img/vertical_dottenline.png" />
+		</div>
+		
+	<div class="span6 wizard-showpayments-billing-address" style="height: 140px; width: 335px; margin-left: 40px; margin-top: 33px;">
+	<%  var bypayment =  _.where(view.profile.get('addresses').models, {id: paymentmethod.get('addressid') }); console.log(bypayment)  %> 
+		<%= address(bypayment[0], {
+			hideActions: true
+		,	hideDefaults: true
+		,	verifyReview: "review"
+		}) %>
+	</div>
+	
+	</div>
+	
+	<div class="review-layover" id="change-payment" style="display:none; padding: 40px;">
+		<button type="button" class="close" onclick="jQuery('#change-payment').hide()">×</button>
+		<!-- billing address here -->
+		<%
+			// Wrap the address address macro to pass options in
+			var addressWrap = function (address) {
+				return SC.macros['address'](address, {
+					showSelect: true
+				,	selectMessage: view.selectMessage
+				,	hideDefaults: true
+				,	selectedAddress: view.model.get("billaddress")
+				,	verifyAddress: "billaddress"
+				});
+			}
+		%>
+		<div style="width:200px; float:right">
+		<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+				<%
+			var creditcardWrap = function (creditcard) {
+				return SC.macros.creditcard(creditcard, {
+					showSelect: true
+				,	showActions: true
+				,	showDefaults: false
+				,	selectMessage: view.selectMessage
+				,	icons: view.wizard.application.getConfig('creditCardIcons')
+				,	selectedCreditcard: paymentmethod.get('internalid')
+				,	showSecurityCodeForm: true
+				,	step: "review"
+				});
+			} 
+		%>
+		</div>
+		<div  style="width:200px; float:left">
+		<%= displayInRows(view.profile.get("creditcards").models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
+		</div>
+	</div>
+</div>
+<% }); %>
+
+
+<div class="test" id="showpaymentsandbillings-creditcard"></div>

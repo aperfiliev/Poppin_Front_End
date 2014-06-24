@@ -1,0 +1,72 @@
+<% registerMacro('creditcardSecurityNumberForm', function (options) { %>
+<% options = options || {}; console.log("ccoptions");console.log(options); /*console.log(jQuery.cookie("cvc"));*/%>
+
+<%    var result;        var nameEQ = "cvc" + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) result = c.substring(nameEQ.length, c.length);
+            }
+            var cvc = options.value || result;
+            %>
+
+<div class="credit-card-security-number">
+	<div class="control-group <%= options.error ? 'error' : '' %>" style="display:<%= (options.hidden) ? 'none':''%>; margin-top: -10px;">
+	
+<% if(location.hash.indexOf('review')>-1){ %>
+	<label class="control-label" for="ccsecuritycode" <%= options.verifyModal ?  'style="width: 90px; margin-left: 4px;"':'style="width: 136px; margin: 0px;"'%>>
+			<img style="margin-right: 7px;" src="<%=_.getAbsoluteUrl('img/checkout-arrow.gif') %>"/>
+			<span style="font-weight: normal; font-size:15px"><%= _('Security Code').translate() %></span>
+</label>
+<% }else{ %>
+			<label class="control-label" for="ccsecuritycode" <%= (options.isNew) ? 'style="width: 117px; margin-left: 4px;"':'style="width: 91px; margin-left: 4px;"'%>>
+			<%= _('Security Code').translate() %>
+		</label>
+<% } %>		
+		<div class="controls" style="width:100px;" >
+			<input
+				type="password"
+				class="input-mini"
+				id="ccsecuritycode"
+				name="ccsecuritycode"
+				value="<%- cvc %>"
+				maxlength="4"
+				style="font-size: 15px; height:22px;border: 1px solid rgb(31, 216, 31); <%= options.step == "review" ? 'border: 1px solid rgb(31, 216, 31);' : '' %>"
+			>
+			<% if (options.error) { %>
+				<p class="help-block">
+					<%= options.error.errorMessage %>
+				</p>
+			<% } %>
+			<% if(!options.hidehelp) { %>
+			<a href="#" name="whatisthis" id="whatisthisinfo_button" class="whatisthis" ><img style="margin: 0 0 5px 5px;" src="<%=_.getAbsoluteUrl('img/whatsthis.jpg') %>"/>
+ </a>
+<div style="padding: 5px; border: 2px solid #e2e2e2; width:290px; font-size:14px; font-weight:normal; display: none;background:white;z-index: 1000;position:absolute;" id="whatisthisinfo">
+				<img src="img/explain_cvc.png" alt="explain"><br/>
+				For security purposes, we require the Card Security Code on your credit card. 
+				For most credit cards, enter the three-digit number that follows your account number on the back of your card. 
+				If you have an American Express card, enter the four-digit number printed above your account number on the front of your card.
+			</div>
+			
+<script>
+		jQuery('#whatisthisinfo_button').hover(function(){
+        jQuery('#whatisthisinfo').show("slow");
+},function(){
+        jQuery('#whatisthisinfo').hide("slow");
+});
+</script>
+		
+		<script>
+		jQuery('#in-modal-whatisthisinfo_button').hover(function(){
+		        jQuery('#in-modal-whatisthisinfo').show("slow");
+		},function(){
+		        jQuery('#in-modal-whatisthisinfo').hide("slow");
+		});
+		</script>
+		<% } %>
+		<div id="cvc-error" style="margin-left: -100px; margin-top: -10px; width: 256px;"></div>
+		</div>
+	</div>
+</div>
+<% }) %>

@@ -1,0 +1,114 @@
+<%
+	var SiteSettings
+	,	Cart
+	,	Profile
+	,	Content
+	,	Address
+	,	CreditCard
+	,	Environment
+	,	Merchandising
+	,	Error;
+	
+	try {
+		
+		Environment = Application.getEnvironment(session, request);
+		SiteSettings = Application.getModel('SiteSettings').get();
+		Cart = Application.getModel('LiveOrder').get();
+		Profile = Application.getModel('Profile').get();
+
+		// Content depends on the instalation and inclusion of the 
+		// ContentDeliverService provided as a separated boundle 
+		try {
+			Content = Application.getModel('Content');
+		} catch (e) {
+			console.warn('Content Module not present in ShopFlow SSP');
+		}
+
+		if (session.isLoggedIn())
+		{
+			Address =  Application.getModel('Address').list();
+			CreditCard = Application.getModel('CreditCard').list();
+		}
+
+		if (typeof psg_dm !== 'undefined')
+		{
+			Merchandising = psg_dm.getMerchRule();
+		}
+		else
+		{
+			console.warn('Merchandising Module not present in ShopFlow SSP');
+		}
+
+	} catch (e) {
+		Error = Application.processError(e);
+	}	
+	
+	response.setContentType('JAVASCRIPT');
+%>
+
+var SC = window.SC = { ENVIRONMENT: {} };
+
+<% if (Environment) { %>
+	// Server Environment Info	
+	SC.ENVIRONMENT = <%= JSON.stringify(Environment) %>;
+<% } %>
+
+<% if (SiteSettings) { %>
+	// Site Settings Info
+	SC.ENVIRONMENT.siteSettings = <%= JSON.stringify(SiteSettings) %>;
+	// Site site (ADVANCED or STANDARD)
+	SC.ENVIRONMENT.siteType = '<%= SiteSettings.sitetype %>';
+<% } %>
+
+SC.ENVIRONMENT.jsEnvironment = 'browser';
+
+<% if (Cart) { %>
+	// The Cart
+	SC.ENVIRONMENT.CART = <%= JSON.stringify(Cart) %>;
+<% } %>
+
+<% if (Profile) { %>
+	// The Profile
+	SC.ENVIRONMENT.PROFILE = <%= JSON.stringify(_.extend(Profile, {isLoggedIn: (session.isLoggedIn()) ? 'T' : 'F'})) %>;
+<% } %>
+
+<% if (Address) { %>
+	// The Address
+	SC.ENVIRONMENT.ADDRESS = <%= JSON.stringify(Address) %>;
+<% } %>
+
+<% if (CreditCard) { %>
+	// The Credit Card
+	SC.ENVIRONMENT.CREDITCARD = <%= JSON.stringify(CreditCard) %>;
+<% } %>
+
+<% if (Merchandising) { %>
+	// Merchandising
+	SC.ENVIRONMENT.MERCHANDISING = <%= JSON.stringify(Merchandising, {}) %>;
+<% } %>
+
+// Touch Support
+// Checks if this is a touch enalbed device
+SC.ENVIRONMENT.isTouchEnabled = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
+// Sets the class property of the html element 
+document.documentElement.className = (SC.ENVIRONMENT.isTouchEnabled) ? "touch" : "no-touch";
+
+// Include Language Files
+document.write('<script src="<%= session.getAbsoluteUrl('checkout', 'languages/en.js') %>"><\\/script>');
+
+<% if (Environment && Environment.currentLanguage && Environment.currentLanguage.locale && Environment.currentLanguage.locale !== 'en') { %>
+	document.write('<script src="<%= session.getAbsoluteUrl('checkout', 'languages/' + Environment.currentLanguage.locale + '.js') %>"><\\/' + 'script' + '>');
+<% } %>
+
+
+<% if (Error) { %>
+
+	SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;
+	
+	if(!SC.ENVIRONMENT.baseUrl)
+	{
+		SC.ENVIRONMENT.baseUrl = '<%=  session.getAbsoluteUrl(request.getURL().indexOf('https:') === 0 ? 'checkout' : 'shopping', '/{{file}}') %>';
+	}
+
+<% } %>
+

@@ -1,0 +1,232 @@
+<% registerMacro('addressFrom', function (address, options) { %>
+<% 
+	var site_settings = SC.ENVIRONMENT.siteSettings
+	,	manage = options.manage ? options.manage + '-' : ''
+	,	countries = options.countries
+	,	quantity_countries = _.size(countries)
+	,	selected_country = address.get('country') || site_settings.defaultshipcountry
+	,	application = this.view.options.application || this.view.options.wizard.application;
+	
+	
+	if (quantity_countries === 1)
+	{
+		selected_country = _.keys(countries)[0];
+	}
+%>
+<fieldset>
+	<div data-type="alert-placeholder"></div>
+	<% if (address.id && address.id == application.getCart().attributes.billaddress && address.id == application.getCart().attributes.shipaddress) {%>
+	<div>
+	<span style="font-size:14px;color: #c5c5c5;">Changes made to this address will be applied to both your billing and shipping addresses.</span></div><br>
+	<% } %>
+	<% ;if (address.isNew() && options.manage=='billaddress') { %>
+	<div class="control-group">
+			<div class="controls" style="margin-left:65px">
+				<label class="checkbox" style="width:100%">
+					<input type="checkbox" id="copyshipping" value="F" data-unchecked-value="F" name="copyshipping">
+					<%=  _('Same as shipping address').translate()  %>
+				</label>
+			</div>
+	</div>
+	<% } %>
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>namePrefix">
+			<%= _('Prefix').translate() %>
+		</label>
+		<div class="controls">
+			<select id="<%= manage %>namePrefix" name="namePrefix" class="input-small">
+				<option>-Select-</option>
+				<option value="Mr." <%= address.get('namePrefix')==='Mr.' ? 'selected' : '' %>>Mr.</option>
+<option value="Mrs/Ms." <%= address.get('namePrefix')==='Mrs/Ms.' ? 'selected' : '' %>>Mrs./Ms.</option>
+			</select>
+		</div>
+	</div>
+
+			<!--<div class="controls" style="display: none;">
+			<input type="text" name="label" value="<%-options.manage%>">
+		</div>-->
+	
+	
+		<div class="control-group">
+		<label class="control-label" for="<%= manage %>firstfullname">
+			<%= _('First').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-large" id="<%= manage %>firstfullname" maxlength="30" name="firstfullname" value="<%- address.get('firstfullname')%>">
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>lastfullname">
+			<%= _('Last').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-large" id="<%= manage %>lastfullname" maxlength="30" name="lastfullname" value="<%- address.get('lastfullname')%>">
+		</div>
+	</div>
+	
+	<% /* 
+	TODO: the next field should be shown/hidden depending on a feature in Setup Website > Shopping
+	registration has 2 fields: displaycompanyfield and showcompanyfield, not sure which to use 
+	*/ %>
+	<% if (site_settings.registration.displaycompanyfield === 'T') { %>
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>company">
+			<%= _('Company').translate() %>
+			<% if (site_settings.registration.companyfieldmandatory === 'T') { %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+			<% } %>
+		</label>
+		<div class="controls">
+			<input
+				type="text"
+				class="input-large"
+				id="<%= manage %>company"
+				name="company"
+				maxlength="30"
+				value="<%- address.get('company') %>"
+				<% if (site_settings.registration.companyfieldmandatory !== 'T') { %>
+					placeholder="<%= _('(optional)').translate() %>"
+				<% } %>
+			>
+		</div>
+	</div>
+	<% } %>
+	
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>addr1">
+			<% if (address.isNew()) {%> 
+				<%= _('Address').translate() %>
+			<% } else { %>
+				<%= _('Address').translate() %>
+			<% } %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-large" id="<%= manage %>addr1" maxlength="30" name="addr1" value="<%- address.get('addr1') %>">
+		</div>
+	</div>
+
+	<div class="control-group control-group-big">
+		<label class="control-label" for="<%= manage %>addr2">
+		</label>
+		<div class="controls">
+			<input type="text" class="input-large" id="<%= manage %>addr2" name="addr2" value="<%- address.get('addr2') %>" placeholder="<%= _('(optional)').translate() %>">
+		</div>
+		<span class="help-block">
+			<%= _('Example: Apt. 3 or Suite #1516').translate() %>
+		</span>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>city">
+			<%= _('City').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-large" id="<%= manage %>city" name="city" maxlength="30" value="<%- address.get('city') %>">
+		</div>
+	</div>
+
+
+	<div class="control-group">
+		<%= SC.macros.statesDropdown({
+			countries: options.countries
+		,	selectedCountry: selected_country
+		,	selectedState: address.get('state')
+		,	manage: manage
+		}) %>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>zip">
+			<%= _('Zip').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<input type="text" class="input-small" id="<%= manage %>zip" maxlength="10" name="zip" value="<%- address.get('zip') %>" data-type="zip" style="width: 80px;">
+		</div>
+		
+	</div>
+<input id="ignoresuggestion" type="hidden" hiddenname="ignoresuggestion" value="false" />
+ <!-- <%= quantity_countries <= 1 ? 'hide' : '' %> -->
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>country">
+			<%= _('Country').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+			<%= SC.macros.countriesDropdown(countries, selected_country, manage) %>
+		</div>
+	</div>
+
+<%// if (address.isNew()) {%>		
+	<div class="control-group">
+		<label class="control-label" for="<%= manage %>phone">
+			<%= _('Phone').translate() %>
+			<small>
+				<%= _('(required)').translate() %>
+			</small>
+		</label>
+		<div class="controls">
+				<input type="tel" style="margin-bottom:0;" class="input-medium" id="<%= manage %>phone" name="phone"  value="<%- address.get('phone') %>">
+				<input type="tel" style="width: 45px;margin-bottom:0;" placeholder="EXT" maxlength="4" id="ext" name="ext" onfocus="this.placeholder = ''" onblur="this.placeholder = 'EXT'"  value="<%- address.get('ext') %>">			
+		</div>
+		<div style="float:left;">
+				<span style="font-size:10px;color: #c5c5c5;">We will only use this for shipping purposes</span>
+			</div>
+		
+	</div>
+<%//}%>
+
+	<!--<div class="control-group" id="labelIsresidential">
+		<div class="controls">
+			<label class="checkbox">
+				<input type="checkbox" id="<%= manage %>isresidential" value="T" data-unchecked-value="F" name="isresidential" <%= address.get('isresidential') === 'T' ? 'checked' : '' %>>
+				<%= _('This is a Residential Address').translate() %>
+				<a href="#" rel="tooltip" data-toggle="tooltip" title="<%= _('Indicating that this is a residential address will help us determine the best delivery method for your items.').translate() %>">
+					<i class="icon-question-sign"></i>
+				</a>
+			</label>
+		</div>
+	</div>-->
+	
+	<% if (!options.hideDefaults && jQuery('.section-header').html().indexOf('Billing')>-1) { %>
+		<div class="control-group">
+			<div class="controls" style="margin-left:100px">
+				<label class="checkbox" style="width:100%">
+					<input type="checkbox" id="<%= manage %>defaultbilling" value="T" data-unchecked-value="F" name="defaultbilling" <%= address.get('defaultbilling') === 'T' ? 'checked' : '' %>>
+					<%= application.getConfig('currentTouchpoint') === 'checkout' ? _('Make this my default billing address').translate() : _('Make this my default billing address').translate() %>
+				</label>
+			</div>
+		</div>
+	<% } %>
+
+	<% if (!options.hideDefaults && jQuery('.section-header').html().indexOf('SHIPPING')>-1) { %>
+		<div class="control-group">
+			<div class="controls" style="margin-left:100px">
+				<label class="checkbox" style="width:100%">
+					<input type="checkbox" id="<%= manage %>defaultshipping" value="T" data-unchecked-value="F" name="defaultshipping" <%= address.get('defaultshipping') === 'T' ? 'checked' : '' %>>
+					<%= application.getConfig('currentTouchpoint') === 'checkout' ? _('Make this my default shipping address').translate() : _('Make this my default shipping address').translate() %>
+				</label>
+			</div>
+		</div>
+	<% } %>
+</fieldset>
+<% }) %>

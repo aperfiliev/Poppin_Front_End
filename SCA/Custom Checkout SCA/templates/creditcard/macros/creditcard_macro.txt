@@ -1,0 +1,71 @@
+<% registerMacro('creditcard', function (creditcard, options) { %>
+<%
+
+
+	var payment_name = creditcard.get('paymentmethod').name
+	,	expiration_month = creditcard.get('expmonth')
+	,	icons = options.icons;
+	console.log(creditcard.get('internalid'));
+%>
+</style>
+<article class="creditcard" >
+
+	
+	<% if (options.showSecurityCodeForm) { %>
+	<div class="row-fluid">
+		<div class="span6">
+	<% } %>
+			<input type="radio" name="creditcardradio" style="float:left; margin-right:5px;" <%=options.stopSelect ? 'data-action="setSelectedCreditcardId"' : 'data-action="select-creditcard"'%> data-id="<%- creditcard.get('internalid') %>" <%=creditcard.get('internalid') == options.selectedCreditcard ? 'checked="checked"' : ''%>/>
+			<span>
+			<div style="float:left;">
+			<% if (payment_name in icons) { %>
+				<img class="credit-card-icon" src="<%- icons[payment_name] %>" alt="<%- payment_name %>">
+			<% } %>
+			</div>
+			<div style="float:left; padding-left: 10px;">
+			<h4 class="summary-header">
+				<%= payment_name %> ************<%= creditcard.get('ccnumber').replace(/\*/g, '')%>
+			</h4>
+			<!--<p style="margin:0;"> 
+				<%= (expiration_month < 10 ? '0' : '') + expiration_month + '/' + creditcard.get('expyear') %>
+			</p>-->
+			</div>
+			</span>
+			<% if (options.showDefaults) { %>
+			<p>
+				<% if (creditcard.get('ccdefault') === 'T') { %>
+					<i class="icon-star"></i>
+					<%= _('Default Credit Card').translate() %>
+				<% } %>
+			</p>
+			<% } %>
+		<% if (options.showSecurityCodeForm) { %>
+		</div>
+	</div>
+	<% } %>
+
+<% if(creditcard.get('internalid') == options.selectedCreditcard && window.location.hash.indexOf("billing")>-1){ %>
+ 		<%= SC.macros.creditcardSecurityNumberForm({
+			error: undefined
+           ,   value:  options.cvcvalue
+           ,	hidehelp: false
+		}) %>
+<% } %>
+	<% if (options.showActions) { %>
+		<div style="clear: both;"></div>
+		<p class="actions" style="margin:0" >
+	<% if (options.showSelect) { %>
+
+	<% } %><%if(options.step != "review"){%>
+				<a class="btn btn-link" href="/creditcards/<%= creditcard.get('internalid') %>" data-toggle="show-in-modal" style="display: none;">
+				<%= _('Edit').translate() %>
+			</a>
+			<btn class="btn btn-link" data-action="remove" data-id="<%- creditcard.get('internalid') %>">
+				<%= _('Delete Card').translate() %>
+			</btn>
+			<%}%>
+		</p>
+	<% } %>
+
+</article>
+<% }) %>

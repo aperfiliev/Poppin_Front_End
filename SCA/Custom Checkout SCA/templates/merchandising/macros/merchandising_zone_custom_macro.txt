@@ -1,0 +1,16 @@
+<% registerMacro('merchandisingZoneCustom', function (zone) { %>
+<aside class="shopping-cart-recent-items">
+	<h3>Top 3 in: <%= _(zone.title).translate() %></h3>
+	<% if (zone.description) { %>
+	<p><%= zone.description %></p>
+	<% } %>
+	<div class="row-fluid">
+		<%
+			var relatedWrap = function relatedWrap (item) {
+				return SC.macros.relatedItem(item, zone.application);
+			};
+		%>
+		<%= SC.macros.displayInRows(_.first(zone.items, 3), relatedWrap, 4) %>
+	</div>
+</aside>
+<% }) %>

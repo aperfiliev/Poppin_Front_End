@@ -1,0 +1,27 @@
+<h3 class="section-header">
+	<%= _('Enter Email Address').translate() %>
+</h3>
+<div class="control-group">
+	<label class="control-label">
+		<%= _('Email Address <small>(required)</small>').translate() %>
+	</label>
+	<input
+		type="email"
+		name="email"
+		id="email"
+		class="input-large"
+		placeholder="<%- _('your@email.com').translate() %>"
+		value="<%- view.profile.get('email') || '' %>"
+	>
+	<p class="help-block">
+		<%= _('We need you email address to send you information about your order.').translate() %>
+	</p>
+</div>
+<label class="checkbox">
+	<input
+		type="checkbox"
+		name="sign-up-newsletter"
+		<%= view.profile.get('emailsubscribe') === 'T' ? 'checked' : '' %>
+	>
+	<%= _('Sign up for our Newsletter to receive promotions').translate() %>
+</label>

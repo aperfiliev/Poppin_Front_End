@@ -1,0 +1,27 @@
+.back-to-top {
+	display: none;
+
+	@media (max-width: 767px) {
+		background: @grayDarker;
+		border-top: 1px solid #434343;
+		display: block;
+		padding-bottom: @baseLineHeight;
+
+		.icon-arrow-up {
+			background: url('@{siteSpritePath}') no-repeat 7px -287px;
+			display: block;
+			height: 24px;
+			margin: 0 auto 4px;
+			width: 58px;
+		}
+
+		a {
+			color: @navbarInverseLinkColor;
+			text-decoration: none;
+
+			&:hover, &:focus {
+				color: @navbarInverseLinkColorHover;
+			}
+		}
+	}
+}

@@ -1,0 +1,39 @@
+<% registerMacro('navigationTabs', function (item, is_top) { %>
+<% if (item.categories && item.categories.length) { %>
+	<%
+		item.href = item.href ? _.fixUrl(item.href) : '#';
+		item['class'] = (item['class'] || '') + ' dropdown-toggle';
+		item.data = _.extend({}, item.data, {toggle: 'dropdown'});
+	%>
+	<% if (is_top) { %>
+		<li class="dropdown">
+			<a <%= _.objectToAtrributes(item) %>>
+				<%= item.text %>
+				<b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+				<% _.each(item.categories, function (sub) { %>
+					<%= SC.macros.navigationTabs(sub) %>
+				<% }) %>
+			</ul>
+		</li>
+	<% } else { %>
+		<li class="dropdown-submenu">
+			<a <%= _.objectToAtrributes(item) %>>
+				<%= item.text %>
+			</a>
+			<ul class="dropdown-menu">
+				<% _.each(item.categories, function (sub) { %>
+					<%= SC.macros.navigationTabs(sub) %>
+				<% }) %>
+			</ul>
+		</li>
+	<% } %>
+<% } else { %>
+<li>
+	<a data-toggle='collapse' data-target='.main-nav' <%= _.objectToAtrributes(item) %>>
+		<%= item.text %>
+	</a>
+</li>
+<% } %>
+<% }) %>

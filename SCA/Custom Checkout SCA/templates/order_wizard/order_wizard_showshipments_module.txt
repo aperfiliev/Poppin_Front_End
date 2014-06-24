@@ -1,0 +1,259 @@
+<section class="shipments-shipping-details">
+	<div class="row-fluid shipments-shipping-details-body" style="padding-left: 90px; padding-right:90px; width: 768px; margin-left: -20px; background-color: #e5e5e5">
+
+<div class="" style="padding-top: 10px; padding-bottom:10px; height: 111px; background-color: #e5e5e5; width: 747px; margin-left: -3px;">
+<!--alert alert-block alert-success fade in-->
+	<% console.log('confirmation') %>
+	
+	<%  console.log(view) %>
+	
+<% 
+	var cart = view.model.application.getCart();
+	var sum = 0;
+	var domainSum = 0;
+	cart.get("lines").each(function(line){
+	sum += line.get('amount') - line.get('total');
+	domainSum += line.get('item').attributes.pricelevel1 * line.get('item').attributes.quantity - line.get('amount');
+	});
+	domainSum += view.model.get('summary').discounttotal + sum;
+	domainSum = Math.round(domainSum*100)/100;
+	
+	var cleanSubtotal = 0;
+	for( var i=0;i< cart.get('lines').models.length;i++) {
+		cleanSubtotal += cart.get('lines').models[i].get('item').get('quantity') * cart.get('lines').models[i].get('item').get('_comparePriceAgainst') 
+	}
+%>
+<!-- Photorank advanced checkout code -->
+<script type="text/javascript" id="checkoutTagScript">
+var itemsCollection = [];
+<% var itemDiscount = 0; %>
+<% for( var i=0;i< view.model.get('lines').models.length;i++) {%>
+<% var price = view.model.get('lines').models[i].get('total') / view.model.get('lines').models[i].get('quantity') %>
+<% price = Math.round(price*100)/100; %>
+itemsCollection.push({sku:'<%=view.model.get("lines").models[i].get("item").get("_sku")%>', productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=price %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+<% itemDiscount += view.model.get('lines').models[i].get('discount') %>
+<% }%>
+window.forPixeldata = {
+userId:'<%= view.profile.id %>'
+,total:'<%= view.model.get('summary').total %>'
+,transactionId:'<%= view.model.get('confirmation').internalid %>'
+,email:'<%= view.profile.get('email') %>'
+,name:'<%= view.profile.get('firstname') + ' ' + view.profile.get('lastname') %>'
+//,orderCount: '<%= parseInt(view.profile.get('ordercount'))+1 %>'
+,items:itemsCollection
+};
+</script>
+<script>
+var orderID = "<%= view.model.get('confirmation').confirmationnumber %>".replace(/\d+\-/, "");
+	var orderTotal = "<%=view.model.get('summary').total%>";
+	var orderTax = "<%=view.model.get('summary').taxtotal%>";
+	var orderShipping = "<%=view.model.get('summary').shippingcost%>";
+	var orderPromoCode ="<%=view.model.get('promocode') ==null ? '':view.model.get('promocode').code%>";
+	var orderSubtotal = "<%=view.model.get('summary').subtotal%>";
+	var customerId ='<%= view.profile.id %>';
+	<% var shipaddress = _.filter(view.model.get('addresses').models,function(model){ return model.id==view.model.get('shipaddress');})[0] %>
+	<% var billaddress = _.filter(view.model.get('addresses').models,function(model){ return model.id==view.model.get('billaddress');})[0] %>
+	var customerCity = "<%=billaddress.get('city')%>" || "<%=shipaddress.get('city')%>";
+	var customerState = "<%=billaddress.get('state')%>" || "<%=shipaddress.get('state')%>";
+	var customerPostal = "<%=billaddress.get('zip')%>" || "<%=shipaddress.get('zip')%>";
+	var customerCountry = "<%=billaddress.get('country')%>" || "<%=shipaddress.get('country')%>";
+	//var orderCount = '<%= parseInt(view.profile.get('ordercount'))+1 %>';
+	var strpageDataVarURL = "/app/site/hosting/scriptlet.nl?script=250&deploy=1&orderitems=" + escape(itemsCollection) + "&subtotal=" + escape(orderSubtotal);
+	var discount = '<%= domainSum ? domainSum : itemDiscount ? itemDiscount : view.model.get('summary').discounttotal %>';
+	var pageData = {
+		"order" : {
+			"id" : orderID,
+			"total" : orderTotal,
+			"tax" : orderTax,
+			"shipping" : orderShipping,
+			"discount" : discount,
+			"promoCode" : orderPromoCode,
+			"currencyCode" : "USD"
+		},
+		"customer" : {
+			"id" : customerId,
+			"city" : customerCity,
+			"state" : customerState,
+			"postal" : customerPostal,
+			"country" : customerCountry//,
+			//"ordercount" : orderCount
+		},
+		"navigation" : {  pageName: "Confirmation" },
+		"items" : itemsCollection
+	};
+
+$j(window).trigger('updateCheckoutJsonData',pageData);
+	</script>
+	<div style="float: left;" >
+	<h4 class="thankyou-title" style="color: rgb(254, 107, 56);
+display: block;
+font-size: 36px;
+line-height: 18px;
+margin: 20px 0px 20px;
+padding-bottom: 0px;
+font-family: OmnesRegularRegular,sans-serif;"><%= _('Thank you for your order!').translate() %></h4>
+	<%= _('Your confirmation number is <strong style="font-size: 15px;">#$(0)</strong>.').translate(view.model.get("confirmation").confirmationnumber) %><br/>
+<%= _('Keep your eyes peeled for an order confirmation email.').translate() %>
+	</div>
+<div style="float: right; margin-top: 12px;">
+<input onclick="location.href='<%= SC.ENVIRONMENT.siteSettings.touchpoints.home %>'" class="bgbutton-checkout" type="button" data-touchpoint="home" data-hashtag="#/" value="<%= _('Continue shopping').translate() %>" alt="<%= _('Poppin.com').translate() %>" style="display: block; font-weight: bold; border: 1px solid white; margin-bottom: 20px;"></input>
+	<div class="social" style="padding-left: 40px;">
+	  	<p class="social-links">
+	  		<a class="facebook" href="https://www.facebook.com/poppin" title="Facebook" target="_blank">Facebook</a>
+	  		<a class="twitter" href="http://twitter.com/poppin" title="Twitter" target="_blank">Twitter</a>
+	  		<a class="pinterest" href="http://pinterest.com/poppin" title="Pinterest" target="_blank">Pinterest</a>
+	  		<a class="icon-print" title="Print" href="#" onclick="window.print()" style="width:30px; height: 22px;">Print</a>
+	  	</p>
+	</div>
+	</div>
+    
+</div>
+
+
+
+<div id="full_order_confirmation" style="width: 750px; margin-top: -221px; background-color: white;">
+<div style="width: 708px; margin-bottom: 215px; text-align: center;">
+	<table cellspacing="0" cellpadding="0" border="0"  style="float: left; background: white; border: 10px solid white; font-size: 13px; font-weight: bold; width: 710px; margin-left: 25px; border-bottom: 2px solid #e5e5e5; margin-top: 1px;">
+	<tr style="height: 40px; font-weight: 500; font-size: 13px; color: #383737">
+	<th align="left" width="145px">ITEM</th>
+<th align="left" width="200px">DESCRIPTION</th>
+	<th align="center" width="100px">PRICE</th>
+	<th align="center" width="100px">QTY</th>
+	<th align="center" width="100px">TOTAL</th>
+	</tr>
+	
+	<% view.model.get('lines').each(function (lines, index) { %>
+				<%= shoppingCartItem(lines, view, {
+					showActions:false
+				}) %>
+			<% }) %>
+	</table>
+</div>
+
+
+
+<div class="order-summary-block" style="width: 250px; margin-left: 430px; background-color: white; margin-top: -10px;">
+<%
+	var cart = view.application.getCart()
+	,	summary = cart.get('summary')
+	,	promocode = cart.get('promocode')
+	,	is_promocode_valid = promocode && promocode.isvalid
+	,	giftcertificates = cart.get('paymentmethods').where({type: 'giftcertificate'}) || [];
+	var sum = 0;
+	var view = {};
+var domainSum = 0;
+cart.get("lines").each(function(line){
+sum += line.get('amount') - line.get('total');
+domainSum += line.get('item').attributes._comparePriceAgainst * line.get('item').attributes.quantity - line.get('amount');
+});
+%>
+
+	<header class="checkout-cart-summary-header">
+		<h2 class="checkout-cart-summary-macro-title" style="color: rgb(243, 122, 49); margin-bottom: 7px; margin-left: -10px; padding-top: 198px;">
+			<%= _('Order Summary').translate() %>
+		</h2>
+	</header>
+
+	<div class="checkout-cart-summary-body" style="margin-left: -10px;">
+
+		<div class="cart-summary-subtotal">
+			<p class="strong">
+				<span class="pull-right cart-summary-subtotal-formatted">
+					$<%=parseFloat(cleanSubtotal).toFixed(2)%>
+				</span>
+				<span class="cart-summary-subtotal-label">
+					<%= _('Subtotal').translate() %>
+				</span>
+			</p>
+		</div>
+
+<div class="cart-summary-shipping-cost-applied">
+
+<% if(domainSum>0){ %>
+			<p>
+				<span class="pull-right cart-summary-shipping-cost-formatted">
+					-$<%= domainSum.toFixed(2) %>
+				</span>
+				<%= _('Discount').translate() %>
+			</p>
+			<% } %>
+<p>
+				<span class="pull-right cart-summary-shipping-cost-formatted">
+					<%= summary.shippingcost_formatted == "$0.00" ? '-' : summary.shippingcost_formatted %>
+				</span>
+				<%= _('Shipping').translate() %>
+			</p>
+
+			<% if (summary.handlingcost) { %>
+			<p>
+				<span class="pull-right cart-summary-handling-cost-formatted">
+					<%= summary.handlingcost_formatted %>
+				</span>
+				<%= _('Handling').translate() %>
+			</p>
+			<% } %>
+			<p>
+				<span class="pull-right cart-summary-tax-total-formatted">
+					<%= summary.taxtotal_formatted=="$0.00" ? '-' : summary.taxtotal_formatted %>
+				</span>
+				<%= _('Tax').translate() %>
+			</p>
+						<% if(sum>0){ %>
+			<p>
+				<span class="pull-right cart-summary-shipping-cost-formatted">
+					-$<%= sum.toFixed(2) %>
+				</span>
+				<%= _('Promo').translate() %> #<%= promocode.code %>
+			</p>
+			<% } %>
+</div>
+
+			<% if (is_promocode_valid || summary.giftcertapplied) { %>
+			<% if (is_promocode_valid && summary.discounttotal) { %>
+			<div class="checkout-cart-summary-body">
+				<p style="margin-left: -9px; width: 238px;">
+				<span class="pull-right cart-summary-shipping-cost-formatted">
+					-<%=summary.discounttotal_formatted%>
+				</span>
+					<%= _('Promo').translate() %> #<%= promocode.code %>
+				</p>
+			</div>
+			<% } %>
+			
+			<% if (summary.giftcertapplied) { %>
+			<div class="checkout-cart-summary-body" style="margin-left: -10px;">
+				<p>
+				<b>	<%= _('Gift Certificates Applied ($(0))').translate(giftcertificates.length) %></b>
+				</p>
+				<% _.each(giftcertificates, function (giftCertificate) { %>
+					<p style="width: 240px;">
+						<span class="pull-right">
+							<%= _('-$(0)').translate(giftCertificate.get('giftcertificate').amountapplied_formatted) %>
+						</span>
+						<span title="<%- giftCertificate.get('giftcertificate').code %>">
+							Gift Card: <%= SC.macros.formatPaymentMethod(giftCertificate) %>
+						</span>
+					</p>
+				<% }); %>
+				</div>
+			<% } %>
+		<% } %>
+</div>
+
+
+		<div class="checkout-cart-summary-macro-total" style="color: rgb(184, 180, 180); margin:0;">
+			<p class="strong" style="margin-left: -9px;">
+				<span class="pull-right cart-summary-total-formatted">
+					<%= summary.total_formatted %>
+				</span>
+				<%= _('Total').translate() %>
+			</p>
+		</div>
+
+
+</div>
+
+</div>
+
+</div>
+</section>

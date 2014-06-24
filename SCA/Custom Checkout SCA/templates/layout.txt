@@ -1,0 +1,14 @@
+<div id="layout" class="layout">
+<% var url =  view.application.getUser().get("paypalUrl");%>
+	<% if (view.application.getConfig('siteSettings.sitetype') === 'ADVANCED') { %>
+		<%= header(view) %>
+	<% } %>
+      <h1 style="color: rgb(243, 122, 49); font-family: 'OmnesLightRegular'; font-size: 38px; font-weight: 400; width: 965px; margin-left: 24px;" class="checkout-header">Checkout
+             <input type="image" src="img/paypal_button.jpg" 
+		onclick="window.location.href= '<%=url%>'" class="nlbutton" style="background: #FFF;border: 0px solid #fff; margin-left: 35px; <%= Backbone.history.fragment.indexOf('review')>-1 ? "display: none;" : "" %>" id="paypal_button"></h1>
+	<!-- Main Content Area -->
+	<div id="content" class="container content checkout-content"></div>
+	<!-- / Main Content Area -->
+	<div id="marketing-footer" class="container content"></div>
+	<%= footer(view) %>
+</div>

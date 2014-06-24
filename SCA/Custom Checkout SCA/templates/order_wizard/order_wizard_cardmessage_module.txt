@@ -1,0 +1,32 @@
+<%//if(view.options.step.wizard.currentStep != "review"){%>
+<div id="cardmessage_module" style="width:280px;">
+<% if (view.getTitle()) { %>
+	<h3 class="section-header" style="padding:0; margin:9px 0 0 0;line-height: 30px;">
+		<%= view.getTitle() %>
+	</h3>
+<% } %>
+<form class="delivery-options" action="">
+	<fieldset>
+		<%console.log("CARD MESSGE INIT"); console.log(jQuery('#cardmessagetoggle'))%>
+		<input id="cardmessagetoggle" type="checkbox" name="orderisgift" style="margin: 0 3px 2px 0;"><span style="font-size: 14px;">Yes, this order is a gift!</span>
+		<div id="cardmessageblock" style="display:none">
+			<p style="margin-top:9px;font-size: 14px;">
+				Need some help deciding what to say?<br/>
+				Use one of our messages to get you started:
+			</p>
+			<select id="cardmessage-options">
+				<option selected disabled></option>
+				<% view.cardmessages.forEach(function(cardmessage) { %>
+					<option value="<%- cardmessage.id %>" <%= cardmessage.occasion == view.wizard.options.model.get("options").custbody_cardocation ? "selected" : "" %> >
+						<%= cardmessage.occasion %>
+					</option>
+				<% }); %>
+			</select>
+			<textarea id="cardmessagetext" maxlength="250" style="height: 130px;">
+			</textarea>
+			<div id="textcounterblock" style="color: #6f6c6b">Remaining characters: <span id="textcounter">250</span></div>
+		</div>
+	</fieldset>
+	
+</div>
+<%//}%>

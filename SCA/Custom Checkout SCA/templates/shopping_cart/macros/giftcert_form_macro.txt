@@ -1,0 +1,67 @@
+<% registerMacro('giftcertForm', function( giftcert ) {%>
+<form id="gift-certificate-form" class="gift-certificate-form" data-action="apply-giftcert" >
+<div style="width:100%;height: auto;"></div>
+	<fieldset>
+		<div class="control-group">
+			
+			<input type="text" name="code" id="code" class="input-medium" value="" placeholder="Gift card" style="width: 125px;">
+				<button type="submit" class="btn" style="background: #35c6f5;
+					border-color: #35c6f5;
+					border-radius: 18.5px;
+					border-style: solid;
+					border-width: 1px;
+					color: rgb(255, 255, 255);
+					cursor: pointer;
+					width: 70px;
+					text-transform: uppercase;">
+					<%= _('Apply').translate() %>
+				</button>
+			
+		</div>
+		<div data-type="giftcertificate-error-placeholder">
+			
+		</div>
+	</fieldset>
+</form>
+<%if(giftcert.length){%>
+<table class="table" style="font-size: 11px; color: grey; margin-left:-10px; margin-bottom:0" width="50">
+	<tr>
+		<td>
+			<b><%= _('Gift Card').translate() %></b>
+		</td>
+		<td class="right-aligned">
+			<b><%= _('Applied').translate() %></b>
+		</td>	
+		</td>
+		<td class="right-aligned">
+			<b><%= _('Remaining balance').translate() %></b>
+		</td>	
+		<td>
+			&nbsp;
+		</td>
+	</tr>
+
+<%  _.each(giftcert, function (giftCertificate) { %>
+	<% var giftcertificate = giftCertificate.get('giftcertificate') %>
+	
+	<tr>
+		<td>
+			<%= SC.macros.formatPaymentMethod(giftCertificate) %>
+		</td>
+		<td class="right-aligned">
+			<%= _('$(0)').translate(giftcertificate.amountapplied_formatted) %>
+		</td>
+		<td class="right-aligned">
+			<%= _('$(0)').translate(giftcertificate.amountremaining_formatted) %>
+		</td>		
+		<td class="right-aligned">
+			<a href="#" data-action="remove-giftcert" data-id="<%- giftcertificate.code %>">
+				<%= _('Remove').translate() %>
+			</a>
+		</td>
+	</tr>
+<% }) %>
+</table>
+<%}%>
+<div data-type="alert-placeholder-gif-certificate"></div>
+<% }) %>

@@ -1,0 +1,124 @@
+<%
+	var SiteSettings
+	,	parameters
+	,	siteType
+	,	Error;
+
+	try {
+		SiteSettings = Application.getModel('SiteSettings').get();
+		siteType = SiteSettings.sitetype
+		parameters = request.getAllParameters();
+
+		if (session.isChangePasswordRequest())
+		{
+			parameters.fragment = 'reset-password';
+			return nlapiSetRedirectURL('EXTERNAL', SiteSettings.touchpoints.login , null, false, parameters);			
+		}
+		else if (!session.isLoggedIn() && request.getParameter('checkout_as_guest') === 'T')
+		{
+			var user = {};
+			if (SiteSettings.registration.companyfieldmandatory === 'T')
+			{
+				user.company = 'Guest Shopper';
+			}
+			session.registerGuest(user);
+		}
+		// PaypalExpress checkout 
+		else if (request.getParameter('paypalexpress') === 'T')
+		{
+			Application.getModel('LiveOrder').redirectToPayPalExpress();
+			return;
+		}
+		// Access control, if you are not loged this will send you to the log in page
+		else if (!session.isLoggedIn())
+		{
+			delete parameters.sitepath;
+			parameters.origin = 'checkout';
+			parameters.fragment = 'login-register';
+
+			return nlapiSetRedirectURL('EXTERNAL', SiteSettings.touchpoints.login, null, false, parameters);
+		}
+
+		if (request.getParameter('paypal') === 'T')
+		{
+			Application.getModel('LiveOrder').redirectToPayPal();
+			return;
+		}
+		else if (request.getParameter('paypal') === 'DONE')
+		{
+			Application.getModel('LiveOrder').backFromPayPal();
+		}
+	} catch (e) {
+		Error = Application.processError(e);
+	}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Checkout</title>
+	<% if (siteType && siteType === 'ADVANCED') { %>
+		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/styles.css') %>">
+	<% } else { %>
+		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/styles-sitebuilder.css') %>">
+	<% } %>
+	<%= (siteType && siteType === 'STANDARD') ? getPageFullHead() : '' %>
+	<!--[if lt IE 9]> <script src="<%= session.getAbsoluteUrl('checkout', 'js/html5shiv.js') %>"></script> <![endif]-->
+	<!--[if lt IE 8]> <script src="<%= session.getAbsoluteUrl('checkout', 'js/json2.js') %>"></script> <![endif]-->
+	
+</head>
+<body>
+	<noscript>
+		<div class="container">
+			<div class="alert alert-error alert-noscript">
+				<strong>Javascript is disabled on your browser.</strong><br>
+				To view this site, you must enable JavaScript or upgrade to a JavaScript-capable browser.
+			</div>
+		</div>
+	</noscript>
+	
+	<div id='outerwrapper' style='width:968'>
+		<div id='innerwrapper'>	
+			<% if (siteType && siteType === 'STANDARD') { %>
+		<div id='div__header' style="overflow: hidden;" class='noprint' leftmargin='0' topmargin='0' marginwidth='1' >
+			<table border='0' cellspacing='0' cellpadding='0' width='100%'>
+<!-- <PP_REF_CHECKOUT_PAGETOP> -->	
+			</table>
+		</div>
+	<% } %>
+	
+				
+	
+<div class="promo-banner" style="text-align: center;">
+							<%=getRecordAttribute('199',4,'custrecord_bannerhtml')%>
+			</div>
+
+
+	<div id="main" style="border: 17px #e5e5e5 solid;width: 933px;margin: 0 auto;"></div>
+        <div class="upsell_options">
+	<%=getRecordAttribute('199',5,'custrecord_bannerhtml')%>
+        </div>
+</div>
+</div>
+
+
+	<div id="div__footer" class="noprint" leftmargin="0" topmargin="0" marginwidth="1" marginheight="1">
+	<!-- <PP_FOOTER_CLEAN> -->
+	</div>
+
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'sc.environment.ssp?lang=' + (request.getParameter('lang') || '') + '&cur=' + (request.getParameter('cur') || '') ) %>"></script>
+	<% if (Error) { %>
+		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
+	<% } %>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0146b85a3afa.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-014671009995.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
+<script language="javascript" type="text/javascript">
+	var ipAddress = "<%=getCurrentAttribute('request','ipaddress')%>";	
+</script>
+
+	<PP_CHECKOUT_TAG_CONTAINER>
+</body>
+</html>
