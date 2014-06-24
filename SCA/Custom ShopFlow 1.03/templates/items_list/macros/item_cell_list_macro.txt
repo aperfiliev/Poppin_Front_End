@@ -57,9 +57,6 @@
 				<input type="submit" class="btn btn-primary" value="Add to Cart">
 			</form>
 		<% } %>
-		<div class="item-cell-stock">
-			<%= macros.itemDetailsStock(item.getStockInfo()) %>
-		</div>
 	</div>
 </div>
 <% }) %>

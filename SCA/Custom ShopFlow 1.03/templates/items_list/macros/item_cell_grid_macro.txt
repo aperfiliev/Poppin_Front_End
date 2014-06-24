@@ -47,9 +47,6 @@
 			_.where(item.getPosibleOptions(), {showSelectorInList: true})	
 		) %>
 	</div>
-	<div class="item-cell-stock">
-		<%= macros.itemDetailsStock(item.getStockInfo()) %>
-	</div>
 	<% if (view.options.application.getConfig('addToCartFromFacetsView') && item.isReadyForCart()) { %>
 		<form data-toggle="add-to-cart">
 			<input type="hidden" value="<%= item.get('_id') %>" name="item_id">
