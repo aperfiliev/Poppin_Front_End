@@ -1,7 +1,13 @@
 <% registerMacro('showItemPrice', function (item) { %>
 <%
 	var price = item.getPrice()
-	,	is_in_stock = item.getStockInfo().isInStock;
+	,	is_in_stock = item.getStockInfo().isInStock
+	,	price_parsed = price.price_formatted.split("");
+	if( (price_parsed[price_parsed.length-1]==0) && (price_parsed[price_parsed.length-2]==0) ){
+		price.price_formatted = price_parsed[0]+price.price; 
+	} else if( (price_parsed[price_parsed.length-1]==0) && (price_parsed[price_parsed.length-2]!=0) ){
+		price.price_formatted = price_parsed[0]+price.price+"0";
+	}
 %>
 <% if (price.min && price.max) { %>
 <span itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
