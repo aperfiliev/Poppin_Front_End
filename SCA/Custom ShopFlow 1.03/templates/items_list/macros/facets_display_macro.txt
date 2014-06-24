@@ -22,7 +22,11 @@
 					<% if (_.isObject(value)) { %>
 						<%= _('$(0) to $(1)').translate(_.formatCurrency(value.from), _.formatCurrency(value.to)) %> &times;
 					<% } else { %>
+						<% if( facet.config.macro == "facetCheckbox" ){ %>
+							<%= translator.getLabelForValue(facet.id, facet.config.name.toLowerCase()) %> &times;
+						<%} else{%>	
 						<%= translator.getLabelForValue(facet.id, value) %> &times;
+					<% } %>
 					<% } %>
 					</a>
 				</li>
