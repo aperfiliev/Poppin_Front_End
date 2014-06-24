@@ -77,7 +77,7 @@
 					</button>
 				<% } %>
 				<%= itemListSortSelectorResult %>
-				<div class="hidden-phone pull-right">
+				<div class="pull-right">
 					<%= itemListShowSelectorResult %>
 				</div>
 				<div class="clearfix"></div>
