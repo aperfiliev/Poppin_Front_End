@@ -1,11 +1,12 @@
 .facet-header {
-	border-bottom: 1px solid @grayLighter;
-	margin-bottom: @baseLineHeight;
+//	border-bottom: 1px solid @grayLighter;
+//	margin-bottom: @baseLineHeight;
 
 	> h1 {
 		border-bottom: 1px solid @grayLighter;
 		margin-top: 0;
 		padding-bottom: @baseLineHeight;
+        display: none;
 
 		> b {
 			color: @lightOrange;
@@ -149,4 +150,44 @@
 	.facets-display {
 		margin-bottom: 0;
 	}
+}
+
+#banner-section-top{
+  margin-bottom: 10px;
+}
+header .facet-header .item-listing-sorting label select,
+header .facet-header .item-listing-items-limit label select{
+  height: 20px;
+  margin-top: 7px;
+  margin-bottom: 10px;
+  background: #f3f3f3;
+  font-size: 11px;
+}
+
+header .facet-header .item-listing-items-limit label select{
+width: 140px;
+}
+
+header .facet-header ul.pagination-links{
+  display: none;
+}
+
+.item-listing-display{
+  margin-left: 170px;
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+  .item-listing-display{
+    margin-left: 90px;
+  }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  .item-listing-display{
+    margin-left: 70px;
+  }
+
 }

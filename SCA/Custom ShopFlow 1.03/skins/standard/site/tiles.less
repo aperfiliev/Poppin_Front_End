@@ -3,71 +3,61 @@
    ========================================================================== */
 
 .tiles {
-	list-style: none;
-	margin-left: 0;
+  list-style: none;
+  margin-left: 0;
 
-	li {
-		border: 1px solid transparent;
-		border-radius: 3px;
-		display: inline-block;
-		text-align: center;
-		padding: 5px;
+  li {
+    display: inline-block;
+    text-align: center;
 
-		&:hover {
-			border-color: #666;
-		}
+    &:hover {
+    }
 
-		.tile {
-			background: #eee;
-			border: 1px solid #333;
-			color: #333;
-			cursor: pointer;
-			display: block;
-			min-height: 24px;
-			line-height: 24px;
-			padding: 0 8px;
-		}
+    .tile {
+      color: #333;
+      cursor: pointer;
+      display: block;
+      min-height: 24px;
+      line-height: 24px;
+      padding: 0;
+    }
 
-		img.tile {
-			background: none;
-			border: none;
-		}
+    img.tile {
+      background: none;
+      border: none;
+    }
 
-		&.active .tile {
-			background: #333;
-			color: #fff;
-			font-weight: bold;
-		}
+    &.active .tile {
+      color: #fff;
+      font-weight: bold;
+    }
 
-		&.muted {
+    &.muted {
 
-			&:hover {
-				border-color: #ccc;
-			}
+      &:hover {
+      }
 
-			.tile {
-				background: #ccc;
-				border: 1px dotted #666;
-				color: #888;
-			}
-		}
-	}
+      .tile {
+        color: #888;
+      }
+    }
+  }
 }
 
 .color-tiles {
-	margin-bottom: 0;
+  margin-bottom: 0;
 
-	li {
-		padding: 3px;
+  li {
+    padding: 0;
+    border: none;
+    .tile {
+      min-height: 20px;
+      padding: 0;
+      width: 25px;
+    }
 
-		.tile {
-			min-height: 20px;
-			padding: 0;
-			width: 25px;
-		}
-
-		&.active {
-			border-color: #333;
-		}
-	}
+    &.active {
+      border: none;
+    }
+  }
 }
