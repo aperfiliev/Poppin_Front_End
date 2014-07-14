@@ -1,0 +1,13 @@
+<script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin/easyXDM.js"></script>
+<script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin2/js/jquery.powertip.js"></script>
+<link href="/site/social-login/css/login.css" rel="stylesheet" type="text/css" />
+
+<!--<script type="text/javascript" src="https://cdns.gigya.com/JS/socialize.js?apikey=3_I2Mjv1WInkkrH24KFFTRILLRY38x3T3zP2j_ktD55kvl2Sk3l0uWhw_i9xEOiTqG">
+{
+	siteName: 'poppin.com (Default site)'
+	,enabledProviders: 'facebook,twitter,googleplus,linkedin,yahoo,messenger'
+	,connectWithoutLoginBehavior: 'alwaysLogin'     // change the connect without login behavior    
+}
+</script>-->
+
+<script src="/SSP Applications/Poppin/Header/pp_social_media.js"></script>

@@ -1,0 +1,78 @@
+<PP_MOBILE_REDIRECT>
+<script src="//assets.adobedtm.com/aaa02e96e247d36a3d2d74d92bc06944d3c3aaa0/satelliteLib-c17649f5e3bffb4654c02a434bd162866c26dacd.js"></script>
+<script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin2/js/poppinresources.js"></script>
+<style>
+span[id^='custcol8']
+{ 
+display:none; 
+} 
+</style>
+<!--[if IE]>						
+<style>
+#canadaimage{
+position: absolute; 
+left:72% !important;
+top:50% !important;
+}
+#usimage{
+position: absolute; 
+left:62% !important; 
+top:50% !important;
+}
+</style>
+<style>
+.home-login{
+position:relative;
+}
+#homeiframecontainer{
+height:110px;
+}
+</style>
+<![endif]-->
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<link href="/site/pp-files/pp-all-styles.min.css?c=" rel="stylesheet" type="text/css" />
+<PP_EMAILS_STYLESHEET>
+<!--[if IE]><link href="/site/pp-files/ie.css" rel="stylesheet" type="text/css" /><! [endif]-->
+<link href="/site/pp-body/favicon.png" rel="shortcut icon" type="image/x-icon" />
+<script type="text/javascript">var log_mail='<%=getCurrentAttribute("customer","email","")%>',base_url='<%=getCurrentAttribute("site","homepageurl")%>',show_by_color_info_url='<%=getAttribute("infoitem","9","storeurl")%>'</script>
+<!-- jquery|ns-fix|gp-functions|pp-custom-nav-drilldown|gp-slide|aae_library|wlp-library|qvi-library|mct-library|__pp-navigation-fixed|pp-color-hover|ns-fix -->
+<script type="text/javascript" src="/SSP Applications/Poppin/SocialMediaLogin2/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="/site/pp-files/pp-all_header_scripts.js"></script>
+<GPR_AAE_ADDTOHEAD_N1>
+<GPR_AAE_MCT_ADDTOHEAD>
+<GPR_AAE_QIO_ADDTOHEAD>
+<GPR_AAE_RVI_ADDTOHEAD>
+<PP_ADD_HEADER_CODE>
+<script type="text/javascript" src="/site/card-selector/functions.js"></script>
+<link href="/site/card-selector/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/site/canadapopup/css/popup.css" type="text/css"/>
+<script language="JavaScript" src="https://j.maxmind.com/app/geoip.js"></script>
+<script language="JavaScript" src="/site/canadapopup/scripts/popupcanada.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+jQuery(document).ready(function(){
+var countrycode = geoip_country_code();
+if(countrycode == 'CA' )
+{
+	if(jQuery(".home-container").length>0){
+		showPopUp('dialog');
+	}
+};
+});
+</script>
+<PP_SOCIAL_MEDIA_ALL>
+<PP_CANADA_POPUP>
+<!--[if lt IE 10]><script src="/SSP Applications/Poppin/Header/pp_legacy_browser.js"></script><![endif]-->
+<!--[if lt IE 8]><script src="/SSP Applications/Poppin/SocialMediaLogin2/js/json3.min.js"></script><![endif]-->
+<script src="/SSP Applications/Poppin/SocialMediaLogin2/js/jquery-ui-1.10.3.custom.min.js"></script>
+<link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin2/smoothness/jquery-ui-1.10.3.custom.css" />
+<div id="dialogresponse" title="Basic dialog" style="display:none;"></div>
+<style>
+div#waitmask{ cursor: wait; z-index: 999; height: 100%; width: 100%; position:fixed; display:none;}
+</style>
+<div id="waitmask"></div>
+<div id="loginpositionhelper"  style="position:absolute; z-index:100;margin:0 auto; width:600px;top:50%;left:50%;margin-top: -290px;margin-left: -300px;"><div style="position:relative;"><PP_MINI_LOGIN_LAYOVER></div></div>
+<div id="coverdiv"></div>
+<script>
+/* hide qty if there are no items in cart */
+jQuery(document).ready(function(){var cartQty=$j(".mini-cart a").html().trim();if(!(cartQty > 0)){$j(".mini_cart_txt").hide();}});
+</script>

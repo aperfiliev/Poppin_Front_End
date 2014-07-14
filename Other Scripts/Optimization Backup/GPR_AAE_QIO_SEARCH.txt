@@ -1,0 +1,33 @@
+<!-- Netsuite Inc. AAE QIO - Web Site Theme - Below Netsuite Search Input -->
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        var objOptions;
+        objOptions = {
+            serviceUrl: '/s.nl',
+            minChars: 3,
+            delimiter: /(,|;)\s*/, // regex or character
+            zIndex: 9999,
+            width: 250,
+            maxHeight: 600,
+            deferRequestBy: 0, //miliseconds
+            searchBkgStyle: 'url(/site/addons/qio/qio_ajax_loader.gif) 100% 1px no-repeat',
+            params: {
+                sitenumber: gprSiteNumber
+            }, //aditional parameters
+            maxResults: 3,
+            fnFormatResult: function(value, data, currentValue){
+                return GPR_AAE_QIO.formatResultSearch(value, data, currentValue);
+            },
+            fnParseResponse: function(text, query){
+                return GPR_AAE_QIO.parseResponseSearch(text, query);
+            },
+            fnViewMore: function(query){
+                return GPR_AAE_QIO.viewMoreSearch(query);
+            },
+            fnOnSelect: function(value, data, obj){
+                GPR_AAE_QIO.onSelectSearch(value, data, obj);
+            }
+        };
+        var objQIOSearch = jQuery('input[name=search]').autocomplete(objOptions);
+    });
+</script>
