@@ -115,7 +115,7 @@
 
 
 	<div id="div__footer" class="noprint" leftmargin="0" topmargin="0" marginwidth="1" marginheight="1">
-	<PP_FOOTER_CLEAN>
+	<PP_FOOTER>
 	</div>
 
 	<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
@@ -124,9 +124,13 @@
 	<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 	<% } %>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0144c07af280.js') %>"></script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0144c143a7f3.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-014734c9a06f.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0146fbe5f7d1.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
+<script language="javascript" type="text/javascript">
+	var ipAddress = "<%=getCurrentAttribute('request','ipaddress')%>";	
+</script>
+
 	<PP_CHECKOUT_TAG_CONTAINER>
 </body>
 </html>
