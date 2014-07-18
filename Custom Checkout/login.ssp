@@ -18,7 +18,7 @@
 	<% if (siteType && siteType === 'ADVANCED') { %>
 		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/styles.css') %>">
 	<% } else { %>
-		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/styles-sitebuilder.css') %>">
+		<link rel="stylesheet" href="<%= session.getAbsoluteUrl('checkout', 'skins/standard/pp-styles-sitebuilder.css') %>">
 	<% } %>
 	<%= (siteType && siteType === 'STANDARD') ? getPageFullHead() : '' %>
 	<!--[if lt IE 9]> <script src="<%= session.getAbsoluteUrl('checkout', 'js/html5shiv.js') %>"></script> <![endif]-->
@@ -39,13 +39,12 @@
 		</div>
 	<% } %>
 	<div id="main"></div>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/src/core/console.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'sc.environment.ssp?lang=' + (request.getParameter('lang') || '') + '&cur=' + (request.getParameter('cur') || '') ) %>"></script>
 	<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 	<% } %>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0144c07af280.js') %>"></script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0144c143a7f3.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-014744412bab.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0146fbe5f7d1.js') %>"></script>
 	<script>
 		if (!window.location.hash && !_.parseUrlOptions(location.search).fragment)
 		{
@@ -55,6 +54,6 @@
 		SC.Application('Checkout').Configuration.currentTouchpoint = 'login';
 		SC.Application('Checkout').Configuration.startCheckoutWizard = false;
 	</script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'starter.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/starter/Starter-014744508f42.js') %>"></script>
 </body>
 </html>
