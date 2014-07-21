@@ -1,31 +1,5 @@
 <td class="td-product-page">
 <script type="text/javascript" src="/c.3363929/suitebundle16015/site/imb/imb-library.js?rev"></script>
-<script type="text/javascript">
-$j(function(){
-	//Product view
-	if($j('.tabs-container').length > 0){
-		$j('.tabs-container').gpTabs();
-	}
-	//Item list carousel
-	if($j('.td-correlated-cell').length > 0){
-		$j('.td-correlated-cell').gpItemListCarousel({quantityMove: 2});
-	}
-});
-</script>
-<style type="text/css">
-.td-left { display: none }
-.colors-list { padding: 0; border-bottom: 1px dotted #a3a3a3; padding-right: 100px; }
-.colors-list li { width: 25px; height: 26px; padding: 2px 1px; display: inline-block; text-align: center; margin: 0 0 25px 42px; cursor: pointer; font-family: "OmnesLightRegular", Arial, Helvetica, sans-serif; font-size: 40px; color: #999 }
-.colors-list li.first { margin-left: 0 }
-div.choose { color: #f47a20; font-size: 18px }
-.share-block { }
-.icon_tell_friend { }
-.icon_tell_friend a { background: url("/site/pp-templates/btn-email-friend.png") no-repeat scroll 0 0 transparent; display: inline-block; height: 20px; margin: 0; overflow: hidden; text-indent: -900px; width: 55px; }
-.icon_tell_friend a:hover { background-position: 0 -20px; }
-.more-views .pinterest-button { display: inline-block!important; }
-.product-page .addto .addcart-wrap .quantity-in-cart { display: none; }
-</style>
-<script type="text/javascript" src="/site/pp-files/pp-matrix-opts.js"></script>
 <script id='spinback-spincycle' type='text/javascript' src='http://conversion.buddymedia.com/js/spincycleinit.js?cid=79C9FF'>
 	pn:<%=getCurrentAttribute('item','storedisplayname2')%>
 	pid:<%=getCurrentAttribute('item','itemid')%>
@@ -33,8 +7,6 @@ div.choose { color: #f47a20; font-size: 18px }
 	pi:<%=getCurrentAttribute('item','storedisplaythumbnail','/site/pp-templates/thumb.gif')%>
 	pd:<%=getCurrentAttribute('item','storedescription')%>
 </script>
-<script type="text/javascript" src="/site/pp-files/sc-available.colors.js"></script>
-<script type="text/javascript" src="/site/pp-files/sc-available.frames.js"></script>
 <div class="product-page">
 	<div class="left-content">
 		<div class="image-gallery">
@@ -48,43 +20,6 @@ div.choose { color: #f47a20; font-size: 18px }
 				<%=getCurrentAttribute('item','custitem_small_message_bottom')%>
 			</p>
 		</div>
-<script type="text/javascript">
-var big_message = $j('.product-message-bottom .big-message span').html();
-if (big_message.length == 0) {
-	$j('.product-message-bottom').hide();
-}
-</script>
-<script type="text/javascript">
-(function() {
-	if (typeof jQuery !== "undefined" && jQuery !== null) {
-		jQuery(function() {
-			var hide_add_to_cart;
-			hide_add_to_cart = (function() {
-				var count = 1;
-				return function() {
-					var $bsn_save;
-					$bsn_save = jQuery('#bsn_save');
-					if ($bsn_save.length) {
-						if ($bsn_save.css('display') === 'block') {
-							count = false;
-							$bsn_save.closest('.right-content').addClass('item-out-of-stock');
-							return $bsn_save.parent().parent().find('.addto').hide();
-						} else {
-							if (count && count < 10) {
-								return setTimeout(function() {
-									count += 1;
-									return hide_add_to_cart();
-								}, 400);
-							}
-						}
-					}
-				};
-			})();
-			return hide_add_to_cart();
-		});
-	}
-}).call(this);
-</script>
 		<table class="correlated-data" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
 				<%=getCurrentAttribute('item','correlateditemshtml')%>
 		</tr></table>
@@ -100,39 +35,17 @@ if (big_message.length == 0) {
 		<form method='post' name='form<%=getCurrentAttribute('item', 'internalid')%>' id='form<%=getCurrentAttribute('item', 'internalid')%>' onsubmit='return checkmandatory<%=getCurrentAttribute('item', 'internalid')%>();' action='/app/site/backend/additemtocart.nl'>
 			<div class="wrap-price">
 				<span class="regular-price"><span class="price-container"><%=getCurrentAttribute('item','salespricehtml')%></span></span><span class="custom-detail"><%=getCurrentAttribute('item','custitem_price_description','')%></span>
-<script type="text/javascript">
-var price_text = $j('.price-container').text();
-price_text = price_text.replace(/\$|\.00/g, '');
-var price_html = '<span class="currency-symbol">$</span><span class="price">' + price_text + '</span>';
-$j('.price-container').html(price_html);
-</script>
 			</div>
-<script type="text/javascript">
-if($j('.wrap-price .custom-detail').text() == ''){
-	$j('.wrap-price').addClass('single-price');
-}
-</script>
-				<div class="addto">
-					<div class="options-container">
-						<table cellpadding="0" cellspacing="0" border="0" width="100%" class="addtocart-options table-data-options">
-							<%=getCurrentAttribute('item','addtocartoptionshtml')%>
-						</table>
-					</div>
-					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="addtocart">
-						<%=getCurrentAttribute('item','addtocartdrillDownHtml')%>
-					</table>
-				</div>
-<script type="text/javascript">
-var custopts = $j("#custcol10").scCutsomOptions();
-if (custopts.length) {
-	custopts.closest("table").after("<div class='choose'>CHOOSE YOUR INITIAL</div>");
-	custopts.hide().closest("tr").hide();
-	$j(".colors-list li").each(function(i) {
-		if (!(i % 5))
-			this.className = "first";
-	});
-}
-</script>
+		<div class="addto">
+			<div class="options-container">
+				<table cellpadding="0" cellspacing="0" border="0" width="100%" class="addtocart-options table-data-options">
+					<%=getCurrentAttribute('item','addtocartoptionshtml')%>
+				</table>
+			</div>
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="addtocart">
+				<%=getCurrentAttribute('item','addtocartdrillDownHtml')%>
+			</table>
+		</div>
 		</form>
 		<div class="details">
 			<!-- AVAILABLE COLORS -->
@@ -357,24 +270,6 @@ if (custopts.length) {
 			</div>
 			<!-- END AVAILABLE COLORS -->
 			<!-- START AVAILABLE SIZES -->
-			<style type="text/css">
-				.product-page .available-frames-block ul li a { display: block; width: 41px; height: 41px;text-indent: -999px; overflow: hidden; background: #fff; }
-				.product-page .available-frames-block,
-				.product-page .available-colors-block { display:none; }
-				.product-page .available-frames-block .product-block-title { margin: 0 0 15px; }
-				.product-page .available-frames-block ul { margin: 0; padding: 0 0 0 6px; list-style: none; }
-				.product-page .available-frames-block ul:after { content: "."; visibility: hidden; display: block; height: 0; clear: both; overflow: hidden; }
-				.product-page .available-frames-block ul li { float: left; margin: 0 0 8px; padding: 0; background: none; line-height: normal; list-style: none; }
-				.product-page .available-frames-block ul li a { display: block; width: 41px; height: 41px; text-indent: -999px; overflow: hidden; background: #fff; }
-				.product-page .available-frames-block ul li.clear { clear: none; }
-				.product-page .available-frames-block ul li span { background: url(http://cdn-web.poppin.com/site/pp-templates/available-colors/poppin-tooltip.png) no-repeat left top; }
-				.product-page .available-frames-block ul .color-over { left: -3px; bottom: 35px; font-size: 11px; text-transform: uppercase; font-family: "OmnesRegular", Arial, Helvetica, sans-serif; padding-left: 40px; }
-				.product-page .available-frames-block ul .color-over .color-text { display: block; white-space: nowrap; color: #fff; background-position: right top; padding-right: 27px; font-weight: bold; height: 41px; padding-top: 15px; }
-				.product-page .available-frames-block ul li.black .color-over { background-position: left -222px; }
-				.product-page .available-frames-block ul li.black .color-over .color-text { background-position: right -222px; }
-				.product-page .available-frames-block ul li.white .color-over { background-position: left -3079px; }
-				.product-page .available-frames-block ul li.white .color-over .color-text { background-position: right -3079px; color: #000; }
-			</style>
 			<div class="product-block available-frames-block">
 				<div class="product-block-title">Additional Frames And Sizes</div>
 				<div class="product-block-content">
@@ -446,93 +341,6 @@ if (custopts.length) {
 </div>
 <GPR_AAE_RVI_SAVEITEM>
 <GPR_AAE_ITEMTEMPLATE>
-<style type="text/css">
-.product-page .product-block-title { color: #f57b20; text-transform: uppercase; border-bottom: 1px solid #e2e2e2; font-family: "OmnesMediumRegular", Arial, Helvetica, sans-serif; font-size: 18px; padding: 0 0 4px; margin: 0 0 12px; font-weight: normal; }
-.product-page { background: url(/site/pp-templates/grey-line2.gif) repeat-y 512px top; }
-.product-page .left-content { width: 480px; float: left; }
-.product-page .right-content { width: 425px; float: right; }
-.product-page .image-gallery { margin: 0 0 10px; padding: 0 0 10px; border: 0; }
-.product-page .imb .jqzoom img { border: 0; }
-.product-page .imb .zoomPad { height: auto; }
-.product-page .imb .zoomPup { border: 1px solid white; background: url(/site/pp-templates/bg-pup.png) repeat; }
-.product-page .imb .more-views { color: #f57b20; font-family: "OmnesMediumRegular",Arial,Helvetica,sans-serif; margin: 0 0 12px; padding: 0 0 4px; border-bottom: 1px solid #e2e2e2; text-align: right; }
-.product-page .imb .more-views a,
-.product-page .imb .more-views .icon_tell_friend { vertical-align: top; margin: 0 0 0 3px; text-align: left; }
-.product-page .imb .more-views .icon_tell_friend a { margin: 0; }
-.product-page .imb .more-views .txt { float: left; font-size: 18px; text-transform: uppercase; font-family: "OmnesMediumRegular",Arial,Helvetica,sans-serif; }
-.product-page .imb .gpc-controls-wrap .controls-right,
-.product-page .imb .gpc-controls-wrap .controls-left { margin: 10px 0 0; }
-.product-page .imb #thumblist { width: auto; }
-.product-page .imb #thumblist td { width: 109px; padding: 0; margin: 0; }
-.product-page .imb #thumblist .imb-thumbnail { width: 109px; }
-.product-page .imb #thumblist .imb-thumbnail a { width: 68px; height: 68px; margin: 0 auto; overflow: hidden; display: block; border: 1px solid #fff; }
-.product-page .imb #thumblist .imb-thumbnail a.zoomThumbActive { border: 1px solid #fff; }
-.product-page .imb #thumblist .imb-thumbnail a img { max-width: 68px; max-height: 68px; }
-.product-page .imb #thumblist a.zoomThumbActive:hover,
-.product-page .imb #thumblist a:hover { border: 1px solid #CDCDCD; }
-.product-page .imb .zoomWrapper { border: 0!important; }
-.product-page .imb .zoomWindow { border: 1px solid #ababab; }
-.td-correlated { vertical-align: top; padding: 0; }
-.td-correlated-cell { padding: 0; vertical-align: top; width: 109px; }
-.correlated-cell { width: 109px; margin: 0; }
-.correlated-cell .thumb { margin: 0 0 10px; width: 109px; height: 74px; overflow: hidden; text-align: center; }
-.correlated-cell .thumb img { max-width: 72px; max-height: 75px; }
-.correlated-cell h2 { color: #939393; font-size: 12px; text-align: center; font-family: "OmnesMediumRegular",Arial,Helvetica,sans-serif; padding: 0 10px; }
-.correlated-cell h2 a { color: #939393; }
-/* Carousel (required script) */
-.gpc-controls-wrap { width: 480px; }
-.gpc-controls-wrap .product-list-wrap { float: left; width: 436px; overflow: hidden; margin: 0; }
-.gpc-controls-wrap.no-controls .product-list-wrap { margin: 0 0 0 22px; }
-.gpc-controls-wrap .controls-left,
-.gpc-controls-wrap .controls-right { width: 22px; overflow: hidden; text-align: center; font-size: 11px; font-weight: bold; cursor: pointer; padding: 0; height: 49px; text-indent: -999px; }
-.gpc-controls-wrap .controls-left { background: url(/site/pp-templates/btn-carousel-left.jpg) no-repeat left top; }
-.gpc-controls-wrap .controls-right { background: url(/site/pp-templates/btn-carousel-right.jpg) no-repeat left top; }
-.gpc-controls-wrap .controls-left { float: left; margin: 22px 0 0 0; }
-.gpc-controls-wrap .controls-right { float: right; margin: 22px 0 0 0; }
-.gpc-controls-wrap .controls-left:hover,
-.gpc-controls-wrap .controls-right:hover { background-position: left bottom; }
-.gpc-controls-wrap .controls-left.disable,
-.gpc-controls-wrap .controls-right.disable { background: none; cursor: default; }
-.product-page .right-content .small-message { color: #888888; font-family: "OmnesLightRegular",Arial,Helvetica,sans-serif; font-size: 18px; font-style: italic; margin: 0; }
-.product-page .right-content h1 { color: #F47A20; font-family: "OmnesLightRegular",Arial,Helvetica,sans-serif; font-size: 36px; line-height: 28px; margin: 0 0 10px; }
-.product-page .right-content .wrap-price { font-family: "OmnesLightRegular", Arial, Helvetica, sans-serif; margin: 22px 0 28px; width: 100%; }
-.product-page .wrap-price span { float: left; }
-.product-page .wrap-price .regular-price { color: #f47a20; font-size: 43px; padding-top: 0px; }
-.product-page .wrap-price .regular-price .currency-symbol { font-family: "OmnesRegularRegular", Arial, Helvetica, sans-serif; font-size: 23px; padding: 5px 0 0; }
-.product-page .right-content .wrap-price .custom-detail { color: #b4b4b4; font-size: 20px; padding: 7px 0 0 10px; }
-.product-page .addcart-wrap .qty-wrap { display: block; margin: 0 15px 0 0; color: #666; padding: 0; float: left; }
-.product-page .addcart-wrap .qty-wrap .qty-txt { font-family: "OmnesLightRegular", Arial, Helvetica, sans-serif; font-size: 16px; vertical-align: middle; padding: 8px 10px 0 0; }
-.product-page .addcart-wrap .qty-wrap .qty-txt { padding-right: 4px; }
-.product-page .addcart-wrap .qty-wrap .input { border: 1px solid #b4b4b4; font-size: 15px; text-align: center; width: 22px; height: 22px; color: #666; vertical-align: middle; margin-top: 5px; padding: 1px; }
-.product-page .addto .addcart-wrap .addtocart { margin-top: 1px; }
-.product-page .addto .addcart-wrap .addtocart:hover { background-color: #fe9d56; }
-.product-page .right-content .bsn .wrap { float: none; width: auto; margin: 0 0 25px; }
-.product-page .right-content .bsn .wrap .save { margin: 0 0 12px; }
-.product-page .right-content .bsn .wrap .save a { font-size: 16px; }
-.product-page .right-content #bsn_save_iframe { width: 270px; }
-.product-page .details { font-size: 16px; margin: 0 0 25px; padding: 15px 20px; border: 1px solid #d9d9d9; clear: both; overflow: visible; }
-.product-page .details:after { content: "."; visibility: hidden; display: block; height: 0; clear: both; overflow: hidden; }
-.product-page .right-content .details .title { color: #f57b20; font-size: 18px; font-family: "OmnesMediumRegular", Arial, Helvetica, sans-serif; text-transform: uppercase; margin: 0 0 6px; background: url(/site/pp-templates/bg-dotted2.gif) repeat-x left bottom; padding: 0 0 8px; }
-.product-page .right-content .details .detail-desc { margin: 0 0 18px; }
-.product-page .right-content .details .available-colors-block .title { margin: 0 0 18px; }
-.product-page .right-content .details .product-block-content { padding: 0; }
-.product-page .details ul { margin: 0 0 10px; padding: 0 0 0 17px; list-style: disc; }
-.product-page .details .personalize-it-block a { display: block; background: url(/site/pp-templates/btn-personalize-me.jpg) no-repeat left top; width: 159px; height: 27px; overflow: hidden; text-indent: -999px; }
-.product-page .details .personalize-it-block a:hover { background-position: left bottom; }
-.right-content .rvi-items .rvi_list .rvi_item { width: 86px; margin-right: 20px; margin-bottom: 20px; }
-.right-content .rvi-items .rvi_image { width: 86px; height: 86px; }
-.right-content .rvi-items .rvi_image a img { max-width: 86px; max-height: 86px; }
-.right-content .rvi-items .rvi_name { font-size: 12px; font-weight: normal; color: #939393; }
-.right-content .rvi-items .rvi_name a { color: #939393; }
-.right-content .rvi-items .add-cart-div { display: none; }
-.as-seen-in-block .product-block-content { padding: 0; }
-.as-seen-in-block p { margin: 0; }
-.as-seen-in-block img { max-width: 140px; margin-right: 30px; }
-.product-page .personalize-it-block { margin: 0 0 20px; }
-.product-page .personalize-it-block p { margin: 0; }
-.product-page .available-colors-block ul { list-style: none outside none; margin: 0; padding: 0 0 0 6px; }
-.product-page .available-colors-block ul li { background: none repeat scroll 0 0 transparent; float: left; line-height: normal; margin: 0 0 8px; padding: 0;display:block }
-.product-page .available-colors-block ul li a { background: none no-repeat scroll center 0 #FFFFFF; display: block; height: 41px; overflow: hidden; text-indent: -999px; width: 41px; }
-.product-page .available-colors-block
-</style>
+<link type="text/css" href="/Poppin/pp-sc-resources/ProductPage/css/ProductPageStyles.css" rel="stylesheet">
+<script type="text/javascript" src="/Poppin/pp-sc-resources/ProductPage/js/ProductPageScripts.js"></script>
 </td>
