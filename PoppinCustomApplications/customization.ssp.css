@@ -1,0 +1,269 @@
+.breadcrumbs {
+	padding: 13px 0 0px;
+}
+.breadcrumbs .free-shipping-container {
+	height: auto;
+}
+td#contentBody{
+	padding: 0;
+}
+tbody#content_master tr{
+	color: #333;
+	font-size: 17px;
+	vertical-align: top;
+}
+tbody#content_master tr:not(:last-child){
+	background: url(/site/pp-sources/business/bg-dotted-small.gif) repeat-x left bottom;
+}
+tbody#content_master td{
+	padding: 10px 0 10px 0;
+}
+tbody#content_master .customization_types tr:first-child td{
+	padding-right: 5px;
+}
+tbody#content_master h1{
+	color: #f67a00;
+	font-family: OmnesLightRegular, Arial, Helvetica, sans-serif;
+	font-size: 48px;
+	margin: 0px;
+}
+tbody#content_master h2{
+	color: #f37a31;
+	padding: 6px 0 6px 0;
+}
+tbody#content_master h4{
+	font-family: OmnesMediumRegular;
+	font-size: 19px;
+	font-weight: bold;
+}
+tbody#content_master .p_logo{
+	font-size: 18px;
+	color: #4B4B4B;
+	margin: 5px 0 28px 0;
+}
+tbody#content_master td.callstylist{
+	text-align: center;
+	padding: 10px 0 10px 0;
+}
+tbody#content_master span.orange{
+	font-size: 28px;
+	text-transform: uppercase;
+	color: #f37a31;
+}
+tbody#content_master span.number{
+	font-size: 28px;
+	color: #f37a31;
+	font-family: OmnesMediumRegular;
+	font-weight: bold;
+}
+tbody#content_master span.grey{
+	color: rgb(194, 194, 194);
+	font-size: 24px;
+}
+tbody#content_master div.div__regform{
+	display: table-cell;
+	float: left;
+	margin-bottom: 15px;
+    border-bottom: 3px solid #ff9a64;
+}
+tbody#content_master div.div__regform iframe{
+	width: 203px;
+	height: 390px;
+	overflow: hidden;
+}
+tbody#content_master div.div__presentation{
+	display: table-cell;
+	float: left;
+	margin-bottom: 15px;
+    border-bottom: 3px solid #ff9a64;
+}
+tbody#content_master div.div__register{
+	display: table-cell;
+	float: left;
+	height: 323px;
+	width: 245px;
+	background-color: #f2f2f2;
+	padding: 30px 40px 20px 40px;
+}
+td.medtextbold {
+	display: none;
+}
+tbody#content_master .customization_item, tbody#content_master .customization_titem{
+	box-shadow: 0px 4px 10px rgba(120, 120, 120, 0.3);
+	-webkit-box-shadow: 0px 4px 10px rgba(120, 120, 120, 0.3);
+	-moz-box-shadow: 0px 4px 10px rgba(120, 120, 120, 0.3);
+	zoom: 1;
+	 filter: progid:DXImageTransform.Microsoft.Shadow(color=#7b7b7b,direction=0,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=45,strength=2), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=90,strength=0), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=135,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=180,strength=10), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=225,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=270,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=315,strength=2)
+}
+
+tbody#content_master .customization_item{
+	display: table;
+	text-align:center;
+	margin: 10px 0px;
+	padding:25px 0px 25px 5px;
+	position: relative;
+}
+tbody#content_master .customization_notebooks .customization_detail{
+	text-align:left;	
+}
+tbody#content_master .customization_detail{
+	display: table-cell;
+	float: left;
+	color: #4B4B4B;
+	font-size: 18px;
+	text-align: left;
+	margin: 0;
+	padding: 62px 15px 20px 15px;
+	width: 175px;
+}
+tbody#content_master .customization_image{
+	display: table-cell;
+	float: left;
+	padding-left: 8px;
+	background: url(/site/pp-sources/business/bg-dotted-small-vert.gif) repeat-y left top;
+}
+
+tbody#content_master .customization_detail h3{
+	color:#000;
+	font-family: 'OmnesMediumRegular',sans-serif;
+	font-size: 20px;
+}
+
+tbody#content_master .customization_detail .p_details{
+	font-size: 13px;
+	margin: 0;
+	font-family: 'OmnesRegularRegular', sans-serif;
+}
+
+tbody#content_master .customization_detail .p_options{
+	color: #777777;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: underline;
+	margin: 30px 0 0 0;
+}
+
+tbody#content_master .customization_detail .p_fullcolor{
+	color: #777777;
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: bold;
+	font-family: 'OmnesRegularRegular', sans-serif;
+	margin: 0;
+}
+
+tbody#content_master .customization_tdetail{
+	display: block;
+	float: none;
+	color:#000;
+	font-size: 18px;
+	text-align:center;
+	background: url(/site/pp-sources/business/bg-dotted-small.gif) repeat-x left top;
+	margin: 15px 15px 0 15px;
+	padding: 10px 0 0 0;
+}
+
+tbody#content_master .customization_titem{
+	height: 139px;
+	width: 300px;
+	margin: 0px 3px;
+	padding: 15px 4px;
+	text-align: center;
+}
+
+tbody#content_master .customization_types h3{
+	
+}
+tbody#content_master .customization_mark{
+	padding: 14px 0 14px 0;
+}
+tbody#content_master .grey_separator{
+	font-family: 'OmnesBoldRegular', sans-serif;
+	font-size: 28px;
+	padding: 10px 0 10px 0;
+	text-align: center;
+	color: #f37a31;
+}
+
+/* Configure powerTip */
+
+div[id^="popup"] {
+	background-color:#fff;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	display: none;
+	padding: 20px;
+	position: absolute;
+	white-space: nowrap;
+	z-index:90;
+	border:none;
+	width: 358px;
+	height: 158px;
+	line-height: 0px;
+	font-size: 14px;
+}
+div[id^="popup"]{
+	box-shadow: 0px 4px 10px rgba(120, 120, 120, 0.4);
+	-webkit-box-shadow: 0px 4px 10px rgba(120, 120, 120, 0.4);
+	-moz-box-shadow: 0px 4px 10px rgba(120, 120, 120, 0.4);
+	zoom: 1;
+	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(color=#7b7b7b,direction=0,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=45,strength=2), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=90,strength=0), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=135,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=180,strength=10), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=225,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=270,strength=5), 
+	 progid:DXImageTransform.Microsoft.Shadow(color=#6E6E6E,direction=315,strength=2)
+}
+div[id^="popup"]:before {
+	content: "";
+	position: absolute;
+}
+div[id^="popup"].n:before {
+	margin-top: 0px;
+	margin-left: -40px;
+	top: 99%;
+	left: 50%;
+	width: 81px;
+	height: 68px;
+	background: url(/site/pp-sources/customization/popup-arrow.png) no-repeat;
+}
+
+p.popup_header {
+	font-family: 'OmnesRegularRegular', sans-serif;
+	font-size: 36px;
+	line-height: 33px;
+	color: #cfcfcf;
+	text-align: left;
+	padding: 0 0 20px 0;
+	white-space: normal;
+	margin:0;
+	width:270px;
+}
+
+p.popup_text {
+	font-family: 'OmnesMediumRegular',sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 28px;
+	color: #f37a31;
+	background: url(/site/pp-sources/business/bg-dotted-small.gif) repeat-x left top;
+	padding: 15px 0 0 0;
+	text-align: left;
+	white-space: normal;
+	margin: 0;
+	width:340px;
+}
+tbody#content_master .customization_mark b{
+	font-family: OmnesMediumRegular;
+	font-size: 26px;
+}

@@ -1,0 +1,391 @@
+td.medtextbold{
+    display: none;
+}
+#office-supplies .motto{
+    text-align: center;
+}
+#office-supplies .motto .general{
+    font-family: OmnesBoldRegular;
+    font-size: 38px;
+    color: #00a5d9;
+    margin: 0;
+    line-height: 40px;
+    margin-top: 20px;
+}
+#office-supplies .motto .not-general{
+    font-family: OmnesLightRegular;
+    font-size: 49px;
+    color: #000;
+    margin: 0 0 20px 0;
+
+}
+#office-supplies .main-image{
+    background: url(/site/pp-sources/office-supplies/office.supplies.header.animation.gif) top left no-repeat;
+    width: 968px;
+    height: 349px;
+    padding: 35px 0 0 25px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#office-supplies .main-image p{
+    font-size: 36px;
+    font-family: OmnesLightRegular;
+    margin: 0;
+}
+#office-supplies .main-image p strong{
+    font-size: 44px;
+    font-family: OmnesBoldRegular;
+    line-height: 44px;
+}
+#office-supplies .main-image p strong span{
+    margin-bottom: 15px;
+    font-size: 44px;
+    font-family: OmnesBoldRegular;
+    display: inline-block;
+}
+#office-supplies .main-image p span.thin{
+    font-family: OmnesLightRegular;
+    margin-bottom: 0;
+}
+#office-supplies .join{
+    width: 967px;
+    margin: 15px 0 0 0;
+}
+#office-supplies .join p{
+    text-align: center;
+    color: #00afe6;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-family: OmnesBoldRegular;
+    margin: 10px 0;
+}
+#office-supplies .item-cell{
+	width: 322px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 25px 0 0;
+}
+#office-supplies .item-cell.first{
+    clear: both;
+}
+#office-supplies .item-cell p.item-cell-heading a{
+    font-family: OmnesSemiBold;
+    font-size: 18px;
+    text-align: center;
+    padding-bottom: 10px;
+    width: 240px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    color: #000000;
+}
+#office-supplies .item-cell-image a.image-link,
+#office-supplies .item-cell-image a.image-link:hover
+{
+    display: block;
+    width: 250px;
+    height: 220px;
+    position: relative;
+    margin: 0 auto;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+/*product images  */
+#office-supplies .item-cell-image a.image-link.pic1{background: url(/site/pp-sources/office-supplies/pic_1.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic2{background: url(/site/pp-sources/office-supplies/pic_2.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic3{background: url(/site/pp-sources/office-supplies/pic_3.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic4{background: url(/site/pp-sources/office-supplies/pic_4.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic5{background: url(/site/pp-sources/office-supplies/pic_5.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic6{background: url(/site/pp-sources/office-supplies/pic_6.jpg) center center no-repeat;}
+
+
+/*product images  hover*/
+#office-supplies .item-cell-image a.image-link.pic1:hover{background: url(/site/pp-sources/office-supplies/pic_1a.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic2:hover{background: url(/site/pp-sources/office-supplies/pic_2a.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic3:hover{background: url(/site/pp-sources/office-supplies/pic_3a.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic4:hover{background: url(/site/pp-sources/office-supplies/pic_4a.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic5:hover{background: url(/site/pp-sources/office-supplies/pic_5a.jpg) center center no-repeat;}
+#office-supplies .item-cell-image a.image-link.pic6:hover{background: url(/site/pp-sources/office-supplies/pic_6a.jpg) center center no-repeat;}
+
+#office-supplies .item-cell ul.item-cell-itemlist{
+    list-style: none;
+    width: 220px;
+    margin: 15px 0 0 90px;
+    padding: 0;
+    text-transform: capitalize;
+    line-height: 16px;
+}
+#office-supplies .item-cell ul.item-cell-itemlist li.first a{
+    color: #f4662a;
+    font-weight: bold;
+}
+#office-supplies .item-cell ul.item-cell-itemlist li a{
+    color: #8f8f8f;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: Helvetica;
+    margin: 0;
+    display: inline-block;
+
+}
+#office-supplies .item-cell ul.item-cell-itemlist li a:hover{
+    text-decoration: underline;
+}
+#office-supplies hr.item-cell-underline{
+    color: #d3d3d3;
+    background-color:#d3d3d3;
+    border:0px none;
+    height:1px;
+    clear:both;
+}
+#office-supplies .design-block{
+    float: left;
+    width: 322px;
+    margin-right: 0;
+    margin-bottom: 30px;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 60px;
+    margin-top: 40px;
+
+}
+#office-supplies .design-block p{
+    font-family: OmnesRegularRegular;
+    font-size: 14px;
+    margin-top: 5px;
+}
+#office-supplies .blabla{
+    font-family: OmnesMediumRegular;
+    width: 232px;
+    height: 93px;
+    font-size: 17px;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 64px;
+    padding-left: 34px;
+    background: url(/site/pp-sources/office-supplies/blabla.jpg) no-repeat;
+    margin-bottom: 10px;
+    margin-top: 5px;
+
+}
+
+#office-supplies .design-block.first{
+    background: url(/site/pp-sources/office-supplies/f.jpg) top left no-repeat;
+}
+#office-supplies .design-block.second{
+    background: url(/site/pp-sources/office-supplies/s.jpg) top left no-repeat;
+}
+#office-supplies .design-block.third{
+    background: url(/site/pp-sources/office-supplies/t.jpg) top left no-repeat;
+}
+
+#office-supplies a.chat-now{
+    background: url(/site/pp-sources/office-supplies/chat.jpg) top left no-repeat;
+    width: 115px;
+    height: 28px;
+    display: inline-block;
+}
+#office-supplies a.chat-now:hover{
+    background: url(/site/pp-sources/office-supplies/chata.jpg) top left no-repeat;
+}
+#office-supplies a.request{
+    background: url(/site/pp-sources/office-supplies/request.jpg) top left no-repeat;
+    width: 115px;
+    height: 28px;
+    display: inline-block;
+}
+#office-supplies a.request:hover{
+    background: url(/site/pp-sources/office-supplies/requesta.jpg) top left no-repeat;
+}
+#office-supplies .design-description p{
+    font-family: OmnesSemiBold;
+    font-size: 20px;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#office-supplies .design-block.second .design-description p{
+    font-size: 18px;
+}
+
+#office-supplies .call-us{
+    background: #f0f0f0;
+    width: 968px;
+    margin-top: 10px;
+    text-align: center;
+    padding: 5px 0;
+}
+#office-supplies .call-us p{
+    font-family: OmnesRegularRegular;
+    font-size: 18px;
+    margin: 0;
+    text-transform: uppercase;
+}
+#office-supplies .call-us p span{
+    font-family: OmnesBoldRegular;
+    font-size: 18px;
+}
+
+#office-supplies  .prefooter {
+    width: 968px;
+    height: 270px;
+    background: url(/site/pp-sources/office-supplies/prefooter.jpg) center no-repeat;
+}
+/*image preloader*/
+#image-preloader{
+    position: absolute;
+    top: -100500px;
+    background-image: url(/site/pp-sources/office-supplies/pic_1a.jpg),
+    url(/site/pp-sources/office-supplies/pic_2a.jpg),
+    url(/site/pp-sources/office-supplies/pic_3a.jpg),
+    url(/site/pp-sources/office-supplies/pic_4a.jpg),
+    url(/site/pp-sources/office-supplies/pic_5a.jpg),
+    url(/site/pp-sources/office-supplies/pic_6a.jpg),
+    url(/site/pp-sources/office-supplies/design.desk.animation2a.jpg),
+    url(/site/pp-sources/office-supplies/kca.jpg),
+    url(/site/pp-sources/office-supplies/nka.jpg),
+    url(/site/pp-sources/office-supplies/dda.jpg),
+    url(/site/pp-sources/office-supplies/requesta.jpg),
+    url(/site/pp-sources/office-supplies/chata.jpg),
+    url(/site/pp-sources/office-supplies/color1a.jpg),
+    url(/site/pp-sources/office-supplies/color2a.jpg),
+    url(/site/pp-sources/office-supplies/color3a.jpg),
+    url(/site/pp-sources/office-supplies/color4a.jpg),
+    url(/site/pp-sources/office-supplies/color5a.jpg),
+    url(/site/pp-sources/office-supplies/color6a.jpg),
+    url(/site/pp-sources/office-supplies/color7a.jpg),
+    url(/site/pp-sources/office-supplies/color8a.jpg),
+    url(/site/pp-sources/office-supplies/color9a.jpg),
+    url(/site/pp-sources/office-supplies/color10a.jpg),
+    url(/site/pp-sources/office-supplies/design.desk.animation.gif);
+    background-position: center bottom, left top;
+    background-repeat: no-repeat;
+}
+/*leadform*/
+#leadform-overlay{
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba( 0, 0, 0, 0.5);
+}
+#leadform-overlay{
+    display: none;
+}
+#leadform-overlay .leadform{
+    position: relative;
+    width: 785px;
+    height: 612px;
+    top: 50%;
+    left: 50%;
+    margin: -306px 0 0 -392px;
+    cursor: default;
+}
+#leadform-overlay .leadform .close-button{
+    position: relative;
+    width: 133px;
+    height: 75px;
+    top: -648px;
+    left: 710px;
+    cursor: pointer;
+    background: url(/site/pp-sources/workhappy/close-button.gif) center no-repeat;
+}
+#industry{
+    background: url(http://sandbox.poppin.com/site/pp-sources/customization/bg_select.png) no-repeat -12px;
+}
+
+
+.shop-color{
+    clear: both;
+}
+.clr{
+    clear: both;
+}
+.customiz{
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 30px;
+    margin: 30px 0;
+
+}
+.customiz a{
+    margin-right: 38px;
+    width: 275px;
+    height: 353px;
+    display: inline-block;
+}
+.customiz a.dd{
+    background: url(/site/pp-sources/office-supplies/dd.jpg) no-repeat;
+}
+.customiz a.dd:hover{
+    background: url(/site/pp-sources/office-supplies/dda.jpg) no-repeat;
+}
+.customiz a.kc{
+    background: url(/site/pp-sources/office-supplies/kc.jpg) no-repeat;
+}
+.customiz a.kc:hover{
+    background: url(/site/pp-sources/office-supplies/kca.jpg) no-repeat;
+}
+.customiz a.nk{
+    margin-right: 0;
+    background: url(/site/pp-sources/office-supplies/nk.jpg) no-repeat;
+}
+.customiz a.nk:hover{
+    background: url(/site/pp-sources/office-supplies/nka.jpg) no-repeat;
+}
+
+#office-supplies .slide-wrap{
+    height: 359px;
+    margin: 0;
+}
+
+.shop-color a.colr{
+    width: 67px;
+    height: 94px;
+    display: block;
+    float: left;
+    padding: 0;
+
+}
+.shop-color a img, .shop-color a{
+    float: left;
+    display: block;
+}
+.shop-color a{
+    margin-top: 30px;
+}
+.shop-color a.blank{
+    cursor: default;
+}
+.shop-color a.colr.color1{width: 52px; background: url(/site/pp-sources/office-supplies/color1.jpg) no-repeat;}
+.shop-color a.colr.color2{ background: url(/site/pp-sources/office-supplies/color2.jpg) no-repeat;}
+.shop-color a.colr.color3{ background: url(/site/pp-sources/office-supplies/color3.jpg) no-repeat;}
+.shop-color a.colr.color4{ background: url(/site/pp-sources/office-supplies/color4.jpg) no-repeat;}
+.shop-color a.colr.color5{ background: url(/site/pp-sources/office-supplies/color5.jpg) no-repeat;}
+.shop-color a.colr.color6{ background: url(/site/pp-sources/office-supplies/color6.jpg) no-repeat;}
+.shop-color a.colr.color7{ background: url(/site/pp-sources/office-supplies/color7.jpg) no-repeat;}
+.shop-color a.colr.color8{ background: url(/site/pp-sources/office-supplies/color8.jpg) no-repeat;}
+.shop-color a.colr.color9{ background: url(/site/pp-sources/office-supplies/color9.jpg) no-repeat;}
+.shop-color a.colr.color10{ background: url(/site/pp-sources/office-supplies/color10.jpg) no-repeat;}
+
+.shop-color a.colr.color1:hover{width: 52px; background: url(/site/pp-sources/office-supplies/color1a.jpg) no-repeat;}
+.shop-color a.colr.color2:hover{ background: url(/site/pp-sources/office-supplies/color2a.jpg) no-repeat;}
+.shop-color a.colr.color3:hover{ background: url(/site/pp-sources/office-supplies/color3a.jpg) no-repeat;}
+.shop-color a.colr.color4:hover{ background: url(/site/pp-sources/office-supplies/color4a.jpg) no-repeat;}
+.shop-color a.colr.color5:hover{ background: url(/site/pp-sources/office-supplies/color5a.jpg) no-repeat;}
+.shop-color a.colr.color6:hover{ background: url(/site/pp-sources/office-supplies/color6a.jpg) no-repeat;}
+.shop-color a.colr.color7:hover{ background: url(/site/pp-sources/office-supplies/color7a.jpg) no-repeat;}
+.shop-color a.colr.color8:hover{ background: url(/site/pp-sources/office-supplies/color8a.jpg) no-repeat;}
+.shop-color a.colr.color9:hover{ background: url(/site/pp-sources/office-supplies/color9a.jpg) no-repeat;}
+.shop-color a.colr.color10:hover{ background: url(/site/pp-sources/office-supplies/color10a.jpg) no-repeat;}
+
+.border-div{
+    border: 1px solid #d4d4d4;
+}

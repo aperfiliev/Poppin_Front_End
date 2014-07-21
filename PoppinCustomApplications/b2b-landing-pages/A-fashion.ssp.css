@@ -1,0 +1,134 @@
+td#contentBody{
+	padding: 0;
+}
+tbody#content_master tr{
+	color: #333;
+	font-size: 17px;
+	vertical-align: top;
+	padding: 3px 0 0px 0;
+}
+tbody#content_master td{
+	padding: 0;
+}
+tbody#content_master div.div__presentation{
+	display: table-cell;
+	float: left;
+	margin-bottom: 12px;
+}
+tbody#content_master div.div__regform{
+	display: table-cell;
+	float: left;
+}
+tbody#content_master div.div__regform iframe{
+	width: 209px;
+	height: 427px;
+	overflow: hidden;
+}
+tbody#content_master .div__hrsep{
+	height: 4px;
+	background-color: black;
+}
+tbody#content_master .div__callstylist{
+	width: 473px;
+	height: 99px;
+	display: table-cell;
+	float: left;
+	background-color: #F1F1F1;
+	text-align: center;
+}
+tbody#content_master .p_callstylist{
+	color: #000;
+	font-family: OmnesMediumRegular, sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	margin: 12px 0px 0px 0px;
+}
+tbody#content_master .p_phone{
+	color: #EA4395;
+	font-family: OmnesMediumRegular, sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	margin: 0px 0px 0px 0px;
+}
+tbody#content_master .p_discounts{
+	color: #797979;
+	margin: 0px 0px 0px 0px;
+}
+tbody#content_master .div__vtsep{
+	width: 22px;
+	height: 87px;
+	padding: 12px 0 0 0;
+	display: table-cell;
+	float: left;
+	background-color: #F1F1F1;
+}
+tbody#content_master .div__readmore{
+	width: 473px;
+	height: 99px;
+	display: table-cell;
+	float: left;
+	background-color: #F1F1F1;
+}
+tbody#content_master .div__readmore p{
+	margin: 19px 35px 0px 35px;
+}
+tbody#content_master .div__readmore a{
+	font-family: OmnesMediumRegular, sans-serif;
+	color: #EA4395;
+	text-decoration: underline;
+}
+tbody#content_master .div__options#left {
+	display: table-cell;
+	float: left;
+	padding: 12px 0 27px 0;
+}
+tbody#content_master .div__options#center {
+	display: table-cell;
+	float: left;
+	padding: 12px 0 27px 12px;
+}
+tbody#content_master .div__options#right {
+	display: table-cell;
+	float: right;
+	padding: 12px 0 27px 0;
+}
+tbody#content_master .div__logos {
+	display: table-cell;
+	float: left;
+	padding: 0px 10px 0px 10px;
+	margin: 10px 0px 16px 0px;
+}
+tbody#content_master .div__logos:not(:first-child) {
+	background: url(/site/pp-sources/business/bg-dotted-small-vert.gif) repeat-y left top;
+}
+tbody#content_master .div__hrsep1{
+	background: url(/site/pp-sources/b2b-landing-pages/fashion/bg_blackline.png) repeat-x left top;
+	height: 20px;
+	width: 968px;
+}
+tbody#content_master .div__hrsep2{
+	position: relative;
+	float: right;
+	right: 50%;
+}
+tbody#content_master .div__joincompanies{
+	background-color: #fff;
+	font-weight: bold;
+	font-family: Arial,Helvetica,sans-serif;
+	position: relative;
+	float: left;
+	left: 50%;
+	padding: 0 3px;
+}
+tbody#content_master .div__terms{
+	padding: 30px 0 0 0;
+}
+tbody#content_master .div__terms h3{
+	font-family: 'OmnesRegularRegular',sans-serif;
+	font-size: 18px;
+	color: #f37a31;
+}
+tbody#content_master .div__terms p{
+	color: #717171;
+	font-size: 12px;
+}
