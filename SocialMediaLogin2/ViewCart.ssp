@@ -3,10 +3,12 @@
 <html>
 <head>
 <%= getPageFullHead() %>
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="<%=poppinservres.url.jsjqueryui%>"></script>
-<link href="<%=poppinservres.url.cssjqueryui%>" rel="stylesheet" type="text/css" />
+<!-- <script src="js/jquery-1.10.2.min.js"></script>
+<script src="/SSP Applications/Poppin/SocialMediaLogin2/js/jquery-ui-1.10.3.custom.min.js"></script>
+<link href="/SSP Applications/Poppin/SocialMediaLogin2/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
+
 <script src="js/jquery.powertip.js"></script>
+-->
 <script type="text/javascript" src="BuildCart.js"></script>
 <script type="text/javascript" src="ViewCart.js"></script>
 
@@ -22,56 +24,22 @@ function setGARedirectUrl(url) {
 	   window.location = redir_elem;
 	   return false;
 	  }
-$(document).ready(
+jQuery(document).ready(
 		function(){
-			$(window).scroll(function () {
-				if($(window).scrollTop() + $(window).height() > $(document).height() - 300 ) {
+			jQuery(window).scroll(function () {
+				if(jQuery(window).scrollTop() + jQuery(window).height() > jQuery(document).height() - 300 ) {
 					//do nothing
-				} else if($(window).scrollTop()<300){
-					$('#floatingTotal').animate({top:0},{duration:1000,queue:false});
-				} else if($(window).scrollTop()%200==0){
+				} else if(jQuery(window).scrollTop()<300){
+					jQuery('#floatingTotal').animate({top:0},{duration:1000,queue:false});
+				} else if(jQuery(window).scrollTop()%200==0){
 					//do nothing
 				} else{
-					set = $(document).scrollTop()-200+"px";
-					$('#floatingTotal').animate({top:set},{duration:1000,queue:false});
+					set = jQuery(document).scrollTop()-200+"px";
+					jQuery('#floatingTotal').animate({top:set},{duration:1000,queue:false});
 				}
 			});
 		});
-// $(function() { 
-// 	$('#cartform').on('submit', function(e) { 
-// //	 	<input type='hidden' name='c' value='3363929'>
-// //	 	<input type='hidden' name='sc' value='3'>
-// //	 	<input type='hidden' name='vid' value='wzxHh0i-AVs-_kTy'>
-// //	 	<input type='hidden' name='ck' value='wzxHh2C-AXyys5Tk'>
-// //	 	<input type='hidden' name='cktime' value='114292'>
-// //	 	<input type='hidden' name='cart' value='182390'>
-// 		 try {
-// 	            e.preventDefault();
-	         
-		 
-// 	            var form = this;
-// 	            if (typeof _gat !== 'undefined') {
-// 	                _gaq.push(['_linkByPost', this]);
-// 	                var pageTracker = _gat._getTrackerByName();
-// 	                var url = pageTracker._getLinkerUrl(form.action);
-// 	                var match = url.match(/[^=&?]+\s*=\s*[^&#]*/g);
-// 	                for ( var i = match.length; i--; ) {
-// 	                    var spl = match[i].split("=");
-// 	                    var name = spl[0].replace("[]", "");
-// 	                    var value = spl[1];
-// 	                    $('<input>').attr({
-// 	                        type: 'hidden',
-// 	                        name: name,
-// 	                        value: value
-// 	                    }).appendTo(form);
-// 	                }
-// 	            }
-// 	            setTimeout(function() { form.submit(); }, 400);
-// 	        } catch (e) { form.submit(); }
-// 	});
 	
-// });
-
 </script>
 
 <style>
@@ -142,6 +110,20 @@ font-size:14px;
 font-family: 'OmnesMediumRegular';
 font-weight: bold;
 text-transform:capitalize;
+}
+.promoLink{
+color: #f37a31;
+text-decoration: underline;
+font-size: 11px;
+font-family: Arial,Helvetica,sans-serif;
+cursor: pointer;
+}
+.promoDescription{
+padding: 10px 0 10px 0;
+color: #28B9F0;
+font-weight: bold;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 13px;
 }
 .checkoutDiv{
 text-align:left;
@@ -222,8 +204,9 @@ width:110px;
 }
 .promoApply{
 font-family: 'OmnesMediumRegular';
-background: rgb(40, 185, 240);
-border: 1px solid rgb(40, 185, 240);
+background: -webkit-linear-gradient( -90deg, #35c6f5, #35c6f5);
+background: linear-gradient( -90deg, #35c6f5, #35c6f5);
+border: 1px solid #35c6f5;
 border-radius: 15px;
 color: #fff;
 cursor: pointer;
@@ -277,6 +260,32 @@ div[id^="powerTip"].n:before {
 	width:9px;
 	height:7px;
 	background:url(images/tip-yellowsimple_arrows.gif) no-repeat -18px 0;
+}
+
+#powerDiv {
+	background-color:#fff;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	color:#000;
+	display: none;
+	padding: 0px 20px 0px 20px;
+	position: absolute;
+	white-space: nowrap;
+	z-index:90;
+	text-align:left;
+	border: 1px solid #ccc;
+	min-width:50px;
+	max-width:300px;
+	line-height: 0px;
+	font-size: 14px;
+}
+
+.phoneDiv span a {
+color: #969696;
+}
+.free-shipping-container{
+display: none;
 }
 
 #div__help {
@@ -350,8 +359,7 @@ color: grey;
 			</div>
 
 			<div id="div__help_bg"></div>
-			<!-- <form method='post' name='cart' id='cart' onsubmit="_gaq.push(['_linkByPost', this]); return true;"> -->
-			<input type='hidden' name='redirect' value=''>
+
 			<div id='div__body'>
 				<table border="0" cellspacing="0" cellpadding="0" width="100%">
 					<tbody>
@@ -379,10 +387,10 @@ color: grey;
 													<%=getRecordAttribute('199',3,'custrecord_bannerhtml')%>
 												</div>
 											</td>
-											<td valign="top" style="padding: 5px 5px 5px 20px; border-left: 1px solid gray;width: 197px;" align="right">
+											<td valign="top" style="padding: 5px 5px 5px 20px; border-left: 1px solid gray;width:197px;" align="right">
 											<div id="floatingTotal" style="position:relative;">
 											<div class="checkoutDiv">
-											<input type="submit" class="bgbutton" value="checkout" onclick="if(checkout()){setGARedirectUrl(checkoutUrl.value);};"/>
+											<input type="submit" class="bgbutton" value="checkout" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); background: linear-gradient( -90deg, #c9dd1a, #b6d00d); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); background: -webkit-linear-gradient( -90deg, #c9dd1a, #b6d00d); width: 205px; height: 35px; border-color: white; font-size: 17px; font-family: 'arial'; border-radius: 12px;" onclick="if(checkout()){setGARedirectUrl(checkoutUrl.value);};"/>
 											</div>
 												<table class="orderSummary" border="0" cellspacing="0" cellpadding="0">
 												<col class="summaryLabels" />
@@ -393,8 +401,8 @@ color: grey;
 												<div class="promoCode" id="promoCodeDiv">
 												</div>
 												<div class="checkoutDiv">
-												<input type="submit" class="bgbutton" value="checkout" onclick="if(checkout()){setGARedirectUrl(checkoutUrl.value);}"/>
-												<span class="span-or-use">- Or use -</span>
+												<input type="submit" class="bgbutton" value="checkout" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); background: linear-gradient( -90deg, #c9dd1a, #b6d00d); background: -webkit-linear-gradient( -90deg, #c9dd1a, #b6d00d); width: 205px; height: 35px; border-color: white; font-size: 17px; font-family: 'arial'; border-radius: 12px;" onclick="if(checkout()){setGARedirectUrl(checkoutUrl.value);};"/>
+
 													<%
 														var checkoutSettings = nlapiGetWebContainer().getShoppingSession().getSiteSettings(['checkout']); 
 														var paypalUrl = nlapiGetWebContainer().getShoppingSession().getAbsoluteUrl("checkout", "PaypalCheckout.ss");
@@ -402,7 +410,7 @@ color: grey;
 														paypalImageUrl = (paypalImageUrl != undefined) ? paypalImageUrl : 'http://www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif';
 													%>
 												
-													<input type='image' src='<%=paypalImageUrl%>' onclick='if(checkout()){setGARedirectUrl("<%=paypalUrl%>");}' class="nlbutton" style="background: #FFF;border: 0px solid #fff;"/>
+													<input type='image' src='<%=paypalImageUrl%>' onclick='if(checkout()){setGARedirectUrl(checkoutUrl.value.indexOf("index.ssp")>-1 ? checkoutUrl.value.replace("index.ssp","PaypalCheckout.ss") : checkoutUrl.value.replace("Login.ssp","PaypalCheckout.ss"));}' class="nlbutton" style="margin-left: 35px; background: #FFF;border: 0px solid #fff; margin-top: 40px;"/>
 												
 												</div>
 											</div>
@@ -415,7 +423,6 @@ color: grey;
 					</tbody>
 				</table>
 			</div>
-			<!--  </form>-->
 		</div>
 	</div>
 	<div id='div__footer' class='noprint' leftmargin='0' topmargin='0'
