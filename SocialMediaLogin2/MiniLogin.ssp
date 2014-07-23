@@ -1,48 +1,36 @@
 <html>
 <head>
-<script type="text/javascript" src="<%=poppinservres.url.poppinresources%>"></script>
-<script src="js/jquery-1.10.2.min.js"></script>
-<link href="/site/social-login/css/login.css" rel="stylesheet" type="text/css" />
-<style>
-body {
-	margin: 0;
-	padding: 0;
-}
-</style>
-<script type="text/javascript" src="js/easyXDM.js"></script>
+<script type="text/javascript" src="<%=poppinservres.url.poppinresourcesmini%>"></script>
+<script src="/Poppin/SocialMediaLogin2/js/jquery-1.10.2.min.js"></script>
+<!--[if lt IE 8]><script src="/SSP Applications/Poppin/SocialMediaLogin2/js/json3.min.js"></script><![endif]-->
+<script type="text/javascript" src="/Poppin/SocialMediaLogin2/js/easyXDM.js"></script>
 <script type="text/javascript">
-var socket = null;
-socket = new easyXDM.Socket({
+var MINILOGINSOCKET = null;
+	jQuery(document).ready(function() {
+MINILOGINSOCKET = new easyXDM.Socket({
 		remote:poppinres.url.poppinglobal,
 		onReady: function(){
 			
      },
 	    onMessage:function(message, origin) {
 	    	var messageObject = JSON.parse(message);
-	    	if(messageObject.requesttype=='login')
-	    		{
+			if (messageObject.requesttype == 'login') {
 	    			sendLoginRequest(messageObject);
-	    		}
-	    	else if(messageObject.requesttype=='sociallogin')
-	    		{
+			} else if (messageObject.requesttype == 'sociallogin') {
 	    			socialLogin(messageObject.user);	
-	    		}
-	    	else if(messageObject.requesttype=='forgotpassword')
-	    		{
+			} else if (messageObject.requesttype == 'forgotpassword') {
 	    			sendLoginRequest(messageObject);
-	    		}
-	    	else if(messageObject.requesttype=='resetpassword')
-    			{
+			} else if (messageObject.requesttype == 'resetpassword') {
     				sendLoginRequest(messageObject);
-    			}
-	    	else if(messageObject.requesttype=='twitterlogin')
-	    		{
+			} else if (messageObject.requesttype == 'twitterlogin') {
 	    			twitterLogin(messageObject);
+			} else if (messageObject.requesttype == 'manualregister') {
+				sendLoginRequest(messageObject);
 	    		}
 	    }
 	});
-function socialLogin(deserialized)
-{
+	});
+	function socialLogin(deserialized) {
     var newUser = {
     		"requesttype":"sociallogin",
     		"email":deserialized['user'].email,
@@ -56,8 +44,7 @@ function socialLogin(deserialized)
     		};
   sendLoginRequest(newUser);
 }
-function twitterLogin(deserialized)
-{
+	function twitterLogin(deserialized) {
     var newUser = {
     		"requesttype":"sociallogin",
     		"email":deserialized.email,
@@ -71,8 +58,7 @@ function twitterLogin(deserialized)
     		};
   sendLoginRequest(newUser);
 }
-function sendLoginRequest(user)
-{
+	function sendLoginRequest(user) {
 	jQuery.ajax({
 		  url: poppinres.url.loginservice,
 		  data: user,
@@ -83,13 +69,11 @@ function sendLoginRequest(user)
 		});
 	    document.body.style.cursor = 'wait';
 }
-function response(data)
-{
-	socket.postMessage(data.responseText);
+	function response(data) {
+	MINILOGINSOCKET.postMessage(data.responseText);
 }
 </script>
 </head>
 <body>
-
 </body>
 </html>
