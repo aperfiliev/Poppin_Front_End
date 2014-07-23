@@ -207,7 +207,7 @@ display:none;
 	});
 </script>
 <!-- END ERP Guru NetSuite Display Override-->
-<GA_FUNNELS>
+<script src="/Poppin/pp-sc-resources/GA_FUNNELS/js/ga_funnels_script.js"></script>
 <SMARTYSTREETS>
 <CARD_SELECTOR_EMPTY>
 </div>

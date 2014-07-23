@@ -427,7 +427,9 @@ color: grey;
 	</div>
 	<div id='div__footer' class='noprint' leftmargin='0' topmargin='0'
 		marginwidth='1' marginheight='1'>
-		<PP_FOOTER> <GA_FUNNELS> <SMARTYSTREETS>
+		<PP_FOOTER> 
+		<script src="/Poppin/pp-sc-resources/GA_FUNNELS/js/ga_funnels_script.js"></script> 
+		<SMARTYSTREETS>
 		<CARD_SELECTOR_EMPTY>
 	</div>
 
