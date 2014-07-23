@@ -130,6 +130,6 @@
 </script>
 
 	<PP_CHECKOUT_TAG_CONTAINER>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/poppin/PoppinCheckoutScripts-01474473b0ee.js') %>"></script>	
+	<script src="/Poppin/pp-sc-resources/GA_FUNNELS/js/ga_funnels_script.js"></script>
 </body>
 </html>
