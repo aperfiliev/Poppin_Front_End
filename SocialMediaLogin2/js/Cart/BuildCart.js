@@ -58,67 +58,51 @@
 	 * Dynamically build out the cart
 	 */
 	function buildCartItems(order) {
+		//console.log("order");
+		var myaccount_attr = document.getElementById("myaccount").getAttribute("href");
+		
+		//var sign_up = jQuery(".singUpBtn").attr("onclick");
+		
+		if(jQuery("#promoInput").val()){
+			myaccount_attr = myaccount_attr.replace('promocode=','promocode='+jQuery("#promoInput").val());
+			//sign_up = sign_up.replace('promocode=','promocode='+jQuery("#promoInput").val());
+		}
+		document.getElementById("myaccount").setAttribute("href",myaccount_attr);
+		//jQuery(".singUpBtn").attr("onclick", sign_up);
 
+		jQuery("li.mini-cart > a").html(order.totalfound);
 		if(order!=0 && order.totalfound!=0)
 		{
-			$("li.mini-cart > a").html(order.totalfound);
 			// Insert table rows and cells into body
 			for ( var i = 0; i < order['items'].length; i++) {
-				buildItemRow(cartBody, i, 
-						order['items'][i].storedisplaythumbnail, 
-						order['items'][i].storeurl, 
-						order['items'][i].name, 
-						order['items'][i].quantity, 
-						order['items'][i].quantityavailable, 
-						order['items'][i].orderitemid, 
-						order['items'][i].storedescription, 
-						order['items'][i].price, 
-						order['items'][i].price_discounted, 
-						order['items'][i].amount,
-						order['items'][i].promotionamount,
-						order['items'][i].isdropshipitem
-					);
+				buildItemRow(cartBody, i, order['items'][i], order.message);
 			}
 			addEmptyRow(cartBody);
 			
-			buildOrderSummary(actionbar, order['summary'].subtotal, order['summary'].tax, order['summary'].shippingcost, order['summary'].discount, order['summary'].total);
+			buildOrderSummary(order['summary'].subtotal, order['summary'].tax, order['summary'].shippingcost, order['summary'].discount, order['summary'].total);
 			buildPromoCodeDiv(order.promocode);
 			
 			var checkoutUrl = document.getElementById('checkoutUrl');
 			checkoutUrl.value = order.checkouturl;
+			checkoutUrl.value = checkoutUrl.value.replace('dontcookiepromocode=T','dontcookiepromocode=F');
 			
 			var continueUrl = document.getElementById('continueUrl');
 			continueUrl.value = order.continueshoppingurl;
 			
-			$(".checkoutDiv").show();
-			$(".promoCode").show();
+			jQuery(".checkoutDiv").show();
+			jQuery(".promoCode").show();
 			
-			showTips();
 		} else {
-			$(".checkoutDiv").hide();
-			$(".promoCode").hide();
+			jQuery(".checkoutDiv").hide();
+			jQuery(".promoCode").hide();
 			
-			buildOrderSummary(actionbar, order['summary'].subtotal, order['summary'].tax, order['summary'].shippingcost, order['summary'].discount, order['summary'].total);
+			buildOrderSummary(order['summary'].subtotal, order['summary'].tax, order['summary'].shippingcost, order['summary'].discount, order['summary'].total);
 		}
-	}
-	/*
-	 * 
-	 */
-	function showTips()
-	{
-		$(".input-red").each(function() { $(this).powerTip('show'); });
-		
-		$(".promoInput-red").powerTip('show');
-	}
-	function removeTips()
-	{
-		$(".input-red").each(function() { $(this).powerTip('destroy'); });
-		$(".promoInput-red").powerTip('destroy');
 	}
 	/*
 	 * Dynamically build out the item row
 	 */
-	function buildItemRow(table, num, storedisplaythumbnail, itemurl, name, quantity, quantityavailable, orderitemid, storedescription, rate_formatted, rate_discounted, amount_formatted, promotionamount, isdropshipitem)
+	function buildItemRow(table, num, order, message)
 	{
 		var row, cell;
 		var error_msg = '';
@@ -128,10 +112,10 @@
 		cell = row.insertCell(-1);
 		cell.setAttribute("valign", "top");
 		cell.setAttribute("class", "texttablectr");
-		if(storedisplaythumbnail != "")
+		if(order.storedisplaythumbnail != "")
 		{
 			var ctnt = document.createElement("img");
-			ctnt.setAttribute("src", storedisplaythumbnail);
+			ctnt.setAttribute("src", order.storedisplaythumbnail);
 			ctnt.setAttribute("height", "120");
 			ctnt.setAttribute("border", "0");
 			cell.appendChild(ctnt);
@@ -142,12 +126,12 @@
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
 		var ctnt = document.createElement("a");
-		ctnt.setAttribute("href", itemurl);
+		ctnt.setAttribute("href", order.storeurl);
 		ctnt.setAttribute("target", "_self");
 		ctnt.setAttribute("class", "titlelink");
 		ctnt.setAttribute("onclick", "window.open(this.href,'_blank'); return false;");
 		
-		ctnt.innerHTML = name;
+		ctnt.innerHTML = order.name;
 		cell.appendChild(ctnt);
 		
 		cell = row.insertCell(-1);
@@ -156,12 +140,12 @@
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
 		
-		if(promotionamount) {
-			cell.innerHTML = '<span class="titlespan"><span style="text-decoration: line-through;">' + formatPrice(rate_formatted) 
+		if(order.promotionamount) {
+			cell.innerHTML = '<span class="titlespan"><span style="text-decoration: line-through;">' + formatPrice(order.price) 
 							+ '</span><br><span style="color:red">' 
-							+ formatPrice(rate_discounted) + '</span></span>';
+							+ formatPrice(order.price_discounted) + '</span></span>';
 		} else {
-			cell.innerHTML = '<span class="titlespan">' + formatPrice(rate_formatted) + '</span>';
+			cell.innerHTML = '<span class="titlespan">' + formatPrice(order.price) + '</span>';
 		}
 		
 		cell = row.insertCell(-1);
@@ -177,23 +161,31 @@
 		ctnt.setAttribute("type", "text");
 		ctnt.setAttribute("size", "6");
 		ctnt.setAttribute("maxlength", "6");
-		ctnt.setAttribute("value", quantity);
-		ctnt.setAttribute("name", '_'+orderitemid);
-		ctnt.setAttribute("id", '_'+orderitemid);
+		ctnt.setAttribute("value", order.quantity);
+		ctnt.setAttribute("name", '_'+order.orderitemid);
+		ctnt.setAttribute("id", '_'+order.orderitemid);
+		if(order.itemtype === 'GiftCert'){
+			ctnt.setAttribute("disabled", "disabled");
+			ctnt.setAttribute("style", "border:0;");
+			
+		}
+		var res = [];
+		if(message)
+			res = message.split(" ");
 
-		if(isdropshipitem)
+		if(order.isdropshipitem)
 		{
-			if(quantity>250)
+			if(order.quantity>250)
 			{
 				ctnt.setAttribute("class", "input-red");
 				error_msg = '<p>Your quantity must be</p><p> less or equal 250</p>';
 			}
 		}
-		else if(quantityavailable < quantity)
+		else if(order.itemtype !=='GiftCert' && res[0] == "Alotofproducts" && res[1] == order.orderitemid)
 		{
-			var plus_one = quantityavailable +1;
+			var plus_one = order.quantityavailable +1;
 			ctnt.setAttribute("class", "input-red");
-			if(quantityavailable == 0){
+			if(order.quantityavailable == 0){
 				error_msg = '<p>This item is out of stock</p>';
 			} else {
 				error_msg = '<p>Your quantity must be</p><p> less than ' + plus_one + '</p>';
@@ -202,27 +194,28 @@
 		div.appendChild(ctnt);
 		var ctnt = document.createElement("input");
 		ctnt.setAttribute("type", "hidden");
-		ctnt.setAttribute("value", quantityavailable);
-		ctnt.setAttribute("id", 'max_'+orderitemid);
+		ctnt.setAttribute("value", order.quantityavailable);
+		ctnt.setAttribute("id", 'max_'+order.orderitemid);
 		div.appendChild(ctnt);
 		
-		if(orderitemid != 0)
+		if(order.orderitemid != 0)
 		{
-			var ctnt = document.createElement("a");
-			ctnt.setAttribute("href", "#");
-			ctnt.setAttribute("id", "remove"+num);
-			ctnt.setAttribute("class", "updateLink");
-			ctnt.setAttribute("onclick", "updateQtyField('"+orderitemid+"')");
-			ctnt.setAttribute("alt", "Click to update quantity");
-			ctnt.innerHTML += 'Update';
-			div.appendChild(ctnt);
-			
-			div.innerHTML += '<br>';
+			if(order.itemtype !=='giftcert'){
+				var ctnt = document.createElement("a");
+				ctnt.setAttribute("href", "#");
+				ctnt.setAttribute("id", "remove"+num);
+				ctnt.setAttribute("class", "updateLink");
+				ctnt.setAttribute("onclick", "updateQtyField('"+order.orderitemid+"')");
+				ctnt.setAttribute("alt", "Click to update quantity");
+				ctnt.innerHTML += 'Update';
+				div.appendChild(ctnt);
+				div.innerHTML += '<br>';
+			}
 			var ctnt = document.createElement("a");
 			ctnt.setAttribute("href", "#");
 			ctnt.setAttribute("id", "remove"+num);
 			ctnt.setAttribute("class", "removeLink");
-			ctnt.setAttribute("onclick", "removeItem('_"+orderitemid+"')");
+			ctnt.setAttribute("onclick", "removeItem('_"+order.orderitemid+"')");
 			ctnt.setAttribute("alt", "Click to remove item");
 			ctnt.innerHTML += 'Remove';
 			div.appendChild(ctnt);
@@ -236,10 +229,10 @@
 		cell.setAttribute("class", "texttable");
 		cell.setAttribute("style", "padding-top: 40px;");
 		
-		if(promotionamount) {
-			cell.innerHTML = '<span class="titlespan">' + formatPrice(promotionamount) + '</span>';
+		if(order.promotionamount) {
+			cell.innerHTML = '<span class="titlespan">' + formatPrice(order.promotionamount) + '</span>';
 		} else {
-			cell.innerHTML = '<span class="titlespan">' + formatPrice(amount_formatted) + '</span>';
+			cell.innerHTML = '<span class="titlespan">' + formatPrice(order.amount) + '</span>';
 		}
 		
 		cell = row.insertCell(-1);
@@ -250,16 +243,8 @@
 		
 		if(error_msg != '')
 		{
-			$('#'+'_'+orderitemid).data('powertip', error_msg);
-			$('#' + '_' + orderitemid).powerTip({
-				placement : 'n',
-				popupId : 'powerTip' + orderitemid,
-				manual : true,
-				parent : $('#' + '_' + orderitemid).parent(),
-				top: -6,
-				left: 10
-			});
-			$('#' + '_' + orderitemid).on('focusin', function() { $('#powerTip' + orderitemid).hide(); } );
+			powerTip.create('_'+order.orderitemid, error_msg, 'powerTip' + order.orderitemid, -52, 10);
+			jQuery('#' + '_' + order.orderitemid).on('focusin', function() { powerTip.hide('powerTip' + order.orderitemid); }) ;
 		}
 	}
 	/*
@@ -299,32 +284,33 @@
 	/*
 	 * 
 	 */
-	function buildOrderSummary(table, subtotal, tax, shipping, discount, total)
+	function buildOrderSummary(subtotal, tax, shipping, discount, total)
 	{
-		table.innerHTML = '';
+		jQuery("#actionbar").html("");
+		tbody = document.getElementById('actionbar');
 		
 		var row, cell;
-		row = table.insertRow(-1);
+		row = tbody.insertRow(-1);
 		
 		cell = row.insertCell(-1);
 		cell.setAttribute("colspan", "2");
 		cell.innerHTML = '<h3>Order Summary</h3>';
 		
-		row = table.insertRow(-1);
+		row = tbody.insertRow(-1);
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Subtotal';
 		cell = row.insertCell(-1);
 		cell.setAttribute("class", "right");
 		cell.innerHTML = subtotal;
 		
-		row = table.insertRow(-1);
+		row = tbody.insertRow(-1);
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Shipping';
 		cell = row.insertCell(-1);
 		cell.setAttribute("class", "right");
 		cell.innerHTML = shipping;
 		
-		row = table.insertRow(-1);
+		row = tbody.insertRow(-1);
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Tax';
 		cell = row.insertCell(-1);
@@ -332,7 +318,7 @@
 		cell.innerHTML = tax;
 		
 		if(discount != '') {
-			row = table.insertRow(-1);
+			row = tbody.insertRow(-1);
 			cell = row.insertCell(-1);
 			cell.innerHTML = 'Discount';
 			cell = row.insertCell(-1);
@@ -340,7 +326,7 @@
 			cell.innerHTML = discount;
 		}
 		
-		row = table.insertRow(-1);
+		row = tbody.insertRow(-1);
 		row.setAttribute("class", "totalRow");
 		cell = row.insertCell(-1);
 		cell.innerHTML = 'Total';
@@ -356,17 +342,17 @@
 		var code = '';
 		var description = '';
 		var isvalid = 'N';
-		
 		if(promocode.isvalid != null)
 		{
 			isvalid = promocode.isvalid;
+			if(isvalid === 'F' && promocode.message === undefined )
+				promocode.message = "<p>In order for your code to work, you need </p><p>to add more Poppin products to your cart.</p>";
 		}
 		if(promocode.promocode != null)
 		{
 			code = promocode.promocode;
 			description = promocode.description;
 		}
-		
 		var promoCodeDiv = document.getElementById('promoCodeDiv');
 		promoCodeDiv.innerHTML = '';
 		
@@ -386,7 +372,8 @@
 		ctnt.setAttribute("id", "promoInput");
 		ctnt.setAttribute("type", "text");
 		ctnt.setAttribute("value", code);
-		ctnt.setAttribute("title", description);
+		ctnt.setAttribute("style", "text-transform: uppercase;");
+		//ctnt.setAttribute("title", description);
 		if(isvalid === 'F')
 		{
 			ctnt.setAttribute("class", "promoInput-red");
@@ -419,16 +406,32 @@
 		promoCodeDiv.appendChild(div);
 		if(isvalid === 'F')
 		{
-			$('#promoInput').data('powertip', '<p>Gone are the days of humdrum</p><p>office products &#8211; and that promo code</p>');
-				$('#promoInput').powerTip({
-				placement : 'n',
-				popupId : 'powerTipPromo',
-				manual : true,
-				parent : $('#promoInput').parent(),
-				top: -6,
-				left: 80
-			});
-			$('#promoInput').on('focusin', function() { $('#powerTipPromo').hide(); });
+			var alignTipTop = 0;
+			promocode.message.indexOf('<br/>')>-1 ? alignTipTop= -35 : alignTipTop = -50;
+			powerTip.create('promoInput', promocode.message,
+					'powerTipPromo', alignTipTop, 40);
+			jQuery('#promoInput').on('focusin', function() { powerTip.hide('powerTipPromo'); }) ;
+		}
+		if(description != '')
+		{
+			promoHover = document.createElement("div");
+			promoHover.setAttribute("class", "promoHover");
+			
+			div = document.createElement("div");
+			div.setAttribute("class", "promoLink");
+			div.innerHTML = "Promo details";	// Promo details text
+			promoHover.appendChild(div);
+			
+			div = document.createElement("div");
+			div.setAttribute("class", "promoDescription");
+			div.setAttribute("style", "display: none;");
+			div.innerHTML = description;
+			promoHover.appendChild(div);
+			promoCodeDiv.appendChild(promoHover);
+			
+			jQuery('.promoHover').hover(
+					function() { jQuery('.promoDescription').css('display', 'block'); },
+					function() { jQuery('.promoDescription').css('display', 'none'); });
 		}
 	}
 	/*
@@ -476,13 +479,13 @@
 			}
 		}
 		
-		$('td.solution > .title').on('click', function(e) {
+		jQuery('td.solution > .title').on('click', function(e) {
 			e.preventDefault();
-			var newclass = $(this).hasClass('active')?'title':'title active';
-			$(this).attr('class',newclass);
+			var newclass = jQuery(this).hasClass('active')?'title':'title active';
+			jQuery(this).attr('class',newclass);
 			
-			var content = $(this).next('div');
-			if($(this).hasClass('active')) {
+			var content = jQuery(this).next('div');
+			if(jQuery(this).hasClass('active')) {
 				content.slideDown('fast');
 			} else {
 				content.slideUp('slow');

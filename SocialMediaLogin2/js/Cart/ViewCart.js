@@ -21,18 +21,10 @@
 			sendAction('update', params);
 		} else {
 			var error_msg = "<p>Wait, how many do you want?</p><p>Better double-check that.</p>";
-			$('#' + '_' + orderitemid).data('powertip', error_msg);
-			$('#' + '_' + orderitemid).powerTip({
-				placement : 'n',
-				popupId : 'powerTip' + orderitemid,
-				manual : true,
-				parent : $('#' + '_' + orderitemid).parent(),
-				top: -6,
-				left: 10
-			});
-			$('#' + '_' + orderitemid).attr('class','input-red');
-			$('#' + '_' + orderitemid).on('focusin', function() { $('#powerTip' + orderitemid).hide(); } );
-			$('#' + '_' + orderitemid).powerTip('show');
+			
+			powerTip.create('_'+orderitemid, error_msg, 'powerTip' + orderitemid, -52, 10);
+			$j('#' + '_' + orderitemid).on('focusin', function() { powerTip.hide('powerTip' + orderitemid); }) ;
+			$j('#' + '_' + orderitemid).attr('class','input-red');
 		};
 	}
 	/*
@@ -82,14 +74,14 @@
 	 */
 	function checkout()
 	{
-		if($("input.promoInput-red").size() > 0)
+		if($j("input.promoInput-red").size() > 0)
 		{
 			removePromo();
 		}
-		if($("input.input-red").size() > 0)
+		if($j("input.input-red").size() > 0)
 		{
-			$("#dialogresponse").html("Some fields are filled incorrectly");
-			$("#dialogresponse").dialog({ title: "Info" });
+			$j("#dialogresponse").html("Some fields are filled incorrectly");
+			$j("#dialogresponse").dialog({ title: "Info" });
 			return false;
 		}
 		else
@@ -153,16 +145,19 @@
 				var resp = JSON.parse(xmlhttp.responseText);
 				var code = resp.header.status.code;
 				var items = resp.result;
+				items.message = resp.header.status.message;
 				
 				if(code == "SUCCESS" || code == "ERR_WS_INVALID_COUPON")
 				{
 					if(code == "ERR_WS_INVALID_COUPON")
 					{
 						items.promocode.isvalid = "F";
-						items.promocode.promocode = resp.header.status.message;
-						items.promocode.description = "";
+						items.promocode.promocode = resp.header.status.promocode;
+						items.promocode.message = resp.header.status.message;
+						items.promocode.description = resp.header.status.description;
+						_gaq.push(['_trackEvent', 'Shopping Cart', 'Promocode error', resp.header.status.event]);
 					}
-					document.getElementById('cartBody').innerHTML = '';
+					$j("#cartBody").html("");
 					buildCartItems(items);
 				}
 			}

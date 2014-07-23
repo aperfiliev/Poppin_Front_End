@@ -3,7 +3,7 @@
 <script type="text/javascript" src="<%=poppinservres.url.poppinresourcesmini%>"></script>
 <script src="/Poppin/SocialMediaLogin2/js/jquery-1.10.2.min.js"></script>
 <!--[if lt IE 8]><script src="/SSP Applications/Poppin/SocialMediaLogin2/js/json3.min.js"></script><![endif]-->
-<script type="text/javascript" src="/Poppin/SocialMediaLogin2/js/easyXDM.js"></script>
+<script type="text/javascript" src="/Poppin/SocialMediaLogin2/js/easyXDM.min.js"></script>
 <script type="text/javascript">
 var MINILOGINSOCKET = null;
 	jQuery(document).ready(function() {

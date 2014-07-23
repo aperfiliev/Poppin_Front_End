@@ -7,30 +7,7 @@
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin/smoothness/jquery-ui-1.10.3.custom.min.css" />
 
-<link href="/site/social-login/css/login.css" rel="stylesheet" type="text/css" />
-<script src="Login.js"></script>
-<style>
-.phoneDiv span a{
-color: #969696;
-}
-
-.breadcrumbs{
-visibility:hidden;
-}
-#loginregisterbody #div__body{
-position:relative;
-padding-top: 30px;
-}
-iframe{
-height:120px;
-width:160px;
-overflow:hidden;
-}
-div.free-shipping-container{
-display:none;
-}
-
-</style>
+<script src="js/Login/Login-0147622176e4.js"></script>
 </head>
 <body id='loginregisterbody'>
 <div id='outerwrapper' >
@@ -183,30 +160,6 @@ display:none;
 
 <div id='div__footer' class='noprint' leftmargin='0' topmargin='0' marginwidth='1' marginheight='1'>
 <PP_FOOTER>
-<!-- ERP Guru NetSuite Display Override-->
-<script type="text/javascript">
-	function egHtmlDecode(input){
-		var e = document.createElement('div');
-		e.innerHTML = input;
-		return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-	}
-	$j(document).ready(function(){
-	//remove quick view
-		//many
-		$j("#handle_portlet_-521").closest("td").remove();
-
-		//modify url of see return requests
-		$j('a[href*="/app/accounting/transactions/rtnauth.nl?ck="]').attr("href","");
-
-		//replace link string in saved search by actual link
-		$j('td.listtexthl:contains("<a href=")').each(function(index,element){
-			var linkObject = $j(this).html().replace(/&lt;/gi,"<").replace(/&gt;/gi,">");
-
-			$j(this).html(egHtmlDecode(linkObject));
-		});
-	});
-</script>
-<!-- END ERP Guru NetSuite Display Override-->
 <script src="/Poppin/pp-sc-resources/GA_FUNNELS/js/ga_funnels_script.js"></script>
 <SMARTYSTREETS>
 <CARD_SELECTOR_EMPTY>
