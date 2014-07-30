@@ -5,7 +5,7 @@
 
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-<link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin/smoothness/jquery-ui-1.10.3.custom.min.css" />
+<!--<link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin/smoothness/jquery-ui-1.10.3.custom.min.css" />-->
 
 <script src="js/Login/Login-0147622176e4.js"></script>
 </head>
