@@ -13,7 +13,6 @@
  */
 function suitelet(request, response){
 	var email = request.getParameter('email');
-	var jsoncallback = request.getParameter('jsoncallback');
 	nlapiLogExecution('DEBUG','email: ',email);
 	var columns = new Array();
 	columns[0]= new nlobjSearchColumn('Email');
@@ -25,7 +24,7 @@ function suitelet(request, response){
 	var responseObject;
 	if(results!=null)
 		{
-			nlapiLogExecution('DEBUG','found lead with weblead = true');
+nlapiLogExecution('DEBUG','found lead with weblead = true',filters.toString());
 			var custrecord = nlapiLoadRecord('customer', results[0].getId());
 			responseObject={
 					"length":results.length,
@@ -39,13 +38,5 @@ function suitelet(request, response){
 		};
 	}
 	nlapiLogExecution('DEBUG','resultstring: ',JSON.stringify(responseObject));
-	var jsonString = JSON.stringify(responseObject);
-	if(jsoncallback){
-		response.writeLine('responseJson('+jsonString+')');
-	}
-	else{
-		response.writeLine(jsonString);
-	}
-	
-	
+	response.writeLine(JSON.stringify(responseObject));
 }

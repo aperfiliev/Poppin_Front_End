@@ -19,20 +19,20 @@ function clientFieldChanged(type, name, linenum){
 	if (name == 'essettings_exitsurveyid'){
 		var surveyid = nlapiGetFieldValue('essettings_exitsurveyid');
 		window.onbeforeunload = null;
-		window.location = 'https://system.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=285&deploy=1&selectedexitsurvey='+surveyid;
+		window.location = 'https://system.netsuite.com/app/site/hosting/scriptlet.nl?script=284&deploy=1&selectedexitsurvey='+surveyid;
 	}
 	else if(name == 'essettings_questionid'){
 		var surveyid = nlapiGetFieldValue('essettings_exitsurveyid');
 		var questionid = nlapiGetFieldValue('essettings_questionid');
 		window.onbeforeunload = null;
-		window.location = 'https://system.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=285&deploy=1&selectedexitsurvey='+surveyid+'&selectedquestion='+questionid;
+		window.location = 'https://system.netsuite.com/app/site/hosting/scriptlet.nl?script=284&deploy=1&selectedexitsurvey='+surveyid+'&selectedquestion='+questionid;
 	}
 }
 function validateLine(type){
 	if(type==='essettings_questionssublist'){
 		var id = nlapiGetCurrentLineItemValue(type, 'sublistquestionid');
 		var name = nlapiGetCurrentLineItemValue(type, 'sublistname');
-		
+		console.log(id);
 		if(typeof id == null || id == ''){
 			var surveylink = nlapiGetFieldValue('essettings_exitsurveyid');
 			var newQuestionId = CreateQuestion(name, surveylink);

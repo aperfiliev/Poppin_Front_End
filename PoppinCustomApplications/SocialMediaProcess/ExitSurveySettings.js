@@ -22,7 +22,7 @@ function suitelet(request, response){
 		var selectedquestion = request.getParameter('selectedquestion');
 		
 		var form = nlapiCreateForm('Exit Survey Settings');
-		form.setScript('customscript286');
+		form.setScript('customscript285');
 		var exitsurveyitem = nlapiLoadRecord('customrecord203', selectedexitsurvey);
 		form.addField('essettings_enabled', 'checkbox','Enabled').setDefaultValue(exitsurveyitem.getFieldValue('custrecord_esenabled'));
 		var exitsurveyselect = form.addField('essettings_exitsurveyid', 'select', 'Exit Survey Select');
@@ -163,6 +163,6 @@ else
 		nlapiSubmitRecord(exitsurveyitem);
 		var params = new Array();
 		params['selectedexitsurvey'] = selectedexitsurvey;
-		nlapiSetRedirectURL("SUITELET", "customscript285", "customdeploy1", null, params);
+		nlapiSetRedirectURL("SUITELET", "customscript284", "customdeploy1", null, params);
 	}
 }

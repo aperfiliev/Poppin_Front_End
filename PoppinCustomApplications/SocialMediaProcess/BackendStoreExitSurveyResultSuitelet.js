@@ -17,7 +17,9 @@ function suitelet(request, response){
 	var result = request.getParameter('result');
 	nlapiLogExecution('DEBUG', 'storeresult', orderid+' '+result);
 	result = JSON.parse(result);//parse json result
-	var transactiondata = nlapiSearchRecord('transaction', null, new nlobjSearchFilter('tranid',null,'is', orderid), null);
+	var transactiondata = nlapiSearchRecord('transaction', null, 
+			[new nlobjSearchFilter('tranid', null, 'is', orderid),new nlobjSearchFilter('type', null, 'is', 'SalesOrd')],
+			null);
 	var tranid = '';
 	if(transactiondata!=null){
 		tranid = transactiondata[0].getId();

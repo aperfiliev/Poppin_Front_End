@@ -20,6 +20,7 @@ function massUpdate(recType, recId) {
 	{
 		nlapiLogExecution('DEBUG', 'Address Info1');
 		var phone = record.getLineItemValue('addressbook','phone',i);
+if(phone){
 		if(phone.indexOf('ext:')>-1){
 			phone = phone.replace('ext:','ext.');
 			record.setLineItemValue('addressbook','phone',i, phone);
@@ -30,6 +31,7 @@ function massUpdate(recType, recId) {
 		nlapiLogExecution('DEBUG', 'Address Info',
 				'\nphone='+
 				phone);
+}
    	}
 	nlapiSubmitRecord(record);
 }
