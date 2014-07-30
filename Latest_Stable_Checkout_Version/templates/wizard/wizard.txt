@@ -1,6 +1,0 @@
-<% if(!view.wizard.getCurrentStep().hideBreadcrumb){ %>
-	<header class="order-wizard-layout-header">
-	<%= wizadStepNavigation(view.wizard.stepGroups) %>
-	</header>
-<%}%>
-<div id="wizard-content" class="wizard-content"></div>
