@@ -160,7 +160,7 @@
 
 <div id='div__footer' class='noprint' leftmargin='0' topmargin='0' marginwidth='1' marginheight='1'>
 <PP_FOOTER>
-<script src="/Poppin/pp-sc-resources/GA_FUNNELS/js/ga_funnels_script.js"></script>
+<GA_FUNNELS> 
 <SMARTYSTREETS>
 <CARD_SELECTOR_EMPTY>
 </div>
