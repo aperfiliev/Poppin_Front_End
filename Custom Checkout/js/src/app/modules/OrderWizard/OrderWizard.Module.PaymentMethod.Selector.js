@@ -76,7 +76,7 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 				this.selectedModule = null;
 			}
 			if (!this.selectedModule)
-			{	
+			{
 				this.setModuleByType(primary_paymentmethod && primary_paymentmethod.get('type'));
 			}
 			if (this.selectedModule.type === 'paypal') {
@@ -84,7 +84,6 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 //this.model.attributes.isPaypalComplete = true;
 			}
 			
-			//this.selectedModule && (this.selectedModule.type != 'paypal' || this.wizard.isPaypalComplete()) && this.selectedModule.instance.past && this.selectedModule.instance.past();
 			this.selectedModule && this.selectedModule.instance.past && this.selectedModule.instance.past();
 			this.model.off('change', this.totalChange, this);
 		}
@@ -118,7 +117,6 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 
 	,	setModuleByType: function(type)
 		{
-		console.log("setModuleByType = " + type);
 			this.selectedModule = _.findWhere(this.modules, {type: type});
 			
 			if (!this.selectedModule)
@@ -139,7 +137,7 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 		}
 	
 	,	render: function()
-		{	
+		{
 			if (this.wizard.hidePayment())
 			{
 				this.$el.empty();

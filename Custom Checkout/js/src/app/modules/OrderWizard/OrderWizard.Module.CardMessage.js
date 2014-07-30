@@ -110,7 +110,7 @@ define('OrderWizard.Module.CardMessage', ['Wizard.Module', 'CardMessage.Model'],
         },
         countmessage: function(e) {
         	//jQuery(e.currentTarget).parent().show();
-        	var message_total = 500;
+        	var message_total = 250;
         	var longitud = jQuery('#cardmessagetext').val().length;
         	var resto = message_total - longitud;
         	jQuery('#textcounter').html(resto);

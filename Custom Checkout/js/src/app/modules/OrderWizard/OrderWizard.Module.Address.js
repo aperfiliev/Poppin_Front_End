@@ -28,7 +28,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		,	'click [data-action="change-address"]': 'changeAddress'
 		,	'change [data-action="same-as"]': 'markSameAs'
 		,	'change form': 'changeForm'
-		,	'click #copyshipping' : 'setSameAsShipping'	
+		,	'click #copyshipping' : 'setSameAsShipping'
 		}
 
 	,	errors: ['ERR_CHK_INCOMPLETE_ADDRESS', 'ERR_CHK_INVALID_ADDRESS']
@@ -54,14 +54,10 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 		// -------------
 	,	render: function (not_trigger_ready)
 		{
-		debugger;
-			console.log("BEFIR RENDER = " + this.model.attributes.billaddress);
 			var profile = this.wizard.options.profile;
 
 			this.addresses = profile.get('addresses');
 			var creditcards = profile.get('creditcards');
-			
-			
 			//if (!this.addresses.length && !creditcards.length) 
 			//{
 			this.isGuest = profile.get('isGuest') === 'T';
@@ -88,10 +84,7 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 				this.address.set("company",profile.get("companyname"));
 //				this.address.set("label",this.wizard.currentStep);
 			}
-
-			console.log("RENDERRRRRR");
-			debugger;
-			if(this.addressId==null && this.getAddressesToShow().length > 0 && this.manage == 'shipaddress'){
+	if(this.addressId==null && this.getAddressesToShow().length > 0 && this.manage == 'shipaddress'){
 				console.log(this.getAddressesToShow());
 				   this.manualSelectAddress(this.getAddressesToShow().models[0].id);
 				  }
@@ -100,13 +93,12 @@ define('OrderWizard.Module.Address', ['Wizard.Module', 'Address.Views', 'Address
 				   this.manualSelectAddress(this.getAddressesToShow().models[0].id);
 				   
 				  }
-			
 			// Add event listeners to allow special flows
 			this.eventHandlersOn();
 
 			// Calls the render function
-			this._render(); 
-console.log("AFTER RENDER = " + this.model.attributes.billaddress);
+			this._render();
+
 			this.addressView = null;
 			this.addressListView = null;
 
@@ -250,8 +242,10 @@ console.log("AFTER RENDER = " + this.model.attributes.billaddress);
 //self.addressId = changed_address.id 
 this.manualSelectAddress(changed_address.id);
 }
-					
 				}
+				}, this)
+				.on('add', function (new_address){
+					this.manualSelectAddress(new_address.id);					
 				}, this)
 				.on('destroy', function (deleted_address)
 				{
@@ -262,12 +256,10 @@ this.manualSelectAddress(changed_address.id);
 						// we need to remove it, as it doesn't exists
 						self.model.set(other_address, null);
 					}
-//					var display_address_book = _.filter(this.getAddressesToShow().models,function(addr){ return addr.get('defaultshipping') != 'T';});
-					debugger;
-					if( this.getAddressesToShow().length === 0){
+					if(this.getAddressesToShow().length === 0){
 						self.model.set('billaddress', null);
 						self.model.set('shipaddress', null);
-//						this.addressId = null;
+					
 					}
 					if(this.addressId==deleted_address.id && this.getAddressesToShow().length>0){
 						this.manualSelectAddress(this.getAddressesToShow().models[0].id);
@@ -524,8 +516,6 @@ this.manualSelectAddress(changed_address.id);
 			{
 				result.done(function (model)
 				{
-debugger;
-console.log(model);
 					// Address id to the order model. This has to go after before the following model.add() as it triggers the render
 					self.setAddress(model.id);
 
@@ -564,10 +554,11 @@ console.log(model);
 
 			var addresses = this.wizard.options.profile.get('addresses')
 			,	selected_address = addresses && addresses.get(this.model.get(this.manage));
-
+//debugger;
 			if (selected_address)
 			{
-				if (selected_address.get('isvalid') === 'T')
+				//var reg = /^[a-zA-Z- ]{2,}$/;
+				if (selected_address.get('isvalid') === 'T')// && (selected_address.get("firstfullname").length != 0 && reg.test(selected_address.get("firstfullname"))))
 				{
 					console.log(selected_address);
 //					additional_validation.resolve();

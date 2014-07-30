@@ -56,7 +56,7 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 					value = name.getAttribute("value");
 				}
 			});
-debugger;
+
 			this.model.set('shipmethod', value);
 				this.step.disableNavButtons();
 				this.model.save().always ( function()
@@ -86,6 +86,7 @@ debugger;
 				{	
 					self.moduleReady(is_ready);
 				});
+				this.model.set('ipAddress',ipAddress);				
 			}
 		,	moduleReady: function(is_ready)
 			{
@@ -93,26 +94,25 @@ debugger;
 			}
 		,	render: function()
 			{
-			debugger;
-				console.log("Render Show Payments Module");
+				console.log("Render Show Payments Module.");
 				this.application = this.wizard.application;
 				this.profile = this.wizard.options.profile;
 				this.options.application = this.wizard.application;
 				this.eventHandlersOn();
 				var wasChecked = false,
 			    	cvcBeforeRender;
-				if (this.getPaymentmethods().length > 0 && this.getPaymentmethods()[0].attributes.creditcard) {
-				if (!this.currentCardId && this.getPaymentmethods().length > 0) {
+if(this.getPaymentmethods().length > 0 && this.getPaymentmethods()[0].attributes.creditcard){
+				if (!this.currentCardId && this.getPaymentmethods().length > 0 ) {
 					this.currentCardId = this.getPaymentmethods()[0].attributes.creditcard.internalid;
 				} else if (this.getPaymentmethods().length > 0 && (this.currentCardId != this.getPaymentmethods()[0].attributes.creditcard.internalid)) {
 					this.currentCardId = this.getPaymentmethods()[0].attributes.creditcard.internalid;
 					cvcBeforeRender = undefined;
 				} else {
-					if (this.$('#ccsecuritycode') && this.$('#ccsecuritycode')[0]) {
+					if (this.$('#ccsecuritycode') && this.$('#ccsecuritycode')[0] && jQuery("#in-modal-ccsecuritycode").length==0) {
 						cvcBeforeRender = this.$('#ccsecuritycode')[0].value;
 					}
 				}
-				}
+}
 				if (this.$('#cardmessageblock').length != 0) {
 					     wasChecked = this.$('#cardmessagetoggle')[0].checked;
 					 var selIndex   = this.$('#cardmessage-options')[0].selectedIndex,
@@ -139,7 +139,6 @@ debugger;
 				var self = this;
 				Backbone.on('refresh', function ()
 						{
-					debugger;
 							var wasChecked = this.$('#cardmessagetoggle')[0].checked,
 								selIndex   = this.$('#cardmessage-options')[0].selectedIndex,
 								text       = this.$('#cardmessagetext')[0].value,
@@ -172,7 +171,6 @@ debugger;
 		
 		,   getPrimaryPaymentmethods: function()
 		{
-			debugger;
 			
 				return this.model.get('paymentmethods').where({primary: true});
 			
@@ -210,8 +208,6 @@ debugger;
 			}
 		,	changeDeliveryOptions: function(e) 
 		{
-			debugger;
-			console.log("changeDeliveryOptions");
 			var currentBillAddress = this.model.attributes.billaddress;
 			var cvsError = this.validateAndSetCVC();
 			if (cvsError) {
@@ -249,16 +245,16 @@ debugger;
 			}
 		
 		, 	validateAndSetCVC: function () {
-			 if(this.model.get('paymentmethods').where({type: 'paypal'}).length>0 ){
-				 return null;
-				 }
+	if(this.model.get('paymentmethods').where({type: 'paypal'}).length>0 ){
+				return null;
+			}
 				var val = this.$('#ccsecuritycode').val(),
 					errorMsg;
 				if (!val || (val && (/[^0-9]/.test(val) || val.length < 3))) {
 					var errorMsg;
 					(!val) ?  errorMsg = _('Security Number is required').translate() : errorMsg = _('Security Number is not valid').translate();
 					var $group = this.$('#ccsecuritycode').parents('.control-group').addClass('error');
-					$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+					$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: -9px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
 					$group.find('.help-block').text(errorMsg);
 					return errorMsg;
 				} else {

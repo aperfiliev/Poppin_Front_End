@@ -1,9 +1,19 @@
 <% var view_credit_card = view.creditcard %>
-<%debugger; 
-//if(!view.paymentMethod.get('creditcard') && view.creditcards.length > 0){
-//view.paymentMethod.set("creditcard",view.creditcards.models[0].attributes);
-//}
-%>
+
+<% if (view.creditcards.length == 0) { %>
+	<%	var name = "cvc",
+		value = "",
+		days = -1;
+
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+        %>
+<% } %>
+
 <% if (view_credit_card && !view_credit_card.isNew()) { %>
 	<div id="creditcard-module-list-placeholder" class="creditcard-module-list-placeholder">
 
@@ -75,9 +85,4 @@
 			</a>
 		</p>
 		<% } %>
-					<div style="padding: 5px; border: 2px solid #e2e2e2; width:290px; font-size:14px; font-weight:normal; display: none;" id="whatisthisinfo">
-				<img src="img/explain_cvc.png" alt="explain"><br/>
-				For security purposes, we require the Card Security Code on your credit card. 
-				For most credit cards, enter the three-digit number that follows your account number on the back of your card. 
-				If you have an American Express card, enter the four-digit number printed above your account number on the front of your card.
-			</div>
+					

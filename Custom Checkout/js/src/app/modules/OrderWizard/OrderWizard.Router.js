@@ -23,7 +23,6 @@ define('OrderWizard.Router', ['Wizard.Router', 'OrderWizard.View', 'OrderWizard.
 
 	,	startWizard: function()
 		{
-		debugger;
 		console.log('owizard model'); console.log(this.model);
 		
 		if(this.model.attributes.shipaddress.indexOf('null') == -1 && this.model.attributes.billaddress.indexOf('null') == -1 ){
@@ -72,8 +71,6 @@ define('OrderWizard.Router', ['Wizard.Router', 'OrderWizard.View', 'OrderWizard.
 		
 	,	runStep: function(options)
 		{
-debugger;
-console.log("RUN STEP");
 			// Computes the position of the user in the flow
 			var url = (options) ? Backbone.history.fragment.replace('?' + options, '') : Backbone.history.fragment
 			,	position = this.getStepPosition(url)

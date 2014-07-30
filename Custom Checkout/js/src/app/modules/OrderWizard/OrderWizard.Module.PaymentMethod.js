@@ -8,8 +8,7 @@ define('OrderWizard.Module.PaymentMethod', ['Wizard.Module'], function (WizardMo
 	return WizardModule.extend({
 
 		submit: function()
-		{	
-			debugger;
+		{
 			// Gets teh payment methos collection
 			var payment_methods = this.model.get('paymentmethods');
 

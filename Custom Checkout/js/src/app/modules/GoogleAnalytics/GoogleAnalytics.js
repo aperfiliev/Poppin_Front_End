@@ -85,10 +85,11 @@ define('GoogleAnalytics', function ()
 					var shipping_address = Order.get('addresses').get(Order.get('shipaddress'))
 				,	transaction_id = Order.get('confirmation').internalid
 				,	order_summary = Order.get('summary')
-				,	item = null;
+				,	item = null
+				,	confirmation_number = Order.get('confirmation').confirmationnumber;
 
 				GoogleAnalytics.addTrans({
-					id: transaction_id
+					id: confirmation_number
 				,	subtotal: order_summary.subtotal
 				,	tax: order_summary.taxtotal
 				,	shipping: order_summary.shippingcost + order_summary.handlingcost
@@ -102,7 +103,7 @@ define('GoogleAnalytics', function ()
 					item = line.get('item');
 
 					GoogleAnalytics.addItem({
-						transaction: transaction_id
+						transaction: confirmation_number
 					,	sku: item.get('_sku')
 					,	name: item.get('_name')
 					,	category: item.get('_category')

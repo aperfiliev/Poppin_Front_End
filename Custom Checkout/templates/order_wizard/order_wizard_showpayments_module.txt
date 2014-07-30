@@ -26,10 +26,25 @@
 
 
 </style>
+<% 
+	var cart = view.application.getCart();
+	var sum = 0;
+	var domainSum = 0;
+	cart.get("lines").each(function(line){
+	sum += line.get('amount') - line.get('total');
+	domainSum += line.get('item').attributes.pricelevel1 * line.get('item').attributes.quantity - line.get('amount');
+	});
+	domainSum += view.model.get('summary').discounttotal + sum;
+	domainSum = Math.round(domainSum*100)/100;
+%>
 <script type="text/javascript" id="checkoutTagScript">
 var itemsCollection = [];
+<% var itemDiscount = 0 %>
 <% for( var i=0;i< view.model.get('lines').models.length;i++) {%>
-itemsCollection.push({productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=view.model.get('lines').models[i].get('total') %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+<% var price = view.model.get('lines').models[i].get('total') / view.model.get('lines').models[i].get('quantity') %>
+<% price = Math.round(price*100)/100; %>
+itemsCollection.push({sku:'<%=view.model.get("lines").models[i].get("item").get("_sku")%>', productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=price %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+<% itemDiscount += view.model.get('lines').models[i].get('discount') %>
 <% }%>
 window.forPixeldata = {
 userId:'<%= view.wizard.options.profile.id %>'
@@ -37,9 +52,11 @@ userId:'<%= view.wizard.options.profile.id %>'
 ,transactionId:''
 ,email:'<%= view.wizard.options.profile.get('email') %>'
 ,name:'<%= view.wizard.options.profile.get('firstname') + ' ' + view.wizard.options.profile.get('lastname') %>'
+//,orderCount: '<%= view.wizard.options.profile.get('ordercount') %>'
 ,items:itemsCollection
 };
 </script>
+
 <script>
 var orderID = "";
 	var orderTotal = "<%=view.model.get('summary').total%>";
@@ -54,16 +71,16 @@ var orderID = "";
 	var customerState = "<%=billaddress ? billaddress.get('state') : ''%>" || "<%=shipaddress ? shipaddress.get('state') : ''%>";
 	var customerPostal = "<%=billaddress ? billaddress.get('zip') : ''%>" || "<%=shipaddress ? shipaddress.get('zip') : ''%>";
 	var customerCountry = "<%=billaddress ? billaddress.get('country') : ''%>" || "<%=shipaddress ? shipaddress.get('country') : ''%>";
-
+	//var orderCount = '<%= view.wizard.options.profile.get('ordercount') %>'; 
 	var strpageDataVarURL = "/app/site/hosting/scriptlet.nl?script=250&deploy=1&orderitems=" + escape(itemsCollection) + "&subtotal=" + escape(orderSubtotal);
-
+	var discount = '<%= domainSum ? domainSum : itemDiscount ? itemDiscount : view.model.get('summary').discounttotal %>';
 	var pageData = {
 		"order" : {
 			"id" : orderID,
 			"total" : orderTotal,
 			"tax" : orderTax,
 			"shipping" : orderShipping,
-			"discount" : 0,
+			"discount" : discount,
 			"promoCode" : orderPromoCode,
 			"currencyCode" : "USD"
 		},
@@ -72,7 +89,8 @@ var orderID = "";
 			"city" : customerCity,
 			"state" : customerState,
 			"postal" : customerPostal,
-			"country" : customerCountry
+			"country" : customerCountry //,
+			//"ordercount" : orderCount
 		},
 		"navigation" : {  pageName: "Review" },
 		"items" : itemsCollection
@@ -113,7 +131,7 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 			<% }); %>
 		</div>
 		<% var paymentmethods = view.getPrimaryPaymentmethods(); console.log("paymentmethods.length"); console.log(paymentmethods);%>
-	<div class="span6 wizard-showpayments-billing-payment-method" style="padding-left: 22px; width: 290px; height: 240px; float: left; margin-right: 16px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+	<div class="span6 wizard-showpayments-billing-payment-method" style="padding-left: 22px; width: 290px; height: 240px; float: left; margin-right: 16px; border-width:2px; border-style: solid;border-color:#8cd820">
 		<% if (paymentmethods.length || !view.wizard.hidePayment()) {%>
 			<h4 class="section-header"  style="color: #f87c00; font-size: 17px; margin-bottom: 10px; margin-left: 7px;">
 				<%= _('BILLING DETAILS').translate() %>
@@ -130,7 +148,7 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 				<% } %>
 			</div>	
 			<% if (paymentmethods.length > 0  && paymentmethods[0].attributes.creditcard){ %>
-			<div class="span6">
+			<div class="span6" style="margin-top: 10px;  margin-bottom: 30px;">
 			<%=!!(paymentmethods[0].get('creditcard').ccsecuritycode)?'':'<p style="height: 25px; font-weight:bold;color:rgb(31, 216, 31); width: 240px;font-size: 14px; margin-left: 5px; ">Please enter security code (CVC)</p>'%>
 		
 			<%= SC.macros.creditcardSecurityNumberForm({
@@ -140,7 +158,7 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 			    ,	step     : "review"
 			    ,   hidden   : !!(paymentmethods[0].get('creditcard').ccsecuritycode)
 			}) %>
-				<div style="padding: 5px; border: 2px solid #e2e2e2; width:290px; font-size:14px; font-weight:normal; display: none;position: absolute;background: white;top: 205px;" id="whatisthisinfo">
+				<div style="padding: 5px; border: 2px solid #e2e2e2; width:290px; font-size:14px; font-weight:normal; display: none;position: absolute;background: white;top: 205px;left: 579px;z-index: 1000;" id="whatisthisinfo">
 				<img src="img/explain_cvc.png" alt="explain"><br/>
 				For security purposes, we require the Card Security Code on your credit card. 
 				For most credit cards, enter the three-digit number that follows your account number on the back of your card. 
@@ -188,7 +206,7 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 				<%= _('edit').translate() %>
 			</a>
 			<%if(view.profile.get("addresses").length > 1){%>
-				<a href="#" class="btn-edit-address" onclick="jQuery('#change-shipping').show()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<a href="#" class="btn-edit-address" data-action="changeaddress" data-id="shipaddress" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
 				<%= _('change').translate() %></a>
 			<%}%>
 		</div>	
@@ -213,7 +231,7 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 			<%= _('edit').translate() %>
 		</a>
 		<%if(view.profile.get("addresses").length > 1){%>
-		<a href="#" class="btn-edit-address" onclick="jQuery('#change-billing').show()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+		<a href="#" class="btn-edit-address" data-action="changeaddress" data-id="billaddress" data-action style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
 			<%= _('change').translate() %></a><%}%>
 		</div>
 	
@@ -299,10 +317,8 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 			<button type="button" class="close" onclick="jQuery('#change-payment').hide()">&times;</button>
 			<h3 class="modal-title"> Change Credit Card </h3>
 		</div>
-		
-		<% console.log("PAYYYYYYYYMMMEMMEM"); console.log(view.model.get("paymentmethods").models);  %>
 		<div style="width:200px; float:right">
-		<%  
+				<%
 		    var selectedCreditcardId = (view.model.get("paymentmethods").models[0].get("creditcard") ? view.model.get("paymentmethods").models[0].get("creditcard").internalid : null);
 			console.log(selectedCreditcardId);
 			var creditcardWrap = function (creditcard) {
@@ -326,7 +342,6 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 				<%= _('Add a New Card').translate() %>
 			</a>
 		</p>-->
-		<% console.log("CREDITTTTTT"); console.log(view.profile.get("creditcards")); console.log(view.profile.get("creditcards").models); %>
 		<%= displayInRows(view.profile.get("creditcards").models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
 		</div>
 

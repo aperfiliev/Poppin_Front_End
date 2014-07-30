@@ -8,6 +8,11 @@ define('CreditCard.Model', function ()
 	// validate that the expiration date is bigger than today
 	function validateExpirationDate (value, name, data)
 	{
+		
+		if(jQuery("[name='expmonth']").val() == 0 || jQuery("[name='expyear']").val() == 0){
+			return 'Exp. is required';
+		}
+		
 		var current = new Date();
 
 		if (new Date(current.getFullYear(), current.getMonth()).getTime() > new Date(data.expyear, data.expmonth - 1).getTime())
@@ -48,7 +53,7 @@ define('CreditCard.Model', function ()
 					{
 						console.log(cc_number.length);
 						if(cc_number.length>16){
-							return "<p>We only accept credit cards number that are up </p><p><br></p><p> to 16 digits - might want to check that number again<p>";
+							return "<p>We only accept credit cards number that are up </p><p><br></p><p>to 16 digits - might want to check that number again</p>";
 //							jQuery('[data-type="alert-placeholder"]').html(
 //									SC.macros.message(_('We only accept credit cards number that are up to 16 digits - might want to check that number again').translate(), 'error', true )
 //								);
@@ -88,15 +93,18 @@ define('CreditCard.Model', function ()
 		,	expmonth: { fn: validateExpirationDate }
 		,	savecard: {required: true}
 		,	ccsecuritycode: {
-fn: function(value){
-debugger;
-if(value !== null){
-if(value.length == 0){
-return _('Security Number is required').translate();
-}
-}
-}
-}
+				fn: function(value){
+					if(value !== null){
+						var reg = new RegExp('^[0-9]+$');
+						if(value.length < 3 || !reg.test(value)){
+							return _('Security Number is required').translate();
+						}else if(jQuery(".modal-body").length != 0){
+							jQuery("#in-modal-ccsecuritycode").css("border-color","rgb(31, 216, 31)");
+							$(".checkbox").css("margin-top","0px");
+						}
+					}
+				}
+			}
 		}
 	/**
 	 		validation: {

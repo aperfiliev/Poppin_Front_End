@@ -20,6 +20,8 @@
 
 	,	invalid: function (view, attr, error, selector)
 		{
+			_gaq.push(['_trackEvent', 'Custom Checkout Errors', 'Form error', error]);
+			
 			var $target
 			,	$control = view.$el.find('['+ selector +'="'+ attr +'"]')
 			,	$group = $control.parents('.control-group').addClass('error');
@@ -60,12 +62,22 @@
 					}else if(attr == "expyear"){
 						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 200px;" id="powerTipError" class="help-block backbone-validation"></div></div>');
 					}
+					else if(attr == "expmonth"){
+						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: -2px; left: 150%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+					}
 					else if(attr == "ccsecuritycode"){
-						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: -9px; left: 200px;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+						if(jQuery(".modal-body").length != 0){
+							$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: -48px; left: -63px;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+							jQuery("#in-modal-ccsecuritycode").css("border-color","#b94a48");
+							jQuery(".checkbox").css("margin-top","44px");
+						}else{
+							$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: -9px; left: 134px;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+							jQuery("#ccsecuritycode").css("border-color","#b94a48");
+						}
 					}
 					else{
-						$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
-					}
+					$group.find('.controls').append('<div style="position:relative"><div style="position:absolute; display:block;bottom: 0px; left: 101%;" id="powerTipError" class="help-block backbone-validation"></div></div>');
+				}
 				}
 				if (attr == "ccnumber") {
 					if (error.length > 50) {
@@ -78,6 +90,7 @@
 				}
 				$target = $group.find('.help-block');
 			}
+			
 			$target.text(error);
 			return $target.html(error);
 		}

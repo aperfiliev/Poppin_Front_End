@@ -2,7 +2,6 @@
 <!--alert alert-block alert-success fade in-->
 	
 	<div style="float: left; margin-left: 35px;" >
-<% console.log(view) %>
 <div class="checker" style="display:none;"></div>
 	<h4 class="thankyou-title" style="color: rgb(254, 107, 56);
 display: block;

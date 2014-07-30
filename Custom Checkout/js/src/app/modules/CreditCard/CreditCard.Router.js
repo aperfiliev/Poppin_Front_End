@@ -72,6 +72,15 @@ define('CreditCard.Router', ['CreditCard.Views','CreditCard.Model'], function (V
 	// add new credit card 
 	,	newCreditCard: function ()
 		{
+			var name = "cvc",
+			value = "",
+			days = -1;
+
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        document.cookie = name + "=" + value + expires + "; path=/";
+        
 			var collection = this.application.getUser().get('creditcards')
 
 			,	view = new Views.Details({

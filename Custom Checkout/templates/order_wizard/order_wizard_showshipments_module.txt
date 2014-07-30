@@ -6,11 +6,32 @@
 	<% console.log('confirmation') %>
 	
 	<%  console.log(view) %>
+	
+<% 
+	var cart = view.model.application.getCart();
+	var sum = 0;
+	var domainSum = 0;
+	cart.get("lines").each(function(line){
+	sum += line.get('amount') - line.get('total');
+	domainSum += line.get('item').attributes.pricelevel1 * line.get('item').attributes.quantity - line.get('amount');
+	});
+	domainSum += view.model.get('summary').discounttotal + sum;
+	domainSum = Math.round(domainSum*100)/100;
+	
+	var cleanSubtotal = 0;
+	for( var i=0;i< cart.get('lines').models.length;i++) {
+		cleanSubtotal += cart.get('lines').models[i].get('item').get('quantity') * cart.get('lines').models[i].get('item').get('_comparePriceAgainst') 
+	}
+%>
 <!-- Photorank advanced checkout code -->
 <script type="text/javascript" id="checkoutTagScript">
 var itemsCollection = [];
+<% var itemDiscount = 0; %>
 <% for( var i=0;i< view.model.get('lines').models.length;i++) {%>
-itemsCollection.push({productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=view.model.get('lines').models[i].get('total') %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+<% var price = view.model.get('lines').models[i].get('total') / view.model.get('lines').models[i].get('quantity') %>
+<% price = Math.round(price*100)/100; %>
+itemsCollection.push({sku:'<%=view.model.get("lines").models[i].get("item").get("_sku")%>', productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=price %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+<% itemDiscount += view.model.get('lines').models[i].get('discount') %>
 <% }%>
 window.forPixeldata = {
 userId:'<%= view.profile.id %>'
@@ -18,6 +39,7 @@ userId:'<%= view.profile.id %>'
 ,transactionId:'<%= view.model.get('confirmation').internalid %>'
 ,email:'<%= view.profile.get('email') %>'
 ,name:'<%= view.profile.get('firstname') + ' ' + view.profile.get('lastname') %>'
+//,orderCount: '<%= parseInt(view.profile.get('ordercount'))+1 %>'
 ,items:itemsCollection
 };
 </script>
@@ -35,16 +57,16 @@ var orderID = "<%= view.model.get('confirmation').confirmationnumber %>".replace
 	var customerState = "<%=billaddress.get('state')%>" || "<%=shipaddress.get('state')%>";
 	var customerPostal = "<%=billaddress.get('zip')%>" || "<%=shipaddress.get('zip')%>";
 	var customerCountry = "<%=billaddress.get('country')%>" || "<%=shipaddress.get('country')%>";
-
+	//var orderCount = '<%= parseInt(view.profile.get('ordercount'))+1 %>';
 	var strpageDataVarURL = "/app/site/hosting/scriptlet.nl?script=250&deploy=1&orderitems=" + escape(itemsCollection) + "&subtotal=" + escape(orderSubtotal);
-
+	var discount = '<%= domainSum ? domainSum : itemDiscount ? itemDiscount : view.model.get('summary').discounttotal %>';
 	var pageData = {
 		"order" : {
 			"id" : orderID,
 			"total" : orderTotal,
 			"tax" : orderTax,
 			"shipping" : orderShipping,
-			"discount" : 0,
+			"discount" : discount,
 			"promoCode" : orderPromoCode,
 			"currencyCode" : "USD"
 		},
@@ -53,7 +75,8 @@ var orderID = "<%= view.model.get('confirmation').confirmationnumber %>".replace
 			"city" : customerCity,
 			"state" : customerState,
 			"postal" : customerPostal,
-			"country" : customerCountry
+			"country" : customerCountry//,
+			//"ordercount" : orderCount
 		},
 		"navigation" : {  pageName: "Confirmation" },
 		"items" : itemsCollection
@@ -136,7 +159,7 @@ domainSum += line.get('item').attributes._comparePriceAgainst * line.get('item')
 		<div class="cart-summary-subtotal">
 			<p class="strong">
 				<span class="pull-right cart-summary-subtotal-formatted">
-					<%= summary.subtotal_formatted %>
+					$<%=parseFloat(cleanSubtotal).toFixed(2)%>
 				</span>
 				<span class="cart-summary-subtotal-label">
 					<%= _('Subtotal').translate() %>
@@ -233,16 +256,4 @@ domainSum += line.get('item').attributes._comparePriceAgainst * line.get('item')
 </div>
 
 </div>
-<script type="text/javascript">
-  (function () {
-    var tagjs = document.createElement("script");
-    var s = document.getElementsByTagName("script")[0];
-    tagjs.async = true;
-    tagjs.src = "//s.btstatic.com/tag.js#site=D10UjVM";
-    s.parentNode.insertBefore(tagjs, s);
-  }());
-</script>
-<noscript>
-  <iframe src="//s.thebrighttag.com/iframe?c=D10UjVM" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-</noscript>
 </section>

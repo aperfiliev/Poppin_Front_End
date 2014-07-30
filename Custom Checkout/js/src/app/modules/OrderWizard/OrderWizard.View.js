@@ -32,6 +32,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		,	'click [data-action="select"]': 'selectAddress'
 		,	'click [data-action="setselectedaddressid"]': 'setSelectedAddressId'
 		,	'click [data-action="canceladdressselection"]': 'cancelAddressSelection'
+		,	'click [data-action="changeaddress"]': 'changeAddress'
 		,	'click [data-action="select-creditcard"]': 'selectCreditCard'
 		,	'click [data-action="setSelectedCreditcardId"]': 'setSelectedCreditcardId'
 		,	'change #cccheckbox'  : 'ccFuturePurchases'
@@ -42,13 +43,45 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		}else{console.log("unchecked");}
 	}
 	
-	,	selectCreditCard: function (e)
+	,	changeAddress: function (e)
 	{	
+		this.manageAddress = jQuery(e.target).data('id');
+		if (this.manageAddress == "shipaddress") {
+			jQuery('#change-shipping').show();
+		} else {
+			jQuery('#change-billing').show();
+		}
+		
+	}
+	
+		,	createCookie: function(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        }
+        else var expires = "";
+
+        var fixedName = '<%= Request["formName"] %>';
+        name = fixedName + name;
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+	
+,	selectCreditCard: function (e)
+	{	createCookie("cvc", "", -1);
+
 		var selcardid = jQuery(e.target).data('id') || this.selectedCreditcardId;
+		_.each(this.creditcards.models,function(cc){
+			if(selcardid == cc.get("internalid")){
+				cc.attributes.ccsecuritycode = null;
+			}
+		});
 		if (selcardid) {
 			this.setCreditCard({
 				id: selcardid
 			});
+//			this.model.get("paymentmethods").models[0].get("creditcard").ccsecuritycode = null;
 		} else {
 			this.render();
 		}
@@ -84,6 +117,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		this.selectedBillingAddressId = undefined;
 		this.selectedShippingAddressOptions = undefined;
 		this.selectedBillingAddressOptions = undefined;
+		this.manageAddress = undefined;
 		// re render so if there is changes to be shown they are represented in the view
 		this.render();              
 
@@ -107,7 +141,6 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 
 ,	setCreditCard: function (options)
 	{	
-	debugger;
 		var ccattributes;
 		if (this.creditcards.get (options.id) != undefined) {
 			ccattributes = this.creditcards.get(options.id).attributes;
@@ -115,8 +148,8 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 		ccattributes.ccdafault = "T";
 		console.log("setCreditCard. ccattributes = "+ ccattributes);
 		this.paymentMethod = new OrderPaymentmethodModel({
-			type       : 'creditcard'
-		,	creditcard : options.model || ccattributes
+			type: 'creditcard'
+		,	creditcard: options.model || ccattributes
 		});
 		this.setSecurityNumber();
 		OrderWizardModulePaymentMethod.prototype.submit.apply(this, arguments);
@@ -138,6 +171,7 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 			this.selectedBillingAddressId = undefined;
 			this.selectedShippingAddressOptions = undefined;
 			this.selectedBillingAddressOptions = undefined;
+			this.manageAddress = undefined;
 			this.setAddress(seladdrid,seladdropt);
 		}
 		// re render so if there is changes to be shown they are represented in the view
@@ -148,7 +182,6 @@ define('OrderWizard.View', ['Wizard.View', 'OrderWizard.Module.TermsAndCondition
 	}
 	,	setAddress: function (address_id, options)
 	{
-		//debugger;
 		
 
 		var billing_address = this.model.attributes.addresses.find(function (model)
@@ -201,9 +234,6 @@ this.model.attributes.addresses.add(billaddress);
 					self.updateCartSummary();	
 				}
 			});
-			Backbone.on('updateSummary', function(){
-				self.updateCartSummary();	
-			});
 			this.model.on('refresh', function(){
 				console.log('refreshing');
 				this.render();
@@ -224,7 +254,26 @@ this.model.attributes.addresses.add(billaddress);
 			type: 'creditcard'
 		});
 		this.creditcards = this.wizard.options.profile.get('creditcards');
+		var addresses = this.wizard.options.profile.get('addresses');
+		addresses.on('add', function (new_address) {
+			if (this.manageAddress) {
 		
+				this.setAddress(new_address.id,this.manageAddress);
+			}
+		}, this);
+		this.creditcards.on('add change', function (new_card) {
+			var ccattributes = new_card.attributes;
+			ccattributes.ccdafault = "T";
+			console.log("setCreditCard. ccattributes = "+ ccattributes);
+			this.paymentMethod = new OrderPaymentmethodModel({
+				type       : 'creditcard'
+			,	creditcard : ccattributes
+			});
+			this.setSecurityNumber();
+			OrderWizardModulePaymentMethod.prototype.submit.apply(this, arguments);
+			// We re render so if there is changes to be shown they are represented in the view
+			this.render();
+		}, this);
 			
 			this.giftCertificates = this.model.get('paymentmethods').where({
 				type: 'giftcertificate'
@@ -266,6 +315,7 @@ this.model.attributes.addresses.add(billaddress);
 		// Handles the submit of the apply promo code form
 	,	applyPromocode: function (e)
 		{
+			this.wizard.application.trackEvent({category: "Custom Checkout", action: "Apply Promo Code", label: this.currentStep.stepGroup.name });
 			var self = this
 			,	$target = jQuery(e.target)
 			,	options = $target.serializeObject();
@@ -326,8 +376,6 @@ this.model.attributes.addresses.add(billaddress);
 							if(message.indexOf("This coupon code has expired or is invalid")>-1)
 								message = "This promo code has expired or is invalid";
 							self.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
-							//self.$('[data-type=alert-placeholder-module]').html(SC.macros.message(message,'error',true));
-							//throw new Error(message);
 //							$target.find('input[name=promocode]').focus();
 						}
 					}
@@ -347,6 +395,7 @@ this.model.attributes.addresses.add(billaddress);
 		// Handles the remove promocode button
 	,	removePromocode: function (e)
 		{
+			this.wizard.application.trackEvent({category: "Custom Checkout", action: "Remove Promo Code", label: this.currentStep.stepGroup.name });
 			var self = this;
 
 			e.preventDefault();
@@ -423,7 +472,7 @@ self.render();
 	{
 		
 		e.preventDefault();
-		
+		this.wizard.application.trackEvent({category: "Custom Checkout", action: "Apply Gift Card", label: this.currentStep.stepGroup.name });
 		
 		var code = jQuery.trim(jQuery(e.target).find('[name="code"]').val())
 		,	is_applied = _.find(this.giftCertificates, function (certificate)
@@ -443,6 +492,7 @@ self.render();
 				,	errorMessage: 'This gift card does not have any credit left'
 				};
 			self.$('[data-type=giftcertificate-error-placeholder]').html(SC.macros.message(error.errorMessage,'error',true));
+			this.wizard.application.trackEvent({category: "Custom Checkout Errors", action: "Wizard Error", label: error.errorMessage });
 		}
 		else if (is_applied)
 		{
@@ -462,6 +512,7 @@ self.render();
 ,	removeGiftCertificate: function (e)
 	{
 //		console.log(this.giftCertificates);
+		this.wizard.application.trackEvent({category: "Custom Checkout", action: "Remove Gift Card", label: this.currentStep.stepGroup.name });
 		var code = jQuery(e.target).data('id')
 		,	is_applied = _.find(this.giftCertificates, function (payment_method)
 			{
@@ -488,6 +539,7 @@ self.render();
 
 ,	showError: function (message)
 	{
+		this.wizard.application.trackEvent({category: "Custom Checkout Errors", action: "Wizard Error", label:message });
 		//this.$('[data-type=promocode-error-placeholder]').html(SC.macros.message(message,'error',true));
 //		this.$('.control-group').addClass('error');
 		//WizardModule.prototype.showError.apply(this, arguments);
@@ -587,12 +639,13 @@ var self = this;
 		//if(this.currentStep.wizard.currentStep==='billing'){
 			//console.log('lalala2');
 			//this.wizard.model.submit();
+			debugger;
 			var step = this.currentStep;
-			
+			this.wizard.application.trackEvent({category: "Custom Checkout", action: step.continueButtonLabel, label:step.stepGroup.name });
 			jQuery.Deferred().reject({
-			errorCode: 'ERR_CHK_INCOMPLETE_ADDRESS'
-		,	errorMessage: _('The address is incomplete').translate()
-		});
+				errorCode: 'ERR_CHK_INCOMPLETE_ADDRESS'
+				,	errorMessage: _('The address is incomplete').translate()
+			});
 			step.submit(e);
 
 		//}

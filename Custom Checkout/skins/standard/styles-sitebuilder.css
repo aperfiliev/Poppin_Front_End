@@ -8782,6 +8782,10 @@ width: auto;
 	//border: #eaeaea 4px solid;
 	//padding: 18px;
 }
+#main .credit-card-expiredate
+{
+	margin-left:52px;
+}
 #main .credit-card-selected .actions
 {
 	margin-left: -12px;
@@ -9247,12 +9251,12 @@ height:28px;
   display      : inline-block;
   margin-left  : -28px;
   padding-left : 25px;
-  background   : url('../../img/radio.gif') no-repeat center left;
-  line-height  : 16px;
+  background   : url('../../img/radio.gif') no-repeat 0px 3px;
+  line-height  : 19px;
 }
 
 #main input[type=radio]:not(old):checked + span{
-  background   : url('../../img/radio-selected.gif') no-repeat center left;
+  background   : url('../../img/radio-selected.gif') no-repeat 0px 3px;
 }
 .btn-edit-address
 {
@@ -9276,6 +9280,10 @@ font-size: 14px;
 }
 .delivery-option-label{
 	font-weight:bold;
+font-size: 15px;
+}
+.delivery-option-rate{
+	font-size:15px;
 }
 #payment-method-selector-creditcard .credit-card-security-number .control-label{
 width: 25px;

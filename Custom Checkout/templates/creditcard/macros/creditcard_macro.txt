@@ -1,8 +1,6 @@
 <% registerMacro('creditcard', function (creditcard, options) { %>
 <%
-console.log("MACRO");
-debugger;
-console.log(window.location.hash);
+
 
 	var payment_name = creditcard.get('paymentmethod').name
 	,	expiration_month = creditcard.get('expmonth')
@@ -28,9 +26,9 @@ console.log(window.location.hash);
 			<h4 class="summary-header">
 				<%= payment_name %> ************<%= creditcard.get('ccnumber').replace(/\*/g, '')%>
 			</h4>
-			<p style="margin:0;"> 
+			<!--<p style="margin:0;"> 
 				<%= (expiration_month < 10 ? '0' : '') + expiration_month + '/' + creditcard.get('expyear') %>
-			</p>
+			</p>-->
 			</div>
 			</span>
 			<% if (options.showDefaults) { %>
@@ -45,29 +43,7 @@ console.log(window.location.hash);
 		</div>
 	</div>
 	<% } %>
-		<!------------------------- --------------
-		<div class="credit-card-security-number" style="display:none">
-			<div class="control-group " style="display:; margin-top: -10px;">
-				<label class="control-label" for="ccsecuritycode" style="width: 20px; margin-left: 8px;">
-					CVC
-				</label>
-				<div class="controls" style="margin-left: 25px;">
-					<input type="password" class="input-mini" id="ccsecuritycode" name="ccsecuritycode" value="" maxlength="4" style="font-size: 15px;">
-					
-					
-					<a href="#" name="whatisthis" class="whatisthis" style="text-decoration:underline">what is this?</a> <br>
-					
-		<script>
-		jQuery('.whatisthis').hover(function(){
-		        jQuery('#whatisthisinfo').show("slow");
-		},function(){
-		        jQuery('#whatisthisinfo').hide("slow");
-		});
-		</script>
-				</div>
-			</div>
-		</div>
-		------------------------------------------->
+
 <% if(creditcard.get('internalid') == options.selectedCreditcard && window.location.hash.indexOf("billing")>-1){ %>
  		<%= SC.macros.creditcardSecurityNumberForm({
 			error: undefined

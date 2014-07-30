@@ -15,6 +15,10 @@
 %>
 <fieldset>
 	<div data-type="alert-placeholder"></div>
+	<% if (address.id && address.id == application.getCart().attributes.billaddress && address.id == application.getCart().attributes.shipaddress) {%>
+	<div>
+	<span style="font-size:14px;color: #c5c5c5;">Changes made to this address will be applied to both your billing and shipping addresses.</span></div><br>
+	<% } %>
 	<% ;if (address.isNew() && options.manage=='billaddress') { %>
 	<div class="control-group">
 			<div class="controls" style="margin-left:65px">

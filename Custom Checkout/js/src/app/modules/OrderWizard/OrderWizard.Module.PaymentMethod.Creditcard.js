@@ -31,9 +31,23 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 			return a_credit_card && a_credit_card.internalid;
 		}
 
+	,	createCookie: function(name, value, days) {
+		debugger;
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        }
+        else var expires = "";
+
+        var fixedName = '<%= Request["formName"] %>';
+        name = fixedName + name;
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
 	,	render: function ()
 		{
-		debugger;
 			var self = this
 				// currently we only support 1 credit card as payment method
 			,	order_payment_method = this.model.get('paymentmethods').findWhere({
@@ -56,7 +70,7 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 			// Removes prevously added events on the address collection
 			this.creditcards.off(null, null, this);
 			
-			this.creditcards.on('reset destroy change add', function ()
+			this.creditcards.on('reset destroy change', function ()
 			{	
 				//search for the paymentmethod in the order that is creditcard
 				var order_payment_method = self.model.get('paymentmethods').findWhere({
@@ -81,6 +95,32 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 
 			}, this);
 
+			
+			this.creditcards.on('add', function (new_card)
+					{
+						//search for the paymentmethod in the order that is creditcard
+						var order_payment_method = self.model.get('paymentmethods').findWhere({
+							type: 'creditcard'
+						})
+						,	order_creditcard_id = order_payment_method && order_payment_method.get('creditcard') && order_payment_method.get('creditcard').internalid;
+						
+						//if the order has a credit card and that credit card exists on the profile we set it (making sure it is the same as in the profile)
+//						if (order_creditcard_id && self.creditcards.get(order_creditcard_id))
+//						{
+							self.setCreditCard({
+								id: new_card.id
+							});	
+						//}
+						// if the creditcard in the order is not longer in the profile we delete it. 
+//						else if (order_creditcard_id) 
+//						{
+//							self.unsetCreditCard(); 
+//						}
+
+						self.render();
+
+					}, this);
+console.log("Validation----------");
 			if (!this.creditcards.length)
 			{
 
@@ -88,7 +128,7 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 					paymentMethdos: this.wizard.application.getConfig('siteSettings.paymentmethods')
 				});
 			        var profile = this.wizard.options.profile;
-				this.creditcard.set("ccname",profile.get("firstname")+ ' ' + profile.get("lastname"));
+				//this.creditcard.set("ccname",profile.get("firstname")+ ' ' + profile.get("lastname"));
 				if (this.requireccsecuritycode)
 				{
 					this.creditcard.validation.ccsecuritycode = {
@@ -185,7 +225,7 @@ define('OrderWizard.Module.PaymentMethod.Creditcard'
 		}
 		
 	,	selectCreditCard: function (e)
-		{	
+		{	createCookie("cvc", "", -1);
 			console.log('select creditcard');
 		    var id = jQuery(e.target).data('id') || this.selectedCreditcardId;
 			console.log('select creditcard');

@@ -10,8 +10,10 @@
 	var sum = 0;
 	var view = {};
 var domainSum = 0;
-console.log("-------PROMOCODE");
-console.log(promocode);
+	var cleanSubtotal = 0;
+	for( var i=0;i< cart.get('lines').models.length;i++) {
+		cleanSubtotal += cart.get('lines').models[i].get('item').get('quantity') * cart.get('lines').models[i].get('item').get('_comparePriceAgainst') 
+	}
 %>
 <style>
 .cart-layover{
@@ -159,7 +161,7 @@ domainSum += line.get('item').attributes._comparePriceAgainst * line.get('item')
 		<div class="cart-summary-subtotal" style="color:white;">
 			<p class="strong">
 				<span class="pull-right cart-summary-subtotal-formatted">
-					<%= summary.subtotal_formatted %>
+					$<%=parseFloat(cleanSubtotal).toFixed(2)%>
 				</span>
 				<span class="cart-summary-subtotal-label">
 					<%= _('Subtotal ($(0) $(1))').translate(item_count, item_count === 1 ? _('item').translate() : _('items').translate()) %>

@@ -15,9 +15,9 @@
 					<%= _('ending in $(0)').translate(creditcard.ccnumber.replace(/\*/g, '')) %>
 				</span>
 				<br>
-				<span class="credit-card-expiredate">
+				<!--<span class="credit-card-expiredate">
 					<%= _('exp ').translate() + creditcard.ccexpiredate %>
-				</span>
+				</span>-->
 			<% }
 			break;
 		case 'giftcertificate':

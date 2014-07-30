@@ -2,9 +2,6 @@
 <% var application = options.application;
 var cvc = jQuery('#ccsecuritycode').val(); 
 creditcard.attributes.ccsecuritycode = cvc;
-console.log("-=--=-=-==");
-console.log(creditcard);
-console.log(options);
 if(creditcard.isNew()){
 	//creditcard.set('cccheckbox',true);
 }
@@ -69,16 +66,18 @@ if(creditcard.isNew()){
   </label>
   <div class="controls">
    <select class="input-mini" id="expmonth" name="expmonth">     
+    <option value="0" selected></option>
     <% var currentMonth = creditcard.get('expmonth') ? creditcard.get('expmonth') : options.currentMonth  %>
     <% _.each(options.months, function (month, index) { %>
-     <option value="<%- month %>" <%= month == currentMonth ? 'selected' : '' %>>
+     <option value="<%- month %>" >
       <%= month %>
      </option>
     <% }) %>
    </select>
    <select class="input-small" id="expyear" name="expyear">
+   <option value="0" selected></option>
     <% _.each(options.years, function (year, index) { %>
-     <option value="<%- year %>" <%= year == creditcard.get('expyear') ? 'selected' : '' %> <%= options.expyear == year ? 'disabled' : '' %>>
+     <option value="<%- year %>">
       <%= year %>
      </option>
     <% }) %>
@@ -86,11 +85,11 @@ if(creditcard.isNew()){
   </div>
  </div>
  
- <% if (options.showSecurityCodeForm && false) { %>
-  <%= SC.macros.creditcardSecurityNumberForm() %>
- <% } %>
+ <%// if (options.showSecurityCodeForm) { %>
+  <% //= SC.macros.creditcardSecurityNumberForm() %>
+ <%// } %>
 <%if(creditcard.isNew()){%>
-  <%= SC.macros.creditcardSecurityNumberForm({verifyModal: options.collection ? true : false}) %>
+ <%= SC.macros.creditcardSecurityNumberForm({isNew: true}) %>
 <div class="control-group">
 			<div class="controls" style="margin-left:70px">
 				<label class="checkbox" style="width:100%">

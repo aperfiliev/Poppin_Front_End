@@ -69,8 +69,6 @@ SC.ENVIRONMENT.jsEnvironment = 'browser';
 
 <% if (Profile) { %>
 	// The Profile
-
-	<% nlapiLogExecution('AUDIT', 'Profile', JSON.stringify(Profile)) %>
 	SC.ENVIRONMENT.PROFILE = <%= JSON.stringify(_.extend(Profile, {isLoggedIn: (session.isLoggedIn()) ? 'T' : 'F'})) %>;
 <% } %>
 

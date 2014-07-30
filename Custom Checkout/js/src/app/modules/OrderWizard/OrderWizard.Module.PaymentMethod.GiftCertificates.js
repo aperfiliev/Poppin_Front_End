@@ -51,7 +51,6 @@ define('OrderWizard.Module.PaymentMethod.GiftCertificates', ['Wizard.Module'], f
 
 	,	updateGiftCertificates: function (codes)
 		{
-debugger;
 			var self = this;
 
 			// disable navigation buttons
@@ -68,8 +67,6 @@ debugger;
 
 				,	success: function (model, attributes)
 					{
-						debugger;
-
 						self.model.set({
 							paymentmethods: attributes.paymentmethods
 						,	summary: attributes.summary
@@ -98,7 +95,7 @@ debugger;
 	,	applyGiftCertificate: function (e)
 		{
 			e.preventDefault();
-debugger;
+
 
 			var code = jQuery.trim(jQuery(e.target).find('[name="code"]').val())
 			,	is_applied = _.find(this.giftCertificates, function (certificate)

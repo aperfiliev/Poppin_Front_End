@@ -8,9 +8,8 @@
 	,	country = (country_object)? country_object.name : address.get('country')
 	,	state_object = (country_object && country_object.states)? _.findWhere(countries[address.get('country')].states, {code: address.get('state')}): null
 	,	state = (state_object)? state_object.code: address.get('state');
-
+	
 %>
-
 <article class="address" >
 	
 	<address class=""">	
@@ -42,7 +41,7 @@
 		<% } %>
 		<span class="address-line">
 			<span class="address-city">
-				<%= address.get('city') %>
+				<%= address.get('city') %>,
 			</span>
 			<% if (address.get('state')) { %>
 				<span class="address-state">

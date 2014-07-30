@@ -1,4 +1,3 @@
-
 <%//if(view.options.step.wizard.currentStep != "review"){%>
 <div id="cardmessage_module" style="width:280px;">
 <% if (view.getTitle()) { %>
@@ -23,9 +22,9 @@
 					</option>
 				<% }); %>
 			</select>
-			<textarea id="cardmessagetext" maxlength="500" style="height: 130px;">
+			<textarea id="cardmessagetext" maxlength="250" style="height: 130px;">
 			</textarea>
-			<div id="textcounterblock" style="color: #6f6c6b">Remaining characters: <span id="textcounter">500</span></div>
+			<div id="textcounterblock" style="color: #6f6c6b">Remaining characters: <span id="textcounter">250</span></div>
 		</div>
 	</fieldset>
 	

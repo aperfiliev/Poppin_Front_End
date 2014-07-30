@@ -182,7 +182,6 @@ define('LiveOrder.Model', ['Order.Model', 'OrderLine.Model', 'OrderLine.Collecti
 
 	,	submit: function ()
 		{
-		debugger;
 			var self = this;
 			
 			this.set('internalid', null);
@@ -206,8 +205,7 @@ paypal .set('complete',  true);
 
 
 	,	save: function ()
-		{debugger;
- console.log('save liveorder');
+		{console.log('save liveorder');
 			if (this.get('confirmation'))
 			{
 				return jQuery.Deferred().resolve();

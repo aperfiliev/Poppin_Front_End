@@ -17,10 +17,27 @@ define('CreditCard.Views', function ()
 		,	'change form:has([data-action="reset"])': 'toggleReset'
 		,	'click [data-action="reset"]': 'resetForm'
 		,	'change form [name="ccnumber"]': 'setPaymethodId'
+		,	'click [data-action="add_card"]': 'save_cvc'		
 		}
 		
+	,	save_cvc: function(){
+//		this.model.set("ccsecuritycode", jQuery("#in-modal-ccsecuritycode").val());
+		document.cookie = "cvc="+jQuery("#in-modal-ccsecuritycode").val()+"; path=/";
+	}
 	,	initialize: function ()
-		{
+		{ 	//Backbone.Validation.bind(this);
+			this.model.validation.ccsecuritycode = { 
+			fn: function(value){
+				if(value !== null){
+					var reg = new RegExp('^[0-9]+$');
+					if(value.length < 3 || !reg.test(value)){
+						return _('Security Number is required').translate();
+					}else if(jQuery(".modal-body").length != 0){
+						jQuery("#in-modal-ccsecuritycode").css("border-color","rgb(31, 216, 31)");
+						jQuery(".checkbox").css("margin-top","0px");
+					}else{jQuery("#ccsecuritycode").css("border-color","rgb(31, 216, 31)");}
+				}
+			} };
 			this.title = this.model.isNew() ? _('Add Credit Card').translate() : _('Edit Credit Card').translate() ;
 			this.page_header = this.title;
 			
@@ -48,7 +65,7 @@ define('CreditCard.Views', function ()
 			var cc_number = jQuery(e.target).val().replace(/\s/g, '')
 			,	form = jQuery(e.target).closest('form')
 			,	paymenthod_id = _.paymenthodIdCreditCart(cc_number);
-			
+
 			jQuery(e.target)[0].value = cc_number;
 			
 			if (paymenthod_id)

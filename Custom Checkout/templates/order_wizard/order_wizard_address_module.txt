@@ -5,7 +5,6 @@
 	,	default_shipping_set = false
 	,	default_billing_set = false;
 console.log('update script');
-console.log(view);
 	_.each(address_book.models,function(addr){
     		if(addr.get('defaultshipping') =='T'){default_shipping_set = true;}
     		if(addr.get('defaultbilling') =='T'){default_billing_set = true;}
@@ -36,10 +35,25 @@ console.log(view);
 <% var page_name; %>
 <% if(Backbone.history.fragment.indexOf('shipping')>-1) { page_name = 'SHIPPING'} %>
 <% if(Backbone.history.fragment.indexOf('billing')>-1) { page_name = 'BILLING'} %> 
+<% 
+	var cart = view.model.application.getCart();
+	var sum = 0;
+	var domainSum = 0;
+	cart.get("lines").each(function(line){
+	sum += line.get('amount') - line.get('total');
+	domainSum += line.get('item').attributes.pricelevel1 * line.get('item').attributes.quantity - line.get('amount');
+	});
+	domainSum += view.model.get('summary').discounttotal + sum;
+	domainSum = Math.round(domainSum*100)/100;
+%>
 <script type="text/javascript">
 var itemsCollection = [];
+<% var itemDiscount = 0; %>
 <% for( var i=0;i< view.model.get('lines').models.length;i++) {%>
-itemsCollection.push({productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=view.model.get('lines').models[i].get('total') %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+<% var price = view.model.get('lines').models[i].get('total') / view.model.get('lines').models[i].get('quantity') %>
+<% price = Math.round(price*100)/100; %>
+itemsCollection.push({sku:'<%=view.model.get("lines").models[i].get("item").get("_sku")%>', productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=price%>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+<% itemDiscount += view.model.get('lines').models[i].get('discount') %>
 <% }%>
 window.forPixeldata = {
 userId:'<%= view.wizard.options.profile.id %>'
@@ -47,6 +61,7 @@ userId:'<%= view.wizard.options.profile.id %>'
 ,transactionId:''
 ,email:'<%= view.wizard.options.profile.get('email') %>'
 ,name:'<%= view.wizard.options.profile.get('firstname') + ' ' + view.wizard.options.profile.get('lastname') %>'
+//,orderCount: '<%= view.wizard.options.profile.get('ordercount') %>'
 ,items:itemsCollection
 };
 </script>
@@ -64,16 +79,16 @@ var orderID = "";
 	var customerState = "<%=billaddress ? billaddress.get('state') : ''%>" || "<%=shipaddress ? shipaddress.get('state') : ''%>";
 	var customerPostal = "<%=billaddress ? billaddress.get('zip') : ''%>" || "<%=shipaddress ? shipaddress.get('zip') : ''%>";
 	var customerCountry = "<%=billaddress ? billaddress.get('country') : ''%>" || "<%=shipaddress ? shipaddress.get('country') : ''%>";
-
+//	var orderCount = '<%= view.wizard.options.profile.get('ordercount') %>';
 	var strpageDataVarURL = "/app/site/hosting/scriptlet.nl?script=250&deploy=1&orderitems=" + escape(itemsCollection) + "&subtotal=" + escape(orderSubtotal);
-
+	var discount = '<%= domainSum ? domainSum : itemDiscount ? itemDiscount : view.model.get('summary').discounttotal %>';
 	var pageData = {
 		"order" : {
 			"id" : orderID,
 			"total" : orderTotal,
 			"tax" : orderTax,
 			"shipping" : orderShipping,
-			"discount" : 0,
+			"discount" : discount,
 			"promoCode" : orderPromoCode,
 			"currencyCode" : "USD"
 		},
@@ -82,12 +97,13 @@ var orderID = "";
 			"city" : customerCity,
 			"state" : customerState,
 			"postal" : customerPostal,
-			"country" : customerCountry
+			"country" : customerCountry//,
+			//"ordercount" : orderCount
 		},
 		"navigation" : {  pageName: "AddressStep" },
-		"items" : []
+		"items" : itemsCollection
 	};
-	
+
 	$j(window).trigger('updateCheckoutJsonData',pageData);
 
 	
