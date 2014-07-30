@@ -1,8 +1,0 @@
-<project info="SuiteCloud IDE generated file, do not edit." setAttributesOnUpdate="false">
-  <folder name="Header" bundleable="false">
-    <file name="pp_exit_survey.js" bundleable="false" hideInBundle="false" isOnline="true"/>
-    <file name="pp_legacy_browser.js" bundleable="false" hideInBundle="false" isOnline="true"/>
-    <file name="pp_social_media.js" bundleable="false" hideInBundle="false" isOnline="true"/>
-    <file name="test.js" bundleable="false" hideInBundle="false" isOnline="true"/>
-  </folder>
-</project>
