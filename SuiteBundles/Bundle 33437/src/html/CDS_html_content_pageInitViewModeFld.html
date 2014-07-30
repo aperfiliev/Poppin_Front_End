@@ -1,0 +1,78 @@
+<script type='text/javascript'>
+    
+    // change title
+    var titleDiv = Ext.select('div[class=pt_title]');
+    titleDiv.first().update('Content');
+    
+    // get the content of Text Editor field. sometimes it contains '&nbsp;''
+    var textEditorContent = Ext.select('table[class=table_fields] > tbody > tr:nth-child(4) > td:nth-child(2)');
+    var value = textEditorContent.first().dom.innerHTML;
+    value = value.replace(/(&nbsp;)/gi,'');
+    if(value){
+    	value = value.trim();
+    }
+    
+    // function for opening a popup window
+    function openPreviewPopup(contentid){ 
+    	
+    	var targetUrl = nlapiResolveURL('SUITELET', 'customscript_cds_sl_preview_content', 'customdeploy_cds_sl_preview_content');
+    	//nlExtOpenWindow(targetUrl + '&contentid=' + contentid, 'Preview', 650, 400, 0, 0, 'Preview', null);
+    	
+    	var newWindow = window.open(targetUrl + '&contentid=' + contentid, 'Preview', 'height=600,width=600');
+   		if (window.focus) { 
+   			newWindow.focus(); 
+		}
+    }
+    
+    // replace Text Editor's value with a preview link
+    if(value){
+    	if(textEditorContent){
+    		
+    		var contentid = getParameter("id");
+    		contentid = contentid.replace(/#/gim, '');
+    		
+    		var previewLink = [
+				'<a class="smalltext"', 
+				'	onmouseout="this.style.textDecoration=\'none\'; window.status=\'\';"', 
+				'	onmouseover="this.style.textDecoration=\'underline\'; window.status=\'preview file\'; return true;"',
+				'	onclick="openPreviewPopup(' + contentid + '); return false" style="text-decoration: none;" href="#">preview',
+				'</a>'
+            ];
+    		    		
+    		textEditorContent.first().update(previewLink.join('\n'));
+    	}	
+    }
+    
+    Ext.onReady(
+   		function(){
+   			var mainForm = Ext.get('main_form');
+	    	// hide other fields depending on the value of Type field
+	    	var typeDiv = mainForm.select('table[class=table_fields] > tbody > tr:nth-child(1) > td:nth-child(2) > span');
+	        var type = typeDiv.first().dom.innerHTML;
+	    	
+	        // hide File Cabinet and Content
+	        var delEl = mainForm.select('table[class=table_fields] > tbody > tr:nth-child(8)');
+	        if(delEl) delEl.remove();	
+	        
+	        delEl = mainForm.select('table[class=table_fields] > tbody > tr:nth-child(8)');
+	        if(delEl) delEl.remove();
+	        
+	       	// hide other fields
+	        if(type == 'HTML'){
+	        	delEl = mainForm.select('table[class=table_fields] > tbody > tr:nth-child(6)');
+		        if(delEl) delEl.remove();
+		        
+		        delEl = mainForm.select('table[class=table_fields] > tbody > tr:nth-child(6)');
+		        if(delEl) delEl.remove();
+	        }
+	        else{
+	        	delEl = mainForm.select('table[class=table_fields] > tbody > tr:nth-child(3)');
+		        if(delEl) delEl.remove();
+		        
+		        delEl = mainForm.select('table[class=table_fields] > tbody > tr:nth-child(3)');
+		        if(delEl) delEl.remove();
+	        }
+	    }
+    );
+    
+</script>

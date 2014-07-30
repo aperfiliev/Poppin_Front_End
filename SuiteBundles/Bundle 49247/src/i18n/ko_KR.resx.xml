@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>이 행을 삭제하시겠습니까?</value>
+  </data>
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>값을 입력하십시오: 금액</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>유효하지 않은 금액 값. 값은 숫자여야 합니다</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>유효하지 않은 금액 값. 값은 1에서 99,999,999,999까지의 숫자여야 합니다</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>목록에서 적어도 하나의 고객을 선택하십시오</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>고객 저장된 검색이 이미 하위 목록에 존재합니다</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+    <value>선택에서 제품 품목이나 서비스 품목이 아닌 품목을 선택하셨습니다. 이 설정 저장을 계속하려면 품목을 제거하십시오.</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>선택에서 제품 품목이나 서비스 품목이 아닌 품목을 선택하셨습니다. 이 설정 저장을 계속하려면 품목을 제거하십시오.</value>
+  </data>
+  <data name="error.form.locked" xml:space="preserve">
+    <value>이 서식은 고급 프로모션 SuiteApp에 의해 잠겨 있으므로 편집할 수 없습니다.</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>값을 입력하십시오: 한도</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>유효하지 않은 한도 값. 값은 숫자여야 합니다</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>유효하지 않은 한도 값. 값은 1에서 99,999,999,999까지의 숫자여야 합니다</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>값을 입력하십시오: 최소 구매</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>유효하지 않은 최소 구매 값. 값은 숫자여야 합니다.</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>유효하지 않은 최소 구매 값. 값은 0에서 100,000,000,000까지여야 합니다</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>값을 입력하십시오: 프로모션 할인</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>유효하지 않은 프로모션 할인 값. 값은 숫자여야 합니다</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>유효하지 않은 프로모션 할인 값. 값은 1에서 99,999,999,999까지의 숫자여야 합니다</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>유효하지 않은 프로모션 할인 값. 값은 1에서 100까지의 숫자여야 합니다</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>값을 입력하십시오: 퍼센트</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>유효하지 않은 퍼센트 값. 값은 숫자여야 합니다</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>유효하지 않은 퍼센트 값. 값은 1에서 100까지의 숫자여야 합니다</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>목록에서 적어도 하나의 방법을 선택하십시오</value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;다음 중 하나를 선택하십시오:
+    &lt;ul&gt;&lt;li&gt;&lt;b&gt;주문 합계 설정&lt;/b&gt; - 주문 합계 또는 총 구매 단위 수에 기초한 주문 기준을 설정하는 경우.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;품목 선택&lt;/b&gt; - 특정 품목에 기초한 기준을 설정하는 경우.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;품목 저장된 검색 선택&lt;/b&gt; - 기존의 품목 저장된 검색에서 품목에 대한 기준을 목록에 추가하는 경우.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;새 품목 검색 생성&lt;/b&gt; - 목록에 추가하기 위해 새로 품목 저장된 검색을 생성하는 경우.&lt;/li&gt;&lt;/ul&gt;
+    &lt;p&gt;&lt;b&gt;노트&lt;/b&gt;: 기준은 일반 검색만 선택할 수 있습니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;프로모션 할인을 설정하려면 다음 중 하나를 선택하십시오:&lt;/p&gt;
+    &lt;ul&gt;&lt;li&gt;&lt;b&gt;품목 선택&lt;/b&gt; - 할인이 적용되는 품목을 선택하십시오. 추가 품목을 선택하려면 다른 품목 추가를 클릭하십시오.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;품목 저장된 검색 선택&lt;/b&gt; - 할인이 적용되는 품목을 포함하고 있는 기존의 품목 저장된 검색을 선택하십시오.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;새 저장된 검색 생성&lt;/b&gt; - 할인이 적용되는 품목을 포함하고 있는 품목 저장된 검색을 생성하십시오.&lt;/li&gt;&lt;/ul&gt;
+    &lt;p&gt;&lt;b&gt;노트&lt;/b&gt;: 할인을 정의하려면 일반 저장된 검색만 포함할 수 있습니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;다음 중 한 가지 방법으로 할인을 제공하는 품목을 선택하십시오:
+    		&lt;ul&gt;&lt;li&gt;&lt;b&gt;품목 선택&lt;/b&gt; - 할인을 제공하고자 하는 품목을 선택하십시오. 추가 품목을 선택하려면 다른 품목 추가를 클릭하십시오.&lt;/li&gt;
+    		&lt;li&gt;&lt;b&gt;저장된 검색 선택&lt;/b&gt; - 할인을 제공하는 품목을 포함하는 기존 품목 저장된 검색을 선택하십시오.&lt;/li&gt;
+    		&lt;li&gt;&lt;b&gt;새 저장된 검색 생성&lt;/b&gt; - 할인을 제공하는 품목을 포함하는 품목 저장된 검색을 생성하십시오.&lt;/li&gt;
+    		&lt;/ul&gt;할인을 정의하려면 일반 검색만 선택할 수 있습니다. &lt;/html&gt;
+    </value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;주문 할인을 이 프로모션에 추가하려면 새 주문 할인을 선택하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;다음 중 하나를 선택하십시오:
+    &lt;ul&gt;&lt;li&gt;&lt;b&gt;고객이 어느 기준에 일치하는 경우&lt;/b&gt; - 적격성을 갖출 수 있도록 아래에서 추가한 검색 또는 목록 중 하나에만 고객을 포함해야 하는 경우 이 옵션을 선택하십시오.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;고객이 모든 기준에 일치하는 경우&lt;/b&gt; - 이 프로모션에 적격성을 갖출 수 있도록 아래에서 추가한 검색 또는 목록 중 하나에만 고객을 포함해야 하는 경우 이 옵션을 선택하십시오.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;다음 중 하나를 선택하십시오:
+    &lt;ul&gt;&lt;li&gt;&lt;b&gt;주문이 어느 기준에 일치하는 경우&lt;/b&gt; - 주문이 적격성을 갖출 수 있도록 아래에서 추가한 기준 중 하나만 충족해야 하는 경우 이 옵션을 선택하십시오.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;주문이 모든 기준에 일치하는 경우&lt;/b&gt; - 프로모션이 적격성을 갖추고 아래에 열거한 모든 항목 기준이 충족되는 경우 이 옵션을 선택하십시오. 이 프로모션에 적격성을 갖출 수 있도록 아래에서 추가한 모든 검색과 목록에 고객을 포함해야 하는 경우 이 옵션을 선택하십시오.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;다음 중 하나를 선택하십시오:
+    &lt;ul&gt;&lt;li&gt;&lt;b&gt;특정 고객을&lt;/b&gt; - 선택하여 적격성 하위 탭에 추가하려면 고객을 선택하십시오.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;기존의 고객 저장된 검색을&lt;/b&gt; - 목록에 추가하려면 고객 저장된 검색을 선택하십시오.&lt;/li&gt;&lt;/ul&gt;
+    &lt;b&gt;노트:&lt;/b&gt;이들 고객은 저장된 검색 기준으로 정의되기 때문에 적격 고객 목록이 변경될 수 있습니다.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;선택한 할인 품목이 하위 자회사에 적용되는 경우 이 상자에 체크표시됩니다.  이 필드는 편집할 수 없습니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;다음 중 하나를 선택하십시오:
+    &lt;ul&gt;&lt;li&gt;&lt;b&gt;주문 합계 또는&lt;/b&gt; - 총 구매 단위 수에 기초한 주문 기준을 설정하려면 주문 합계를 설정하십시오.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;특정 품목에&lt;/b&gt; - 기초한 기준을 설정하려면 품목을 선택하십시오.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;기존의 품목 저장된 검색에서&lt;/b&gt; - 기존의 품목 저장된 검색에서&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;새 고객 저장된 검색을 생성하여&lt;/b&gt; - 새 고객 저장된 검색을 생성하여&lt;/li&gt;&lt;/ul&gt;
+    &lt;b&gt;노트:&lt;/b&gt;기준을 위해 일반 검색만 선택할 수 있습니다.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;다음 중 하나를 선택하십시오:
+    &lt;ul&gt;&lt;li&gt;&lt;b&gt;주문이 어느 기준에 일치하는 경우&lt;/b&gt; - 주문이 어느 기준에 일치하는 경우&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;주문이 모든 기준에 일치하는 경우&lt;/b&gt; - 프로모션이 적격성을 갖추고 아래에 열거한 모든 항목 기준이 충족되는 경우 이 옵션을 선택하십시오.  이 프로모션에 적격성을 갖출 수 있도록 아래에서 추가한 모든 검색과 목록에 고객을 포함해야 하는 경우 이 옵션을 선택하십시오.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 프로모션의 이용 자격을 갖춘 고객을 선택하십시오. 두 명 이상의 고객을 선택하려면 CTRL을 계속 누른 상태에서 선택하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;저장된 검색에 대한 설명은 여기에 표시됩니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 프로모션에 적격성을 갖춘 고객들을 정의하려면 사용하고자 하는 고객 저장된 검색을 선택하십시오. 기준에는 일반 저장된 검색만 사용할 수 있습니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;저장된 검색에 대한 설명은 여기에 표시됩니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 프로모션으로 할인하고자 하는 품목을 선택하십시오.  추가 할인 품목을 추가하려면 다른 품목 추가를 클릭하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;할인을 제공하는 품목을 포함하는 기존 품목 저장된 검색을 선택하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;할인을 제공하는 품목의 최대 숫자(단위)를 입력하십시오.  이 최대 할인 금액은 계산된 할인 금액에 우선합니다.  다중 통화 기능을 사용하는 경우, 비즈니스에서 거래하는 통화로 최대 할인 금액을 입력하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;할인을 제공하는 품목의 최대 숫자(단위)를 입력하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;선택한 품목의 할인 금액이나 할인율을 입력하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;할인된 선적 금액을 입력하거나 할인율을 입력하십시오.&lt;/p&gt;
+    &lt;p&gt;통화 금액을 입력하는 경우, 이는 선적 금액으로 사용됩니다.  백분율을 입력하는 경우, 선적 방법에 따른 선적 금액은 해당 백분율로 할인됩니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 할인율이 적용되는 선적 방법을 선택하십시오.  백분율 할인을 입력하는 경우, 선택한 선적 방법은 해당 백분율로 할인됩니다.  통화 금액을 입력하는 경우, 이 금액은 선적 금액으로 사용됩니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 프로모션에서 적용할 수 있는 최대 할인 금액을 입력하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 프로모션에서 적용할 수 있는 최대 할인 금액을 입력하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 프로모션에 대한 백분율 또는 통화 금액 할인을 입력하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;주문 적격성 기준을 기초로 하려면 원하는 품목을 선택하십시오. 복수의 품목을 선택하려면, CTRL을 계속 누른 상태에서 선택하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 프로모션에 대한 주문 기준을 정의하려면 사용하고자 하는 품목 저장된 검색을 선택하십시오.  기준에 사용된 저장된 검색은 일반 검색이어야 합니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 프로모션에 적격성을 갖출 수 있도록 주문에 필요한 최소 구매 금액을 입력하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 프로모션에 적격성을 갖출 수 있도록 주문에 필요한 이들 품목에 대한 최소 구매 금액을 입력하십시오.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;할인된 선적 금액을 입력하거나 할인율을 입력하십시오.&lt;/p&gt;
+    &lt;p&gt;통화 금액을 입력하는 경우, 이는 선적 금액으로 사용됩니다.  백분율을 입력하는 경우, 선적 방법에 따른 선적 금액은 해당 백분율로 할인됩니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 할인율이 적용되는 선적 방법을 선택하십시오.  백분율 할인을 입력하는 경우, 선택한 선적 방법은 해당 백분율로 할인됩니다.  통화 금액을 입력하는 경우, 이 금액은 선적 금액으로 사용됩니다.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>X 구매 기준 추가</value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>고객 기준 추가</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>주문 기준 추가</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>Y 할인 받기</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>품목 할인 추가</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>주문 할인 추가</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>선적 할인 추가</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>다른 품목 추가</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>모든 품목</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>금액 설정</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>적용</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>X 구매</value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>고객이 모든 기준에 일치하는 경우</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>고객이 어느 기준에 일치하는 경우</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>고객 저장된 검색</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>고객</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>고객 편집</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>고객 선택</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>고객 저장된 검색 편집</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>새 고객 검색 생성</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>고객 저장된 검색 선택</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>고객 세그먼트</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>설명</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>할인</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>최대 할인</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>최대 총 할인</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>편집</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>적격성</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.include.children" xml:space="preserve">
+    <value>하위항목 포함하기</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>품목</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>품목 추가</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>품목 편집</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>품목 저장된 검색</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>품목 저장된 검색 편집</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>품목 선택</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>품목 저장된 검색 추가</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>새 품목 검색 생성</value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>품목 저장된 검색 선택</value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>한도</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>-없음-</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>주문</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>품목 추가 주문</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>주문 할인 편집</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>새 주문 할인</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>새 주문 할인 (% 또는 금액 할인)</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>품목 편집 주문</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>품목 추가 저장된 검색 주문</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>품목 편집 저장된 검색 주문</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>주문이 모든 기준에 일치하는 경우</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>주문이 어느 기준에 일치하는 경우</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>새 선적 할인</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>주문 합계 편집</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>주문 합계 설정</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>모두 주문</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>할인율</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>미리보기</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>프로모션 제공</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>최소 구매</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>제거</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>금액 설정</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>선적은 카트에 있는 모든 품목에 해당</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>선적 할인</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>선적 할인 편집</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>새 선적 할인</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>선적 방법</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>새로 저장된 검색</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>제목</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>단위</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>설명</value>
+  </data>
+  <data name="text.none" xml:space="preserve">
+    <value>-없음-</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>끄기</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>켜기</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>또는</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>주문 할인</value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>주문 합계</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>저장된 검색</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>검색 결과</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>선적 할인</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>단위</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+    <value>고객</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>품목</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>무료 선적 품목을 한 개 이상 선택하십시오.</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>선적 방법을 한 개 이상 선택하십시오.</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>카트 내의 품목에 적용된 무료 선적.</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>새 품목 무료 선적</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>무료 선적</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>품목별 무료 선적 편집</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>및</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;이 프로모션에 사용할 할인된 선적 제공을 위한 새 선적 할인을 선택하십시오.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;이 프로모션에 사용할 무료 선적 제공을 위한 새 품목별 무료 선적을 선택하십시오. &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;참고: 선적 할인 및 품목별 무료 선적에서 동일한 선적 방법을 선택하면 무료 선적은 선택된 특정 품목에만 적용되고 할인된 선적은 다른 품목들에 적용됩니다.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>목록에서 최소 한 개의 재고 품목 또는 어셈블리 품목을 선택하십시오.</value>
+  </data>
+  <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>목록에서 적어도 한 개의 선적 방법을 선택하십시오.</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>무료 품목 선적은 재고 품목 및 어셈블리 품목에만 적용됩니다. 계속하려면 비재고 품목 및 비어셈블리 품목을 제거하십시오.</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>무료 선적을 위한 품목 저장된 검색 선택</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>무료 선적 제공 품목이 포함된 기존 품목 저장된 검색을 선택하십시오.</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>무료 선적을 위한 품목 저장된 검색 편집</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>계속하려면 목록에서 최소 한 개의 저장된 저장된 검색을 선택하십시오.</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>품목, 선적 방법에 대한 값을 선택하십시오.</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>품목, 저장된 검색, 선적 방법에 대한 값을 선택하십시오.</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>제한 없음</value>
+  </data>
+</root>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Slider Test</title>
+<link  rel="stylesheet" type="text/css" href="sld-styles.css">
+<script src="http://code.jquery.com/jquery-1.7.2.js"></script>
+<script src="gp-slide.js"></script>
+<script src="sld-library.js"></script>
+<script>
+jQuery(document).ready(function($){
+    /*
+     "Filters" : [{
+            "name" : "custrecord_gpr_aae_sld_sitenumber",
+            "operator" : "equalto",
+            "value1" : "1"
+        },{
+            "name" : "custrecord_gpr_aae_sld_slidetype",
+            "operator" : "is",
+            "value1" : "1"
+        }]
+     */
+    GPR_AAE_SLD.init({
+           "processFn" : function (data){     
+                if (data.length) {
+                    var ul = $("<ul>");
+                    for(var i=0; i<data.length; i++){
+                        var li = $("<li>");
+                        var a = $("<a>").attr("href", unescape(data[i].custrecord_gpr_aae_sld_slidelink));
+                        var img = $("<img>").attr("src", unescape(data[i].custrecord_gpr_aae_sld_slideimage.name));
+                        a.append(img);
+                        li.append(a);
+                        ul.append(li);
+                    }                                   
+                    $(".slide-wrap").append(ul);
+                    $(".slide-wrap").gpSlide({
+                        speed: 6000,
+                        animationSpeed: 1000,
+                        goto: true,
+                        prev: true,
+                        next: true,
+                        responsive: false, //Required CSS new Width
+                        autorun: true,
+                        animation: 'slide'
+                   });
+                }
+            },
+            "onError" : function() {
+                alert("New error");   
+            }                       
+    });
+});
+</script>
+</head>
+<body>
+<div class="slide-wrap"></div>
+</body>
+</html>

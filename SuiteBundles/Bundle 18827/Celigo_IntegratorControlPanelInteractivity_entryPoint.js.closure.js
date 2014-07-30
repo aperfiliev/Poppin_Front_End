@@ -1,0 +1,3 @@
+if(!Celigo)var Celigo={};
+Celigo.Integrator=function(){return{pageInit:function(){nlapiSetFieldValue("custpage_email","");nlapiSetFieldValue("custpage_password","");nlapiSetFieldValue("updateuser","");nlapiSetFieldValue("updatepassword","");nlapiSetFieldValue("updateemail","");nlapiSetFieldValue("custpage_buy_username","");nlapiSetFieldValue("custpage_buy_password","")},saveRecord:function(){nlapiRefreshPortlet();return true},validateField:function(){},fieldChanged:function(){},postSourcing:function(){},lineInit:function(){},
+validateLine:function(){},recalc:function(){}}}();

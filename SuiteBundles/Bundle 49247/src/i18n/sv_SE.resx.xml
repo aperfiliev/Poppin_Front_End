@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>Vill du ta bort den här raden?</value>
+  </data>
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>Ange värde(n) för: Belopp</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>Ogiltigt värde för Belopp. Värdena måste vara tal</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>Ogiltigt värde för Belopp. Värdena måste vara tal mellan 1 och 99 999 999 999</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>Välj minst en kund i listan</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>Sparad kundsökning finns redan i underlistan</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+    <value>Du har valt en artikel som inte är en Produktartikel eller Serviceartikel i ditt val. Du måste ta bort den innan du kan fortsätta att spara den här inställningen.</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>Du har valt en artikel som inte är en Produktartikel eller Serviceartikel i ditt val. Du måste ta bort den innan du kan fortsätta att spara den här inställningen.</value>
+  </data>
+  <data name="error.form.locked" xml:space="preserve">
+    <value>Det här formuläret har låsts av SuiteAppen för avancerade kampanjer och kan inte redigeras.</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>Ange värde(n) för: Gräns</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>Ogiltigt värde för Gräns. Värdena måste vara tal.</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>Ogiltigt värde för Gräns. Värdena måste vara tal mellan 1 och 99 999 999 999</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>Ange värde(n) för: Minsta köp</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>Ogiltigt värde för Minsta köp. Värdena måste vara tal.</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>Ogiltigt värde för Minsta köp. Värdena måste vara mellan 0 och 100 000 000 000</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>Ange värde(n) för: Kampanjerbjudande</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>Ogiltigt värde för Kampanjerbjudande. Värdena måste vara tal</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>Ogiltigt värde för Kampanjerbjudande. Värdena måste vara tal mellan 1 och 99 999 999 999</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>Ogiltigt värde för Kampanjerbjudande. Värdena måste vara tal och endast mellan 1 och 100</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>Ange värde(n) för: procent</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>Ogiltigt värde för procent. Värdena måste vara tal</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>Ogiltigt värde för procent. Värdena måste vara tal och endast mellan 1 och 100</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>Välj minst en metod i listan</value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj något av följande: &lt;ul&gt;&lt;li&gt;&lt;b&gt;Ange ordersumma&lt;/b&gt; - om du vill ange orderkriterier baserat på ordersumman eller det totala antalet enheter som köps.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Välj artiklar&lt;/b&gt; - om du vill ange kriterier baserat på specifika artiklar. &lt;/li&gt;&lt;li&gt;&lt;b&gt;Välj sparad artikelsökning&lt;/b&gt; - om du vill lägga till kriterier för artiklarna i en befintlig sparad artikelsökning i listan. &lt;/li&gt;&lt;li&gt;&lt;b&gt;Skapa ny artikelsökning&lt;/b&gt; - om du vill skapa en ny sparad artikelsökning att lägga till i listan.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Obs! &lt;/b&gt; Du kan endast välja offentliga sökningar för kriterier.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj något av följande om du vill ange kampanjrabatten:  &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt; Välj artiklar&lt;/b&gt; - Välj de artiklar som du vill ge rabatt på. Klicka på Lägg till en till om du vill lägga till ytterligare artiklar. &lt;/li&gt;&lt;li&gt;&lt;b&gt;Välj sparad artikelsökning&lt;/b&gt; - Välj en befintlig sparad artikelsökning som innehåller de artiklar på vilka du ger rabatt. &lt;/li&gt;&lt;li&gt;&lt;b&gt; Skapa ny sparad sökning&lt;/b&gt; - Skapa en sparad artikelsökning som innehåller de artiklar på vilka du ger rabatt.  &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Obs!&lt;/b&gt; Du kan endast ta med offentliga sparade sökningar när du vill definiera rabatter.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj den artikel som du vill erbjuda rabatt på. Använd något av följande sätt:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Välj artiklar&lt;/b&gt; - Välj de artiklar som du vill erbjuda rabatt på. Klicka på Lägg till en till om du vill lägga till ytterligare artiklar.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Välj Sparad sökning&lt;/b&gt; - Välj en befintlig sparad artikelsökning som innehåller de artiklar som du vill erbjuda rabatt på.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Skapa ny sparad sökning&lt;/b&gt; - Skapa en sparad artikelsökning som innehåller de artiklar som du vill erbjuda rabatt på.&lt;/li&gt;&lt;/ul&gt;Du kan endast välja offentliga sökningar när du vill definiera rabatter.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj Ny orderrabatt om du vill lägga till en orderrabatt i den här kampanjen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj något av följande:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Om kunden matchar något kriterium&lt;/b&gt; Välj det här alternativet om en kund måste komma med i endast en av nedanstående sökningar eller listor för att vara kvalificerad.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Om kunden matchar alla kriterier&lt;/b&gt; Välj det här alternativet om en kund måste komma med i alla nedanstående sökningar eller listor för att vara kvalificerad för den här kampanjen.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj något av följande:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Om artikeln matchar något kriterium&lt;/b&gt; Välj det här alternativet om en order endast behöver matcha ett av de kriterier som du lägger till nedan för att vara kvalificerad.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Om ordern matchar alla kriterier&lt;/b&gt; Välj det här alternativet om alla de artikelkriterier du anger nedan måste matchas för att vara kvalificerad för kampanjen. Välj det här alternativet om en kund måste komma med i alla nedanstående sökningar eller listor för att vara kvalificerad för den här kampanjen.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;  Välj något av följande: &lt;ul&gt;&lt;li&gt;&lt;b&gt; Välj Kunder&lt;/b&gt; - om du vill välja specifika kunder att ta med på underfliken för kvalificering. &lt;/li&gt;&lt;li&gt;&lt;b&gt; Välj Sparad sökning&lt;/b&gt; - Kund om du vill lägga till en befintlig sparad kundsökning i listan.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Customer Search&lt;/b&gt; - to create a new customer saved search to add to the list.&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Obs! &lt;/b&gt; Eftersom de här kunderna definieras av kriterierna för sparade sökningar kan listan över kvalificerade kunder ändras. &lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Den här kryssrutan är markerad om rabattartikeln som du har valt tillämpas på underordnade dotterbolag. Du kan inte redigera det här fältet.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj något av följande:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Set Order Total&lt;/b&gt; - to set order criteria based on the order total or on the total number of units purchased.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Items&lt;/b&gt; - to set criteria based on specific items.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Item Saved Search&lt;/b&gt; - to add criteria for the items in an existing item saved search to the list.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Item Search&lt;/b&gt; - to create a new item saved search to add to the list.&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Note&lt;/b&gt;: You can only choose public searches for criteria.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj något av följande:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Om artikeln matchar något kriterium&lt;/b&gt; - Välj det här alternativet om en order endast behöver matcha ett av de kriterier som du lägger till nedan för att vara kvalificerad.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Om ordern matchar alla kriterier&lt;/b&gt; - Välj det här alternativet om alla de artikelkriterier du anger nedan måste matchas för att vara kvalificerad för kampanjen. Välj det här alternativet om en kund måste komma med i alla nedanstående sökningar eller listor för att vara kvalificerad för den här kampanjen.  &lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj de kunder som är kvalificerade att utnyttja den här kampanjen. Om du vill välja mer än en kund trycker du och håller ned CTRL-tangenten medan du väljer.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Beskrivningen av den sparade sökningen visas här.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj den sparade kundsökningen som du vill använda för att definiera vilka kunder som är kvalificerade för den här kampanjen. Du kan endast använda offentliga sparade sökningar som kriterier.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Beskrivningen av den sparade sökningen visas här.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj en artikel som du vill erbjuda rabatt på i den här kampanjen.&lt;/p&gt;&lt;p&gt;Om du vill lägga till fler artiklar ska du klicka på Lägg till en till.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj en befintlig sparad artikelsökning som innehåller de artiklar som du vill erbjuda rabatt på.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Ange det högsta antalet (enheter) artiklar som rabatten får utnyttjas på.&lt;/p&gt;&lt;p&gt;Det här högsta rabattbeloppet äger företräde framför det beräknade rabattbeloppet. Om du använder funktionen Flera valutor kan du ange den högsta rabatten i varje valuta du gör affärer i.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Ange det högsta antalet (enheter) artiklar som rabatten får utnyttjas på.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Ange rabatten som belopp eller procentsats för de artiklar som du har valt.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Du måste ange antingen det rabatterade leveransbeloppet eller en rabattprocentsats. 
+	Om du anger ett valutabelopp används det som leveransbeloppet. Om du anger en procentsats dras rabatten av från leveransmetoden med den här procentsatsen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj de leveranssätt som rabatten ska gälla för. Om du anger en procentuell rabatt dras rabatten med den angivna procentsatsen från de leveranssätt som du väljer. Om du anger ett valutabelopp dras det beloppet av som fraktrabatt &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Ange det högsta rabattbeloppet som erbjuds i den här kampanjen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Ange det högsta rabattbeloppet som får utnyttjas på en enskild order i den här kampanjen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Ange rabattens procentsats eller valutabelopp för den här kampanjen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj de artiklar som du vill basera en orders kvalificeringskriterier på. Om du vill välja mer än en artikel trycker du och håller ned CTRL-tangenten medan du väljer.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj den sparade artikelsökning som du vill använda för att definiera orderkriterierna för den här kampanjen. De sparade sökningar som används för dina kriterier måste vara offentliga sökningar.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Ange det lägsta köpbeloppet som krävs för att en order ska vara kvalificerad för den här kampanjen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Ange det minsta köpet för dessa artiklar som krävs för att en order ska vara kvalificerad för den här kampanjen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Du måste ange antingen det rabatterade leveransbeloppet eller en rabattprocentsats.Om du anger ett valutabelopp används det som leveransbeloppet. Om du anger en procentsats dras rabatten av från leveransmetoden med den här procentsatsen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj de leveransmetoder som du tillämpar rabatten på. Om du anger en procentsats i rabatt kommer de leveransmetoder som du väljer att rabatteras med den procentsatsen. Om du anger ett valutabelopp kommer det beloppet att användas som leveransbeloppet. &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>Lägg till kriterier för Köp X</value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>Lägg till kundkriterier</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>Lägg till orderkriterier</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>Få Y i rabatt</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>Lägg till artikelrabatt</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>Lägg till orderrabatt</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>Lägg till fraktrabatt</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>Lägg till en till</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>Alla artiklar</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>Ange belopp</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>Applicera</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>Köp X</value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>Om kunden matchar alla kriterier</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>Om kunden matchar något kriterium</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>Sparad sökning - Kund</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>Kunder</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>Redigera kunder</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>Välj kunder</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>Redigera Sparad sökning - Kund</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>Skapa ny kundsökning</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>Sparad sökning - Välj kund</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>Kundsegment</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>Beskrivning</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>Rabatt</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>Rabatt upp till</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>Upp till en total rabatt på</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>Redigera</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>Kvalificering</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.include.children" xml:space="preserve">
+    <value>Inkludera underordnade</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>Lägg till artikel</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>Redigera artikel</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>Sparad sökning - Artikel</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>Redigera Sparad sökning - Artikel</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>Välj artiklar</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>Lägg till sparad artikelsökning</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>Skapa ny artikelsökning</value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>Sparad sökning - Välj artikel</value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>Gräns</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>-Ingen-</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>Order - Lägg till artikel</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>Redigera orderrabatt</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>Ny orderrabatt</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>Ny orderrabatt (% eller avdragsbelopp)</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>Order - Redigera artikel</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>Order - Lägg till sparad artikelsökning</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>Order - Redigera sparad artikelsökning</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>Om ordern matchar alla kriterier</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>Om ordern matchar något kriterium</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>Ny fraktrabatt</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>Redigera ordersumma</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>Ange ordersumma</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>Order - Alla</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>Procents rabatt</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>Förhandsgranska</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>Kampanjerbjudande</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>Lägsta köpbelopp</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>Spara</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>Ange belopp</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>Leverans tillämplig på alla artiklar i kundvagnen</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>Fraktrabatt</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>Redigera fraktrabatt</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>Ny fraktrabatt</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>Leveransmetod</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>Ny sparad sökning</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>Enheter</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>Vad är detta?</value>
+  </data>
+  <data name="text.none" xml:space="preserve">
+    <value>-Ingen-</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>Av</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>den</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>eller</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>Orderrabatt</value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>Ordersumma</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>Sparad sökning</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>Sökresultat</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>Fraktrabatt</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>Enheter</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+    <value>Kund</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>Välj en eller flera artiklar för fri leverans.</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>Välj en eller flera leveransmetoder.</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>Fri leverans appliceras på specifika artiklar i kundvagn.</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>Ny artikel specificerad för fri leverans</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>Fri leverans</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>Redigera Artikel specificerad för fri leverans</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>och</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Välj Ny leveransrabatt för att erbjuda rabatterad leverans för denna kampanj.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Välj Ny artikel specificerad för fri leverans för att erbjuda fri leverans för specifika artiklar för denna kampanj. &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;OBS: Om samma leveransmetod väljs i Leveransrabatt och Artikelspecifik fri leverans, appliceras fri leverans endast på specifika artiklar som valts medan rabatterad leverans tillämpas på alla andra artiklar.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>Var god välj minst en lager- eller monteringsartikel från listan.</value>
+  </data>
+  <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>Var god välj minst en leveransmetod från listan.</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>Gratis skeppningsartiklar appliceras endast på lager- och monteringsartiklar. Ta bort icke-lagerartiklar och icke-monteringsartiklar för att fortsätta.</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>Välj en sparad artikelsökning för fri leverans</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>Välj en befintlig sparad artikelsökning som innehåller de artiklar som du vill erbjuda fri leverans.</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>Redigera sparad artikelsökning för fri leverans</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>Välj minst en sparad sökning från listan för att fortsätta.</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>Var god välj värde(n) för: Artikel, Leveransmetod.</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>Var god välj värde(n) för: Sparad artikelsökning, Leveransmetod.</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>Utan gräns</value>
+  </data>
+
+</root>

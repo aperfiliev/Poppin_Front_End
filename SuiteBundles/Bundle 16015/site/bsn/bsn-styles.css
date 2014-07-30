@@ -1,0 +1,36 @@
+.bsn .wrap {
+	width: 100%;
+	float: left;
+	display: none;
+}
+
+.bsn .link a{
+	color: #009933;
+	font: bold 12px/18px Arial, Helvetica, sans-serif; 
+	text-decoration: none;
+	text-align: left;	
+	display: block;
+	width: 230px;
+	
+}
+
+.save-iframe {
+	height: 200px;
+	width: 150px;
+}
+
+.bsn .link a:hover {
+	color:#009193;
+	text-decoration:none;
+}
+
+.bsn .lb-name {
+	background: url(https://system.sandbox.netsuite.com/c.3363929/site/pp-templates/bsn-name.gif) no-repeat left top;
+}
+.bsn .lb-email {
+	background: url(https://checkout.sandbox.netsuite.com/c.3363929/site/pp-templates/bsn-email.gif) no-repeat left top;
+}
+.bsn .label { display: block; height: 13px; overflow: hidden; text-indent: -999px; margin: 0 0 9px; }
+.bsn .effectStatic .inputreq { border: 1px solid #d2d2d2; background: #fcfcfc; margin: 0 0 17px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; padding: 5px 10px; width: 248px; }
+.bsn .submit { background: #F47A20; border: 0; border-radius: 7px; color: #FFFFFF; cursor: pointer; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: bold; padding: 5px 20px; text-transform: uppercase; }
+.bsn .submit:hover { background-color: #fe9d56; }

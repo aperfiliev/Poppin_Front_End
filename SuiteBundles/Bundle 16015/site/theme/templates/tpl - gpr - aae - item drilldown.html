@@ -1,0 +1,160 @@
+<!-- Start products item drilldown template - NetSuite Inc. AAE -->
+<GPR_AAE_RVI_SAVEITEM>
+    <td valign="top" class="accounting-item-template">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="cat_cont">
+            <tr>
+                <td width="1%">
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/ns-central-tl.gif" width="15" height="15" alt="">
+                </td>
+                <td class="topbg">
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/x.gif" width="1" height="1" alt="">
+                </td>
+                <td width="1%">
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/ns-central-tr.gif" width="15" height="15" alt="">
+                </td>
+            </tr>
+            <tr>
+                <td class="leftbg">
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/x.gif" width="1" height="1" alt="">
+                </td>
+                <td class="content" bgcolor="#FFFFFF" id="accounting-title">
+                    <%=getCurrentAttribute('item','storedisplayname2') %>
+                </td>
+                <td class="rightbg">
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/x.gif" width="1" height="1" alt="">
+                </td>
+            </tr>
+            <tr class="nobgc">
+                <td>
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/ns-central-dl.gif" width="15" height="15" alt="">
+                </td>
+                <td class="bottombg">
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/x.gif" width="1" height="1" alt="">
+                </td>
+                <td>
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/ns-central-dr.gif" width="15" height="15" alt="">
+                </td>
+            </tr>
+            <tr class="nobgc">
+                <td colspan="3">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="cat_cont">
+            <tr>
+                <td width="1%">
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/ns-central-tl.gif" width="15" height="15" alt="">
+                </td>
+                <td class="topbg">
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/x.gif" width="1" height="1" alt="">
+                </td>
+                <td width="1%">
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/ns-central-tr.gif" width="15" height="15" alt="">
+                </td>
+            </tr>
+            <tr>
+                <td class="leftbg">
+                    <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/x.gif" width="1" height="1" alt="">
+                </td>
+                <td class="content" bgcolor="#FFFFFF">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="accounting-image">
+                                <div id="mediaWrapper">
+                                    <GPR_AAE_IMB_GALLERY>
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div>
+                                    <div class="accounting-details">
+                                        <div class="social-btns">
+											<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+											<g:plusone size="medium" count="false">
+                                            </g:plusone>
+											<div id="fb-root">
+                                            </div>
+                                            <script src="http://connect.facebook.net/en_US/all.js#appId=271688236180116&amp;xfbml=1">
+                                            </script>
+                                            <fb:like href="" send="true" layout="button_count" width="150" show_faces="false" action="like" font="arial">
+                                            </fb:like>
+											<div class="clear"></div>
+                                        </div>
+                                        <GPR_AAE_CRV_SHOWITEMRATING_N1>
+                                        <div class="accounting-description">
+                                            <%=getCurrentAttribute('item','storedetaileddescription') %>
+                                        </div>
+                                        <div class="price">
+                                            Price:
+                                        </div>
+                                        <div>
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="30%" class="price-value" align="left" valign="bottom">
+                                                        <%=getCurrentAttribute('item', 'salesPriceHtml') %>
+                                                    </td>
+                                                    <td width="70%" class="status-message" align="left" valign="bottom">
+                                                        <%=getCurrentAttribute('item','stockStatusMessageHTML') %>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="accounting-add-to-cart">
+                                        <table border="0" cellspacing="0" cellpadding="0">
+                                            <%=getCurrentAttribute('item','addToCartDrilldownHtml')%>
+                                        </table>
+                                    </div>
+                                    <script type="text/javascript">
+                                        jQuery(".accounting-add-to-cart td[colspan=2]").attr("colspan", 3)
+                                    </script>
+                                    <GPR_AAE_WLP_ADD>
+                                        <div>
+                                            <%=getCurrentAttribute('item','tellafriendlinkhtml') %>
+                                        </div>
+                                        <div>
+                                            <GPR_AAE_BSN_SAVE>
+                                        </div>
+                                        </div>
+                                        <GPR_AAE_CPR_ADD>
+                                    </td>
+                                    </tr>
+                                </table>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <GPR_AAE_CRV_SAVE>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <GPR_AAE_CRV_SHOWITEMREVIEWS_N1>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <%=getCurrentAttribute('item','allrelateditemshtml') %>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td class="rightbg">
+                                <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/x.gif" width="1" height="1" alt="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/ns-central-dl.gif" width="15" height="15" alt="">
+                            </td>
+                            <td class="bottombg">
+                                <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/x.gif" width="1" height="1" alt="">
+                            </td>
+                            <td>
+                                <img src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/theme/files/images_site/ns-central-dr.gif" width="15" height="15" alt="">
+                            </td>
+                        </tr>
+                    </table>
+                    <GPR_AAE_ITEMTEMPLATE>
+                    <GPR_AAE_CPR_ITEMTEMPLATE> 
+                </td>
+                <!-- end products item drilldown template - NetSuite Inc. AAE -->

@@ -1,0 +1,20 @@
+<td class="no_padding <%=getCurrentAttribute('item','type')%>">  	
+  <div class="item-list-cell">
+	<div class="thumbnail-cell" <GPR_AAE_QVI_CELLIMGID> ><%=getCurrentAttribute('item','storedisplaythumbnailhtml')%></div>
+	<div class="desc-cell"><h3><a href="<%=getCurrentAttribute('item','storeurl')%>"><%=getCurrentAttribute('item','storedisplayname')%></a></h3></div>    
+    <div class="price-cell">Price: <%=getCurrentAttribute('item','salespricehtml')%></div>		
+  </div>
+    <div class="addtocart-cell">
+    	<table>
+        <%=getCurrentAttribute('item','addtocartoptionshtml')%>
+      </table>
+	  <table>
+        <%=getCurrentAttribute('item','addToCartListHtml')%>
+      </table>
+	  <div class="addtowishlist-cell">
+		<GPR_AAE_WLP_ADD>
+	  </div>
+	  <GPR_AAE_CPR_ADD>
+	</div>
+<GPR_AAE_QVI_CELLDATA>
+</td>

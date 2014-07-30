@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>この行を削除してもよろしいですか？</value>
+  </data>
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>次の値を入力してください：金額</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>金額の値が無効です。値は数字にしてください</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>金額の値が無効です。値は1～99,999,999,999までの数字にしてください</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>少なくとも1人の顧客をリストから選択してください</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>顧客保存検索がすでにサブリストに存在します</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+    <value>選択したアイテムは、選択肢中の製品アイテムでもサービスアイテムでもありません。削除してこの設定の保存を続行してください。</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>選択したアイテムは、選択肢中の製品アイテムでもサービスアイテムでもありません。削除してこの設定の保存を続行してください。</value>
+  </data>
+  <data name="error.form.locked" xml:space="preserve">
+    <value>このフォームは、アドバンスプロモーションSuiteAppによってロックされ編集できません。</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>次の値を入力してください：制限</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>制限の値が無効です。値は数字にしてください</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>制限の値が無効です。値は1～99,999,999,999までの数字にしてください</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>次の値を入力してください：最小購入額</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>最小購入額の値が無効です。値は数字にしてください。</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>最小購入額の値が無効です。値は0～100,000,000,000にしてください</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>次の値を入力してください：プロモーション用オファー</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>プロモーション用オファーの値が無効です。値は数字にしてください</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>プロモーション用オファーの値が無効です。値は1～99,999,999,999までの数字にしてください</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>プロモーション用オファーの値が無効です。値は1～100の数字のみにしてください</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>次の値を入力してください：割合</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>割合の値が無効です。値は数字にしてください</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>割合の値が無効です。値は1～100の数字のみにしてください</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>少なくとも1つの方法をリストから選択してください</value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;次のいずれかを選択してください：&lt;ul&gt;&lt;li&gt;&lt;b&gt;注文合計を設定&lt;/b&gt; - 注文合計額または購買の合計数に基づいて注文条件を設定します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;アイテムを選択&lt;/b&gt; - 特定アイテムに基づいて条件を設定します。 &lt;/li&gt;&lt;li&gt;&lt;b&gt;アイテム保存検索を選択 &lt;/b&gt; - 既存のアイテム保存検索におけるアイテムの条件をリストに追加します。 &lt;/li&gt;&lt;li&gt;&lt;b&gt; 新規アイテム検索を作成 &lt;/b&gt; - 新しいアイテム保存検索を作成し、リストに追加します。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;注意&lt;/b&gt;: 選択できるのは、条件のパブリック検索のみです。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; 次のいずれかの方法で、ディスカウント提供対象のアイテムを選択します：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;アイテムを選択　&lt;/b&gt; - ディスカウントを提供する対象のアイテムを選択します。「その他を追加」をクリックし、追加アイテムを選択します。 &lt;/li&gt;&lt;li&gt;&lt;b&gt; 保存検索を選択&lt;/b&gt; - ディスカウント提供対象のアイテムを含む既存アイテム保存検索を選択します。 &lt;/li&gt;&lt;li&gt;&lt;b&gt;保存検索を新規作成&lt;/b&gt; - ディスカウント提供対象のアイテムを含むアイテム保存検索を作成します。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;注意&lt;/b&gt;: ディスカウントの定義に含めることができるのは、パブリック保存検索のみです。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;次のいずれかの方法で、ディスカウント提供対象のアイテムを選択します：&lt;ul&gt;&lt;li&gt;&lt;b&gt;アイテムを選択&lt;/b&gt; - ディスカウントを提供する対象のアイテムを選択します。「その他を追加」をクリックし、追加アイテムを選択します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;保存検索を選択&lt;/b&gt; - ディスカウント提供対象のアイテムを含む既存アイテム保存検索を選択します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;保存検索を新規作成&lt;/b&gt; - ディスカウント提供対象のアイテムを含むアイテム保存検索を作成します。&lt;/li&gt;&lt;/ul&gt;ディスカウントを定義するに当たり選択できるのは、パブリック検索のみです。&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;「新規注文ディスカウント」を選択し、注文ディスカウントをこのプロモーションに追加します。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;次のいずれかを選択します：&lt;ul&gt;&lt;li&gt;&lt;b&gt;顧客がいずれかの条件を満たす場合&lt;/b&gt; - 顧客がプロモーションの対象となるよう以下に追加する検索またはリストのいずれかにのみ含める必要がある場合、このオプションを選択します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;顧客がすべての条件を満たす場合&lt;/b&gt; - 顧客がこのプロモーションの対象となるよう以下に追加する検索およびリストすべてに含める必要がある場合、このオプションを選択します。&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;次のいずれかを選択します：&lt;ul&gt;&lt;li&gt;&lt;b&gt;注文がいずれかの条件を満たす場合&lt;/b&gt;  注文をプロモーションの対象とするよう注文が以下に追加した条件のいずれかのみを満たす必要がある場合、このオプションを選択します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;注文がすべての条件を満たす場合&lt;/b&gt; 以下のリストのアイテム条件すべてを満たすとプロモーションの対象となる場合、このオプションを選択します。顧客がこのプロモーションの対象となるよう以下に追加する検索およびリストすべてに含める必要がある場合、このオプションを選択します。&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;次のいずれかを選択します：&lt;ul&gt;&lt;li&gt;&lt;b&gt;顧客を選択&lt;/b&gt; - 特定の顧客を選択して「適格」サブタブに追加します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;顧客保存検索を選択&lt;/b&gt; - 既存の顧客保存検索をリストに追加します。&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;注意：&lt;/b&gt; これらの顧客は保存検索の条件によって定義されるため、有資格顧客のリストを変更することができます。&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;選択したディスカウントアイテムを傘下の連結子会社に適用する場合は、このボックスにチェックマークを入れます。 このフィールドは編集できません。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; 次のいずれかを選択します：&lt;ul&gt;&lt;li&gt;&lt;b&gt;注文合計を設定&lt;/b&gt; - 注文合計または購入合計数に基づいて注文条件を設定します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;アイテムを選択&lt;/b&gt; - 特定のアイテムに基づき条件を設定します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;アイテム保存検索を選択&lt;/b&gt; - 既存アイテム保存検索のアイテムの条件をリストに追加します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;アイテム検索を新規作成&lt;/b&gt; - 顧客保存検索を新規作成し、リストに追加します。&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;注意：&lt;/b&gt; 条件に選択できるのは、パブリック検索のみです。&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;次のいずれかを選択します：&lt;ul&gt;&lt;li&gt;&lt;b&gt;注文がいずれかの条件を満たす場合&lt;/b&gt; - 注文をプロモーションの対象とするよう注文が以下に追加した条件のいずれかのみを満たす必要がある場合、このオプションを選択します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;注文がすべての条件を満たす場合&lt;/b&gt; - 以下のリストのアイテム条件すべてを満たすとプロモーションの対象となる場合、このオプションを選択します。顧客がこのプロモーションの対象となるよう以下に追加する検索およびリストすべてに含める必要がある場合、このオプションを選択します。&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このプロモーションを利用する資格がある顧客を選択します。複数の顧客を選択するには、CTRLを押しながら選択します。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;保存検索の説明は、ここに表示されます。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このプロモーションの有資格顧客を定義する場合に使用する顧客保存検索を選択します。条件に使用できるのは、パブリック保存検索のみです。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;保存検索の説明は、ここに表示されます。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このプロモーションでディスカウントするアイテムを選択します。  ディスカウントするアイテムを追加するには、「その他を追加」をクリックします。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;ディスカウント提供対象のアイテムを含む既存アイテム保存検索を選択します。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;ディスカウント提供対象のアイテムの最大数（個数）を入力します。  このディスカウント最高額は、計算上のディスカウント金額より優先されます。「複数通貨」機能を使用する場合、決済で使用する通貨での最大ディスカウントも入力することができます。  
+&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;ディスカウント提供対象のアイテムの最大数（個数）を入力します。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;選択したアイテムのディスカウント額またはパーセンテージを入力します。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;ディスカウントされた配送料またはディスカウント率を入力してください。 金額を入力する場合、これは配送料として使用されます。パーセント値を入力する場合、対象とする出荷方法の配送料がこの割合だけディスカウントされます。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このディスカウントに適用する配送方法を選択します。パーセンテージディスカウントを入力する場合、選択する配送方法はそのパーセンテージでディスカウントされます。通貨額を入力する場合、この金額が送料として使用されます。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このプロモーションで使用可能なディスカウント金額の最大値を入力してください。 &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このプロモーションにおける1つの注文のディスカウント最高額を入力します。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このプロモーションのパーセンテージまたは通貨金額ディスカウントを入力します。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;注文適格条件の基準にするアイテムを選択します。複数のアイテムを選択するには、CTRLを押しながら選択します。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このプロモーションの注文条件を定義する上で使用するアイテム保存検索を選択します。条件に使用される保存検索は、パブリック検索である必要があります。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このプロモーションの資格を得る上で必要な注文の最低購入額を入力します。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このプロモーションの資格を得る上で必要な注文の当該アイテムの最低購入量/金額を入力します。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;ディスカウントされた配送料またはディスカウント率を入力してください。 金額を入力する場合、これは配送料として使用されます。パーセント値を入力する場合、対象とする出荷方法の配送料がこの割合だけディスカウントされます。 &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;このディスカウントを適用する出荷方法を選択してください。ディスカウント率を入力する場合、選択する出荷方法はその割合だけディスカウントされます。金額を入力する場合、この金額が配送料として使用されます。 &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>X購入条件を追加 </value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>顧客条件を追加</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>注文条件を追加</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>Yディスカウントを獲得</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>アイテムディスカウントを追加</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>注文ディスカウントを追加</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>送料ディスカウントを追加</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>もう1つ追加</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>すべてのアイテム</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>金額を設定</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>適用</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>Xを購入 </value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>顧客がすべての条件を満たす場合</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>顧客がいずれかの条件を満たす場合</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>顧客保存検索</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>顧客</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>顧客を編集</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>顧客を選択</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>顧客保存検索を編集</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>顧客検索を新規作成</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>顧客保存検索を選択</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>顧客セグメント</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>ディスカウント</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>最高ディスカウント</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>最高ディスカウント総額</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>適格性</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.include.children" xml:space="preserve">
+    <value>子を含む</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>アイテム</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>アイテムを追加</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>アイテムを編集</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>アイテム保存検索</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>アイテム保存検索を編集</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>アイテムを選択</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>アイテム追加保存検索</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>アイテム検索を新規作成 </value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>アイテム保存検索を選択</value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>制限</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>注文</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>注文　アイテムを追加</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>注文ディスカウントを編集</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>新規注文ディスカウント</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>新しい注文ディスカウント（%または値引き）</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>注文　アイテムを編集</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>注文　アイテム保存検索を追加</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>注文　アイテム保存検索を編集</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>注文がすべての条件を満たす場合</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>注文がいずれかの条件を満たす場合</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>新規送料ディスカウント</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>注文合計を設定</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>注文合計を設定</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>すべて注文</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>パーセント割引</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>プレビュー</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>プロモーション用オファー</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>最低購入量/額</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>金額を設定</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>カート内のすべてのアイテムに適用される出荷方法</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>送料ディスカウント</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>送料ディスカウントを編集</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>新規送料ディスカウント</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>出荷方法</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>新しい保存検索</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>単位</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>ヘルプ</value>
+  </data>
+  <data name="text.none" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>指定日</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>または</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>注文ディスカウント</value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>注文合計</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>保存検索</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>検索結果</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>送料ディスカウント</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>単位</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+    <value>顧客</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>アイテム</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>送料無料アイテムを1つ以上選択します。</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>1つ以上の配送方法を選択します。</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>カート内の特定のアイテムに送料無料が適用されました。</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>新しい送料無料指定アイテム</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>送料無料</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>送料無料指定アイテムを編集します</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>および</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;「新規送料割引」を選択し、このプロモーションに配送のディスカウントを適用します。 「新しい送料無料指定アイテム」を選択し、このプロモーションの特定のアイテムに送料無料を適用します。 &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;注意：「送料割引」と「送料無料指定アイテム」で同じ出荷方法を選択した場合、選択した特定のアイテムにのみ送料無料は適用され、他のアイテムには送料ディスカウントが適用されます。 &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>リストから在庫アイテムまたはアセンブリアイテムを少なくとも1つ選択します。</value>
+  </data>
+  <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>リストから出荷方法を少なくとも1つ選択します。</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>アイテムの送料無料は、在庫アイテムおよびアセンブリアイテムのみに適用されます。 続行するには、非在庫アイテムと非アセンブリアイテムを削除してください。</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>「送料無料用アイテムの保存検索」を選択してください</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>送料無料の適用対象アイテムを含む既存のアイテム保存検索を選択してください。</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>「送料無料用アイテムの保存検索」を編集してください</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>続行するには、リストから保存検索を少なくとも1つ選択してください。</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>「アイテム」、「配送方法」の値を選択してください。</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>「アイテムの保存検索」、「配送方法」の値を選択してください。</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>制限なし</value>
+  </data>
+</root>

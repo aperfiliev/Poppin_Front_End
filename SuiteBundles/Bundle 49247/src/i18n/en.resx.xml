@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>Are you sure you want to remove this row?</value>
+  </data>
+  <data name="error.maxtier.reached" xml:space="preserve">
+    <value>A promotion can only use 10 tiers.</value>
+  </data>
+  <data name="label.remove.tier" xml:space="preserve">
+    <value>Remove Tier</value>
+  </data>
+  <data name="label.add.tier" xml:space="preserve">
+    <value>Add Tier</value>
+  </data>   
+  <data name="error.minpurch.unmatch" xml:space="preserve">
+    <value>The units/currency setting must match for all tiers. Tiers defined by currency amounts must use the same currency for all tiers</value>
+  </data>      
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>Please enter value(s) for: amount</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>Invalid amount value. Values must be numbers</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>Invalid amount value. Values must be greater than zero.</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>Please select at least one customer from the list</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>Customer Saved Search already exists in the sublist</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+    <value>You have selected an item that is not a Product Item or Service Item in your selection. Please remove it to continue saving this setting.</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>You have selected an item that is not a Product Item or Service Item in your selection. Please remove it to continue saving this setting.</value>
+  </data>
+  <data name="error.form.locked" xml:space="preserve">
+    <value>This form is locked by the Advanced Promotions SuiteApp and cannot be edited.</value>
+  </data>
+  <data name="error.discount.nan" xml:space="preserve">
+    <value>Invalid Discount Up To value. Values must be numbers</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>Please enter value(s) for: Limit</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>Invalid Limit value. Values must be numbers</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>Invalid Limit value. Values must be numbers from 1 to 99,999,999,999</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>Please enter value(s) for: Minimum Purchase</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>Invalid Minimum Purchase value. Values must be numbers.</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>Invalid Minimum Purchase value. Values must be between 0 to 100,000,000,000</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>Please enter value(s) for: Promotional Offer</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>Invalid Promotional Offer value. Values must be numbers</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>Invalid Promotional Offer value. Values must be greater than zero.</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>Invalid Promotional Offer value. Values must be greater than zero and must not exceed 100.</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>Please enter value(s) for: percent</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>Invalid percent value. Values must be numbers</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>Invalid percent value. Values must be greater than zero and must not exceed 100.</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>Please select at least one method from the list</value>
+  </data>
+  <data name="error.create.promotion.standard" xml:space="preserve">
+    <value>You cannot use an Advanced Promotions form after selecting Standard Promotion on the previous page. If you want to create an advanced promotion, go to Lists &gt; Marketing &gt; Promotions &gt; New &gt;, and select an advanced promotion type.</value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Set Order Total&lt;/b&gt; - to set order criteria based on the order total or on the total number of units purchased.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Items&lt;/b&gt; - to set criteria based on specific items.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Item Saved Search&lt;/b&gt; - to add criteria for the items in an existing item saved search to the list.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Item Search&lt;/b&gt; - to create a new item saved search to add to the list&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Note&lt;/b&gt;: You can only choose public searches for criteria.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select one of the following to set the promotional discount:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Select Items&lt;/b&gt; - Select the items you are offering a discount on. Click Add Another to select additional items.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Item Saved Search&lt;/b&gt; - Choose an existing item saved search that includes the items you are offering a discount on.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Saved Search&lt;/b&gt; - Create an item saved search that includes the items you are offering a discount on.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Note&lt;/b&gt;: You can only include public saved searches to define discounts.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose the item you are offering a discount on in one of the following ways:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Select Items&lt;/b&gt; - Select the items you want to offer a discount on. Click Add Another to select additional items.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Saved Search&lt;/b&gt; - Choose an existing item saved search that includes the items you are offering a discount on.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Saved Search&lt;/b&gt; - Create an item saved search that includes the items you are offering a discount on.&lt;/li&gt;&lt;/ul&gt;You can only choose public searches to define discounts.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select New Order Discount to add an order discount to this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select New Shipping Discount to offer  discounted shipping for this promotion.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Select New Item Specific Free Shipping to offer free shipping for specific items for this promotion. &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Note: If same shipping method is selected in Shipping Discount and Item Specific Free Shipping, free shipping will only apply to specific items selected while discounted shipping will apply to other items.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;If customer matches any criterion&lt;/b&gt; Select this option if a customer must be included in only one of the searches or lists you add below to be eligible.&lt;/li&gt;&lt;li&gt;&lt;b&gt;If customer matches all criteria&lt;/b&gt; Select this option if a customer must be included in all of the searches and lists you add below to be eligible for this promotion.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;If order matches any criterion&lt;/b&gt; Select this option if an order must only meet one of the criteria you add below in order to be eligible.&lt;/li&gt;&lt;li&gt;&lt;b&gt;If order matches all criteria&lt;/b&gt; Select this option if the promotion is eligible if all of the item criteria you list below are met. Select this option if a customer must be included in all of the searches and lists you add below to be eligible for this promotion.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Select Customers&lt;/b&gt; - to select specific customers to add to the eligibility subtab.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Customer Saved Search&lt;/b&gt; - to add an existing customer saved search to the list.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Customer Search&lt;/b&gt; - to create a new customer saved search to add to the list.&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Note&lt;/b&gt;: Since these customers are defined by saved search criteria, the list of eligible customers can change.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;This box is checked if the discount item you selected is applied to child subsidiaries. You cannot edit this field.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Set Order Total&lt;/b&gt; - to set order criteria based on the order total or on the total number of units purchased.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Items&lt;/b&gt; - to set criteria based on specific items.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Item Saved Search&lt;/b&gt; - to add criteria for the items in an existing item saved search to the list.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Item Search&lt;/b&gt; - to create a new item saved search to add to the list.&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Note&lt;/b&gt;: You can only choose public searches for criteria.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;If order matches any criterion&lt;/b&gt; – Select this option if an order must only meet one of the criteria you add below in order to be eligible.&lt;/li&gt;&lt;li&gt;&lt;b&gt;If order matches all criteria&lt;/b&gt; – Select this option if the promotion is eligible if all of the item criteria you list below are met. Select this option if a customer must be included in all of the searches and lists you add below to be eligible for this promotion.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select one or more items for free shipping.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select one or more shipping methods.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select the customers who are eligible to use this promotion. To select more than one customer, press and hold CTRL as you make your selections.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;The description for the saved search is shown here.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select the customer saved search you want to use to define which customers are eligible for this promotion. Only public saved searches can be used for criteria.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;The description for the saved search is shown here.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select an item you want to discount with this promotion.&lt;/p&gt;&lt;p&gt;To add additional items to discount, click Add Another.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose an existing item saved search that includes the items you are offering a discount on.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the maximum number (units) of items you are offering the discount on.&lt;/p&gt;&lt;p&gt;This maximum discount amount takes precedence over the calculated discount amount. If you use the Multiple Currencies feature, you can enter the maximum discount in any currency you do business in.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the maximum number (units) of items you are offering the discount on.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the discount amount or percentage for the items you selected. Click &lt;b&gt;Add Another&lt;/b&gt; if you want to enter a maximum discount amount in additional currencies..&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Either enter the discounted shipping amount or enter a discount percentage.&lt;/p&gt;&lt;p&gt;If you enter a currency amount, this is used as the shipping amount. If you enter a percentage, the shipping amount from the shipping method is discounted by this percentage.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select the shipping methods you are applying this discount to. If you enter a percentage discount, the shipping methods you select are discounted by that percentage. If you enter a currency amount, this amount is used as the shipping amount &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the maximum discount amount available through this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the maximum discount amount available for this promotion for a single order.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the percentage or currency amount discount for this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select an item you want to discount with this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select the item saved search you want to use to define the order criteria for this promotion. Saved searches used for criteria must be public searches.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the minimum purchase amount required for an order to be eligible for this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the minimum purchase for these items required for an order to be eligible for this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Either enter the discounted shipping amount or enter a discount percentage.&lt;/p&gt;&lt;p&gt;If you enter a currency amount, this is used as the shipping amount. If you enter a percentage, the shipping amount from the shipping method is discounted by this percentage.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select the shipping methods you are applying this discount to. If you enter a percentage discount, the shipping methods you select are discounted by that percentage. If you enter a currency amount, this amount is used as the shipping amount &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>Add Buy X Criteria</value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>Add Customer Criteria</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>Add Order Criteria</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>Get Y Discount</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>Add Item Discount</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>Add Order Discount</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>Add Shipping Discount</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>Add Another</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>All Items</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>Set Amount</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>Buy X</value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>If customer matches all criteria</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>If customer matches any criterion</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>Customer Saved Search</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>Edit Customers</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>Select Customers</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>Edit Customer Saved Search</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>Create New Customer Search</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>Select Customer Saved Search</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>Customer Segment</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>Discount Up To</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>Up to a Total Discount Of</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>Eligibility</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.include.children" xml:space="preserve">
+    <value>Include Children</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>Add Item</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>Edit Item</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>Item Saved Search</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>Edit Item Saved Search</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>Select Items</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>Add Item Saved Search</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>Create New Item Saved Search</value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>Select Item Saved Search</value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>Limit</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>-None-</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>Order Add Item</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>Edit Order Discount</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>New Order Discount</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>New Order Discount (% or Amount Off)</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>Order Edit Item</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>Order Add Item Saved Search</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>Order Edit Item Saved Search</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>If order matches all criteria</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>If order matches any criterion</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>New Shipping Discount</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>Edit Order Total</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>Set Order Total</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>Order All</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>Percent Off</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>Promotional Offer</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>Minimum Purchase</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>Set Amount</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>Shipping Applicable to All Items in the CART</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>Shipping Discount</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>Edit Shipping Discount</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>New Shipping Discount</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>Shipping Method</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>New Saved Search</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>What's This</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>Free shipping applied to specific items in the CART.</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>Free shipping</value>
+  </data>
+  <data name="label.shipping.item.free.edit" xml:space="preserve">
+    <value>Edit Item Specific Free Shipping</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>and</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>Please select at least one inventory or assembly item from the list.</value>
+  </data>
+   <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>Please select at least one shipping method from the list.</value>
+  </data>  
+  <data name="text.none" xml:space="preserve">
+    <value>-None-</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>No Limit</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>on</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>or</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>Order Discount</value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>Order Total</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>Saved Search</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>Search Results</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>Shipping Discount</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+  <data name="confirm.eligibility.edit" xml:space="preserve">
+    <value>Changing the eligibility criteria will remove all discount settings. Do you want to continue?</value>
+  </data>
+  <data name="error.currency.limit" xml:space="preserve">
+    <value>You have selected limit currencies not found in your Eligibility settings. Please remove them to continue saving this setting.</value>
+  </data>
+  <data name="error.currency.promo" xml:space="preserve">
+    <value>You have used currencies that you did not use to define eligibility for this promotion. Tiered promotion discounts must use the same currencies used to define the eligibility for this promotion.</value>
+  </data>
+  <data name="error.promo.offer" xml:space="preserve">
+    <value>You can only set the limit to units for currency-based promo offers. Please change either the promo offer or limit to continue saving this setting.</value>
+  </data>
+  <data name="error.create.tiers" xml:space="preserve">
+    <value>Eligibility and/or discount rules are already defined for this promotion. Please remove all rules to update this field.</value>
+  </data>
+  <data name="error.discount.limit" xml:space="preserve">
+    <value>Please input values for all selected currencies to continue saving this setting. If you do not wish to set a limit for this promo offer, click the Limit radio button.</value>
+  </data>
+  <data name="error.not.incremental" xml:space="preserve">
+    <value>Tier values must be in increasing order.</value>
+  </data>
+    <data name="error.equal.values.unit" xml:space="preserve">
+    <value>You have tiers with matching values. Each tier must have a unique value.</value>
+  </data>
+  <data name="error.equal.values.currency" xml:space="preserve">
+    <value>You have tiers with matching values for the same currency. Each tier for a given currency must have a unique amount.</value>
+  </data>
+    <data name="error.elig.limitcurr.mismatch" xml:space="preserve">
+    <value>Every discount tier must include a setting for each currency you have used to define eligibility. Please add settings for the currencies you have not included in your discount tiers.</value>
+  </data>
+  <data name="error.elig.promooffer.mismatch" xml:space="preserve">
+    <value>Every discount tier must include a setting for each currency you have used to define eligibility. Please add settings for the currencies you have not included in your discount tiers.</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>New Item Specific Free Shipping</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>Edit Item Specific Free Shipping</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>Free item shipping only applies to inventory and assembly items. Remove non-inventory and non-assembly items to continue.</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>Select Item Saved Search for Free Shipping</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>Choose an existing item saved search that includes the items you are offering a free shipping.</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>Edit Item Saved Search for Free Shipping</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>Select at least one saved search from the list to continue.</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>Please select value(s) for: Item, Shipping Method.</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>Please select value(s) for: Item Saved Search, Shipping Method.</value>
+  </data>
+  <data name="label.discount.on.highest" xml:space="preserve">
+    <value>Apply Discount to Highest Valued Item</value>
+  </data>
+  <data name="help.discount.on.highest" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Check this box to apply discounts to the most expensive item on an order. Clear the box to apply discounts to the least expensive item on an order. &lt;b&gt;Note:&lt;/b&gt; This check box only affects promotions with defined unit limits. To define a unit or set a limit, select a limit when selecting items on the promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="text.please.wait" xml:space="preserve">
+    <value>Please Wait</value>
+  </data>
+  <data name="text.loading.page" xml:space="preserve">
+    <value>Loading page...</value>
+  </data>
+  <data name="text.pct.completed" xml:space="preserve">
+    <value>completed</value>
+  </data>
+  <data name="text.discount.on.highest" xml:space="preserve">
+    <value>Apply Discount to Highest Valued Item</value>
+  </data>   
+ </root>

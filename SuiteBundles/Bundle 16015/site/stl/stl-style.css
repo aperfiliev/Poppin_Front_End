@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map_canvas {
+  height: 100%;
+}
+#radius{
+	float: left;
+	color: white; 
+	text-shadow: black 0.1em 0.1em 0.2em;	
+}
+#sendbutton{
+	float: left;
+}
+#zipcode{
+	float: left;
+	color: white; 
+	text-shadow: black 0.1em 0.1em 0.2em;	
+}
+#divpopup {
+	color: #999; 
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	font-style:normal;	
+}
+#divpopup a{
+	text-decoration:underline;
+	color: #999; 
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	font-style:normal;	
+}	
+#btnhome{
+float: right;
+margin-right: 5px;
+}
+
+/*Common Styles */
+.gpr-pup-win { position: fixed; left: 50%; top: 50%; background: #fff; color: #333; font-size: 14px; text-align: center; border: 3px solid #A2A2ED; padding: 20px 10px;border-radius: 7px; margin-left: -100px; margin-top: -60px; z-index:9000}
+.gpr-pup-close {border: 2px solid #666666; color: #666; font-size: 11px; width: 45px; margin: 10px auto; font-weight: bold; cursor:pointer; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; overflow: hidden; padding: 1px; }
+@media print {
+  html, body {
+    height: auto;
+  }
+
+  #map_canvas {
+    height: 650px;
+  }
+}
+
+/*DESKTOP*/
+/* store locator */
+#storelocator * { font-family: BryantRegular, Arial, Helvetica, sans-serif; }
+#storelocator .left_col{ float: left; width: 603px; background: transparent url("/site/ac-template/border.png") repeat-y right top; }
+#storelocator .left_col h3{ color: #636D98; font-size: 17px; height: 52px;letter-spacing: 1px; line-height: 47px; margin: 0 10px 0 0;text-transform: uppercase;}
+#storelocator .right_col{ float: right; width: 320px; }
+#storelocator .right_col h4{ color: #7E8083; height: 35px; letter-spacing: 1px; line-height: 11px; text-transform: uppercase; padding-left:18px}
+#storelocator #sl_mapcanvas{width:500px; height:330px; float:left; margin-bottom:20px;}
+#storelocator div#sl_list{padding-left:20px; float:left; overflow:auto; margin-bottom:15px; height: 385px;  width: 300px; }
+#storelocator #sl_list li { line-height: 14px; margin:0 0 20px 20px;}
+#storelocator #sl_list li:last-child { margin-bottom:0;}
+#storelocator #sl_list li a p { margin:0 0 3px 0;}
+#storelocator #sl_list .zip{ margin-left: 5px;}
+#storelocator #map_controls{margin-bottom: 25px;float:left;}
+#storelocator #sl_zip{  border-top: 2px solid #999; border-right: 1px solid #dadada; border-bottom: 1px solid #dadada; border-left: 2px solid #999; font: normal 11px/11px BryantRegular, Arial, Helvetica, sans-serif; padding: 4px; margin: 5px 35px 0 0; height: 12px; width:70px; }
+#storelocator #sl_range { margin-right:100px; }
+#storelocator #sl_submit{ background-color: #C0C0C0; border-color: transparent; border-radius: 10px; }

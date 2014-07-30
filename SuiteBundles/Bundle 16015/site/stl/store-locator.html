@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>NetSuite Inc. - Store Locator</title>
+<link href="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/stl/stl-style.css" rel="stylesheet" type="text/css" />
+<script src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;language=en" type="text/javascript"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/common/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/common/gpr-aae-all-library.js"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/stl/stl-library.js"></script>
+<script type="text/javascript">
+
+	jQuery(document).ready(function() {
+	 _gprCommon.init({
+			loginURL : "<NLLOGINURL>",
+			cartURL : "<NLCARTURL>",
+			checkoutURL : "<NLCHECKOUTURL>",
+			companyId : "<NLCOMPANYID>",
+			siteNumber : 9,
+			customerId : "<%=getCurrentAttribute('customer','internalid','')%>",
+			customerEmail : "<%=getCurrentAttribute('customer','email','')%>"
+		});
+		_gprCommon.ajax.init({
+			"follower" : $(".gpr-follower"),
+			"loadingStateHtml" : ""
+		});
+		_gprCommon.popUp.init();	    			
+
+		GPR_STL.init();
+	});
+
+</script> 
+</head>
+<body>
+	<div id="map_canvas"></div>
+</body>
+</html>

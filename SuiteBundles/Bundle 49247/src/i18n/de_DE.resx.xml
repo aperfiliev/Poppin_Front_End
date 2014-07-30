@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie diese Zeile entfernen möchten?</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>Sie haben einen Artikel ausgewählt, der kein Produktartikel oder Serviceposten ist. Bitte entfernen Sie ihn, um mit der Speicherung dieser Einstellung fortzufahren.</value>
+  </data>
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>Geben Sie bitte einen Wert / Werte ein für: Betrag</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>Ungültiger Wert für Betrag. Werte müssen Zahlen sein.</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>Ungültiger Wert für Betrag. Werte müssen Zahlen von 1 bis 99.999.999.999 sein</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>Bitte wählen Sie mindestens einen Kunden aus der Liste aus</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>Gespeichertes Kundensuchmuster existiert bereits in der Unterliste</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>Geben Sie bitte einen Wert / Werte ein für: Obergrenze</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>Ungültiger Wert für Obergrenze. Werte müssen Zahlen sein.</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>Ungültiger Wert für Obergrenze. Werte müssen Zahlen von 1 bis 99.999.999.999 sein</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>Geben Sie bitte einen Wert / Werte ein für: Mindestwarenbezug</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>Ungültiger Wert für Mindestwarenbezug. Werte müssen Zahlen sein.</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>Ungültiger Wert für Mindestwarenbezug. Werte müssen Zahlen von 0 bis 100.000.000.000 sein</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>Bitte geben Sie einen Wert / Werte ein für: Aktionsangebot</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>Ungültiger Wert für Aktionsangebot. Werte müssen Zahlen sein.</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>Ungültiger Wert für Aktionsangebot. Werte müssen Zahlen von 1 bis 99.999.999.999 sein</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>Ungültiger Wert für Aktionsangebot. Werte müssen Zahlen von 1 bis 100 sein</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>Geben Sie bitte einen Wert / Werte ein für: Prozentsatz</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>Ungültiger Wert für Prozentsatz. Werte müssen Zahlen sein.</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>Ungültiger Wert für Prozentsatz. Werte müssen Zahlen von 1 bis 100 sein</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>Bitte wählen Sie mindestens eine Methode aus der Liste aus</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Wählen Sie eine der folgenden Optionen:
+    	&lt;ul&gt;&lt;li&gt;&lt;b&gt;Wenn der Auftrag eines der Kriterien erfüllt&lt;/b&gt;Wählen Sie diese Option, wenn ein Auftrag nur eines der von Ihnen unten hinzugefügten Kriterien erfüllen muss, um teilnahmeberechtigt zu sein.
+    	&lt;/li&gt;&lt;li&gt;&lt;b&gt;Wenn der Auftrag alle Kriterien erfüllt&lt;/b&gt; Wählen Sie diese Option, wenn die Werbeaktion nur dann gilt, wenn alle unten aufgelisteten Artikelkriterien erfüllt sind. Wählen Sie diese Option, wenn ein Kunde in allen von Ihnen unten hinzugefügten Suchmustern oder Listen enthalten sein muss, um zur Teilnahme an dieser Werbeaktion berechtigt zu sein.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;
+    </value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Wählen Sie eine der folgenden Optionen aus: 
+    &lt;ul&gt;&lt;li&gt;&lt;b&gt;Auftragsgesamtsumme festlegen
+    &lt;/b&gt; - um Auftragskriterien basierend auf der Auftragsgesamtsumme oder der Gesamtanzahl bezogener Einheiten festzulegen.  
+    &lt;/li&gt;&lt;li&gt;&lt;b&gt;Artikel auswählen&lt;/b&gt; - um Kriterien basierend auf bestimmten Artikeln festzulegen.
+    &lt;/li&gt;&lt;li&gt;&lt;b&gt;Gespeichertes Artikelsuchmuster auswählen
+    &lt;/b&gt; - um Kriterien für die Artikel in einem bestehenden gespeicherten Artikelsuchmuster zur Liste hinzuzufügen.  
+    &lt;/li&gt;&lt;li&gt;&lt;b&gt;Neues Artikelsuchmuster erstellen&lt;/b&gt; - um ein neues gespeichertes Artikelsuchmuster für die Hinzufügung zur Liste zu erstellen. &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Anmerkung&lt;/b&gt;: Sie können nur öffentliche Suchmuster für Kriterien auswählen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Wählen Sie eine der folgenden Optionen aus, um den Aktionsrabatt festzulegen:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Artikel auswählen&lt;/b&gt; - Wählen Sie die Artikel aus, auf die Sie einen Rabatt anbieten. Klicken Sie auf "Weitere hinzufügen", um weitere Artikel auszuwählen.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Gespeichertes Artikelsuchmuster auswählen&lt;/b&gt; - Wählen Sie ein bestehendes gespeichertes Artikelsuchmuster aus, das die Artikel enthält, auf die Sie einen Rabatt anbieten.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Neues gespeichertes Suchmuster erstellen&lt;/b&gt; -  Erstellen Sie ein gespeichertes Artikelsuchmuster, das die Artikel enthält, auf die Sie einen Rabatt anbieten.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Anmerkung&lt;/b&gt;: Sie können nur öffentliche gespeicherte Suchmuster verwenden, um Rabatte zu definieren.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>Dieses Kästen ist aktiviert, wenn Ihr ausgewählter Rabattartikel auf untergeordnete Niederlassungen angewendet wird. Sie können dieses Datenfeld nicht bearbeiten.</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Wählen Sie den Artikel, für den Sie einen Rabatt anbieten, auf eine der folgenden Weisen:
+    		&lt;ul&gt;&lt;li&gt;&lt;b&gt;Artikel auswählen Wählen Sie die Artikel aus,&lt;/b&gt; auf die Sie einen Rabatt anbieten wollen. Klicken Sie auf "Weitere hinzufügen", um weitere Artikel auszuwählen. 
+    		&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Saved Search&lt;/b&gt; Gespeichertes Suchmuster auswählen Wählen Sie ein bestehendes gespeichertes Artikelsuchmuster, das die Artikel enthält, auf die Sie einen Rabatt anbieten.
+    		&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Saved Search&lt;/b&gt;Neues gespeichertes Suchmuster erstellen Erstellen Sie ein gespeichertes Artikelsuchmuster, das die Artikel enthält, auf die Sie einen Rabatt anbieten. 
+    		&lt;/li&gt;&lt;/ul&gt; Sie können ausschließlich öffentliche Suchmuster wählen, um Rabatte festzulegen.&lt;/html&gt;
+    </value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Wählen Sie "Neuer Auftragsrabatt" aus, um einen Auftragsrabatt zu dieser Werbeaktion hinzuzufügen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Wählen Sie eine der folgenden Optionen:
+		    &lt;ul&gt;&lt;li&gt;&lt;b&gt;Wenn der Kunde eines der Kriterien erfüllt&lt;/b&gt;Wählen Sie diese Option, wenn ein Kunde nur in einem der von Ihnen unten hinzugefügten Suchmuster oder einer der Listen enthalten sein muss, um teilnahmeberechtigt zu sein.
+		    &lt;/li&gt;&lt;li&gt;&lt;b&gt;Wenn der Kunde alle Kriterien erfüllt&lt;/b&gt;Wählen Sie diese Option, wenn ein Kunde in allen von Ihnen unten hinzugefügten Suchmustern oder Listen enthalten sein muss, um zur Teilnahme an dieser Werbeaktion berechtigt zu sein.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;
+    </value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Wählen Sie eine der folgenden Optionen:
+    		&lt;ul&gt;&lt;li&gt;&lt;b&gt;Wenn der Auftrag eines der Kriterien erfüllt&lt;/b&gt;Wählen Sie diese Option, wenn ein Auftrag nur eines der von Ihnen unten hinzugefügten Kriterien erfüllen muss, um teilnahmeberechtigt zu sein.
+    		&lt;/li&gt;&lt;li&gt;&lt;b&gt;Wenn der Auftrag alle Kriterien erfüllt&lt;/b&gt;Wählen Sie diese Option, wenn die Werbeaktion nur dann gilt, wenn alle unten aufgelisteten Artikelkriterien erfüllt sind. Wählen Sie diese Option, wenn ein Kunde in allen von Ihnen unten hinzugefügten Suchmustern oder Listen enthalten sein muss, um zur Teilnahme an dieser Werbeaktion berechtigt zu sein.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;
+    </value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Wählen Sie eine der folgenden Optionen:
+		    &lt;ul&gt;&lt;li&gt;&lt;b&gt;"Kunden auswählen",&lt;/b&gt;um bestimmte Kunden auf dem untergeordneten Tab zur Teilnahmeberechtigung hinzuzufügen.
+		    &lt;/li&gt;&lt;li&gt;&lt;b&gt;Wählen Sie "Gespeichertes Kundensuchmuster",&lt;/b&gt;um ein bestehendes gespeichertes Kundensuchmuster zu der Liste hinzuzufügen.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Customer Search&lt;/b&gt; - to create a new customer saved search to add to the list.
+		    &lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Anmerkung:&lt;/b&gt;Da diese Kunden durch die Kriterien des gespeicherten Suchmusters definiert sind, kann sich die Liste der teilnahmeberechtigten Kunden ändern.&lt;/html&gt;
+	</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Wählen Sie eine der folgenden Optionen:
+    		&lt;ul&gt;&lt;li&gt;&lt;b&gt;"Auftragsgesamtsumme festlegen",&lt;/b&gt;um Auftragskriterien basierend auf der Gesamtsumme des Auftrags oder der Gesamtanzahl gekaufter Einheiten festzulegen.
+    		&lt;/li&gt;&lt;li&gt;&lt;b&gt;"Artikel auswählen",&lt;/b&gt;um Kriterien basierend auf bestimmten Artikeln festzulegen. 
+    		&lt;/li&gt;&lt;li&gt;&lt;b&gt;"Gespeichertes Artikelsuchmuster auswählen",&lt;/b&gt;um Kriterien für die Artikel in einem bestehenden gespeicherten Artikelsuchmuster zu der Liste hinzuzufügen.
+    		&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Item Search&lt;/b&gt; "Neues Artikelsuchmuster erstellen", um ein neues gespeichertes Artikelsuchmuster zu erstellen und zu der Liste hinzuzufügen. 
+    		&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Anmerkung:&lt;/b&gt;Sie können ausschließlich öffentliche Suchmuster für Kriterien wählen&lt;/html&gt;
+    </value>
+  </data>
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Wählen Sie jene Kunden aus, die zur Teilnahme an dieser Werbeaktion berechtigt sind. Um mehr als einen Kunden auszuwählen, halten Sie STRG gedrückt, während Sie auswählen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Die Beschreibung für das gespeicherte Suchmuster sehen Sie hier.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Wählen Sie das gespeicherte Kundensuchmuster aus, das Sie verwenden möchten, um die teilnahmeberechtigten Kunden für diese Werbeaktion zu definieren. Ausschließlich öffentliche gespeicherte Suchmuster können für Kriterien verwendet werden.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Die Beschreibung für das gespeicherte Suchmuster sehen Sie hier.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Wählen Sie einen Artikel aus, auf den Sie mit dieser Werbeaktion einen Rabatt gewähren möchten.  Um zusätzliche Rabattartikel hinzuzufügen, klicken Sie auf "Weitere hinzufügen".&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Wählen Sie ein bestehendes gespeichertes Artikelsuchmuster, das die Artikel enthält, auf die Sie einen Rabatt anbieten.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Geben Sie die Maximalanzahl (Einheiten) an Artikeln ein, auf die Sie den Rabatt anbieten.&lt;/p&gt;&lt;p&gt;  Dieser maximale Rabattbetrag überschreibt den berechneten Rabattbetrag. Falls Sie die Mehrfachwährungsfunktion verwenden, können Sie den Maximalrabatt in jeder Währung eingeben, in der Sie Geschäfte machen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Geben Sie die Maximalanzahl (Einheiten) an Artikeln ein, auf die Sie den Rabatt anbieten.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Geben Sie den Rabattbetrag oder den Prozentsatz für die ausgewählten Artikel ein.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Geben Sie entweder den ermäßigten Versandbetrag ein oder geben Sie einen Rabattprozentsatz ein. Wenn Sie einen Währungsbetrag eingeben, wird dieser als Versandbetrag verwendet. Wenn Sie einen Prozentsatz eingeben, wird der Versandbetrag aus der Versandmethode um diesen Prozentsatz ermäßigt.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Wählen Sie die Versandmethoden aus, für die der Rabatt angewendet wird. Wenn Sie einen Prozentsatz-Rabatt eingeben, wird ein Rabatt in Höhe dieses Prozentsatzes auf die ausgewählten Versandmethoden gewährt. Wenn Sie einen Währungsbetrag eingeben, wird dieser Betrag als Versandbetrag verwendet&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Geben Sie den maximalen Rabattbetrag ein, der durch diese Werbeaktion erhältlich ist.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Geben Sie den maximalen Rabattbetrag ein, der für einen Einzelauftrag im Zuge dieser Werbeaktion gewährt wird.  &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Geben Sie den Rabatt für diese Werbeaktion als Prozentsatz oder Währungsbetrag ein.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Wählen Sie die Artikel aus, auf denen die Teilnahmeberechtigungskriterien eines Auftrags basieren sollen. Um mehrere Artikel auszuwählen, halten Sie STRG gedrückt, während Sie auswählen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Wählen Sie das gespeicherte Artikelsuchmuster aus, das Sie zur Bestimmung der Auftragskriterien für diese Werbeaktion verwenden möchten. Für Kriterien verwendete gespeicherte Suchmuster müssen öffentliche Suchmuster sein.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Geben Sie den erforderlichen Minimalkaufbetrag ein, mit dem ein Auftrag an dieser Werbeaktion teilnahmeberechtigt ist.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Geben Sie den erforderlichen Minimalwarenbezug für diese Artikel ein, mit dem ein Auftrag an dieser Werbeaktion teilnahmeberechtigt ist.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Geben Sie entweder den ermäßigten Versandbetrag ein oder geben Sie einen Rabattprozentsatz ein. &lt;/p&gt;&lt;p&gt;Wenn Sie einen Währungsbetrag eingeben, wird dieser als Versandbetrag verwendet. Wenn Sie einen Prozentsatz eingeben, wird der Versandbetrag aus der Versandmethode um diesen Prozentsatz ermäßigt.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Wählen Sie die Versandmethoden aus, für die Sie diesen Rabatt anwenden. Wenn Sie einen Rabattprozentsatz eingeben, werden die Versandmethoden, die Sie auswählen, um diesen Prozentsatz ermäßigt. Wenn Sie einen Währungsbetrag eingeben, wird dieser Betrag als Versandbetrag verwendet.
+ &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="label.include.children" xml:space="preserve">
+    <value>Untergeordnete einschließen</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>Kriterien zum Kauf von X hinzufügen</value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>Kundenkriterien hinzufügen</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>Auftragskriterien hinzufügen</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>Rabatt von Y</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>AArtikelrabatt hinzufügen</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>Auftragsrabatt hinzufügen</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>Versandrabatt hinzufügen</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>Weitere hinzufügen</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>Alle Artikel</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>Betrag festlegen</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>Verwenden</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>Bei Kauf von X</value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>Wenn der Kunde alle Kriterien erfüllt</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>Wenn der Kunde ein Kriterium erfüllt</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>Gespeichertes Kundensuchmuster</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>Kunden</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>Kunden bearbeiten</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>Kunden auswählen</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>Gespeichertes Kundensuchmuster bearbeiten</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>Neues gespeichertes Kundensuchmuster erstellen</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>Gespeichertes Kundensuchmuster auswählen</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>Kundensegment</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>Rabatt</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>Rabatt bis zu</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>Bis zu einem Gesamtrabatt von</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>Teilnahmeberechtigung</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>Artikel hinzufügen</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>Artikel bearbeiten</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>Gespeichertes Artikelsuchmuster</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>Gespeichertes Artikelsuchmuster bearbeiten</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>Artikel auswählen</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>Gespeichertes Artikelsuchmuster hinzufügen</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>Neues gespeichertes Artikelsuchmuster erstellen</value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>Gespeichertes Artikelsuchmuster auswählen</value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>Obergrenze</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>-Keine-</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>Auftrag</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>Auftrag Artikel hinzufügen</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>Auftragsrabatt bearbeiten</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>Neuer Auftragsrabatt</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>Neuer Auftragsrabatt (Abzug von % oder Betrag)</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>Auftrag Artikel bearbeiten</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>Auftrag Gespeichertes Artikelsuchmuster hinzufügen</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>Auftrag Gespeichertes Artikelsuchmuster bearbeiten</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>Wenn der Auftrag alle Kriterien erfüllt</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>Wenn der Auftrag ein Kriterium erfüllt</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>Neuer Versandrabatt</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>Auftragsgesamtsumme bearbeiten</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>Auftragsgesamtsumme festlegen</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>Alle bestellen</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>Prozent günstiger</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>Vorschau</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>Aktionsangebot</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>Minimalwarenbezug</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>Betrag festlegen</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>Versand anwendbar auf alle Artikel im WARENKORB</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>Versandrabatt</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>Versandrabatt bearbeiten</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>Neuer Versandrabatt</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>Versandmethode</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>Neues gespeichertes Suchmuster</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>Einheiten</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>Was ist in diesem</value>
+  </data>
+  <data name="text.none" xml:space="preserve">
+    <value>-Keine-</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>Aus</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>ein</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>oder</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>Auftragsrabatt</value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>Auftragsgesamtsumme</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>Gespeichertes Suchmuster</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>Suchergebnisse</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>Versandrabatt</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>Einheiten</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+    <value>Sie haben einen Artikel ausgewählt, der kein Produktartikel oder Serviceposten ist. Bitte entfernen Sie ihn, um mit der Speicherung dieser Einstellung fortzufahren.</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+   <value>Kunde</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+   <data name="error.form.locked" xml:space="preserve">
+    <value>Dieses Formular ist durch das Advanced Promotions SuiteApp gesperrt und kann nicht bearbeitet werden.</value>
+  </data>
+   <data name="label.subsidiary" xml:space="preserve">
+    <value>Niederlassung </value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>Wählen Sie einen oder mehrere Artikel für den kostenlosen Versand aus.</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>Wählen Sie eine oder mehrere Versandmethoden aus.</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>Kostenloser Versand, angewendet auf spezifische Artikel im WARENKORB.</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>Neuer artikelspezifischer kostenloser Versand</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>Versandkostenfrei</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>Bearbeiten Sie "Artikelspezifischer kostenloser Versand"</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>und</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Wählen Sie "Neuer Versandrabatt" aus, um ermäßigten Versand für diese Promotion anzubieten.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Wählen Sie "Neuer artikelspezifischer kostenloser Versand" aus, um kostenlosen Versand für bestimmte Artikel bei dieser Promotion anzubieten. &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Anmerkung: Wenn dieselbe Versandmethode in "Versandrabatt" und "Artikelspezifischer kostenloser Versand" ausgewählt wird, wird der kostenlose Versand nur auf ausgewählte spezifische Artikel angewendet, während der ermäßigte Versand auf die anderen Artikel angewendet wird.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>Wählen Sie zumindest einen Bestandsposten oder Verbundartikel in der Liste aus.</value>
+  </data>
+  <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>Wählen Sie mindestens eine Versandmethode in der Liste aus.</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>Kostenloser Artikelversand gilt nur bei Bestandsposten und Verbundartikeln. Entfernen Sie Nicht-Bestandsposten und Nicht-Verbundartikel, um fortzufahren.</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>Wählen Sie "Gespeichertes Artikelsuchmuster für kostenlosen Versand" aus</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>Wählen Sie ein bestehendes gespeichertes Artikelsuchmuster aus, das die Artikel enthält, auf die Sie einen kostenlosen Versand anbieten.</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>Bearbeiten Sie "Gespeichertes Artikelsuchmuster für kostenlosen Versand"</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>Wählen Sie mindestens ein gespeichertes Suchmuster in der Liste aus, um fortzufahren.</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>Wählen Sie einen Wert/Werte aus für: Artikel, Versandmethode.</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>Wählen Sie einen Wert/Werte aus für: Gespeichertes Artikelsuchmuster, Versandmethode.</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>Ohne Begrenzung</value>
+  </data>
+</root>

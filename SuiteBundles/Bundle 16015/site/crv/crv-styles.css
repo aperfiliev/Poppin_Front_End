@@ -1,0 +1,209 @@
+/* #GENERAL REVIEWS# */
+.crv .table {
+    width: 100%;
+    border: 4px solid #F4F4F4;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #666666;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.crv .table td {
+    vertical-align: top;
+}
+
+.crv .table .odd_cell td {
+    background-color: #F8FAF1;
+}
+
+.crv .table a {
+    color: #6C8C37;
+    display: block;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.crv .table a:hover {
+    color: #009193;
+    text-decoration: none;
+}
+
+/* #HEAD REVIEWS# */
+.crv .table thead th {
+    background-color: #0076A3;
+    border-right: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: normal;
+    height: 25px;
+    padding: 2px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* #CONTENT REVIEWS# */
+.crv .table tbody td {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.crv {
+    font: 12px / 18px Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.crv .save a {
+    color: #009933;
+    font: bold;
+    text-decoration: none;
+    display: block;
+}
+
+/* #SAVE REVIEW FORM# */
+.crv .wrap-box {
+    font: normal;
+    padding: 2px;
+}
+
+.crv .wrap-box span {
+    padding-left: 3px;
+    color: #C30;
+}
+
+.crv .wrap-box select {
+    text-align: left;
+    margin: 5px 0 0 15px;
+}
+
+.crv .wrap-box input {
+    padding: 2px;
+    margin-left: 15px;
+}
+
+.crv .input-disable {
+    background-color: #999;
+    color: #333;
+}
+
+.crv .wrap-box-anonymous input {
+    font: normal;
+    margin-left: 17px;
+    height: 12px;
+}
+
+.crv .wrap-box-anonymous label {
+    padding-left: 5px;
+    height: 10px;
+}
+
+.crv .wrap-box textarea {
+    width: 300px;
+    height: 100px;
+    margin-left: 15px;
+}
+
+.crv .label {
+    padding-left: 15px;
+}
+
+.crv .label-rating {
+    float: left;
+    padding-left: 15px;
+    width: 80px;
+}
+
+.crv .stars-wrap {
+    width: 85px;
+    height: 17px;
+    float: left;
+}
+
+.crv .stars-wrap a {
+    width: 17px;
+    height: 17px;
+    overflow: hidden;
+    text-indent: -1e +8px;
+    display: block;
+    float: left;
+}
+
+.crv .stars {
+    background: transparent url(../crv/crv-star.gif) no-repeat scroll left top;
+    text-decoration: none;
+}
+
+.crv .stars-selected {
+    background: transparent url(../crv/crv-star.gif) no-repeat scroll 0 -34px;
+    text-decoration: none;
+}
+
+.crv .stars-hover {
+    background: transparent url(../crv/crv-star.gif) no-repeat scroll 0 -17px;
+    text-decoration: none;
+}
+
+.crv .submit {
+    background: transparent url(../crv/crv-submit.gif) no-repeat scroll left top;
+    border: 0 none;
+    cursor: pointer;
+    overflow: hidden;
+    width: 60px;
+    height: 32px;
+    margin: 0 0 0 15px;
+    letter-spacing: 70px; /* for FF and IE */
+    text-indent: 70px; /* for Chrome */
+    text-align: left; /* for Opera or it won't take the text indent */ /* float:left;			for IE due to the text-indent */
+}
+
+.crv .rating-box {
+    float: left;
+    margin-right: 3px;
+    background: transparent url(../crv/crv-star.gif) repeat-x scroll left top;
+    font-size: 0;
+    height: 17px;
+    line-height: 0;
+    overflow: hidden;
+    width: 85px;
+    display: block;
+}
+
+.crv .rating-wrap {
+    font-size: 11px;
+    margin: 7px 0;
+    margin-left: 60px;
+}
+
+.crv .rating-wrap > div {
+    display: inline
+}
+
+.crv .rating {
+    background: transparent url(../crv/crv-star.gif) repeat-x scroll 0 -34px;
+    float: left;
+    height: 17px;
+}
+
+.crv .save-iframe {
+    display: none;
+    width: 450px;
+    height: 500px;
+}
+
+.crv .reviews-link a span {
+    padding: 2px;
+}
+
+.crv .reviews-link a {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.crv .save-link a span {
+    padding: 2px;
+}
+
+.crv .save-link a {
+    font-size: 11px;
+    font-weight: normal;
+}
+

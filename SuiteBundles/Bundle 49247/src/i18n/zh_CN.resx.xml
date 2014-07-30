@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>是否确定要删除此行?</value>
+  </data>
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>请输入值: 金额</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>金额值无效。值必须是数字</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>金额值无效。值必须是从 1 到 99,999,999,999 的数字</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>请从列表中至少选择一个客户</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>客户已保存搜索已经在子列表中存在</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>请输入值: 限额</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>限额值无效。值必须是数字</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>限额值无效。值必须是从 1 到 99,999,999,999 的数字</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>请输入值: 最低采购</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>最低采购值无效。值必须是数字。</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>最低采购值无效。值必须介于 0 到 100,000,000,000 之间</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>请输入值: 促销优惠</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>促销优惠值无效。值必须是数字</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>促销优惠值无效。值必须是从 1 到 99,999,999,999 的数字</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>促销优惠值无效。值只能是从 1 到 100 的数字</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>P请输入值: 百分比</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>百分比值无效。值必须是数字</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>百分比值无效。值只能是从 1 到 100 的数字</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>请从列表中至少选择一种方法</value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; 选择下列选项之一: &lt;ul&gt;&lt;li&gt;&lt;b&gt;设置订单合计&lt;/b&gt;  - 基于订单合计或采购的单位总数设置订单标准。  &lt;/li&gt;&lt;li&gt;&lt;b&gt;  选择货品&lt;/b&gt; -  基于特定货品设置标准&lt;/li&gt;&lt;li&gt;&lt;b&gt;选择货品已保存搜索&lt;/b&gt; - 将现有货品已保存搜索中的货品的标准添加到列表。&lt;/li&gt;&lt;li&gt;&lt;b&gt;新建货品搜索&lt;/b&gt; -  创建新的货品已保存搜索以添加到列表。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;附注&lt;/b&gt;: 您只能为标准选择公开搜索。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;通过下列方式之一选择您要提供折扣的货品：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;选择货品&lt;/b&gt; -  选择您要提供折扣的货品。单击“添加其他货品”可选择其他货品。&lt;/li&gt;&lt;li&gt;&lt;b&gt;选择已保存搜索&lt;/b&gt; -  选择包括您要提供折扣的货品的现有货品已保存搜索。&lt;/li&gt;&lt;li&gt;&lt;b&gt;创建新的已保存搜索&lt;/b&gt; - 创建包括您要提供折扣的货品的货品已保存搜索。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;附注&lt;/b&gt;:  您只能选择公开搜索对象来定义折扣。 &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;通过下列方式之一选择您要提供折扣的货品：&lt;ul&gt;&lt;li&gt;&lt;b&gt;选择货品&lt;/b&gt; - 选择货品 选择您要提供折扣的货品。单击“添加其他货品”可选择其他货品。&lt;/li&gt;&lt;li&gt;&lt;b&gt;选择已保存搜索&lt;/b&gt; - 选择包括您要提供折扣的货品的现有货品已保存搜索。&lt;/li&gt;&lt;li&gt;&lt;b&gt;创建新的已保存搜索&lt;/b&gt; - 创建包括您要提供折扣的货品的货品已保存搜索。&lt;/li&gt;&lt;/ul&gt;您只能选择公开搜索对象来定义折扣。&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;选择“新建订单折扣”以将一个订单折扣添加到此促销。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;选择下列选项之一：&lt;ul&gt;&lt;li&gt;&lt;b&gt;如果客户匹配任何标准&lt;/b&gt; 如果客户只有包括在您在下面添加的搜索对象或列表之一中才有资格，则选择此选项。&lt;/li&gt;&lt;li&gt;&lt;b&gt;如果客户匹配所有标准&lt;/b&gt; 如果客户必须包括在您在下面添加的所有搜索对象和列表中才有资格参与此促销，则选择此选项。&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;选择下列选项之一：&lt;ul&gt;&lt;li&gt;&lt;b&gt;如果订单匹配任何标准&lt;/b&gt; 如果订单只有满足您在下面添加的标准之一时才有资格，则选择此选项。&lt;/li&gt;&lt;li&gt;&lt;b&gt;如果订单匹配所有标准&lt;/b&gt; 如果满足您在下面列出的所有货品标准就有资格参与促销，则选择此选项。 如果客户必须包括在您在下面添加的所有搜索对象和列表中才有资格参与此促销，则选择此选项。&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; 选择下列选项之一：&lt;ul&gt;&lt;li&gt;&lt;b&gt;选择客户&lt;/b&gt; - 选择要添加到资格子标签的特定客户。&lt;/li&gt;&lt;li&gt;&lt;b&gt;选择客户已保存搜索&lt;/b&gt; - 将现有客户已保存搜索添加到列表。&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Customer Search&lt;/b&gt; - to create a new customer saved search to add to the list.&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;注意&lt;/b&gt;: 由于这些客户由已保存搜索标准定义，因此合格客户列表可能更改。&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;如果您选择的折扣货品应用于子公司，则选中此框。您无法编辑此字段。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; 选择下列选项之一：&lt;ul&gt;&lt;li&gt;&lt;b&gt;设置订单合计&lt;/b&gt; -根据订单合计或购买的单位总数设置订单标准。&lt;/li&gt;&lt;li&gt;&lt;b&gt;选择货品&lt;/b&gt; - 根据特定的货品设置标准。&lt;/li&gt;&lt;li&gt;&lt;b&gt;选择货品已保存搜索&lt;/b&gt; - 将现有货品已保存搜索中的货品的标准添加到列表。&lt;/li&gt;&lt;li&gt;&lt;b&gt;创建新货品搜索&lt;/b&gt; -  创建一个新的客户已保存搜索以添加到列表。&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;注意&lt;/b&gt;: 您只能选择公开搜索对象作为标准。&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; 选择下列选项之一：:&lt;ul&gt;&lt;li&gt;&lt;b&gt;如果订单匹配任何标准&lt;/b&gt; –  如果订单只有满足您在下面添加的标准之一时才有资格，则选择此选项&lt;/li&gt;&lt;li&gt;&lt;b&gt;如果订单匹配所有标准&lt;/b&gt; –   如果满足您在下面列出的所有货品标准就有资格参与促销，则选择此选项。如果客户必须包括在您在下面添加的所有搜索对象和列表中才有资格参与此促销，则选择此选项。&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;选择有资格使用此促销的客户。要选择多个客户，请在选择时按住 Ctrl 键。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;已保存搜索的说明显示在此处。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;选择您希望用于定义哪些客户有资格参与此促销的客户已保存搜索。只有公开已保存搜索可用于搜索标准。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;已保存搜索的说明显示在此处。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; 选择您希望在此促销中提供折扣的货品。&lt;/p&gt;&lt;p&gt;要添加提供折扣的其他货品，请单击“添加其他货品”。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;选择包括您要提供折扣的货品的现有货品已保存搜索。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;输入您要提供折扣的货品的最大数量（单位）。&lt;/p&gt;&lt;p&gt;此最大折扣金额的优先级高于计算的折扣金额。如果您使用多币种功能，则可以输入您在业务中使用的任何货币的最大折扣。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;输入您要提供折扣的货品的最大数量（单位）。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;为您选择的货品输入折扣金额或百分比。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;输入折扣发运金额或者输入折扣百分比。&lt;/p&gt;&lt;p&gt;如果输入货币金额，则该金额用作发运金额。如果输入百分比，则发运方式中的发送金额将按此百分比折扣。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;选择要将此折扣应用到的发运方式。如果您选择一个百分比折扣，则会按该百分比对您选择的发运方式进行折扣。如果输入货币金额，则此金额用作发运金额  &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;输入通过此促销活动提供的最大折扣金额。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;输入此促销为单一订单提供的最大折扣金额。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;为此促销输入折扣百分比或货币金额。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; 选择您希望在此促销中提供折扣的货品。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;选择您希望用于定义此促销的订单标准的货品已保存搜索。用于标准的已保存搜索必须是公开搜索对象。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;输入订单有资格参与此促销所需的最小购买金额。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;输入订单有资格参与此促销所需的这些货品的最小采购量。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;输入折扣发运金额或者输入折扣百分比。&lt;/p&gt;&lt;p&gt;如果输入货币金额，则该金额用作发运金额。如果输入百分比，则发运方式中的发送金额将按此百分比折扣。&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;选择要将此折扣应用到的发运方式。如果您选择一个百分比折扣，则会按该百分比对您选择的发运方式进行折扣。如果输入货币金额，则此金额用作发运金额  &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>添加购买 X 标准</value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>添加客户标准</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>添加订单标准</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>获得 Y 折扣</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>添加货品折扣</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>添加订单折扣</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>添加发运折扣</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>添加其他货品</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>所有货品</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>设置金额</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>购买 X</value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>如果客户匹配所有标准</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>如果客户匹配任一标准</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>客户已保存搜索</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>客户</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>编辑客户</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>选择客户</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>编辑客户已保存搜索</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>创建新客户搜索</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>选择客户已保存搜索</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>客户段</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>说明</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>折扣</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>最高折扣</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>最高折扣总额</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>资格</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.include.children" xml:space="preserve">
+    <value>包括子公司</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>货品</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>添加货品</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>编辑货品</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>货品已保存搜索</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>编辑货品已保存搜索</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>选择货品</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>添加货品已保存搜索</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>创建新货品搜索</value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>选择货品已保存搜索</value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>限制</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>-无-</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>订单</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>订单 添加货品</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>编辑订单折扣</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>新建订单折扣</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>新建订单折扣(折扣百分比或折扣金额）</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>订单 编辑货品</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>订单 添加货品已保存搜索</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>订单 编辑货品已保存搜索</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>如果订单匹配所有标准</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>如果订单匹配任一标准</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>新建发运折扣</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>编辑订单合计</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>设置订单合计</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>订单 全部</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>折扣百分比</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>预览</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>促销优惠</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>最少采购量</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>设置金额</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>发运适用于购物车中的所有货品</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>发运折扣</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>编辑发运折扣</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>新建发运折扣</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>发运方式</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>新建已保存搜索</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>这是什么？</value>
+  </data>
+  <data name="text.none" xml:space="preserve">
+    <value>-无-</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>或</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>订单折扣</value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>订单合计</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>已保存搜索</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>搜索结果</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>发运折扣</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>您已经选择一个项目，该项目不是您的选择中的产品项目或服务项目。请将其删除并继续保存此设置。</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+    <value>您已经选择一个项目，该项目不是您的选择中的产品项目或服务项目。请将其删除并继续保存此设置。</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+    <value>客户</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>货品</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+  <data name="error.form.locked" xml:space="preserve">
+    <value>此表单被高级促销 SuiteApp 锁定，无法编辑。</value>
+  </data>
+  <data name="label.subsidiary" xml:space="preserve">
+    <value>子公司</value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>选择一件或多件免费发运的货品。</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>选择一种或多种发运方式。</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>免费发运已应用于购物车中的特定货品。</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>新建特定于货品的免费发运</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>免费发运</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>编辑特定于货品的免费发运</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>和</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;选择“新建发运折扣”可以为此促销活动提供折扣发运。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;选择“新建特定于货品的免费发运”可以为此促销活动的特定货品提供免费发运。 &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;注意：如果在“发运折扣”和“特定于货品的免费发运”中选择了相同的发运方式，则免费发运仅应用于所选的特定货品，而折扣发运将应用于其他货品。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>请从列表中至少选择一件库存或装配货品</value>
+  </data>
+  <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>请从列表中至少选择一种发运方式。</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>免费货品发运仅应用于库存和装配货品。 请删除非库存和非装配货品以继续。</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>选择免费发运的货品已保存搜索</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>选择包括您要提供免费发运的货品的现有货品已保存搜索。</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>编辑免费发运的货品已保存搜索</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>从列表中至少选择一个已保存搜索以继续。</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>请为以下选项选择值：货品、发运方式。</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>请为以下选项选择值：货品已保存搜索、发运方式。</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>无限制</value>
+  </data>
+</root>

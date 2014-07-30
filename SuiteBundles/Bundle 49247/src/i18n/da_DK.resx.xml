@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>Er du sikker på, at du vil fjerne denne række?</value>
+  </data>
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>Indtast værdi(er) for: beløb</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>Ugyldig værdi for beløb. Værdier skal være tal</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>Ugyldig værdi for beløb. Værdier skal være tal fra 1 til 99.999.999.999</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>Please select at least one customer from the list</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>Vælg mindst én kunde fra listen</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+    <value>Gemt kundesøgning findes allerede i underlisten</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>Du har valgt en vare, der ikke er en produktvare eller servicevare. Fjern den for at fortsætte med at gemme denne indstilling.</value>
+  </data>
+  <data name="error.form.locked" xml:space="preserve">
+    <value>TDenne formular er låst af SuiteApp Advanced Promotions og kan ikke redigeres.</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>Indtast værdi(er) for: grænse</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>Ugyldig værdi for grænse. Værdier skal være tal</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>Ugyldig værdi for grænse. Værdier skal være tal fra 1 til 99.999.999.999</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>Indtast værdi(er) for: mindste salg</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>Ugyldig værdi for mindste salg. Værdier skal være tal</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>Ugyldig værdi for mindste salg. Værdier skal være mellem 0 og 100.000.000.000</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>Indtast værdi(er) for: tilbud</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>Ugyldig værdig for tilbud. Værdier skal være tal</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>Ugyldig værdig for tilbud. Værdier skal være tal fra 1 til 99.999.999.999</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>Ugyldig værdig for tilbud. Værdier må kun være tal fra 1 - 100</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>Indtast værdi(er) for: procent</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>Ugyldig værdi for procent. Værdier skal være tal</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>Ugyldig værdi for procent. Værdier må kun være tal fra 1 - 100</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>Vælg mindst én metode fra listen</value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Vælg en af følgende: &lt;ul&gt;&lt;li&gt;&lt;b&gt; Angiv ordretotal&lt;/b&gt; - for at angive ordrekriterier baseret på ordretotal eller det samlede antal købte enheder. &lt;/li&gt;&lt;li&gt;&lt;b&gt; Vælg varer&lt;/b&gt; - for at angive kriterer baseret på bestemte varer.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Vælg gemt varesøgning&lt;/b&gt; - for at føje kriterier for varerne i en eksisterende gemt varesøgning til listen. &lt;/li&gt;&lt;li&gt;&lt;b&gt;Opret ny varesøgning&lt;/b&gt; - for at oprette en ny gemt varesøgning, der skal føjes til listen. &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Bemærk&lt;/b&gt;: Du kan kun vælge offentlige søgninger som kriterier.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Vælg en af følgende for at angive en tilbudsrabat:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Vælg varer&lt;/b&gt; - Vælg de varer, du vil give rabat for. Klik på Tilføj flere for at vælge flere varer.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Vælg Gemt varesøgning &lt;/b&gt; - Vælg en eksisterende gemt varesøgning, der medtager de varer, du tilbyder rabat for.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Opret ny gemt varesøgning&lt;/b&gt; - Opret en gemt varesøgning, der medtager de varer, du tilbyder rabat for. &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Bemærk&lt;/b&gt;: Du kan kun medtage gemte offentlige søgninger ved angivelse af rabat.
+	&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose the item you are offering a discount on in one of the following ways:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Select Items&lt;/b&gt; - Select the items you want to offer a discount on. Click Add Another to select additional items.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Saved Search&lt;/b&gt; - Choose an existing item saved search that includes the items you are offering a discount on.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Saved Search&lt;/b&gt; - Create an item saved search that includes the items you are offering a discount on.&lt;/li&gt;&lt;/ul&gt;You can only choose public searches to define discounts.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select New Order Discount to add an order discount to this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;If customer matches any criterion&lt;/b&gt; Select this option if a customer must be included in only one of the searches or lists you add below to be eligible.&lt;/li&gt;&lt;li&gt;&lt;b&gt;If customer matches all criteria&lt;/b&gt; Select this option if a customer must be included in all of the searches and lists you add below to be eligible for this promotion.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;If order matches any criterion&lt;/b&gt; Select this option if an order must only meet one of the criteria you add below in order to be eligible.&lt;/li&gt;&lt;li&gt;&lt;b&gt;If order matches all criteria&lt;/b&gt; Select this option if the promotion is eligible if all of the item criteria you list below are met. Select this option if a customer must be included in all of the searches and lists you add below to be eligible for this promotion.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Select Customers&lt;/b&gt; - to select specific customers to add to the eligibility subtab.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Customer Saved Search&lt;/b&gt; - to add an existing customer saved search to the list.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Customer Search&lt;/b&gt; - to create a new customer saved search to add to the list.&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Note&lt;/b&gt;: Since these customers are defined by saved search criteria, the list of eligible customers can change.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Denne boks er markeret, hvis rabatvaren, du har valgt, er anvendt for underordnede datterselskaber. Du kan ikke redigere dette felt.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Set Order Total&lt;/b&gt; - to set order criteria based on the order total or on the total number of units purchased.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Items&lt;/b&gt; - to set criteria based on specific items.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Select Item Saved Search&lt;/b&gt; - to add criteria for the items in an existing item saved search to the list.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Item Search&lt;/b&gt; - to create a new item saved search to add to the list.&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Note&lt;/b&gt;: You can only choose public searches for criteria.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select one of the following:&lt;ul&gt;&lt;li&gt;&lt;b&gt;If order matches any criterion&lt;/b&gt; – Select this option if an order must only meet one of the criteria you add below in order to be eligible.&lt;/li&gt;&lt;li&gt;&lt;b&gt;If order matches all criteria&lt;/b&gt; – Select this option if the promotion is eligible if all of the item criteria you list below are met. Select this option if a customer must be included in all of the searches and lists you add below to be eligible for this promotion.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select the customers who are eligible to use this promotion. To select more than one customer, press and hold CTRL as you make your selections.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;The description for the saved search is shown here.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select the customer saved search you want to use to define which customers are eligible for this promotion. Only public saved searches can be used for criteria.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;The description for the saved search is shown here.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select an item you want to discount with this promotion.&lt;/p&gt;&lt;p&gt;To add additional items to discount, click Add Another.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose an existing item saved search that includes the items you are offering a discount on.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the maximum number (units) of items you are offering the discount on.&lt;/p&gt;&lt;p&gt;This maximum discount amount takes precedence over the calculated discount amount. If you use the Multiple Currencies feature, you can enter the maximum discount in any currency you do business in.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the maximum number (units) of items you are offering the discount on.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the discount amount or percentage for the items you selected. Click &lt;b&gt;Add Another&lt;/b&gt; if you want to enter a maximum discount amount in additional currencies..&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Indtast enten forsendelsens rabatbeløb eller -procent. Hvis du indtaster et valutabeløb, anvendes det som forsendelsesbeløbet. Hvis du indtaster en procentdel, fratrækkes den fra forsendelsesbeløbet i forsendelsesmetoden.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select the shipping methods you are applying this discount to. If you enter a percentage discount, the shipping methods you select are discounted by that percentage. If you enter a currency amount, this amount is used as the shipping amount &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Indtast det maksimale rabatbeløb, der er tilgængeligt med dette tilbud.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the maximum discount amount available for this promotion for a single order.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the percentage or currency amount discount for this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select an item you want to discount with this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select the item saved search you want to use to define the order criteria for this promotion. Saved searches used for criteria must be public searches.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the minimum purchase amount required for an order to be eligible for this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Enter the minimum purchase for these items required for an order to be eligible for this promotion.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Indtast enten forsendelsens rabatbeløb eller -procent.&lt;/p&gt;&lt;p&gt;Hvis du indtaster et valutabeløb, anvendes det som forsendelsesbeløbet. Hvis du indtaster en procentdel, fratrækkes den fra forsendelsesbeløbet i forsendelsesmetoden.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Vælg de forsendelsesmetoder, du vil anvende rabatten for. Hvis du indtaster en rabatprocent, anvendes den for de forsendelsesmetoder, du har valgt. Hvis du indtaster et valutabeløb, anvendes det som forsendelsesbeløbet.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>Add Buy X Criteria</value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>Add Customer Criteria</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>Add Order Criteria</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>Get Y Discount</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>Tilføj varerabat</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>Add Order Discount</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>Add Shipping Discount</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>Tilføj en mere</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>Alle varer</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>Angiv beløb</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>Buy X</value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>If customer matches all criteria</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>If customer matches any criterion</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>Customer Saved Search</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>Edit Customers</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>Select Customers</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>Edit Customer Saved Search</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>Create New Customer Search</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>Select Customer Saved Search</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>Kundesegment</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>Discount Up To</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>Up to a Total Discount Of</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>Eligibility</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.include.children" xml:space="preserve">
+    <value> Medtag underordnede</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>Vare</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>Add Item</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>Edit Item</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>Item Saved Search</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>Edit Item Saved Search</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>Select Items</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>Tilføj gemt varesøgning</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>Create New Item Saved Search</value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>Select Item Saved Search</value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>Limit</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>-None-</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>Tilføj ordrevare</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>Rediger ordrerabat</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>New Order Discount</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>Ny ordrerabat (% eller beløb nedsat)</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>Rediger ordrevare</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>OTilføj gemt ordrevaresøgning</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>Rediger gemt ordrevaresøgning</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>If order matches all criteria</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>If order matches any criterion</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>Nová sleva na dopravné</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>Edit Order Total</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>Set Order Total</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>Alt for ordre</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>Percent Off</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>Promotional Offer</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>Minimum Purchase</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>Angiv beløb</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>Forsendelse gælder for alle varer i indkøbsvognen</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>Shipping Discount</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>Edit Shipping Discount</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>New Shipping Discount</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>Forsendelsesmetode</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>Ny gemt søgning</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>Hvad er dette?</value>
+  </data>
+  <data name="text.none" xml:space="preserve">
+    <value>-None-</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>Slået fra</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>slået til</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>eller</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>Order Discount</value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>Ordre Total</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>Gemt søgning</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>Søgeresultater</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>Shipping Discount</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+    <value>Kunde</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>Vare</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+  <data name="label.subsidiary" xml:space="preserve">
+    <value>Støtte</value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>Vælg en eller flere varer til gratis forsendelse.</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>Vælg en eller flere forsendelsesmetoder.</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>Gratis forsendelse gælder for specifikke varer i indkøbsvognen.</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>Ny varespecifik gratis forsendelse</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>Gratis forsendelse</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>Rediger varespecifik gratis forsendelse</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>og</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Vælg Ny forsendelsesrabat for at rabat på forsendelse for dette tilbud.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Vælg Ny varespecifik gratis forsendelse for at tilbyde gratis forsendelse for specifikke varer i forbindelse med dette tilbud. &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Bemærk: Hvis der vælges samme forsendelsesmetode i forbindelse med Forsendelsesrabat og Varespecifik gratis forsendelse, vil den gratis forsendelse kun gælde specifikt valgte varer, mens forsendelsesrabatten vil gælde de andre varer.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>Vælg mindst én lager- eller montagevare på listen.</value>
+  </data>
+  <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>Vælg mindst én forsendelsesmetode på listen.</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>Gratis vareforsendelse gælder kun for lager- og montagevarer. Fjern alle varer, der ikke er lager- eller montagevarer, for at fortsætte.</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>Vælg Gemt varesøgning for Gratis forsendelse</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>Vælg en eksisterende gemt varesøgning, der omfatter de varer, der tilbydes med gratis forsendelse.</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>Rediger Gemt varesøgning for Gratis forsendelse</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>Vælg mindst én gemt søgning på listen for at fortsætte.</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>Vælg værdi(er) for: Vare, Forsendelsesmetode.</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>Vælg værdi(er) for: Gemt varesøgning, Forsendelsesmetode.</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>Ingen grænse</value>
+  </data>
+</root>

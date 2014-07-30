@@ -1,0 +1,28 @@
+.gpr-pup-win {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	width: 400px;
+	height: 80px;
+	background: #fff;
+	color: #333;
+	font-size: 14px;
+	text-align: center;
+	border: 3px solid #069;
+	padding: 20px 10px;
+	margin-left: -160px;
+	margin-top: -60px;
+	
+}
+.gpr-pup-close {
+	border: 2px solid #666666;
+	color: #666;
+	font-size: 11px;
+	width: 45px;
+	margin: 10px auto;
+	font-weight: bold;
+	cursor: pointer;
+	font-family: arial;
+	overflow: hidden;
+	padding: 1px;
+}

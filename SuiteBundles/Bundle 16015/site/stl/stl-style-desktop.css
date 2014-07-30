@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map_canvas {
+	height: 450px;
+	width: 600px;
+	margin: auto;
+}
+#radius{
+	float: left;
+	color: white; 
+	text-shadow: black 0.1em 0.1em 0.2em;	
+}
+#sendbutton{
+	float: left;
+}
+#zipcode{
+	float: left;
+	color: white; 
+	text-shadow: black 0.1em 0.1em 0.2em;
+}
+#ziptext{
+	float: left;
+	margin-left: 130px;
+	padding-right: 5px;
+	height: 31px;
+	line-height: 31px;	
+}
+#radiustext{
+	float: left;
+	height: 31px;
+	line-height: 31px;
+	padding-right: 5px;
+}
+#sl_submit{
+	height: 24px;
+	width: 75px;
+	margin-left: 20px;
+}
+#radius .jqTransformSelectWrapper{
+	float: left;
+}
+#sl_zip{
+	width: 75px;
+	float: left;
+	line-height: 20px;
+	margin-right: 20px;
+}
+#divpopup {
+	color: #999; 
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	font-style:normal;	
+}
+#divpopup a{
+	text-decoration:underline;
+	color: #999; 
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	font-style:normal;	
+}	
+#btnhome{
+float: right;
+margin-right: 5px;
+}
+
+/*Common Styles */
+.gpr-pup-win { position: fixed; left: 50%; top: 50%; background: #fff; color: #333; font-size: 14px; text-align: center; border: 3px solid #A2A2ED; padding: 20px 10px;border-radius: 7px; margin-left: -100px; margin-top: -60px; z-index:9000}
+.gpr-pup-close {border: 2px solid #666666; color: #666; font-size: 11px; width: 45px; margin: 10px auto; font-weight: bold; cursor:pointer; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; overflow: hidden; padding: 1px; }
+@media print {
+  html, body {
+    height: auto;
+  }
+
+  #map_canvas {
+    height: 650px;
+  }
+}
+

@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>Weet u zeker dat u deze rij wilt verwijderen?</value>
+  </data>
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>Voer een waarde/waardes in voor: bedrag</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>Ongeldige waarde voor bedrag. Waardes moeten getallen zijn</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>Ongeldige waarde voor bedrag. Waardes moeten getallen zijn tussen 1 en 99.999.999.999</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>Selecteer minstens één klant uit de lijst</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>Opgeslagen zoekopdracht van de klant komt al in de sublijst voor</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+    <value>U hebt een item geselecteerd dat in uw selectie geen product-item of service-item is. Verwijder het item om met het opslaan van deze instelling door te gaan.</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>U hebt een item geselecteerd dat in uw selectie geen product-item of service-item is. Verwijder het item om met het opslaan van deze instelling door te gaan.</value>
+  </data>
+  <data name="error.form.locked" xml:space="preserve">
+    <value>Dit formulier is vergrendeld door de SuiteApp Geavanceerde acties en kan niet worden bewerkt.</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>Voer een waarde/waardes in voor: Limiet</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>Ongeldige waarde voor limiet. Waardes moeten getallen zijn</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>Ongeldige waarde voor limiet. Waardes moeten getallen zijn tussen 1 en 99.999.999.999</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>Voer een waarde/waardes in voor: minimale aankoop</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>Ongeldige waarde voor minimale aankoop. Waardes moeten getallen zijn.</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>Ongeldige waarde voor minimale aankoop. Waardes moeten getallen zijn tussen 0 en 100.000.000.000</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>Voer een waarde/waardes in voor: actie-aanbieding</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>Ongeldige waarde voor actie-aanbieding. Waardes moeten getallen zijn</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>Ongeldige waarde voor actie-aanbieding. Waardes moeten getallen zijn tussen 1 en 99.999.999.999</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>Ongeldige waarde voor actie-aanbieding. Waardes moeten uitsluitend getallen zijn tussen 1 en 100</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>Voer waarde/waardes in voor: percentage</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>Ongeldige waarde voor percentage. Waardes moeten getallen zijn</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>Ongeldige waarde voor percentage. Waardes moeten uitsluitend getallen zijn tussen 1 en 100</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>Selecteer minstens één methode uit de lijst</value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Kies één van de volgende: &lt;ul&gt;&lt;li&gt;&lt;b&gt;Besteltotaal instellen&lt;/b&gt; - om bestelcriteria in te stellen die gebaseerd zijn op het besteltotaal of op het totaal van de aangekochte eenheden. &lt;/li&gt;&lt;li&gt;&lt;b&gt;Items selecteren&lt;/b&gt; - om criteria in te stellen die gebaseerd zijn op specifieke items.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Opgeslagen zoekopdracht item selecteren&lt;/b&gt; - om criteria aan de lijst toe te voegen met items van een bestaande item opgeslagen zoekopdracht.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Een nieuwe item zoekopdracht aanmaken&lt;/b&gt; - om een nieuwe item zoekopdracht aan te maken om aan de lijst toe te voegen. &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Opmerking&lt;/b&gt;: Als criteria kunt u alleen openbare zoekopdrachten kiezen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Selecteer één van de volgende mogelijkheden om de actiekorting in te stellen: &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt; Items selecteren&lt;/b&gt; - items selecteren waarop u korting aanbiedt. Klik op Nog één toevoegen om aanvullende items te selecteren. &lt;/li&gt;&lt;li&gt;&lt;b&gt;Selecteren item opgeslagen zoekopdracht &lt;/b&gt; - kies een bestaande item opgeslagen zoekopdracht waarin de items voorkomen op welke u korting aanbiedt.  &lt;/li&gt;&lt;li&gt;&lt;b&gt;Aanmaken Opgeslagen zoekopdracht item&lt;/b&gt; - maak een item opgeslagen zoekopdracht aan, waarin de items voorkomen op welke u korting aanbiedt.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Opmerking&lt;/b&gt;: U kunt alleen openbare opgeslagen zoekopdrachten gebruiken om kortingen vast te leggen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Kies het item die u met korting wilt aanbieden op één van de volgende manieren: &lt;ul&gt;&lt;li&gt;&lt;b&gt;Selecteer items&lt;/b&gt; - Selecteer de items die u met korting wilt aanbieden. Klik op Toevoegen om nog meer items te selecteren.    &lt;/li&gt;&lt;li&gt;&lt;b&gt;Selecteer opgeslagen zoekopdracht &lt;/b&gt; - Selecteer Opgeslagen zoekopdracht Kies een bestaande opgeslagen zoekopdracht item waarin de items die u met korting aanbiedt voorkomen.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Maak een nieuwe Opgeslagen zoekopdracht&lt;/b&gt; - aan Maak een nieuwe opgeslagen zoekopdracht item aan, waarin de items die u met korting aanbiedt voorkomen. &lt;/li&gt;&lt;/ul&gt;U kunt uitsluitend openbare zoekopdrachten selecteren om kortingen vast te leggen. &lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Selecteer Nieuwe bestelkorting om een bestelkorting aan deze actie toe te voegen.  &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Selecteer één van de volgende opties:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Als de klant aan één van de criteria voldoet&lt;/b&gt; Selecteer deze optie als een klant in aanmerking komt als hij of zij slechts in één van de door u hieronder toevoegde zoekopdrachten of lijsten voorkomt.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Als de klant aan alle criteria voldoet &lt;/b&gt; Selecteer deze optie als een klant geschikt is voor deze actie als hij of zij in alle, door u hieronder toevoegde, zoekopdrachten of lijsten voorkomt.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Selecteer één van de volgende opties:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Als de bestelling aan één van de criteria voldoet&lt;/b&gt; Selecteer deze optie als een bestelling in aanmerking komt als deze al aan één van de, door u hieronder toegevoegde criteria voldoet.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Als de bestelling aan alle criteria voldoet&lt;/b&gt; Selecteer deze optie als de actie geldt, indien aan alle item-criteria die u hieronder hebt opgesomd, voldoet. Selecteer deze optie als een klant in aanmerking komt voor deze actie, als hij of zij in alle door u hieronder toevoegde zoekopdrachten of lijsten voorkomt.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Kies één van de volgende opties: &lt;ul&gt;&lt;li&gt;&lt;b&gt;Selecteer klanten &lt;/b&gt; - om specifieke klanten te selecteren om toe te voegen aan de subtab geschikt. &lt;/li&gt;&lt;li&gt;&lt;b&gt;Selecteer Opgeslagen zoekopdracht klant&lt;/b&gt; - om een bestaande door de klant opgeslagen zoekopdracht aan de lijst toe te voegen.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Create New Customer Search&lt;/b&gt; - to create a new customer saved search to add to the list.&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Opmerking&lt;/b&gt;: omdat de klanten worden gedefinieerd volgens de criteria van de opgeslagen zoekopdracht, kan de lijst met geschikte klanten wijzigen. &lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Dit vakje is aangevinkt als het door u geselecteerde kortingsitem ook op dochterondernemingen wordt toegepast. U kunt dit veld niet bewerken.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Kies één van de onderstaande opties: &lt;ul&gt;&lt;li&gt;&lt;b&gt;Stel besteltotaal in&lt;/b&gt; - om bestelcriteria in te stellen die gebaseerd zijn op het besteltotaal of op het totaal van het aantal gekochte eenheden. &lt;/li&gt;&lt;li&gt;&lt;b&gt;Selecteer items&lt;/b&gt; - om criteria in te stellen die gebaseerd zijn op specifieke items. &lt;/li&gt;&lt;li&gt;&lt;b&gt; Selecteer Opgeslagen zoekopdracht item&lt;/b&gt; - om criteria voor items in een bestaande Opgeslagen zoekopdracht item aan de lijst toe te voegen. &lt;/li&gt;&lt;li&gt;&lt;b&gt;Maak een nieuwe Zoekopdracht item aan&lt;/b&gt; - om een nieuwe Opgeslagen zoekopdracht klant aan te maken om aan de lijst toe te voegen.&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Opmerking&lt;/b&gt;: U kunt voor de criteria alleen openbare zoekopdrachten kiezen. &lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Selecteer één van de volgende opties:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Als de bestelling aan één van de criteria voldoet&lt;/b&gt; – Selecteer deze optie als een bestelling in aanmerking komt als deze al aan één van de, door u hieronder toegevoegde, criteria voldoet.   &lt;/li&gt;&lt;li&gt;&lt;b&gt;If order matches all criteria&lt;/b&gt; –  Selecteer deze optie als de actie geldt, indien aan alle item-criteria die u hieronder hebt opgesomd, voldoet. Selecteer deze optie als een klant in aanmerking komt voor deze actie, als hij of zij in alle door u hieronder toevoegde zoekopdrachten of lijsten voorkomt.   &lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Selecteer de klanten die gebruik mogen maken van deze actie. Om meer dan één klant te selecteren, houdt u CTRL ingedrukt tijdens het selecteren.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; De beschrijving van de opgeslagen zoekopdracht is hier weergegeven.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Selecteer de Opgeslagen zoekopdracht klant die u wilt gebruiken om te bepalen welke klanten in aanmerking komen voor deze actie. U kunt uitsluitend openbare Opgeslagen zoekopdrachten voor de criteria gebruiken.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; De beschrijving van de opgeslagen zoekopdracht is hier weergegeven.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Selecteer een item dat u tijdens deze actie met korting wilt aanbieden.&lt;/p&gt;&lt;p&gt;  Om meer items voor korting toe te voegen, klikt u op Nog één toevoegen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Kies een bestaande opgeslagen zoekopdracht item waarin de items die u met korting aanbiedt voorkomen.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Voer het maximale aantal (eenheden) van de items in waarvoor u korting aanbiedt.&lt;/p&gt;&lt;p&gt;Dit maximale kortingsbedrag heeft voorrang boven het berekende kortingsbedrag. Als u gebruikt maakt van de functie Meerdere valuta, kunt u het maximale kortingsbedrag in een van de valuta waarin u handelt, invoeren.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Voer het maximale aantal (eenheden) van de items in waarvoor u korting aanbiedt.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Voer voor de geselecteerde items het kortingsbedrag of -percentage in.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Voer ofwel het bedrag aan verzendkosten na aftrek van de korting in, of voer een kortingspercentage in.&lt;/p&gt;&lt;p&gt;Als u een geldbedrag invoert, wordt dit bedrag als bedrag voor de verzendkosten gebruikt. Als u een percentage invoert, wordt de korting ter hoogte van dit percentage van de kosten voor deze verzendmethode afgetrokken&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Selecteer de verzendmethodes waarop u de korting geeft. Als u een kortingspercentage invoert, wordt op de geselecteerde, verzendmethoden dit percentage in mindering gebracht. Indien u een valutabedrag invoert, wordt dat bedrag als verzendbedrag gebruikt&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Voer het maximale kortingsbedrag in dat voor deze actie beschikbaar is.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Voer het maximale kortingsbedrag in dat voor deze actie voor één bestelling beschikbaar is.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Voer het percentage of valutabedrag van de korting voor deze actie in.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Selecteer de items waarop u de geschiktheidscriteria voor de bestelling wilt baseren. Om meerdere items te selecteren, houdt u CTRL ingedrukt tijdens het selecteren.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Selecteer de opgeslagen zoekopdracht item die u wilt gebruiken om de bestelcriteria voor deze actie vast te stellen. De voor deze criteria gebruikte opgeslagen zoekopdrachten moeten openbare zoekopdrachten zijn.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Voer het minimaal vereiste aankoopbedrag in, dat een bestelling geschikt maakt voor deze actie.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Voer het minimale aantal van deze items in waarmee een bestelling in aanmerking komt voor deze actie.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Voer ofwel het bedrag aan verzendkosten na aftrek van de korting in, of voer een kortingspercentage in.&lt;/p&gt;&lt;p&gt;Als u een geldbedrag invoert, wordt dit bedrag als bedrag voor de verzendkosten gebruikt. Als u een percentage invoert, wordt de korting ter hoogte van dit percentage van de kosten voor deze verzendmethode afgetrokken.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Selecteer de verzendmethodes waarop u de korting toepast. Als u een percentage invoert, wordt dit percentage op de door u geselecteerde verzendmethodes in mindering gebracht. Als u een geldbedrag invoert, wordt dit als bedrag voor de verzendkosten gebruikt.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>Criteria voor koop X toevoegen</value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>Klantcriteria toevoegen</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>Bestelcriteria toevoegen</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>En krijg Y korting</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>Item-korting toevoegen</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>Bestelkorting toevoegen</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>Korting verzendkosten toevoegen</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>Nog één toevoegen</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>Alle items</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>Bedrag instellen</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>Toepassen</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>Koop X</value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>Als de klant aan alle criteria voldoet</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>Als de klant aan één van de criteria voldoet</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>Opgeslagen zoekopdracht klant</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>Klanten</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>Klanten bewerken</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>Klanten selecteren</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>Opgeslagen zoekopdracht klant bewerken</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>Nieuwe zoekopdracht klant aanmaken</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>Opgeslagen zoekopdracht klant selecteren</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>Klantensegment</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>Beschrijving</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>Korting</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>Korting tot wel</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>Tot een korting van in totaal</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>Geschiktheid</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.include.children" xml:space="preserve">
+    <value> Inclusief onderliggende</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>Item toevoegen</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>Item bewerken</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>Opgeslagen zoekopdracht item</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>Opgeslagen zoekopdracht item bewerken</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>Items selecteren</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>Toevoegen item opgeslagen zoekopdracht</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>Nieuwe zoekopdracht item aanmaken</value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>Opgeslagen zoekopdracht item selecteren</value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>Limiet</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>-Geen-</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>Bestelling</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>Bestelling item toevoegen</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>Bestelkorting bewerken</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>Nieuwe korting op een bestelling</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>Nieuwe bestelkorting (% of bedrag)</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>Bestelling bewerken item</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>Bestelling toevoegen item opgeslagen zoekopdracht</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>Bestelling bewerken item opgeslagen zoekopdracht</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>Als de bestelling aan alle criteria voldoet</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>Als de bestelling aan één van de criteria voldoet</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>Nieuwe korting verzendkosten</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>Besteltotaal bewerken</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>Besteltotaal instellen</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>Bestelling Alle</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>Percentage korting</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>Voorbeeld</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>Actie-aanbieding</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>Minimum aankoop</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>Bedrag instellen</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>Verzenden geldt voor alle items in de WINKELWAGEN</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>Korting verzendkosten</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>Korting verzendkosten bewerken</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>Nieuwe korting verzendkosten</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>Verzendmethode</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>Nieuwe opgeslagen zoekopdracht</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>Eenheden</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>Wat is dit?</value>
+  </data>
+  <data name="text.none" xml:space="preserve">
+    <value>-Geen-</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>Uit</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>aan</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>Bestelkorting </value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>Totale bestelling</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>Opgeslagen zoekopdracht</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>Zoekresultaten</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>Korting verzendkosten</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>Eenheden</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+    <value>Klant</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+  <data name="label.subsidiary" xml:space="preserve">
+    <value>Dochteronderneming </value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>Selecteer een of meerdere items voor gratis verzending.</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>Selecteer een of meerdere verzendmethoden.</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>Gratis verzending toegepast op specifieke items in de winkelwagen.</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>Nieuw item met specifiek gratis verzending</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>Gratis verzending</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>Item met specifiek gratis verzending bewerken</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>en</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Selecteer nieuwe korting verzendkosten om voor deze actie verzending met korting aan te bieden.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Selecteer nieuwe items met specifiek gratis verzending om voor specifieke items voor deze actie gratis verzending aan te bieden. &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Opmerking: als dezelfde verzendmethode is geselecteerd in Korting verzendkosten en Item met specifiek gratis verzending, dan is gratis verzending uitsluitend van toepassing op specifieke geselecteerde items, terwijl verzending met korting van toepassing is op andere items.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>Selecteer ten minste één voorraad- of samengesteld item uit de lijst</value>
+  </data>
+  <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>Selecteer ten minste één verzendmethode op de lijst.</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>Items met gratis verzending is uitsluitend van toepassing op voorraad- en samengestelde items. Verwijder items die geen vooraad- of samengestelde items zijn om door te gaan.</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>Selecteer opgeslagen zoekopdracht item voor gratis verzending</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>Kies een bestaande opgeslagen zoekopdracht item waarin de items waarvoor u gratis verzending aanbiedt, voorkomen.</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>Bewerk opgeslagen zoekopdracht item voor gratis verzending</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>Selecteer ten minste één opgeslagen zoekopdracht uit de lijst om door te gaan.</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>Selecteer waarde(s) voor: Item, Verzendmethode.</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>Selecteer waarde(s) voor: Opgeslagen zoekopdracht item, Verzendmethode.</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>Geen limiet</value>
+  </data>
+</root>

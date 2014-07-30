@@ -1,0 +1,40 @@
+<!-- <link href="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/common/gpr-aae-all-styles.min.css" rel="stylesheet" type="text/css"> -->
+<!-- Styles loaded separately during the development process -->
+<link href="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/common/gpr-aae-styles.css" rel="stylesheet" type="text/css"/>
+<link href="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/rvi/rvi-styles.css" rel="stylesheet" type="text/css"/>
+<link href="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/qvi/qvi-styles.css" rel="stylesheet" type="text/css"/>
+<link href="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/wlp/wlp-styles.css" rel="stylesheet" type="text/css"/>
+<link href="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/mct/mct-styles.css"  rel="stylesheet" type="text/css"/>
+<link href="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/qio/qio-styles.css"  rel="stylesheet" type="text/css"/>
+<link href="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/crv/crv-styles.css"  rel="stylesheet" type="text/css"/>
+<link href="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/bsn/bsn-styles.css"  rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/common/jquery-1.6.2.min.js"></script>
+<!-- <script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/common/gpr-aae-all-library.js"></script> -->
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/common/gpr-aae-library.js"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/qvi/qvi-library.js"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/wlp/wlp-library.js"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/rvi/rvi-library.js"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/mct/mct-library.js"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/qio/qio-library.js"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/crv/crv-library.js"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/bsn/bsn-library.js"></script>
+<script type="text/javascript">
+  	var  gprSiteNumber = 9;  
+  	jQuery(document).ready(function(){
+	  var objOptions = {			
+	    loginURL: "<NLLOGINURL>",
+		cartURL: "<NLCARTURL>",
+		checkoutURL: "<NLCHECKOUTURL>",
+		companyId: "<NLCOMPANYID>",
+	    siteNumber: gprSiteNumber,
+	    customerId: "<%=getCurrentAttribute('customer','internalid','')%>"
+	  };
+	  GPR_OPTIONS.init(objOptions);				
+	  GPR_PUP.init();
+	  var objAjaxToolsOptions = {
+		  loadingImgURL: "/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/common/ajax-loader.gif"
+	  };	  
+	  GPR_AJAX_TOOLS.init(objAjaxToolsOptions);	  			
+	});	
+</script>

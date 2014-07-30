@@ -1,0 +1,132 @@
+ var Celigo = {};
+ 
+ Celigo.Realtime = (function(){ 
+	
+	function RedirectManager(){
+		
+		//Yang:>7/19/11
+		function trim(s){
+			if (typeof s === 'string')
+				return s.replace(/^\s*(\S*(\s+\S+)*)\s*$/, "$1");
+		}
+		
+		
+		this.sendToIntegrator = function sendToIntegrator(url, fileContents, dataArray) {
+			try {
+				nlapiLogExecution('DEBUG', 'Requesting', url);
+				var response = null;
+				if (fileContents != null) {
+					var t1 = new Date().getTime();
+					response = nlapiRequestURL(url, fileContents.getValue(), dataArray, null);
+					var t2 = new Date().getTime();
+					nlapiLogExecution('DEBUG', 'nlapiRequestURL (POST) perf audit', ((1*t2) - (1*t1)));
+				} else {
+					var t1 = new Date().getTime();
+					response = nlapiRequestURL(url, null, dataArray, null);
+					var t2 = new Date().getTime();
+					nlapiLogExecution('DEBUG', 'nlapiRequestURL (GET) perf audit', ((1*t2) - (1*t1)));
+				}
+				return response;
+			} catch (e) {
+				nlapiLogExecution('DEBUG', e.name || e.getCode(), e.message || e.getDetails());
+				throw e;
+			}
+		};
+
+		
+		this.redirect = function(recordId, typeToSend, recordType, celigoExternalID, fileContents) {
+			
+			var dataArray = [];
+			dataArray['recordInternalID'] = recordId;
+			dataArray['userAction'] = typeToSend;
+			dataArray['recordType'] = recordType;
+			if (celigoExternalID != null) {
+				dataArray['celigoExternalID'] = celigoExternalID;
+			}
+			
+			nlapiLogExecution('DEBUG', 'dataArray', dataArray['recordInternalID'] + ' ' + dataArray['userAction'] + ' ' + dataArray['recordType'] + ' ' + dataArray['celigoExternalID']);
+			
+			var id = nlapiGetContext().getSetting('SCRIPT', 'custscript_celigo_integration_id');
+			if (id) {
+				if (nlapiGetContext().getEnvironment().toLowerCase() == 'sandbox' || nlapiGetContext().getEnvironment().toLowerCase() == 'beta')
+					id = id + nlapiGetContext().getEnvironment().toLowerCase();
+				else;
+			} else;
+			var host = nlapiGetContext().getSetting('SCRIPT', 'custscript_celigo_integration_host');
+			if (!id || !host)
+				return;
+			
+			var qualifier = nlapiGetContext().getSetting('SCRIPT', 'custscript_celigo_location_qualifier_rt');
+			//Yang:>7/19/11
+			var url = trim(host) + '/axon/' + nlapiGetContext().getCompany() + '/' + trim(id) + '/' + trim(qualifier);
+			
+			nlapiLogExecution('DEBUG', 'Requesting', url);
+			var response = null;
+			try {
+				response = this.sendToIntegrator(url, fileContents, dataArray);
+			} catch (e) {
+				try {
+					response = this.sendToIntegrator(url, fileContents, dataArray);
+				} catch (e2) {
+					response = this.sendToIntegrator(url, fileContents, dataArray);
+				}
+			}
+			
+			if (response.getHeader('SyncStatus') == null ||
+				response.getHeader('SyncStatus') == '' ||
+				response.getHeader('SyncStatus').toLowerCase() != 'true')
+				throw "Unable to sync record.  Integration server failed to persist event.  Please try again.";
+		};
+	}
+	return { 
+		afterSubmit: function(type){
+			
+			var recordId = nlapiGetRecordId();
+			var typeToSend = type.toLowerCase();
+			var record = null;
+			if (type.toLowerCase() === 'delete') {
+				record = nlapiGetOldRecord();
+			} else {
+				record = nlapiGetNewRecord();
+			}
+			
+			if (record == null) {
+				return;
+			}
+			
+			var updateFieldId = nlapiGetContext().getSetting('SCRIPT', 'custscript_celigo_update_field_id');
+			if (updateFieldId != null && updateFieldId != '') {
+				var updatedByIntegrator = record.getFieldValue(updateFieldId);
+				if (updatedByIntegrator === 'T') {
+					return;
+				}
+			}
+			
+			var controlFieldID = nlapiGetContext().getSetting('SCRIPT', 'custscript_celigo_sync_record_field');
+			if (controlFieldID != null && controlFieldID != '') {
+				var shouldSync = record.getFieldValue(controlFieldID);
+				if (shouldSync === 'F') {
+					return;
+				}
+			}
+
+			var recordType = record.getRecordType();
+			var celigoExternalFieldID = nlapiGetContext().getSetting('SCRIPT', 'custscript_celigo_external_field_id');
+			var celigoExternalID = null;
+			if (celigoExternalFieldID != null && celigoExternalFieldID != '') {
+				celigoExternalID = record.getFieldValue(celigoExternalFieldID);
+			}
+			
+			var fileContents = null;
+			var printRecordType = nlapiGetContext().getSetting('SCRIPT', 'custscript_celigo_print_record_type');
+			var printRecordMode = nlapiGetContext().getSetting('SCRIPT', 'custscript_celigo_print_record_mode');			
+			if (printRecordType != null && printRecordType != '' && printRecordMode != null && printRecordMode != '') {
+				fileContents = nlapiPrintRecord(printRecordType, record.getId(), printRecordMode, null);
+			}
+			
+			var RM = new RedirectManager();
+			RM.redirect(recordId, typeToSend, recordType, celigoExternalID, fileContents);
+		}
+	}
+ })();
+ 

@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>แน่ใจหรือไม่ว่าต้องการลบแถวนี้?</value>
+  </data>
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>โปรดใส่ค่าสำหรับ: มูลค่า</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>โปรดใส่ค่าสำหรับ: มูลค่า</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>ค่าของมูลค่าไม่ถูกต้อง ค่าจะต้องเป็นตัวเลขตั้งแต่ 1 ถึง 99,999,999,999</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>โปรดเลือกลูกค้าจากรายการอย่างน้อยหนึ่งเจ้า</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>การค้นหาลูกค้าที่บันทึกไว้มีอยู่ในรายการย่อยแล้ว</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+  	<value>คุณได้เลือกรายการที่ไม่ใช่รายการสินค้าผลิตภัณฑ์หรือรายการสินค้าการบริการในการเลือกของคุณ โปรดลบก่อนดำเนินการบันทึกการตั้งค่านี้</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>คุณได้เลือกรายการที่ไม่ใช่รายการสินค้าผลิตภัณฑ์หรือรายการสินค้าการบริการในการเลือกของคุณ โปรดลบก่อนดำเนินการบันทึกการตั้งค่านี้</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>โปรดใส่ค่าสำหรับ: ขีดจำกัด</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>ค่าของขีดจำกัดไม่ถูกต้อง ค่าจะต้องเป็นตัวเลข</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>ค่าของขีดจำกัดไม่ถูกต้อง ค่าจะต้องเป็นตัวเลขตั้งแต่ 1 ถึง 99,999,999,999</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>โปรดใส่ค่าสำหรับ: การสั่งซื้อขั้นต่ำ</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>ค่าการสั่งซื้อขั้นต่ำไม่ถูกต้อง ค่าจะต้องเป็นตัวเลข</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>ค่าการสั่งซื้อขั้นต่ำไม่ถูกต้อง ค่าจะต้องอยู่ระหว่าง 0 ถึง 100,000,000,000</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>โปรดใส่ค่าสำหรับ: ข้อเสนอการส่งเสริมการขาย</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>ค่าของข้อเสนอการส่งเสริมการขายไม่ถูกต้อง ค่าจะต้องเป็นตัวเลข</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>ค่าของข้อเสนอการส่งเสริมการขายไม่ถูกต้อง ค่าจะต้องเป็นตัวเลขตั้งแต่ 1 ถึง 99,999,999,999</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>ค่าของข้อเสนอการส่งเสริมการขายไม่ถูกต้อง ค่าจะต้องเป็นตัวเลข 1 - 100 เท่านั้น</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>โปรดใส่ค่าสำหรับ: เปอร์เซ็นต์</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>ค่าเปอร์เซ็นต์ไม่ถูกต้อง ค่าจะต้องเป็นตัวเลข</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>ค่าเปอร์เซ็นต์ไม่ถูกต้อง ค่าจะต้องเป็นตัวเลข 1 - 100 เท่านั้น</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>โปรดเลือกวิธีการจากรายการอย่างน้อยหนึ่งวิธีการ</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>เพิ่มเกณฑ์ซื้อ X</value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>เพิ่มเกณฑ์ลูกค้า</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>เพิ่มเกณฑ์ออร์เดอร์</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>ได้ส่วนลด Y</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>เพิ่มส่วนลดรายการสินค้า</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>เพิ่มส่วนลดออร์เดอร์</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>เพิ่มส่วนลดการขนส่งสินค้า</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>เพิ่มรายการอื่นๆ</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>รายการสินค้าทั้งหมด</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>ตั้งมูลค่า</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>ปรับใช้</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>ซื้อ X</value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>หากลูกค้าตรงตามเกณฑ์ทุกเกณฑ์</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>หากลูกค้าตรงตามเกณฑ์</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>ค้นหาลูกค้าที่บันทึกไว้</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>ลูกค้า</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>แก้ไขข้อมูลลูกค้า</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>เลือกลูกค้า</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>แก้ไขการค้นหาลูกค้าที่บันทึกไว้</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>สร้างการค้นหาลูกค้าใหม่</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>เลือกการค้นหาลูกค้าที่บันทึกไว้</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>ส่วนของลูกค้า</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>คำอธิบาย</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>ส่วนลด</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>ส่วนลดสูงสุดถึง</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>สูงสุดถึงยอดรวมส่วนลดของ</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>แก้ไข</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>การมีสิทธิ์</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.include.children" xml:space="preserve">
+    <value>รวมรายการย่อย</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>สินค้า</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>เพิ่มรายการสินค้า</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>แก้ไขรายการสินค้า</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>ค้นหาสินค้าที่บันทึกไว้</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>แก้ไขการค้นหารายการสินค้าที่บันทึกไว้</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>เลือกรายการสินค้า</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>เพิ่มการค้นหารายการสินค้าที่บันทึกไว้</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>สร้างการค้นหารายการสินค้าใหม่</value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>เลือกการค้นหารายการสินค้าที่บันทึกไว้</value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>ข้อจำกัด</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>-ไม่มี-</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>ออร์เดอร์</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>รายการสินค้าเพิ่มเติมของออร์เดอร์</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>แก้ไขส่วนลดออร์เดอร์</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>ส่วนลดออร์เดอร์ใหม่</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>ส่วนลดออร์เดอร์ใหม่ (% หรือจำนวนที่หักออก)</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>รายการสินค้าแก้ไขของออร์เดอร์</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>เพิ่มการค้นหารายการสินค้าที่บันทึกไว้ของออร์เดอร์</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>แก้ไขการค้นหารายการสินค้าที่บันทึกไว้ของออร์เดอร์</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>หากออร์เดอร์ตรงตามเกณฑ์ทุกเกณฑ์</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>หากออร์เดอร์ตรงตามเกณฑ์</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>แก้ไขยอดรวมออร์เดอร์</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>กำหนดยอดรวมออร์เดอร์</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>ออร์เดอร์ทั้งหมด</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>เปอร์เซ็นต์ที่หักออก</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>ดูตัวอย่าง</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>ข้อเสนอการส่งเสริมการขาย</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>การซื้อขั้นต่ำ</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>ตั้งมูลค่า</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>จัดส่งทั้งหมดที่เกี่ยวข้องไปยังรายการสินค้าทั้งหมดในตะกร้าใส่ของ</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>ส่วนลดการขนส่งสินค้า</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>แก้ไขส่วนลดการขนส่งสินค้า</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>ส่วนลดใหม่ของการขนส่งสินค้า</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>วิธีการขนส่ง</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>การค้นหาที่บันทึกไว้ใหม่</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>หน่วย</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>นี่คืออะไร</value>
+  </data>
+  <data name="text.none" xml:space="preserve">
+    <value>-ไม่มี-</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>เปิด</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>หรือ</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>ส่วนลดออร์เดอร์</value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>ยอดรวมออร์เดอร์</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>การค้นหาที่บันทึกไว้</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>ผลลัพธ์การค้นหา</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>ส่วนลดการขนส่งสินค้า</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>หน่วย</value>
+  </data>
+  <data name="error.form.locked" xml:space="preserve">
+    <value>แบบฟอร์มนี้ถูกล็อกโดย SuiteApp การส่งเสริมการขายขั้นสูงและไม่สามารถแก้ไขได้</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>ส่วนลดใหม่ของการขนส่งสินค้า</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+    <value>ลูกค้า</value>
+  </data>
+  <data name="label.subsidiary" xml:space="preserve">
+    <value>บริษัทในเครือ</value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;เลือกสิ่งหนึ่งต่อไปนี้:
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;ตั้งยอดรวมออร์เดอร์&lt;/b&gt; - เพื่อตั้งเกณฑ์ออร์เดอร์โดยยึดตามยอดรวมของออร์เดอร์หรือจำนวนรวมของหน่วยที่จัดซื้อ&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;เลือกรายการสินค้า&lt;/b&gt; - เพื่อตั้งเกณฑ์โดยยึดตามรายการสินค้าที่กำหนด&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;เลือกการค้นหารายการสินค้าที่บันทึกไว้&lt;/b&gt; - เพื่อเพิ่มเกณฑ์สำหรับรายการสินค้าในการค้นหารายการสินค้าที่บันทึกไว้เข้าในรายการ&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;สร้างการค้นหารายการสินค้าใหม่&lt;/b&gt; - เพื่อสร้างการค้นหารายการสินค้าที่บันทึกไว้ใหม่ เพื่อเพิ่มเข้าในรายการ&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+หมายเหตุ: คุณสามารถเลือกการค้นหาสาธารณะเป็นเกณฑ์ได้เท่านั้น&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;htm&gt;&lt;p&gt;เลือกสิ่งหนึ่งต่อไปนี้เพื่อตั้งส่วนลดการส่งเสริมการขาย:
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;เลือกรายการสินค้า&lt;/b&gt; - เลือกรายการสินค้าที่คุณต้องการเสนอส่วนลด คลิก เพิ่มรายการอื่น เพื่อเลือกรายการสินค้าเพิ่มเติม&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;เลือกการค้นหารายการสินค้าที่บันทึกไว้&lt;/b&gt; - เลือกรายการสินค้าที่บันทึกไว้ที่มีอยู่แล้ว ซึ่งมีรายการสินค้าที่คุณต้องการเสนอส่วนลด&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;สร้างการค้นหารายการสินค้าใหม่&lt;/b&gt; - สร้างการค้นหารายการสินค้าที่บันทึกไว้ใหม่ ซึ่งรวมถึงรายการสินค้าที่คุณต้องการเสนอส่วนลด&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+หมายเหตุ: คุณสามารถรวมการค้นหาสาธารณะเพื่อกำหนดส่วนลดได้เท่านั้น&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;เลือกรายการสินค้าที่เสนอให้ส่วนลดด้วยวิธีการใดวิธีการหนึ่งต่อไปนี้: 
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;เลือกรายการสินค้า&lt;/b&gt; - เลือกรายการสินค้าที่ต้องการให้ส่วนลด คลิกเพิ่มใหม่เพื่อเลือกรายการสิ้นค้าอื่นๆ&lt;/li&gt;    
+&lt;li&gt;&lt;b&gt;เลือกการค้นหาที่บันทึกไว้&lt;/b&gt; - เลือกการค้นหารายการสินค้าที่บันทึกไว้ที่มีอยู่ที่รวมรายการสินค้าที่เสนอให้ส่วนลด&lt;/li&gt;    
+&lt;li&gt;&lt;b&gt;สร้างการค้นหาที่บันทึกไว้ใหม่&lt;/b&gt; - สร้างการค้นหารายการสินค้าที่บันทึกไว้ที่มีอยู่ที่รวมรายการสินค้าที่เสนอให้ส่วนลด&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;   
+คุณสามารถเลือกการค้นหาสาธารณะเท่านั้นสำหรับกำหนดส่วนลด&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>เลือกส่วนลดออร์เดอร์ใหม่เพื่อเพิ่มส่วนลดออร์เดอร์สำหรับรายการส่งเสริมการขายนี้</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;htm&gt;&lt;p&gt;เลือกสิ่งหนึ่งต่อไปนี้: 
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;หากลูกค้าตรงตามเกณฑ์L&lt;/b&gt; - เลือกตัวเลือกนี้หากจะต้องระบุลูกค้าในการค้นหาเดียวหรือรายการที่คุณเพิ่มต่อไปนี้เพื่อมีสิทธิ์ในรายการเดียวเท่านั้น&lt;/li&gt;   
+&lt;li&gt;&lt;b&gt;หากลูกค้าตรงตามเกณฑ์ทุกเกณฑ์&lt;/b&gt; - เลือกตัวเลือกนี้หากจะต้องระบุลูกค้าในการค้นหาเดียวหรือรายการที่คุณเพิ่มต่อไปนี้เพื่อมีสิทธิ์ในรายการเดียวเท่านั้น&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;เลือกสิ่งหนึ่งต่อไปนี้: 
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;หากออร์เดอร์ตรงตามเกณฑ์L&lt;/b&gt; - เลือกตัวเลือกนี้ถ้าออร์เดอร์จะต้องตรงเกณฑ์หนึ่งอย่างที่เพิ่มต่อไปนี้เพื่อให้มีสิทธิ์&lt;/li&gt;   
+&lt;li&gt;&lt;b&gt;หากออร์เดอร์ตรงเกณฑ์ทุกเกณฑ์L&lt;/b&gt; - เลือกตัวเลือกนี้หากรายการส่งเสริมการขายมีสิทธิ์ หากตรงตามเกณฑ์ทั้งหมดของรายการสินค้า เลือกตัวเลือกนี้หากต้องระบุลูกค้าในการค้นหาทุกการค้นหาและรายการทุกรายการที่คุณเพิ่มต่อไปนี้เพื่อมีสิทธิ์สำหรับรายการส่งเสริมการขายนี้&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose one of the following:
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Select Customers&lt;/b&gt; - to select specific customers to add to the eligibility subtab.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Select Customer Saved Search&lt;/b&gt; - to add an existing customer saved search to the list.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+Note: Since these customers are defined by saved search criteria, the list of eligible customers can change.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>ทำเครื่องหมายในกล่องนี้ถ้ารายการสินค้าที่ให้ส่วนลดที่คุณเลือกจะนำไปใช้กับบริษัทในเครือขนาดย่อยด้วย คุณไม่สามารถแก้ไขฟิลด์นี้ได้</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Choose one of the following:
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Set Order Total&lt;/b&gt; - to set order criteria based on the order total or on the total number of units purchased.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Select Items&lt;/b&gt; - to set criteria based on specific items.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Select Item Saved Search&lt;/b&gt; - to add criteria for the items in an existing item saved search to the list.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Create New Item Search&lt;/b&gt; - to create a new customer saved search to add to the list&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+Note: You can only choose public searches for criteria.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;เลือกสิ่งหนึ่งต่อไปนี้: 
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;หากออร์เดอร์ตรงตามเกณฑ์&lt;/b&gt; - เลือกตัวเลือกนี้ถ้าออร์เดอร์จะต้องตรงเกณฑ์หนึ่งอย่างที่เพิ่มต่อไปนี้เพื่อให้มีสิทธิ์&lt;/li&gt;   
+&lt;li&gt;&lt;b&gt;หากออร์เดอร์ตรงเกณฑ์ทุกเกณฑ์&lt;/b&gt; - เลือกตัวเลือกนี้หากรายการส่งเสริมการขายมีสิทธิ์ หากตรงตามเกณฑ์ทั้งหมดของรายการสินค้า เลือกตัวเลือกนี้หากต้องระบุลูกค้าในการค้นหาทุกการค้นหาและรายการทุกรายการที่คุณเพิ่มต่อไปนี้เพื่อมีสิทธิ์สำหรับรายการส่งเสริมการขายนี้&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>เลือกลูกค้าที่มีสิทธิ์เพื่อใช้รายการส่งเสริมการขายนี้ เมื่อต้องการเลือกลูกค้ามากกว่าหนึ่งราย ให้กดปุ่ม CTRL ค้างไว้เมื่อทำการเลือก</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>คำอธิบายสำหรับการค้นหาที่บันทึกไว้แสดงอยู่ที่นี่</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>เลือกการค้นหาลูกค้าที่บันทึกไว้ที่ต้องการใช้ เพื่อกำหนดว่าลูกค้ารายใดมีสิทธิ์สำหรับรายการส่งเสริมการขายนี้ การค้นหาสาธารณะที่บันทึกไว้เท่านั้นที่ใช้เป็นเกณฑ์ได้</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>คำอธิบายสำหรับการค้นหาที่บันทึกไว้แสดงอยู่ที่นี่</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>เลือกรายการสินค้าที่ต้องการให้ส่วนลดกับรายการส่งเสริมการขายนี้ เพิ่มรายการสินค้าสำหรับส่วนลด คลิกเพิ่มใหม่</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>เลือกการค้นหาสินค้าที่บันทึกไว้ที่มีอยู่ที่รวมรายการสินค้าที่เสนอให้ส่วนลด</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;ใส่จำนวนสูงสุด (หน่วย) ของรายการสินค้าที่เสนอให้ส่วนลด&lt;/p&gt; 
+&lt;p&gt;ต้องยึดจำนวนสูงสุดของส่วนลดก่อนจำนวนส่วนลดที่คำนวณไว้ หากใช้คุณลักษณะหลายสกุลเงิน คุณสามารถป้อนส่วนลดสูงสุดในสกุลเงินใดก็ได้ที่ใช้ทำธุรกิจ&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>ใส่จำนวนสูงสุด (หน่วย) ของรายการสินค้าที่เสนอให้ส่วนลด</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>ใส่จำนวนส่วนลดหรือเปอร์เซ็นต์สำหรับรายการสินค้าที่เลือก</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;ให้ป้อนมูลค่าการจัดส่งที่คิดส่วนลดแล้ว หรือป้อนส่วนลดเป็นเปอร์เซ็นต์&lt;/p&gt;
+&lt;p&gt;ถ้าคุณป้อนมูลค่าสกุลเงิน สิ่งนี้จะถูกใช้เป็นมูลค่าการจัดส่ง ถ้าคุณป้อนเปอร์เซ็นต์ มูลค่าการขนส่งจากวิธีการจัดส่งนี้จะได้รับส่วนลดตามเปอร์เซ็นต์นี้&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>เลือกวิธีการจัดส่งที่ให้ส่วนลด หากป้อนเปอร์เซ็นต์ส่วนลด วิธีการจัดส่งที่เลือกจะได้รับส่วนลดตามเปอร์เซ็นต์นั้น หากใส่จำนวนสกุลเงิน จำนวนนี้จะใช้เป็นค่าจัดส่ง</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>ป้อนมูลค่าส่วนลดสูงสุดที่มีให้ตลอดการส่งเสริมการขายนี้</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>ใส่จำนวนส่วนลดสูงสุดที่มีสำหรับรายการส่งเสริมการขายนี้สำหรับออร์เดอร์หนึ่งออร์เดอร์</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>ใส่เปอร์เซ็นต์หรือส่วนลดจำนวนสกุลเงินสำหรับรายการส่งเสริมการขายนี้</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>เลือกรายการสินค้าที่ต้องการเพื่อเป็นเกณฑ์สำหรับยึดตาม เมื่อต้องการเลือกรายการสินค้ามากกว่าหนึ่ง ให้กดปุ่ม CTRL ค้างไว้เมื่อทำการเลือก</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>เลือกการค้นหารายการสินค้าที่บันทึกไว้ที่ต้องการใช้กำหนดเกณฑ์ออร์เดอร์สำหรับรายการส่งเสริมการขายนี้ การค้นหาที่บันทึกไว้ที่ใช้เป็นเกณฑ์ต้องเป็นการค้นหาสาธารณะ</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>เลือกการค้นหารายการสินค้าที่บันทึกไว้ที่ต้องการใช้กำหนดเกณฑ์ออร์เดอร์สำหรับรายการส่งเสริมการขายนี้ การค้นหาที่บันทึกไว้ที่ใช้เป็นเกณฑ์ต้องเป็นการค้นหาสาธารณะ</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>ใส่จำนวนการซื้อขั้นต่ำที่จำเป็นเพื่อให้รายการสินค้ามีสิทธิ์สำหรับรายการส่งเสริมการขายนี้</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;ให้ป้อนมูลค่าการจัดส่งที่คิดส่วนลดแล้ว หรือป้อนส่วนลดเป็นเปอร์เซ็นต์&lt;/p&gt;
+&lt;p&gt;ถ้าคุณป้อนมูลค่าสกุลเงิน สิ่งนี้จะถูกใช้เป็นมูลค่าการจัดส่ง ถ้าคุณป้อนเปอร์เซ็นต์ มูลค่าการขนส่งจากวิธีการจัดส่งนี้จะได้รับส่วนลดตามเปอร์เซ็นต์นี้&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>เลือกวิธีการจัดส่งที่คุณต้องการใช้กับส่วนลดนี้ ถ้าคุณป้อนส่วนลดเป็นเปอร์เซ็นต์ วิธีการจัดส่งที่คุณเลือกจะได้รับส่วนลดตามเปอร์เซ็นต์นั้น ถ้าคุณป้อนมูลค่าสกุลเงิน มูลค่านี้จะถูกใช้เป็นมูลค่าการขนส่ง</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>สินค้า</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>เลือกหนึ่งรายการหรือมากกว่าสำหรับการส่งสินค้าฟรี</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>เลือกวิธีการจัดส่งหนึ่งวิธีหรือมากกว่า</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>การส่งฟรีนำไปใช้กับสินค้าเฉพาะอย่างในตะกร้าใส่ของเท่านั้น</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>การส่งฟรีแบบเฉพาะเจาะจงรายการสินค้าใหม่</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>ส่งฟรี</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>แก้ไขการส่งฟรีแบบเฉพาะเจาะจงรายการสินค้า</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>และ</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;เลือกส่วนลดการจัดส่งสินค้าเพื่อเสนอส่วนลดการจัดส่งสินค้าสำหรับการส่งเสริมการขายนี้&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;เลือกการส่งฟรีแบบเฉพาะเจาะจงสินค้ารายการใหม่เพื่อเสนอการจัดส่งสินค้าฟรีสำหรับรายการสินค้าเฉพาะสำหรับการส่งเสริมการขายนี้ &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;หมายเหตุ: ถ้าเลือกวิธีการจัดส่งเดียวกันในส่วนลดการจัดส่งสินค้าและการส่งฟรีแบบเฉพาะเจาะจงรายการสินค้า การจัดส่งสินค้าฟรีจะนำไปใช้กับรายการสินค้าเฉพาะที่เลือก และส่วนลดการจัดส่งสินค้าจะนำไปใช้กับรายการสินค้าอื่น ๆ ที่เหลือ&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>โปรดเลือกสินค้าคงคลังหรือสินค้าชิ้นส่วนประกอบอย่างน้อยหนึ่งหนึ่งอย่างจากรายการ</value>
+  </data>
+  <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>โปรดเลือกวิธีการจัดส่งสินค้าจากรายการอย่างน้อยหนึ่งวิธีการ</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>สินค้าที่ส่งฟรีใช้ได้กับสินค้าคงคลังและรายการสินค้าชิ้นส่วนประกอบเท่านั้น ลบรายการสินค้าที่ไม่ใช่สินค้าคงคลังและไม่ใช่สินค้าที่เป็นชิ้นส่วนประกอบเพื่อดำเนินการต่อ</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>เลือกการค้นหารายการสินค้าที่บันทึกไว้เพื่อส่งฟรี</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>เลือกการค้นหาสินค้าที่บันทึกไว้ที่มีอยู่ที่รวมรายการสินค้าที่เสนอให้ส่งฟรี</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>แก้ไขการค้นหารายการสินค้าที่บันทึกไว้เพื่อส่งฟรี</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>เลือกการค้นหาที่บันทึกไว้อย่างน้อยหนึ่งรายการจากรายการเพื่อดำเนินการต่อ</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>โปรดเลือกค่าสำหรับ: รายการสินค้า, วิธีการจัดส่ง</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>โปรดเลือกค่าสำหรับ: การค้นหารายการสินค้าที่บันทึกไว้, วิธีการจัดส่ง</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>ไม่จำกัด</value>
+  </data>
+  
+</root>

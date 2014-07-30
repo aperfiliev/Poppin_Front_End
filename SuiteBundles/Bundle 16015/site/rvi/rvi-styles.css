@@ -1,0 +1,122 @@
+.rvi-items {
+    margin: 10px 0;
+    width: 195px
+}
+
+.rvi-items .clear {
+    clear: both;
+    floar: none
+}
+
+.rvi-items .title-recently-viewed {
+    font: bold 14px Arial, Helvetica, sans-serif;
+    color: #3679a0;
+    margin: 0 0 10px
+}
+
+.rvi-items .rvi_image a img {
+    max-width: 120px;
+    max-height: 120px;
+    border: none;
+    margin: 0 auto 5px
+}
+
+.rvi-items .rvi_image {
+    height: 120px
+}
+
+.rvi-items .rvi_list {
+    margin: 0;
+    padding: 0 10px;
+    width: 930px;
+}
+
+.rvi-items .rvi_list .rvi_item {
+    padding: 0;
+    margin: 15px 5px 0;
+    list-style: none;
+    text-align: center;
+    float: left;
+    width: 160px;
+}
+
+.rvi-items .rvi_item a {
+    height: auto; /* for Safari issue with the links not wrapping their child elements */
+}
+
+.rvi-items form td {
+    vertical-align: bottom !important
+}
+
+.rvi-items form > table {
+    margin-bottom: 5px
+}
+
+.rvi-items form select {
+    border: 1px solid #949699;
+    width: 70px
+}
+
+.rvi-items .rvi_qty {
+    float: left
+}
+
+.rvi-items .rvi_qty_addtocart {
+    margin-top: 5px
+}
+
+.rvi-items .rvi_options {
+    text-align: left
+}
+
+.rvi-items form input {
+    float: left;
+    border: 1px solid #CCC;
+    height: 26px;
+    padding: 0;
+    width: 35px;
+    text-align: center;
+    line-height: 25px /* Center text vertically in ie */
+}
+
+.rvi-items .rvi_addtocart {
+    float: left;
+    margin-left: 5px
+}
+
+.rvi-items .rvi_name a {
+    font-weight: bold;
+    text-decoration: none
+}
+
+.rvi-items .rvi_stkmessage {
+    font: normal 13px Arial;
+    color: red
+}
+
+.rvi-items .rvi_price_label {
+    margin: 5px 0;
+    font: normal 15px Arial;
+}
+
+.rvi-items .rvi_price_label span {
+    display: inline-block
+}
+
+.rvi-items .rvi_price_label > span:first-child {
+    font-weight: bold;
+    color: #3679A0
+}
+
+.rvi {
+    margin: 10px 0
+}
+
+.rvi-items .labelSpanEdit {
+    display: block;
+    width: 63px;
+}
+
+.rvi-items .add-cart-div{
+	margin-left: 8px
+}

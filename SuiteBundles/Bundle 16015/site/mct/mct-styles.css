@@ -1,0 +1,118 @@
+.mct {
+    width: 195px;
+    margin: 10px 0;
+    font: normal 13px Arial, Helvetica, sans-serif;
+}
+
+.mct .clear {
+    clear: all;
+    float: none
+}
+
+.mct .items {
+    margin: 15px 0 5px 0;
+    text-align: right
+}
+
+.mct .items > a {
+    margin: 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.mct .title-sidebar {
+    font: bold 14px Arial, Helvetica, sans-serif;
+    margin: 0 0 10px;
+    color: #3679A0
+}
+
+.mct .items .item-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left
+}
+
+.mct .item-list li {
+    border-bottom: 1px solid #cecece;
+    overflow: hidden;
+    padding: 5px 0
+}
+
+.mct .item-list li .cell-image {
+    width: 70px;
+    border: 1px solid #e6e7e1;
+    overflow: hidden;
+    float: left;
+    display: inline;
+}
+
+.mct .item-list li .cell-image img {
+    max-width: 70px
+}
+
+.mct .item-list li .cell-options {
+    margin: 3px 0
+}
+
+.mct .item-list li .cell-options * {
+    background: none;
+    font: normal 11px Arial, Helvetica, sans-serif;
+}
+
+.mct .item-list li .right-col {
+    float: left;
+    padding-left: 5px;
+    width: 110px
+}
+
+.mct .item-list li .cell-items {
+    margin: 10px 0 0;
+}
+
+.mct .item-list li .cell-name a {
+    font-weight: bold;
+}
+
+.mct .view {
+    margin: 5px 0;
+    text-align: center;
+}
+
+.mct .item-visible {
+    display: block;
+}
+
+.mct .view a {
+    font-weight: bold
+}
+
+.mct .item-list > li:hover .remove-item {
+    display: block
+}
+
+.mct .item-list > li {
+    position: relative
+}
+
+.mct .remove-item {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    display: none;
+    background: url(../mct/mct-remove.png);
+    width: 15px;
+    height: 15px
+}
+
+.mct .remove-item span {
+    display: none
+}
+
+.rollover_mct {
+    background: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    padding: 10px
+}

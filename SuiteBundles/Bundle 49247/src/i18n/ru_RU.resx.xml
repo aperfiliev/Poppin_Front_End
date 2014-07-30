@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>Удалить данную строку?</value>
+  </data>
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>Введите значение(я) для: суммы</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>Недопустимое значение суммы. Значения должны быть числами</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>Недопустимое значение суммы. Значения должны быть числами от 1 до 99 999 999 999</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>Выберите, по крайней мере, одного клиента из списка</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>Сохраненный поиск клиентов уже существует в этом подсписке</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>Вы выбрали позицию товара, которая не является позицией товара или позицией услуги в вашем выборе. Удалите ее, чтобы продолжить сохранение данной настройки.</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>Введите значение(я) для: лимита</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>Недопустимое значение лимита. Значения должны быть числами</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>Недопустимое значение лимита. Значения должны быть числами от 1 до 99 999 999 999</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>Введите значение(я) для: минимальной закупки</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>Недопустимое значение минимальной закупки. Значения должны быть числами.</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>Недопустимое значение минимальной закупки. Значения должны быть от 0 до 100 000 000 000</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>Введите значение(я) для: промо-предложения</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>Недопустимое значение промо-предложения. Значения должны быть числами</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>Недопустимое значение промо-предложения. Значения должны быть числами от 1 до 99 999 999 999</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>Недопустимое значение промо-предложения. Значения должны быть числами от 1 только до 100</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>Введите значение(я) для: процента</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>Недопустимое значение процента. Значения должны быть числами</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>Недопустимое значение процента. Значения должны быть числами от 1 только до 100</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>Выберите, по крайней мере, один метод из списка</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>Добавить критерий &quot;Купить X&quot;</value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>Добавить критерий для клиента</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>Добавить критерий для заказа</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>Получить скидку с Y</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>Добавить скидку на товар</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>Добавить скидку с заказа</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>Добавить скидку на отгрузку</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>Добавить еще</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>Вся номенклатура</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>Указать сумму</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>Купить X</value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>Если клиент соответствует всем критериям</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>Если клиент соответствует любому критерию</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>Сохраненный поиск клиентов</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>Клиенты</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>Редактировать клиентов</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>Выбрать клиентов</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>Редактировать сохраненный поиск клиентов</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>Создать новый поиск клиентов</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>Выбрать сохраненный поиск клиентов</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>Сегмент клиента</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>Скидка</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>Скидка до</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>До общей суммы скидки в размере</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>Соответствие критериям</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.include.children" xml:space="preserve">
+    <value>Включить дочерние объекты</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>Номенклатура</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>Добавить товар</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>Редактировать товар</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>Сохраненный поиск товаров</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>Редактировать сохраненный поиск товаров</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>Выбрать позиции товара</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>Добавить сохраненный поиск товаров</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>Создать новый поиск товаров</value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>Выбрать сохраненный поиск товаров</value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>Лимит</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>-Нет-</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>Заказ</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>Добавить товар к заказу</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>Редактировать скидку с заказа</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>Скидка с нового заказа</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>Скидка с нового заказа (% или сумма скидки)</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>Редактировать товар заказа</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>Добавить сохраненный поиск товаров заказа</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>Редактировать сохраненный поиск товаров заказа</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>Если заказ соответствует всем критериям</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>Если заказ соответствует любому критерию</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>Редактировать итоговую сумму заказа</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>Установить итоговую сумму заказа</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>Заказать все</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>Скидка в процентах</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>Предварит. просмотр</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>Предложение промо-акции</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>Миним. сумма закупки</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>Указать сумму</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>Доставка относится ко всем позициям в КОРЗИНЕ</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>Скидка на отгрузку</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>Редактировать скидку на отгрузку</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>Новая скидка на отгрузку</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>Способ отгрузки</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>Новый сохраненный поиск</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>Ед.</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>Что это такое?</value>
+  </data>
+  <data name="text.none" xml:space="preserve">
+    <value>-Нет-</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>Выкл</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>в</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>или</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>Скидка с заказа</value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>Итого заказ</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>Сохраненный поиск</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>Результаты поиска</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>Скидка на отгрузку</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>Ед.</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+    <value>Вы выбрали позицию товара, которая не является позицией товара или позицией услуги в вашем выборе. Удалите ее, чтобы продолжить сохранение данной настройки.</value>
+  </data>  
+  <data name="error.form.locked" xml:space="preserve">
+    <value>Эта форма заблокирована приложением Advanced Promotions SuiteApp, ее нельзя редактировать.</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>Новая скидка на отгрузку</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="label.subsidiary" xml:space="preserve">
+    <value>Дочерняя организация</value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Выберите одно из следующего:
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Настройте &quot;Сумму заказа&quot;&lt;/b&gt; - для настройки критериев заказа на основании суммы заказа или на основании общего количества купленных товаров.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Выберите позицию товара,&lt;/b&gt; - чтобы настроить критерии на основании конкретных товаров.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Выберите сохраненный поиск товара,&lt;/b&gt; - чтобы добавить критерии для позиций товара в существующем сохраненном поиске товаров к списку.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Создайте &quot;Новый поиск товара&quot;,&lt;/b&gt; - чтобы создать новый сохраненный поиск клиента, который будет добавлен к списку.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+Комментарий: Для критериев можно выбирать только общедоступные поиски.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;htm&gt;&lt;p&gt;Чтобы настроить промо-скидку, выберите один из следующих способов:
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Выберите товары&lt;/b&gt; - Выберите товары, на которые вы хотите предоставить скидку. Нажмите "Добавить еще", чтобы выбрать дополнительные товары.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Выберите &quot;Сохраненный поиск&quot;&lt;/b&gt; - Выберите существующий сохраненный поиск товара, в который включены товары, на которые вы предоставляете скидку.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Создайте новый &quot;Сохраненный поиск&quot;&lt;/b&gt; - Создайте сохраненный поиск товара, в который включены товары, на которые вы предоставляете скидку.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+Примечание: Для определения скидки можно выбрать только общедоступный поиск.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Выберите товар, на который предоставляется скидка, одним из следующих способов: 
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Выберите товары&lt;/b&gt; - Выберите товары, на которые вы хотите предоставить скидку. Нажмите &quot;Добавить еще&quot;, чтобы выбрать дополнительные товары.&lt;/li&gt;    
+&lt;li&gt;&lt;b&gt;Выберите &quot;Сохраненный поиск&quot;&lt;/b&gt; - Выберите существующий сохраненный поиск товара, в который включены товары, на которые вы предоставлете скидку.&lt;/li&gt;    
+&lt;li&gt;&lt;b&gt;Создайте новый &quot;Сохраненный поиск&quot;&lt;/b&gt; - Создайте сохраненный поиск товара, в который включены товары, на которые вы предоставляете скидку.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;   
+ Для определения скидки можно выбрать только общедоступный поиск.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>Выберите &quot;Скидку на новый заказ&quot; для добавления скидки на заказ к данной промо-акции.</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Выберите одно из следующего: 
+&lt;ul&gt;&lt;li&gt;&lt;b&gt; Eсли клиент соответствует любому критерию&lt;/b&gt; - Выберите этот вариант, если клиент должен быть включен только в один из поисков или списков, которые вы добавили ниже, чтобы удовлетворять критериям.&lt;/li&gt;   
+&lt;li&gt;&lt;b&gt;Если клиент соответствует любому критерию&lt;/b&gt; - Выберите этот вариант, если клиент должен быть включен во все поиски или списки, которые вы добавили ниже, чтобы удовлетворять критериям.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Выберите одно из следующего: 
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Eсли заказ соответствует любому критерию&lt;/b&gt; - Выберите этот вариант, если заказ должен быть включен только в один из поисков или списков, которые вы добавили ниже, чтобы удовлетворять критериям.&lt;/li&gt;   
+&lt;li&gt;&lt;b&gt;Если заказ соответствует всем критериям&lt;/b&gt; - Выберите этот вариант, если право воспользоваться промо-акцией предоставляется только в случае соответствия всем перечисленным критериям товара. Выберите этот вариант, если клиент&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+должен быть включен во все поиски или списки, которые вы добавили ниже, чтобы удовлетворять критериям.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Выберите одно из следующего:
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Выберите клиентов,&lt;/b&gt; чтобы выбрать конкретных клиентов для добавления на вложенную вкладку соответствия критериям.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Выберите &quot;Сохраненный поиск клиента&quot;,&lt;/b&gt; чтобы добавить существующий сохраненный поиск клиента в список.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+Комментарий: поскольку эти клиенты определены критериями сохраненного поиска, список соотвествующих критериям клиентов может изменяться.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>Это поле отмечено, если позиция скидки применяется к дочерним компаниям. Это поле нельзя редактировать.</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Выберите одно из следующего:
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Настройте &quot;Сумму заказа&quot;&lt;/b&gt; для настройки критериев заказа на основании суммы заказа или на основании общего количества купленных товаров.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Выберите позицию товара,&lt;/b&gt; чтобы настроить критерии на основании конкретных товаров.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Выберите сохраненный поиск товара,&lt;/b&gt; чтобы добавить критерии для позиций товара в существующем сохраненном поиске товаров к списку.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Создайте &quot;Новый поиск товара&quot;,&lt;/b&gt; чтобы создать новый сохраненный поиск клиента, который будет добавлен к списку.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+Комментарий: Для критериев можно выбирать только общедоступные поиски.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Выберите одно из следующего: 
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Eсли заказ соответствует любому критерию&lt;/b&gt; - Выберите этот вариант, если заказ должен быть включен только в один из поисков или списков, которые вы добавили ниже, чтобы удовлетворять критериям.&lt;/li&gt;   
+&lt;li&gt;&lt;b&gt;Если заказ соответствует всем критериям&lt;/b&gt; - Выберите этот вариант, если право воспользоваться промо-акцией предоставляется только в случае соответствия всем перечисленным критериям товара. Выберите этот вариант, если клиент должен быть включен во все поиски или списки, которые вы добавили ниже, чтобы удовлетворять критериям.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>Выберите клиентов, которые имеют право воспользоваться этой промо-акцией. Чтобы выбрать более одного клиента, нажмите и удерживайте клавишу CTRL в процессе выбора.</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>Описание сохраненного поиска приведено здесь.</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>Выберите &quot;Сохраненный поиск клиента&quot;, который вы хотите использовать для определения клиентов, имеющих право воспользоваться этой промо-акцией. Только общедоступные сохраненные поиски можно использовать для критериев.</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>Описание сохраненного поиска приведено здесь.</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>Выберите позицию товара, на которую вы предоставляете скидку по промо-акции. Для добавления дополнительных товаров к скидке нажмите &quot;Добавить еще&quot;.</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>Выберите существующий сохраненный поиск товара, в который включены товары, на которые вы предоставляете скидку.</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Введите максимальное количество позиций товара, на которое вы предоставляете скидку.&lt;/p&gt; 
+&lt;p&gt;Эта максимальная сумма скидки имеет преимущественную силу над вычисленной суммой скидки. Если вы используете функцию &quot;Множество валют&quot;, вы можете ввести максимальную скидку в любой применимой валюте.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>Введите максимальное количество позиций товара, на которое вы предоставляете скидку.</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>Введите сумму скидки или процентную ставку для выбранных товаров.</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Введите сумму отгрузки со скидкой или процент скидки.&lt;/p&gt;
+&lt;p&gt;Если вы вводите сумму в валюте, она используется в качестве стоимость отгрузки. Если вы вводите процент, сумма отгрузки из способа отгрузки будет уменьшена на этот процент.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>Выберите методы отгрузки, к которым применяется скидка. Если вы вводите процентное отношение, стоимость выбранного метода отгрузки уменьшается на указанный процент. Если вы вводите сумму в валюте, эта сумма используется в качестве стоимость отгрузки.</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>Введите максимальную сумму скидки, применимую к данной промо-акции.</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>Введите максимальную сумму скидки, применимую по данной промо-акции к одному заказу.</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>Введите процентное отношение или сумму скидки в валюте для данной промо-акции.</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>Выберите позиции товара, на которых вы хотите основывать критерии соответствия. Чтобы выбрать несколько товаров, нажмите и удерживайте клавишу CTRL в процессе выбора.</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>Выберите сохраненный поиск товара, который вы хотите использовать для определения критериев соответствия заказа промо-акции. Сохраненный поиск для критериев должен быть общедоступным поиском.</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>Введите минимальную сумму закупки, необходимую для того, чтобы заказ соответствовал критериям промо-акции.</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>Введите минимальную сумму закупки этих позиций товара, необходимую для того, чтобы заказ соответствовал критериям промо-акции.</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Введите сумму отгрузки со скидкой или процент скидки.&lt;/p&gt;
+&lt;p&gt;Если вы вводите сумму в валюте, она используется в качестве стоимость отгрузки. Если вы вводите процент, сумма отгрузки из способа отгрузки будет уменьшена на этот процент.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>Выберите методы отгрузки, к которым применяется скидка. Если вы вводите процентное отношение, стоимость выбранного метода отгрузки уменьшается на указанный процент. Если вы вводите сумму в валюте, эта сумма используется в качестве стоимость отгрузки.</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>Номенклатура</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>Выберите один или несколько товаров для бесплатной доставки.</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>Выберите один или несколько способов доставки.</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>На некоторые товары в КОРЗИНЕ действует бесплатная доставка.</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>Бесплатная доставка на новые товары</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>Бесплатная доставка</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>Изменить бесплатную доставку на новые товары</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>и</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Выберите опцию «Новая скидка на отгрузку», чтобы предложить скидку на отгрузку по этой промо-акции.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Выберите опцию «Бесплатная доставка на новые товары», чтобы предложить бесплатную доставку на конкретные товары по этой промо-акции. &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Примечание: если в опциях «Новая скидка на отгрузку» и «Бесплатная доставка на новые товары» выбран один и тот же метод доставки, бесплатная доставка будет применяться только к определенным товарам, а скидка на отгрузку — ко всем остальным.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>Выберите, по крайней мере, одну складскую единицу или составляющую сборки из списка.</value>
+  </data>
+  <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>Выберите, по крайней мере, один способ доставки из списка</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>Бесплатная доставка относится только к складским единицам или составляющим сборки. Для продолжения удалите позиции, не относящиеся к складским единицам или составляющим сборки.</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>Сохраненный поиск выбранных товаров для бесплатной доставки</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>Выберите существующий сохраненный поиск товаров, в который включены товары, на которые вы предоставляете бесплатную доставку.</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>Изменить сохраненный поиск выбранных товаров для бесплатной доставки</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>Для продолжения выберите, по крайней мере, один сохраненный поиск из списка.</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>Выберите значения для: товара, способа доставки.</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>Выберите значения для: сохраненного поиска товаров, способа доставки.</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>Нет предельного размера</value>
+  </data>
+
+</root>

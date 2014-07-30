@@ -1,0 +1,183 @@
+@charset "utf-8";
+/* CSS Document */
+.qvi_bg {
+    background: #2d1b2a;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.73;
+    z-index: 10000;
+}
+
+.qvi .clear {
+    clear: both;
+    float: none
+}
+
+.qvi {
+    width: 620px;
+    height: 400px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -310px;
+    margin-top: -200px;
+    padding: 25px 15px 0 0;
+    z-index: 10500;
+}
+
+.qvi .wrap1 {
+    padding: 0 0 10px;
+}
+
+.qvi .wrap2 {
+    background: #fff;
+    height: 380px;
+}
+
+.qvi .title {
+    margin: 0 10px 10px;
+    height: 32px;
+    line-height: 32px;
+    overflow: hidden;
+    font-size: 16px;
+    color: #000;
+    padding: 0 10px;
+}
+
+.qvi .image_price {
+    width: 260px;
+    float: left;
+    margin: 0 0 0 10px;
+}
+
+.qvi .image_price .media_image {
+    width: 260px;
+    height: 260px;
+    overflow: hidden;
+    margin: 0 0 10px;
+}
+
+.qvi .image_price .media_image img {
+    max-width: 260px;
+    max-height: 260px;
+}
+
+.qvi .image_price .price_av {
+    width: 230px;
+    height: 46px;
+    padding: 10px 15px;
+}
+
+.qvi .image_price .price_av .price {
+    color: #780832;
+    font-size: 16px;
+    margin: 0 0 5px;
+}
+
+.qvi .image_price .price_av .price span {
+    font-weight: bold;
+}
+
+.qvi .image_price .price_av .av {
+    font-size: 10px;
+    color: #780832;
+}
+
+.qvi .info {
+    width: 330px;
+    float: right;
+    margin: 0 10px 0 0;
+}
+
+.qvi .info .desc {
+    margin: 0 0 10px;
+    height: 260px;
+    overflow: hidden;
+}
+
+.qvi .info .desc .title_desc {
+    color: #da0271
+}
+
+.qvi .info .desc div {
+    overflow: auto;
+    height: 220px;
+}
+
+.qvi .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.qvi_btn {
+    cursor: pointer;
+    position: absolute;
+    z-index: auto;
+	width: 110px;
+    left: 50%;
+    top: 0px;
+	margin-left: -55px;
+}
+
+.qvi_hover {
+    position: relative;
+}
+
+.qvi #qvi_addtocart_btn, .qvi #qvi_addtocart_form input {
+    float: left
+}
+
+.qvi #qvi_addtocart_form form {
+    padding: 0;
+    margin: 0;
+    line-height: 0
+}
+
+.qvi #qvi_addtocart_form form > table {
+    margin-bottom: 5px
+}
+
+.qvi #qvi_addtocart_form {
+    height: 0
+}
+
+.qvi #qvi_addtocart_form input {
+    display: block;
+    height: 24px;
+    width: 30px;
+    line-height: 25px;
+    margin-right: 5px;
+    text-align: center
+}
+
+.qvi .description p {
+    margin: 0
+}
+
+.qvi .description .title_description {
+    font-size: 16px;
+    font-weight: bold
+}
+
+.qvi .description #qvi_description {
+    padding: 5px 10px;
+    font-size: 14px
+}
+
+#qvi_info {
+    position: fixed;
+    left: 0;
+	height:100%;
+	width:100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+	background: url(../common/ajax-loader.gif) no-repeat center center;
+    z-index: 10000;
+	display:none
+}

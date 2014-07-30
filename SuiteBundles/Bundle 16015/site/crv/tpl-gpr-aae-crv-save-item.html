@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Save Review</title>
+<script type="text/javascript" src="https://system.netsuite.com/c.TSTDRV262872/suitebundle10700/site/common/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="https://system.netsuite.com/c.TSTDRV262872/suitebundle10700/site/crv/crv-library.js"></script>
+<link rel="stylesheet" type="text/css" href="https://system.netsuite.com/c.TSTDRV262872/suitebundle10700/site/crv/crv-styles.css">
+<style>	
+#custrecord_gpr_aae_crv_rating {
+	display: none;
+}
+</style>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+	  var objOptions = {
+		starsWrapId: "crv_stars_wrap",
+		ratingInputId: "custrecord_gpr_aae_crv_rating"					
+	  };
+	  GPR_AAE_CRV.init(objOptions);
+	  GPR_AAE_CRV.initRatingLinks();	  
+	});		
+</script>
+</head>
+<body>
+<NLFORM>
+<NLSUBSIDIARY>
+<div class="crv">	
+<div class="wrap-box">
+  <label class="label-rating">Rating<span>*</span></label>
+  <div id="crv_stars_wrap" class="stars-wrap"> </div>
+</div>
+<br clear="">
+<div class="wrap-box">
+  <label class="label">Would you recommend this product?</span></label>
+  <NLCUSTRECORD_GPR_AAE_CRV_RECOMMEND>
+</div>
+<div class="wrap-box">
+  <label class="label">Reviewer<span>*</span></label>
+  <NLCUSTRECORD_GPR_AAE_CRV_REVIEWER>
+</div>
+<div class="wrap-box-anonymous" >
+  <input type="checkbox" id="crv_anonymous" onClick="javascript:GPR_AAE_CRV.setAnonymous(this);">
+  <label class="label" for="crv_anonymous">Keep me Anonymous</label>
+</div>
+<div class="wrap-box">
+  <label class="label">Title<span>*</span></label>
+  <NLCUSTRECORD_GPR_AAE_CRV_TITLE>
+</div>
+<div class="wrap-box">
+  <label class="label">Review<span>*</span></label>
+  <NLCUSTRECORD_GPR_AAE_CRV_COMMENTS>
+</div>
+<NLCUSTRECORD_GPR_AAE_CRV_RATING>
+<NLCUSTRECORD_GPR_AAE_CRV_ITEMID>
+<NLCUSTRECORD_GPR_AAE_CRV_CUSTOMERID>
+<NLCUSTRECORD_GPR_AAE_CRV_SITENUMBER>
+<NLCUSTRECORD_GPR_AAE_CRV_STATE>
+<br clear="">
+<input class="submit" type="submit" value="Submit">
+</div>
+</form>
+</body>
+</html>

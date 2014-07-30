@@ -1,0 +1,237 @@
+@charset "utf-8";
+/*!
+ * @author Gproxy Design Inc.
+ * @copyright (c) 2011, Gproxy Design Inc. All rights reserved.
+ * @version 2.5
+ *
+ * Gproxy doesn't allow to copy or change this code without Gproxy authorization.
+ * See http://www.gproxy.com/licenses/license01.pdf for the full license governing this code.
+ */
+/* #WLP GENERAL# */
+.wlp_text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#wlp_cnt_items .title-wish-list {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: 16px;
+    color: #999999;
+    padding: 5px;
+}
+
+.wlp-save #wlp_addcartbtn {
+    color: #666;
+    font: bold 12px Arial, Helvetica, sans-serif
+}
+
+.wlp-save .wlp-loginlnk {
+    color: #666;
+    font: normal 12px Arial, Helvetica, sans-serif
+}
+
+.wlp-save .wlp-loginlnk {
+    color: #666;
+    font-weight: bold
+}
+
+#wlp_cnt_items .smalltextnolink {
+    font-size: 8pt;
+    text-decoration: none;
+    color: #666666 !important;
+}
+
+.wlp_text a {
+    color: #0076A3;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.wlp_table {
+    width: 100%;
+    /*border-collapse: collapse;*/
+    border-spacing: 0;
+    border: 4px solid #F4F4F4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #333;
+}
+
+.wlp_table td {
+    vertical-align: top;
+}
+
+.wlp_table .wlp_odd_cell td {
+    background-color: #F8FAF1;
+}
+
+.wlp_table a {
+    color: #6C8C37;
+    display: block;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.wlp_table a.smalltextnolink {
+    display: inline
+}
+
+.wlp_table a:hover {
+    color: #009193;
+    text-decoration: none;
+}
+
+/* #WLP HEAD# */
+.wlp_table thead th {
+    background-color: #0076A3;
+    border-right: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: normal;
+    height: 25px;
+    padding: 2px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* #WLP CONTENT# */
+.wlp_table tbody td {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.wlp_table .wlp_col_1 img {
+    max-width: 80px;
+    max-height: 80px;
+    border: none;
+}
+
+.wlp_table .wlp_col_2 {
+    width: 150px;
+}
+
+.wlp_table .wlp_col_3 {
+    font-size: 10px;
+}
+
+.wlp_table .wlp_col_4 {
+    font-weight: bold;
+    width: 100px;
+    text-align: right;
+}
+
+.wlp_table .wlp_col_5 {
+    text-align: center;
+    width: 90px;
+}
+
+.wlp_table .wlp_col_6 {
+    text-align: right;
+}
+
+.wlp_table .wlp_col_6 form input {
+    border: 1px solid #999;
+    text-align: right;
+    width: 40px;
+    clear: both;
+    display: block;
+    float: right
+}
+
+.wlp_table .wlp_col_6 form table td {
+    border-bottom: none;
+    padding: 0;
+}
+
+.wlp_table .wlp_col_6 form > table {
+    float: right
+}
+
+.wlp_table .wlp_col_6 form select {
+    margin: 0 0 5px
+}
+
+.wlp_table .wlp_col_7 a {
+    width: 11px;
+    height: 11px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    background: url(../wlp/wlp_remove.gif) no-repeat left top;
+}
+
+.wlp_table .wlp_col_7 a span {
+    display: none;
+}
+
+/* #WLP FOOT# */
+.wlp_table tfoot {
+    border-top: 6px solid #0076A3;
+}
+
+.wlp_table tfoot .wlp_foot_clear {
+    padding: 5px;
+}
+
+.wlp_table tfoot .wlp_foot_clear a {
+    width: 104px;
+    height: 28px;
+    float: right;
+    display: block;
+    background: url(../wlp/wlp_clear.gif) no-repeat left top;
+}
+
+.wlp_table tfoot .wlp_foot_clear a span {
+    display: none;
+}
+
+.wlp_table tfoot .wlp_foot_addtocart {
+    padding: 5px;
+}
+
+.wlp_table tfoot .wlp_foot_addtocart a {
+    width: 98px;
+    height: 28px;
+    float: right;
+    display: block;
+    background: url(../wlp/wlp_addtocart.gif) no-repeat left top;
+}
+
+.wlp_table tfoot .wlp_foot_addtocart a span {
+    display: none;
+}
+
+.wlp_footlink {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.wlp_footlink a {
+    color: #0076A3;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.wlp_footlink a:hover {
+    text-decoration: underline;
+}
+
+/* #WLP ADD TO WISH LIST# */
+.wlp-addbtn a {
+    width: 107px;
+    height: 32px;
+    display: block;
+    background: url(../wlp/wlp_add.gif) no-repeat;
+}
+
+.wlp-addbtn a span {
+    display: none
+}

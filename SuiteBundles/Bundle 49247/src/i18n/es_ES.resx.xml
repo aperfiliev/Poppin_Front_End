@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="confirm.removerow" xml:space="preserve">
+    <value>¿Está seguro de que desea eliminar esta fila?</value>
+  </data>
+  <data name="error.amount.enter" xml:space="preserve">
+    <value>Introduzca valor(es) para: importe</value>
+  </data>
+  <data name="error.amount.nan" xml:space="preserve">
+    <value>Valor de importe no válido. Los valores deben ser numéricos.</value>
+  </data>
+  <data name="error.amount.range" xml:space="preserve">
+    <value>Valor de importe no válido. Los valores deben ser números del 1 al 99.999.999.999</value>
+  </data>
+  <data name="error.customer.select" xml:space="preserve">
+    <value>Seleccione al menos un cliente de la lista.</value>
+  </data>
+  <data name="error.customer.ss.exists" xml:space="preserve">
+    <value>Ya existe la búsqueda guardada del cliente en la sublista.</value>
+  </data>
+  <data name="error.limit.enter" xml:space="preserve">
+    <value>Introduzca valor(es) para: límite</value>
+  </data>
+  <data name="error.limit.nan" xml:space="preserve">
+    <value>Valor de límite no válido. Los valores deben ser numéricos.</value>
+  </data>
+  <data name="error.limit.range" xml:space="preserve">
+    <value>Valor de límite no válido. Los valores deben ser números del 1 al 99.999.999.999</value>
+  </data>
+  <data name="error.minpurch.enter" xml:space="preserve">
+    <value>Introduzca valor(es) para: compra mínima</value>
+  </data>
+  <data name="error.minpurch.nan" xml:space="preserve">
+    <value>Valor de compra mínima no válido. Los valores deben ser numéricos.</value>
+  </data>
+  <data name="error.minpurch.range" xml:space="preserve">
+    <value>Valor de compra mínima no válido. Los valores deben estar comprendidos entre 0 y 100.00.000.000</value>
+  </data>
+  <data name="error.offer.enter" xml:space="preserve">
+    <value>Introduzca valor(es) para: oferta promocional</value>
+  </data>
+  <data name="error.offer.nan" xml:space="preserve">
+    <value>Valor de oferta promocional no válido. Los valores deben ser numéricos.</value>
+  </data>
+  <data name="error.offer.range" xml:space="preserve">
+    <value>Valor de oferta promocional no válido. Los valores deben ser números del 1 al 99.999.999.999</value>
+  </data>
+  <data name="error.offer.range.percent" xml:space="preserve">
+    <value>Valor de oferta promocional no válido. Los valores solo pueden ser números del 1 al 100.</value>
+  </data>
+  <data name="error.percent.enter" xml:space="preserve">
+    <value>Introduzca valor(es) para: porcentaje</value>
+  </data>
+  <data name="error.percent.nan" xml:space="preserve">
+    <value>Valor de porcentaje no válido. Los valores deben ser numéricos.</value>
+  </data>
+  <data name="error.percent.range" xml:space="preserve">
+    <value>Valor de porcentaje no válido. Los valores solo pueden ser números del 1 al 100.</value>
+  </data>
+  <data name="error.shipping.select" xml:space="preserve">
+    <value>Seleccione al menos un método de la lista.</value>
+  </data>
+  <data name="help.form.buyx.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione una de las siguientes opciones:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Establecer total del pedido&lt;/b&gt; - tPara establecer criterios de pedido en función del total de pedidos o del número total de unidades adquiridas.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Seleccionar artículos&lt;/b&gt; - Para establecer criterios en función de artículos concretos.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Seleccionar búsqueda guardada de artículos&lt;/b&gt; - Para añadir a la lista los criterios de los artículos de una búsqueda de artículos guardada existente.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Crear búsqueda de artículos&lt;/b&gt; - Para crear una búsqueda de artículos guardada para añadir a la lista. &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Nota&lt;/b&gt;: solo puede elegir búsquedas públicas para los criterios.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.gety" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione una de las siguientes opciones para establecer el descuento promocional: &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Seleccionar artículos&lt;/b&gt; - Seleccione los artículos para los que va a ofrecer un descuento. Haga clic en Añadir para seleccionar artículos adicionales.&lt;/li&gt;&lt;li&gt;&lt;b&gt; Seleccionar búsqueda guardada de artículos&lt;/b&gt; - Seleccione una búsqueda guardada de artículos que incluya los artículos para los que ofrece el descuento.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Crear búsqueda guardada&lt;/b&gt; - Cree una búsqueda de artículos guardada que incluya los artículos para los que ofrece el descuento. &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Nota&lt;/b&gt;: solo puede incluir búsquedas guardadas públicas para definir descuentos.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Elija el artículo para el que desea ofrecer un descuento de una de las siguientes formas:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Seleccionar artículos&lt;/b&gt; - Seleccione los artículos para los que desea ofrecer un descuento. Haga clic en Añadir otro para seleccionar artículos adicionales.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Seleccionar búsqueda guardada&lt;/b&gt; - Seleccione una búsqueda de artículos guardada existente que incluya los artículos para los que desea ofrecer un descuento.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Crear búsqueda guardada&lt;/b&gt; -Cree una búsqueda de artículos guardada que incluya los artículos para los que desea ofrecer un descuento.&lt;/li&gt;&lt;/ul&gt;Solo podrá elegir búsquedas públicas para definir descuentos.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.discount.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione Nuevo descuento de pedido para añadir un descuento de pedido a esta promoción.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione una de las siguientes opciones:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Si el cliente cumple algún criterio&lt;/b&gt;Seleccione esta opción si un cliente debe estar incluido solo en una de las búsquedas o listas que añada más abajo para poder ser elegido.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Si el cliente cumple todos los criterios&lt;/b&gt;Seleccione esta opción si un cliente debe estar incluido en todas las búsquedas o listas que añada más abajo para que pueda tener derecho a esta promoción.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.order" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione una de las siguientes opciones:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Si el pedido cumple cualquier criterio&lt;/b&gt;Seleccione esta opción si un pedido solo debe cumplir uno de los criterios que añada más abajo para poder ser elegido.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Si el pedido cumple todos los criterios&lt;/b&gt;Seleccione esta opción si la promoción puede elegirse si se cumplen todos los criterios de artículo que incluya más abajo. Seleccione esta opción si un cliente debe estar incluido en todas las búsquedas y listas que añada más abajo para que pueda tener derecho a esta promoción.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.eligible.save.search" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Elija una de las siguientes opciones:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Seleccionar clientes&lt;/b&gt; - tpara seleccionar clientes concretos para añadir a la subpestaña de elegibilidad.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Seleccionar búsqueda de clientes guardada&lt;/b&gt; - para añadir una búsqueda de clientes guardada a la lista.&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Nota:&lt;/b&gt;dado que estos clientes están definidos mediante criterios de búsqueda guardados, la lista de clientes elegibles puede cambiar.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.include.children" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Esta casilla se encuentra seleccionada si el artículo con descuento se ha aplicado a las subsidiarias hija. Este campo no se puede editar.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione una de las siguientes opciones:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Establecer total del pedido&lt;/b&gt; - para establecer los criterios del pedido en función del total del pedido o del número total de unidades compradas.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Seleccionar artículos&lt;/b&gt; - para establecer criterios en función de artículos específicos.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Seleccionar búsqueda de artículos guardada&lt;/b&gt; - para añadir criterios para los artículos de una búsqueda de artículos guardada a la lista.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Crear búsqueda de artículos&lt;/b&gt; - para crear una búsqueda de clientes guardada para añadirla a la lista&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Nota:&lt;/b&gt; Solo podrá elegir búsquedas públicas en los criterios.&lt;/html&gt;</value>
+  </data>
+  <data name="help.form.order.criteria.apply" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione una de las siguientes opciones:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Si el pedido cumple cualquier criterio&lt;/b&gt; – Seleccione esta opción si un pedido solo debe cumplir uno de los criterios que añada más abajo para poder ser elegido.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Si el pedido cumple todos los criterios&lt;/b&gt; – Seleccione esta opción si la promoción puede elegirse si se cumplen todos los criterios de artículo que incluya más abajo. Seleccione esta opción si un cliente debe estar incluido en todas las búsquedas y listas que añada más abajo para que pueda tener derecho a esta promoción.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomer.customer" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Seleccione los clientes que pueden optar a esta promoción. Para seleccionar varios clientes, mantenga pulsada la tecla Ctrl mientras realiza las selecciones.  &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; La descripción de la búsqueda guardada se muestra aquí.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.addcustomerss.eligiblesearch" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione la búsqueda de clientes guardada que desea utilizar para definir los clientes que podrán optar a la promoción. Solo las búsquedas públicas guardadas pueden utilizarse en los criterios.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.customer.description" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;La descripción de la búsqueda guardada se muestra aquí.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione el artículo al que desee aplicar el descuento con esta promoción.  Para añadir artículos adicionales al descuento, pulse Añadir otro.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt; Seleccione una búsqueda de artículos guardada existente que incluya los artículos para los que desea ofrecer un descuento.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Introduzca el número máximo (unidades) de artículos para los que desea ofrecer el descuento.  Este importe de descuento máximo prevalece sobre el importe de descuento calculado. Si utiliza la función Múltiples monedas, puede introducir el descuento máximo en la moneda con la que trabaja.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.limit.short" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Introduzca el número máximo (unidades) de artículos para los que desea ofrecer el descuento.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.promo" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Introduzca el importe de descuento o el porcentaje para los artículos que ha seleccionado.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Either enter the discounted shipping amount or enter a discount percentage.&lt;/p&gt;&lt;p&gt;If you enter a currency amount, this is used as the shipping amount. If you enter a percentage, the shipping amount from the shipping method is discounted by this percentage.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione los métodos de envío a los que desea aplicar el descuento. Si introduce un descuento de porcentaje, el descuento de los métodos de envío que seleccione se hará en función de ese porcentaje. Si introduce un importe en moneda, se utilizará como importe de envío.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.discount.upto" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Introduzca el importe de descuento máximo disponible en esta promoción para un solo pedido.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.discount.max.amount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Introduzca el importe de descuento máximo disponible en esta promoción para un solo pedido.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.offer.percent" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Introduzca el porcentaje o el descuento en moneda para esta promoción.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.select" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione los artículos en los que desee basar los criterios de elegibilidad del pedido. Para seleccionar varios artículos, mantenga pulsada la tecla Ctrl mientras realiza las selecciones.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.item.ss" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione la búsqueda de artículos guardada que desea utilizar para definir los criterios de pedido para esta promoción. Las búsquedas guardadas utilizadas en los criterios deben ser búsquedas públicas.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Introduzca el importe de compra mínimo necesario para que un pedido pueda elegirse para esta promoción.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.order.minimum.purchase.item" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Introduzca el importe mínimo de compra de estos artículos necesario para que un pedido pueda elegirse para esta promoción.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.discount" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Either enter the discounted shipping amount or enter a discount percentage.&lt;/p&gt;&lt;p&gt;If you enter a currency amount, this is used as the shipping amount. If you enter a percentage, the shipping amount from the shipping method is discounted by this percentage.&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="help.popup.shipping.method" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Select the shipping methods you are applying this discount to. If you enter a percentage discount, the shipping methods you select are discounted by that percentage. If you enter a currency amount, this amount is used as the shipping amount &lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="label.add.criteria.buyx" xml:space="preserve">
+    <value>Añadir criterios de compra de X</value>
+  </data>
+  <data name="label.add.criteria.customer" xml:space="preserve">
+    <value>Añadir criterios de cliente</value>
+  </data>
+  <data name="label.add.criteria.order" xml:space="preserve">
+    <value>Añadir criterios de pedido</value>
+  </data>
+  <data name="label.add.discount.gety" xml:space="preserve">
+    <value>Obtener descuento Y</value>
+  </data>
+  <data name="label.add.discount.item" xml:space="preserve">
+    <value>Añadir descuento de artículo</value>
+  </data>
+  <data name="label.add.discount.order" xml:space="preserve">
+    <value>Añadir descuento de pedido</value>
+  </data>
+  <data name="label.add.discount.shipping" xml:space="preserve">
+    <value>Añadir descuento de envío</value>
+  </data>
+  <data name="label.addanother" xml:space="preserve">
+    <value>Añadir otro</value>
+  </data>
+  <data name="label.allitems" xml:space="preserve">
+    <value>Todos los artículos</value>
+  </data>
+  <data name="label.amount.set" xml:space="preserve">
+    <value>Fijar importe</value>
+  </data>
+  <data name="label.apply" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
+  <data name="label.buyx" xml:space="preserve">
+    <value>Comprar X</value>
+  </data>
+  <data name="label.cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="label.customer.criteria.all" xml:space="preserve">
+    <value>Si el cliente cumple todos los criterios</value>
+  </data>
+  <data name="label.customer.criteria.any" xml:space="preserve">
+    <value>Si el cliente cumple algún criterio</value>
+  </data>
+  <data name="label.customer.search" xml:space="preserve">
+    <value>Búsqueda guardada del cliente</value>
+  </data>
+  <data name="label.customers" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="label.customers.edit" xml:space="preserve">
+    <value>Editar clientes</value>
+  </data>
+  <data name="label.customers.select" xml:space="preserve">
+    <value>Seleccionar clientes</value>
+  </data>
+  <data name="label.customers.ss.edit" xml:space="preserve">
+    <value>Editar búsqueda de clientes guardada</value>
+  </data>
+  <data name="label.customers.ss.new" xml:space="preserve">
+    <value>Crear búsqueda de clientes</value>
+  </data>
+  <data name="label.customers.ss.select" xml:space="preserve">
+    <value>Seleccionar búsqueda de clientes guardada</value>
+  </data>
+  <data name="label.customersegment" xml:space="preserve">
+    <value>Segmento del cliente</value>
+  </data>
+  <data name="label.delete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="label.description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="label.discount" xml:space="preserve">
+    <value>Descuento</value>
+  </data>
+  <data name="label.discount.upto" xml:space="preserve">
+    <value>Descuento hasta</value>
+  </data>
+  <data name="label.discount.upto.total" xml:space="preserve">
+    <value>Hasta un descuento total de</value>
+  </data>
+  <data name="label.edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="label.eligibility" xml:space="preserve">
+    <value>Elegibilidad</value>
+  </data>
+  <data name="label.flatamount" xml:space="preserve">
+    <value>Flat Amount</value>
+  </data>
+  <data name="label.item" xml:space="preserve">
+    <value>Artículo</value>
+  </data>
+  <data name="label.item.add" xml:space="preserve">
+    <value>Añadir artículo</value>
+  </data>
+  <data name="label.item.edit" xml:space="preserve">
+    <value>Editar artículo</value>
+  </data>
+  <data name="label.item.savedsearch" xml:space="preserve">
+    <value>Búsqueda de artículos guardada</value>
+  </data>
+  <data name="label.item.savedsearch.edit" xml:space="preserve">
+    <value>Editar búsqueda de artículos guardada</value>
+  </data>
+  <data name="label.items.select" xml:space="preserve">
+    <value>Seleccionar artículos</value>
+  </data>
+  <data name="label.items.ss.add" xml:space="preserve">
+    <value>Añadir búsqueda guardada de artículovalue</value>
+  </data>
+  <data name="label.items.ss.new" xml:space="preserve">
+    <value>Crear búsqueda de artículos</value>
+  </data>
+  <data name="label.items.ss.select" xml:space="preserve">
+    <value>Seleccionar búsqueda de artículos guardada </value>
+  </data>
+  <data name="label.limit" xml:space="preserve">
+    <value>Límite</value>
+  </data>
+  <data name="label.name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="label.none" xml:space="preserve">
+    <value>-Ninguno-</value>
+  </data>
+  <data name="label.order" xml:space="preserve">
+    <value>Pedido</value>
+  </data>
+  <data name="label.order.additem" xml:space="preserve">
+    <value>Pedido Añadir artículo</value>
+  </data>
+  <data name="label.order.discount.edit" xml:space="preserve">
+    <value>Editar descuento de pedido</value>
+  </data>
+  <data name="label.order.discount.new" xml:space="preserve">
+    <value>Nuevo descuento de pedido</value>
+  </data>
+  <data name="label.order.discount.new.long" xml:space="preserve">
+    <value>Nuevo descuento de pedido (% o importe para descontar)</value>
+  </data>
+  <data name="label.order.edititem" xml:space="preserve">
+    <value>Pedido Editar artículo</value>
+  </data>
+  <data name="label.order.itemsearch.add" xml:space="preserve">
+    <value>Pedido Añadir búsqueda guardada de artículo</value>
+  </data>
+  <data name="label.order.itemsearch.edit" xml:space="preserve">
+    <value>Pedido Editar búsqueda guardada de artículo</value>
+  </data>
+  <data name="label.order.match.all" xml:space="preserve">
+    <value>Si el pedido cumple todos los criterios</value>
+  </data>
+  <data name="label.order.match.any" xml:space="preserve">
+    <value>Si el pedido cumple cualquier criterio</value>
+  </data>
+  <data name="label.order.shipping.new" xml:space="preserve">
+    <value>Nuevo descuento de envío</value>
+  </data>
+  <data name="label.order.total.edit" xml:space="preserve">
+    <value>Editar total del pedido</value>
+  </data>
+  <data name="label.order.total.set" xml:space="preserve">
+    <value>Establecer total del pedido</value>
+  </data>
+  <data name="label.orderall" xml:space="preserve">
+    <value>Pedido Todo</value>
+  </data>
+  <data name="label.percentoff" xml:space="preserve">
+    <value>Porcentaje para descontar</value>
+  </data>
+  <data name="label.preview" xml:space="preserve">
+    <value>Vista previa</value>
+  </data>
+  <data name="label.promo.offer" xml:space="preserve">
+    <value>Oferta promocional</value>
+  </data>
+  <data name="label.purchase.min" xml:space="preserve">
+    <value>Compra mínima</value>
+  </data>
+  <data name="label.remove" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="label.save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="label.setamount" xml:space="preserve">
+    <value>Fijar importe</value>
+  </data>
+  <data name="label.shipping.applycart" xml:space="preserve">
+    <value>Envío aplicable a todos los artículos del CARRITO</value>
+  </data>
+  <data name="label.shipping.discount" xml:space="preserve">
+    <value>Descuento de envío</value>
+  </data>
+  <data name="label.shipping.discount.edit" xml:space="preserve">
+    <value>Editar descuento de envío</value>
+  </data>
+  <data name="label.shipping.discount.new" xml:space="preserve">
+    <value>Nuevo descuento de envío</value>
+  </data>
+  <data name="label.shipping.method" xml:space="preserve">
+    <value>Método de envío</value>
+  </data>
+  <data name="label.ss.new" xml:space="preserve">
+    <value>Nueva búsqueda guardada</value>
+  </data>
+  <data name="label.title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="label.units" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="label.whatsthis" xml:space="preserve">
+    <value>¿Qué es esto?</value>
+  </data>
+  <data name="text.none" xml:space="preserve">
+    <value>-Ninguno-</value>
+  </data>
+  <data name="text.off" xml:space="preserve">
+    <value>Desactivado</value>
+  </data>
+  <data name="text.on" xml:space="preserve">
+    <value>activado</value>
+  </data>
+  <data name="text.or" xml:space="preserve">
+    <value>o</value>
+  </data>
+  <data name="text.order.discount" xml:space="preserve">
+    <value>Descuento de pedido</value>
+  </data>
+  <data name="text.order.total" xml:space="preserve">
+    <value>Total del pedido</value>
+  </data>
+  <data name="text.savedsearch" xml:space="preserve">
+    <value>Búsqueda guardada</value>
+  </data>
+  <data name="text.search.results" xml:space="preserve">
+    <value>Buscar resultados</value>
+  </data>
+  <data name="text.shipping.discount" xml:space="preserve">
+    <value>Descuento de envío</value>
+  </data>
+  <data name="text.units" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="error.elig.order.item" xml:space="preserve">
+    <value>Ha seleccionado un artículo que no es un artículo de producto o un artículo de servicio. Elimínelo para poder guardar esta configuración.</value>
+  </data>
+  <data name="error.discount.item" xml:space="preserve">
+    <value>Ha seleccionado un artículo que no es un artículo de producto o un artículo de servicio. Elimínelo para poder guardar esta configuración.</value>
+  </data>
+    <data name="label.include.children" xml:space="preserve">
+    <value>Incluir hijos</value>
+  </data>
+  <data name="error.form.locked" xml:space="preserve">
+    <value>Esta pantalla está bloqueada por la SuiteApp Promociones avanzadas y no se puede editar.</value>
+  </data>
+  <data name="label.customer" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="label.retrieve.item.savedsearch" xml:space="preserve">
+    <value>Artículo</value>
+  </data>
+  <data name="error.item" xml:space="preserve">
+    <value>Please select at least one item from the list</value>
+  </data>
+  <data name="help.popup.isfs.item" xml:space="preserve">
+    <value>Seleccione uno o varios artículos para envío gratuito.</value>
+  </data>
+  <data name="help.popup.isfs.method" xml:space="preserve">
+    <value>Seleccione uno o varios métodos de envío.</value>
+  </data>
+  <data name="label.isfs.applycart" xml:space="preserve">
+    <value>El envío gratuito corresponde a artículos específicos del CARRITO.</value>
+  </data>
+  <data name="label.shipping.isfree.new" xml:space="preserve">
+    <value>Nuevo envío gratuito de artículo específico</value>
+  </data>
+  <data name="label.freeshipping" xml:space="preserve">
+    <value>Envío gratuito</value>
+  </data>
+  <data name="label.shipping.isfree.edit" xml:space="preserve">
+    <value>Edite Envío gratuito de artículo específico</value>
+  </data>
+  <data name="text.and" xml:space="preserve">
+    <value>and</value>
+  </data>
+  <data name="help.form.discount.shipping" xml:space="preserve">
+    <value>&lt;html&gt;&lt;p&gt;Seleccione Nuevo descuento de envío para ofrecer envíos con descuento para esta promoción.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Seleccione Nuevo envío gratuito de artículo específico para ofrecer el envío gratuito de artículos específicos para esta promoción. &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Nota: Si se selecciona el mismo método de envío en Descuento de envío y Envío gratuito de artículo específico, el envío gratuito solo se aplicará a artículos específicos seleccionados, mientras que el envío con descuento se aplicará a otros artículos.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="error.item.freeship.select" xml:space="preserve">
+    <value>Seleccione al menos un artículo de inventario o de ensamblaje de la lista</value>
+  </data>
+  <data name="error.shipping.freeship.select" xml:space="preserve">
+    <value>Seleccione al menos un método de envío de la lista.</value>
+  </data>
+  <data name="error.item.freeship.invalid" xml:space="preserve">
+    <value>El envío gratuito de artículos solo se aplica a artículos de inventario y ensamblaje. Para continuar, elimine artículos que no son de inventario ni de ensamblaje.</value>
+  </data>
+  <data name="label.shipping.item.search.free.new" xml:space="preserve">
+    <value>Seleccione Búsqueda guardada de artículo para envío gratuito</value>
+  </data>
+  <data name="help.popup.discount.item.ssisfs" xml:space="preserve">
+    <value>Seleccione una búsqueda de artículos guardada y existente que incluya los artículos para los que ofrece un envío gratuito.</value>
+  </data>
+  <data name="label.shipping.item.search.free.edit" xml:space="preserve">
+    <value>Edite Búsqueda guardada de artículo para envío gratuito</value>
+  </data>
+  <data name="error.shipping.freeship.select_ss" xml:space="preserve">
+    <value>Para continuar, seleccione al menos una búsqueda guardada de la lista.</value>
+  </data>
+  <data name="error.item.freeship.noselection" xml:space="preserve">
+    <value>Seleccione valores para: Artículo, Método de envío.</value>
+  </data>
+  <data name="error.item.freeship.noselection_ss" xml:space="preserve">
+    <value>Seleccione valores para: Búsqueda guardada de artículo, Método de envío.</value>
+  </data>
+  <data name="text.nolimit" xml:space="preserve">
+    <value>Ningún límite</value>
+  </data>
+</root>

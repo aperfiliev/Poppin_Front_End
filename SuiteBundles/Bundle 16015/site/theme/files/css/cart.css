@@ -1,0 +1,60 @@
+#carttable {
+    border-collapse: collapse;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+#carttable .listheadernosort {
+    background: url(../images_site/ns-cartbg.gif) repeat-x center top;
+    color: #FFF;
+    height: 30px;
+    line-height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0 5px;
+    text-align: left;
+}
+
+#carttable .extcartborder, 
+#carttable .extcartbordershaded,
+#carttable .extcartbordershaded,
+#carttable .extcarttotal,
+#carttable .extcarttotalshaded {
+    border-color: #CCC;
+	padding: 5px 0
+}
+
+#carttable td, .bglt {
+    background: #FFF
+}
+
+#carttable .smalltext {
+    text-align: left;
+}
+
+#carttable .texttable {
+    border: 1px solid #ccc;
+    padding: 3px;
+    text-align: left;
+}
+
+#carttable .texttablectr {
+    border: 1px solid #ccc;
+    padding: 3px;
+    text-align: center;
+}
+
+#carttable .texttablert {
+    border: 1px solid #ccc;
+    padding: 3px;
+    text-align: left;
+}
+
+#checkout, #cancel, #recalc {
+    margin: 0 5px 0 0;
+    color: #fff;
+    background-color: #3679a0;
+    border: 1px solid #999;
+}

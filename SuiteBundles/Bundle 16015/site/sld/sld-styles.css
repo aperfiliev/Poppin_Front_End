@@ -1,0 +1,10 @@
+/* slide home (required script) */
+.slide-wrap { margin: 0 0 10px; width: 650px; height: 350px; position: relative; overflow: hidden; }
+.slide-wrap ul { margin: 0; padding: 0; list-style: none; }
+.slide-wrap .slide {}
+.slide-wrap .slide li { position: absolute; width: 650px; height: 350px; left: 0; top: 0; z-index: 1; }
+.slide-wrap .slide li.active { z-index: 2; }
+
+.slide-wrap .navigation { position: absolute; right: 10px; bottom: 10px; z-index: 3; }
+.slide-wrap .navigation li { float: left; cursor: pointer; background: #666; margin: 0 0 0 10px; width: 12px; height: 12px; text-indent: -999px; overflow: hidden; }
+.slide-wrap .navigation li.active { background: #333; }

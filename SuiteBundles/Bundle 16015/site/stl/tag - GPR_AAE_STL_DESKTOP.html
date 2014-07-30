@@ -1,0 +1,24 @@
+<div id="zipcode">
+	<div id="ziptext">ZIP Code:</div>
+	<input id="sl_zip" name="sl_zip" type="text" size="10">
+</div>
+<div id="radius">
+	<div id="radiustext">Radius:</div>
+	<select id="sl_range" name="sl_range">
+		<option value="5">5 miles</option>
+		<option value="10">10 miles</option>
+		<option value="20">20 miles</option>
+		<option value="50">50 miles</option>
+	</select>
+</div>
+<div id="sendbutton">
+	<button id="sl_submit" class="bgbutton" name="sl_submit">Update</button>
+</div>
+<div id="map_canvas" ></div>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;language=en" type="text/javascript"></script>
+<script type="text/javascript" src="/c.<NLCOMPANYID>/<GPR_AAE_BUNDLENAME>/site/stl/stl-library-desktop.js"></script>
+<script type="text/javascript">
+ jQuery(document).ready(function() {
+		GPR_STL.init();
+	});
+</script>

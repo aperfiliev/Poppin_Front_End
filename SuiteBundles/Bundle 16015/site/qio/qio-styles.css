@@ -1,0 +1,130 @@
+.qio {
+    margin: 10px 0
+}
+
+.qio h4 {
+    font: bold 14px Arial, Helvetica, sans-serif;
+    margin: 0 0 10px;
+    color: #3679A0
+}
+
+.qio .adddelrow {
+    font-size: 12px;
+}
+
+.qio .autocomplete-w1 {
+    background: url(../qio/qio-shadow.png) no-repeat bottom right;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 8px 0 0 6px; /* IE6 fix: */
+    _background: none;
+    _margin: 0;
+}
+
+.qio .autocomplete {
+    font: normal 12px / 18px Arial, Helvetica, sans-serif;
+    border: 1px solid #999;
+    background: #FFF;
+    cursor: default;
+    text-align: left;
+    max-height: 350px;
+    margin: -6px 6px 6px -6px; /* IE6 specific: */
+    _height: 350px;
+    _margin: 0;
+    _overflow-x: hidden;
+}
+
+.qio .autocomplete .selected {
+    background: #F0F0F0;
+}
+
+.qio .autocomplete img {
+    max-width: 46px;
+    max-height: 46px;
+    position: absolute;
+    padding: 5px;
+}
+
+.qio .autocomplete a {
+    padding-left: 61px;
+}
+
+.qio .autocomplete .search-title {
+    background-color: #666;
+    color: #FFF;
+}
+
+.qio .autocomplete .view-more {
+    background-color: #666;
+    color: #FFF;
+    text-align: right;
+}
+
+.qio .autocomplete .view-more a {
+    color: #FFF;
+}
+
+.qio .autocomplete p {
+    font-size: 10px;
+}
+
+.qio .autocomplete div {
+    padding: 2px 5px;
+}
+
+.qio .autocomplete strong {
+    font-weight: normal;
+    color: #3399FF;
+}
+
+.qio .label {
+    font: normal 12px / 18px Arial, Helvetica, sans-serif;
+    display: inline-block;
+    margin: 5px 0
+}
+
+.qio .label.last {
+    margin-left: 72px
+}
+
+.qio .list, .qio .list li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    clear: both
+}
+
+.qio .list input {
+    float: left;
+    margin-bottom: 5px
+}
+
+.qio .qty {
+    text-align: right;
+    width: 40px;
+}
+
+.qio .search {
+    width: 127px;
+    margin-right: 5px
+}
+
+.qio .addtocart {
+    clear: both;
+}
+
+.qio .addtocart img {
+    margin-left: 95px;
+}
+
+.qio .list li > a {
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    height: 11px;
+    line-height: 0;
+    padding: 9px 0 0 5px;
+    text-decoration: none
+}

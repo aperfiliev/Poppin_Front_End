@@ -1,0 +1,217 @@
+.imb .zoomPad {
+    position: relative;
+    float: left;
+    z-index: 99;
+    cursor: crosshair;
+}
+
+.imb .zoomPreload {
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+    color: #333;
+    font-size: 12px;
+    font-family: Tahoma;
+    text-decoration: none;
+    border: 1px solid #CCC;
+    background-color: white;
+    padding: 8px;
+    text-align: center;
+    background-image: url(../common/zoomloader.gif);
+    background-repeat: no-repeat;
+    background-position: 43px 30px;
+    z-index: 110;
+    width: 90px;
+    height: 43px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    *width: 100px;
+    * height: 49px;
+}
+
+.imb .zoomPup {
+    overflow: hidden;
+    background-color: #FFF;
+    -moz-opacity: 0.6;
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
+    z-index: 120;
+    position: absolute;
+    border: 1px solid #CCC;
+    z-index: 101;
+    cursor: crosshair;
+}
+
+.imb .zoomOverlay {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: #FFF;
+    /*opacity:0.5;*/
+    z-index: 5000;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 101;
+}
+
+.imb .zoomWindow {
+    position: absolute;
+    left: 110%;
+    top: 40px;
+    background: #FFF;
+    z-index: 6000;
+    height: auto;
+    z-index: 10000;
+    z-index: 110;
+}
+
+.imb .zoomWrapper {
+    position: relative;
+    border: 1px solid #999;
+    z-index: 110;
+}
+
+.imb .zoomWrapperTitle {
+    display: block;
+    background: #999;
+    color: #FFF;
+    height: 18px;
+    line-height: 18px;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    font-size: 10px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 120;
+    -moz-opacity: 0.6;
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
+}
+
+.imb .zoomWrapperImage {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    z-index: 110;
+}
+
+.imb .zoomWrapperImage img {
+    border: 0px;
+    display: block;
+    position: absolute;
+    z-index: 101;
+    max-height: none !important;
+    max-width: none !important
+}
+
+.imb .zoomPad > img {
+    max-height: 300px;
+    max-width: 300px
+}
+
+.imb .zoomPad {
+    height: 300px
+}
+
+.imb .zoomIframe {
+    z-index: -1;
+    filter: alpha(opacity = 0);
+    -moz-opacity: 0.80;
+    opacity: 0.80;
+    position: absolute;
+    display: block;
+}
+
+.imb .clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.imb .clearfix {
+    display: block;
+    zoom: 1
+}
+
+.imb ul#thumblist {
+    display: block;
+}
+
+.imb ul#thumblist li {
+    float: left;
+    margin-right: 2px;
+    list-style: none;
+}
+
+.imb ul#thumblist li a {
+    display: block;
+    border: 1px solid #CCC;
+}
+
+.imb ul#thumblist li a img {
+	max-width: 110px;
+	max-height: 110px
+}
+
+.imb ul#thumblist li a.zoomThumbActive {
+    border: 1px solid #999;
+}
+
+.imb .jqzoom img {
+    border: 1px solid #666;
+}
+
+/*********************************************************
+ / When clicking on thumbs jqzoom will add the class
+ / "zoomThumbActive" on the anchor selected
+ /*********************************************************/
+/* Popup styles */
+.bgpopup {
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+    background: #8e9679;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 990;
+}
+
+.imb .popup {
+    border: 3px solid #0076A3;
+    background: #FFF;
+    position: fixed;
+    z-index: 999;
+}
+
+.imb .popup .popup-close {
+    background: url(../imb/imb_close.png) no-repeat left transparent;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    position: absolute;
+    right: -15px;
+    text-indent: -100000px;
+    top: -15px;
+    width: 30px;
+}
+
+.imb .popup .gpr-loading {
+    padding-top: 90px;
+    text-align: center
+}
+
+.imb .popup .gpr-loading img {
+    margin: 0 auto
+}
+* /
