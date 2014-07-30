@@ -1,1 +1,0 @@
-BDQ.currentTemplatesUrl = '/Web Site Hosting Files/Live Hosting Files/Poppin/SocialMediaLogin2/js/SocialMediaAllScripts-0146f14a08d8.js';
