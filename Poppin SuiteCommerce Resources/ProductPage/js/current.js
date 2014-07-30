@@ -1,0 +1,1 @@
+BDQ.currentTemplatesUrl = '/Web Site Hosting Files/Live Hosting Files/Poppin/pp-sc-resources/ProductPage/js/ProductPageScripts-01475817f9bc.js';

@@ -1,0 +1,1 @@
+BDQ.currentTemplatesUrl = '/Web Site Hosting Files/Live Hosting Files/Poppin/pp-sc-resources/JqueryAll/jQueryAll-014733dc3a85.js';
