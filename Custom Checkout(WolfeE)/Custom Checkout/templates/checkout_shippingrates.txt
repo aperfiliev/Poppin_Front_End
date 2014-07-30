@@ -1,6 +1,0 @@
-{for method in obj.methods}
-<div class="f-row f-cb">
-	<input id="shipmethod-${method.shipmethod}-${method.shipcarrier}" type="radio" name="shipmethod" value="${method.shipmethod}-${method.shipcarrier}" {if _m.isShippingMethodSelected(method)}checked{/if} onclick='BDK.fire("customShippingMethodSelected", {shipmethod:"${method.shipmethod}", shipcarrier:"${method.shipcarrier}"});return false;' />
-	<label for="shipmethod-${method.shipmethod}-${method.shipcarrier}">${shipmethodItem(method)}</label>
-</div>
-{/for}

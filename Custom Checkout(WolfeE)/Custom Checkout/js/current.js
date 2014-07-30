@@ -1,1 +1,0 @@
-BDQ.currentTemplatesUrl = '/checkout/js/site-013715186472.js';
