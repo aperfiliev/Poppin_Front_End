@@ -1,0 +1,1 @@
+BDQ.currentTemplatesUrl = '/Web Site Hosting Files/Live Hosting Files/Poppin/SocialMediaLogin2/js/Cart/CartScripts-0147627047ef.js';

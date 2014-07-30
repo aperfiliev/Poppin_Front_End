@@ -14,6 +14,12 @@ var LoginLib = {
 						 "summary": {} };
 
 		var order = nlapiGetWebContainer().getShoppingSession().getOrder().getFieldValues();
+		order.summary.total = order.summary.subtotal - order.summary.discounttotal + order.summary.shippingcost+order.summary.taxtotal-order.summary.giftcertapplied;
+		order.summary.total_formatted = "$"+order.summary.total.toFixed(2);
+	//if(order.summary.taxtotal ==0 && /*order.summary.shippingcost == 0 &&*/ order.summary.giftcertapplied == 0){
+	//		order.summary.total = order.summary.subtotal - order.summary.discounttotal + order.summary.shippingcost;
+	//		order.summary.total_formatted = "$"+order.summary.total.toFixed(2);
+	//	}
 		if (order != null)
 		{
 			var items = order.items;
@@ -26,12 +32,14 @@ var LoginLib = {
 				for(var i=0; i<items.length; i++)
 				{
 					retobj.totalfound += items[i].quantity;
+					var name = (items[i].parent == null) ? items[i].storedisplayname2 : items[i].salesdescription;
+					var storeurl = (items[i].parent == null) ? items[i].canonicalurl : '/s.nl/c.3363929/n.1/it.A/id.'+items[i].parentid+'/.f';
 					var price_discounted = items[i].rate - (items[i].promotiondiscount / items[i].quantity);
 					price_discounted = '$' + price_discounted.toFixed(2);
 					var item = {'id' : items[i].internalid, 
 								'storedisplaythumbnail' : items[i].storedisplaythumbnail, 
-								'storeurl' : items[i].canonicalurl, 
-								'name' : items[i].storedisplayname2, 
+								'storeurl' : storeurl, 
+								'name' : name, //items[i].displayname, 
 								'quantity' : items[i].quantity, 
 								'quantityavailable': items[i].quantityavailable,
 								'orderitemid' : items[i].orderitemid, 
@@ -42,18 +50,21 @@ var LoginLib = {
 								'promotionamount' : items[i].promotionamount_formatted,
 								'options' : items[i].options,
 								'isavailable' : items[i].isavailable, 
-								'isdropshipitem': items[i].isdropshipitem};
+								'isdropshipitem': items[i].isdropshipitem,
+								'itemtype' : items[i].itemtype};
 					retobj.items[i] = item;
 				}
 			}
 
 			if (promocodes && promocodes.length > 0)
 			{
+nlapiLogExecution( 'DEBUG', 'promocode',  JSON.stringify(promocodes[0]));
 				retobj.promocode = promocodes[0];
-				if(retobj.promocode.isvalid == 'T')
-				{
-					retobj.promocode.description = LoginLib.getPromoDescription(retobj.promocode.promocode);
-				}
+				
+				//if(retobj.promocode.isvalid == 'T')
+				//{
+					retobj.promocode.description = LoginLib.getPromoDescription(retobj.promocode);
+				//}
 			}
 
 			if (giftcertificates && giftcertificates.length > 0) {
@@ -94,21 +105,20 @@ var LoginLib = {
 		var helpresponse = nlapiRequestURL(poppinservres.url.placingorderhelpsuitlet);
 		return helpresponse.getBody();
 	},
-	getPromoDescription : function(code) {
+	getPromoDescription : function(promocode) {
 		var description = "";
+		var code = promocode.promocode ? '&code='+promocode.promocode : '';
+		var internalid = promocode.internalid ? '&internalid='+promocode.internalid : '';
+		nlapiLogExecution('DEBUG','suitelet request promo', poppinservres.url.promodescriptionsuitlet+code+internalid);
 		try
 		{
-			var response = nlapiRequestURL(poppinservres.url.promodescriptionsuitlet+'&code='+code);
-			var respObj = JSON.parse(response.getBody());
-			if(respObj.length > 0 && respObj[0].columns)
-			{
-				description = respObj[0].columns.description;
-			}
+			response = nlapiRequestURL(poppinservres.url.promodescriptionsuitlet+code+internalid);
+			description = response.getBody();
 		}
 		catch (e)
 		{
-			//
+			nlapiLogExecution( 'DEBUG', 'system error', e );
 		}
 		return description;
-	},
+	}
 };

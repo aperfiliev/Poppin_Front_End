@@ -16,13 +16,18 @@ function service(request,response)
 	var returnVal = null;
 	try
 	{
-		var retobj = {	"header": {"status":{"code":"SUCCESS", "message":"success" }}, 
-						"result": {"totalfound": 0, 
+		var retobj = {	"header": {
+							"status": {
+								 "code": "SUCCESS",
+								 "message": "success",
+								 "promocode": ""
+							}}, 
+						"result": {
+								 "totalfound": 0, 
 								 "items": [],
 								 "promocode": {}, 
 								 "giftcertificate": {}, 
 								 "summary": {}} };
-
 		var params = request.getAllParameters();
 		var method = params.method;
 		var orderObj = nlapiGetWebContainer().getShoppingSession().getOrder();
@@ -39,12 +44,23 @@ function service(request,response)
 			}
 			else if (method == 'update')
 			{
+				var items = LoginLib.getOrder().items;
+				var item;
+				for(var i = 0; i<items.length;i++){
+					if(items[i].orderitemid == params.orderitemid){
+						item = items[i];
+					}
+				}
+//				nlapiLogExecution( 'DEBUG','item',item);
+				if(params.quantity <= item.quantityavailable){
 				orderObj.updateItemQuantity({'orderitemid' : params.orderitemid, 'quantity' : params.quantity});
+				}else{retobj.header.status.message = "Alotofproducts "+params.orderitemid}
 			}
 			else if (method == 'applyPromo')
 			{
 				if(JSON.stringify(params.promocode) != "{}")
 				{
+					retobj.header.status.promocode = params.promocode;
 					orderObj.applyPromotionCode(params.promocode);
 				}
 				else
@@ -88,12 +104,37 @@ function service(request,response)
 		{
 			var error = nlapiCreateError(e);
 			retobj.header.status.code = error.getCode();
-			retobj.header.status.message = error.getDetails();
-			
-			// invalid coupon code handling
+			retobj.header.status.message = "<p>"+error.getDetails()+"</p>";
+	nlapiLogExecution( 'DEBUG','error thrown' + retobj.header.status.code,retobj.header.status.message);
 			if(error.getCode() == "ERR_WS_INVALID_COUPON")
 			{
-				retobj.header.status.message = params.promocode;
+				// change notifications about invalid promocode
+				switch (error.getDetails()) {
+				case "This coupon code has expired or is invalid":
+					retobj.header.status.message = "<p>Hmm, that didn't seem to work, please </p><p>check the date on your promo code.</p>";
+					retobj.header.status.event = "Expired promo code";
+					retobj.header.status.description = LoginLib.getPromoDescription(orderObj.getFieldValues().promocodes[0]);
+					break;
+				case "Coupon code is invalid or unrecognized":
+						retobj.header.status.message = "<p>Code cannot be used or has already be used<br/></p>";
+						retobj.header.status.event = "Promo not applied";
+						retobj.header.status.description = LoginLib.getPromoDescription(orderObj.getFieldValues().promocodes[0]);
+					break;
+				case "This coupon does not apply to items in cart.":
+					retobj.header.status.message = "<p>Coupon code is invalid or unrecognized</p>";
+					retobj.header.status.event = "Promo not applied";
+					retobj.header.status.description = "";
+					break;
+				default:
+					if(error.getDetails().indexOf("minimum order amount") !== -1)
+					{
+						retobj.header.status.message = "<p>In order for your code to work, you need </p><p>to add more Poppin products to your cart.</p>";
+						retobj.header.status.event = "Promo rules not met";
+						retobj.header.status.description = LoginLib.getPromoDescription(orderObj.getFieldValues().promocodes[0]);
+					}
+					break;
+				}
+				// and remove invalid promocode
 				orderObj.removePromotionCode(params.promocode);
 			}
 		}

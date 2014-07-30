@@ -23,7 +23,7 @@ socket = new easyXDM.Socket({
 					siteUID : notifyobject.params.siteUID,
 					UIDTimestamp : notifyobject.params.timestamp,
 					UIDSig : notifyobject.params.signature,
-					callback : function(response){alert(response);}
+					callback : function(response){}
 			}
 			gigya.socialize.notifyLogin(notifier);
 		}
@@ -33,15 +33,15 @@ socket = new easyXDM.Socket({
 					UIDTimestamp : notifyobject.params.timestamp,
 					UIDSig : notifyobject.params.signature,
 					newUser : true,
-					callback : function(response){alert(response);}
+					callback : function(response){}
 			}
 			gigya.socialize.notifyLogin(notifier);
 		}
 	}
 });
 function printResponse(response) {
-	alert('Gigya response start');
-	alert('entire notifyLogin'+JSON.stringify(response));	
+	//alert('Gigya response start');
+	//alert('entire notifyLogin'+JSON.stringify(response));	
 }
 var parenturl='http://sandbox.poppin.com';
 $(function(){

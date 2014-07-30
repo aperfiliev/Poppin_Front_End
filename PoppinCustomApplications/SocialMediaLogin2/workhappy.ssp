@@ -1,0 +1,137 @@
+<div id="workhappy">
+    <!--image preloader-->
+    <div id="image-preloader"></div>
+    <!--image preloader end-->
+    <div class="slide-wrap">
+        <ul>
+            <li><img width="967" height="373" src="/site/pp-sources/workhappy/main_1.jpg" alt=""></li>
+            <li><img width="967" height="373" src="/site/pp-sources/workhappy/main_2.jpg" alt=""></li>
+            <li><img width="967" height="373" src="/site/pp-sources/workhappy/main_3.jpg" alt=""></li>
+            <li><img width="967" height="373" src="/site/pp-sources/workhappy/main_4.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div class="join">
+        <p>Join the 4,000+ Companies Already Working Happy</p>
+        <div class="join-partners">
+            <img alt="" src="/site/pp-sources/workhappy/part_1.jpg"/><img alt="" src="/site/pp-sources/workhappy/part_2.jpg"/><img alt="" src="/site/pp-sources/workhappy/part_3.jpg"/><img alt="" src="/site/pp-sources/workhappy/part_4.jpg"/><img alt="" src="/site/pp-sources/workhappy/part_5.jpg"/><img alt="" src="/site/pp-sources/workhappy/part_6.jpg"/>
+        </div>
+    </div>
+    <div class="call-us">
+        <p class='call-strings'>...free, toward a new desktop makeover!</p>
+        <p class='call-main'>CALL TODAY <strong>(866) 926-4924</strong> OR <strong><a href='#' onclick="return false;">CLICK HERE</a></strong> TO CLAIM.</p>
+    </div>
+    <div class="dotline"></div>
+    <div class="cat-heading">
+        <p><strong>Desk Accessories + Office Essentials:</strong> Functional, fun, and utterly affordable </p>
+    </div>
+    <div class="dotline"></div>
+    <div class="item-cell first">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Desktop/" class='image-link desk1'></a>
+        </div>
+        <a href='http://www.poppin.com/Desktop/' class="description">Shop Desk Accessories<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="item-cell">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Features/Best-Selling-Desktop-Supplies/" class='image-link desk2'></a>
+        </div>
+        <a href='http://www.poppin.com/Features/Best-Selling-Desktop-Supplies/' class="description">Shop Office Essentials<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="item-cell">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Desktop/Pins-Tacks/" class='image-link desk3'></a>
+        </div>
+        <a href='http://www.poppin.com/Desktop/Pins-Tacks/' class="description">Shop Nuts + Bolts<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="dotline"></div>
+    <div class="cat-heading">
+        <p><strong>Paper + Writing + Organization: </strong> Brainstorm in color + file in style </p>
+    </div>
+    <div class="dotline"></div>
+    <div class="item-cell first">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Paper-Products/" class='image-link paper1'></a>
+        </div>
+        <a href='http://www.poppin.com/Paper-Products/' class="description">Shop Paper<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="item-cell">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Writing/" class='image-link paper2'></a>
+        </div>
+        <a href='http://www.poppin.com/Writing/' class="description">Shop Writing<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="item-cell">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Organization/" class='image-link paper3'></a>
+        </div>
+        <a href='http://www.poppin.com/Organization/' class="description">Shop Organization<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="dotline"></div>
+    <div class="cat-heading">
+        <p><strong>Furniture: </strong> Outfit your office to excite and inspire </p>
+    </div>
+    <div class="dotline"></div>
+    <div class="item-cell first">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Furniture/" class='image-link furn1'></a>
+        </div>
+        <a href='http://www.poppin.com/Furniture/' class="description">Shop Workstation<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="item-cell">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Lounge-Chairs_2/" class='image-link furn2'></a>
+        </div>
+        <a href='http://www.poppin.com/Lounge-Chairs_2/' class="description">Shop Lounge<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="item-cell">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Tables/" class='image-link furn3'></a>
+        </div>
+        <a href='http://www.poppin.com/Tables/' class="description">Shop Conference Room<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="dotline"></div>
+    <div class="cat-heading">
+        <p><strong>Branding + Gifts:</strong>  Make your mark with giveaways that are total keepers  </p>
+    </div>
+    <div class="dotline"></div>
+    <div class="item-cell first">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Customization/" class='image-link gift1'></a>
+        </div>
+        <a href='http://www.poppin.com/Customization/' class="description">Branded Notebooks + Pens<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="item-cell">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Customization/" class='image-link gift2'></a>
+        </div>
+        <a href='http://www.poppin.com/Customization/' class="description">Branded Mousepads<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="item-cell">
+        <div class="item-cell-image">
+            <a href="http://www.poppin.com/Customization/" class='image-link gift3'></a>
+        </div>
+        <a href='http://www.poppin.com/Customization/' class="description">Branded Essentials<br><img alt='' src="/site/pp-sources/workhappy/link_arr.png"/></a>
+    </div>
+    <div class="dotline"></div>
+    <div class="left-prefooter">
+        <img alt='' src="/site/pp-sources/workhappy/map.jpg"/>
+    </div>
+    <div class="right-prefooter">
+        <div class="cat-heading">
+            <p><strong>Join the work happy revolution!</strong></p>
+        </div>
+        <div class="dotline"></div>
+        <p class='blue-prefooter-heading'>Step #1</p>
+        <p class='prefooter-info'>Call <strong>(866) 926-4924</strong> or <a href='#' onclick="return false;">Click Here</a> to get your <strong>free $100</strong> (no strings attached)</p>
+        <p class='blue-prefooter-heading'>Step #2</p>
+        <p class='prefooter-info'>From office overhauls to on-boarding, a Poppin expert will get a grip on your immediate and upcoming brand needs.</p>
+        <p class='blue-prefooter-heading'>Step #3</p>
+        <p class='prefooter-info'>Let the work happiness begin!</p>
+    </div>
+    <div class="dotline"></div>
+    <div class="cat-heading prefooter">
+        <p><strong>How to spend your $100? Take a peek at our Lookbook!<a href='http://www.poppin.com/site/pp-sources/workhappy/poppin.lookbook.2014.zip'> Download it!</a></strong></p>
+    </div>
+    <div class="dotline"></div>
+    <div class="footer-img"></div>
+</div>

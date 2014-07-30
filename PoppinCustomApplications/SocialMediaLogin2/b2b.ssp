@@ -2,95 +2,114 @@
 	<tbody id="content_master">
 		<tr>
 			<td>
-				<h1>Let's Get Down to Business</h1>
 				<div class="div__presentation">
-					<a href="" ><img src="/site/pp-sources/business/poppin-business.animation.gif" ></a>
+					<img src="/site/pp-sources/business/b2b.page.header.jpg"/>
 				</div>
-				<div class="div__register">
-					<h3>COME ON, WORK HAPPY!</h3>
-					<form id="customer-register" action="LoginService.ss">
-						<fieldset>
-							<label for="fname">First Name</label>
-							<div style="position: relative;"><input id="fname" name="fname" type="text"/></div>
-						</fieldset>
-						<fieldset>
-							<label for="lname">Last Name</label>
-							<div style="position: relative;"><input id="lname" name="lname" type="text"/></div>
-						</fieldset>
-						<fieldset>
-							<label for="email">Email Address</label>
-							<div style="position: relative;"><input id="emailreg" name="email" type="text"/></div>
-						</fieldset>
-						<fieldset>
-							<label for="company">Company</label>
-							<div style="position: relative;"><input id="company" name="company" type="text"/></div>
-						</fieldset>
-						<fieldset>
-							<div class="div__select" style="position: relative;">
-								<select id="hearaboutus" name="hearaboutus" >
-									<option selected="selected" style="display:none;">How'd you hear about us?</option>
-									<option>Option 1</option>
-								</select>
-							</div>
-						</fieldset>
-						<fieldset>
-							<input id="subscribe" name="subscribe" type="checkbox" checked />
-							<label class="checkLbl">I want in on the Poppin action!</label>
-						</fieldset>
-						<fieldset>
-							<input type="submit" value="Submit" class="orangeBtn" name="submit" id="submit" style="margin: 0px;"/>
-						</fieldset>
-					</form>
+				<div>
+					<iframe style='float: left; width: 290px; height: 373px; overflow: hidden;' scrolling="no" frameborder="0" allowtransparency="yes"
+						marginheight="0" marginwidth="0"
+						src="https://forms.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&amp;formid=13&amp;h=643a633f53c61903e501&amp;redirect_count=1&amp;did_javascript_redirect=T">
+					</iframe>
 				</div>
 			</td>
 		</tr>
-		
+		<tr>
+			<td class="callstylist">
+				<span class="orange">Call your WorkStylist today </span><span class="number">866 &#8226; 926 &#8226; 4922</span><br/>
+				<span class="grey">Trade discounts available for architects and interior designers.</span>
+			</td>
+		</tr>
 		<tr>
 			<td>
-
-							<div class="div__options">
-								<a href=""><p>Shop Desktop ></p></a>
-								<img alt="Shop Desktop" src="/site/pp-sources/business/shop-desktop.png">
-							</div>
-
-							<div class="div__options">
-								<a href=""><p>Brand It ></p></a>
-								<img alt="Brand It" src="/site/pp-sources/business/brand-it.png">
-							</div>
-
-							<div class="div__options">
-								<a href=""><p>Shop Furniture ></p></a>
-								<img alt="Shop Furniture" src="/site/pp-sources/business/shop-furniture.png">
-							</div>
-
+				<div class="div__options" id="left">
+					<a href="/Desktop/"><p>Shop Desktop ></p></a>
+					<a href="/Desktop/"><img alt="Shop Desktop" src="/site/pp-sources/business/shop-desktop.png"></a>
+				</div>
+				<div class="div__options" id="center">
+					<a href="/customization/"><p>Brand It ></p></a>
+					<a href="/customization/"><img alt="Brand It" src="/site/pp-sources/business/brand-it.png"></a>
+				</div>
+				<div class="div__options" id="right">
+					<a href="/Furniture/"><p>Shop Furniture ></p></a>
+					<a href="/Furniture/"><img alt="Shop Furniture" src="/site/pp-sources/business/shop-furniture.png"></a>
+				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<div>
 					<h2>Join the Work Happy Revolution!</h2>
-					<p>At Poppin, we've taken the humdrum, ordinary objects of the workspace and transformed them into extraordinary things, making it 
-					easy to establish a workplace atmosphere that excites fresh-thinking, increases productivity, and gets everyone working happy. 
-					With our full color palette of fashionable, functional, utterly affordable, and fully customizable furnishing and supply-closet 
-					fixing, our work happy revolution has already taken hold with corporate clients that prize creativity, productivity, and innovation. 
-					For more information about our specific business offerings, contact our workstylists at 866 &#8226; 926 &#8226; 4922 &#8211; and get everyone in gear 
-					to work happy.</p>
-					<h4>Call your WorkStylist today 866 &#8226; 926 &#8226; 4922</h4>
+					<p>Through bright color and great design, Poppin has transformed humdrum office products into extraordinary objects 
+					that inspire fresh-thinking, increase productivity and bring out the smiles. Poppin enhances office culture, supports
+					 team building and brand initiatives, and of course makes the perfect gift for employees and clients. To learn more 
+					 or to place an order <br><br><b>Call your WorkStylist today 866 &#8226; 926 &#8226; 4922</b></p>
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<div>
+				<div style="position: relative;">
 					<h2>Who's Working Happy?</h2>
-					"A Univercity of Exeter study found 
-					that people who were allowed to 
-					design their work area, were up to 
-					32% more productive &#8211; without any 
-					increase in errors."
-					...................................
-					Johan Leher
-					HOW CREATIVITY WORKS
+					<table border="0" cellpadding="5" cellspacing="0" width="100%">
+						<tbody id="logos">
+							<tr>
+								<td>
+									<img src="/site/pp-sources/business/logo01.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo02.png">
+								</td>
+								<td colspan="2">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="/site/pp-sources/business/logo03.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo04.png">
+								</td>
+								<td colspan="2">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="/site/pp-sources/business/logo05.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo06.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo07.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo08.png">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="/site/pp-sources/business/logo09.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo10.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo11.png">
+								</td>
+								<td>
+									<img src="/site/pp-sources/business/logo12.png">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div id="quotedBox" class="n">
+						<p>A University of Exeter study </p>
+						<p>found that people who were </p>
+						<p>allowed to design their work </p>
+						<p>area, were up to 32% more </p>
+						<p>productive &#8211; without any </p>
+						<p>increase in errors.</p>
+					</div>
 				</div>
 			</td>
 		</tr>
