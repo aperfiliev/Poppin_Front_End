@@ -1,0 +1,8 @@
+<% registerMacro('backToTop', function () { %>
+<div id="back-to-top" class="text-center back-to-top">
+	<a href="#" data-action="back-to-top">
+		<i class="icon-arrow-up"></i>
+		<%= _('Top').translate() %>
+	</a>
+</div>
+<% }) %>

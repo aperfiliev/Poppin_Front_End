@@ -1,0 +1,16 @@
+<% registerMacro('languageSelector', function (languages, selected_locale) { %>
+<% if (languages && languages.length > 1) { %>
+<div class="input-prepend">
+	<span class="add-on">
+		<i class="icon-globe"></i>
+	</span>
+	<select data-toggle="lenguage-selector" class="input-medium">
+	<% _.each(languages, function(language) { %>
+		<option value="<%- language.locale %>" <%= language.locale === selected_locale ? 'selected' : '' %>>
+			<%= language.title || language.name %>
+		</option>
+	<%})%>
+	</select>
+</div>
+<% } %>
+<% }) %>

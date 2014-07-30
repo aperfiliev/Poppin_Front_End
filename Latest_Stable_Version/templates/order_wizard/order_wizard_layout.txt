@@ -1,0 +1,79 @@
+<% var position = view.wizard.getStepPosition() %>
+<% if((view.wizard.getCurrentStep().wizard.currentStep == 'shipping/address') || (view.wizard.getCurrentStep().wizard.currentStep == 'shipping/method')) {%>
+<style>
+.addressform-phonenumber {
+display: none;
+}
+</style>
+<%}%>
+<div id="checkout-mini-cart"></div>
+<div class="row-fluid <%= position.toLast === 1 ? 'review-step' : '' %>"  <% if(position.toLast< 0){ %>style="background: rgb(243, 243, 243);"<%}%>>
+<div class="colmask rightmenu" <% if(position.toLast<= 0){ %>style="width: 677px; margin: auto;" <%}%>>
+	<div class="colleft">
+		<div class="col1">
+			<% if(!view.wizard.getCurrentStep().hideBreadcrumb && position.toLast > 0){ %>
+			<header class="order-wizard-layout-header">
+				<%= wizadStepNavigation(view.wizard.stepGroups) %>
+			</header>
+			<%}%>
+			<div class="span6">
+				<div id="wizard-content" class="wizard-content"></div>
+			</div>
+		</div>
+		<div class="col2"  <% if(position.toLast<= 0){ %>style="display:none;"<%}%>>
+			<div class="offset2 span4" id="order-summary">
+			</div>
+		</div>
+	</div>
+</div>
+<% if(position.toLast<= 0){ %>
+<style>
+.checkout-header {display: none;}
+.bgbutton-checkout {display: none;}
+
+.shipments-cart-details{
+display: block;
+width: 667px;
+background: white;
+}
+
+.orderwizard-module-confirmation {
+width: 667px;
+background: rgb(243, 243, 243);
+padding: 0px;
+}
+.upsell_options{
+margin: auto;
+margin-top: 0px;
+width: 965px;
+text-align: center;
+background-color: rgb(243, 243, 243);
+border-bottom: 10px solid rgb(256, 256, 256);
+}
+#main .order-wizard-layout {
+    margin-bottom: 0px;
+}
+
+#main .lead-price {
+ color: rgb(0, 0, 0);
+}
+
+#main #order-summary .lead-price {
+ color: rgb(254, 107, 56);
+}
+
+
+#main .bgbutton-checkout, #main .bgbutton-checkout:hover {
+background-color: rgb(244, 122, 32);
+border-color: rgb(244, 122, 32);
+font-weight: 400;
+}
+.btncheckout-cart-summary-macro {
+	display:none;
+}
+</style>
+<script type="text/javascript">
+			jQuery('.upsell_options').addClass("noprint");
+</script>				
+<%}%>
+</div>

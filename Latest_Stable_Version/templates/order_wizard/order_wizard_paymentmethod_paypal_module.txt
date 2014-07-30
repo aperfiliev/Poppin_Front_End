@@ -1,0 +1,5 @@
+<div class="row-fluid">
+	<div class="span4">
+		<img class="paypal-logo" src="img/paypal.png" alt="PayPal">
+	</div>
+</div>

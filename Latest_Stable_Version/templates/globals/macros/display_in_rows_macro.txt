@@ -1,0 +1,19 @@
+<% registerMacro('displayInRows', function(items, macro, items_per_row) { %>
+	<% items_per_row = parseInt(items_per_row, 10) || 3 %>
+	<% var span = 12 / items_per_row %>
+	<div class="row-fluid">
+	<% _.each(items, function (item, index){ %>
+		<% if ((index % items_per_row) == 0 && index > 0){ %>
+			</div>
+			<div class="row-fluid">
+		<% } %>
+		<div class="span<%= span %>">
+			<% if (_.isFunction(macro)){ %>
+				<%= macro(item) %>
+			<% }else{ %>
+				<%= item %>
+			<% } %>
+		</div>
+	<% }) %>
+	</div>
+<%})%>

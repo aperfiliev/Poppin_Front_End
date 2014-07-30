@@ -1,0 +1,39 @@
+<% registerMacro('statesDropdown', function (options) { %>
+<%
+	var country = options.selectedCountry && options.countries[options.selectedCountry]
+	,	states = country && country.states;
+%>
+<% if (country && states) { %>
+	<label class="control-label" for="<%= options.manage ? options.manage : ''%>state">
+		<%= _('State').translate() %>
+		<small><%= _('(required)').translate() %></small>
+	</label>
+	<div class="controls">
+		<select class="input-small"  style="height:30px;" id="<%= options.manage ? options.manage : ''%>state" name="state" data-type="state">
+			<option value="">
+				<%= _(' ').translate() %>
+			</option>
+			<% _.each(states, function (state) { %>
+			<option value="<%- state.code %>" <%= state.code === options.selectedState ? 'selected' : '' %>>
+				<%= state.code %>
+			</option>
+			<% }) %>
+		</select>
+	</div>
+<% } else { %>
+	<label class="control-label" for="<%= options.manage ? options.manage : ''%>state">
+		<%= _('State/Province/Region').translate() %>
+	</label>
+	<div class="controls">
+		<input
+			type="text"
+			id="<%= options.manage ? options.manage : ''%>state"
+			name="state"
+			class="input-small"
+			value="<%- options.selectedState %>"
+			data-type="state"
+			placeholder="<%- _('(optional)').translate() %>"
+		>
+	</div>
+<% } %>
+<% }) %>

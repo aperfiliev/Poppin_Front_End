@@ -1,0 +1,9 @@
+<div class="view-header">
+	<% if (view.page_header) { %>
+	<h1><%= view.page_header %></h1>
+	<% } %>
+	<div id="main-banner" class="main-banner"></div>
+</div>
+<div id="internal-error-content" class="view-body internal-error-content">
+	<%= view.options.message || _('Sorry, we could not load the content you requested.').translate() %>
+</div>

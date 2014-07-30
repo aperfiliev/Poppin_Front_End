@@ -1,0 +1,8 @@
+<% registerMacro('itemDetailsMainImage', function (images, view) { %>
+<% if (images.length) { %>
+	<% var image = images[0]; %>
+	<div class="item-detailed-image">
+		<img src="<%= view.application.resizeImage(image.url, 'main') %>" alt="<% image.altimagetext %>">
+	</div>
+<% } %>
+<% }) %>

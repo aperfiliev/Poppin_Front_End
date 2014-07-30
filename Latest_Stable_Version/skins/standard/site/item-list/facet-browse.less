@@ -1,0 +1,68 @@
+.facet-browse {
+	position: relative;
+
+	@media (max-width: 639px) {
+		position: static;
+	}
+}
+
+.item-list-container {
+
+	@media (max-width: 979px) {
+
+		.facet-browse & {
+			margin-left: 0;
+			position: relative;
+			width: 100%;	
+		}
+	}
+
+	@media (max-width: 639px) {
+		.narrow-by & {
+			display: none;
+		}
+	}
+
+	.pagination {
+		margin: 6px 0 0;
+		ul.pagination-links.pagination-links-compact {
+			> li {
+				a {
+					border: 1px solid #dddddd;
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+					padding: 0;
+					text-align: center;
+				}
+			}
+		}
+
+		.pagination-page-indicator {
+			span {
+				line-height: 30px;
+				padding: 0 7px;
+			}
+		}
+	}
+}
+
+
+.item-list {
+
+	@media (max-width: 767px) {
+		padding: 0 10px;
+	}
+
+	@media (min-width: 768px) {
+
+		> .row-fluid:first-child {
+
+			.item-cell-grid, .item-cell-table {
+				border-top: none;
+				margin-top: 0;
+				padding-top: 0;
+			}
+		}
+	}
+}

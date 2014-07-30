@@ -1,0 +1,206 @@
+<%
+	var is_same_as_enabled = view.isSameAsEnabled
+	,	selected_address = view.address
+	,	address_book = view.getAddressesToShow()
+	,	default_shipping_set = false
+	,	default_billing_set = false;
+console.log('update script');
+console.log(view);
+	_.each(address_book.models,function(addr){
+    		if(addr.get('defaultshipping') =='T'){default_shipping_set = true;}
+    		if(addr.get('defaultbilling') =='T'){default_billing_set = true;}
+    	});
+    //address_book.models.splice(0, 0, address_book.models.splice(old_index, 1)[0]);
+   
+    //select default address if none selected
+    //shipping
+    
+    //if(view.step.wizard.currentStep === "billing"){
+    	//address_book.models =  _.filter(address_book.models,function(addr){ return addr.get('defaultshipping') != 'T';});
+    //}
+    
+    if(address_book.models.length>0){
+    if(address_book.models[0].get('defaultshipping') =='F'){
+		var count = 0;
+    	_.each(address_book.models,function(addr){
+    	count++;
+    	console.log(addr)
+    		if(addr.get('defaultshipping') =='T'){address_book.models.splice(0,0,addr);address_book.models.splice(count,1);}
+    	});
+    }
+    }
+//    console.log("MANUAL SELECT");
+	
+	
+%>
+<% var page_name; %>
+<% if(Backbone.history.fragment.indexOf('shipping')>-1) { page_name = 'SHIPPING'} %>
+<% if(Backbone.history.fragment.indexOf('billing')>-1) { page_name = 'BILLING'} %> 
+<script type="text/javascript">
+var itemsCollection = [];
+<% for( var i=0;i< view.model.get('lines').models.length;i++) {%>
+itemsCollection.push({productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=view.model.get('lines').models[i].get('total') %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+<% }%>
+window.forPixeldata = {
+userId:'<%= view.wizard.options.profile.id %>'
+,total:'<%= view.model.get('summary').total %>'
+,transactionId:''
+,email:'<%= view.wizard.options.profile.get('email') %>'
+,name:'<%= view.wizard.options.profile.get('firstname') + ' ' + view.wizard.options.profile.get('lastname') %>'
+,items:itemsCollection
+};
+</script>
+<script>
+var orderID = "";
+	var orderTotal = "<%=view.model.get('summary').total%>";
+	var orderTax = "<%=view.model.get('summary').taxtotal%>";
+	var orderShipping = "<%=view.model.get('summary').shippingcost%>";
+	var orderPromoCode ="<%=view.model.get('promocode') ==null ? '':view.model.get('promocode').code%>";
+	var orderSubtotal = "<%=view.model.get('summary').subtotal%>";
+	var customerId ='<%= view.wizard.options.profile.id %>';
+	<% var shipaddress = _.filter(view.model.get('addresses').models,function(model){ return model.id==view.model.get('shipaddress');})[0] %>
+	<% var billaddress = _.filter(view.model.get('addresses').models,function(model){ return model.id==view.model.get('billaddress');})[0] %>
+	var customerCity = "<%=billaddress ? billaddress.get('city') : ''%>" || "<%=shipaddress ? shipaddress.get('city') : ''%>";
+	var customerState = "<%=billaddress ? billaddress.get('state') : ''%>" || "<%=shipaddress ? shipaddress.get('state') : ''%>";
+	var customerPostal = "<%=billaddress ? billaddress.get('zip') : ''%>" || "<%=shipaddress ? shipaddress.get('zip') : ''%>";
+	var customerCountry = "<%=billaddress ? billaddress.get('country') : ''%>" || "<%=shipaddress ? shipaddress.get('country') : ''%>";
+
+	var strpageDataVarURL = "/app/site/hosting/scriptlet.nl?script=250&deploy=1&orderitems=" + escape(itemsCollection) + "&subtotal=" + escape(orderSubtotal);
+
+	var pageData = {
+		"order" : {
+			"id" : orderID,
+			"total" : orderTotal,
+			"tax" : orderTax,
+			"shipping" : orderShipping,
+			"discount" : 0,
+			"promoCode" : orderPromoCode,
+			"currencyCode" : "USD"
+		},
+		"customer" : {
+			"id" : customerId,
+			"city" : customerCity,
+			"state" : customerState,
+			"postal" : customerPostal,
+			"country" : customerCountry
+		},
+		"navigation" : {  pageName: "AddressStep" },
+		"items" : []
+	};
+	
+	$j(window).trigger('updateCheckoutJsonData',pageData);
+
+	
+	</script>
+
+<% if (view.addressId && !selected_address.isNew() && Backbone.history.fragment.indexOf('shipping')>-1) { %>
+	<h3 class="section-header car-background">
+		<%= _('SELECT YOUR ' + page_name + ' ADDRESS').translate() %>
+	</h3>
+<%} else { %>
+	<h3 class="section-header car-background">
+		<%= _('ENTER YOUR ' + page_name + ' ADDRESS').translate() %>
+	</h3>
+<% } %>
+<% if (!selected_address.isNew()) { %>
+<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal" style="margin-bottom:5px">
+			<%= Backbone.history.fragment.indexOf('shipping')>-1 ?_('Enter new shipping address').translate():_('Enter new billing address').translate() %>
+</a>
+<% } %>
+<!--<% if (is_same_as_enabled) { %>
+	<label class="checkbox same-as-address">
+		<input
+			type="checkbox"
+			name="same-as-address"
+			data-action="same-as"
+			<%= view.sameAs ? 'checked' : '' %>
+		>
+		<%= view.sameAsMessage %>
+	</label>
+<% } %>-->
+
+<% if(view.manage == 'billaddress' && view.addressId==null && address_book.models.length==1) {%>
+	<div id="address-module-form-placeholder" class="address-module-form-placeholder">
+		<form method="POST">
+		<%= addressFrom(selected_address, {
+				countries: view.wizard.application.getConfig('siteSettings.countries')	
+			,	manage: view.manage
+			,	currentSt: view.wizard.currentStep
+			,	hideDefaults: true
+		}) %>
+		</form>
+
+		<% if (view.showSaveButton) { %>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary" data-action="submit">
+					<%= _('Save Address').translate() %>
+				</button>
+			</div>
+		<% } %>	
+	</div>
+<%} else if (view.addressId && !selected_address.isNew()) { %>
+
+	<div id="address-module-list-placeholder" class="address-module-list-placeholder">
+<!--		<p>
+			<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal">
+				<%= _('Add New Address').translate() %>
+			</a>
+		</p> -->
+
+		<%
+			// Wrap the address address macro to pass options in
+			var addressWrap = function (address) {
+				return SC.macros['address'](address, {
+					showSelect: true
+				,	selectMessage: view.selectMessage
+				,	hideDefaults: true
+				,	selectedAddress: view.addressId
+				});
+			}
+		%>
+
+		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+	</div>
+
+<% } else if (address_book.length && !view.isGuest) { %>
+	<div id="address-module-list-placeholder" class="address-module-list-placeholder">
+<!--		<p>
+			<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal">
+				<%= _('Add New Address').translate() %>
+			</a>
+		</p> -->
+
+		<%
+			// Wrap the address address macro to pass options in
+			var addressWrap = function (address) {
+				return SC.macros['address'](address, {
+					showSelect: true
+				,	selectMessage: view.selectMessage
+				,	hideDefaults: true
+				,	selectedAddress: view.addressId
+				});
+			}
+		%>
+
+		<%= displayInRows(address_book.models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+	</div>
+<% } else { %>
+	<div id="address-module-form-placeholder" class="address-module-form-placeholder">
+		<form method="POST">
+		<%= addressFrom(selected_address, {
+				countries: view.wizard.application.getConfig('siteSettings.countries')	
+			,	manage: view.manage
+			,	currentSt: view.wizard.currentStep
+			,	hideDefaults: true
+		}) %>
+		</form>
+
+		<% if (view.showSaveButton) { %>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary" data-action="submit">
+					<%= _('Save Address').translate() %>
+				</button>
+			</div>
+		<% } %>	
+	</div>
+<% } %>

@@ -1,0 +1,429 @@
+<style type="text/css">
+
+.review-layover{
+	position:absolute;
+	margin-left: 50px;
+	margin-top: -170px;
+	width: 500px;
+	height: 400px;
+	background: white;
+	-webkit-box-shadow: 10px 10px 10px #9E9E9E;
+    -moz-box-shadow:    10px 10px 10px #9E9E9E;
+    box-shadow:         10px 10px 10px #9E9E9E;
+    z-index:999;
+    overflow:scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display:none;
+    position: fixed;
+    height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+
+</style>
+<script type="text/javascript" id="checkoutTagScript">
+var itemsCollection = [];
+<% for( var i=0;i< view.model.get('lines').models.length;i++) {%>
+itemsCollection.push({productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=view.model.get('lines').models[i].get('total') %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+<% }%>
+window.forPixeldata = {
+userId:'<%= view.wizard.options.profile.id %>'
+,total:'<%= view.model.get('summary').total %>'
+,transactionId:''
+,email:'<%= view.wizard.options.profile.get('email') %>'
+,name:'<%= view.wizard.options.profile.get('firstname') + ' ' + view.wizard.options.profile.get('lastname') %>'
+,items:itemsCollection
+};
+</script>
+<script>
+var orderID = "";
+	var orderTotal = "<%=view.model.get('summary').total%>";
+	var orderTax = "<%=view.model.get('summary').taxtotal%>";
+	var orderShipping = "<%=view.model.get('summary').shippingcost%>";
+	var orderPromoCode ="<%=view.model.get('promocode') ==null ? '':view.model.get('promocode').code%>";
+	var orderSubtotal = "<%=view.model.get('summary').subtotal%>";
+	var customerId ='<%= view.wizard.options.profile.id %>';
+	<% var shipaddress = _.filter(view.model.get('addresses').models,function(model){ return model.id==view.model.get('shipaddress');})[0] %>
+	<% var billaddress = _.filter(view.model.get('addresses').models,function(model){ return model.id==view.model.get('billaddress');})[0] %>
+	var customerCity = "<%=billaddress ? billaddress.get('city') : ''%>" || "<%=shipaddress ? shipaddress.get('city') : ''%>";
+	var customerState = "<%=billaddress ? billaddress.get('state') : ''%>" || "<%=shipaddress ? shipaddress.get('state') : ''%>";
+	var customerPostal = "<%=billaddress ? billaddress.get('zip') : ''%>" || "<%=shipaddress ? shipaddress.get('zip') : ''%>";
+	var customerCountry = "<%=billaddress ? billaddress.get('country') : ''%>" || "<%=shipaddress ? shipaddress.get('country') : ''%>";
+
+	var strpageDataVarURL = "/app/site/hosting/scriptlet.nl?script=250&deploy=1&orderitems=" + escape(itemsCollection) + "&subtotal=" + escape(orderSubtotal);
+
+	var pageData = {
+		"order" : {
+			"id" : orderID,
+			"total" : orderTotal,
+			"tax" : orderTax,
+			"shipping" : orderShipping,
+			"discount" : 0,
+			"promoCode" : orderPromoCode,
+			"currencyCode" : "USD"
+		},
+		"customer" : {
+			"id" : customerId,
+			"city" : customerCity,
+			"state" : customerState,
+			"postal" : customerPostal,
+			"country" : customerCountry
+		},
+		"navigation" : {  pageName: "Review" },
+		"items" : itemsCollection
+	};
+$j(window).trigger('updateCheckoutJsonData',pageData);
+	</script>
+<% console.log("view"); console.log(view);
+	var is_active = false
+	,	order_delivery_method = view.model.get('shipmethod')
+	,	shipping_methods = view.model.get('shipmethods');
+	shipping_methods.models.sort(function(obj1, obj2) {
+ return obj1.get('rate') - obj2.get('rate');});	
+%>
+
+<div class="row-fluid">
+	<div class="row-fluid shipments-shipping-details-body" style="width: 625px; height: 240px; display: inline-flex;">
+		<div class="span6 shipments-shipping-method" style="padding-left: 22px; width: 295px; height: 240px; margin-right: 24px; float: left; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+			<h4 class="section-header" style="color: #f87c00; font-size: 17px; margin-bottom: 10px;">
+				<%= _('DELIVERY DETAILS').translate() %>
+			</h4>
+			<% shipping_methods.each(function (shipmethod) { %>
+				<% is_active = order_delivery_method === shipmethod.get('internalid') %>
+				<label class="delivery-option <%= is_active ? 'active' : '' %>">
+					<input
+						type="radio"
+						name="delivery-options"
+						id="delivery-options-<%= shipmethod.get('internalid')%>"
+						value="<%- shipmethod.get('internalid')%>" 
+						<%= is_active ? 'checked' : '' %>
+					>
+					<span class="delivery-option-label">
+						<b><%= shipmethod.get('name') %></b> - 
+					</span>
+					<span class="delivery-option-rate">
+						<%= shipmethod.get('rate_formatted') %>
+					</span>
+				</label>
+			<% }); %>
+		</div>
+		<% var paymentmethods = view.getPrimaryPaymentmethods(); console.log("paymentmethods.length"); console.log(paymentmethods);%>
+	<div class="span6 wizard-showpayments-billing-payment-method" style="padding-left: 22px; width: 290px; height: 240px; float: left; margin-right: 16px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+		<% if (paymentmethods.length || !view.wizard.hidePayment()) {%>
+			<h4 class="section-header"  style="color: #f87c00; font-size: 17px; margin-bottom: 10px; margin-left: 7px;">
+				<%= _('BILLING DETAILS').translate() %>
+			</h4>
+			<div class="payment-methods-summary" style="margin-bottom: 0px;">		
+				<input type="radio" checked style="margin-right: 5px; color: #f97d00; background-color: #f97d00">
+				<% _.each(paymentmethods, function (paymentmethod) { %>
+					<%= SC.macros.formatPaymentMethod(paymentmethod, view.wizard.application.getConfig('creditCardIcons')) %>
+				<% }); %>
+				<% if (view.profile.get('isGuest') === 'T') { %>
+					<div>
+						<h5><%- view.profile.get('email') %></h5>
+					</div>
+				<% } %>
+			</div>	
+			<% if (paymentmethods.length > 0  && paymentmethods[0].attributes.creditcard){ %>
+			<div class="span6">
+			<%=!!(paymentmethods[0].get('creditcard').ccsecuritycode)?'':'<p style="height: 25px; font-weight:bold;color:rgb(31, 216, 31); width: 240px;font-size: 14px; margin-left: 5px; ">Please enter security code (CVC)</p>'%>
+		
+			<%= SC.macros.creditcardSecurityNumberForm({
+				error    : undefined
+		            ,   value    :  paymentmethods[0].get('creditcard').ccsecuritycode || jQuery('#ccsecuritycode').val()
+			    ,	hidehelp : false
+			    ,	step     : "review"
+			    ,   hidden   : !!(paymentmethods[0].get('creditcard').ccsecuritycode)
+			}) %>
+				<div style="padding: 5px; border: 2px solid #e2e2e2; width:290px; font-size:14px; font-weight:normal; display: none;position: absolute;background: white;top: 205px;" id="whatisthisinfo">
+				<img src="img/explain_cvc.png" alt="explain"><br/>
+				For security purposes, we require the Card Security Code on your credit card. 
+				For most credit cards, enter the three-digit number that follows your account number on the back of your card. 
+				If you have an American Express card, enter the four-digit number printed above your account number on the front of your card.
+			</div>
+			</div>
+			<div>
+			<!--<a href="/creditcards/<%=paymentmethods[0].get('creditcard').internalid%>" data-toggle="show-in-modal" style=" margin-left: 31px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('edit').translate() %>
+			</a>--!>
+			
+			</div>
+			<% } %>
+			<a href="/creditcards/new" data-toggle="show-in-modal" style="border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('add new card').translate() %>
+			</a>
+			<% if (paymentmethods.length > 0){ %>
+				<a href="#" onclick="jQuery('#change-payment').show()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+					<%= _('use another card').translate() %>
+				</a>
+			<% } %>
+			<% } %>
+	</div>
+		
+
+	</div>
+	<div class="row-fluid showpayments-billing-payment-method" style="width: 625px; height: 240px; display: inline-flex;">
+		
+	<div class="span6 shipments-shipping-address" style="padding-left: 22px; width: 295px; height: 240px; margin-right: 24px; float: left; border-width:2px; border-color: #e2e2e2; border-style: solid;" >
+			<h4 class="section-header" style="color: #f87c00; font-size: 17px; margin-bottom: 10px;">
+				<%= _('SHIPPING ADDRESS').translate() %>
+			</h4>
+			
+			<%= address(view.profile.get('addresses').get(view.model.get('shipaddress')), {
+				hideActions: true
+			,	hideDefaults: true
+			,	verifyReview: "review"
+			}) %>
+			
+			<p style="margin: 3px 0px -1px -3px;">
+				<input type="radio" checked style="margin-bottom: 7px;">
+				<span><b>Ship to this address</b></span>
+			</p>
+			<a class="btn-edit-address" href="/addressbook/<%-view.model.get('shipaddress')%>" data-toggle="show-in-modal" style="border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('edit').translate() %>
+			</a>
+			<%if(view.profile.get("addresses").length > 1){%>
+				<a href="#" class="btn-edit-address" onclick="jQuery('#change-shipping').show()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('change').translate() %></a>
+			<%}%>
+		</div>	
+	
+	
+	<div class="span6 shipments-shipping-address" style="padding-left: 22px; width: 290px; height: 240px; float: left; margin-right: 16px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+			<h4 class="section-header" style="color: #f87c00; font-size: 17px; margin-bottom: 10px;">
+				<%= _('BILLING ADDRESS').translate() %>
+			</h4>
+			
+			<%= address(view.profile.get('addresses').get(view.model.get('billaddress')), {
+				hideActions: true
+			,	hideDefaults: true
+			,	verifyReview: "review"
+			}) %>
+			
+			<p style="margin: 3px 0px -1px -3px;">
+			<input type="radio" checked style="margin-bottom: 7px;">
+			<span><b>Use this address</b></span>
+			</p>
+					<a class="btn-edit-address" href="/addressbook/<%-view.model.get('billaddress')%>" data-toggle="show-in-modal" style="border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('edit').translate() %>
+		</a>
+		<%if(view.profile.get("addresses").length > 1){%>
+		<a href="#" class="btn-edit-address" onclick="jQuery('#change-billing').show()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('change').translate() %></a><%}%>
+		</div>
+	
+	</div>
+	
+	
+	<div class="review-layover" id="edit-deliverymethod" style="overflow: hidden; padding: 0px 0px 52px 0px; width: 260px; max-height: 160px; margin-top: -650px;  margin-left: 185px;">
+			<div id="modal-header" class="modal-header">
+				<button type="button" class="close" onclick="jQuery('#edit-deliverymethod').hide()">&times;</button>
+				<h3 class="modal-title"> Delivery Method </h3>
+			</div>
+			<div style="padding: 10px 20px 0px 20px;">
+			<% shipping_methods.each(function (shipmethod) { %>
+				<% is_active = order_delivery_method === shipmethod.get('internalid') %>
+				<label class="delivery-option <%= is_active ? 'active' : '' %>">
+					<input
+						type="radio"
+						name="review-delivery-options"
+						id="delivery-options-<%= shipmethod.get('internalid')%>"
+						value="<%- shipmethod.get('internalid')%>" 
+						<%= is_active ? 'checked' : '' %>
+					>
+					<span class="delivery-option-label">
+						<b><%= shipmethod.get('name') %></b> - 
+					</span>
+					<span class="delivery-option-rate">
+						<%= shipmethod.get('rate_formatted') %>
+					</span>
+				</label>
+			<% }); %>
+			</div>
+			<div style="margin-top: 70px; margin-left: 15px;">
+					<a href="#" name="submit-shipping-method" class="btn-edit-address" style="margin-left: 66px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+						<%= _('ok').translate() %></a>
+					<a href="#" class="btn-edit-address" onclick="jQuery('#edit-deliverymethod').hide()" style="margin-left: 26px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+						<%= _('cancel').translate() %></a>
+			</div>
+		</div>
+	
+		<div class="review-layover" id="change-shipping" style="width: 560px; padding: 10px 0px 0px 0px; margin-top: -710px; min-height: 383px; max-height: 383px;">
+			<div id="modal-header" class="modal-header">
+				<button type="button" class="close" data-action="canceladdressselection">&times;</button>
+				<h3 class="modal-title"> Change Shipping Address </h3>
+			</div>
+			<p style="margin-top: 10px;">
+			<%
+				// Wrap the address address macro to pass options in
+				var addressWrap = function (address) {
+					return SC.macros['address'](address, {
+						showSelect: true
+					,	selectMessage: view.selectMessage
+					,	hideDefaults: true
+					,	selectedAddress: view.model.get("shipaddress")
+					,	step: "review"
+					,	verifyAddress: "shipaddress"
+					,   stopSelect: true
+					});
+				}
+			%>
+			</p>
+			
+			<div style="float:left; padding: 0px 0px 20px 10px;">
+				<p>
+					<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal" style=" border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+						<%= _('Add New Address').translate() %>
+					</a>
+				</p>
+				<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+			</div>
+			<div>
+		 		<a href="#" data-action="select" class="btn-edit-address" style="margin-left: 230px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+					<%= _('ok').translate() %></a>
+				<a href="#" class="btn-edit-address" data-action="canceladdressselection" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+					<%= _('cancel').translate() %></a>
+			</div>
+			<div style="height: 25px;">
+			</div>
+		</div>
+	
+	<div class="review-layover" id="change-payment" style="max-height: 300px; width: 400px; margin-left: 110px; margin-top: -650px; padding: 10px 0px 0px 0px;">
+		
+		<div id="modal-header" class="modal-header">
+			<button type="button" class="close" onclick="jQuery('#change-payment').hide()">&times;</button>
+			<h3 class="modal-title"> Change Credit Card </h3>
+		</div>
+		
+		<% console.log("PAYYYYYYYYMMMEMMEM"); console.log(view.model.get("paymentmethods").models);  %>
+		<div style="width:200px; float:right">
+		<%  
+		    var selectedCreditcardId = (view.model.get("paymentmethods").models[0].get("creditcard") ? view.model.get("paymentmethods").models[0].get("creditcard").internalid : null);
+			console.log(selectedCreditcardId);
+			var creditcardWrap = function (creditcard) {
+				return SC.macros.creditcard(creditcard, {
+					showSelect: true
+				,	showActions: true
+				,	showDefaults: false
+				,	selectMessage: view.selectMessage
+				,	icons: view.wizard.application.getConfig('creditCardIcons')
+				,	selectedCreditcard: selectedCreditcardId
+				,	showSecurityCodeForm: true
+				,	step: "review"
+				,   stopSelect: true
+				});
+			} 
+		%>
+		</div>		
+		<div style="width:400px; float:left; padding: 20px 0px 15px 20px;">
+		<!--<p>
+			<a class="btn btn-link" href="/creditcards/new" data-toggle="show-in-modal" style=" border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('Add a New Card').translate() %>
+			</a>
+		</p>-->
+		<% console.log("CREDITTTTTT"); console.log(view.profile.get("creditcards")); console.log(view.profile.get("creditcards").models); %>
+		<%= displayInRows(view.profile.get("creditcards").models, creditcardWrap, view.wizard.application.getConfig('itemsPerRow', 1)) %>
+		</div>
+
+		<div>
+			<a href="#" data-action="select-creditcard" class="btn-edit-address" style="margin-left: 150px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('ok').translate() %></a>
+		
+			<a href="#" id="changecreditcard"class="btn-edit-address" onclick="jQuery('#change-payment').hide()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('cancel').translate() %></a>
+		</div>
+		<div style="height: 25px;">
+		</div>
+	</div>
+	
+	<div class="review-layover" id="change-billing" style="width: 560px; padding: 10px 0px 0px 0px; margin-top: -710px; min-height: 383px; max-height: 383px;">
+	<div id="modal-header" class="modal-header">
+			<button type="button" class="close" data-action="canceladdressselection">&times;</button>
+			<h3 class="modal-title"> Change Billing Address </h3>
+		</div>
+		<p style="margin-top: 10px;">
+		<%
+			// Wrap the address address macro to pass options in
+			var addressWrap = function (address) {
+				return SC.macros['address'](address, {
+					showSelect: true
+				,	selectMessage: view.selectMessage
+				,	hideDefaults: true
+				,	selectedAddress: view.model.get("billaddress")
+				,	verifyAddress: "billaddress"
+				,	step: "review"
+				,   stopSelect: true
+				});
+			}
+		%>
+		</p>
+		<div style="float:left; padding: 0px 0px 20px 10px;">
+		<p>
+			<a class="btn btn-link" href="/addressbook/new" data-toggle="show-in-modal" style=" border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+				<%= _('Add New Address').translate() %>
+			</a>
+		</p>
+		<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
+		</div>
+		<div>
+			<a href="#" data-action="select" class="btn-edit-address" style="margin-left: 230px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('ok').translate() %></a>
+		
+			<a href="#" class="btn-edit-address" data-action="canceladdressselection" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
+			<%= _('cancel').translate() %></a>
+		</div>
+		<div style="height: 25px;">
+		</div>
+	</div>
+	
+	
+	
+<!-- gift certificate -->
+<div  style="width: 586px;  margin-top: 15px; padding-left: 20px; padding-bottom: 20px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
+<h3 class="section-header" style="padding:0; margin:15px 0 6px 0; font-size: 17px; color: #f87c00;">
+		<%=_('IS THIS ORDER A GIFT?').translate()%>
+	</h3>
+<div id="cardmessage-container">
+<!--<form class="delivery-options" action="">
+	<fieldset>
+		<input id="cardmessagetoggle" type="checkbox" name="orderisgift" style="margin: 0 3px 2px 0;">Yes, this order is a gift!
+		<div id="cardmessageblock" style="display:none">
+			<p style="margin-top:9px;">
+				Need some help deciding what to say?<br/>
+				Use one of our messages to get you started:
+			</p>
+			<select id="cardmessage-options"></select>
+			<textarea id="cardmessagetext" maxlength="500" style="height: 130px;"></textarea>
+		</div>
+	</fieldset>
+	</form>-->
+</div>
+</div>
+
+
+
+<div class="shipments-cart-details-header" style="width: 640px;">
+	<table cellspacing="0" cellpadding="0" border="0"  style="float: left; background: white; border: 10px solid white; font-size: 13px; font-weight: bold;">
+	<tr style="height: 40px; font-weight: 500; font-size: 13px; color: #aaaaaa">
+	<th align="left" colspan="2" width="345px"><img src="img/cart_icon.png" style="margin-right: 6px;">SHOPPING CART</th>
+	<th align="center" width="100px">PRICE</th>
+	<th align="center" width="100px">QTY</th>
+	<th align="center" width="100px">TOTAL</th>
+	</tr>
+	
+	<% view.model.get('lines').each(function (lines, index) { %>
+				<%= shoppingCartItem(lines, view, {
+					showActions:false
+				}) %>
+			<% }) %>
+	</table>
+</div>
+<span>
+<a href="#" onclick="jQuery('.cart-layover').show()" style=" margin-left: 568px;">edit</a>
+</span>
+</div>

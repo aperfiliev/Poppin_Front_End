@@ -1,0 +1,20 @@
+<p>
+	<%= _('Checkout as a guest and you will have an opportunity to create an account when you are finished.').translate() %>
+</p>
+
+<form class="register-guest-form">
+	<fieldset>
+		<div class="form-actions register-guest-actions">
+			<button type="submit" class="btn btn-primary btn-large">
+				<%= _('Checkout as a guest').translate() %>
+			</button>
+		</div>
+	</fieldset>
+</form>
+
+<div class="collapse in register">
+	<%= _('Want to create an Account first?').translate() %>
+	<a href="#" class="btn-link" data-toggle="collapse" data-target=".register">
+		<%= _('Register Now').translate() %>
+	</a>
+</div>

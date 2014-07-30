@@ -1,0 +1,63 @@
+.orderwizard-module-showpayments {
+	border-bottom: 1px solid @mainBorderColor;
+	padding-bottom: @baseLineHeight * 1.5;
+}
+
+.payment-methods-summary {
+	margin-bottom: @baseLineHeight;
+}
+
+.shipments-shipping-details {
+	margin-bottom: @baseLineHeight * 1.5;
+}
+
+.shipments-cart-details-header {
+	margin-bottom: @baseLineHeight / 2;
+	background: @wellBackground;
+	h3 {
+		margin: 0;
+		padding: 4px 10px; 
+		display: inline; 
+		font-size:  @baseFontSize * 1.6;
+	}
+}
+
+.shipments-cart-details-body {
+
+	.cart-item-cell:last-child {
+		border-bottom: none;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.amount {
+		text-align: right; 
+	}
+}
+
+.orderwizard-module-termsandconditions {
+	margin-bottom: 0;
+}
+
+// ***** WARNING *****
+// Please do NOT take this as a reference
+// we are using it only as a last resort
+// to show/hide some elements on the last
+// page of the checkout process
+.step-navigation-buttons, .orderwizard-module-termsandconditions {
+
+	@media (max-width: 767px) {
+		[data-to-last="1"] & {
+			display: none;
+		}
+	}
+}
+
+.step-navigation-buttons-top {
+
+	@media (max-width: 767px) {
+		[data-to-last="1"] & {
+			display: block;
+		}
+	}
+}

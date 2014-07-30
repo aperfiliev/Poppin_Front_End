@@ -1,0 +1,16 @@
+<% registerMacro('merchandisingZone', function (zone) { %>
+<aside>
+	<h3><%= _(zone.title).translate() %></h3>
+	<% if (zone.description) { %>
+	<p class="description"><%= zone.description %></p>
+	<% } %>
+	<div class="row-fluid">
+		<%
+			var relatedWrap = function relatedWrap (item) {
+				return SC.macros.relatedItem(item, zone.application);
+			};
+		%>
+		<%= SC.macros.displayInRows(zone.items, relatedWrap, 4) %>
+	</div>
+</aside>
+<% }) %>

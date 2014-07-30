@@ -1,0 +1,37 @@
+<div class="payment-method-invoice">
+	<div class="row-fluid">
+		<div class="span4">
+			<p class="strong">
+				<%= _('Terms').translate() %>
+			</p>
+			<p>
+				<%= view.terms.name %>
+			</p>
+		</div>
+		<div class="span8">
+			<p class="strong">
+				<%= _('Available Balance').translate() %>
+			</p>
+			<p>
+				<%= view.wizard.options.profile.get('balance_formatted') %>
+			</p>
+		</div>
+	</div>
+	<div class="row-fluid control-group purchase-order-number-container">
+		<label for="purchase-order-number" class="control-label">
+			<%= _('Purchase Order Number (Optional)').translate() %>
+		</label>
+		<input
+			type="text"
+			name="purchase-order-number"
+			id="purchase-order-number"
+			class="input-medium purchase-order-number" 
+			value="<%= view.terms.purchasenumber || '' %>"
+		>
+	</div>
+	<% if (SC.ENVIRONMENT.siteSettings.checkout.requiretermsandconditions === 'T') { %>
+	<p>
+		<%= _('I agree to pay with my current Invoice <a data-toggle="show-terms" href="#">Terms & Conditions</a>').translate() %>
+	</p>
+	<% } %>
+</div>

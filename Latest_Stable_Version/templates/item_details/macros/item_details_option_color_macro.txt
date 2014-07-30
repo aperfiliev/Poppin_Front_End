@@ -1,0 +1,40 @@
+<% registerMacro('itemDetailsOptionColor', function (option, selected_value, item_model) { %>
+<% var htmlid = 'option-'+ option.cartOptionId; %>
+<div id="<%= htmlid %>-container" class="<%= htmlid %>-container" data-type="option" data-cart-option-id="<%= option.cartOptionId %>">
+	<p class="option-label strong">
+		<%= option.label %><% if (selected_value) { %>: <span><%= selected_value.label %></span><% } %>
+	</p>
+	<ul id="<%= htmlid %>" class="tiles color-tiles <%= htmlid %>">
+		<% _.each(option.values, function (item) { %>
+			<% if (item.internalid) { %>
+				<% 
+					var is_active = selected_value && item.internalid == selected_value.internalid
+					,	is_available = item.isAvailable;
+				%>
+				<li class="<%= (is_active ? 'active' : '') +' '+ (is_available ? '' : 'muted') %>">
+					<% var color = option.colors && (option.colors[item.label] || option.colors.defaultColor); %>
+					<a 
+						href="<%= item_model.get('_url') + '?' + option.url + '=' + encodeURIComponent(item.label) %>" 
+						class="tile" 
+						title="<%= item.label %>"
+						<% if (!_.isObject(color)) { %>
+							style="background: <%= color %>"
+						<% } %>
+						data-value="<%= item.internalid %>" 
+						data-toggle="set-option" 
+						data-active="<%= is_active %>" 
+						data-available="<%= is_available %>">
+							<% if (_.isObject(color) && color.type === 'image') { %>
+								<img 
+									src="<%= color.src %>" 
+									alt="<%= item.label %>"
+									width="<%= color.width || '' %>" 
+									height="<%= color.height || '' %>">
+							<% } %>
+					</a>
+				</li>
+			<% } %>
+		<% }) %>
+	</ul>
+</div>
+<% }) %>
