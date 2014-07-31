@@ -43,7 +43,14 @@ var itemsCollection = [];
 <% for( var i=0;i< view.model.get('lines').models.length;i++) {%>
 <% var price = view.model.get('lines').models[i].get('total') / view.model.get('lines').models[i].get('quantity') %>
 <% price = Math.round(price*100)/100; %>
-itemsCollection.push({sku:'<%=view.model.get("lines").models[i].get("item").get("_sku")%>', productId:'<%=view.model.get('lines').models[i].id%>',price:'<%=price %>',quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'});
+		<% var domainDiscount = view.model.get('lines').models[i].get('item').get('_comparePriceAgainst') - view.model.get('lines').models[i].get('rate') %>
+		itemsCollection.push({
+							sku:'<%=view.model.get("lines").models[i].get("item").get("_sku")%>', 
+							productId:'<%=view.model.get('lines').models[i].id%>',
+							price:'<%=view.model.get('lines').models[i].get('item').get('_comparePriceAgainst').toFixed(2) %>',
+							discount:'<%=domainDiscount ? (view.model.get('lines').models[i].get('discount') / view.model.get('lines').models[i].get('quantity') + domainDiscount).toFixed(2) : (view.model.get('lines').models[i].get('discount') / view.model.get('lines').models[i].get('quantity')).toFixed(2)  %>',
+							quantity:'<%=view.model.get('lines').models[i].get('quantity') %>'
+							});
 <% itemDiscount += view.model.get('lines').models[i].get('discount') %>
 <% }%>
 window.forPixeldata = {
