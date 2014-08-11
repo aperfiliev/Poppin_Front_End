@@ -24,6 +24,16 @@
     border-bottom-left-radius: 6px;
 }
 
+.btn-as-link{
+	font-size: 100% !important; 
+	font-family: OmnesRegularRegular,sans-serif !important; 
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    border-bottom: 1px dotted;
+    text-decoration: none;
+    color: #79ccf0;
+}
+
 
 </style>
 <% 
@@ -309,10 +319,8 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 				<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
 			</div>
 			<div>
-		 		<a href="#" data-action="select" class="btn-edit-address" style="margin-left: 230px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-					<%= _('ok').translate() %></a>
-				<a href="#" class="btn-edit-address" data-action="canceladdressselection" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-					<%= _('cancel').translate() %></a>
+				<button type="button" class="btn-edit-address btn-as-link" style="margin-left: 225px" data-action="select"><%= _('ok').translate() %></button>
+            	<button type="button" class="btn-edit-address btn-as-link" style="margin-left: 7px" data-action="canceladdressselection"><%= _('cancel').translate() %></button>
 			</div>
 			<div style="height: 25px;">
 			</div>
@@ -353,11 +361,8 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 		</div>
 
 		<div>
-			<a href="#" data-action="select-creditcard" class="btn-edit-address" style="margin-left: 150px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-			<%= _('ok').translate() %></a>
-		
-			<a href="#" id="changecreditcard"class="btn-edit-address" onclick="jQuery('#change-payment').hide()" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-			<%= _('cancel').translate() %></a>
+            <button type="button" class="btn-edit-address btn-as-link" style="margin-left: 145px" data-action="select-creditcard"><%= _('ok').translate() %></button>
+            <button type="button" class="btn-edit-address btn-as-link" style="margin-left: 7px" onclick="jQuery('#change-payment').hide()"><%= _('cancel').translate() %></button>
 		</div>
 		<div style="height: 25px;">
 		</div>
@@ -393,11 +398,8 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 		<%= displayInRows(view.profile.get('addresses').models, addressWrap, view.wizard.application.getConfig('itemsPerRow', 2)) %>
 		</div>
 		<div>
-			<a href="#" data-action="select" class="btn-edit-address" style="margin-left: 230px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-			<%= _('ok').translate() %></a>
-		
-			<a href="#" class="btn-edit-address" data-action="canceladdressselection" style="margin-left: 20px; border-bottom: 1px dotted; text-decoration: none; color: #79ccf0;">
-			<%= _('cancel').translate() %></a>
+			<button type="button" class="btn-edit-address btn-as-link" style="margin-left: 225px" data-action="select"><%= _('ok').translate() %></button>
+            <button type="button" class="btn-edit-address btn-as-link" style="margin-left: 7px" data-action="canceladdressselection"><%= _('cancel').translate() %></button>
 		</div>
 		<div style="height: 25px;">
 		</div>
