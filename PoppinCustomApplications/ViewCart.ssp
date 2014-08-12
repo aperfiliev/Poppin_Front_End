@@ -4,12 +4,12 @@
 <head>
 <%= getPageFullHead() %>
 <!-- <script src="js/jquery-1.10.2.min.js"></script>
-<script src="/SSP Applications/Poppin/SocialMediaLogin2/js/jquery-ui-1.10.3.custom.min.js"></script>
-<link href="/SSP Applications/Poppin/SocialMediaLogin2/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
+<script src="/SSP Applications/Poppin/PoppinCustomApplications/js/jquery-ui-1.10.3.custom.min.js"></script>
+<link href="/SSP Applications/Poppin/PoppinCustomApplications/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
 
 <script src="js/jquery.powertip.js"></script>
 -->
-<script src="js/Cart/CartScripts-0147627047ef.js"></script>
+<script src="js/Cart/CartScripts-0147aaafa71b.js"></script>
 <link rel="stylesheet" href="css/Cart/ViewCart.css">
 
 </head>

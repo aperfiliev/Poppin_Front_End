@@ -140,6 +140,7 @@ function loginUser(request, sociallink)
 		{
 			orderObj.applyPromotionCode(promocodes[0]);
 		}
+		result.redirecturl = 'redirect';
 	}
 	else
 	{
@@ -164,6 +165,7 @@ function loginUser(request, sociallink)
 				orderObj.applyPromotionCode(promocodes[0]);
 			}
 		}
+		nlapiLogExecution('DEBUG','checkout url',nlapiGetWebContainer().getStandardTagLibrary().getCartUrl());
 		result.redirecturl = nlapiGetWebContainer().getStandardTagLibrary().getCartUrl();
 	}
 	return result;

@@ -1265,7 +1265,7 @@ var GPR_AAE_RVI = function (C) {
             }
         },
         getItems: function () {
-            var G = GPR_COOKIES.read("rvi_n" + GPR_OPTIONS.options().siteNumber);
+        	var G = GPR_COOKIES.read("rvi_n" + GPR_OPTIONS.options().siteNumber);
             if (G !== "" && G != null) {
                 var I = [];
                 var H = G.split(",");

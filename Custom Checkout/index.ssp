@@ -71,7 +71,7 @@
 		$j.ajax({
 			type : 'POST',
 			data : {netsuiteid: itemid, quantity: 1},
-			url : 'https://checkout.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/ViewCartService.ss' + '?method=add',
+			url : 'https://checkout.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/ViewCartService.ss' + '?method=add',
 			cache : false
 		});
 	}
@@ -122,8 +122,8 @@
 	<% if (Error) { %>
 		<script>SC.ENVIRONMENT.contextError = <%= JSON.stringify(Error) %>;</script>
 	<% } %>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-014744412bab.js') %>"></script>
-	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0146fbe5f7d1.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'js/Application-0147b236d6cd.js') %>"></script>
+	<script src="<%= session.getAbsoluteUrl('checkout', 'templates/Templates-0147c67d94a0.js') %>"></script>
 	<script src="<%= session.getAbsoluteUrl('checkout', 'js/starter/Starter-014744508f42.js') %>"></script>
 <script language="javascript" type="text/javascript">
 	var ipAddress = "<%=getCurrentAttribute('request','ipaddress')%>";	

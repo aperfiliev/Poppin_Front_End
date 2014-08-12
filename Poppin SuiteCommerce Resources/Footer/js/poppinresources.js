@@ -1,15 +1,16 @@
 var poppinres = {
 	url:{
-	gigyacontrol:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/gigya.html",
-	loginservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/LoginService.ss",
-	loginservice1:"http://sandbox.poppin.com/Poppin/SocialMediaLogin2/LoginService.ss",
-        storeexitsurveyservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/StoreExitSurveyResult.ss",
-	loginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/Login.ssp",
-	miniloginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/MiniLogin.ssp",
+	gigyacontrol:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/gigya.html",
+	loginservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/LoginService.ss",
+	loginservice1:"http://sandbox.poppin.com/Poppin/PoppinCustomApplications/LoginService.ss",
+        storeexitsurveyservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/StoreExitSurveyResult.ss",
+	loginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/Login.ssp",
+	miniloginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/MiniLogin.ssp",
 	poppinglobal:"http://sandbox.poppin.com",
         selectbackgroundimg: "/site/social-login/images/bg_select.png",
 	cardmessageservice: "https://checkout.sandbox.netsuite.com/c.3363929/CardMessage/cardmessage.ss",
-	poppincheckout: "secure.poppin.com"
+	poppincheckout: "secure.poppin.com",
+	checkoutbase: "https://checkout.sandbox.netsuite.com/c.3363929/checkout/index.ssp?n=1&sc=4"
 	},
 	text : {
 		forgotpassword:"",
@@ -27,7 +28,7 @@ var poppinres = {
 		passwordresettitle:"Password Reset",
 		responseobjectnull:"null response object",
 		forgotpasswordsent:"Ok. We've sent you instructions on how to update your password, aka Your Personal Key to Work Happiness. Please check your email.",
-		forgotpasswordunrecognized:'The email that you entered is not recognized, please try again or <a href="'+ "https://secure.poppin.com/Poppin/SocialMediaLogin2/Login.ssp" +'" style="text-decoration: underline;">create a new account</a>',
+		forgotpasswordunrecognized:'The email that you entered is not recognized, please try again or <a href="'+ "https://checkout.sandbox.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/Login.ssp" +'" style="text-decoration: underline;">create a new account</a>',
 	exitsurveyempty:"Please fill out the survey",
 	resetpasswordsuccess: "Password changed successfully"
 	},

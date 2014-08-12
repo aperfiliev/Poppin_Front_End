@@ -26,7 +26,7 @@ var socket = new easyXDM.Socket({
 });
 </script>
 <link href="/site/pp-files/pp-all-styles.min.css?c=" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin2/exitsurvey.css" />
+<link rel="stylesheet" href="/SSP Applications/Poppin/PoppinCustomApplications/exitsurvey.css" />
 <style>
 .div__select {
 	position: relative;

@@ -1,18 +1,18 @@
 var poppinservres = {
 	url:{
-	gigyacontrol:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/gigya.html",
-	loginservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/LoginService.ss",
-	loginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/Login.ssp",
+	gigyacontrol:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/gigya.html",
+	loginservice:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/LoginService.ss",
+	loginpage:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/Login.ssp",
 	poppinglobal:"http://sandbox.poppin.com",
 	checkexistinguser:"https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=281&deploy=1&compid=3363929&h=afdf73f46a683569f999",
 	storeexitsurveyresult:"https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=286&deploy=1&compid=3363929&h=6232be819c9f25672397",
 	storelink:"https://forms.netsuite.com/app/site/hosting/scriptlet.nl?script=277&deploy=1&compid=3363929&h=48069b02f983db8cdd31",
 	placingorderhelpsuitlet: "https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=282&deploy=1&compid=3363929&h=288eeb5121d7dd217ad5",
 	promodescriptionsuitlet: "https://forms.sandbox.netsuite.com/app/site/hosting/scriptlet.nl?script=283&deploy=1&compid=3363929&h=9fb0da1f95d5a10adfdc",
-	poppinresources:"/Poppin/SocialMediaLogin2/js/poppinresources.js",
-	poppinresourcesmini:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/SocialMediaLogin2/js/poppinresources.js",
-	jsjqueryui:"/SSP Applications/Poppin/SocialMediaLogin2/js/jquery-ui-1.10.3.custom.min.js",
-	cssjqueryui:"/SSP Applications/Poppin/SocialMediaLogin2/smoothness/jquery-ui-1.10.3.custom.css",
+	poppinresources:"/Poppin/PoppinCustomApplications/js/poppinresources.js",
+	poppinresourcesmini:"https://checkout.sandbox.netsuite.com/c.3363929/Poppin/PoppinCustomApplications/js/poppinresources.js",
+	jsjqueryui:"/SSP Applications/Poppin/PoppinCustomApplications/js/jquery-ui-1.10.3.custom.min.js",
+	cssjqueryui:"/SSP Applications/Poppin/PoppinCustomApplications/smoothness/jquery-ui-1.10.3.custom.css",
 	selectbackgroundimg: "/site/pp-sources/business/bg_select.png"
 	},
 	text : {

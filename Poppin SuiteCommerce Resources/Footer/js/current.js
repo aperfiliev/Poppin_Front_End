@@ -1,1 +1,1 @@
-BDQ.currentTemplatesUrl = '/Web Site Hosting Files/Live Hosting Files/Poppin/pp-sc-resources/Footer/js/AllFooterScripts-0146f72216f3.js';
+BDQ.currentTemplatesUrl = '/Web Site Hosting Files/Live Hosting Files/Poppin/pp-sc-resources/Footer/js/AllFooterScripts-0147c965fb44.js';

@@ -355,7 +355,15 @@ function response(data)
 				var notifyString = JSON.stringify(responseObject.socializenotify);
 				socket.postMessage(notifyString);
 				}
-			window.location = responseObject.message;	
+			if(responseObject.message == 'redirect'){
+			var tracker = _gaq._getAsyncTracker();
+			var redir_elem = tracker._getLinkerUrl( poppinres.url.checkoutbase );
+			console.log(redir_elem);
+			window.location = redir_elem;	
+			}	
+			else{
+			window.location = responseObject.message;
+			}
 			break
 		case 'error':
 			var errormessage = responseObject.message;

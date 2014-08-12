@@ -355,7 +355,13 @@ function response(data)
 				var notifyString = JSON.stringify(responseObject.socializenotify);
 				socket.postMessage(notifyString);
 				}
-			window.location = responseObject.message;	
+			var redir_elem = responseObject.message;
+			   var tracker = _gaq._getAsyncTracker();
+			   redir_elem = tracker._getLinkerUrl(url);
+			   _gaq.push(function() {
+			   });
+			console.log(redir_elem);
+			//window.location = responseObject.message;	
 			break
 		case 'error':
 			var errormessage = responseObject.message;
