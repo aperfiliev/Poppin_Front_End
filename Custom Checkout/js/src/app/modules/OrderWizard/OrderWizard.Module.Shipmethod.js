@@ -163,12 +163,12 @@ define('OrderWizard.Module.Shipmethod', ['Wizard.Module'], function (WizardModul
 		{
 			var self = this;
 			this.model.set('shipmethod', this.$('input[name=delivery-options]:checked').val());
-			this.step.disableNavButtons();
-			this.model.save().always(function()
-			{
-				self.clearError();
-				self.step.enableNavButtons();
-			});
+			//this.step.disableNavButtons();
+			//this.model.save().always(function()
+			//{
+			//	self.clearError();
+			//	self.step.enableNavButtons();
+			//});
 			return this.isValid();
 		}
 
