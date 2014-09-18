@@ -166,7 +166,7 @@ function loginUser(request, sociallink)
 			}
 		}
 		nlapiLogExecution('DEBUG','checkout url',nlapiGetWebContainer().getStandardTagLibrary().getCartUrl());
-		result.redirecturl = nlapiGetWebContainer().getStandardTagLibrary().getCartUrl();
+		result.redirecturl = nlapiGetWebContainer().getStandardTagLibrary().getCartUrl()+'&cart=' + parseInt(Math.random() * (999999 - 111111) + 111111);
 	}
 	return result;
 }
