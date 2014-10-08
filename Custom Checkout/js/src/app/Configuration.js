@@ -134,7 +134,8 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 					,	modules: [
 							['OrderWizard.Module.Address.Shipping', {title: _('SELECT YOUR SHIPPING ADDRESS').translate()}]
 						,	'OrderWizard.Module.Shipmethod'
-						,	['OrderWizard.Module.CardMessage',{title:_('IS THIS ORDER A GIFT?').translate()}]
+						// PPT-226 has requested to remove following functionality
+						//,	['OrderWizard.Module.CardMessage',{title:_('IS THIS ORDER A GIFT?').translate()}]
 						]
 					}
 				]

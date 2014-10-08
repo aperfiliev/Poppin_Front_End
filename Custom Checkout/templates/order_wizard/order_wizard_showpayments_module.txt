@@ -404,31 +404,6 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 		<div style="height: 25px;">
 		</div>
 	</div>
-	
-	
-	
-<!-- gift certificate -->
-<div  style="width: 586px;  margin-top: 15px; padding-left: 20px; padding-bottom: 20px; border-width:2px; border-color: #e2e2e2; border-style: solid;">
-<h3 class="section-header" style="padding:0; margin:15px 0 6px 0; font-size: 17px; color: #f87c00;">
-		<%=_('IS THIS ORDER A GIFT?').translate()%>
-	</h3>
-<div id="cardmessage-container">
-<!--<form class="delivery-options" action="">
-	<fieldset>
-		<input id="cardmessagetoggle" type="checkbox" name="orderisgift" style="margin: 0 3px 2px 0;">Yes, this order is a gift!
-		<div id="cardmessageblock" style="display:none">
-			<p style="margin-top:9px;">
-				Need some help deciding what to say?<br/>
-				Use one of our messages to get you started:
-			</p>
-			<select id="cardmessage-options"></select>
-			<textarea id="cardmessagetext" maxlength="500" style="height: 130px;"></textarea>
-		</div>
-	</fieldset>
-	</form>-->
-</div>
-</div>
-
 
 
 <div class="shipments-cart-details-header" style="width: 640px;">

@@ -1,7 +1,7 @@
 // OrderWizard.Module.ShowPayments.js
 // --------------------------------
 // 
-define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.CardMessage'], function (WizardModule, OrderWizardModuleCardMessage)
+define('OrderWizard.Module.ShowPayments', ['Wizard.Module'], function (WizardModule)
 {
 	'use strict';
 
@@ -69,23 +69,6 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 		,	initialize: function(options)
 			{
 				WizardModule.prototype.initialize.apply(this, arguments);
-				var self = this;
-				this.cardMessageModule =        {
-				                   					classModule: 'OrderWizard.Module.CardMessage'
-				                   				,	options: {}
-				                   				};
-				var ModuleClass = require(this.cardMessageModule.classModule);
-
-				this.cardMessageModule.instance = new ModuleClass(_.extend({
-					wizard: self.wizard
-				,	step: self.step
-				,	stepGroup: self.stepGroup
-				}, this.cardMessageModule.options));
-
-				this.cardMessageModule.instance.on('ready', function(is_ready)
-				{	
-					self.moduleReady(is_ready);
-				});
 				this.model.set('ipAddress',ipAddress);				
 			}
 		,	moduleReady: function(is_ready)
@@ -98,69 +81,24 @@ define('OrderWizard.Module.ShowPayments', ['Wizard.Module','OrderWizard.Module.C
 				this.application = this.wizard.application;
 				this.profile = this.wizard.options.profile;
 				this.options.application = this.wizard.application;
-				this.eventHandlersOn();
-				var wasChecked = false,
-			    	cvcBeforeRender;
-if(this.getPaymentmethods().length > 0 && this.getPaymentmethods()[0].attributes.creditcard){
-				if (!this.currentCardId && this.getPaymentmethods().length > 0 ) {
-					this.currentCardId = this.getPaymentmethods()[0].attributes.creditcard.internalid;
-				} else if (this.getPaymentmethods().length > 0 && (this.currentCardId != this.getPaymentmethods()[0].attributes.creditcard.internalid)) {
-					this.currentCardId = this.getPaymentmethods()[0].attributes.creditcard.internalid;
-					cvcBeforeRender = undefined;
-				} else {
-					if (this.$('#ccsecuritycode') && this.$('#ccsecuritycode')[0] && jQuery("#in-modal-ccsecuritycode").length==0) {
-						cvcBeforeRender = this.$('#ccsecuritycode')[0].value;
+				var cvcBeforeRender;
+				if(this.getPaymentmethods().length > 0 && this.getPaymentmethods()[0].attributes.creditcard){
+					if (!this.currentCardId && this.getPaymentmethods().length > 0 ) {
+						this.currentCardId = this.getPaymentmethods()[0].attributes.creditcard.internalid;
+					} else if (this.getPaymentmethods().length > 0 && (this.currentCardId != this.getPaymentmethods()[0].attributes.creditcard.internalid)) {
+						this.currentCardId = this.getPaymentmethods()[0].attributes.creditcard.internalid;
+						cvcBeforeRender = undefined;
+					} else {
+						if (this.$('#ccsecuritycode') && this.$('#ccsecuritycode')[0] && jQuery("#in-modal-ccsecuritycode").length==0) {
+							cvcBeforeRender = this.$('#ccsecuritycode')[0].value;
+						}
 					}
-				}
-}
-				if (this.$('#cardmessageblock').length != 0) {
-					     wasChecked = this.$('#cardmessagetoggle')[0].checked;
-					 var selIndex   = this.$('#cardmessage-options')[0].selectedIndex,
-						 text       = this.$('#cardmessagetext')[0].value,
-						 remChars   = this.$('#textcounter')[0].innerHTML;
-				}
-				
+				}				
 				this._render();
-				this.cardMessageModule.instance.render();
-				this.$('#cardmessage-container').empty().append(this.cardMessageModule.instance.$el);
-				if (wasChecked) {
-					this.$('#cardmessagetoggle')[0].checked = true;
-					this.$('#cardmessageblock').show();
-					this.$('#cardmessagetext')[0].value = text;
-					if (selIndex) {this.$('#cardmessage-options')[0].selectedIndex = selIndex;}
-					this.$('#textcounter')[0].innerHTML = remChars;
-				}
 				if (cvcBeforeRender && this.$('#ccsecuritycode')) {
 					this.$('#ccsecuritycode')[0].value = cvcBeforeRender;
 				}
 			}
-		,	eventHandlersOn: function(){
-				this.eventHandlersOff();
-				var self = this;
-				Backbone.on('refresh', function ()
-						{
-							var wasChecked = this.$('#cardmessagetoggle')[0].checked,
-								selIndex   = this.$('#cardmessage-options')[0].selectedIndex,
-								text       = this.$('#cardmessagetext')[0].value,
-								remChars   = this.$('#textcounter')[0].innerHTML;
-							self._render();
-							this.cardMessageModule.instance.render();
-							this.$('#cardmessage-container').empty().append(this.cardMessageModule.instance.$el);
-							if (wasChecked) {
-								this.$('#cardmessagetoggle')[0].checked = true;
-								this.$('#cardmessageblock').show();
-								this.$('#cardmessagetext')[0].value = text;
-								if (selIndex) {this.$('#cardmessage-options')[0].selectedIndex = selIndex;}
-								this.$('#textcounter')[0].innerHTML = remChars;
-							}
-							
-							console.log('refreshed');
-						}, this);
-		}
-		,	eventHandlersOff: function(){
-				this.model && this.model.off(null, null, this);
-				
-		}	
 		,	getPaymentmethods: function()
 			{
 				return _.reject(this.model.get('paymentmethods').models, function (paymentmethod)
@@ -240,8 +178,6 @@ if(this.getPaymentmethods().length > 0 && this.getPaymentmethods()[0].attributes
 				if (cvsError) {
 					return jQuery.Deferred().reject(cvsError);
 				}
-				
-				this.cardMessageModule.instance.submit();
 			}
 		
 		, 	validateAndSetCVC: function () {
