@@ -76,7 +76,7 @@ if(platf.indexOf('iPad')>-1 || platf.indexOf('iPhone')>-1 || platf.indexOf('iPod
 </script>
 <div class="cart-layover" style="display:none;">
 <button type="button" class="close" onclick="jQuery('.cart-layover').hide()">×</button>
-<h1 style="color: rgb(243, 122, 49); background: url('img/cart.png') no-repeat;padding-left: 48px;margin-top: 10px;font-size: 38px;font-family: 'OmnesLightRegular';font-weight: normal;">Shoppping Cart</h1>
+<h1 style="color: rgb(243, 122, 49); background: url('img/cart.png') no-repeat;padding-left: 48px;margin-top: 10px;font-size: 38px;font-family: 'OmnesLightRegular';font-weight: normal;">Shopping Cart</h1>
 <div class="listheadercustom" style="color: #969696;padding: 20px 0px 10px 0px;border-bottom: solid 1px black;">ITEMS IN YOUR CART</div>
 <table id="cartitemstable" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
 <tr>
