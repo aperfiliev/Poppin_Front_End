@@ -158,11 +158,11 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 				<% _.each(paymentmethods, function (paymentmethod) { %>
 					<%= SC.macros.formatPaymentMethod(paymentmethod, view.wizard.application.getConfig('creditCardIcons')) %>
 				<% }); %>
-				<% if (view.profile.get('isGuest') === 'T') { %>
+				<!--<% if (view.profile.get('isGuest') === 'T') { %>
 					<div>
 						<h5><%- view.profile.get('email') %></h5>
 					</div>
-				<% } %>
+				<% } %>--!>
 			</div>	
 			<% if (paymentmethods.length > 0  && paymentmethods[0].attributes.creditcard){ %>
 			<div class="span6" style="margin-top: 10px;  margin-bottom: 30px;">
