@@ -101,75 +101,61 @@ function writeResponse(result, gigyanotifier)
 }
 function loginUser(request, sociallink)
 {
-       nlapiGetContext().setSessionObject('after_paypal', 'F');
-	var email = request.getParameter('email');
-	var pwd = '';
-	var checkout = request.getParameter('checkout');
+	nlapiGetContext().setSessionObject('after_paypal', 'F');
+	var email 	 = request.getParameter('email'),
+		pwd 	 = '',
+		checkout = request.getParameter('checkout'),
+		result;
 	
 	//check if login performed via social link
-	if(typeof sociallink === "undefined"){
+	if (typeof sociallink === "undefined") {
 		pwd = request.getParameter('password');
 	}
-//	else{
-//		pwd = sociallink;
-//	}
-	var session = nlapiGetWebContainer().getShoppingSession();
-	var params;
-	nlapiLogExecution('DEBUG','Checkout param:',checkout);
-	var result;
-	if(checkout==='true')
-	{
-		// saving items to variable
-		var orderObj = nlapiGetWebContainer().getShoppingSession().getOrder();
-		var items = orderObj.getItems(["internalId", "quantity"]);
-		var promocodes = orderObj.promocodes;
-		
-		params = {
-				"email":email,
-				"password":pwd,
-				"origin":'checkout'
-				}
-		nlapiLogExecution('DEBUG','origin checkout',JSON.stringify(params));
-		result = session.login(params);
+	
+	var params   = {
+		"email"	   :email,
+		"password" :pwd
+	};	
 
-		// restoring session items
-		var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
-		orderObjNew.removeAllItems();
-		orderObjNew.addItems(items);
-		if(promocodes && promocodes.length > 0)
-		{
-			orderObj.applyPromotionCode(promocodes[0]);
-		}
+	nlapiLogExecution('DEBUG','Checkout param:',checkout);	
+	if (checkout === 'true') {
+		params['origin'] = 'checkout';
+		nlapiLogExecution('DEBUG','origin checkout',JSON.stringify(params));
+		result = copyOrderItemsAndLogin(params);
 		result.redirecturl = 'redirect';
-	}
-	else
-	{
-		// saving items to variable
-		var orderObj = nlapiGetWebContainer().getShoppingSession().getOrder();
-		var items = orderObj.getItems(["internalId", "quantity"]);
-		var promocodes = orderObj.promocodes;
-		
-		params = {
-				"email":email,
-				"password":pwd
-				}
-		nlapiLogExecution('DEBUG','no origin',JSON.stringify(params));
-		result = session.login(params);
-		if(items !=null){
-			// restoring session items
-			var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
-			orderObjNew.removeAllItems();
-			orderObjNew.addItems(items);
-			if(promocodes && promocodes.length > 0)
-			{
-				orderObj.applyPromotionCode(promocodes[0]);
-			}
-		}
+	} else {
+		nlapiLogExecution('DEBUG','no origin checkout',JSON.stringify(params));
+		result = copyOrderItemsAndLogin(params);
 		nlapiLogExecution('DEBUG','checkout url',nlapiGetWebContainer().getStandardTagLibrary().getCartUrl());
 		result.redirecturl = nlapiGetWebContainer().getStandardTagLibrary().getCartUrl()+'&cart=' + parseInt(Math.random() * (999999 - 111111) + 111111);
 	}
 	return result;
 }
+
+function copyOrderItemsAndLogin(params) {
+	var session = nlapiGetWebContainer().getShoppingSession(),
+		returnValue;
+	
+	// saving items to variable
+	var orderObj   = session.getOrder(),
+		items 	   = orderObj.getItems(["internalId", "quantity"]),
+		promocodes = orderObj.promocodes;
+		
+		returnValue = session.login(params);
+	
+		if(items != null) {
+			// restoring session items
+			var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
+			orderObjNew.removeAllItems();
+			orderObjNew.addItems(items);
+			if(promocodes && promocodes.length > 0) {
+				orderObjNew.applyPromotionCode(promocodes[0]);
+			}
+		}
+	
+		return returnValue;
+}
+
 function registerUser(request)
 {
 	var emailcheck = request.getParameter("email");
