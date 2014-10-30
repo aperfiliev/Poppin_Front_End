@@ -6,17 +6,18 @@
 <script type="text/javascript" src="https://system.sandbox.netsuite.com/c.3363929/site/pp-files/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">
 $j(document).ready(function(){
-	$j(document).click();
+    $j(document).click();
 });
 $j(function(){
-	$j('#companyname').val('Newsletter');
-	$j('#email').focus(function(){
-		$j(this).addClass('focus');
-	}).blur(function(){
-		if( $j(this).val() == '' ){
-			$j(this).removeClass('focus');
-		}
-	});
+    $j('#companyname').val('Newsletter');
+    $j('#globalsubscriptionstatus').val('1');
+    $j('#email').focus(function(){
+        $j(this).addClass('focus');
+    }).blur(function(){
+        if( $j(this).val() == '' ){
+            $j(this).removeClass('focus');
+        }
+    });
 });
 </script>
 <style type="text/css">
@@ -41,6 +42,7 @@ and (max-device-width : 1024px) {
   <NLFORM>
     <NLCOMPANYNAME>
     <NLEMAIL>
+    <NLGLOBALSUBSCRIPTIONSTATUS>
     <button type="submit" name="sign-up" title="Submit"><img src="https://system.sandbox.netsuite.com/c.3363929/site/pp-home-images/homepage.submitnews.jpg" alt="Submit" /></button>
   </form>
 </div>
