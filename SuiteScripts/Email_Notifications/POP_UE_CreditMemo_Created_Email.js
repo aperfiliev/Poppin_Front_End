@@ -50,10 +50,19 @@ function tryPrepareAndSendEmail(){
 		}
 		var emailSubject = mergedEmailTempFile.getName();
 		var emailBody = mergedEmailTempFile.getValue();
-		var recordsToAttachWith = new Object();
-		recordsToAttachWith['transaction'] = creditMemo.getId();
+		
 		try{
-			nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, customerEmail, emailSubject, emailBody, null,null,recordsToAttachWith);
+			nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, customerEmail, emailSubject, emailBody);
+			//PPT-224/REQ-25 fix
+			/*attach Message record to the communication tab on Credit Memo record*/
+			var message = nlapiCreateRecord('message');
+			message.setFieldValue('message', emailBody);
+			message.setFieldValue('subject', emailSubject);
+			message.setFieldValue('author', EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID);
+			message.setFieldValue('recipient', creditMemo.getFieldValue('entity'));
+			message.setFieldValue('transaction',  creditMemo.getId() );
+			nlapiSubmitRecord(message, false);
+			/*-------*/
 		}
 		catch(e){
 			throw e;
