@@ -176,7 +176,7 @@ function tryPrepareAndSendEmail(fulfillment, salesOrder , customerSearch){
 	try{
 		nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, customerEmail, subject, emailBody);
 		//PPT-224/REQ-25 fix
-		/*attach Message record to the communication tab on Sales Order record*/
+		/*attach Message record to the communication tab on Item Fulfillment record*/
 		var message = nlapiCreateRecord('message');
 		message.setFieldValue('message', emailBody);
 		message.setFieldValue('subject', subject);
