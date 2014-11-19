@@ -1,5 +1,5 @@
 function sendCustomerCreatedEmail(type) {
-	if(type == 'create'){
+	if(type == 'create' && nlapiGetContext().getExecutionContext() === "userevent"){
 		try{
 			var lead = nlapiGetNewRecord();
 			if( EmialConfiguration.isEmailAvaialable(lead.getFieldValue('email')) == false ){
@@ -39,10 +39,18 @@ function tryPrepareAndSendEmail(lead){
 		}
 		var emailSubject = mergedEmailTempFile.getName();
 		var emailBody = mergedEmailTempFile.getValue();
-		var recordsToAttachWith = new Object();
-		recordsToAttachWith['entity'] = lead.getId();
+		
 		try{
-			nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, lead.getFieldValue('email'), emailSubject, emailBody, null,null,recordsToAttachWith);
+			nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, lead.getFieldValue('email'), emailSubject, emailBody);
+			//PPT-224/REQ-25 fix
+			/*attach Message record to the communication tab on Lead record*/
+			var message = nlapiCreateRecord('message');
+			message.setFieldValue('message', emailBody);
+			message.setFieldValue('subject', emailSubject);
+			message.setFieldValue('author', EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID);
+			message.setFieldValue('recipient', lead.getId());
+			nlapiSubmitRecord(message, false);
+			/*-------*/
 		}
 		catch(e){
 			throw e;
