@@ -171,9 +171,20 @@ function tryPrepareAndSendEmail(fulfillment, salesOrder , customerSearch){
 	var emailBody = mergedEmailTempFile.getValue();
 	var recordsToAttachWith = new Object();
 		recordsToAttachWith['transaction'] = fulfillment.getId();
+	var subject = "Guess what: Your Poppin order is on its way!";
 	
 	try{
-		nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, customerEmail,"Guess what: Your Poppin order is on its way!", emailBody, null,null,recordsToAttachWith);
+		nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, customerEmail, subject, emailBody);
+		//PPT-224/REQ-25 fix
+		/*attach Message record to the communication tab on Sales Order record*/
+		var message = nlapiCreateRecord('message');
+		message.setFieldValue('message', emailBody);
+		message.setFieldValue('subject', subject);
+		message.setFieldValue('author', EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID);
+		message.setFieldValue('recipient', fulfillment.getFieldValue('entity'));
+		message.setFieldValue('transaction',  fulfillment.getId());
+		nlapiSubmitRecord(message, false);
+		/*-------*/
 	}
 	catch(e){
 		throw e;
