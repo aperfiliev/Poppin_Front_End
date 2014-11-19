@@ -1,5 +1,5 @@
 function sendCustomerCreatedEmail(type) {
-	if(type == 'create'){
+	if(type == 'create' && nlapiGetContext().getExecutionContext() === "webstore"){
 		try{
 			var customer = nlapiGetNewRecord();
 			if( EmialConfiguration.isEmailAvaialable(customer.getFieldValue('email')) == false ){
@@ -53,14 +53,23 @@ function tryPrepareAndSendEmail(customer){
 		var emailSubject = mergedEmailTempFile.getName();
 		var emailBody = mergedEmailTempFile.getValue();
 		try{
-			nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, customer.getFieldValue('email'), emailSubject, emailBody, null,null,recordsToAttachWith);
+			nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, customer.getFieldValue('email'), emailSubject, emailBody);
+			//PPT-224/REQ-25 fix
+			/*attach Message record to the communication tab on Customer record*/
+			var message = nlapiCreateRecord('message');
+			message.setFieldValue('message', emailBody);
+			message.setFieldValue('subject', emailSubject);
+			message.setFieldValue('author', EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID);
+			message.setFieldValue('recipient', customer.getId());
+			nlapiSubmitRecord(message, false);
+			/*-------*/
 		}
 		catch(e){
 			throw e;
 		}
 	}
 	
-	
+	//send new account email
 	try{
 		var mergedEmailTempFile = nlapiMergeRecord(EmialConfiguration.NEW_ACCOUNT_WELCOME_EMAIL_TMPL_ID, 'customer', customer.getId(), null, null, customTagValues);
 	}
@@ -71,7 +80,16 @@ function tryPrepareAndSendEmail(customer){
 	var emailBody = mergedEmailTempFile.getValue();
 	
 	try{
-		nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, customer.getFieldValue('email'), emailSubject, emailBody, null,null,recordsToAttachWith);
+		nlapiSendEmail(EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID, customer.getFieldValue('email'), emailSubject, emailBody);
+		//PPT-224/REQ-25 fix
+		/*attach Message record to the communication tab on Customer record*/
+		var message = nlapiCreateRecord('message');
+		message.setFieldValue('message', emailBody);
+		message.setFieldValue('subject', emailSubject);
+		message.setFieldValue('author', EmialConfiguration.EMAIL_AUTHOR_EMPLOYEE_ID);
+		message.setFieldValue('recipient', customer.getId());
+		nlapiSubmitRecord(message, false);
+		/*-------*/
 	}
 	catch(e){
 		throw e;
