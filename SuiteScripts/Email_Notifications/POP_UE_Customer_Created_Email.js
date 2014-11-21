@@ -8,6 +8,7 @@ function sendCustomerCreatedEmail(type) {
 			}
 			var parentCompanyId = customer.getFieldValue('parent');
 			if( ( parentCompanyId in EmialConfiguration.WS_INTEGRATION_CSTMR_PARENT_COMPANIES ) == false){
+				//subscribeForNewsLetters(customer);
 				var resultString = tryPrepareAndSendEmail(customer);
 				if(resultString == EmialConfiguration.SUCCESS_EMAIL_SEND_ATTEMPT){
 					nlapiLogExecution('DEBUG', 'Attempt to send email : ', "OK");	
@@ -97,3 +98,21 @@ function tryPrepareAndSendEmail(customer){
 	
 	return EmialConfiguration.SUCCESS_EMAIL_SEND_ATTEMPT;
 }
+/*
+function subscribeForNewsLetters(customer) {
+	var subscriptionStatus = customer.getFieldValue('globalsubscriptionstatus');
+	if(subscriptionStatus == EmialConfiguration.SOFT_OPT_IN_ID)
+	{
+		var rec   = nlapiLoadRecord('customer',customer.getId()),
+			count = rec.getLineItemCount('subscriptions');
+		for(var i=1;i<=count;i++){
+			var subText = rec.getLineItemText('subscriptions', 'subscription', i);
+			if (subText ===  "Newsletters") {
+				rec.setLineItemValue('subscriptions', 'subscribed', i, 'T');
+				nlapiSubmitRecord(rec);
+				break;
+			}
+		}
+	}
+}
+*/

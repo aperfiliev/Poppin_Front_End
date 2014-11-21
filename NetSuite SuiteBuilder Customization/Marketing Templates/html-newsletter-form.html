@@ -10,7 +10,7 @@ $j(document).ready(function(){
 });
 $j(function(){
     $j('#companyname').val('Newsletter');
-    $j('#globalsubscriptionstatus').val('1');
+    $j("select#subscriptions option:contains('Newsletters')").attr("selected", "selected");
     $j('#email').focus(function(){
         $j(this).addClass('focus');
     }).blur(function(){
@@ -42,7 +42,9 @@ and (max-device-width : 1024px) {
   <NLFORM>
     <NLCOMPANYNAME>
     <NLEMAIL>
-    <NLGLOBALSUBSCRIPTIONSTATUS>
+    <div style="display: none">
+        <NLSUBSCRIPTIONS>
+    </div>
     <button type="submit" name="sign-up" title="Submit"><img src="https://system.sandbox.netsuite.com/c.3363929/site/pp-home-images/homepage.submitnews.jpg" alt="Submit" /></button>
   </form>
 </div>

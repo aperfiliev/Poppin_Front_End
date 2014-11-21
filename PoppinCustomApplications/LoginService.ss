@@ -186,9 +186,21 @@ function registerUser(request)
 	custObj.password = password;
 	custObj.password2 = password2;
 	custObj.emailsubscribe = emailsubscribe;
-	
+
 	nlapiLogExecution('DEBUG','custObj for reg: ',JSON.stringify(custObj));
 	var result = session.registerCustomer(custObj);
+	
+	if (emailsubscribe === "T") {
+		var loggedCustomer = nlapiGetWebContainer().getShoppingSession().getCustomer();
+		loggedCustomer.updateCampaignSubscriptions([{
+			description : null,
+			name	    : "Newsletters",
+			internalid  : 4,
+			subscribed  : true
+			}]
+		);
+	}
+	
 	setCustomersLeadSource(result.customerid, request.getParameter("lead"));
 	nlapiLogExecution('DEBUG','registered: ', result.customerid);
 	return password;

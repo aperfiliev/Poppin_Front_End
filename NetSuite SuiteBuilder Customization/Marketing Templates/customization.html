@@ -51,6 +51,7 @@
         if(!validateForm()){ return false; };
         if($j("#subscribe").attr('checked') !== undefined){
             $j("select#globalsubscriptionstatus option:contains('Soft Opt-In')").attr("selected", "selected");
+            $j("select#subscriptions option:contains('Newsletters')").attr("selected", "selected");                        
         } else {
             $j("select#globalsubscriptionstatus option:contains('Soft Opt-Out')").attr("selected", "selected");
         }
@@ -322,6 +323,7 @@
                 <div style="display: none">
                     <NLGLOBALSUBSCRIPTIONSTATUS>
                         <NLWEBLEAD>
+                        <NLSUBSCRIPTIONS>
                 </div>
                 <input id="subscribe" name="subscribe" type="checkbox" checked />
                 <label class="checkLbl">JOIN OUR EMAIL LIST</label>
