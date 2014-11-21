@@ -26,8 +26,6 @@ function sendOrderCreatedEmail(type) {
 					"SALES ORDER RECIEVED EMAIL : Error appeared on attempt to send an Email");
 				return;				
 			}
-			//nlapiLogExecution('DEBUG', 'department', department);
-			//nlapiLogExecution('DEBUG', 'email', customerEmail);
 			//department == '' : orders that are sent from web-site has a NULL department because this field is unsettable from WEB.
 			//Assuming that if it is empty (e.g. equals to '' ) - department is WEB
 			//if( ( customerEmail in EmialConfiguration.WS_INTEGRATION_CSTMR_EMAILS ) == false || ( department != null && department == EmialConfiguration.WEB_DEPARTMENT_ID )){
@@ -170,7 +168,7 @@ function tryPrepareAndSendEmail(salesOrder, customer){
 		customTagValues['NL_SALES_ORDER_BILL_TO_ADDRESS'] = salesOrder.getFieldValue('billaddress');
 		customTagValues['NL_SALES_ORDER_SUB_TOTAL'] = salesOrder.getFieldValue('subtotal');
 		customTagValues['NL_SALES_ORDER_SHIPPING_COST'] = salesOrder.getFieldValue('shippingcost');
-		customTagValues['NL_SALES_ORDER_TAX'] = salesOrder.getFieldValue('taxtotal');
+		customTagValues['NL_SALES_ORDER_TAX'] = (salesOrder.getFieldValue('istaxable') == 'T') ? salesOrder.getFieldValue('taxtotal') : '0.00';
 		customTagValues['NL_SALES_ORDER_TOTAL'] = salesOrder.getFieldValue('total');
 		customTagValues['NL_SALES_ORDER_DELIVERY'] = deliveryDays;
 		
