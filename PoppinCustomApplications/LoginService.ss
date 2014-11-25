@@ -4,213 +4,244 @@
  * @returns {Void} Any output is written via response object
  */
 function service(request, response){
-	try
-	{
-		
-	var session = nlapiGetWebContainer().getShoppingSession();
-		if(request.getParameter('requesttype')==null)
-		{
-			throw "Null Request type";
-		}
-		var result;
-		switch(request.getParameter('requesttype'))
-		{
-			case 'forgotpassword':
-				nlapiLogExecution('DEBUG','forgotpassword case',poppinservres.text.forgotpasswordsent);
-				result = forgotPassword(request);
-				nlapiLogExecution('DEBUG','exit store link request2');
-				response.write(buildResponseObjectStringified("success",poppinservres.text.forgotpasswordsent));
-				break
-			case 'resetpassword':
-				nlapiLogExecution('DEBUG','resetpassword case');
-				result = resetPassword(request);
-				response.write(buildResponseObjectStringified("success",poppinservres.text.resetpasswordsuccess));
-				break
-			case 'login':
-				nlapiLogExecution('DEBUG', 'login start', new Date().toTimeString());
-				result = loginUser(request);
-				if(typeof result!=="undefined"){writeResponse(result);}
-				break
-			case 'sociallogin':
-				nlapiLogExecution('DEBUG', 'sociallogin start', new Date().toTimeString());
-				result = socialMediaLogin(request);
-				if(typeof result!=="undefined"){writeResponse(result.result, result.gigyanotifier);}
-				break
-			case 'sociallink':
-				nlapiLogExecution('DEBUG','sociallink start', new Date().toTimeString());
-				result = socialMediaLinkAccount(request);
-				if(typeof result!=="undefined"){writeResponse(result.result, result.gigyanotifier);}
-				break
-			case 'manualregister':
-				nlapiLogExecution('DEBUG', 'manualregister start');
-				registerUser(request);
-				result = loginUser(request);
-				if(typeof result!=="undefined"){writeResponse(result);}
-				break
-			default:
-				throw "Unknown Request type";
-		}
-	}
-	catch(e)
-	{
-		var errormessage;
-		if(request.getParameter('requesttype') == 'resetpassword')
-			{
-			code = "error";
-			errormessage = e.getDetails();
-				}
-		else if(e instanceof nlobjError)
-		{
-			code = "error";
-			if(e.getCode() === 'ERR_WS_RECORD_NOT_FOUND' || e.getCode() === 'ERR_WS_INVALID_EMAIL'){
-				errormessage = "<p>Looks like you haven't registered yet, </p><p> <a href='<NLLOGINURL>'>create a Poppin account today.</a></p>";
-			}
-			else if(e.getCode() === 'ERR_WS_CUSTOMER_LOGIN')
-			{
-					var emailcheck = request.getParameter("email");
-					nlapiLogExecution('DEBUG','email value', emailcheck);
-					if(checkExistingEmail(emailcheck).length>0){
-					errormessage = "<p>Oops. Something's not lining up </p><p>with that password.</p>";
-				} else {
-					errormessage = "<p>Looks like you haven't registered yet, </p><p> <a href='<NLLOGINURL>'>create a Poppin account today.</a></p>";
-					}
-			} else {
-				errormessage = e.getCode() + e.getDetails();
-				}
-				nlapiLogExecution('ERROR',e.getCode(),e.getDetails());
-			}
-		else
-			{
-			code = "error";
-				nlapiLogExecution('ERROR', 'Unexpected error: ', e.toString());
-				errormessage = 'Unexpected error: ' + e.toString();
-			}
-		response.write(buildResponseObjectStringified(code,errormessage));
-	}
+    try
+    {
+        
+    var session = nlapiGetWebContainer().getShoppingSession();
+        if(request.getParameter('requesttype')==null)
+        {
+            throw "Null Request type";
+        }
+        var result;
+        switch(request.getParameter('requesttype'))
+        {
+            case 'forgotpassword':
+                nlapiLogExecution('DEBUG','forgotpassword case',poppinservres.text.forgotpasswordsent);
+                result = forgotPassword(request);
+                nlapiLogExecution('DEBUG','exit store link request2');
+                response.write(buildResponseObjectStringified("success",poppinservres.text.forgotpasswordsent));
+                break
+            case 'resetpassword':
+                nlapiLogExecution('DEBUG','resetpassword case');
+                result = resetPassword(request);
+                response.write(buildResponseObjectStringified("success",poppinservres.text.resetpasswordsuccess));
+                break
+            case 'login':
+                nlapiLogExecution('DEBUG', 'login start', new Date().toTimeString());
+                result = loginUser(request);
+                if(typeof result!=="undefined"){writeResponse(result);}
+                break
+            case 'sociallogin':
+                nlapiLogExecution('DEBUG', 'sociallogin start', new Date().toTimeString());
+                result = socialMediaLogin(request);
+                if(typeof result!=="undefined"){writeResponse(result.result, result.gigyanotifier);}
+                break
+            case 'sociallink':
+                nlapiLogExecution('DEBUG','sociallink start', new Date().toTimeString());
+                result = socialMediaLinkAccount(request);
+                if(typeof result!=="undefined"){writeResponse(result.result, result.gigyanotifier);}
+                break
+            case 'manualregister':
+                nlapiLogExecution('DEBUG', 'manualregister start');
+                registerUser(request);
+                result = loginUser(request);
+                if(typeof result!=="undefined"){writeResponse(result);}
+                break
+            default:
+                throw "Unknown Request type";
+        }
+    }
+    catch(e)
+    {
+        var errormessage;
+        if(request.getParameter('requesttype') == 'resetpassword')
+            {
+            code = "error";
+            errormessage = e.getDetails();
+                }
+        else if(e instanceof nlobjError)
+        {
+            code = "error";
+            if(e.getCode() === 'ERR_WS_RECORD_NOT_FOUND' || e.getCode() === 'ERR_WS_INVALID_EMAIL'){
+                errormessage = "<p>Looks like you haven't registered yet, </p><p> <a href='<NLLOGINURL>'>create a Poppin account today.</a></p>";
+            }
+            else if(e.getCode() === 'ERR_WS_CUSTOMER_LOGIN')
+            {
+                    var emailcheck = request.getParameter("email");
+                    nlapiLogExecution('DEBUG','email value', emailcheck);
+                    if(checkExistingEmail(emailcheck).length>0){
+                    errormessage = "<p>Oops. Something's not lining up </p><p>with that password.</p>";
+                } else {
+                    errormessage = "<p>Looks like you haven't registered yet, </p><p> <a href='<NLLOGINURL>'>create a Poppin account today.</a></p>";
+                    }
+            } else {
+                errormessage = e.getCode() + e.getDetails();
+                }
+                nlapiLogExecution('ERROR',e.getCode(),e.getDetails());
+            }
+        else
+            {
+            code = "error";
+                nlapiLogExecution('ERROR', 'Unexpected error: ', e.toString());
+                errormessage = 'Unexpected error: ' + e.toString();
+            }
+        response.write(buildResponseObjectStringified(code,errormessage));
+    }
 }
 function writeResponse(result, gigyanotifier)
 {
-	if(typeof gigyanotifier === "undefined"){
-		nlapiLogExecution('DEBUG', 'response result', 'Result: ' + result.redirecturl);
-		response.write(buildResponseObjectStringified("redirect", result.redirecturl));//default response without notifier
-	}
-	else{
-		nlapiLogExecution('DEBUG', 'response result', 'Result: ' + result.redirecturl+ ' gigyanotifier:' + JSON.stringify(gigyanotifier));
-		response.write(buildResponseObjectStringified("redirect", result.redirecturl, gigyanotifier));//notify socialize plugin on register user
-	}
+    if(typeof gigyanotifier === "undefined"){
+        nlapiLogExecution('DEBUG', 'response result', 'Result: ' + result.redirecturl);
+        response.write(buildResponseObjectStringified("redirect", result.redirecturl));//default response without notifier
+    }
+    else{
+        nlapiLogExecution('DEBUG', 'response result', 'Result: ' + result.redirecturl+ ' gigyanotifier:' + JSON.stringify(gigyanotifier));
+        response.write(buildResponseObjectStringified("redirect", result.redirecturl, gigyanotifier));//notify socialize plugin on register user
+    }
 }
 function loginUser(request, sociallink)
 {
-	nlapiGetContext().setSessionObject('after_paypal', 'F');
-	var email 	 = request.getParameter('email'),
-		pwd 	 = '',
-		checkout = request.getParameter('checkout'),
-		result;
-	
-	//check if login performed via social link
-	if (typeof sociallink === "undefined") {
-		pwd = request.getParameter('password');
-	}
-	
-	var params   = {
-		"email"	   :email,
-		"password" :pwd
-	};	
+    nlapiGetContext().setSessionObject('after_paypal', 'F');
+    var email 	 = request.getParameter('email'),
+        pwd 	 = '',
+        checkout = request.getParameter('checkout'),
+        result;
+    
+    //check if login performed via social link
+    if (typeof sociallink === "undefined") {
+        pwd = request.getParameter('password');
+    }
+    
+    var params   = {
+        "email"	   :email,
+        "password" :pwd
+    };	
 
-	nlapiLogExecution('DEBUG','Checkout param:',checkout);	
-	if (checkout === 'true') {
-		params['origin'] = 'checkout';
-		nlapiLogExecution('DEBUG','origin checkout',JSON.stringify(params));
-		result = copyOrderItemsAndLogin(params);
-		result.redirecturl = 'redirect';
-	} else {
-		nlapiLogExecution('DEBUG','no origin checkout',JSON.stringify(params));
-		result = copyOrderItemsAndLogin(params);
-		nlapiLogExecution('DEBUG','checkout url',nlapiGetWebContainer().getStandardTagLibrary().getCartUrl());
-		result.redirecturl = nlapiGetWebContainer().getStandardTagLibrary().getCartUrl()+'&cart=' + parseInt(Math.random() * (999999 - 111111) + 111111);
-	}
-	return result;
+    nlapiLogExecution('DEBUG','Checkout param:',checkout);	
+    if (checkout === 'true') {
+        params['origin'] = 'checkout';
+        nlapiLogExecution('DEBUG','origin checkout',JSON.stringify(params));
+        result = copyOrderItemsAndLogin(params);
+        result.redirecturl = 'redirect';
+    } else {
+        nlapiLogExecution('DEBUG','no origin checkout',JSON.stringify(params));
+        result = copyOrderItemsAndLogin(params);
+        nlapiLogExecution('DEBUG','checkout url',nlapiGetWebContainer().getStandardTagLibrary().getCartUrl());
+        result.redirecturl = nlapiGetWebContainer().getStandardTagLibrary().getCartUrl()+'&cart=' + parseInt(Math.random() * (999999 - 111111) + 111111);
+    }
+    return result;
 }
 
 function copyOrderItemsAndLogin(params) {
-	var session = nlapiGetWebContainer().getShoppingSession(),
-		returnValue;
-	
-	// saving items to variable
-	var orderObj   = session.getOrder(),
-		items 	   = orderObj.getItems(["internalId", "quantity"]),
-		promocodes = orderObj.promocodes;
-		
-		returnValue = session.login(params);
-	
-		if(items != null) {
-			// restoring session items
-			var orderObjNew = nlapiGetWebContainer().getShoppingSession().getOrder();
-			orderObjNew.removeAllItems();
-			orderObjNew.addItems(items);
-			if(promocodes && promocodes.length > 0) {
-				orderObjNew.applyPromotionCode(promocodes[0]);
-			}
-		}
-	
-		return returnValue;
+    var session = nlapiGetWebContainer().getShoppingSession(),
+        returnValue;
+    
+    // saving items to variable
+    var orderObj   = session.getOrder(),
+        items 	   = orderObj.getItems(["internalId", "quantity", "options"]),
+        promocodes = orderObj.promocodes;    
+        
+        returnValue = session.login(params);
+    
+        if(items != null) {
+            // restoring session items
+            var orderObjNew     = nlapiGetWebContainer().getShoppingSession().getOrder(),
+                length          = items.length,
+                orderItemsArray = [],
+                orderItem,
+                item,
+                i;
+                
+                for (i = 0; i < length; i++) {
+                    item = items[i];
+                    orderItem = {
+                            internalid : item.internalid,
+                            quantity   : item.quantity
+                    }
+                    
+                    if (item.options) {
+                        var optionsArray = item.options,
+                            optionName,
+                            optionValue,
+                            y;
+                        
+                        orderItem.options = {};
+                        for (y = 0; y < optionsArray.length; y++) {
+                            optionName  = optionsArray[y].id;
+                            optionValue = optionsArray[y].value;
+                            orderItem.options[optionName]  = optionValue;
+                        }
+                    }
+                    
+                    orderItemsArray.push(orderItem);
+                }
+                
+                orderObjNew.removeAllItems();
+                orderObjNew.addItems(orderItemsArray);
+
+                if(promocodes && promocodes.length > 0) {
+                    orderObjNew.applyPromotionCode(promocodes[0]);
+                }
+        }
+    
+        return returnValue;
 }
 
 function registerUser(request)
 {
-	var emailcheck = request.getParameter("email");
-	if(checkExistingEmail(emailcheck).length>0){
-		throw poppinservres.text.useralreadyexist
-	};
-	nlapiLogExecution('DEBUG','reg1');
-	var session = nlapiGetWebContainer().getShoppingSession();
-	//create user
-	var FullName = request.getParameter("name");
-	var EmailAddr = request.getParameter("email");
-	var password = request.getParameter("password");
-	var password2 = request.getParameter("password2");
-	var emailsubscribe = request.getParameter("emailsubscribe");
-	var company = request.getParameter("company");
-	if(request.getParameter("requesttype")=="sociallogin"){
-		var setRandomPwd = '';
-		setRandomPwd = generatedstring();
-		password = password2 = setRandomPwd;
-	}
-	nlapiLogExecution('DEBUG','reg2');
-	//create javascript object of values. 
-	
-	var custObj = {};
-	custObj.name = FullName;
-	if(company != '' && company != null){custObj.company=company;}
-	custObj.email = EmailAddr;
-	custObj.password = password;
-	custObj.password2 = password2;
-	custObj.emailsubscribe = emailsubscribe;
+    var emailcheck = request.getParameter("email");
+    if(checkExistingEmail(emailcheck).length>0){
+        throw poppinservres.text.useralreadyexist
+    };
+    nlapiLogExecution('DEBUG','reg1');
+    var session = nlapiGetWebContainer().getShoppingSession();
+    //create user
+    var FullName = request.getParameter("name");
+    var EmailAddr = request.getParameter("email");
+    var password = request.getParameter("password");
+    var password2 = request.getParameter("password2");
+    var emailsubscribe = request.getParameter("emailsubscribe");
+    var company = request.getParameter("company");
+    if(request.getParameter("requesttype")=="sociallogin"){
+        var setRandomPwd = '';
+        setRandomPwd = generatedstring();
+        password = password2 = setRandomPwd;
+    }
+    nlapiLogExecution('DEBUG','reg2');
+    //create javascript object of values. 
+    
+    var custObj = {};
+    custObj.name = FullName;
+    if(company != '' && company != null){custObj.company=company;}
+    custObj.email = EmailAddr;
+    custObj.password = password;
+    custObj.password2 = password2;
+    custObj.emailsubscribe = emailsubscribe;
 
-	nlapiLogExecution('DEBUG','custObj for reg: ',JSON.stringify(custObj));
-	var result = session.registerCustomer(custObj);
-	
-	if (emailsubscribe === "T") {
-		var loggedCustomer = nlapiGetWebContainer().getShoppingSession().getCustomer();
-		loggedCustomer.updateCampaignSubscriptions([{
-			description : null,
-			name	    : "Newsletters",
-			internalid  : 4,
-			subscribed  : true
-			}]
-		);
-	}
-	
-	setCustomersLeadSource(result.customerid, request.getParameter("lead"));
-	nlapiLogExecution('DEBUG','registered: ', result.customerid);
-	return password;
+    nlapiLogExecution('DEBUG','custObj for reg: ',JSON.stringify(custObj));
+    var result = session.registerCustomer(custObj);
+    
+    if (emailsubscribe === "T") {
+        var loggedCustomer = nlapiGetWebContainer().getShoppingSession().getCustomer();
+        loggedCustomer.updateCampaignSubscriptions([{
+            description : null,
+            name	    : "Newsletters",
+            internalid  : 4,
+            subscribed  : true
+            }]
+        );
+    }
+    
+    setCustomersLeadSource(result.customerid, request.getParameter("lead"));
+    nlapiLogExecution('DEBUG','registered: ', result.customerid);
+    return password;
 }
 function setCustomersLeadSource(customerid, leadsource)
 {
-	if(leadsource != '')
-	{
-		nlapiRequestURL('https://forms.netsuite.com/app/site/hosting/scriptlet.nl?script=315&deploy=1&compid=3363929&h=646171dab3fe56297e73&customerid='+customerid+'&leadsource='+leadsource);
-	}
+    if(leadsource != '')
+    {
+        nlapiRequestURL('https://forms.netsuite.com/app/site/hosting/scriptlet.nl?script=315&deploy=1&compid=3363929&h=646171dab3fe56297e73&customerid='+customerid+'&leadsource='+leadsource);
+    }
 }
 function generatedstring()
 {
@@ -221,125 +252,125 @@ function generatedstring()
 }
 function checkExistingEmail(email)
 {
-	var checkemail = {"email":email};
-	nlapiLogExecution('DEBUG','enter request', new Date().toTimeString());
-	var checkexistinguserresponse = nlapiRequestURL(poppinservres.url.checkexistinguser ,checkemail);
-	nlapiLogExecution('DEBUG','check existing user body:', checkexistinguserresponse.getBody());
-	nlapiLogExecution('DEBUG','exit request', new Date().toTimeString());
-	var checkexistinguser = JSON.parse(checkexistinguserresponse.getBody());
-	nlapiLogExecution('DEBUG','exit request', new Date().toTimeString());
-	return checkexistinguser;
+    var checkemail = {"email":email};
+    nlapiLogExecution('DEBUG','enter request', new Date().toTimeString());
+    var checkexistinguserresponse = nlapiRequestURL(poppinservres.url.checkexistinguser ,checkemail);
+    nlapiLogExecution('DEBUG','check existing user body:', checkexistinguserresponse.getBody());
+    nlapiLogExecution('DEBUG','exit request', new Date().toTimeString());
+    var checkexistinguser = JSON.parse(checkexistinguserresponse.getBody());
+    nlapiLogExecution('DEBUG','exit request', new Date().toTimeString());
+    return checkexistinguser;
 }
 function socialMediaLogin(request)
 {
-	if(!validateSignature(request)){
-		throw "Invalid signature, please try again";
-		};
-	var emailcheck = request.getParameter("email");
-	var checkexistinguser = checkExistingEmail(emailcheck);
-	
-	//var checkexistinguser = parseFloat(checkexistinguserresponse.getBody());
-	var gigyanotifier;
-	var socialloginresult;
-	if(checkexistinguser.length==0)
-	{
-		nlapiLogExecution('DEBUG','social login register, checkexistinguser==0',checkexistinguser.length+new Date().toTimeString());
-		var pwd = registerUser(request);
-		socialloginresult = socialMediaLinkAccount(request, pwd);//link accounts
-	}
-	else{
-			nlapiLogExecution('DEBUG','social link field',JSON.stringify(checkexistinguser)+new Date().toTimeString());
-			if(checkexistinguser.sociallinkpwd==null || checkexistinguser.sociallinkpwd==''){
-				response.write(buildResponseObjectStringified("linksocial", 
-					{
-						"email":request.getParameter("email"),
-						"uid":request.getParameter("UID"),
-						"timestamp":request.getParameter("timestamp"),
-						"signature":request.getParameter("signature")
-					}));
-			}
-			else{
-				var result = loginUser(request, checkexistinguser.sociallinkpwd);
-				//build login notification for gigya
-				gigyanotifier ={
-						"type":"login",
-						"params": {
-							"siteUID":request.getParameter("UID"),
-							"timestamp":request.getParameter("timestamp"),
-							"signature":request.getParameter("signature")
-							}
-						}
-				socialloginresult ={
-						"result":result,
-						"gigyanotifier":gigyanotifier
-				}
-			}
-	}
-	return socialloginresult;
-	
+    if(!validateSignature(request)){
+        throw "Invalid signature, please try again";
+        };
+    var emailcheck = request.getParameter("email");
+    var checkexistinguser = checkExistingEmail(emailcheck);
+    
+    //var checkexistinguser = parseFloat(checkexistinguserresponse.getBody());
+    var gigyanotifier;
+    var socialloginresult;
+    if(checkexistinguser.length==0)
+    {
+        nlapiLogExecution('DEBUG','social login register, checkexistinguser==0',checkexistinguser.length+new Date().toTimeString());
+        var pwd = registerUser(request);
+        socialloginresult = socialMediaLinkAccount(request, pwd);//link accounts
+    }
+    else{
+            nlapiLogExecution('DEBUG','social link field',JSON.stringify(checkexistinguser)+new Date().toTimeString());
+            if(checkexistinguser.sociallinkpwd==null || checkexistinguser.sociallinkpwd==''){
+                response.write(buildResponseObjectStringified("linksocial", 
+                    {
+                        "email":request.getParameter("email"),
+                        "uid":request.getParameter("UID"),
+                        "timestamp":request.getParameter("timestamp"),
+                        "signature":request.getParameter("signature")
+                    }));
+            }
+            else{
+                var result = loginUser(request, checkexistinguser.sociallinkpwd);
+                //build login notification for gigya
+                gigyanotifier ={
+                        "type":"login",
+                        "params": {
+                            "siteUID":request.getParameter("UID"),
+                            "timestamp":request.getParameter("timestamp"),
+                            "signature":request.getParameter("signature")
+                            }
+                        }
+                socialloginresult ={
+                        "result":result,
+                        "gigyanotifier":gigyanotifier
+                }
+            }
+    }
+    return socialloginresult;
+    
 }
 function socialMediaLinkAccount(request,sociallink)
 {
-	var email = request.getParameter('email');
-	
-	var pwd = '';
-	if(sociallink!=null && sociallink!=undefined){
-		pwd = sociallink;
-	}
-	else{
-		 pwd = request.getParameter('password');
-	}
-	nlapiLogExecution('DEBUG','sociallinkaccount1',new Date().toTimeString());
-	var session = nlapiGetWebContainer().getShoppingSession();
-	var params = {
-				"email":email,
-				"password":pwd
-				};
-	
-	nlapiLogExecution('DEBUG','params',JSON.stringify(params)+new Date().toTimeString());
-	var result = loginUser(request, pwd);
-	//store link if login successful
-	var storelinkpwd = storeSocialLink(params);
-	//nlapiLogExecution('DEBUG','storelinkpwdstring: ', storelinkpwdstring.getBody()+new Date().toTimeString());
-	var gigyanotifier;
-	if(storelinkpwd.message==="success")
-		{
-		gigyanotifier ={
-				"type":"register",
-				"params": {
-					"siteUID":request.getParameter("UID"),
-					"timestamp":request.getParameter("timestamp"),
-					"signature":request.getParameter("signature")
-					}
-				}
-		nlapiLogExecution('DEBUG','sociallinkaccount1newuserredirect',JSON.stringify(gigyanotifier)+new Date().toTimeString());
-		}
-	else{
-		throw poppinservres.text.cantlinkaccount
-	}
-	sociallinkresult ={
-			"result":result,
-			"gigyanotifier":gigyanotifier
-	}
-	return sociallinkresult;
+    var email = request.getParameter('email');
+    
+    var pwd = '';
+    if(sociallink!=null && sociallink!=undefined){
+        pwd = sociallink;
+    }
+    else{
+         pwd = request.getParameter('password');
+    }
+    nlapiLogExecution('DEBUG','sociallinkaccount1',new Date().toTimeString());
+    var session = nlapiGetWebContainer().getShoppingSession();
+    var params = {
+                "email":email,
+                "password":pwd
+                };
+    
+    nlapiLogExecution('DEBUG','params',JSON.stringify(params)+new Date().toTimeString());
+    var result = loginUser(request, pwd);
+    //store link if login successful
+    var storelinkpwd = storeSocialLink(params);
+    //nlapiLogExecution('DEBUG','storelinkpwdstring: ', storelinkpwdstring.getBody()+new Date().toTimeString());
+    var gigyanotifier;
+    if(storelinkpwd.message==="success")
+        {
+        gigyanotifier ={
+                "type":"register",
+                "params": {
+                    "siteUID":request.getParameter("UID"),
+                    "timestamp":request.getParameter("timestamp"),
+                    "signature":request.getParameter("signature")
+                    }
+                }
+        nlapiLogExecution('DEBUG','sociallinkaccount1newuserredirect',JSON.stringify(gigyanotifier)+new Date().toTimeString());
+        }
+    else{
+        throw poppinservres.text.cantlinkaccount
+    }
+    sociallinkresult ={
+            "result":result,
+            "gigyanotifier":gigyanotifier
+    }
+    return sociallinkresult;
 }
 function storeSocialLink(params){
-	//store result for further redirect
-	nlapiLogExecution('DEBUG','enter store link request', new Date().toTimeString());
-	var storelinkpwdstring = nlapiRequestURL(poppinservres.url.storelink, params);
-	nlapiLogExecution('DEBUG','exit store link request', new Date().toTimeString());
-	var storelinkpwd = JSON.parse(storelinkpwdstring.getBody());
-	nlapiLogExecution('DEBUG','exit store link request1');
-	return storelinkpwd;
+    //store result for further redirect
+    nlapiLogExecution('DEBUG','enter store link request', new Date().toTimeString());
+    var storelinkpwdstring = nlapiRequestURL(poppinservres.url.storelink, params);
+    nlapiLogExecution('DEBUG','exit store link request', new Date().toTimeString());
+    var storelinkpwd = JSON.parse(storelinkpwdstring.getBody());
+    nlapiLogExecution('DEBUG','exit store link request1');
+    return storelinkpwd;
 }
 function forgotPassword(request)
 {
-	
-	var EmailAddr = request.getParameter("email");
-	EmailAddr = EmailAddr.toLowerCase();
-	nlapiLogExecution('DEBUG','forgotpassword:','email:'+EmailAddr);
-	//var userexist = checkExistingEmail(EmailAddr);
-	
+    
+    var EmailAddr = request.getParameter("email");
+    EmailAddr = EmailAddr.toLowerCase();
+    nlapiLogExecution('DEBUG','forgotpassword:','email:'+EmailAddr);
+    //var userexist = checkExistingEmail(EmailAddr);
+    
 //	if(userexist.length>0){
 //		nlapiLogExecution('DEBUG','user exists:',JSON.stringify(userexist));
 //		var params = {
@@ -349,57 +380,57 @@ function forgotPassword(request)
 //		var cleanSocialLink = storeSocialLink(params);
 //		nlapiLogExecution('DEBUG','cleanSocialLink:','email:'+cleanSocialLink);
 //	}
-	nlapiGetWebContainer().getShoppingSession().sendPasswordRetrievalEmail(EmailAddr);
-	}
+    nlapiGetWebContainer().getShoppingSession().sendPasswordRetrievalEmail(EmailAddr);
+    }
 function resetPassword(request)
 {
-	var newPassword = request.getParameter("password");
-	var e = decodeURIComponent(request.getParameter("e"));
-	var dt = decodeURIComponent(request.getParameter("dt"));
-	var cb = decodeURIComponent(request.getParameter("cb"));
-	var Params = {'e':e, 'dt':dt, 'cb':cb};
-	nlapiLogExecution('DEBUG', 'params: ', 'e:'+e+'dt:'+dt+ 'cb:'+cb);
-	var result = nlapiGetWebContainer().getShoppingSession().doChangePassword(Params, newPassword );
-	nlapiLogExecution('DEBUG', 'result reset is: ', result);
+    var newPassword = request.getParameter("password");
+    var e = decodeURIComponent(request.getParameter("e"));
+    var dt = decodeURIComponent(request.getParameter("dt"));
+    var cb = decodeURIComponent(request.getParameter("cb"));
+    var Params = {'e':e, 'dt':dt, 'cb':cb};
+    nlapiLogExecution('DEBUG', 'params: ', 'e:'+e+'dt:'+dt+ 'cb:'+cb);
+    var result = nlapiGetWebContainer().getShoppingSession().doChangePassword(Params, newPassword );
+    nlapiLogExecution('DEBUG', 'result reset is: ', result);
 }
 function buildResponseObjectStringified(responsetype,message,newuser)
 {
-	var responseObject = {
-			"responsetype":responsetype,
-			"message":message,
-			"socializenotify":newuser
-			}
-	return JSON.stringify(responseObject);
+    var responseObject = {
+            "responsetype":responsetype,
+            "message":message,
+            "socializenotify":newuser
+            }
+    return JSON.stringify(responseObject);
 }
 function validateSignature(request)
 {
-	var timestamp = request.getParameter('timestamp');
-	var UID = request.getParameter('UID');
-	var signature = request.getParameter('signature');
-	var secretkey = "Qk35lSDWzhVAcuWrpSTERUoRKqi9gB4qnWIRXBK7fUg=";
-	var now = new Date().getTime()/1000;
-	if(Math.abs(now-timestamp)>180){
-		return false;
-		}
-	nlapiLogExecution('DEBUG','Math.abs(now-timestamp)'+now+''+timestamp,Math.abs(now-timestamp));
+    var timestamp = request.getParameter('timestamp');
+    var UID = request.getParameter('UID');
+    var signature = request.getParameter('signature');
+    var secretkey = "Qk35lSDWzhVAcuWrpSTERUoRKqi9gB4qnWIRXBK7fUg=";
+    var now = new Date().getTime()/1000;
+    if(Math.abs(now-timestamp)>180){
+        return false;
+        }
+    nlapiLogExecution('DEBUG','Math.abs(now-timestamp)'+now+''+timestamp,Math.abs(now-timestamp));
     var mySignature = constructSignature(timestamp, UID, secretkey); 
     nlapiLogExecution('DEBUG','expected:'+signature,'result:'+ mySignature);
     if (mySignature!=signature){ 
-    	nlapiLogExecution('DEBUG','Invalid signature');
-    	return false;
-	    }       
-	else{
-		nlapiLogExecution('DEBUG','Valid signature');
-		return true;
-	    }
+        nlapiLogExecution('DEBUG','Invalid signature');
+        return false;
+        }       
+    else{
+        nlapiLogExecution('DEBUG','Valid signature');
+        return true;
+        }
 }
 function constructSignature(timestamp, uid, secretkey,UIDsignature)
 {
-	 var baseString = timestamp + "_" + uid;                                 
-	 var binaryKey = CryptoJS.enc.Base64.parse(secretkey);
-	 var binarySignature = CryptoJS.HmacSHA1(baseString, binaryKey ); 
-	 var signature = CryptoJS.enc.Base64.stringify(binarySignature);
-	 return signature;
+     var baseString = timestamp + "_" + uid;                                 
+     var binaryKey = CryptoJS.enc.Base64.parse(secretkey);
+     var binarySignature = CryptoJS.HmacSHA1(baseString, binaryKey ); 
+     var signature = CryptoJS.enc.Base64.stringify(binarySignature);
+     return signature;
 }
 
 /*
