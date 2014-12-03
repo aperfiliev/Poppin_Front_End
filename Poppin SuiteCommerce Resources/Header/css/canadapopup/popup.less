@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'OmnesBoldRegular';
+    src: url('../fonts/omnes-bold-webfont.eot');
+    src: url('../fonts/omnes-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/omnes-bold-webfont.woff') format('woff'),
+         url('../fonts/omnes-bold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /*
 html, body {
 	width: 100%;
@@ -56,6 +67,7 @@ position: absolute; left:63%; top:53%;
 
 }
 .popup .body .head {
+	behavior: url(site\canadapopup\css\pie.htc);
 	background: #F16521;
 	box-shadow:  0 0 10px #000;
 	-webkit-box-shadow:  0 0 10px #000;
@@ -134,6 +146,7 @@ zoom:1; /* This enables hasLayout, which is required for older IE browsers */
 	
 }
 .popup .body .head .content .button {
+    behavior: url(site\canadapopup\css\pie.htc);
 	display: block;
 	color: #fff;
 	text-transform: uppercase;
@@ -156,6 +169,7 @@ zoom:1; /* This enables hasLayout, which is required for older IE browsers */
 	
 }
 #buttoncanada{
+	behavior: url(site\canadapopup\css\pie.htc);
 	background:  linear-gradient( 180deg, #fb8655, #f96939); 
 	background:  linear-gradient( -90deg, #fb8655, #f96939); 
 	background:  -webkit-linear-gradient( -90deg, #fb8655, #f96939); 
@@ -185,6 +199,7 @@ zoom:1; /* This enables hasLayout, which is required for older IE browsers */
 	display: inline;
 }
 .popup .body .head .close {
+	behavior: url(site\canadapopup\css\pie.htc);
 	font-family: OmnesLightRegular,Arial,Helvetica,sans-serif;	
 	font-size:18px;
 	line-height: 18px;
@@ -206,6 +221,7 @@ zoom:1; /* This enables hasLayout, which is required for older IE browsers */
 	cursor: pointer;
 }
 .popup .body .head  .close:hover, .popup .body .head .content .button:hover{
+        behavior: url(site\canadapopup\css\pie.htc);
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -214,5 +230,5 @@ zoom:1; /* This enables hasLayout, which is required for older IE browsers */
        *position:relative;
        *margin-top:-20px;
 	height: 90px;
-	background: url('//poppinsb.imgix.net/canadapopup/images/tail.png?auto=format') 60px top no-repeat;
+	background: url('//poppin.imgix.net/canadapopup/images/tail.png?auto=format') 60px top no-repeat;
 }
