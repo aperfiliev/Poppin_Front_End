@@ -28,8 +28,8 @@ $j.fn.deskConfigurator = function(options){
 			itemsCart: new Array(),
 			grandTotal: 0,
 			openCart: 0,
-			bg_url_desk: '/site/pp-design-desk/table.png',
-			bg_url_shadow: '/site/pp-design-desk/shadow.png',
+			bg_url_desk: '//poppin.imgix.net/pp-design-desk/table.png?auto=format',
+			bg_url_shadow: '//poppin.imgix.net/pp-design-desk/shadow.png?auto=format',
 			errorMessage: 'An error occurred, please try again later',
 			socialImageUrl: '',
 			socialClicked: '',
@@ -71,16 +71,16 @@ $j.fn.deskConfigurator = function(options){
 						},
 						
 						default_images: {
-							'inboxes':	'/site/pp-design-desk/default-items/inboxes.png',
-							'bitsbobs':	'/site/pp-design-desk/default-items/bitsbobs.png',
-							//'halftray':	'/site/pp-design-desk/default-items/halftray.png',
-							'cup':		'/site/pp-design-desk/default-items/cup.png',
-							'pens':		'/site/pp-design-desk/default-items/pens.png',
-							'ruler':	'/site/pp-design-desk/default-items/ruler.png',
-							'scissors':	'/site/pp-design-desk/default-items/scissors.png',
-							'tape':		'/site/pp-design-desk/default-items/tape.png',
-							'stapler':	'/site/pp-design-desk/default-items/stapler.png',
-							'spiral':	'/site/pp-design-desk/default-items/spiral.png'
+							'inboxes':	'//poppin.imgix.net/pp-design-desk/default-items/inboxes.png?auto=format',
+							'bitsbobs':	'//poppin.imgix.net/pp-design-desk/default-items/bitsbobs.png?auto=format',
+							//'halftray':	'//poppin.imgix.net/pp-design-desk/default-items/halftray.png?auto=format',
+							'cup':		'//poppin.imgix.net/pp-design-desk/default-items/cup.png?auto=format',
+							'pens':		'//poppin.imgix.net/pp-design-desk/default-items/pens.png?auto=format',
+							'ruler':	'//poppin.imgix.net/pp-design-desk/default-items/ruler.png?auto=format',
+							'scissors':	'//poppin.imgix.net/pp-design-desk/default-items/scissors.png?auto=format',
+							'tape':		'//poppin.imgix.net/pp-design-desk/default-items/tape.png?auto=format',
+							'stapler':	'//poppin.imgix.net/pp-design-desk/default-items/stapler.png?auto=format',
+							'spiral':	'//poppin.imgix.net/pp-design-desk/default-items/spiral.png?auto=format'
 						},
 						
 						getTypeIdByCode: function(type_code){
@@ -430,7 +430,7 @@ $j.fn.deskConfigurator = function(options){
 					$j(container).append(canvas_container);
 					
 					var img_desk = new Image();
-					settings.basedesk = $j(img_desk).attr({src: '/site/pp-design-desk/base-desk.jpg'});
+					settings.basedesk = $j(img_desk).attr({src: '//poppin.imgix.net/pp-design-desk/base-desk.jpg?auto=format'});
 					
 				},
 				

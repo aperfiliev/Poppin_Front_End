@@ -6,8 +6,8 @@
 #design-a-desc-configurator { position:	relative; }
 #design-a-desc-configurator:after { content: "."; visibility: hidden; display: block; height: 0; clear: both; overflow: hidden; }
 
-#design-a-desc-configurator .table-wrap { background: url(http://cdn-web.poppin.com/site/pp-design-desk/_table.jpg) no-repeat left top; border: 1px solid #dadada; margin: 0 0 25px; clear: both; }
-#design-a-desc-configurator .products-shadow { background: url(http://cdn-web.poppin.com/site/pp-design-desk/shadow.png) no-repeat left top; }
+#design-a-desc-configurator .table-wrap { background: url(//poppin.imgix.net/pp-design-desk/_table.jpg?auto=format) no-repeat left top; border: 1px solid #dadada; margin: 0 0 25px; clear: both; }
+#design-a-desc-configurator .products-shadow { background: url(//poppin.imgix.net/pp-design-desk/shadow.png?auto=format) no-repeat left top; }
 #design-a-desc-configurator .default-products { /*background: url(http://cdn-web.poppin.com/site/pp-design-desk/default-items.png) no-repeat 271px 22px;*/ height: 510px; position: relative; }
 
 #design-a-desc-configurator .item-type { position: absolute; z-index: 1; }
@@ -28,8 +28,8 @@
 #design-a-desc-configurator .social-container { position: absolute; left: 22px; bottom: 22px; }
 #design-a-desc-configurator .social-container a { float: left; vertical-align: top; margin: 0 6px 0 0; }
 
-#design-a-desc-configurator .dialogbox-container { position: absolute; padding: 20px 0 111px; background: url(/site/pp-design-desk/bg-dialogbox.png) no-repeat center bottom; display: none; z-index: 100; width: 450px; border: 0; -webkit-border-radius: none; -moz-border-radius: none; border-radius: none; }
-#design-a-desc-configurator .dialogbox-container.bottom_pos { background: url(/site/pp-design-desk/bg-dialogbox-bottom.png) no-repeat center top; padding: 100px 0 20px; }
+#design-a-desc-configurator .dialogbox-container { position: absolute; padding: 20px 0 111px; background: url(//poppin.imgix.net/pp-design-desk/bg-dialogbox.png?auto=format) no-repeat center bottom; display: none; z-index: 100; width: 450px; border: 0; -webkit-border-radius: none; -moz-border-radius: none; border-radius: none; }
+#design-a-desc-configurator .dialogbox-container.bottom_pos { background: url(//poppin.imgix.net/pp-design-desk/bg-dialogbox-bottom.png?auto=format) no-repeat center top; padding: 100px 0 20px; }
 
 #design-a-desc-configurator .dialogbox-container .title { color: #F67A00; font-family: "OmnesLightRegular",Arial,Helvetica,sans-serif; font-size: 26px; margin: 0; text-align: center; border-radius: 25px 25px 0 0; border-right: 2px solid #e8e8e8; border-left: 2px solid #e8e8e8; border-top: 2px solid #e8e8e8; background: #fff; padding: 25px 0 8px; }
 #design-a-desc-configurator .dialogbox-container.bottom_pos .title { border-radius: 0; border-top: 0; padding: 0 0 25px; }
@@ -85,12 +85,12 @@
 #design-a-desc-configurator .cart-container { float: left; padding: 0; width: 469px; margin: 0 0 15px; overflow: visible; }
 
 #design-a-desc-configurator .cart-container .wrap-list-foot { position: relative; height: 46px; }
-#design-a-desc-configurator .cart-container .wrap-list-foot .container-list-foot { width: 100%; position: absolute; z-index: 2; background: url(/site/pp-design-desk/bg-cart.png) repeat; }
+#design-a-desc-configurator .cart-container .wrap-list-foot .container-list-foot { width: 100%; position: absolute; z-index: 2; background: url(//poppin.imgix.net/pp-design-desk/bg-cart.png?auto=format) repeat; }
 
 #design-a-desc-configurator .cart-head { border-bottom: 1px solid #c0c0c0; overflow: hidden; padding: 10px; text-align: right; background: #f3f3f3; border-bottom: 1px solid #fff; }
 #design-a-desc-configurator .cart-head .cart-title { float: left; color: #F67A00; font-family: "OmnesLightRegular", Arial, Helvetica, sans-serif; font-size: 30px; }
 
-#design-a-desc-configurator .cart-head .cart-title.has-items { background: url(/site/pp-design-desk/open-close-cart.gif) no-repeat right 12px; padding-right: 26px; }
+#design-a-desc-configurator .cart-head .cart-title.has-items { background: url(//poppin.imgix.net/pp-design-desk/open-close-cart.gif?auto=format) no-repeat right 12px; padding-right: 26px; }
 #design-a-desc-configurator .cart-head .cart-title.has-items.open { background-position: right -55px; }
 
 #design-a-desc-configurator .cart-head .cart-empty-message { float: left; color: #949494; padding-left: 15px; padding-top: 5px; font-size: 25px; display: none; }
@@ -103,7 +103,7 @@
 #design-a-desc-configurator .cart-list li .name { font-weight: bold; }
 #design-a-desc-configurator .cart-list li .availability { margin-left: 5px; }
 #design-a-desc-configurator .cart-list li .availability span { font-family: "OmnesRegularRegular"; text-transform: uppercase; font-weight: bold; color: #f47a20; }
-#design-a-desc-configurator .cart-list li .remove { background: url(/site/pp-design-desk/btn-remove.png) no-repeat left top; float: right; width: 22px; height: 22px; cursor: pointer; }
+#design-a-desc-configurator .cart-list li .remove { background: url(//poppin.imgix.net/pp-design-desk/btn-remove.png) no-repeat left top; float: right; width: 22px; height: 22px; cursor: pointer; }
 #design-a-desc-configurator .cart-list li.cart-default-item { display: none; color: #5C5C5C; padding: 12px 30px 12px 10px; line-height: 22px; background: #ececec; font-weight: normal; }
 #design-a-desc-configurator .cart-foot { overflow: hidden; text-align: right; padding: 10px; }
 #design-a-desc-configurator .cart-foot .cart-total-wrap { float: left; font-size: 25px; font-weight: bold; }
@@ -144,9 +144,9 @@
 
 #design-a-desc-configurator .quick-pick-container ul li.color-over { position: relative; }
 
-#design-a-desc-configurator .loading-table { background: #fff url(http://cdn-web.poppin.com/site/pp-design-desk/loading-table.gif) no-repeat center center; position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 100; }
+#design-a-desc-configurator .loading-table { background: #fff url(//poppin.imgix.net/pp-design-desk/loading-table.gif?auto=format) no-repeat center center; position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 100; }
 
-#design-a-desc-configurator .loading-dialogbox { background: #fff url(http://cdn-web.poppin.com/site/pp-design-desk/loading-table.gif) no-repeat center center; position: absolute; left: 50%; top: 50%; margin-left: -21px; margin-top: -21px; z-index: 100; width: 40px; height: 40px; display: none; border: 1px solid #464646; }
+#design-a-desc-configurator .loading-dialogbox { background: #fff url(//poppin.imgix.net/pp-design-desk/loading-table.gif?auto=format) no-repeat center center; position: absolute; left: 50%; top: 50%; margin-left: -21px; margin-top: -21px; z-index: 100; width: 40px; height: 40px; display: none; border: 1px solid #464646; }
 
 #design-a-desc-configurator .canvas-container { height: 0; overflow: hidden; visibility: hidden; }
 
