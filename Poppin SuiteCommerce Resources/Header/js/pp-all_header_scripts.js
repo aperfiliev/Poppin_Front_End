@@ -543,16 +543,32 @@ $j.fn.customNavDrilldown = function (options) {
         }
     };
     return this.each(function () {
-        var _this = this;
-        $j.ajax({
-            url: "/app/site/hosting/scriptlet.nl?script=259&deploy=1",
-            dataType: "json",
-            success: function (data) {
-                var nav = model.processData(data);
+        var _this = this,
+        	ajaxRequest = {
+                    url: "/app/site/hosting/scriptlet.nl?script=259&deploy=1",
+                    dataType: "json",
+                    success: function (data) {
+                    	if(typeof(Storage) !== "undefined") {
+                        	sessionStorage.setItem('menu', JSON.stringify(data));                    		
+                    	}
+                    	var nav = model.processData(data);
+                        $j(nav).append(li_last);
+                        $j(_this).append(nav).gpNavDrilldown();
+                    }
+                };
+        
+        if(typeof(Storage) !== "undefined") {
+        	var cachedMenu = sessionStorage.getItem('menu');
+        	if (cachedMenu) {
+            	var nav = model.processData(JSON.parse(cachedMenu));
                 $j(nav).append(li_last);
-                $j(_this).append(nav).gpNavDrilldown()
-            }
-        })
+                $j(_this).append(nav).gpNavDrilldown();
+        	} else {
+                $j.ajax(ajaxRequest);
+        	}
+        } else {
+            $j.ajax(ajaxRequest);
+        }
     })
 };
 $j(function () {
