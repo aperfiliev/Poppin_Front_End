@@ -1,243 +1,716 @@
 <table border="0" cellpadding="5" cellspacing="0" width="100%">
-	<tbody id="content_master">
-		<tr>
-			<td>
-				<div class="div__presentation">
-					<img src="/site/pp-sources/customization/poppin-customizationV1.jpg"/>
-				</div>
-				<div class="div__regform">
-					<iframe scrolling="no" frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0"
-						src="https://forms.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&amp;formid=14&amp;h=7330270d3afe48c04a57&amp;redirect_count=1&amp;did_javascript_redirect=T">
-					</iframe>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="customization_notebooks">
-					<h2>Notebooks + Folios</h2>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail1">
-							<h3>Small + Medium Soft Cover Notebooks</h3>
-							<p class="p_details">Make a list, check it twice, this little notebook will make you look oh-so-nice.</p>
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; BLIND DEBOSS</p>
-							<p class="p_fullcolor">&#8226; FOIL STAMP</p>
-							<p class="p_fullcolor">&#8226; SCREEN PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/small_notebooks.jpg"/>
-						</div>
-					</div>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail2">
-							<h3>Medium + Large Spiral Notebooks</h3>
-							<p class="p_details">Spiraling into control has never been so easy.</p>
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; SCREEN PRINT</p>
-							<p class="p_fullcolor">&#8226; FOIL STAMP</p>
-							<p class="p_fullcolor">&#8226; BLIND DEBOSS</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/large_notebooks.jpg"/>
-						</div>
-					</div>
-					<div class="grey_separator">
-						Volume discounts are available.
-					</div>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail3">
-							<h3>Folios</h3>
-							<p class="p_details">Perfect for carrying your papers from here to there in style.</p>
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; BLIND DEBOSS</p>
-							<p class="p_fullcolor">&#8226; FOIL STAMP</p>
-							<p class="p_fullcolor">&#8226; SCREEN PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/folios.jpg"/>
-						</div>
-					</div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div>
-					<h2>Writing</h2>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail4">
-							<h3>Signature Ballpoints</h3>
-							<p class="p_details">Coordinate your brand, desk, or just your outfit with these pens.</p>
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; ONE COLOR PAD PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/signature.jpg"/>
-						</div>
-					</div>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail5">
-							<h3>Retractable Ballpoints</h3>
-							<p class="p_details">Everybody loves a pen that can play peek-a-boo.</p>
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; ONE COLOR PAD PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/retractable_ballpoints.jpg"/>
-						</div>
-					</div>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail6">
-							<h3>Thin Highlighters</h3>
-							<p class="p_details">Go ahead and call a little attention to yourself.</p>
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; ONE COLOR PAD PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/highlighters.jpg"/>
-						</div>
-					</div>
-					<div class="grey_separator">
-						Your logo is so awesome, we just want to wear it!
-					</div>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail7">
-							<h3>Retractable Gel Luxe</h3>
-							<p class="p_details">The only thing more satisfying than a gel pen is one that goes click.</p>
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; ONE COLOR PAD PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/retractable_gel_luxe.jpg"/>
-						</div>
-					</div>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail8">
-							<h3>Metal Ballpoints</h3>
-							<p class="p_details">Heavy metal makes it to the top of your playlist.</p>
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; ONE COLOR PAD PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/metal_ballpoints.jpg"/>
-						</div>
-					</div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="customization_desktop">
-					<h2>Desktop</h2>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail9">
-							<h3>Pen Cup</h3>
-							<p class="p_details">Keep yourself and your pens from going over the edge with this clever cup.</p>
-							
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; ONE COLOR PAD PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/pencup.jpg"/>
-						</div>
-					</div>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail10">
-							<h3>Mouse Pads</h3>
-							<p class="p_details">Provide a squeak-free experience for your mouse.</p>
-							
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; ONE COLOR PAD PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/mousepads.jpg"/>
-						</div>
-					</div>
-					<div class="grey_separator">
-						Get your brand in hand!
-					</div>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail11">
-							<h3>Stapler</h3>
-							<p class="p_details">Your heart will go ku-chunk ku-chunk.</p>
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; ONE COLOR PAD PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/stapler.jpg"/>
-						</div>
-					</div>
-					<div class="customization_item">
-						<div class="customization_detail" id="customization_detail12">
-							<h3>Ruler</h3>
-							<p class="p_details">Lines so sleek, design so awesome, colors so vibrant you may find yourself making up excuses to measure everything.</p>
-							<p class="p_options">CUSTOMIZATION OPTIONS</p>
-							<p class="p_fullcolor">&#8226; ONE COLOR PAD PRINT</p>
-						</div>
-						<div class="customization_image">
-							<img src="/site/pp-sources/customization/images/ruler.jpg"/>
-						</div>
-					</div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="customization_types">
-					<h2>Types of Customization</h2>
-					<table>
-						<tr>
-							<td>
-								<div class="customization_titem">
-									<img src="/site/pp-sources/customization/images/dailycandy1.jpg"/>
-									<div class="customization_tdetail">
-										<h3>FOIL STAMP</h3>
-									</div>
-								</div>
-							</td>
-							<td>
-								<div class="customization_titem">
-									<img src="/site/pp-sources/customization/images/dailycandy2.jpg"/>
-									<div class="customization_tdetail">
-										<h3>SCREEN PRINT</h3>
-									</div>
-								</div>
-							</td>
-							<td>
-								<div class="customization_titem">
-									<img src="/site/pp-sources/customization/images/dailycandy3.jpg"/>
-									<div class="customization_tdetail">
-										<h3>BLIND DEBOSS</h3>
-									</div>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="customization_mark">
-					<h2>Ready to make your mark? Call: <b>866.929.4922</b></h2>
-				</div>
-			</td>
-		</tr>
-	<!-- <tr>
-			<td>
-				<div class="customization_terms">
-					<h2>Terms + Conditions</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonummy nibh eusmcd tincindunt it laoreet dolore magna 
-					aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea 
-					commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonummy nibh eusmcd tincindunt it laoreet dolore magna 
-					aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
-					<p>ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate
-					velit esse molestie consequat,</p>
-				</div>
-			</td>
-		</tr>
-	-->
-	</tbody>
+<tbody id="content_master">
+<tr>
+    <td>
+        <div class="div__presentation slide-wrap">
+            <ul>
+                <li>
+                    <p class="hero-desc first">Make a<br>brand<br>statement<br>in style.</p>
+                    <img src="/site/pp-sources/customization/hero1.jpg"/>
+                </li>
+                <li>
+                    <p class="hero-desc second"><span>The Warm<br>Welcome</span>By proving they care about<br>employee happiness, Rue La<br>La made their team feel valued<br>and inspired. </p>
+                    <img src="/site/pp-sources/customization/hero2.jpg"/>
+                </li>
+                <li>
+                    <p class="hero-desc second"><span>The Big<br>Event</span>By reinventing swag to be<br>both beautiful and useful,<br>The Zoe Report created a<br>huge brand buzz.</p>
+                    <img  src="/site/pp-sources/customization/hero3.jpg"/>
+                </li>
+                <li>
+                    <p class="hero-desc second"><span>The Brand<br>Stand</span>When Organic Avenue<br>rebranded, they customized<br>Poppin desk accessories. It<br>was a snap to give their space<br>a makeover worthy of their<br>brand-new brand</p>
+                    <img src="/site/pp-sources/customization/hero4.jpg"/>
+                </li>
+            </ul>
+        </div>
+        <div class="div__regform">
+            <iframe scrolling="no" frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0"
+                    src="https://forms.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&amp;formid=14&amp;h=7330270d3afe48c04a57&amp;redirect_count=1&amp;did_javascript_redirect=T">
+            </iframe>
+            <div class="cust-guide">
+                <a class="cust-giude-button" href="/site/pp-sources/customization/customizationsolution_b2b.pdf" target="_blank">DOWNLOAD OUR<br>CUSTOMIZATION GUIDE</a>
+            </div>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td>
+        <img src="/site/pp-sources/customization/customzationbanner_2.jpg"/>
+    </td>
+</tr>
+<tr>
+<td>
+<h2>Customizable Products</h2>
+<div class="tabs-wrapper">
+<div class="tabs-heads">
+    <div class="tab-head first active" data-for="#all">All</div>
+    <div class="tab-head" data-for="#notebooks">Notebooks</div>
+    <div class="tab-head" data-for="#writing">Writing</div>
+    <div class="tab-head" data-for="#fbinders">Folios + Binders</div>
+    <div class="tab-head last" data-for="#desktop">Desktop</div>
+</div>
+<div class="tab-entity active" id="all">
+<div class="jo-items-holder">
+<div class="jo-item">
+    <h3>Medium Soft Cover<br/>Notebooks</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/note1.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/><img src="/site/pp-sources/customization/c-silver.png" alt=""/><img src="/site/pp-sources/customization/c-gold.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $10.50</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; blind deboss</li>
+            <li>&#8226; foil stamp</li>
+            <li>&#8226; screenprint</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Signature Ballpoints</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/pen1.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 500</div>
+    <div class="jo-item-price">pricing starting at: $2</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; one color pad print</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Soft Cover Folios</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/folio1.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/><img src="/site/pp-sources/customization/c-silver.png" alt=""/><img src="/site/pp-sources/customization/c-gold.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $15</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; blind deboss</li>
+            <li>&#8226; foil stamp</li>
+            <li>&#8226; screenprint</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Pen Cups</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/desktop1.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $8.50</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; screenprint</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Small Soft Cover<br/>Notebooks</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/note2.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/><img src="/site/pp-sources/customization/c-silver.png" alt=""/><img src="/site/pp-sources/customization/c-gold.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $8</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; blind deboss</li>
+            <li>&#8226; foil stamp</li>
+            <li>&#8226; screenprint</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Retractable Pens</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/pen2.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 500</div>
+    <div class="jo-item-price">pricing starting at: $2.50</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; one color pad print</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Zip Folios</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/folio2.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $5</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; screenprint</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Tape Dispensers</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/desktop4.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $14</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; pad print</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Mini Soft Cover<br/>Notebooks</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/note3.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/><img src="/site/pp-sources/customization/c-silver.png" alt=""/><img src="/site/pp-sources/customization/c-gold.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 250</div>
+    <div class="jo-item-price">pricing starting at: $5</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; foil stamp</li>
+            <li>&#8226; screenprint</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Metal Pens</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/pen3.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-silver.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $13</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; one color pad print</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>1.5” Binders</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/folio3.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $12.50</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; One & Two Color Pad Print</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Staplers</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/desktop3.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $15</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; Pad Print</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Medium Spiral<br/>Notebooks</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/note4.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-green-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange-pink.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $10.50</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; foil stamp</li>
+            <li>&#8226; screenprint</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Highlighters</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/pen4.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 500</div>
+    <div class="jo-item-price">pricing starting at: $2</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; one color pad print</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Mouse Pads</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/desktop2.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+        <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $10</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; screenprint</li>
+        </ul>
+    </div>
+</div>
+<div class="jo-item">
+    <h3>Large Spiral<br/>Notebooks</h3>
+    <div class="image-holder">
+        <img src="/site/pp-sources/customization/note5.png" alt=""/>
+    </div>
+    <div class="av-colors">
+        available colors:<br/>
+        <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-green-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange-pink.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/>
+    </div>
+    <div class="jo-item-quantity">min. quantity: 100</div>
+    <div class="jo-item-price">pricing starting at: $15</div>
+    <div class="jo-item-customization">customization options:
+        <ul>
+            <li>&#8226; foil stamp</li>
+            <li>&#8226; screenprint</li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+<div class="tab-entity" id="notebooks">
+    <div class="jo-items-holder">
+        <div class="jo-item">
+            <h3>Medium Soft Cover<br/>Notebooks</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/note1.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/><img src="/site/pp-sources/customization/c-silver.png" alt=""/><img src="/site/pp-sources/customization/c-gold.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $10.50</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; blind deboss</li>
+                    <li>&#8226; foil stamp</li>
+                    <li>&#8226; screenprint</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Small Soft Cover<br/>Notebooks</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/note2.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/><img src="/site/pp-sources/customization/c-silver.png" alt=""/><img src="/site/pp-sources/customization/c-gold.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $8</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; blind deboss</li>
+                    <li>&#8226; foil stamp</li>
+                    <li>&#8226; screenprint</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Mini Soft Cover<br/>Notebooks</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/note3.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/><img src="/site/pp-sources/customization/c-silver.png" alt=""/><img src="/site/pp-sources/customization/c-gold.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 250</div>
+            <div class="jo-item-price">pricing starting at: $5</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; foil stamp</li>
+                    <li>&#8226; screenprint</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Medium Spiral<br/>Notebooks</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/note4.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-green-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange-pink.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $10.50</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; foil stamp</li>
+                    <li>&#8226; screenprint</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Large Spiral<br/>Notebooks</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/note5.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-green-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange-pink.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $15</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; foil stamp</li>
+                    <li>&#8226; screenprint</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-entity" id="writing">
+    <div class="jo-items-holder">
+        <div class="jo-item">
+            <h3>Signature Ballpoints</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/pen1.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 500</div>
+            <div class="jo-item-price">pricing starting at: $2</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; one color pad print</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Retractable Pens</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/pen2.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 500</div>
+            <div class="jo-item-price">pricing starting at: $2.50</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; one color pad print</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Metal Pens</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/pen3.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-silver.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $13</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; one color pad print</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Highlighters</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/pen4.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 500</div>
+            <div class="jo-item-price">pricing starting at: $2</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; one color pad print</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-entity" id="fbinders">
+    <div class="jo-items-holder">
+        <div class="jo-item">
+            <h3>Soft Cover Folios</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/folio1.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/><img src="/site/pp-sources/customization/c-silver.png" alt=""/><img src="/site/pp-sources/customization/c-gold.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $15</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; blind deboss</li>
+                    <li>&#8226; foil stamp</li>
+                    <li>&#8226; screenprint</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Zip Folios</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/folio2.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $5</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; screenprint</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>1.5” Binders</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/folio3.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $12.50</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; One & Two Color Pad Print</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-entity" id="desktop">
+    <div class="jo-items-holder">
+        <div class="jo-item">
+            <h3>Pen Cups</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/desktop1.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $8.50</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; screenprint</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Mouse Pads</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/desktop2.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $10</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; screenprint</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Staplers</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/desktop3.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $15</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; Pad Print</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jo-item">
+            <h3>Tape Dispensers</h3>
+            <div class="image-holder">
+                <img src="/site/pp-sources/customization/desktop4.png" alt=""/>
+            </div>
+            <div class="av-colors">
+                available colors:<br/>
+                <img src="/site/pp-sources/customization/c-white.png" alt=""/><img src="/site/pp-sources/customization/c-yellow.png" alt=""/><img src="/site/pp-sources/customization/c-orange.png" alt=""/><img src="/site/pp-sources/customization/c-coral.png" alt=""/><img src="/site/pp-sources/customization/c-red.png" alt=""/><img src="/site/pp-sources/customization/c-pink.png" alt=""/><img src="/site/pp-sources/customization/c-lime.png" alt=""/><img src="/site/pp-sources/customization/c-mint.png" alt=""/><br/>
+                <img src="/site/pp-sources/customization/c-green.png" alt=""/><img src="/site/pp-sources/customization/c-blue.png" alt=""/><img src="/site/pp-sources/customization/c-navy.png" alt=""/><img src="/site/pp-sources/customization/c-purple.png" alt=""/><img src="/site/pp-sources/customization/c-black.png" alt=""/><img src="/site/pp-sources/customization/c-gray.png" alt=""/>
+            </div>
+            <div class="jo-item-quantity">min. quantity: 100</div>
+            <div class="jo-item-price">pricing starting at: $14</div>
+            <div class="jo-item-customization">customization options:
+                <ul>
+                    <li>&#8226; pad print</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="cite">
+    <div class="cite-head">THE NEW YORK TIMES:</div>
+    <div class="cite-body">“Skip the logoed water bottles and other items that will be quickly used and tossed.<br/>Make your promotional products investment something that will have a shelf life.”</div>
+</div>
+<div class="dotline"></div>
+<div class="color-picker">
+    <div class="picker-head">
+        We’ve got your company color!
+    </div>
+    <img src="/site/pp-sources/customization/cb-white.png" alt=""/><img src="/site/pp-sources/customization/cb-yellow.png" alt=""/><img src="/site/pp-sources/customization/cb-orange.png" alt=""/><img src="/site/pp-sources/customization/cb-coral.png" alt=""/><img src="/site/pp-sources/customization/cb-red.png" alt=""/><img src="/site/pp-sources/customization/cb-pink.png" alt=""/><img src="/site/pp-sources/customization/cb-lime.png" alt=""/><img src="/site/pp-sources/customization/cb-mint.png" alt=""/><img src="/site/pp-sources/customization/cb-green.png" alt=""/><img src="/site/pp-sources/customization/cb-blue.png" alt=""/><img src="/site/pp-sources/customization/cb-navy.png" alt=""/><img src="/site/pp-sources/customization/cb-purple.png" alt=""/><img src="/site/pp-sources/customization/cb-black.png" alt=""/><img src="/site/pp-sources/customization/cb-gray.png" alt=""/><img src="/site/pp-sources/customization/cb-silver.png" alt=""/><img class="last" src="/site/pp-sources/customization/cb-gold.png" alt=""/>
+</div>
+<div class="dotline"></div>
+<div class="cust-types">
+    <div class="types">
+        <div class="picker-head">
+            Types of customization
+        </div>
+        <div class="type">
+            <img src="/site/pp-sources/customization/deboss.jpg" alt=""/>
+            <div>BLIND DEBOSS</div>
+        </div>
+        <div class="type">
+            <img src="/site/pp-sources/customization/foil.jpg" alt=""/>
+            <div>FOIL STAMP</div>
+        </div>
+        <div class="type">
+            <img src="/site/pp-sources/customization/screenprint.jpg" alt=""/>
+            <div>SCREENPRINT</div>
+        </div>
+    </div>
+    <div class="cust">
+        <div class="picker-head">
+            Get your brand in hand<br/>in just 10 business days!
+        </div>
+        <p><span>1. CALL YOUR WORKSTYLIST</span><br/>&nbsp&nbsp&nbsp&nbsp at (866)926-4922</p>
+        <p><span>2. CHOOSE</span> a customizable<br/>&nbsp&nbsp&nbsp&nbsp product + color</p>
+        <p><span>3. SEND</span> your logo with preferred<br/>&nbsp&nbsp&nbsp&nbsp placement + application</p>
+    </div>
+</div>
+<div class="dotline"></div>
+<div class="footing">
+    Ready to make your mark?<br/>
+    Call us to get started: <span class="blebleble">(866)929-4922</span>
+</div>
+<div class="dotline"></div>
+<div class="picker-head" style="margin-top: 40px">
+    See how other companies are customizing with Poppin
+</div>
+<div class="olapic-wrapper">
+    <div class="olapic-text">
+        <p>work happy</p>
+        <p>INSPIRATION</p>
+        <p>#workhappy</p>
+    </div>
+    <div id="olapic_specific_widget"></div>
+    <script type="text/javascript" src="http://widgets.photorank.me/render?element_id=olapic_specific_widget&customer_id=216225&gallery=191685216&widget_config=2137494540" async="async"></script>
+</div>
+</td>
+</tr>
+</tbody>
 </table>
