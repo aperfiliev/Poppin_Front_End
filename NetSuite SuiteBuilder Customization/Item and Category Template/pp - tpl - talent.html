@@ -1,0 +1,352 @@
+<style>
+    #div__body{
+        padding-bottom: 0;
+    }
+    td.td-left{
+        display: none;
+    }
+    #talent .bl1 {
+        width: 955px;
+        height: 715px;
+        background: url('/site/pp-sources/talent/tal1.jpg') center no-repeat;
+        position: relative;
+        margin-bottom: 30px;
+    }
+    #talent .bl1 a.main-link {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    #talent .bl1 .plashka {
+        position: absolute;
+        top: 33px;
+        left: 45px;
+        font-family: OmnesSemiBold;
+        font-size: 16px;
+        color: #fff;
+    }
+    #talent .bl1 .text1 {
+        position: absolute;
+        top: 80px;
+        left: 45px;
+        font-family: OmnesRegularRegular;
+        font-size: 56px;
+    }
+    #talent .bl1 ul.text2 {
+        position: absolute;
+        top: 45px;
+        left: 470px;
+        padding: 0;
+        margin: 0;
+    }
+    #talent .bl1 ul.text2 li {
+        font-family: OmnesRegularRegular;
+        font-size: 28px;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+    #talent .bl2 {
+        width: 964px;
+        height: 1000px;
+        background: url('/site/pp-sources/talent/tal2.jpg') center no-repeat;
+        position: relative;
+        margin-bottom: 25px;
+    }
+    #talent .bl2 .plashka-big {
+        position: absolute;
+        top: 30px;
+        left: 20px;
+        font-family: OmnesSemiBoldItalic;
+        font-size: 35px;
+        color: #fff;
+    }
+    #talent .bl2 .plashka-big span {
+        font-family: OmnesLightItalic;
+    }
+    #talent .bl2 .item-head {
+        font-family: OmnesRegularRegular;
+        font-size: 28px;
+        position: absolute;
+    }
+    #talent .bl2 .item-head.first {
+        top: 116px;
+        left: 40px;
+    }
+    #talent .bl2 .item-head.second {
+        top: 116px;
+        left: 505px;
+    }
+    #talent .bl2 .item-head.third {
+        top: 480px;
+        left: 40px;
+    }
+    #talent .bl2 .item-head.forth {
+        top: 480px;
+        left: 505px;
+    }
+    #talent .bl2 .item-price {
+        font-family: OmnesSemiBold;
+        font-size: 25px;
+        position: absolute;
+        color: #fff;
+    }
+    #talent .bl2 .item-price sup {
+        font-family: OmnesBoldRegular;
+        font-size: 16px;
+    }
+    #talent .bl2 .item-price.first {
+        top: 276px;
+        left: 365px
+    }
+    #talent .bl2 .item-price.second {
+        top: 276px;
+        left: 830px
+    }
+    #talent .bl2 .item-price.third {
+        top: 641px;
+        left: 345px
+    }
+    #talent .bl2 .item-price.forth {
+        top: 641px;
+        left: 810px
+    }
+    #talent .bl2 .item-desc {
+        font-family: OmnesLightItalic;
+        font-size: 18px;
+        position: absolute;
+    }
+    #talent .bl2 .item-desc span {
+        font-family: OmnesBoldRegular;
+    }
+    #talent .bl2 .item-desc.first {
+        top: 346px;
+        left: 25px;
+    }
+    #talent .bl2 .item-desc.second {
+        top: 346px;
+        left: 490px;
+    }
+    #talent .bl2 .item-desc.third {
+        top: 711px;
+        left: 25px;
+    }
+    #talent .bl2 .item-desc.forth {
+        top: 711px;
+        left: 490px;
+    }
+    #talent .bl2 .customizeit {
+        position: absolute;
+        color: #00a6dd;
+        font-family: OmnesLightItalic;
+        top: 902px;
+        left: 60px;
+        font-size: 35px;
+        line-height: 30px;
+    }
+    #talent .bl2 .customizeit span {
+        font-family: OmnesSemiboldItalic;
+    }
+    #talent .bl2 .customizeit sup {
+        font-size: 16px;
+    }
+    #talent .bl2 .callus {
+        position: absolute;
+        text-align: center;
+        top: 913px;
+        left: 568px;
+        height: 38px;
+        width: 331px;
+        font-size: 22px;
+    }
+    #talent .bl2 .callus span {
+        font-family: OmnesBoldRegular;
+    }
+    #talent .bl2 .item-link {
+        position: absolute;
+        display: block;
+        width: 462px;
+        height: 237px;
+    }
+    #talent .bl2 .item-link.first {
+        top: 100px;
+        left: 20px;
+    }
+    #talent .bl2 .item-link.second {
+        top: 100px;
+        left: 487px;
+    }
+    #talent .bl2 .item-link.third {
+        top: 464px;
+        left: 20px;
+    }
+    #talent .bl2 .item-link.forth {
+        top: 464px;
+        left: 487px;
+    }
+    #talent .bl3 {
+        width: 964px;
+        height: 498px;
+        background: url('/site/pp-sources/talent/tal3.jpg') center no-repeat;
+        position: relative;
+        margin-bottom: 16px;
+    }
+    #talent .bl3 .plashka-big {
+        position: absolute;
+        top: 28px;
+        left: 20px;
+        font-family: OmnesSemiBoldItalic;
+        font-size: 35px;
+        color: #fff;
+    }
+    #talent .bl3 .plashka-big span {
+        font-family: OmnesLightItalic;
+    }
+    #talent .bl3 .text1 {
+        position: absolute;
+        top: 100px;
+        left: 20px;
+        font-family: OmnesRegularRegular;
+        font-size: 25px;
+    }
+    #talent .bl3 a.item-link {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    #talent .bl3 .text2 {
+        position: absolute;
+        top: 460px;
+        left: 60px;
+        font-family: OmnesLightItalic;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+    #talent .bl3 .text3 {
+        position: absolute;
+        top: 400px;
+        left: 705px;
+        font-family: OmnesLightItalic;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+    #talent .bl4 {
+        width: 964px;
+        height: 54px;
+        background: url('/site/pp-sources/talent/tal4.jpg') center no-repeat;
+        position: relative;
+        margin-bottom: 25px;
+    }
+    #talent .bl4 .text1 {
+        position: absolute;
+        top: 5px;
+        width: 100%;
+        text-align: center;
+        left: 0;
+        font-size: 30px;
+        color: #fff;
+        font-family: OmnesRegularRegular;
+    }
+    #talent .bl4 .text1 span {
+        font-family: OmnesSemiBold;
+    }
+    #talent .bl5 {
+        overflow: hidden;
+    }
+    #talent .bl5 .fl-l {
+        float: left;
+        width: 736px;
+        height: 358px;
+    }
+    #talent .bl5 .fl-r {
+        float: left;
+        width: 221px;
+        height: 358px;
+    }
+    #talent .feeedback {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    #talent .feeedback .text1{
+        font-family: OmnesSemiBold;
+        font-size: 25px;
+    }
+    #talent .feeedback .text2{
+        font-family: OmnesRegularRegular;
+        font-size: 26px;
+    }
+    #talent #gifdiv {
+        position: absolute;
+        background: url('/site/pp-sources/talent/attract_v3_03.gif') center no-repeat;
+        width: 510px;
+        height: 382px;
+        right: -3px;
+        top: 81px;
+    }
+</style>
+<td id="talent">
+    <div class="bl1">
+        <div class="plashka">
+            ATTRACT + REWARD GREAT TALENT
+        </div>
+        <div class="text1">Employee<br/>retention starts<br/>on day one.</div>
+        <ul class="text2">
+            <li>Attract talent with a workspace that<br/>shows you know <i>culture counts.</i></li>
+            <li>Step up your onboarding with desks<br/>that say <i>"Welcome to the team."</i></li>
+            <li>Acknowledge great work with gifts<br>that are <i>beautiful and on-brand.</i></li>
+        </ul>
+        <a class="main-link" href="http://www.poppin.com/business-desk-sets/"></a>
+    </div>
+    <div class="feeedback">
+        <div class="text1">INC. MAGAZINE:</div>
+        <div class="text2">"Finding the best people and getting them to want to join your team should be akin to major sales and marketing efforts."</div>
+    </div>
+    <div class="bl2">
+        <div class="plashka-big">
+            Meet <span>our Work Happy Kits.</span> <span style="font-size:30px">Available in 14 colors!</span>
+        </div>
+        <div class="item-head first">Best Day<br/>Ever Kit</div>
+        <div class="item-head second">The Fave Kit</div>
+        <div class="item-head third">Dream<br/>Desk Kit</div>
+        <div class="item-head forth">Big Deal Kit</div>
+
+        <div class="item-price first"><sup>$</sup>25 <span style="font-size:14px; font-family:OmnesMediumItalic; position:relative; dispaly:inline-block; bottom:4px;">a <sup style="font-size:10px; font-family:OmnesMediumItalic;">$</sup>27 value</span></div>
+        <div class="item-price second"><sup>$</sup>50 <span style="font-size:14px; font-family:OmnesMediumItalic; position:relative; dispaly:inline-block; bottom:4px;">a <sup style="font-size:10px; font-family:OmnesMediumItalic;">$</sup>60 value</span></div>
+        <div class="item-price third"><sup>$</sup>100 <span style="font-size:14px; font-family:OmnesMediumItalic; position:relative; dispaly:inline-block; bottom:4px;">a <sup style="font-size:10px; font-family:OmnesMediumItalic;">$</sup>119 value</span></div>
+        <div class="item-price forth"><sup>$</sup>325 <span style="font-size:14px; font-family:OmnesMediumItalic; position:relative; dispaly:inline-block; bottom:4px;">a <sup style="font-size:10px; font-family:OmnesMediumItalic;">$</sup>388 value</span></div>
+
+        <div class="item-desc first"><span>Includes:</span> Medium Soft Cover Notebook, Pen Cup,<br/>12 Signature Ballpoint Pens</div>
+        <div class="item-desc second"><span>Includes:</span> Medium Soft Cover Notebook, Pen Cup,<br/>12 Signature Ballpoint Pens, Accessory Tray, Stapler,<br/>Softie This + That Tray</div>
+        <div class="item-desc third"><span>Includes:</span> Medium Soft Cover Notebook, Pen Cup,<br/>12 Signature Ballpoint Pens, Accessory Tray, Stapler,<br/>Softie This + That Tray, Tape Dispenser, Mouse Pad,<br/>2 Letter Trays, Paperclips + Binder Clips, Jumbo Mobile<br/>Memos</div>
+        <div class="item-desc forth"><span>Includes:</span> Medium Soft Cover Notebook, Pen Cup,<br/>12 Signature Ballpoint Pens, Accessory Tray, Stapler,<br/>Softie This + That Tray, Tape Dispenser, Mouse Pad,<br/>2 Letter Trays, Paperclips + Binder Clips, Jumbo Mobile<br/>Memos, Clips & Pins, Jumbo Mobile Memos, File Folders,<br/>Hanging Folders, File Cabinet</div>
+
+        <div class="customizeit">
+            Going big? We like your style.<br/><span>Volume discounts available!</span>
+        </div>
+        <a class="callus" href="/site/pp-sources/talent/pricing_popup.jpg" target="_blank"></a>
+
+        <a class="item-link first" href="http://www.poppin.com/business-best-day-ever-kit/"></a>
+        <a class="item-link second" href="http://www.poppin.com/business-the-fave-kit/"></a>
+        <a class="item-link third" href="http://www.poppin.com/business-dream-desk-kit/"></a>
+        <a class="item-link forth" href="http://www.poppin.com/business-big-deal-kit/"></a>
+
+    </div>
+    <div class="bl4">
+        <div class="text1">Call your Workstylist today to get started! <span>(866) 926-4922</span></div>
+    </div>
+    <div class="bl5">
+        <div class="fl-l">
+            <a href="/site/pp-sources/talent/talentpdf.pdf" target="_blank"><img src="/site/pp-sources/talent/tal5.jpg" alt=""/></a>
+        </div>
+        <div class="fl-r">
+            <iframe style=" box-sizing: border-box; -moz-box-sizing: border-box; width: 221px; height: 358px; overflow: hidden; border: 1px solid #b4b4b4;" scrolling="no" frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0" src="https://forms.netsuite.com/app/site/crm/externalleadpage.nl?compid=3363929&formid=33&h=a1a33867735fb979d977&ck=wiyIUqjgAXxQEsGR&vid=wiyIUnngAYF_HX5P&cktime=123007&cart=414639&gc=clear&redirect_count=1&did_javascript_redirect=T">
+            </iframe>
+        </div>
+    </div>
+</td>
