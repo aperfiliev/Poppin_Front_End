@@ -1,0 +1,49 @@
+<style type="text/css">
+.td-left{display:none;}
+.breadcrumbs{display:none;}
+.td-infoitem h1{display:none;}
+.reg-info-newsletter{background:#979797; float:left; height:514px; overflow:hidden; margin-top:10px; width:100%}
+#info-image-newsletter { float:right; width: 640px;}
+#info-cnt-newsletter {float:left; width: 320px; height:512px; margin-left:5px;background: #979797; overflow:hidden}
+#info-cnt-newsletter .info-cnt-newsletter-desc {float:left; width: 275px; height:96px; color:#fff; font-familiy:OmnesMediumRegular,Arial,Helvetica,sans-serif; font-size:26px; padding:20px 0; margin: 0 20px 10px; background: url(/site/pp-footer/bg-dotted.png) repeat-x bottom;line-height: 30px; text-align: justify;}
+#info-right-newsletter { width: 100%; float:left; background: url(https://system.netsuite.com/core/media/media.nl?id=43961&c=3363929&h=d254544339c260957af3) repeat-x left 20px; height:40px; float:left;margin-top:20px;}
+#info-cnt-newsletter .info-cnt-newsletter-desc p {margin: 0; width:270px;}
+#info-right-newsletter #feat-desc {width:500px; margin:0 auto; heigth:40px; font-familiy:OmnesMediumRegular,Arial,Helvetica,sans-serif; font-size:30px; color:#f57b20; line-height:36px; text-align:center; background:#fff; }
+
+</style>
+
+<td class="td-infoitem"><h1><%=getCurrentAttribute('item','storedisplayname2')%></h1>
+  <div class="reg-info-newsletter">
+    <div id="info-image-newsletter"><%=getCurrentAttribute('item','storedisplayimagehtml')%></div>
+    <div id="info-cnt-newsletter"><div class="info-cnt-newsletter-desc"><%=getCurrentAttribute('item','storedescription')%> </div><%=getCurrentAttribute('item','storedetaileddescription')%> </div>
+    
+  </div>
+<div id="info-right-newsletter">
+      <div id="feat-desc"><%=getCurrentAttribute('item','featureddescription','')%></div>
+    </div>
+<script type="text/javascript">
+$j(document).ready(function(){											
+	$j('.breadcrumbs a').click(function(){ return false; }).css({cursor: 'default'});
+	
+	try{
+		if ($j('.reg-info').length){
+			if( $j('.reg-info #feat-desc').text().toString().replace(/\S/g,'') == "" ){ 		
+				$j('.reg-info #info-right').remove();									/* delete empty right */
+				$j('.reg-info').addClass('only-content');
+			}															
+			var media = $j('.reg-info #info-image img').eq(0);							/* remove img resizing */
+			if(media.length){
+				var src = media.attr('src');
+				if(src.indexOf('resizeid=') > -1)
+					media.attr('src',src.split("resizeid=")[0]);
+			}
+			if($j('#info-right .narrow').length)										/* narrower right */
+				$j('.reg-info').addClass('wider-content');
+
+			$j('#info-cnt > br').remove()												/* delete 1st level carriages */				
+		}
+	} catch(e){
+		console.log('pp-tpl-info item : ' + e.message);
+	}
+});	
+</script></td>
