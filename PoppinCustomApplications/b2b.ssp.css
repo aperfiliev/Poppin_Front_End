@@ -13,7 +13,7 @@ tbody#content_master tr{
 	vertical-align: top;
 }
 tbody#content_master tr:not(:last-child){
-	background: url(//poppinsb.imgix.net/pp-sources/business/bg-dotted-small.gif?auto=format) repeat-x left bottom;
+	background: url(/site/pp-sources/business/bg-dotted-small.gif) repeat-x left bottom;
 }
 tbody#content_master td{
 	padding: 10px 0 10px 0;
