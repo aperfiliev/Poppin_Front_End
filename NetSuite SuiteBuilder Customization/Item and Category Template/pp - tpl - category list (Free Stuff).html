@@ -1,0 +1,92 @@
+<td class="td-category">
+    <style type="text/css">
+        body #nav.fixed-nav .top-nav li .no-link{padding:12px 0 0 6px;}
+        .td-left{display:none;}
+        .banner{
+            width: 878px;
+            height: 56px;
+            color: #ffffff;
+            font-size: 29px;
+            padding-top: 4px;
+            text-align: center;
+            margin: 50px auto 25px;
+            font-family: OmnesRegularRegular;
+            background: url(/site/pp-sources/Cool-School/banner.png) top center no-repeat;
+            -moz-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .paper-block{
+            float: left;
+            width: 322px;
+            height: 210px;
+            text-align: center;
+        }
+        .paper-block.first{
+            background: url(/site/pp-sources/Cool-School/paper1.png) bottom center no-repeat;
+        }
+        .paper-block.second{
+            background: url(/site/pp-sources/Cool-School/paper2.png) bottom center no-repeat;
+        }
+        .paper-block.third{
+            background: url(/site/pp-sources/Cool-School/paper3.png) bottom center no-repeat;
+        }
+        .paper-block.first:hover{
+            background: url(/site/pp-sources/Cool-School/paper1a.png) bottom center no-repeat;
+        }
+        .paper-block.second:hover{
+            background: url(/site/pp-sources/Cool-School/paper2a.png) bottom center no-repeat;
+        }
+        .paper-block.third:hover{
+            background: url(/site/pp-sources/Cool-School/paper3a.png) bottom center no-repeat ;
+        }
+    </style>
+    <div class="category-list goodies free_stuff">
+        <h1><%=getCurrentAttribute('sitecategory','itemid')%></h1>
+        <div class="cat-img" style="background:transparent url(<PP_TAB_MAIN_IMAGE>) no-repeat left top;">
+            <div class="point rotateP"></div>
+            <div class="txt-side">
+                <div class="dsc-brief"><%=getCurrentAttribute('sitecategory','description')%></div>
+                <div class="dsc-detail"><%=getCurrentAttribute('sitecategory','storedetaileddescription')%></div>
+            </div>
+        </div>
+        <table id="table-category-list" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <NLITEMLIST>
+            </tr>
+        </table>
+    </div>
+    <div class="banner">Download your Back-to-School Supply lists.</div>
+    <a href="http://www.poppin.com/site/pp-free-stuff-page/pdf/BTS_Checklists%201.pdf" class="paper-block first" target="_blank">
+        <div class="maintext">College+Dorm<br>Checklist</div>
+    </a>
+    <a href="http://www.poppin.com/site/pp-free-stuff-page/pdf/BTS_Checklists%202.pdf" class="paper-block second" target="_blank">
+        <div class="maintext">High+Middle School<br>Checklist</div>
+    </a>
+    <a href="http://www.poppin.com/site/pp-free-stuff-page/pdf/BTS_Checklists%203.pdf" class="paper-block third" target="_blank">
+        <div class="maintext">Elementary School<br>Checklist</div>
+    </a>
+    <div class="clr"></div>
+    <script type="text/javascript">
+        $j(document).ready(function(){
+            try{
+                $j('#table-category-list a.catlink').each(function(){
+                    var id = $j(this).attr('id');
+                    if(isDef(id)){
+                        var href = '/s.nl/c.<NLCOMPANYID>/n.1/category.' + id.toString() + '/.f';
+                        if(isDef(href)){
+                            process_url(href, function(html){
+                                var target = $j("#cat_container_"+id);
+                                /* find container append retrieved info cells */
+                                if(target.length){ target.empty().append($j(depurate_html(html)).find('.info-cell').clone()); }
+                                /* delete H3.name */
+                                target.find('.feat').each(function(){ if($j(this).find('a').length===0){$j(this).find('h3').remove();} });
+                            });
+                        }
+                    }
+                });
+            }
+            catch(e){console.log('retrieving items in ,error:' + e.message);	}
+        });
+    </script>
+</td>
