@@ -2,12 +2,7 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <%= getPageFullHead() %>
-
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-<!--<link rel="stylesheet" href="/SSP Applications/Poppin/SocialMediaLogin/smoothness/jquery-ui-1.10.3.custom.min.css" />-->
-
-<script src="js/Login/Login-0147c94f38e6.js"></script>
+<script src="js/Login/Login-0148e9ec5375.js"></script>
 </head>
 <body id='loginregisterbody'>
 <div id='outerwrapper' >
@@ -160,7 +155,7 @@
 
 <div id='div__footer' class='noprint' leftmargin='0' topmargin='0' marginwidth='1' marginheight='1'>
 <PP_FOOTER>
-<GA_FUNNELS> 
+<GA_FUNNELS>
 <SMARTYSTREETS>
 <CARD_SELECTOR_EMPTY>
 </div>
