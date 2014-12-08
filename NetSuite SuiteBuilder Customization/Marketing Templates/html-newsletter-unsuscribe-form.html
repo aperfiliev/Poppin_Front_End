@@ -6,19 +6,20 @@
 <script type="text/javascript" src="https://system.netsuite.com/c.3363929/site/pp-files/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">
 $j(document).ready(function(){
-	$j(document).click();
-	$j('#email').val('Enter your email');
+    $j(document).click();
+    $j('#email').val('Enter your email');
 });
 $j(function(){
-	$j('#companyname').val('Newsletter-unsubscribe');
-	$j('#email').focus(function(){
-		if($j(this).val() == 'Enter your email')
-			$j(this).val('');
-	});
-	$j('#email').blur(function(){
-		if($j(this).val() == '')
-			$j(this).val('Enter your email');
-	});	
+    $j('#companyname').val('Newsletter-unsubscribe');
+    $j("select#globalsubscriptionstatus option:contains('Soft Opt-Out')").attr("selected", "selected");
+    $j('#email').focus(function(){
+        if($j(this).val() == 'Enter your email')
+            $j(this).val('');
+    });
+    $j('#email').blur(function(){
+        if($j(this).val() == '')
+            $j(this).val('Enter your email');
+    });	
 });
 </script>
 <style type="text/css">
@@ -35,6 +36,9 @@ button { margin: 0; padding: 0; border: 0; display: inline; vertical-align: midd
   <NLFORM>
     <NLCOMPANYNAME>
     <NLEMAIL>
+    <div style="display: none">
+        <NLGLOBALSUBSCRIPTIONSTATUS>
+    </div>
     <button type="submit" name="sign-up" title="Submit"><img src="//poppinsb.imgix.net/pp-templates/btn-submit.jpg?auto=format" alt="Submit" /></button>
   </form>
 </div>
