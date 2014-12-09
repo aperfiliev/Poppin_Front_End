@@ -4,7 +4,7 @@
 			<td>
 				
 				<div class="div__presentation">
-					<a href="http://www.poppin.com/corporate-gifting/"><img src="/site/pp-sources/business/bizhomepage.corporategifting1.jpg" ></a>
+					<a href="http://www.poppin.com/corporate-gifting/"><img src="//poppin.imgix.net/pp-sources/business/bizhomepage.corporategifting1.jpg?auto=format" ></a>
 				</div>
 				<div>
 					<iframe scrolling="no" frameborder="0" allowtransparency="yes"
@@ -25,15 +25,15 @@
 			<td>
 				<div class="div__options" id="left">
 					<a href="/Desktop/"><p>Shop Desktop ></p></a>
-					<a href="/Desktop/"><img alt="Shop Desktop" src="/site/pp-sources/business/shop-desktop.png"></a>
+					<a href="/Desktop/"><img alt="Shop Desktop" src="//poppin.imgix.net/pp-sources/business/shop-desktop.png?auto=format"></a>
 				</div>
 				<div class="div__options" id="center">
 					<a href="/customization/"><p>Brand It ></p></a>
-					<a href="/customization/"><img alt="Brand It" src="/site/pp-sources/business/brand-it.png"></a>
+					<a href="/customization/"><img alt="Brand It" src="//poppin.imgix.net/pp-sources/business/brand-it.png?auto=format"></a>
 				</div>
 				<div class="div__options" id="right">
 					<a href="/Furniture/"><p>Shop Furniture ></p></a>
-					<a href="/Furniture/"><img alt="Shop Furniture" src="/site/pp-sources/business/shop-furniture.png"></a>
+					<a href="/Furniture/"><img alt="Shop Furniture" src="//poppin.imgix.net/pp-sources/business/shop-furniture.png?auto=format"></a>
 				</div>
 			</td>
 		</tr>
@@ -56,50 +56,50 @@
 						<tbody id="logos">
 							<tr>
 								<td>
-									<img src="/site/pp-sources/business/logo01.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo01.png?auto=format">
 								</td>
 								<td>
-									<img src="/site/pp-sources/business/logo02.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo02.png?auto=format">
 								</td>
 								<td colspan="2">
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<img src="/site/pp-sources/business/logo03.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo03.png?auto=format.png">
 								</td>
 								<td>
-									<img src="/site/pp-sources/business/logo04.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo04.png?auto=format.png">
 								</td>
 								<td colspan="2">
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<img src="/site/pp-sources/business/logo05.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo05.png?auto=format">
 								</td>
 								<td>
-									<img src="/site/pp-sources/business/logo06.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo06.png?auto=format">
 								</td>
 								<td>
-									<img src="/site/pp-sources/business/logo07.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo07.png?auto=format">
 								</td>
 								<td>
-									<img src="/site/pp-sources/business/logo08.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo08.png?auto=format">
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<img src="/site/pp-sources/business/logo09.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo09.png?auto=format">
 								</td>
 								<td>
-									<img src="/site/pp-sources/business/logo10.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo10.png?auto=format">
 								</td>
 								<td>
-									<img src="/site/pp-sources/business/logo11.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo11.png?auto=format">
 								</td>
 								<td>
-									<img src="/site/pp-sources/business/logo12.png">
+									<img src="//poppin.imgix.net/pp-sources/business/logo12.png?auto=format">
 								</td>
 							</tr>
 						</tbody>

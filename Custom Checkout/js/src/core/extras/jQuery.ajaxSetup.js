@@ -23,7 +23,7 @@
 			$loading_icon = SC.$loadingIndicator = jQuery('<img/>', {
 				id: 'loadingIndicator'
 			,	'class': 'global-loading-indicator'
-			,	src: _.getAbsoluteUrl('img/ajax-loader.gif')
+			,	src: _.getAbsoluteUrl('//poppin.imgix.net/images/checkout/ajax-loader.gif')
 			,	css: {
 					zIndex: 9999
 				,	position: 'absolute'

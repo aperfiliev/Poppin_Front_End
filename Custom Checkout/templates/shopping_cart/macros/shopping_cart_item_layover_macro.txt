@@ -94,10 +94,10 @@ else if (url)
 							<%= _('Edit').translate() %>
 						</a>
 					<% } %>
-					<input type="submit" value="Update" class="btnsubmit" data-action="update-quantity" data-internalid="<%- line.get('internalid') %>" style="background: url(img/update.png) no-repeat left center;	border: 0;	box-shadow: none;	padding-left: 18px;font-size:11px;color: #969696;">
+					<input type="submit" value="Update" class="btnsubmit" data-action="update-quantity" data-internalid="<%- line.get('internalid') %>" style="background: url(//poppin.imgix.net/images/PoppinCustomApplications/update.png?auto=format) no-repeat left center;	border: 0;	box-shadow: none;	padding-left: 18px;font-size:11px;color: #969696;">
 					</input>
 					<br/>
-					<button class="btn remove" data-action="remove-item" data-internalid="<%- line.get('internalid') %>" style="background: url(img/remove.png) no-repeat left center;	border: 0;	box-shadow: none;	padding-left: 18px;font-size:11px;color: #969696;">
+					<button class="btn remove" data-action="remove-item" data-internalid="<%- line.get('internalid') %>" style="background: url(//poppin.imgix.net/images/PoppinCustomApplications/remove.png?auto=format) no-repeat left center;	border: 0;	box-shadow: none;	padding-left: 18px;font-size:11px;color: #969696;">
 						<%= _('Remove').translate() %>
 					</button>
 					

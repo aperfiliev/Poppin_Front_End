@@ -125,7 +125,7 @@
 						<fieldset id="fs_company" style="width: 300px;position:relative;">
 							<label for="company">Company Name</label>
 							 <input id="company" name="company" placeholder="(Optional)" type="text" style="width: 197px;"/>
-							 <span title="Enter company name here" style="cursor: pointer; font-size: 13px;" id="companyhelp"><img style="margin-bottom:-10px; margin-left:5px;" src="/site/social-login/css/images/whatsthis.jpg"/></span>
+							 <span title="Enter company name here" style="cursor: pointer; font-size: 13px;" id="companyhelp"><img style="margin-bottom:-10px; margin-left:5px;" src="//poppin.imgix.net/social-login/css/images/whatsthis.jpg"/></span>
 							 <div name="whatthisfortext" id="whatthisfortext" style="display: none;"><p> <PP_LOGIN_WHATTHISFOR_TEXT> </p></div>
 						</fieldset>
 						<fieldset>

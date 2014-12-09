@@ -7,7 +7,7 @@
         </p>
     </div>
     <div class="widget-header-upload">
-        <p>Just hashtag <strong>#workhappy</strong> on <img alt="https://twitter.com/" src="/site/pp-sources/workhappy-pinboard/facebook.jpg"/> <img alt="https://twitter.com/" src="/site/pp-sources/workhappy-pinboard/twitter.jpg"/> <img alt="https://twitter.com/" src="/site/pp-sources/workhappy-pinboard/insta.jpg"/> or <a target="_self" class="poppin_photorank_uploader" href="#">UPLOAD YOUR PHOTOS</a></p>
+        <p>Just hashtag <strong>#workhappy</strong> on <img alt="https://twitter.com/" src="//poppin.imgix.net/pp-sources/workhappy-pinboard/facebook.jpg?auto=format"/> <img alt="https://twitter.com/" src="//poppin.imgix.net/pp-sources/workhappy-pinboard/twitter.jpg?auto=format"/> <img alt="https://twitter.com/" src="//poppin.imgix.net/pp-sources/workhappy-pinboard/insta.jpg?auto=format"/> or <a target="_self" class="poppin_photorank_uploader" href="#">UPLOAD YOUR PHOTOS</a></p>
     </div>
     <div class="poppin_structure">
         <ul id="filters-all" class="widget-header-streams-filter">

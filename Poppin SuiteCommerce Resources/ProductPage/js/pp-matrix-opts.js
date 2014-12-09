@@ -29,7 +29,7 @@
 			var color_list = $('<ul class="colors-list"></ul>');
 			var btn_cart_wrap = $(options_container).parent().find(settings.addcart_wrap);
 			$(select_obj).val('');
-			var selected_indicator = $("<div class='selected_circle' style='display:none;width:57px;height:57px;position:absolute;background:url(/site/pp-initials/selected.png)'></div>");
+			var selected_indicator = $("<div class='selected_circle' style='display:none;width:57px;height:57px;position:absolute;background:url(//poppin.imgix.net/pp-initials/selected.png)'></div>");
 			$(options_container).append(color_list).append(selected_indicator);
 			$(btn_cart_wrap).addClass('block-btn').append('<span class="block-btn-over"></span>');
 			var collection = $();

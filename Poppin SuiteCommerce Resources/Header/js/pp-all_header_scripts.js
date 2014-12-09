@@ -14,8 +14,8 @@ $j(function () {
     var global_search_text = "SEARCH AND YOU WILL FIND...";
     var global_search_btn_text = "";
     var item_cat_cust_pag_wrap = $j(".toolbal");
-    var item_cat_cust_pag_left_img = new Array("/site/pp-templates/pag-left.gif", 11, 16);
-    var item_cat_cust_page_right_img = new Array("/site/pp-templates/pag-right.gif", 11, 16);
+    var item_cat_cust_pag_left_img = new Array("//poppin.imgix.net/pp-templates/pag-left.gif?auto=format", 11, 16);
+    var item_cat_cust_page_right_img = new Array("//poppin.imgix.net/pp-templates/pag-right.gif?auto=format", 11, 16);
     var login_obj = $j("#header .login");
     var logout_obj = $j("#header .logout");
     var breadcrum_edit = true;

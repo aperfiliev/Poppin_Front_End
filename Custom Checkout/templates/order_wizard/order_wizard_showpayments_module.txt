@@ -176,7 +176,7 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 			    ,   hidden   : !!(paymentmethods[0].get('creditcard').ccsecuritycode)
 			}) %>
 				<div style="padding: 5px; border: 2px solid #e2e2e2; width:290px; font-size:14px; font-weight:normal; display: none;position: absolute;background: white;top: 205px;left: 579px;z-index: 1000;" id="whatisthisinfo">
-				<img src="img/explain_cvc.png" alt="explain"><br/>
+				<img src="//poppin.imgix.net/images/checkout/explain_cvc.png?auto=format" alt="explain"><br/>
 				For security purposes, we require the Card Security Code on your credit card. 
 				For most credit cards, enter the three-digit number that follows your account number on the back of your card. 
 				If you have an American Express card, enter the four-digit number printed above your account number on the front of your card.
@@ -409,7 +409,7 @@ $j(window).trigger('updateCheckoutJsonData',pageData);
 <div class="shipments-cart-details-header" style="width: 640px;">
 	<table cellspacing="0" cellpadding="0" border="0"  style="float: left; background: white; border: 10px solid white; font-size: 13px; font-weight: bold;">
 	<tr style="height: 40px; font-weight: 500; font-size: 13px; color: #aaaaaa">
-	<th align="left" colspan="2" width="345px"><img src="img/cart_icon.png" style="margin-right: 6px;">SHOPPING CART</th>
+	<th align="left" colspan="2" width="345px"><img src="//poppin.imgix.net/images/checkout/cart_icon.png?auto=format" style="margin-right: 6px;">SHOPPING CART</th>
 	<th align="center" width="100px">PRICE</th>
 	<th align="center" width="100px">QTY</th>
 	<th align="center" width="100px">TOTAL</th>

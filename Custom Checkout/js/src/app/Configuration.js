@@ -544,10 +544,10 @@ checkoutSteps: [											//an array with the step groups conforming The Checko
 		
 		// When showing your credit cards, which icons should we use	
 	,	creditCardIcons: {
-			'VISA': 'img/visa.png'
-		,	'Discover': 'img/discover.png'
-		,	'Master Card': 'img/master.png'
-		,	'American Express': 'img/american.png'
+			'VISA': '//poppin.imgix.net/images/checkout/visa.png?auto=format'
+		,	'Discover': '//poppin.imgix.net/images/checkout/discover.png?auto=format'
+		,	'Master Card': '//poppin.imgix.net/images/checkout/master.png?auto=format'
+		,	'American Express': '//poppin.imgix.net/images/checkout/american.png?auto=format'
 		}
 
 		// Search preferences

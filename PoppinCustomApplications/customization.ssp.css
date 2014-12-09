@@ -126,7 +126,7 @@ tbody#content_master .customization_image{
     display: table-cell;
     float: left;
     padding-left: 8px;
-    background: url(/site/pp-sources/business/bg-dotted-small-vert.gif) repeat-y left top;
+    background: url(//poppin.imgix.net/pp-sources/business/bg-dotted-small-vert.gif?auto=format) repeat-y left top;
 }
 
 tbody#content_master .customization_detail h3{
@@ -164,7 +164,7 @@ tbody#content_master .customization_tdetail{
     color:#000;
     font-size: 18px;
     text-align:center;
-    background: url(/site/pp-sources/business/bg-dotted-small.gif) repeat-x left top;
+    background: url(//poppin.imgix.net/pp-sources/business/bg-dotted-small.gif?auto=format) repeat-x left top;
     margin: 15px 15px 0 15px;
     padding: 10px 0 0 0;
 }
@@ -255,7 +255,7 @@ p.popup_text {
     font-weight: bold;
     line-height: 28px;
     color: #f37a31;
-    background: url(/site/pp-sources/business/bg-dotted-small.gif) repeat-x left top;
+    background: url(//poppin.imgix.net/pp-sources/business/bg-dotted-small.gif?auto=format) repeat-x left top;
     padding: 15px 0 0 0;
     text-align: left;
     white-space: normal;
@@ -544,7 +544,7 @@ tbody#content_master .customization_mark b{
 /*tabs end*/
 
 .dotline{
-    background: url(/site/pp-sources/huffington/dotline.jpg);
+    background: url(//poppin.imgix.net/pp-sources/huffington/dotline.jpg?auto=format);
     height: 1px;
     width: 100%;
 }
@@ -624,7 +624,7 @@ tbody#content_master .customization_mark b{
 .footing{
     width: 968px;
     height: 222px;
-    background: url(/site/pp-sources/customization/call-bg.jpg);
+    background: url(//poppin.imgix.net/pp-sources/customization/call-bg.jpg?auto=format);
     margin: 10px 0;
     padding: 70px 0 0 30px;
     font-size: 30px;

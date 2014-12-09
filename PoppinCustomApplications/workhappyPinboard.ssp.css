@@ -9,7 +9,7 @@
     margin-bottom: 15px;
     width: 968px;
     height: 167px;
-    background: url(/site/pp-sources/workhappy-pinboard/heading.jpg)right center no-repeat;
+    background: url(//poppin.imgix.net/pp-sources/workhappy-pinboard/heading.jpg?auto=format)right center no-repeat;
 }
 #workhappy-pinboard .heading h1{
     font-size: 80px;
@@ -47,7 +47,7 @@
     width: 24px;
 }
 #workhappy-pinboard .widget-header-upload p a.poppin_photorank_uploader{
-    background: #f87c02 url(/site/pp-sources/workhappy-pinboard/arrowv.jpg)right center no-repeat;
+    background: #f87c02 url(//poppin.imgix.net/pp-sources/workhappy-pinboard/arrowv.jpg?auto=format)right center no-repeat;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -125,13 +125,13 @@
     height: 22px;
 }
 .heading .social-links .facebook {
-    background: url(/site/pp-templates/poppin-sprite.png) -22px -14px;
+    background: url(//poppin.imgix.net/pp-templates/poppin-sprite.png?auto=format) -22px -14px;
 }
 .heading .social-links .twitter {
-    background: url(/site/pp-templates/poppin-sprite.png) -44px -14px;
+    background: url(//poppin.imgix.net/pp-templates/poppin-sprite.png?auto=format) -44px -14px;
 }
 .heading .social-links .linkedin {
-    background: url(/site/pp-templates/linkedin.png) no-repeat 0 0;
+    background: url(//poppin.imgix.net/pp-templates/linkedin.png?auto=format) no-repeat 0 0;
 }
 #workhappy-pinboard #olapic-widget-wall-wrapper .widget-header{
     display: block!important;
@@ -147,7 +147,7 @@
     display: block!important;
 }
 #workhappy-pinboard #olapic-widget-wall-wrapper .widget-header .widget-header-upload a{
-    background: #f87c02 url(/site/pp-sources/workhappy-pinboard/arrowv.jpg)right center no-repeat;
+    background: #f87c02 url(//poppin.imgix.net/pp-sources/workhappy-pinboard/arrowv.jpg?auto=format)right center no-repeat;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
