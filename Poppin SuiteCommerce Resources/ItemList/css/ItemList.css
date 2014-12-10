@@ -5,7 +5,7 @@
 }
 #cat-header-text{
     position: absolute;
-    color: #ff7a34;
+    color: #000!important;
     top: 50px;
     left: 52px;
     width: 195px;
