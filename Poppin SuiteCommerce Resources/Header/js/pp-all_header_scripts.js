@@ -543,13 +543,19 @@ $j.fn.customNavDrilldown = function (options) {
         }
     };
     return this.each(function () {
-        var _this = this,
+    	var _this = this,
         	ajaxRequest = {
                     url: "/app/site/hosting/scriptlet.nl?script=259&deploy=1",
                     dataType: "json",
                     success: function (data) {
                     	if(typeof(Storage) !== "undefined") {
-                        	sessionStorage.setItem('menu', JSON.stringify(data));                    		
+                        	try {
+                    			sessionStorage.setItem('menu', JSON.stringify(data));	
+                        	}
+                        	catch (error) {
+                        		// It looks like we are in Safari browser with enabled Private Browsing.
+                        		// Proceed with no caching in this case.
+                        	}
                     	}
                     	var nav = model.processData(data);
                         $j(nav).append(li_last);
