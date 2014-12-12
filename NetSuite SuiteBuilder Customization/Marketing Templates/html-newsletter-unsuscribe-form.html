@@ -20,6 +20,10 @@ $j(function(){
         if($j(this).val() == '')
             $j(this).val('Enter your email');
     });	
+
+    $j("#main_form").submit(function( event ) {
+        $j('button').attr('disabled','disabled');
+    });
 });
 </script>
 <style type="text/css">
@@ -39,7 +43,7 @@ button { margin: 0; padding: 0; border: 0; display: inline; vertical-align: midd
     <div style="display: none">
         <NLGLOBALSUBSCRIPTIONSTATUS>
     </div>
-    <button type="submit" name="sign-up" title="Submit"><img src="//poppinsb.imgix.net/pp-templates/btn-submit.jpg?auto=format" alt="Submit" /></button>
+    <button type="submit" name="sign-up" title="Submit"><img src="//poppinsb.imgix.net/pp-templates/btn-submit.jpg?auto=format" alt="Submit"/></button>
   </form>
 </div>
 </body>
