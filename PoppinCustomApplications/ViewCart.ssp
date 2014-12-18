@@ -9,7 +9,8 @@
 
 <script src="js/jquery.powertip.js"></script>
 -->
-<script src="js/Cart/CartScripts-0147aaafa71b.js"></script>
+<!--  <script src="//d1re3aon4sgzml.cloudfront.net/JS/Cart/CartScripts.js"></script>-->
+<script src="js/Cart/CartScripts-014a5e13f128.js"></script>
 <link rel="stylesheet" href="css/Cart/ViewCart.css">
 
 </head>
@@ -101,10 +102,17 @@
 
 <script language="JavaScript">
 	var order = <%=JSON.stringify(LoginLib.getOrder())%>;
-	var help = <%=LoginLib.getHelp()%>;
 	buildCartHeader();
-	buildCartItems(order);
-	buildHelp(help);
+    buildCartItems(order);
+
+
+	var pageData = {
+		"items" : order.items
+	};
+	jQuery.each(pageData.items,function(index,value){
+		pageData.items[index].price =pageData.items[index].price.replace('$','');
+	});
+
 </script>
 
 </body>
