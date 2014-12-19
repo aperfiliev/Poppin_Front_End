@@ -13,19 +13,27 @@
  */
 function suitelet(request, response)
 {
-	var result = [{"title":"", "description":"" }];
-	
-	var topic = nlapiLoadRecord('topic', 8);
-	topic = JSON.parse(JSON.stringify(topic));
-	var items = topic.solution;
-
-	for(var i=0; i<items.length; i++)
-	{
-		var internalId = items[i].solution.internalid;
-		var item = nlapiLoadRecord('solution', internalId);
-		item = JSON.parse(JSON.stringify(item));
-		result[i] = { 'title' : item.title, 'description' : item.longdescription };
-	}
-	
-	response.write(JSON.stringify(result));
+    var result = [];
+    
+    var topic = nlapiLoadRecord('topic', 8),
+        count = topic.getLineItemCount('solution'),
+        solutionID,
+        item,
+        title,
+        longdescription;
+        
+    for (var i = 1; i <= count; i++) {
+        solutionID = topic.getLineItemValue('solution', 'id', i),
+        item = nlapiLoadRecord('solution', solutionID),
+        title = item.getFieldValue('title'),
+        longdescription = item.getFieldValue('longdescription');
+        
+        result.push({
+            title : title, 
+            description : longdescription
+        });
+        
+    }
+    response.setContentType('JAVASCRIPT');
+    response.write(JSON.stringify(result));
 }

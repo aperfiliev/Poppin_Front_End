@@ -96,10 +96,16 @@
 	 */
 	function showHelp()
 	{
-		help = document.getElementById("div__help");
-		help.setAttribute("style", "display:block");
-		bg = document.getElementById("div__help_bg");
-		bg.setAttribute("style", "display:block");
+		var isPlaceOrderHelpBuilt = jQuery('#helpBody tr').length;
+		if (isPlaceOrderHelpBuilt) {
+    		help = document.getElementById("div__help");
+    		help.setAttribute("style", "display:block");
+    		bg = document.getElementById("div__help_bg");
+    		bg.setAttribute("style", "display:block");
+        } else {
+        	loadHelpTopics();
+        }
+        
 	}
 	/*
 	 * close Help pop-up

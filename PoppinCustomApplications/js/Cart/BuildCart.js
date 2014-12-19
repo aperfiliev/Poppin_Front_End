@@ -493,3 +493,16 @@
 		});
 	}
 	
+	function loadHelpTopics()
+	{
+    	var ajaxRequest = {
+                url: "/app/site/hosting/scriptlet.nl?script=282&deploy=1",
+                dataType: "json"
+    		};
+    	
+    	$j.ajax(ajaxRequest).done(function (data) {
+    		buildHelp(data);
+    		showHelp();
+        });    	
+	}
+	
