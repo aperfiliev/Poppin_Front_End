@@ -193,8 +193,7 @@ define('LiveOrder.Model', ['Order.Model', 'OrderLine.Model', 'OrderLine.Collecti
 			var paypal = this.get('paymentmethods').findWhere({type: 'paypal'});
 			if (paypal && !paypal.get('complete'))
 			{
-				//this.set(this.get('paymentmethods').remove(paypal));
-paypal .set('complete',  true);
+				this.set(this.get('paymentmethods').remove(paypal));
 			}
 			return this.save().fail(function ()
 			{

@@ -79,10 +79,6 @@ define('OrderWizard.Module.PaymentMethod.Selector', ['Wizard.Module'], function 
 			{
 				this.setModuleByType(primary_paymentmethod && primary_paymentmethod.get('type'));
 			}
-			if (this.selectedModule.type === 'paypal') {
-				primary_paymentmethod.set('complete',  true);
-//this.model.attributes.isPaypalComplete = true;
-			}
 			
 			this.selectedModule && this.selectedModule.instance.past && this.selectedModule.instance.past();
 			this.model.off('change', this.totalChange, this);
